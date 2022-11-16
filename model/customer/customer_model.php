@@ -1,0 +1,110 @@
+<?php
+class customer_model{
+    private $User_id;  //crete private variables for all the attributes of customer
+    private $Firstname;
+    private $Lastname;
+    private $Username;
+    private $Street;
+    private $City;
+    private $Postalcode;
+    private $Password;
+    private $Email;
+    private $Type;
+    private $Contactnumber;
+    private $Billnum;
+
+    public function setDetails($firstname='',$lastname='',$username='',$street='',$city='',$postalcode='',$password='',$email='', $contactnumber='',$billnum=''){
+        $this->Firstname=$firstname;  //assign values to private variables from the parameters(values user entered in the registration form)
+        $this->Lastname=$lastname;
+        $this->Username=$username;
+        $this->Street=$street;
+        $this->City=$city;
+        $this->Postalcode=$postalcode;
+        $this->Password=$password;
+        $this->Email=$email;
+        $this ->Contactnumber=$contactnumber;
+        $this->Billnum=$billnum;
+        $this->Type="customer";
+    }
+    public function setUserId($connection){  //set the user id of the customer
+        $sql = "SELECT * FROM customer";
+        $result = $connection->query($sql);
+        $num=$result->num_rows+1;
+        $this->User_id='CUS'.$num;
+    }
+
+    public function getUserId($connection){
+        return $this->User_id;
+    }
+
+    private function CreateUserEntry($connection){  //enter details to the user table
+        $sql="INSERT INTO user (User_id,First_Name,Last_Name,City,Street,Postalcode,Username,Password,Email,Type) VALUES ('$this->User_id',
+        '$this->Firstname','$this->Lastname','$this->City','$this->Street','$this->Postalcode','$this->Username','$this->Password','$this->Email','$this->Type')";
+        if($connection->query($sql)){
+            $_SESSION['registerMsg']="User table updated Successfully";
+            return true;
+        }else{
+            $_SESSION['regerror']="User Registration Failed";
+            return false;
+        }
+    }
+
+    public function setContact($connection){   //enter details to the user_contact table
+        $sql="INSERT INTO user_contact(User_id,Contact_No) VALUES ('$this->User_id','$this->Contactnumber')";
+        if($connection->query($sql)){
+            $_SESSION['registerMsg']="User contact updated Successfully";
+            return true;
+        }else{
+            $_SESSION['regerror']="User Registration Failed";
+            return false;
+        }
+    }
+
+    public function setCustomer($connection){  //enter details to the customer table
+        $sql="INSERT INTO customer(Customer_Id,ElectricityBill_No,staff_Id,Registration_date,Status) VALUES ('$this->User_id','$this->Billnum',NULL,NULL,'0')";
+        if($connection->query($sql)){
+            $_SESSION['registerMsg']="User Registered Successfully";
+            return true;
+        }else{
+            $_SESSION['regerror']="User Registration Failed";
+            return false;
+        }
+    }
+
+    public function RegisterCustomer($connection){  //call all the functions to register the customer
+        $this->setUserId($connection);
+        $result1=$this->CreateUserEntry($connection);
+        $result2=$this->setContact($connection);
+        $result3=$this->setCustomer($connection);
+
+        if($result1 && $result2 && $result3){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public function loginCustomer($connection,$username,$password){   //check whether the user entered correct username and password and the status is 1.
+        $sql = "SELECT * FROM user WHERE username='$username' AND password='$password'";
+        $result = $connection->query($sql);
+        if($result->num_rows == 1){
+            $row = $result->fetch_assoc();
+            $this->User_id=$row['User_id'];
+            $_SESSION['User_id']=$this->User_id;
+            $_SESSION['Username']=$row['Username'];
+            $_SESSION['Firstname']=$row['First_Name'];
+            $_SESSION['Lastname']=$row['Last_Name'];
+            $_SESSION['Type']=$row['Type'];
+            $this->Type=$row['Type'];
+            $r1="SELECT * FROM customer WHERE Customer_Id='$this->User_id' AND Status='1'";
+            if($connection->query($r1)->num_rows > 0){
+                return true;   //login will be successful
+            }else{
+                return false;   //login will be unsuccessful
+            }
+        }
+        else{
+            return false;   //login will be unsuccessful
+        }
+    }
+
+}
