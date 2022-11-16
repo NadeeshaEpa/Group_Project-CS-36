@@ -20,6 +20,6 @@ if(isset($_POST['viewacc'])){
             header("Location: ../../view/customer/customer_login.php");
     }
 }else{
-    echo "Invalid login";
+    echo "Hello Invalid login";
 }
 
