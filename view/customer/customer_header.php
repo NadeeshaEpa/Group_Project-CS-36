@@ -1,4 +1,8 @@
-<? session_start(); ?>
+<?php
+   if(!isset($_SESSION['User_id'])){
+       header("Location: ../../view/customer/customer_login.php");
+   }
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,7 +18,7 @@
         </div>
         <li><img src="../../public/images/customer.png" alt="logo" width="100px" height="100px" class="user"></li>
         <li><img src="../../public/images/bell.png" alt="logo" width="20px" height="20px" class="notification"></li>
-        <li><a href="../../index.php">Logout</a></li>
+        <li><a href="../../controller/customer/logout_controller.php">Logout</a></li>
         <li><a href="#">Fuel</a></li>
         <li><a href="#">Gas</a></li>
         <li><img src="../../public/images/logo.png" alt="logo" width="100px" height="100px"></li>

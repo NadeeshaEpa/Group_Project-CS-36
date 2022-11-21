@@ -20,7 +20,17 @@
                             unset($_SESSION['email-status']);
                         }
                     ?> 
-                </div>          
+                </div>  
+                <div id="successmsg">
+                    <?php
+                        if(isset($_SESSION['email-status-success'])){
+                            echo $_SESSION['email-status-success'];
+                            echo "<br>";
+                            unset($_SESSION['email-status-success']);
+                        }
+                    ?>  
+                </div> 
+                <input type="hidden" name="type" value="send" />     
                 <label for="email">Enter your email address:</label><br>
                 <input type="email" name="email" id="email" placeholder="Enter Email" class="box" required><br><br>
                 <button type="submit" name="fsubmit" id="submit">Send</button>

@@ -36,7 +36,7 @@ if(!checkpassword($password,$cpassword)){
 }
 
 //if there is an error redirect to the registration page
-if($_SESSION['emailerror'] || $_SESSION['usernameerror'] || $_SESSION['passworderror']){
+if(isset($_SESSION['emailerror']) || isset($_SESSION['usernameerror']) || isset($_SESSION['passworderror'])){
     header("Location: ../../view/customer/customer_register.php");
     $connection->close();
     exit();
@@ -56,7 +56,6 @@ $billnum=$connection->real_escape_string($billnum);
 
 //create a new customer object
 $user=new customer_model();
-
 //set the details of the customer
 $user->setDetails($firstname,$lastname,$username,$street,$city,$postalcode,$password,$email,$contactnumber,$billnum);
 
@@ -64,7 +63,7 @@ $user->setDetails($firstname,$lastname,$username,$street,$city,$postalcode,$pass
 $result=$user->registerCustomer($connection);
 if($result){
     $_SESSION['RegsuccessMsg'] = 'Registeration Request Sent Successfully';
-    header("Location: ../../view/customer/customerRegister_success.php");
+    header("Location: ../../view/customer/customer_success.php");
 }else{
     header("Location: ../../view/customer/customer_register.php");  //if there is an error redirect to the registration page
 }

@@ -17,8 +17,8 @@
     ?>
     </h2>
     <h2>
-      Your request has been sent Successfully. Our staff will notify you with more details in an email soon.
-      This may take up to 48 hours
+     successful
     </h2>
+    <button><a href="customer_dashboard.php">Go to Dashboard</a></button>
 </body>
 </html>

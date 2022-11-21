@@ -23,10 +23,7 @@ body{
     margin-top: 40px;
     margin-bottom: 10px;
 }
-.left1 button{
-    background-color:#a6abe1;
-}
-.left2 button:hover{
+.left2 button:hover,.left1 button:hover{
     background-color: #9AE298;
 }
 .left1 p, .left2 p{
@@ -131,29 +128,27 @@ body{
     background-color:#4E60FF;
     border: blue 2px solid;
 }
-.cu{
-    background-color: #AADBAA;
-    border: green 2px solid;
-}
-.down1 p{
+
+.down1 input{
     font-size: 20px;
     border: black 1px solid;
     border-radius: 20px;
     width: 450px;
-    height: 30px;
+    height: 35px;
     text-align: center;
     margin-top: 0%;
     padding-top: 10px;
+    margin-bottom: 20px;
 }
 .down2{
    margin-right: 34px;
 }
-.down2 p{
+.down2 input{
     font-size: 20px;
     border: black 1px solid;
     border-radius: 20px;
     width: 319px;
-    height: 30px;
+    height: 35px;
     text-align: center;
     margin-top: 0%;
     padding-top: 10px;
@@ -167,6 +162,100 @@ body{
     border-radius: 20px;
 
 }
+.b6{
+    width: 200px;
+    height: 40px;
+    float: right;
+    margin-right: 35px;
+    background-color: #9AE298;
+    border-radius: 20px;
+}
+.b5:hover, .b6:hover{
+    background-color: green;
+}
 .b5:hover{
     background-color: pink;
+}
+.heading{
+    text-align: center;
+    font-size: 20px;
+    margin-bottom:0px;
+}
+.review-form{
+    background-color: white;
+    width: 50%;
+    float:right;
+    padding: 20px;
+    margin: 20px;
+    margin-top: 0%;
+    margin-right: 100px;
+    padding-left: 120px;
+    border-radius: 20px;
+    height: 70%;
+}
+.cusname, .dpname, .date, .desc{
+    font-size: 20px;
+    margin-bottom: 0px;
+    transform: translate(20%, 25%);
+}
+.cusname input, .dpname select , .date input, .desc textarea{
+    width: 50%;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-left: 30px;
+}
+.desc textarea{
+    height: 100px;
+}
+.submitreview button{
+    width: 200px;
+    height: 40px;
+    background-color: #4E60FF;
+    border-radius: 20px;
+    border: blue 2px solid;
+    transform: translate(150%, 50%);
+    margin-top: 40px;
+}
+.submitreview button:hover{
+    background-color: green;
+}
+.ordertable{
+    background-color: white;
+    width: 50%;
+    float:left;
+    padding: 20px;
+    padding-top: 30px;
+    margin: 20px;
+    margin-top: 0%;
+    margin-left: 180px;
+    padding-left: 50px;
+    border-radius: 20px;
+    height: 70%;
+}
+.ordertable table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.ordertable th{
+    font-weight: bold;
+    color:black;
+}
+.ordertable td{
+    color: gray;
+}
+.ordertable table td, .ordertable table th{
+    border-bottom: black 1px solid;
+    padding: 10px;
+    text-align: left;
+}
+.ordertable table td a{
+    text-decoration: none;
+    color: black;
+    border: green 1px solid;
+    border-radius: 10px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #9AE298;
 }

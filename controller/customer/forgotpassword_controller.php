@@ -1,22 +1,152 @@
 <?php
 session_start();
-require_once("../../config.php");
+require_once '../../config.php';
 require_once '../../model/customer/forgotpassword_model.php';
+require_once '../../model/customer/customer_model.php';
 require_once '../../model/customer/checkcustomer_model.php';
 
-if(isset($_POST['fsubmit'])){
-    $email=$_POST['email'];
-    $email=$connection->real_escape_string('$email');
-    $result=checkemail($email,$connection);
-    if($result){
-        $setdata=getdata($email,$connection);
-    }else{
-        $_SESSION['email-status']="No Email found";
-        header("Location:../../view/customer/forgot_password.php");
-        exit();
-    }
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-}else{
-    echo "Invalid Login";
-    exit();
+require '../../PHPMailer/src/Exception.php';
+require '../../PHPMailer/src/PHPMailer.php';
+require '../../PHPMailer/src/SMTP.php';
+
+class forgotpassword_controller{
+    private $mail;
+    private $checkcustomer;
+    private $forgotpassword;
+
+    function __construct(){
+        $this->forgotpassword=new forgotpassword_model();
+        $this->user=new customer_model();
+        $this->mail = new PHPMailer();
+        $this->mail->isSMTP();
+        $this->mail->Host = 'smtp.mailtrap.io';
+        $this->mail->SMTPAuth = true;
+        $this->mail->Port = 2525;
+        $this->mail->Username = '21ba7af62d0f13';
+        $this->mail->Password = 'ad0d283d439a0f';
+
+    }
+    public function sendEmail($connection){
+        $useremail=$_POST['email'];
+        $useremail=filter_var($useremail,FILTER_SANITIZE_EMAIL);
+
+        if(empty($useremail)){
+            $_SESSION['email-status']="Please enter your email address";
+            header("Location: ../../view/customer/forgot_password.php");
+            exit();
+        }
+        if(!filter_var($useremail,FILTER_VALIDATE_EMAIL)){
+            $_SESSION['email-status']="Please enter a valid email address";
+            header("Location: ../../view/customer/forgot_password.php");
+            exit();
+        }
+        $selector=bin2hex(random_bytes(8));
+        $token=random_bytes(32);
+        $url="http://localhost/Group_36/view/customer/createnewpassword.php?selector=".$selector."&validator=".bin2hex($token);
+        $expires=date("U")+1800;
+
+        $result1=$this->forgotpassword->deleteEmail($useremail,$connection);
+        if(!$result1){
+            $_SESSION['email-status']="There was an error1";
+            header("Location: ../../view/customer/forgot_password.php");
+            exit();
+        }
+        
+        $result2=$this->forgotpassword->insertToken($selector,$token,$expires,$useremail,$connection);
+        if(!$result2){
+            $_SESSION['email-status']="There was an error2";
+            header("Location: ../../view/customer/forgot_password.php");
+            exit();
+        }
+
+        $subject="Reset your password for FAGO";
+        $message='<p>We received a password reset request. The link to reset your password is below. If you did not make this request, you can ignore this email.</p>';
+        $message.='<p>Here is your password reset link: </br>';
+        $message.='<a href="'.$url.'">'.$url.'</a></p>';
+
+        $this->mail->setFrom('nnadeesha128@gmail.com');
+        $this->mail->isHTML(true);
+        $this->mail->Subject = $subject;
+        $this->mail->Body = $message;   
+        $this->mail->addAddress($useremail);
+
+        $this->mail->send();
+        $_SESSION['email-status-success']="Reset password link has been sent to your email";
+        header("Location: ../../view/customer/forgot_password.php");
+    }
+    public function resetPassword($connection){
+            $_POST=filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
+            $data=[
+                'selector'=>trim($_POST['selector']),
+                'validator'=>trim($_POST['validator']),
+                'password'=>trim($_POST['password']),
+                'cpassword'=>trim($_POST['cpassword'])
+            ];
+            $url='../../view/customer/createnewpassword.php?selector='.$data['selector'].'&validator='.$data['validator'];
+
+            if(empty($_POST['password'])|| empty($_POST['cpassword'])){
+                $_SESSION['password-status']="Please fill all the fields";
+                header("Location: ".$url);
+            }
+            if($_POST['password'] != $_POST['cpassword']){
+                $_SESSION['password-status']="Passwords do not match";
+                header("Location: ".$url);
+            }
+            // if(strlen($data['password'])<8){
+            //     $_SESSION['password-status']="Password must be at least 8 characters";
+            //     header("Location: ".$url);
+            // }
+            $currentDate=date("U");
+            $result3=$this->forgotpassword->resetPassword($data['selector'],$currentDate,$connection);
+
+            if($result3 == false){
+                $_SESSION['password-status']="Sorry the link is no longer valid";
+                header("Location: ".$url);
+            }
+
+            $tokenBin=hex2bin($data['validator']);
+            $tokenCheck=password_verify($tokenBin,$result3['Token']);
+            if(!$tokenCheck){
+                $_SESSION['password-status']="You need to re-submit your reset request";
+                header("Location: ".$url);
+            }
+
+            $tokenEmail=$result3['PwdresetEmail'];
+            // $result4=checkemail($tokenEmail,$connection);
+            // if(!$result4){
+            //     $_SESSION['password-status']="There was an error";
+            //     header("Location: ".$url);
+            // }
+            
+            $newpwd=md5($data['password']);
+            $result5=$this->user->resetEmail($connection,$newpwd,$tokenEmail);
+            if(!$result5){
+                $_SESSION['password-status']="There was an error";
+                header("Location: ".$url);
+            }
+
+            $_SESSION['password-status-success']="Your password has been reset";
+            header("Location:".$url);
+
+
+        }
 }
+
+$init=new forgotpassword_controller();
+
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    switch($_POST['type']){
+        case 'send':
+            $init->sendEmail($connection);
+            break;
+        case 'reset':
+            $init->resetPassword($connection);
+            break;
+        default:
+        header("location: ../../view/customer/forgot_password.php"); 
+    }
+}
+

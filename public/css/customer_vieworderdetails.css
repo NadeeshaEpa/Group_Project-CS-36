@@ -1,0 +1,65 @@
+h1{
+    padding-left: 25%;
+}
+.back{
+    margin-top: 2%;
+    width: 150px;
+    margin-left: 20px;
+    height: 50px;
+    background-color:green;
+    border-radius: 10px;
+}
+.back a{
+    text-decoration: none;
+    text-align: left;
+    color: white;
+}
+.back:hover{
+    background-color: #1AD598;
+}
+.orderdetails{
+    width:40%;
+    transform: translate(25%, 0);
+    margin-bottom: 5%;
+    margin-left: 10%;
+    padding: 20px;
+    background-color: white;
+    border-radius: 20px;
+    padding-left: 10%;
+    height: 75%;
+    border: black 2px solid;
+}
+body{
+    background-color:#FFFDF0;
+    margin: 0%;
+}
+.half{
+    font-size: 20px;
+    margin-bottom: 0px;
+}
+.halfleft{
+    width: 50%;
+    float: left;
+}
+.halfright{
+    width: 50%;
+    float: right;
+}
+.customer{
+    font-size: 20px;
+    margin-bottom: 0px;
+    width: 100%;
+}
+.third{
+    width: 100%;
+    font-size: 20px;
+}
+.orderdetails input{
+    width: 50%;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-left: 30px;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
