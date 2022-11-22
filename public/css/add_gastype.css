@@ -1,0 +1,144 @@
+body{
+    
+    margin: 0%;
+    
+   
+    
+   
+}
+.image{
+    height: 100%;
+    width: 100%;
+    background-image: url(../../public/images/gas4.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: change 14s infinite ease-in-out;   
+   
+
+}
+
+
+
+
+.content{
+    
+    opacity: 0.9;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(84, 80, 80, 0.2);
+    top: 50%;
+    width: 50%;
+    margin: 0 auto;
+    
+    
+    
+    
+   
+    }
+    
+.content input{
+    font-weight: bold;
+    border-radius: 5px;
+    border: 1px solid #e3e3e3;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: black;
+   
+}
+
+.content select{
+   
+    border-radius: 5px;
+    border: 1px solid #e3e3e3;
+    padding: 10px;
+    margin-bottom: 10px;
+   
+}
+
+
+
+
+.content button{
+    border-radius: 5px;
+    border: 1px solid #e3e3e3;
+    padding: 10px;
+    margin-bottom: 20px;
+    margin-left: 40%;
+    font-weight: bold;
+    width:20%;
+    background: #4E60FF;
+    border-radius: 20px;
+    align-items: center;
+    
+}
+
+.content button:hover{
+    background: #6EDC79;
+    color:black;
+}
+.content h2{
+    font-weight:bolder;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 20px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+.box{
+    padding:12px;
+    width:90%;
+    border:1px solid black;
+    outline: none;
+    border-radius: 20PX;
+}
+
+.font{
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+.box1{
+    padding:12px;
+    width:45%;
+    border:1px solid black;
+    outline: none;
+    border-radius: 20PX;
+}
+.box2{
+    padding:12px;
+    width:30%;
+    border:1px solid black;
+    outline: none;
+    border-radius: 20PX;
+}
+.content-lable{
+    content: black;
+    
+}
+
+@keyframes change{
+    30%{
+        background-image: url('../../public/images/gas4.jpg');
+    }
+
+   
+    30%{
+        background-image: url('../../public/images/gas5.jpg');
+    }
+    
+
+   
+    30%{
+        background-image: url('../../public/images/gas6.jpg');
+    }
+
+    20%{
+        background-image: url('../../public/images/gas7.jpg');
+    }
+    
+
+    
+}
+
