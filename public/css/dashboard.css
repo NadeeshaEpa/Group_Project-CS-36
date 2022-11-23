@@ -1,0 +1,92 @@
+
+  .left {
+    left: 0;
+    background-color:#CFD7CA;
+    width: 20%;
+    height: 89%;
+    position: fixed;
+    font-family: sans-serif;
+  }
+  
+  .right {
+    right: 0;
+    font-family: sans-serif;
+    background-color:#FFFDF0;
+    width: 80%;
+    height: 95%;
+    position: fixed;
+  }
+
+  h2{
+    letter-spacing: 1px;
+  }
+
+  .vertical-menu {
+    width: 100%;
+  }
+  
+  .vertical-menu a {
+    background-color:#CFD7CA;
+    color: black;
+    display: block;
+    padding: 30px;
+    text-decoration: none;
+  }
+  
+  .vertical-menu a:hover {
+    background-color: #ccc;
+  }
+  
+  .vertical-menu a.active {
+    background-color:#7FD1AE;
+    color: white;
+  }
+
+  
+  .container {
+    width: 100px; 
+    margin-top: 15%; 
+    margin-left: 20%;
+    text-align: center;
+    font-family: sans-serif;
+    
+    /* Optional Styling */
+    padding: 20px;
+    border-style: solid;
+    
+    border-radius: 20px;
+   
+   
+  }
+  .tiles{
+    display: grid;
+	  grid-template-columns: repeat(6, 1fr);
+    column-gap: 0.001rem;
+    row-gap: 1rem;
+    margin-top: 1.25rem;
+  }
+
+  .pic1{
+    margin-top: 1.70rem;
+    margin-left:2rem;
+    
+    
+  }
+
+  .pic2{
+    margin-top: 1.70rem;
+    margin-left:2rem;
+    width: 399px;
+    height: 499px;
+
+  }
+
+  
+  .graphs{
+    display: grid;
+	  grid-template-columns: repeat(3, 1fr);
+    column-gap: 1rem;
+    row-gap: 1rem;
+    margin-top: 1.25rem;
+
+  }
