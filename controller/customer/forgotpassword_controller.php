@@ -90,48 +90,52 @@ class forgotpassword_controller{
             if(empty($_POST['password'])|| empty($_POST['cpassword'])){
                 $_SESSION['password-status']="Please fill all the fields";
                 header("Location: ".$url);
-            }
-            if($_POST['password'] != $_POST['cpassword']){
+            }else if($_POST['password'] != $_POST['cpassword']){
+                echo 'passwords do not match';
                 $_SESSION['password-status']="Passwords do not match";
                 header("Location: ".$url);
+            }else{
+                $currentDate=date("U");
+                $result3=$this->forgotpassword->resetPassword($data['selector'],$currentDate,$connection);
+
+                if(!$result3){
+                    echo 'sorry the link has expired';
+                    $_SESSION['password-status']="Sorry the link is no longer valid";
+                    header("Location: ".$url);
+                }
+
+                // if(strlen($data['password'])<8){
+                // $_SESSION['password-status']="Password must be at least 8 characters";
+                // header("Location: ".$url);
+                // }
+
+                $tokenBin=hex2bin($data['validator']);
+                $tokenCheck=password_verify($tokenBin,$result3['Token']);
+                if(!$tokenCheck){
+                    echo 'you need to re-submit your reset request';
+                    $_SESSION['password-status']="You need to re-submit your reset request";
+                    header("Location: ".$url);
+                }
+
+                $tokenEmail=$result3['PwdresetEmail'];
+                $result4=checkemail($tokenEmail,$connection);
+                if(!$result4){
+                    $_SESSION['password-status']="There was an error";
+                    header("Location: ".$url);
+                }
+                
+                $newpwd=md5($data['password']);
+                $result5=$this->user->resetEmail($connection,$newpwd,$tokenEmail);
+                if(!$result5){
+                    $_SESSION['password-status']="There was an error";
+                    header("Location: ".$url);
+                }
+                if($result3 && $result4 && $result5){
+                    echo 'password has been reset';
+                    $_SESSION['password-status-success']="Your password has been reset";
+                    header("Location:".$url);
+                }
             }
-            // if(strlen($data['password'])<8){
-            //     $_SESSION['password-status']="Password must be at least 8 characters";
-            //     header("Location: ".$url);
-            // }
-            $currentDate=date("U");
-            $result3=$this->forgotpassword->resetPassword($data['selector'],$currentDate,$connection);
-
-            if($result3 == false){
-                $_SESSION['password-status']="Sorry the link is no longer valid";
-                header("Location: ".$url);
-            }
-
-            $tokenBin=hex2bin($data['validator']);
-            $tokenCheck=password_verify($tokenBin,$result3['Token']);
-            if(!$tokenCheck){
-                $_SESSION['password-status']="You need to re-submit your reset request";
-                header("Location: ".$url);
-            }
-
-            $tokenEmail=$result3['PwdresetEmail'];
-            // $result4=checkemail($tokenEmail,$connection);
-            // if(!$result4){
-            //     $_SESSION['password-status']="There was an error";
-            //     header("Location: ".$url);
-            // }
-            
-            $newpwd=md5($data['password']);
-            $result5=$this->user->resetEmail($connection,$newpwd,$tokenEmail);
-            if(!$result5){
-                $_SESSION['password-status']="There was an error";
-                header("Location: ".$url);
-            }
-
-            $_SESSION['password-status-success']="Your password has been reset";
-            header("Location:".$url);
-
-
         }
 }
 

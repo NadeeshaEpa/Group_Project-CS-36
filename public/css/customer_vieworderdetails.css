@@ -55,11 +55,18 @@ body{
     font-size: 20px;
 }
 .orderdetails input{
-    width: 50%;
+    width: 70%;
     height: 30px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid black;
     margin-left: 30px;
     font-size: 18px;
     margin-bottom: 5px;
+}
+.third input{
+    width: 85%;
+    
+}
+.customer input{
+    width: 85%;
 }

@@ -31,4 +31,30 @@ class account_model{
             return false;
         }
     }
+    public function updatePassword($connection,$User_id,$oldpwd,$newpwd,$confirmpwd){
+        $hash=md5($oldpwd);
+        $sql="SELECT Password FROM user WHERE User_id='$User_id' AND Password='$hash'";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $newpwdhash=md5($newpwd);
+            $sql="UPDATE `user` SET `Password`='$newpwdhash' WHERE User_id='$User_id'";
+            $result=$connection->query($sql);
+            if($result){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }
+    public function deleteAccount($connection,$User_id){
+        $sql="DELETE FROM `user` WHERE User_id='$User_id'";
+        $result=$connection->query($sql);
+        if($result){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

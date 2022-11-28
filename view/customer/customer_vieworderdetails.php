@@ -12,6 +12,9 @@
        if(isset($_SESSION['vieworderdetails'])){
               $details=$_SESSION['vieworderdetails'];
        }
+       if(isset($_SESSION['vieworders'])){
+              $order=$_SESSION['vieworders'];
+       }
     ?>
     <?php require_once 'customer_header.php';?>
         <button class="back"><a href="customer_vieworder.php">Back To My orders</a></button>
@@ -21,6 +24,10 @@
                 <label for="Customername">Customer Name:</label><br>
                 <input type="text" name="Customername" value="<?php echo $details[1]['CFirst_Name']." ".$details[1]['CLast_Name']; ?>" readonly><br><br>
             </div>
+            <!-- <div class="customer">
+                <label for="GAname">Gas Agent Name:</label><br>
+                <input type="text" name="GAname" value="<?php echo $order['First_Name']." ".$order['Last_Name']; ?>" readonly><br><br>
+            </div> -->
             <div class="half">
                 <div class="halfleft">
                     <label for="orderid">Order ID:</label><br>

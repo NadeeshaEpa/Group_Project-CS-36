@@ -12,4 +12,4 @@
         die("Connection failed: " . $connection -> connect_error);  //connection failure
     }
     echo "Connected successfully\n";
-?>zz
+?>

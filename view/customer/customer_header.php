@@ -16,7 +16,8 @@
         <div class="name">
             <li><?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?></li>
         </div>
-        <li><img src="../../public/images/customer.png" alt="logo" width="100px" height="100px" class="user"></li>
+        <a href="customer_dashboard.php">
+        <li><img src="../../public/images/customer.png" alt="logo" width="100px" height="100px" class="user"></li></a>
         <li><img src="../../public/images/bell.png" alt="logo" width="20px" height="20px" class="notification"></li>
         <li><a href="../../controller/customer/logout_controller.php">Logout</a></li>
         <li><a href="#">Fuel</a></li>

@@ -23,11 +23,13 @@ class forgotpassword_model{
         $sql="SELECT * FROM pwdreset WHERE Selector='$selector' AND Expires>='$currentDate'";
         $result=$connection->query($sql);
         if($result->num_rows > 0){
+            // print_r($result->fetch_assoc());
+            // die();
             return $result->fetch_assoc();
         }else{
             return false;
         }
     }
-
+    
 }
    

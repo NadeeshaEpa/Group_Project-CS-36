@@ -1,40 +1,46 @@
 .para{
     font-size:25px;
     margin:30px;
-    flex:70%
+    flex:80%
 }
 .litro{
     font-size:20px;
-    margin:30px;
-    background-color: blue;
-    flex:25%;
+    margin:50px;
+    background-color:#6989B5;
+    flex:15%;
 }
 .laugh{
     font-size:20px;
-    margin:30px;
-    background-color:yellow;
-    flex:25%;
+    margin:50px;
+    background-color:#FDC801;
+    flex:15%;
 }
 .fuel{
     font-size:20px;
-    margin:30px;
+    margin:50px;
     background-color:maroon;
-    flex:25%;
+    flex:15%;
 }
 button{
     margin: 30px;
+    margin-top: 0%;
     width: 50%;
     height: 50px;
     font-size: 20px;
     background-color: green;
     color: white;
     border-radius: 10px;
+    border: green 1px solid;
     text-align: center;
+}
+button:hover{
+    background-color: lightgreen;
+    color: black;
 }
 .btn{
     float: right;
     width: 20%;
-    margin-top: 0;
+    margin-top:40px;
     flex:30%;
     margin-left:25%;
 }
@@ -45,12 +51,12 @@ button{
     display:flex;
 }
 .litroimg{
-    width:80%;
+    width:70%;
     height:70%;
-    padding: 20px;
-    margin: 30px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    padding: 40px;
+    padding-top: 11%;
+    padding-left: 15%
+   
 }
 .litro button, .laugh button, .fuel button{
     margin-left: 23%;

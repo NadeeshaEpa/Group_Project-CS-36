@@ -14,20 +14,24 @@ body{
     margin-top: 30px;
 }
 .registration-form input{
-    border-radius: 5px;
+    border-radius: 10px;
     border: 1px solid #e3e3e3;
     padding: 10px;
     margin-bottom: 20px;
+    background-color: rgb(219, 215, 215);
 }
 .registration-form button{
     border-radius: 5px;
     border: 1px solid #e3e3e3;
     padding: 10px;
     margin-bottom: 20px;
-    width:90%;
+    width:40%;
     background: blue;
-    border-radius: 20px;
     align-items: center;
+    height: 40px;
+    margin-left: 200px;
+    color: white;
+    font-size: 15px;
 }
 .registration-form button:hover{
     background: green;
@@ -45,6 +49,7 @@ body{
     border:1px solid black;
     outline: none;
     border-radius: 20PX;
+    background-color:  rgb(219, 215, 215);
 }
 .box1{
     padding:12px;
@@ -53,12 +58,19 @@ body{
     outline: none;
     border-radius: 20PX;
 }
-.box2{
+.box2,.box4,.box5{
     padding:12px;
     width:30%;
     border:1px solid black;
     outline: none;
     border-radius: 20PX;
+}
+.box4{
+    width:20%;
+}
+.box5{
+    width: 50%;
+    margin-left: 4px;
 }
 h2{
     font-size: 30px;
@@ -67,16 +79,53 @@ h2{
     text-align: center;
     margin-bottom: 20px;
 }
-p{
-    font-size: 20px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 20px;
-}
 #errmsg{
   color: #ba3939;
   background: #ffe0e0;
   width: 90%;
   margin-bottom: 20px;
   font-size: 20px;
+}
+title{
+    font-size: 30px;
+    font-weight: bold;
+    color: pink;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.otp{
+    display: flex;
+}
+.otp input{
+    width: 70%;
+}
+.otp button{
+    background-color: green;
+    color: white;
+    border-radius: 10px;
+    width:20%;
+    display: flex;
+    text-align: center;
+    margin-left: 3px;
+    padding-left: 30px;
+}
+.otpr{
+    display: flex;
+}
+.otpr button{
+    width:20%;
+    margin-left: 2px;
+    border-radius: 10px;
+    color: white;
+}
+.otpr button:hover{
+    background-color: lightblue;
+}
+.otp button:hover{
+    background-color: lightgreen;
+}
+label{
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
 }

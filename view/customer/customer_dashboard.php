@@ -19,6 +19,7 @@
     <div class="sidebar">
         <div class="left">
             <div class="left1">
+              <div class="active"> 
                 <button>
                  <a href="customer_dashboard.php">
                     <div class="left1-1">
@@ -28,6 +29,7 @@
                     <p>personal infromation</P>
                  </a>
                 </button>
+              </div>  
             </div>
             <div class="left2">
                 <form action="../../controller/customer/order_controller.php" method="POST">
@@ -41,12 +43,12 @@
                 </form>    
             </div>
             <div class="left2">
-              <form action="../../controller/customer/order_controller.php" method="POST">
+              <form action="../../controller/customer/review_controller.php" method="POST">
                  <button name="review">
                     <div class="left2-1">
                          <img src="../../public/images/ratings.png" alt="logo" width="20px" height="20px">
                     </div>
-                    <p>Add Reviews</p>
+                    <p>Reviews</p>
                     <p>Rate delivery service</P>
                 </button>
                 </form>
@@ -117,7 +119,9 @@
                                 </div>
                                 <div class="down1">
                                     <label>Update Password:</label><br>
-                                    <button class="cp">Change password</button>
+                                    <form action='customer_changepassword.php' method="POST">
+                                       <button type="submit" name="changepassword" class="cp">Change password</button>
+                                    </form>   
                                 </div>    
                             </div> 
                             <div class="down"> 
@@ -136,10 +140,33 @@
                             </div>        
                         </div>    
                     </div>
-                    <button class="b5" name="deleteaccount">Delete Account</button>
+                    <!-- <button class="b5" name="deleteaccount">Delete Account</button> -->
+                    <button onclick="document.getElementById('id01').style.display='block'" class="b5">Delete Account</button>
+                    <div id="id01" class="modal">
+                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
+                        <form class="modal-content" action="../../controller/customer/account_controller.php" method="POST">
+                                <div class="container">
+                                    <h1>Delete Account</h1>
+                                    <p>Are you sure you want to delete your account?</p>
+                                    
+                                    <div class="clearfix">
+                                        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                                        <button type="submit" class="deletebtn" name="deleteaccount">Delete</button>
+                                    </div>
+                                </div>
+                        </form>
+                    </div>
                     <button class="b6" name="updateaccount">Update</button>
                 </form>
             </div>
-            
+            <script>
+            var modal = document.getElementById('id01');
+
+            window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+            }
+            </script>
 </body>
 </html>

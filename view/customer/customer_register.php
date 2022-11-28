@@ -33,29 +33,52 @@
                 }
             ?>
         </div>
-        <p>Name:</p>
-          <input type="text" name="firstname" id="firstname" placeholder="First Name" class="box1"  required>
-          <input type="text" name="lastname" id="lastname" placeholder="Last Name" class="box1" required>
-        <p>Username:</p>
+        <div>
+            <label for="name">Name:</label><br>
+            <input type="text" name="firstname" id="firstname" placeholder="First Name" class="box1"  required>
+            <input type="text" name="lastname" id="lastname" placeholder="Last Name" class="box1" required>
+        <div>
+            <label for="username">Username:</label><br>
             <input type="text" name="username" id="username" placeholder="Username" class="box" required>
-        <p>Address:</p>
+        </div>
+        <div>
+            <label for="Address">Address:</label><br>
             <input type="text" name="street" id="street" placeholder="Street" class="box2" required>
             <input type="text" name="city" id="city" placeholder="City" class="box2" required>   
             <input type="text" name="postalcode" id="postalcode" placeholder="Postalcode" class="box2" required>
-            
-        <p>Password:</p>
+        </div>
+        <div>    
+            <label for="password">Password:</label><br>
             <input type="password" name="password" id="password" placeholder="Password" class="box" required>
-        <p>Confirm Password:</p>   
+            <!-- <input type="password" name="password" id="password" placeholder="Password" class="box" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required> -->
+        </div>
+        <div>
+            <label for="cpassword">Confirm Password:</label><br>
             <input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password" class="box" required>
-
-        <p>Email:</p>
+        </div>
+        <div>
+            <label for="email">Email:</label><br>
             <input type="email" name="email" id="email" placeholder="Email" class="box" required>
-            
-        <p>Contact Number:</p>
-            <input type="text" name="contactnumber" id="contactnumber" placeholder="Contact Number" class="box" required>
-        <p>Electricity Bill Number:</p>
+        </div>
+        <div>
+            <label for="contactnumber">Contact Number:</label><br>
+            <div class="otpr">
+                <input type="text" name="cnumberstart" value="+94" class="box4" readonly>
+                <input type="text" name="contactnumber" id="contactnumber" placeholder="Contact Number" class="box5" pattern="[0-9]{9}" title="should include 9 numbers" required>
+                <button>Request OTP</button>
+            </div>    
+        </div>
+        <div>
+            <label for="OTP">OTP:</label><br>
+            <div class="otp">
+                <input type="text" name="OTP" id="OTP" placeholder="OTP" class="box5" required>
+                <button>Verify OTP</button>    
+            </div>     
+        </div>
+        <div>
+            <label for="billnum">Electricity Bill Number:</label><br>
             <input type="text" name="billnum" id="billnum" placeholder="Electricity Bill Number"  pattern="[0-9]{10}" title="should include 10 numbers" class="box" required><br><br>
-
+        </div>
         <button type="submit" name="register">Register</button>    
     </form>
     </div>

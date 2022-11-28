@@ -24,6 +24,7 @@
             </div>
             <div class="left2">
                 <form action="../../controller/customer/order_controller.php" method="POST">
+                <div class="active">    
                 <button name="orders">
                     <div class="left2-1">
                          <img src="../../public/images/order.png" alt="logo" width="20px" height="20px">
@@ -31,15 +32,16 @@
                     <p>My orders</p>
                     <p>order details</P>
                 </button>
+                </div>
                 </form>
             </div>
             <div class="left2">
-              <form action="../../controller/customer/order_controller.php" method="POST">
+              <form action="../../controller/customer/review_controller.php" method="POST">
                  <button name="review">
                     <div class="left2-1">
                          <img src="../../public/images/ratings.png" alt="logo" width="20px" height="20px">
                     </div>
-                    <p>Add Reviews</p>
+                    <p>Reviews</p>
                     <p>Rate delivery service</P>
                 </button>
                 </form>
@@ -49,7 +51,13 @@
     <div class="order-form">
     <?php 
         if(isset($_SESSION['vieworders'])){
-            $details=$_SESSION['vieworders'];
+            if($_SESSION['vieworders']==='failed'){
+                echo "<script>alert('No orders found')</script>";
+                unset($_SESSION['vieworders']);
+                $details=[];
+            }else{
+                $details=$_SESSION['vieworders'];
+            }
         }
     ?>
     <div class="heading">
