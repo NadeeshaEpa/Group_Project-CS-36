@@ -56,24 +56,26 @@
                       $names=$result[1];
                    }
                 ?>
-                <form action="../../controller/customer/review_controller.php" method="POST">
-                    <h2>Edit feedback</h2>
-                    <input type="hidden" name="rateid" value="<?php echo $result[0]['Rate_id']?>">
-                    <lable for="customername">Customer Name:</lable><br>
-                    <input type="text" name="customername" value="<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']?>"><br>
-                    <lable for="Dpname">Delivery Person Name:</lable><br>
-                    <select name="dpname">
-                        <option selected><?php echo $result[0]['First_Name']." ".$result[0]['Last_Name'];?> 
-                        <?php foreach($names as $name){ ?>
-                            <option><?php echo $name['First_Name']." ".$name['Last_Name'] ?></option>
-                        <?php } ?>
-                    </select><br>
-                    <label for="date">Date:</label><br>
-                    <input type="date" name="date" value="<?php echo $result[0]['Date']?>"><br>
-                    <label for="desc">Description:</label><br>
-                    <textarea name="desc" id="" cols="30" rows="10"><?php echo $result[0]['Description']?></textarea><br>
-                    <button name="editreview">Edit</button>
-                </form>
+                <div class="editreview-form">
+                    <form action="../../controller/customer/review_controller.php" method="POST">
+                        <h2>Edit feedback</h2>
+                        <input type="hidden" name="rateid" value="<?php echo $result[0]['Rate_id']?>">
+                        <label for="customername">Customer Name:</lable><br>
+                        <input type="text" name="customername" value="<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']?>"><br>
+                        <label for="Dpname">Delivery Person Name:</lable><br>
+                        <select name="dpname">
+                            <option selected><?php echo $result[0]['First_Name']." ".$result[0]['Last_Name'];?> 
+                            <?php foreach($names as $name){ ?>
+                                <option><?php echo $name['First_Name']." ".$name['Last_Name'] ?></option>
+                            <?php } ?>
+                        </select><br>
+                        <label for="date">Date:</label><br>
+                        <input type="date" name="date" value="<?php echo $result[0]['Date']?>"><br>
+                        <label for="desc">Description:</label><br>
+                        <textarea name="desc" id="" cols="30" rows="10"><?php echo $result[0]['Description']?></textarea><br>
+                        <button name="editreview">Edit</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

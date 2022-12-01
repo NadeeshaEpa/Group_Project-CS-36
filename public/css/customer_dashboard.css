@@ -12,7 +12,7 @@ body{
     padding: 20px;
     font-size: 20px;
     float: left;
-    height: 100%;
+  
 }
 .left1 button, .left2 button{
     background-color: white;
@@ -88,7 +88,7 @@ body{
     border-radius: 20px;
 }
 .b2{
-    background-color:#4E60FF;
+    background-color:lightblue;
     border:blue 2px solid;
 }
 .b4{
@@ -96,8 +96,11 @@ body{
     border:green 2px solid;
 }
     
-.b2:hover, .b4:hover, .cp:hover, .cu:hover{
+.b4:hover, .cu:hover{
     background-color: green;
+}
+.b2:hover, .cp:hover{
+    background-color: #4E60FF;
 }
 .details label{
     padding-left: 5px;
@@ -113,7 +116,16 @@ body{
 }
 .b3{
     margin-left:30px;
-    margin-top: 50px;
+    margin-top: 40px;
+}
+.b3 .image{
+    width: 200px;
+    height: 40px;
+    background-color: gray;
+    color: cornsilk;
+    margin: 5px;
+    padding: 10px;
+    margin-right: 15px;
 }
 .down{
     display: flex;
@@ -128,7 +140,7 @@ body{
     height: 40px;
 }
 .cp{
-    background-color:#4E60FF;
+    background-color:lightblue;
     border: blue 2px solid;
 }
 
@@ -163,6 +175,7 @@ body{
     margin-right: 35px;
     background-color: red;
     border-radius: 20px;
+    margin-top: 80px;
 
 }
 .b6{
@@ -172,6 +185,7 @@ body{
     margin-right: 35px;
     background-color: #9AE298;
     border-radius: 20px;
+    margin-top: 96px;
 }
 .b5:hover, .b6:hover{
     background-color: green;
@@ -444,6 +458,43 @@ body{
 .rdeletebtn a:hover{
     background-color: lightcoral;
 }
-/* .reviewtable form{
-    display: flex;
-} */
+.editreview-form{
+    width: 100%;
+    height: 80%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 8%;
+    padding-left: 50px;
+}
+.editreview-form h2{
+    text-align:left;
+    font-size: 30px;
+    color: black;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+.editreview-form label{
+    font-size: 20px;
+    color: black;
+    padding-bottom: 10px;
+}
+.editreview-form input, .editreview-form textarea, .editreview-form select{
+    width: 80%;
+    border-radius: 10px;
+    border: 1px solid gray;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+.editreview-form button{
+    width: 20%;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-left: 35%;
+    background-color: green;
+    color: black;
+    border: none;
+}

@@ -84,11 +84,18 @@
                     }
                     ?>
                 <div class="up">
-                    <img src='../../public/images/customer.png' alt='logo' width='100px' height='100px' class="image"> <br>
-                    <div class="b3" >
-                        <button class="b2">Change</button>
-                        <button class="b4">Remove</button><br><br>
-                    </div> 
+                    <?php if($_SESSION['img-status'] == 0){?>
+                        <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
+                    <?php }else{?>
+                        <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
+                    <?php } ?>
+                    <div class="b3">
+                        <form action="../../controller/customer/account_controller.php" method="POST" enctype="multipart/form-data">
+                            <input type="file" name="image" id="image" class="image">
+                            <button class="b4" name="removeimg">Remove</button>
+                            <button name="uploadimg" class="b2">Upload</button>
+                        </form>   
+                    </div>     
                 </div>      
                 <form action="../../controller/customer/account_controller.php" method="POST">   
                         <div class="details">  
@@ -137,28 +144,29 @@
                                         <label></label><br>      
                                         <input type="text" name="postalcode" value=<?php echo $result[0]['Postalcode']; ?>> <br>  
                                 </div>
-                            </div>        
-                        </div>    
-                    </div>
-                    <!-- <button class="b5" name="deleteaccount">Delete Account</button> -->
+                            </div>
+                            <button type="submit" class="b6" name="updateaccount">Update</button>   
+                    </div>     
+            
                     <button onclick="document.getElementById('id01').style.display='block'" class="b5">Delete Account</button>
                     <div id="id01" class="modal">
-                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
-                        <form class="modal-content" action="../../controller/customer/account_controller.php" method="POST">
-                                <div class="container">
-                                    <h1>Delete Account</h1>
-                                    <p>Are you sure you want to delete your account?</p>
-                                    
-                                    <div class="clearfix">
-                                        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                                        <button type="submit" class="deletebtn" name="deleteaccount">Delete</button>
+                        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
+                            <form class="modal-content" action="../../controller/customer/account_controller.php" method="POST">
+                                    <div class="container">
+                                        <h1>Delete Account</h1>
+                                        <p>Are you sure you want to delete your account?</p>
+                                        
+                                        <div class="clearfix">
+                                            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                                            <button type="submit" class="deletebtn" name="deleteaccount">Delete</button>
+                                        </div>
                                     </div>
-                                </div>
-                        </form>
+                            </form>
                     </div>
-                    <button class="b6" name="updateaccount">Update</button>
-                </form>
+                </form>   
             </div>
+    </div>
+</div>
             <script>
             var modal = document.getElementById('id01');
 

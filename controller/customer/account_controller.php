@@ -116,3 +116,54 @@ if(isset($_POST['deleteaccount'])){
         }
     }
 }
+if(isset($_POST['uploadimg'])){
+    $file=$_FILES['image'];
+
+    $fileName=$_FILES['image']['name'];
+    $fileTmpName=$_FILES['image']['tmp_name'];
+    $fileSize=$_FILES['image']['size'];
+    $fileError=$_FILES['image']['error'];
+    $fileType=$_FILES['image']['type'];
+
+    $fileExt=explode('.',$fileName);
+    $fileActualExt=strtolower(end($fileExt));
+
+    $allowed=array('jpg','jpeg','png');
+    if(in_array($fileActualExt,$allowed)){
+        if($fileError === 0){
+            if($fileSize < 1000000){
+                $fileNameNew=uniqid('',true).".".$fileActualExt;
+                $fileDestination='../../public/images/'.$fileNameNew;
+                move_uploaded_file($fileTmpName,$fileDestination);
+                $acc=new account_model();
+                $result=$acc->updateImage($connection,$_SESSION['User_id'],$fileNameNew);
+                if($result){
+                    $_SESSION['updateimg']="success";
+                    header("Location: ../../view/customer/customer_dashboard.php");
+                }else{
+                    $_SESSION['updateimg']="failed";
+                    header("Location: ../../view/customer/customer_dashboard.php");
+                }
+            }else{
+                echo "Your file is too big";
+            }
+
+        }else{
+            echo "There was an error uploading your file";
+        }
+           
+    }else{
+        echo "You cannot upload files of this type";
+    }
+}
+if(isset($_POST['removeimg'])){
+    $acc=new account_model();
+    $result=$acc->removeImage($connection,$_SESSION['User_id']);
+    if($result){
+        $_SESSION['removeimg']="success";
+        header("Location: ../../view/customer/customer_dashboard.php");
+    }else{
+        $_SESSION['removeimg']="failed";
+        header("Location: ../../view/customer/customer_dashboard.php");
+    }
+}

@@ -80,7 +80,6 @@
                                             </div>
                                             <div class="rdeletebtn">
                                                 <a href="../../controller/customer/review_controller.php?drid=<?php echo $detail['Rate_id']; ?>">Delete</a>
-                                                
                                             </div>
                                     </td>
                                 </tr>
@@ -88,14 +87,5 @@
                     </table>
             </div>
         </div> 
-        <script>
-            var modal = document.getElementById('id01');
-
-            window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-            }
-        </script>       
 </body>
 </html>

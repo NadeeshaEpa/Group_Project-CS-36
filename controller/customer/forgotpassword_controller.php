@@ -7,10 +7,9 @@ require_once '../../model/customer/checkcustomer_model.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
 
-require '../../PHPMailer/src/Exception.php';
-require '../../PHPMailer/src/PHPMailer.php';
-require '../../PHPMailer/src/SMTP.php';
+require '../../vendor/autoload.php';
 
 class forgotpassword_controller{
     private $mail;
@@ -22,12 +21,12 @@ class forgotpassword_controller{
         $this->user=new customer_model();
         $this->mail = new PHPMailer();
         $this->mail->isSMTP();
-        $this->mail->Host = 'smtp.mailtrap.io';
+        $this->mail->Host = "smtp.gmail.com";
         $this->mail->SMTPAuth = true;
-        $this->mail->Port = 2525;
-        $this->mail->Username = '21ba7af62d0f13';
-        $this->mail->Password = 'ad0d283d439a0f';
-
+        $this->mail->SMTPSecure = 'tls';
+        $this->mail->Port = 587;
+        $this->mail->Username = 'fagoorders@gmail.com';
+        $this->mail->Password = 'lfvsvbxdkoeomuya';
     }
     public function sendEmail($connection){
         $useremail=$_POST['email'];
@@ -37,8 +36,7 @@ class forgotpassword_controller{
             $_SESSION['email-status']="Please enter your email address";
             header("Location: ../../view/customer/forgot_password.php");
             exit();
-        }
-        if(!filter_var($useremail,FILTER_VALIDATE_EMAIL)){
+        }else if(!filter_var($useremail,FILTER_VALIDATE_EMAIL)){
             $_SESSION['email-status']="Please enter a valid email address";
             header("Location: ../../view/customer/forgot_password.php");
             exit();
@@ -67,15 +65,22 @@ class forgotpassword_controller{
         $message.='<p>Here is your password reset link: </br>';
         $message.='<a href="'.$url.'">'.$url.'</a></p>';
 
-        $this->mail->setFrom('nnadeesha128@gmail.com');
+        $this->mail->setFrom("fagoorders@gmail.com");
+        $this->mail->addAddress($useremail);
         $this->mail->isHTML(true);
         $this->mail->Subject = $subject;
-        $this->mail->Body = $message;   
-        $this->mail->addAddress($useremail);
-
-        $this->mail->send();
-        $_SESSION['email-status-success']="Reset password link has been sent to your email";
-        header("Location: ../../view/customer/forgot_password.php");
+        $this->mail->Body = $message;  
+        
+        
+        if($this->mail->Send()){
+            $_SESSION['email-status-success']="Reset password link has been sent to your email";
+            header("Location: ../../view/customer/forgot_password.php");
+        }else{
+            $_SESSION['email-status']="There was an error3";
+            header("Location: ../../view/customer/forgot_password.php");
+            exit();
+        }
+        
     }
     public function resetPassword($connection){
             $_POST=filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
@@ -103,7 +108,6 @@ class forgotpassword_controller{
                     $_SESSION['password-status']="Sorry the link is no longer valid";
                     header("Location: ".$url);
                 }
-
                 // if(strlen($data['password'])<8){
                 // $_SESSION['password-status']="Password must be at least 8 characters";
                 // header("Location: ".$url);
