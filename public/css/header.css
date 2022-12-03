@@ -1,9 +1,9 @@
-ul {
+.header ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color:#5B8474;
+    background-color: #FFFF;
 
 }
 body{
@@ -16,13 +16,13 @@ li a {
     padding: 14px 16px;
     text-decoration: none;
     float: right;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: bold;
     margin: 10px;
 }
 
 li a:hover:not(.active) {
-   background-color:rgb(131, 131, 206);
+   color:rgba(0, 0, 0, 0.655);
  }
 
 li img{

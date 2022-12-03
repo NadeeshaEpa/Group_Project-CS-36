@@ -8,6 +8,7 @@ class add_fuelType{
     private $username;
     private $Price;
 
+
     public function setDetails($fuelType='',$subFuelType='',$quantity='',$price=''){ 
         $this->FuelType=$fuelType;
         $this->FuelSubType=$subFuelType;

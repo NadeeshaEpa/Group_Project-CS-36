@@ -18,6 +18,7 @@ if(isset($_POST['register'])){
     $email = $_POST['email'];
     $contactnumber = $_POST['contactnumber'];
     $BRegNo = $_POST['bRegNo'];
+    $shopName=$_POST['shopName'];
 
 }else{
     echo('invalid request');
@@ -59,10 +60,11 @@ $email=$connection->real_escape_string($email);
 $contactnumber=$connection->real_escape_string($contactnumber);
 $BRegNo=$connection->real_escape_string($BRegNo);
 $nic=$connection->real_escape_string($nic);
+$shopName=$connection->real_escape_string($shopName);
 
 
 $user=new fuel_manager();
-$user->setDetails($firstname,$lastname,$username,$street,$city,$postalcode,$password,$nic,$email,$contactnumber,$BRegNo);
+$user->setDetails($firstname,$lastname,$username,$street,$city,$postalcode,$password,$nic,$email,$contactnumber,$BRegNo,$shopName);
 $result=$user->registerFuelManager($connection);
 if($result){
     $_SESSION['RegsuccessMsg'] = 'Registeration Request Sent Successfully';

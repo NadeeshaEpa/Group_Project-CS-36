@@ -13,9 +13,7 @@
     
        
         <div class="contaner">
-            <div class="top">
-                <div class="logo"></div>
-            </div>
+            <?php include '../../public/header.php'; ?>
             <div class="middle">
                 <div class="err_msg">
                     <h2>
@@ -83,7 +81,10 @@
                                     <br>
                                     
                                     <label for="">Business reg Number:</label>
-                                    <input type="text" name="bRegNo" id="bRegNo" placeholder="Business reg Number"   required><br>    
+                                    <input type="text" name="bRegNo" id="bRegNo" placeholder="Business reg Number"   required><br> 
+                                    
+                                    <label for="">Shop Name:</label>
+                                    <input type="text" name="shopName" id="shopName" placeholder="Shop Name"   required><br> 
 
                                     <button type="submit" name="register">Register</button> 
                                     
@@ -94,24 +95,7 @@
                     </div> 
                 </div>
             </div>
-            <div class="bottom">
-                <div class="social_media">
-                    <img src="../../public/css/images/facebook .png" alt="facebook">
-                </div>
-                <div class="social_media">
-                    <img src="../../public/css/images/instagram.png" alt="facebook">
-                </div>
-                <div class="social_media">
-                    <img src="../../public/css/images/linkedin.png" alt="facebook">
-                </div>
-                <div class="social_media">
-                    <img src="../../public/css/images/twitter.png" alt="facebook">
-                </div>
-                <div class="sentence">
-                    <div>© 2022 FAGO. All Rights Reserved.</div>
-                </div>
-                     
-            </div>
+            <?php include '../../public/footer.php'; ?>
         </div>
     
     

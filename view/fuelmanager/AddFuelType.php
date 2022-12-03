@@ -11,16 +11,7 @@
 </head>
 <body>
    <div class="contaner">
-        <div class="top">
-            <div class="logo"></div>
-            <div class="profile_img"></div>
-            <div class="profile_name" >
-                <div><label for="name" id="name">Nirupana Ganganath</label></div>
-            </div>
-            <div class="logout" >
-                <div><a href="fuelManager_login.php">Logout</a></div>
-            </div>
-        </div>
+       <?php include '../../view/fuelmanager/fuelManagerHeader.php';?>
         <div class="middle">
             <div class="msg">
                
@@ -41,7 +32,7 @@
                     <form action="../../controller/fuelmanager/fuelType_controller.php" method="POST">
                         <div class="dropdown">
                             <label for=""> Fuel type</label>
-                            <select name="fuelType" id="fuelType">
+                            <select name="fuelType" id="fuelType" required>
                                 <option value="">---Select Type---</option>
                                 <option value="Diesel">Diesel</option>
                                 <option value="Petrol">Petrol</option>
@@ -49,7 +40,7 @@
                         </div>
                         <div class="dropdown">
                             <label for=""> Fuel Sub type</label>
-                            <select name="fuelSubType" id="fuelSubType">
+                            <select name="fuelSubType" id="fuelSubType" required>
                                 <option value="">---Select Type---</option>
                                 <option value="Super diesel">Super diesel</option>
                                 <option value="Auto diesel">Auto diesel</option>
@@ -58,10 +49,10 @@
                             </select>
                         </div>
                         <label for="quantity" >Fuel quantity</label>
-                        <input type="text" name="FuelQuantity" id="FuelQuantity" placeholder="Fuel Quantity">
+                        <input type="text" name="FuelQuantity" id="FuelQuantity" placeholder="Fuel Quantity" required>
                         <br>
                         <label for="price" >Fuel Price</label>
-                        <input type="text" name="FuelPrice" id="FuelPrice" placeholder="Fuel Price" >
+                        <input type="text" name="FuelPrice" id="FuelPrice" placeholder="Fuel Price" required>
                         <button type="submit" name="AddFuelType" >ADD</button>
                     </form>
                     <div class="abc"><a href="fuelmanager_manage.php">Back</a></div>
@@ -72,24 +63,7 @@
             </div>
 
         </div>
-        <div class="bottom">
-                <div class="social_media">
-                    <img src="../../public/css/images/facebook .png" alt="facebook">
-                </div>
-                <div class="social_media">
-                    <img src="../../public/css/images/instagram.png" alt="facebook">
-                </div>
-                <div class="social_media">
-                    <img src="../../public/css/images/linkedin.png" alt="facebook">
-                </div>
-                <div class="social_media">
-                    <img src="../../public/css/images/twitter.png" alt="facebook">
-                </div>
-                <div class="sentence">
-                    <div>© 2022 FAGO. All Rights Reserved.</div>
-                </div>
-                     
-            </div>
+        <?php include '../../public/footer.php';?>
     </div>
 
     

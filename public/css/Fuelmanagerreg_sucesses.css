@@ -1,31 +1,14 @@
 .contaner{
-    width: 1525px;
-    height: 737px;
-    background-color: blue;
-    
+    width: 1535px;
+    height: 739px;
+   
 }
-
-.top{
-    width: 100%;
-    height: 10%;
-    background-color: seagreen;
-}
-
 .middle{
     width: 100%;
-    height: 80%;
-    background-color:rgb(234, 228, 223);
-    
+    height: 82%;
+    background-color:#FFFDF0;
+    display: flex;
 }
-
-.bottom{
-    width: 100%;
-    height: 10%;
-    background-color: seagreen;
-} 
-
-
-
 
 ::-webkit-scrollbar{
     margin-left: 5px;
@@ -40,57 +23,21 @@
     border-radius: 10px;
 }
 
-.social_media{
-    background-color:transparent;
-    width: 5%;
-    height: 100%;
-    float: left;
-}
-
-.social_media img{
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    padding: 10px;
-    mix-blend-mode: multiply;
-}
-
-.sentence{
-    
-    float: right;
-    width: 25%;
-    height: 100%;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: medium;
-    display: flex;
-    justify-content: center;
-    display: flex;
-}
-
-.sentence>div{
+.msg{
+    width: 80%;
+    height: 65%;
     margin: auto;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.logo{
-    float:left;
-    width: 4%;
-    height: 85%;
-    background-image: url(images/logo.jpeg);
-    border-radius: 50%;
-    background-size: contain;
-    margin-left: 5%;
-    margin-block-start: 5px;
-}
 
 .part1{
     width: 100%;
     height: 70%;
     display: flex;
+   
 }
 
 .part2{
@@ -104,17 +51,17 @@
     width: 50%;
     height: 50%;
     margin: auto;
-    background-color: rgb(76, 232, 59);
     display: flex;
 }
 
 .abc{
+    margin-top: 10px;
     margin-left: 46%;
     width: 8%;
     height: 20%;
-    padding: 3px;
-    border-radius: 10%;
-    background-color:rgb(105, 112, 108) ;
+    padding: 10px;
+    border-radius: 20px;
+    background-color:rgb(203, 205, 204) ;
     display: flex;
 }
 

@@ -10,21 +10,23 @@
 </head>
 <body>
 
-    <div class="msg">
-        <h2>
-            <?php
-                    if(isset($_SESSION['login'])){
-                        if($_SESSION['login']=="failed"){
-                            echo "Invalid username or password";
-                            echo '<br>';
-                            unset($_SESSION['login']);
-                        }
-                    }
-                    
-                ?>
-            </div>
-        </h2>
+   
     <div class="container">
+        <div class="msg">
+            <h2>
+                <?php
+                        if(isset($_SESSION['login'])){
+                            if($_SESSION['login']=="failed"){
+                                echo "Invalid username or password";
+                                echo '<br>';
+                                unset($_SESSION['login']);
+                            }
+                        }
+                        
+                    ?>
+                
+            </h2>
+        </div>
         <div class="center">
             <div class="content">
                 <form action="../../controller/staff/StaffLoginController.php" method="POST">

@@ -14,43 +14,27 @@
         //     unset($_SESSION['RegsuccessMsg']);
         // }
         ?> 
+    
     <div class="contaner">
-        <div class="top">
-            <div class="logo"></div>
-        </div>
+        
+        <?php include '../../public/header.php'; ?>
         <div class="middle">
-            <div class="part1">
-                <div class="outter">
-                    <h3>
-                        Your request has been sent Successfully. Our staff will notify you with more details in an email soon.
-                        This may take up to 48 hours
-                    </h3>
-                </div> 
-               
-            </div>
-            <div class="part2"> <div class="abc"><a href="fuelManager_login.php">OK</a></div>
-            </div>
-            
-        </div>
-
-        <div class="bottom">
-            <div class="social_media">
-                <img src="../../public/css/images/facebook .png" alt="facebook">
-            </div>
-            <div class="social_media">
-                <img src="../../public/css/images/instagram.png" alt="facebook">
-            </div>
-            <div class="social_media">
-                <img src="../../public/css/images/linkedin.png" alt="facebook">
-            </div>
-            <div class="social_media">
-                <img src="../../public/css/images/twitter.png" alt="facebook">
-            </div>
-            <div class="sentence">
-                <div>© 2022 FAGO. All Rights Reserved.</div>
-            </div>
+            <div class="msg">
+                <div class="part1">
+                    <div class="outter">
+                        <h3>
+                            Your request has been sent Successfully. Our staff will notify you with more details in an email soon.
+                            This may take up to 48 hours
+                        </h3>
+                    </div> 
                 
+                </div>
+                <div class="part2"> <div class="abc"><a href="fuelManager_login.php">OK</a></div>
+                </div>
+            </div>
         </div>
+        <?php include '../../public/footer.php'; ?>
+
      </div>
 </body>
 </html>

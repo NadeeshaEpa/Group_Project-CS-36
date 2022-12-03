@@ -1,34 +1,27 @@
-.top{
-    width: 100%;
-    background-color: seagreen;
-    height: 10%;
-  
+.outter{
+    width: 1529px;
+    height: 739px;
 }
 
 .container{
     display: flex;
     width: 100%;
     background-color: rgb(137, 126, 122);
-    height: 80%;
+    height: 83%;
 }
-.bottom{
-    width: 100%;
-    background-color:  seagreen;
-    height: 10%;
-    
-}
+
 .sidebar{
     height: 100%;
     width: 20%;
-    background-color: rgb(136, 185, 138);
-    overflow: auto;
+    background-color: #FFFDF0;
+   
    
 }
 .dashboard{
     height: 100%;
     width: 80%;
-    background-color: rgb(234, 228, 223);
-    
+    background-color: #FFFDF0;
+    display: flex;
 }
 
 ::-webkit-scrollbar{
@@ -50,7 +43,7 @@
     display: flex;
     width: 90%;
     height: 10%;
-    background-color: rgb(98, 117, 151);
+    background-color: #D0D0D0;
     font-family: Calibri,'Gill Sans', 'Gill Sans MT',  'Trebuchet MS', sans-serif;
     margin-bottom: 25%;
 }
@@ -58,13 +51,26 @@
     margin-top: 25%;
 }
 .btn:hover{
-    background-color: royalblue;
+    background-color: #B2B6E0;
 }
 .icon{
     background-color:transparent;
     width: 20%;
     height: 100%;
     
+}
+
+.name{
+    width: 80%;
+    height: 100%;
+    display: flex;
+}
+
+.name h6{
+    margin: auto;
+    text-align: center;
+    font-size: medium;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .icon img{
@@ -80,119 +86,81 @@
     mix-blend-mode: multiply;
 }
 
-.name{
-    margin-top: 6%;
-    width: 80%;
+
+.move{
+    margin: auto;
+    width: 20%;
+    height: 15%;
+    display: flex;
+}
+
+.discription{
+    width: 50%;
     height: 100%;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: x-large;
-    text-align: center;
+    margin: auto;
+    display: flex;
 }
 
-.social_media{
-    background-color:transparent;
-    width: 5%;
-    height: 100%;
-    float: left;
-}
-
-.social_media img{
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    padding: 10px;
-    mix-blend-mode: multiply;
-}
-
-.sentence{
+.discription>div{
     
-    float: right;
-    width: 25%;
-    height: 100%;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: medium;
-    display: flex;
-    justify-content: center;
-    display: flex;
+   margin-top: 25px;
+   margin-bottom: 15px;
+   background-color:#D0D0D0;
+   border-radius: 5px;
 }
 
-.sentence>div{
-    margin: auto;
+.discription>div:hover{
+    background-color:#4E60FF;
 }
 
-.profile_name{
-    float:right;
-    width: 10%;
-    height: 100%;
-    background-color: transparent;
-    text-align: right;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: small;
-    justify-content: center;
-    display: flex;
-}
-
-.profile_name>div{
-    margin: auto;
-}
-
-.profile_img{
-    float:right;
-    width: 3%;
-    height: 55%;
-    background-image: url(images/niru.png);
-    border-radius: 50%;
-    background-size: contain;
-    margin-right: 4%;
-    margin-block-start: 15px;
-
-}
-.logout{
-    display: flex;
-    justify-content: center;
-    float: right;
-    width: 10%;
-    height: 100%;
-    background-color: transparent;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: large;
+.discription>div h5{
     text-align: center;
+    font-size: small;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.logout>div{
-    margin: auto;
-}
 
-.logo{
-    float:left;
-    width: 4%;
-    height: 85%;
-    background-image: url(images/logo.jpeg);
-    border-radius: 50%;
+.pic1{
+    width: 50%;
+    height: 100%;
+    background-image: url(../images/AddFuelType_.jpg);
     background-size: contain;
-    margin-left: 5%;
-    margin-block-start: 5px;
+
 }
 
-.profile_img img{
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
-    position: relative;
-    top: 50%;
-    left: 18%;
-    transform: translate(-50%,-50%);
-    padding: 100px;
-    border-radius: 50%;
-    padding: 10px;
-    mix-blend-mode: multiply;
-} 
+.pic2{
+    width: 50%;
+    height: 100%;
+    background-image: url(../images/viewFuelQuentity.jpg);
+    background-size: contain;
+}
+
+.account_header{
+    width: 100%;
+    height: 100%;
+}
+
+.account_header h3{
+    text-align: center;
+    justify-content: center;
+}
+
+.Other_content{
+    width: 50%;
+    height: 50%;
+    margin: auto;
+    border: solid rgb(0, 0, 0);
+    border-radius: 10%;
+    
+}
+
+.Other_content h3{
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+
 
 
 
