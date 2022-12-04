@@ -9,7 +9,7 @@
 body{
     margin: 0;
 }
-li a {
+.header li a {
      display: block;
     color:black;
     text-align: center;
@@ -21,11 +21,11 @@ li a {
     margin: 10px;
 }
 
-li a:hover:not(.active) {
+.header li a:hover:not(.active) {
    color:rgba(0, 0, 0, 0.655);
  }
 
-li img{
+.header li img{
     width: 60px;
     height: 60px;
     border-radius: 50%;

@@ -1,11 +1,11 @@
-ul {
+ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #FFFF;
  }
-li a {
+ li a {
     display: block;
     color:black;
     text-align: center;
@@ -17,11 +17,11 @@ li a {
     margin: 10px;
 }
 
-li a:hover:not(.active) {
+.FuelManagerHeader li a:hover:not(.active) {
     color:rgba(0, 0, 0, 0.655);
  }
 
-li img{
+.FuelManagerHeader li img{
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -31,7 +31,7 @@ li img{
     margin-left: 10px;
     margin-bottom: 5px;
 }
-.user{
+.FuelManagerHeader .user{
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -41,7 +41,7 @@ li img{
     margin-left: 10px;
     margin-bottom: 5px;
 }
-.notification{
+.FuelManagerHeader .notification{
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -51,7 +51,7 @@ li img{
     margin-left: 10px;
     margin-bottom: 5px;
 }
-.fuelHeader{
+.FuelManagerHeader .fuelHeader{
     float: right;
     margin-right: 10px;
     margin-top: 10px;

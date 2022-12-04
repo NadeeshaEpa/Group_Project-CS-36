@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <ul>
+    <ul class="FuelManagerHeader">
         <div class="fuelHeader">
             <li><?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?></li>
         </div>
