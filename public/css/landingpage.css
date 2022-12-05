@@ -1,0 +1,8 @@
+body{
+    background-color: #FFFDF0;
+}
+.customer img{
+    width:200px;
+    height:200px;
+    border-radius: 150px;
+}

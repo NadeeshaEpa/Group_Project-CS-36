@@ -12,10 +12,10 @@ body{
     display: flex;
     margin: 50px;
     margin-left: 20%;
-    border: #738F8D 3px solid;
     width: 60%;
     height: 70%;
     border-radius: 10px;
+    border:dimgray 2px solid;
 
 }
 .container{

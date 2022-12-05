@@ -1,3 +1,6 @@
+body{
+    background-color: #FFFDF0;
+}
 .para{
     font-size:25px;
     margin:30px;
@@ -49,6 +52,7 @@ button:hover{
 }
 .down{
     display:flex;
+    margin-top: -70px;
 }
 .litroimg{
     width:70%;

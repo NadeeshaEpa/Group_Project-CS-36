@@ -43,5 +43,71 @@ class order_model{
             }
         }
     }
+    public function getweight($connection){
+        //store weight according to the Cylinder_Id
+        $sql="SELECT Cylinder_Id,Weight FROM `gascylinder`";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $weight=[];
+            while($row=$result->fetch_object()){
+                $weight[$row->Cylinder_Id]=$row->Weight;
+            }
+            return $weight;
+        }
+    }
+    public function viewLitro($connection,$weight){
+        $sql="Select DISTINCT g.GasAgent_Id from `gasagent` g INNER JOIN `sell_gas` s on g.GasAgent_Id=s.GasAgent_Id INNER JOIN `gascylinder` c on s.Cylinder_Id=c.Cylinder_Id WHERE c.Type='Litro';";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $gasagents=[];
+            while($row=$result->fetch_object()){
+                array_push($gasagents,['GasAgent_Id'=>$row->GasAgent_Id]);
+            }
+            $gas=[];
+            foreach($gasagents as $gasagent){
+                $gasagent_id=$gasagent['GasAgent_Id'];
+                $sql="SELECT g.GasAgent_Id,g.Shop_name,s.Cylinder_Id,s.Quantity from `gasagent` g inner join `sell_gas` s on g.GasAgent_Id=s.GasAgent_Id inner join `gascylinder` c on c.Cylinder_Id=s.Cylinder_Id  WHERE g.GasAgent_Id='$gasagent_id' AND c.Type='Litro'";
+                $result=$connection->query($sql);
+                if($result->num_rows===0){
+                    return false;
+                }else{
+                    while($row=$result->fetch_object()){
+                        array_push($gas,['GasAgent_Id'=>$row->GasAgent_Id,'Shop_name'=>$row->Shop_name,'Cylinder_Id'=>$row->Cylinder_Id,'Quantity'=>$row->Quantity]);
+                    }
+                }
+            }
+            return $gas;            
+        }
+    }
+    public function viewLaugh($connection,$weight){
+        $sql="Select DISTINCT g.GasAgent_Id from `gasagent` g INNER JOIN `sell_gas` s on g.GasAgent_Id=s.GasAgent_Id INNER JOIN `gascylinder` c on s.Cylinder_Id=c.Cylinder_Id WHERE c.Type='Laugh';";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $gasagents=[];
+            while($row=$result->fetch_object()){
+                array_push($gasagents,['GasAgent_Id'=>$row->GasAgent_Id]);
+            }
+            $gas=[];
+            foreach($gasagents as $gasagent){
+                $gasagent_id=$gasagent['GasAgent_Id'];
+                $sql="SELECT g.GasAgent_Id,g.Shop_name,s.Cylinder_Id,s.Quantity from `gasagent` g inner join `sell_gas` s on g.GasAgent_Id=s.GasAgent_Id inner join `gascylinder` c on c.Cylinder_Id=s.Cylinder_Id  WHERE g.GasAgent_Id='$gasagent_id' AND c.Type='Laugh'";
+                $result=$connection->query($sql);
+                if($result->num_rows===0){
+                    return false;
+                }else{
+                    while($row=$result->fetch_object()){
+                        array_push($gas,['GasAgent_Id'=>$row->GasAgent_Id,'Shop_name'=>$row->Shop_name,'Cylinder_Id'=>$row->Cylinder_Id,'Quantity'=>$row->Quantity]);
+                    }
+                }
+            }
+            return $gas;            
+        }
+    }
         
 }

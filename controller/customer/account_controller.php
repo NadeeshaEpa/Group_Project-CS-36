@@ -131,7 +131,7 @@ if(isset($_POST['uploadimg'])){
     $allowed=array('jpg','jpeg','png');
     if(in_array($fileActualExt,$allowed)){
         if($fileError === 0){
-            if($fileSize < 1000000){
+            if($fileSize < 10000000){
                 $fileNameNew=uniqid('',true).".".$fileActualExt;
                 $fileDestination='../../public/images/'.$fileNameNew;
                 move_uploaded_file($fileTmpName,$fileDestination);

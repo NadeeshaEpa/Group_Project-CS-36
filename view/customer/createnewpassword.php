@@ -41,9 +41,9 @@
                 <input type="hidden" name="type" value="reset">    
                 <input type="hidden" name="selector" value="<?php echo $selector; ?>">
                 <input type="hidden" name="validator" value="<?php echo $validator; ?>">                 
-                <label for="password">Enter your new Password:</label><br>
+                <label id="password-label" for="password">Enter your new Password:</label><br>
                 <input type="password" name="password" id="password" placeholder="Enter new Password" class="box" required><br><br>
-                <label for="cpassword">Confirm new Password:</label><br>
+                <label id="cpassword-label" for="cpassword">Confirm new Password:</label><br>
                 <input type="password" name="cpassword" id="cpassword" placeholder="Cofirm Password" class="box" required><br><br>
                 <button type="submit" name="resetsubmit" id="submit">Submit</button>
             </form>
@@ -54,5 +54,7 @@
             }
         }
         ?>
+    <!-- <?php// include '../../view/customer/customer_footer.php'; ?> -->
+    <script src="../../public/js/Validation.js"></script>    
 </body>
 </html>

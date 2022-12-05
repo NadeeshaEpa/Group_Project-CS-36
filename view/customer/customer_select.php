@@ -25,16 +25,21 @@
     <div class="down">
         <div class="litro">
             <img src="../../public/images/litro.jpg" alt="" class="litroimg">
-            <button>Litro gas</button>
+            <form action="../../controller/customer/order_controller.php" method="POST">
+                <button name="litroavailable">Litro gas</button>
+            </form>    
         </div>
         <div class="laugh">
             <img src="../../public/images/laugh.png" alt="" class="litroimg">
-            <button>Laugh gas</button>
+            <form action="../../controller/customer/order_controller.php" method="POST">    
+                <button name="laughavailable">Laugh gas</button>
+            </form>    
         </div>
         <div class="fuel">
             <img src="../../public/images/fuel.jpg" alt="" class="litroimg"> 
             <button>Fuel availability</button>
         </div>   
     </div>     
+    <?php include_once 'customer_footer.php'; ?>
 </body>
 </html>        

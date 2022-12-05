@@ -37,32 +37,6 @@ if(isset($_POST['register'])){        //check whether the register button is cli
     $contactnumber = $_POST['contactnumber'];
     $billnum = $_POST['billnum'];
 
-    // }else{
-    //    echo "Invalid request";   //if the register button is not clicked, show error message
-    //    exit();
-    // }
-    //check whether the email address is unique
-    if(checkemail($email,$connection)){
-        $_SESSION['emailerror'] = "Email already exists";
-    }
-
-    //check whether the username is unique
-    if(checkusername($username,$connection)){
-        $_SESSION['usernameerror'] = "Username already exists";
-    }
-
-    //check whether the password and confirm password are same
-    if(!checkpassword($password,$cpassword)){
-        $_SESSION['passworderror'] = "Password and Confirm Password are not same";
-    }
-
-    //if there is an error redirect to the registration page
-    if(isset($_SESSION['emailerror']) || isset($_SESSION['usernameerror']) || isset($_SESSION['passworderror'])){
-        header("Location: ../../view/customer/customer_register.php");
-        $connection->close();
-        exit();
-    }
-
     //remove unwanted and harmful characters from the user entered details
     $firstname=$connection->real_escape_string($firstname);
     $lastname=$connection->real_escape_string($lastname);

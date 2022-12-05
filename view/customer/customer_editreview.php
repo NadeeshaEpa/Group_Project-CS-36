@@ -13,15 +13,15 @@
             <div class="sidebar">
                 <div class="left">
                     <div class="left1">
+                    <a href="customer_dashboard.php">
                         <button>
-                        <a href="customer_dashboard.php">
-                            <div class="left1-1">
-                                <img src="../../public/images/account.png" alt="logo" width="20px" height="20px">
-                            </div>
-                            <p>Account</p>
-                            <p>personal infromation</P>
-                        </a>
-                        </button>
+                        <div class="left1-1">
+                            <img src="../../public/images/account.png" alt="logo" width="20px" height="20px">
+                        </div>
+                        <p>Account</p>
+                        <p>personal infromation</P>
+                        </button>    
+                    </a>
                     </div>
                     <div class="left2">
                         <form action="../../controller/customer/order_controller.php" method="POST">
@@ -79,5 +79,6 @@
             </div>
         </div>
     </div>
+    <?php require_once 'customer_footer.php';?>
 </body>
 </html>

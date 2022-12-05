@@ -30,3 +30,41 @@ if(isset($_GET['id'])){
     }
 
 }
+if(isset($_POST['litroavailable'])){
+    if(isset($_SESSION['User_id'])){
+        $order=new order_model();
+        $result1=$order->getweight($connection);
+        if($result1===false){
+            $_SESSION['litroavailable']="failed";
+            header("Location: ../../view/customer/customer_litrogas.php");
+        }else{            
+            $result=$order->viewLitro($connection,$result1);
+            if($result===false){
+                $_SESSION['viewlitro']="failed";
+                header("Location: ../../view/customer/customer_litrogas.php");
+            }else{     
+                $_SESSION['viewlitro']=$result;
+                header("Location: ../../view/customer/customer_litrogas.php");
+            }
+        }
+    }
+}
+if(isset($_POST['laughavailable'])){
+    if(isset($_SESSION['User_id'])){
+        $order=new order_model();
+        $result1=$order->getweight($connection);
+        if($result1===false){
+            $_SESSION['laughavailable']="failed";
+            header("Location: ../../view/customer/customer_laughgas.php");
+        }else{            
+            $result=$order->viewLaugh($connection,$result1);
+            if($result===false){
+                $_SESSION['viewlaugh']="failed";
+                header("Location: ../../view/customer/customer_laughgas.php");
+            }else{     
+                $_SESSION['viewlaugh']=$result;
+                header("Location: ../../view/customer/customer_laughgas.php");
+            }
+        }
+    }
+}

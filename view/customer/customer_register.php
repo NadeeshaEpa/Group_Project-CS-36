@@ -14,31 +14,12 @@
     <div class="registration-form">  
     <form action="../../controller/customer/register_controller.php" method="POST">
         <h2>Customer Registration Form</h2>
-        <div id="errmsg">
-            <?php
-                if(isset($_SESSION['emailerror'])){       //check whether two email that user entered is already exist
-                    echo $_SESSION['emailerror'];
-                    echo '<br>';
-                    unset($_SESSION['emailerror']);
-                }
-                if(isset($_SESSION['usernameerror'])){   //check whether username that user entered is already exist
-                    echo $_SESSION['usernameerror'];
-                    echo '<br>';
-                    unset($_SESSION['usernameerror']);
-                }
-                if(isset($_SESSION['passworderror'])){   //check whether the password and confirm password are same
-                    echo $_SESSION['passworderror'];
-                    echo '<br>';
-                    unset($_SESSION['passworderror']);
-                }
-            ?>
-        </div>
         <div>
             <label for="name">Name:</label><br>
             <input type="text" name="firstname" id="firstname" placeholder="First Name" class="box1"  required>
             <input type="text" name="lastname" id="lastname" placeholder="Last Name" class="box1" required>
         <div>
-            <label for="username">Username:</label><br>
+            <label id="username-label" for="username">Username:</label><br>
             <input type="text" name="username" id="username" placeholder="Username" class="box" required>
         </div>
         <div>
@@ -48,21 +29,20 @@
             <input type="text" name="postalcode" id="postalcode" placeholder="Postalcode" class="box2" required>
         </div>
         <div>    
-            <label for="password">Password:</label><br>
+            <label id="password-label" for="password">Password:</label><br>
             <input type="password" name="password" id="password" placeholder="Password" class="box" required>
-            <!-- <input type="password" name="password" id="password" placeholder="Password" class="box" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required> -->
         </div>
         <div>
-            <label for="cpassword">Confirm Password:</label><br>
+            <label id="cpassword-label" for="cpassword">Confirm Password:</label><br>
             <input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password" class="box" required>
         </div>
         <div>
-            <label for="email">Email:</label><br>
+            <label id="email-label" for="email">Email:</label><br>
             <input type="email" name="email" id="email" placeholder="Email" class="box" required>
         </div>
         <div>
-            <label for="billnum">Electricity Bill Number:</label><br>
-            <input type="text" name="billnum" id="billnum" placeholder="Electricity Bill Number"  pattern="[0-9]{10}" title="should include 10 numbers" class="box" required><br><br>
+            <label id="billnum-label" for="billnum">Electricity Bill Number:</label><br>
+            <input id="billnum" type="text" name="billnum" id="billnum" placeholder="Electricity Bill Number" class="box" required><br><br>
         </div>
         <?php
             if(isset($_SESSION['otp-sent'])){
@@ -72,7 +52,7 @@
             }
         ?>
         <div>
-            <label for="contactnumber">Contact Number:</label><br>
+            <label id="contactnum-label" for="contactnumber">Contact Number:</label><br>
             <div class="otpr">
                 <input type="text" name="cnumberstart" value="+94" class="box4" readonly>
                 <input type="text" name="contactnumber" id="contactnumber" placeholder="Contact Number" class="box5" pattern="[0-9]{9}" title="should include 9 numbers" required>
@@ -87,8 +67,9 @@
             </div>     
         </div>
         
-        <button type="submit" name="register">Register</button>    
+        <button id="submit-btn" type="submit" name="register">Register</button>    
     </form>
     </div>
+    <script src="../../public/js/Validation.js"></script>
 </body>
 </html>

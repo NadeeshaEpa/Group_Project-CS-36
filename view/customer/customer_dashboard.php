@@ -16,57 +16,59 @@
 <body>
     <?php include 'customer_header.php'; ?>  
     <!-- <h2>Customer Dashboard</h2> -->
-    <div class="sidebar">
-        <div class="left">
-            <div class="left1">
-              <div class="active"> 
-                <button>
-                 <a href="customer_dashboard.php">
-                    <div class="left1-1">
-                         <img src="../../public/images/account.png" alt="logo" width="20px" height="20px">
-                    </div>
-                    <p>Account</p>
-                    <p>personal infromation</P>
-                 </a>
-                </button>
-              </div>  
-            </div>
-            <div class="left2">
-                <form action="../../controller/customer/order_controller.php" method="POST">
-                    <button name="orders">
-                        <div class="left2-1">
-                            <img src="../../public/images/order.png" alt="logo" width="20px" height="20px">
+    <div class="dcontainer">
+        <div class="sidebar">
+            <div class="left">
+                <div class="left1">
+                <div class="active"> 
+                    <a href="customer_dashboard.php">
+                        <button>
+                        <div class="left1-1">
+                            <img src="../../public/images/account.png" alt="logo" width="20px" height="20px">
                         </div>
-                        <p>My orders</p>
-                        <p>order details</P>
+                        <p>Account</p>
+                        <p>personal infromation</P>
+                        </button>    
+                    </a>
+                    
+                </div>  
+                </div>
+                <div class="left2">
+                    <form action="../../controller/customer/order_controller.php" method="POST">
+                        <button name="orders">
+                            <div class="left2-1">
+                                <img src="../../public/images/order.png" alt="logo" width="20px" height="20px">
+                            </div>
+                            <p>My orders</p>
+                            <p>order details</P>
+                        </button>
+                    </form>    
+                </div>
+                <div class="left2">
+                <form action="../../controller/customer/review_controller.php" method="POST">
+                    <button name="review">
+                        <div class="left2-1">
+                            <img src="../../public/images/ratings.png" alt="logo" width="20px" height="20px">
+                        </div>
+                        <p>Reviews</p>
+                        <p>Rate delivery service</P>
                     </button>
-                </form>    
-            </div>
-            <div class="left2">
-              <form action="../../controller/customer/review_controller.php" method="POST">
-                 <button name="review">
-                    <div class="left2-1">
-                         <img src="../../public/images/ratings.png" alt="logo" width="20px" height="20px">
-                    </div>
-                    <p>Reviews</p>
-                    <p>Rate delivery service</P>
-                </button>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="right">
-                <div class="welcome">
-                    <?php
-                        if(isset($_SESSION['login'])){
-                            if($_SESSION['login']=="success"){
-                                echo "<p>"."Welcome ".$_SESSION['Firstname']." ".$_SESSION['Lastname']."</p>";
-                                echo '<br>';                              
-                                //unset($_SESSION['login']);
-                            }
+        <div class="right">
+            <div class="welcome">
+                <?php
+                    if(isset($_SESSION['login'])){
+                        if($_SESSION['login']=="success"){
+                            echo "<p>"."Welcome ".$_SESSION['Firstname']." ".$_SESSION['Lastname']."</p>";
+                            echo '<br>';                              
+                            //unset($_SESSION['login']);
                         }
-                    ?>
-                </div>
+                    }
+                ?>
+            </div>
             <div class="data">
                     <?php
                         echo  "<h2>"."My profile"."</h2>";
@@ -146,6 +148,7 @@
                                 </div>
                             </div>
                             <button type="submit" class="b6" name="updateaccount">Update</button>   
+                            
                     </div>     
             
                     <button onclick="document.getElementById('id01').style.display='block'" class="b5">Delete Account</button>
@@ -165,16 +168,18 @@
                     </div>
                 </form>   
             </div>
-    </div>
+        </div>
+    </div>    
+    <?php include 'customer_footer.php'; ?>
 </div>
-            <script>
-            var modal = document.getElementById('id01');
+    <script>
+    var modal = document.getElementById('id01');
 
-            window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-            }
-            </script>
+    window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+    }
+    </script> 
 </body>
 </html>
