@@ -129,6 +129,15 @@ class fuel_manager{
             return false;
         }
     }
+
+    public function updatePassword($connection,$newpwd,$email){
+        $sql="UPDATE user SET Password='$newpwd' WHERE Email='$email'";
+        if($connection->query($sql)){
+            return true;
+        }else{
+            return false;
+        }
+    }
     
 
 }

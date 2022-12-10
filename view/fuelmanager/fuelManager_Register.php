@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../public/css/FuelmanagerRegistration.css">
     <title>Registration</title>
 </head>
+
 <body>
     
        
@@ -49,7 +50,7 @@
                                     <input type="text" name="lastname" id="lastname" placeholder="Last Name"  required>
                                     <br>
 
-                                    <label for="usernamr">Username:</label>
+                                    <label for="usernamr" id="username-label">Username:</label>
                                     <input type="text" name="username" id="username" placeholder="Username"  required>
                                     <br>
                                     
@@ -60,23 +61,23 @@
                                     <input type="text" name="postalcode" id="postalcode" placeholder="Postalcode"  required>
                                     <br>
                                     
-                                    <label for="password">Password:</label>
+                                    <label for="password" id="password-label">Password:</label>
                                     <input type="password" name="password" id="password" placeholder="Password"  required>
                                     <br>
                                 
-                                    <label for="comform_passwors">comform Password:</label>
+                                    <label for="comform_passwors" id="cpassword-label">comform Password:</label>
                                     <input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password"  required>
                                     <br> 
 
-                                    <label for="nic">Nic:</label>
+                                    <label for="nic" id="nic-lable">Nic:</label>
                                     <input type="nic" name="nic" id="nic" placeholder="NIC"  required>
                                     <br>
 
-                                    <label for="email">Email:</label>
+                                    <label for="email" id="email-label">Email:</label>
                                     <input type="email" name="email" id="email" placeholder="Email" required>
                                     <br>
                                     
-                                    <label for="contact">Contact Number:</label>
+                                    <label for="contact" id="contactnum-label">Contact Number:</label>
                                     <input type="text" name="contactnumber" id="contactnumber" placeholder="Contact Number"  required>
                                     <br>
                                     
@@ -86,7 +87,7 @@
                                     <label for="">Shop Name:</label>
                                     <input type="text" name="shopName" id="shopName" placeholder="Shop Name"   required><br> 
 
-                                    <button type="submit" name="register">Register</button> 
+                                    <button type="submit" id="submit-btn" name="register">Register</button> 
                                     
                             </form> 
                             <div><a href="fuelManager_login.php">Back</a></div>
@@ -98,6 +99,6 @@
             <?php include '../../public/footer.php'; ?>
         </div>
     
-    
+        <script src="../../public/js/Validation.js"></script> 
 </body>
 </html>

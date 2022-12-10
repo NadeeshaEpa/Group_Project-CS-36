@@ -22,9 +22,4 @@ class fuel_manager_insert{
             return false;
         }
     }
-
-    
-   
-    
-
 }
