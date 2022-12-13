@@ -49,7 +49,7 @@ if(isset($_POST['register'])){        //check whether the register button is cli
     $contactnumber=$connection->real_escape_string($contactnumber);
     $billnum=$connection->real_escape_string($billnum);
 
-   //create a new customer object
+    //create a new customer object
     $user=new customer_model();
     //set the details of the customer
     $user->setDetails($firstname,$lastname,$username,$street,$city,$postalcode,$password,$email,$contactnumber,$billnum);
@@ -62,6 +62,9 @@ if(isset($_POST['register'])){        //check whether the register button is cli
     }else{
         header("Location: ../../view/customer/customer_register.php");  //if there is an error redirect to the registration page
     }
+}
+if(isset($_POST['cancelregister'])){
+    header("Location: ../../view/customer/customer_login.php");
 }
 $connection->close();
 ?>

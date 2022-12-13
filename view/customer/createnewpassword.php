@@ -55,6 +55,6 @@
         }
         ?>
     <!-- <?php// include '../../view/customer/customer_footer.php'; ?> -->
-    <script src="../../public/js/Validation.js"></script>    
+    <script src="../../public/js/Customer_Validation.js"></script>    
 </body>
 </html>

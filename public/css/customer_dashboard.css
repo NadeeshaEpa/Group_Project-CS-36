@@ -4,15 +4,25 @@
 body{
     margin:0%;
     background-color: #fffdf0;
+    /* background-image: url(../images/gas.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed; */
+    
+
 }
 .sidebar{
-    margin-bottom: 5px;
-    margin-top: 30px;
-    width: 20%;
+    /* margin-bottom: 5px;
+    margin-top: 30px; */
+    width: 18%;
     padding: 20px;
-    font-size: 20px;
+    font-size: 15px;
     float: left;
-  
+    background: #0f0c29;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 .dcontainer{
     display: flex;
@@ -20,15 +30,16 @@ body{
 }
 .left1 button, .left2 button{
     background-color: white;
-    margin-left: 10px;
-    padding: 20px;
+    /* margin-left: 10px; */
+    padding: 15px;
     font-size: 20px;
     margin-bottom: 20px;
     text-align: center;
     border-radius: 10px;
-    width: 80%;
+    width: 90%;
     margin-top: 40px;
     margin-bottom: 10px;
+    padding-left: 5px;
 }
 .left2 button:hover,.left1 button:hover{
     background-color: #9AE298;
@@ -38,6 +49,7 @@ body{
     margin-top: 0px;
     margin-bottom: 0px;
     text-align: left;
+    padding-left: 0%;
 }
 .left1-1, .left2-1{
     margin-top: 0px;
@@ -51,11 +63,11 @@ body{
 .left1-1 img, .left2-1 img{
     width: 50%;
     height: 50%;
-    margin-top: 2px;
     margin-right: 5px;
     float: left;
     margin-left: 5px;
     margin-bottom: 2px;
+    padding-left: 15px;
 }
 
 .right{
@@ -67,6 +79,7 @@ body{
     font-size: 35px;
     font-weight: bold;
     padding-top: 5px;
+    color: black;
 }
 .right .welcome p{
     padding: 0%;
@@ -76,10 +89,13 @@ body{
 .right .data{
     background-color: white;
     padding: 20px;
-    padding-left: 40px;
+    padding-left: 30px;
     border-radius: 20px;
-    margin-left: 30px;
+    margin-left: 8%;
     margin-bottom: 10px;
+}
+.right .data form{
+    padding-left: 10px;
 }
 .right .data img{
     border-radius: 20px;
@@ -92,6 +108,8 @@ body{
     height:30px;
     margin-right: 20px;
     border-radius: 20px;
+    font-size: 18px;
+    font-weight: bold;
 }
 .b2{
     background-color:lightblue;
@@ -141,7 +159,8 @@ body{
     flex:50%;
 }
 .down1 button{
-    font-size: 15px;
+    font-size: 18px;
+    font-weight: bold;
     border-radius: 20px;
     width: 230px;
     height: 40px;
@@ -149,6 +168,8 @@ body{
 .cp{
     background-color:lightblue;
     border: blue 2px solid;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .down1 input{
@@ -183,6 +204,8 @@ body{
     background-color: red;
     border-radius: 20px;
     margin-top: 30px;
+    font-size: 18px;
+    font-weight: bold;
 
 }
 .b6{
@@ -193,6 +216,8 @@ body{
     background-color: #9AE298;
     border-radius: 20px;
     margin-top: 45px;
+    font-size: 18px;
+    font-weight: bold;
 }
 .b5:hover, .b6:hover{
     background-color: green;
@@ -204,10 +229,10 @@ body{
     text-align: center;
     font-size: 20px;
     margin-bottom:0px;
+    
 }
 .heading h1{
-    margin-bottom: 10px;
-    margin-left: 40%;
+    margin-top: 5px;
 }
 .review-con{
     display: flex;
@@ -217,26 +242,34 @@ body{
     float: left;
 }
 .review-form{
-    background-color: white;
+    
     float:right;
-    padding: 20px;
-    margin-top: 3%;
-    margin-left: 10%;
+    padding: 5px;
+    margin-top: 0%;
+    margin-left: 2%;
     border-radius: 20px;
-    width: 45%;
-    margin-right: 8%;
-    padding-left: 5px;
-    height: 83%;
+    width: 60%;
+    margin-right: 5%;
+    height: 82%;
+}
+.review-form form{
+    background-color: rgb(226, 226, 226);
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    margin-left: 6%;
 }
 .view-reviews button{
     background-color: green;
     float:right;
     margin-top: 10%;
     border-radius: 20px;
-    height:35px;
-    width: 200px;
+    height:45px;
+    width: 150px;
     border: #9AE298;
     font-size: 18px;
+    font-weight: bold;
 }
 .view-reviews button:hover{
     background-color: #9AE298;
@@ -244,18 +277,18 @@ body{
 .cusname, .dpname, .date, .desc{
     font-size: 20px;
     margin-bottom: 0px;
-    transform: translate(20%, 25%);
+    transform: translate(18%, 25%);
 }
 .cusname input, .dpname select , .date input, .desc textarea{
     width: 65%;
-    height: 25px;
+    height: 35px;
     border-radius: 10px;
     border: 1px solid black;
-    margin-left: 20px;
+    margin-left: 10px;
     padding-left: 10px;
 }
 .desc textarea{
-    height: 50px;
+    height: 100px;
 }
 .submitreview button{
     width: 200px;
@@ -264,23 +297,30 @@ body{
     border-radius: 20px;
     border: blue 2px solid;
     transform: translate(150%, 50%);
-    margin-top: 40px;
+    margin-top: 20px;
+    margin-left: 15%;
+    font-size: 18px;
+    font-weight: bold;
 }
 .submitreview button:hover{
     background-color: green;
 }
-.ordertable{
-    background-color: white;
-    width: 100%;
+.order-form{
     float:left;
+    height: 83%;
+    width: 75%;
+}
+.ordertable{
+    background-color: rgb(226, 226, 226);
     padding: 20px;
     padding-top: 30px;
     margin: 20px;
     margin-top: 0%;
-    margin-left: 150px;
+    margin-left: 8%;
     padding-left: 50px;
     border-radius: 20px;
-    height: 70%;
+    height: 85%;
+    width: 85%;
 }
 .ordertable table{
     width: 100%;
@@ -307,6 +347,8 @@ body{
     padding-left: 20px;
     padding-right: 20px;
     background-color: #9AE298;
+    font-size: 18px;
+    font-weight: bold;
 }
 .active button{
     background-color: #babff7;
@@ -324,6 +366,8 @@ body{
     justify-content: center;
     align-items: center;
     display: flex;
+    font-size: 18px;
+    font-weight: bold;
   }
   
   /* Add a color to the cancel button */
@@ -408,7 +452,7 @@ body{
 }  
 .reviewtable{
     background-color: white;
-    width: 80%; 
+    width: 88%; 
     margin-top: 3%;
     margin-left: 3%;
     padding-left: 50px;
@@ -451,6 +495,9 @@ body{
     padding-top: 10px;
     padding-left: 20px;
     padding-right: 20px;
+    margin-left: 30px;
+    font-size: 18px;
+    font-weight: bold;
 }
 .editbtn a:hover{
     background-color: #9AE298;
@@ -467,6 +514,8 @@ body{
     float: right;
     padding-top: 10px;
     font-size: 16px;
+    font-size: 18px;
+    font-weight: bold;
 }
 .rdeletebtn a:hover{
     background-color: lightcoral;
@@ -513,4 +562,6 @@ body{
     background-color: green;
     color: black;
     border: none;
+    font-size: 18px;
+    font-weight: bold;
 }

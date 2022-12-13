@@ -56,20 +56,28 @@
             <div class="otpr">
                 <input type="text" name="cnumberstart" value="+94" class="box4" readonly>
                 <input type="text" name="contactnumber" id="contactnumber" placeholder="Contact Number" class="box5" pattern="[0-9]{9}" title="should include 9 numbers" required>
-                <button name="reqotp">Request OTP</button>
+                <!-- <button name="reqotp">Request OTP</button> -->
             </div>    
         </div>
-        <div>
+        <!-- <div>
             <label for="OTP">OTP:</label><br>
             <div class="otp">
                 <input type="text" name="OTP" id="OTP" placeholder="OTP" class="box5">
                 <button>Verify OTP</button>    
             </div>     
-        </div>
-        
-        <button id="submit-btn" type="submit" name="register">Register</button>    
-    </form>
+        </div> -->
+        <div class="btn">
+            <div class="sbtn">
+                <button id="submit-btn" type="submit" name="register">Register</button>
+            </div> 
+        </form>  
+        <div class="cbtn">    
+                <form action="../../controller/customer/register_controller.php" method="POST">
+                    <button id="cancel" type="submit" name="cancelregister">Cancel</button>
+                </form>
+            </div>
+        </div> 
     </div>
-    <script src="../../public/js/Validation.js"></script>
+    <script src="../../public/js/Customer_Validation.js"></script>
 </body>
 </html>

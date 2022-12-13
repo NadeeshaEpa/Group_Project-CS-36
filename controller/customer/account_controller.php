@@ -150,8 +150,7 @@ if(isset($_POST['uploadimg'])){
 
         }else{
             echo "There was an error uploading your file";
-        }
-           
+        }        
     }else{
         echo "You cannot upload files of this type";
     }

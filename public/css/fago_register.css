@@ -1,3 +1,6 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
 body{
     margin: 0%;
     background-color: #fffdf0;
@@ -20,20 +23,43 @@ body{
     margin-bottom: 20px;
     background-color: rgb(219, 215, 215);
 }
-.registration-form button{
+.btn{
+    display: flex;
+}
+.sbtn{
+    float: left;
+    margin-right: 40px;
+    margin-left: 10%;
+    margin-top: 20px;
+}
+.cbtn{
+    float: right;
+    margin-right: 10%;
+    margin-top: 20px;
+}
+.sbtn button, .cbtn button{
     border-radius: 5px;
     border: 1px solid #e3e3e3;
     padding: 10px;
     margin-bottom: 20px;
-    width:40%;
     background: blue;
-    align-items: center;
     height: 40px;
-    margin-left: 200px;
     color: white;
     font-size: 15px;
+    margin-right: 40px;
+    width: 100%;
+    margin-left: 40px;
+    font-size: 18px;
+    font-weight: bold;
 }
-.registration-form button:hover{
+.cbtn button{
+    background: red;
+}
+.cbtn button:hover{
+    background: pink;
+    color:black;
+}
+.sbtn button:hover{
     background: green;
     color:black;
 }
@@ -69,7 +95,7 @@ body{
     width:20%;
 }
 .box5{
-    width: 50%;
+    width: 69%;
     margin-left: 4px;
 }
 h2{

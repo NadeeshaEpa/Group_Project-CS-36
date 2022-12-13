@@ -1,3 +1,6 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
 ul {
     list-style-type: none;
     margin: 0;
@@ -9,7 +12,7 @@ ul {
 body{
     margin: 0;
 }
-li a {
+.header li a {
      display: block;
     color:black;
     text-align: center;
@@ -21,13 +24,13 @@ li a {
     margin: 10px;
 }
 
-li a:hover:not(.active) {
+.header li a:hover:not(.active) {
    background-color:rgb(131, 131, 206);
  }
 
-li img{
-    width: 60px;
-    height: 60px;
+.header li img{
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     margin-top: 5px;
     margin-right: 10px;

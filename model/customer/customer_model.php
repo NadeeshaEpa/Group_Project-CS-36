@@ -119,10 +119,12 @@ class customer_model{
             if($connection->query($r1)->num_rows > 0){
                 return true;   //login will be successful
             }else{
+                $_SESSION['login_attempts']+=1;
                 return false;   //login will be unsuccessful
             }
         }
         else{
+            $_SESSION['login_attempts']+=1;
             return false;   //login will be unsuccessful
         }
     }

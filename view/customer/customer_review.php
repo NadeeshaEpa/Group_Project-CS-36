@@ -50,10 +50,10 @@
                 </div>
             </div>
             <div class="review-form">
-            <form action="../../controller/customer/review_controller.php" method="POST">
-                <div class="heading">    
-                <h2>Share Your Feedback</h2>
-                </div>  
+            <div class="heading">    
+                    <h1>Share Your Feedback</h1>
+            </div> 
+            <form action="../../controller/customer/review_controller.php" method="POST"> 
                 <!-- <div class="review-form">  -->
                     <div class="cusname">
                         <p>Customer Name:<p>
@@ -81,7 +81,7 @@
                     </div>
                     <div class="desc">
                         <p>Description:</p>
-                        <textarea name="description" id="" cols="20" rows="10" placeholder="place Your Feedback" required></textarea>
+                        <textarea name="description" id="" cols="50" rows="30" placeholder="place Your Feedback" required></textarea>
                         <br><br>
                     </div>   
                     <div class="submitreview">
