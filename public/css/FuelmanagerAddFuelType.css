@@ -115,7 +115,7 @@
 
 .fuel_type{
     width: 50%;
-    height: 80%;
+    height: 98%;
     margin: auto;
     border: solid #888;
     background-color: #FFFFFF;
@@ -126,7 +126,7 @@
 .fuel_type h2{
     text-align: center;
     font-size: x-large;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin-bottom: 8%;
 }
 
@@ -134,7 +134,7 @@
     text-align: right;
     margin-bottom: 8%;
     font-size: large;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin-left: 20%;
 }
 
@@ -215,20 +215,20 @@ select {
 
 
 .content{
-    height: 90%;
+    height: 98%;
     width: 100%;
     display: flex;
 }
 
 .msg{
-    height: 10%;
+    height: 2%;
     width: 100%;
     display: flex;
 }
 .msg h2{
     margin: auto;
     font-size: large;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: red;
 }
 

@@ -32,8 +32,11 @@
                     <input type="text" name="username" id="username" placeholder="Username"  class="box" required><br>
                     <input type="password" name="password" id="password" placeholder="Password"  class="box" required><br><br>           
                     <button type="submit" name="login" id="submit">Login</button><br>
-                    <a href="fuelManager_Register.php">Don't have ana account? Register</a>
-                    <a href="forgot_password.php" >Forgot password?</a>
+                    <p>Don't have an account?<a href="fuelManager_Register.php"> Register</a>
+                    
+                    <div class="fp">
+                        <a href="forgot_password.php" >Forgot password?</a>
+                    </div>
                 </form>
             </div>
             <div class="input_img"></div>

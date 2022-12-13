@@ -66,7 +66,7 @@ cpassword?.addEventListener("input", function () {
 });
 nic?.addEventListener("input", function () {
     //should include 10 numbers
-    var pattern=/^[0-9]{10}$/;
+    var pattern=/^([0-9]{9}[x|X|v|V]|[0-9]{12})$/;
     if (!pattern.test(nic.value)) {
         nicLable.innerHTML = "Invalid nic Number";
         nicLable.style.color = "red";
@@ -85,7 +85,7 @@ username?.addEventListener("input", function () {
 
 contact?.addEventListener("input", function () {
     //should include 9 numbers
-    var pattern=/^[0-9]{9}$/;
+    var pattern=/^0[0-9]\d{8}$/g;
     if (!pattern.test(contact.value)) {
         contactLabel.innerHTML = "Invalid Contact Number";  
         contactLabel.style.color = "red";

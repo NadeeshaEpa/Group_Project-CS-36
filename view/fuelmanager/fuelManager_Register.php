@@ -44,53 +44,53 @@
                             <form action="../../controller/fuelmanager/fuelManager_Register_Controller.php" method="post">
                             
                                     
-                                    <label for="name">Name: </label>
+                                    <label for="name">Name: </label><br>
                                     <input type="text" name="firstname" id="firstname" placeholder="First Name"  required>
                                     <br>
                                     <input type="text" name="lastname" id="lastname" placeholder="Last Name"  required>
                                     <br>
 
-                                    <label for="usernamr" id="username-label">Username:</label>
+                                    <label for="usernamr" id="username-label">Username:</label><br>
                                     <input type="text" name="username" id="username" placeholder="Username"  required>
                                     <br>
                                     
-                                    <label for="address">Address:</label>
+                                    <label for="address">Address:</label><br>
                                     <input type="text" name="street" id="street" placeholder="Street"  required>
                                     <br>  
                                     <input type="text" name="city" id="city" placeholder="City"  required>    
                                     <input type="text" name="postalcode" id="postalcode" placeholder="Postalcode"  required>
                                     <br>
                                     
-                                    <label for="password" id="password-label">Password:</label>
+                                    <label for="password" id="password-label">Password:</label><br>
                                     <input type="password" name="password" id="password" placeholder="Password"  required>
                                     <br>
                                 
-                                    <label for="comform_passwors" id="cpassword-label">comform Password:</label>
+                                    <label for="comform_passwors" id="cpassword-label">comform Password:</label><br>
                                     <input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password"  required>
                                     <br> 
 
-                                    <label for="nic" id="nic-lable">Nic:</label>
+                                    <label for="nic" id="nic-lable">Nic:</label><br>
                                     <input type="nic" name="nic" id="nic" placeholder="NIC"  required>
                                     <br>
 
-                                    <label for="email" id="email-label">Email:</label>
+                                    <label for="email" id="email-label">Email:</label><br>
                                     <input type="email" name="email" id="email" placeholder="Email" required>
                                     <br>
                                     
-                                    <label for="contact" id="contactnum-label">Contact Number:</label>
+                                    <label for="contact" id="contactnum-label">Contact Number:</label><br>
                                     <input type="text" name="contactnumber" id="contactnumber" placeholder="Contact Number"  required>
                                     <br>
                                     
-                                    <label for="">Business reg Number:</label>
+                                    <label for="">Business reg Number:</label><br>
                                     <input type="text" name="bRegNo" id="bRegNo" placeholder="Business reg Number"   required><br> 
                                     
-                                    <label for="">Shop Name:</label>
+                                    <label for="">Shop Name:</label><br>
                                     <input type="text" name="shopName" id="shopName" placeholder="Shop Name"   required><br> 
 
                                     <button type="submit" id="submit-btn" name="register">Register</button> 
                                     
                             </form> 
-                            <div><a href="fuelManager_login.php">Back</a></div>
+                            <div><a href="fuelManager_login.php">Cancel</a></div>
                         </div>
                         
                     </div> 
