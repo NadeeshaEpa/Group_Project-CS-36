@@ -42,7 +42,7 @@ class add_fuelType{
        
          
         if(($row1['FuelType_Id']==$this->FuelTypeId)){
-            $_SESSION['Already exist fuel type']='Already exist fuel type';
+            $_SESSION['Already exist fuel type']='Already exist fuel type or invalid selection';
              return false;
         }
         else{

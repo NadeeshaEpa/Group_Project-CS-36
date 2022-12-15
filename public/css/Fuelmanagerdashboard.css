@@ -21,7 +21,7 @@
     height: 100%;
     width: 80%;
     background-color: #FFFDF0;
-    display: flex;
+    
 }
 
 ::-webkit-scrollbar{
@@ -86,27 +86,45 @@
     mix-blend-mode: multiply;
 }
 
-
-.move{
-    margin: auto;
-    width: 20%;
-    height: 15%;
+.first_three_move{
+    width: 100%;
+    height: 50%;
     display: flex;
 }
 
-.discription{
-    width: 50%;
-    height: 100%;
+.second_three_move{
+    width: 100%;
+    height: 50%;
+    display: flex;
+}
+
+
+.move{
     margin: auto;
+    width: 33.33%;
+    height: 100%;
+    display: flex;
+}
+
+.move_inner{
+    margin: auto;
+    width: 80%;
+    height: 70%;
+    border-radius: 30px;
+    box-shadow: -15px -15px 15px rgba(0, 0, 0, 0.2), 15px 15px 15px rgba(0,0,0,0.1) ;
+}
+
+.discription{
+    width: 100%;
+    height: 30%;
     display: flex;
 }
 
 .discription>div{
     
-   margin-top: 25px;
-   margin-bottom: 15px;
+   margin: auto;
    background-color:#D0D0D0;
-   border-radius: 5px;
+   border-radius: 15px;
 }
 
 .discription>div:hover{
@@ -120,19 +138,15 @@
 }
 
 
-.pic1{
-    width: 50%;
-    height: 100%;
-    background-image: url(../images/AddFuelType_.jpg);
-    background-size: contain;
-
+.pic{
+    width: 100%;
+    height: 70%;
+    display: flex;
 }
 
-.pic2{
-    width: 50%;
-    height: 100%;
-    background-image: url(../images/viewFuelQuentity.jpg);
-    background-size: contain;
+.pic img{
+    margin: auto;
+    border-radius: 20px 20px 0px 0px;
 }
 
 .account_header{

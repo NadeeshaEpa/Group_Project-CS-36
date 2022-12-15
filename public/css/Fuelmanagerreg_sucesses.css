@@ -76,6 +76,7 @@
     text-align: center;
     justify-content: center;
     margin: auto;
+    text-decoration: none;
  }
 .part2 .abc:hover{
     background-color: rgb(76, 232, 59);
