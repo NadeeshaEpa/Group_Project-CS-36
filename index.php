@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="public/css/landingpage.css">
     <title>Document</title>
 </head>
+<?php require_once 'view/header.php'; ?>
 <body>
-    <?php include 'public/header.php'; ?>
     <div class="container">
         <h1>Login as:</h1><br>
         <div class="up">
@@ -40,6 +40,6 @@
             </div>
         </div>        
     </div>
-    
 </body>
+<?php require_once 'view/footer.php'; ?>
 </html>

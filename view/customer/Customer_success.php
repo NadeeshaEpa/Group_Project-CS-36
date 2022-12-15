@@ -11,7 +11,7 @@
         background-color:#FFFDF0;
        } 
        .container{
-        height:63%;
+        height:62%;
        }
        .para{
           width:60%;
@@ -25,12 +25,17 @@
         padding:30px;
        }
        .para button{
-         width: 100px;
-         height: 30px;
+         width: 120px;
+         height: 50px;
          background-color:green;
          color:white;
          margin-left:45%;
          border-radius:20px;
+         border:lightgreen;
+       }
+       .para button:hover{
+         background-color:lightgreen;
+         color:black;
        }
        .para a{
          text-decoration:none;
@@ -40,13 +45,13 @@
     </style>
 </head>
 <body>
-    <?php require_once '../../public/header.php'; ?> 
+    <?php require_once '../header.php'; ?> 
     <div class="container">
         <div class="para">    
             <h2>
                 Registration request send successfully. You will receive an email within 48 hours
             </h2>
-            <button><a href="customer_login.php">OK</a></button>
+            <a href="../../index.php"><button>OK</a></button>
         </div>    
     </div>    
     <?php require_once 'customer_footer.php'; ?>

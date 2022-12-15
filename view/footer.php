@@ -12,7 +12,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="footer">
+    <div class="footerc">
         <div class="fleft">
             <!-- <a href="#">About us</a>
             <a href="#">Contact us</a>

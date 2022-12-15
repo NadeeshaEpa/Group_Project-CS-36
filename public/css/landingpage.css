@@ -3,17 +3,20 @@
 }
 body{
     background-color: #FFFDF0;
+    height: 83%;
 }
 .customer img{
     width:150px;
     height:150px;
-    border-radius: 120px;
-    padding: 40px;
+    border-radius: 150px;
+    padding: 60px;
     padding-top: 20px;
+    padding-bottom: 20px;
 
 }
-.container{
-    
+.customer img:hover{
+    width: 155px;
+    height: 155px; 
 }
 .up , .down{
     width: 100%;

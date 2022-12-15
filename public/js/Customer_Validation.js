@@ -16,6 +16,8 @@ const usernameLabel = document.getElementById("username-label");
 const contact = document.getElementById("contactnumber");
 const contactLabel = document.getElementById("contactnum-label");
 
+const customer_form = document.getElementById("customer_form");
+
 var emailflag=0;
 var passwordflag=0;
 var cpasswordflag=0;
@@ -28,7 +30,7 @@ email?.addEventListener("input", function () {
     if (!reg.test(email.value)) {
         emailLabel.innerHTML = "Invalid Email";
         emailLabel.style.color = "red";
-        submit.disabled = true;
+        //submit.disabled = true;
         emailflag=1;
     } else {
         emailValidation();
@@ -40,15 +42,15 @@ password?.addEventListener("input", function () {
     if(password.value.length < 8){
         passwordLabel.innerHTML = "Password must be 8 characters long";
         passwordLabel.style.color = "red";
-        submit.disabled = true;
+        //submit.disabled = true;
     }else if(!password.value.match(/[a-z]/) || !password.value.match(/[A-Z]/)){
         passwordLabel.innerHTML = "Password must contain at least one lowercase letter and one uppercase letter";
         passwordLabel.style.color = "red";
-        submit.disabled = true;
+        //submit.disabled = true;
     }else if(!password.value.match(/[0-9]/)){
         passwordLabel.innerHTML = "Password must contain at least one number";
         passwordLabel.style.color = "red";
-        submit.disabled = true;
+        //submit.disabled = true;
         passwordflag=1;
     }else{
         passwordLabel.innerHTML = "Password:";
@@ -65,7 +67,7 @@ cpassword?.addEventListener("input", function () {
         cpasswordLabel.style.color = "red";
         cpassword.style.borderColor = "red";
         cpassword.style.borderWidth = "2px";
-        submit.disabled = true;
+        //submit.disabled = true;
         cpasswordflag=1;
     } else {
         cpasswordLabel.innerHTML = "Confirm Password:";
@@ -82,7 +84,7 @@ billnum?.addEventListener("input", function () {
     if (!pattern.test(billnum.value)) {
         billnoLabel.innerHTML = "Invalid Bill Number";
         billnoLabel.style.color = "red";
-        submit.disabled = true;
+        //submit.disabled = true;
         billnoflag=1;
     } else {
         billnoLabel.innerHTML = "Electricity Bill Number:";
@@ -154,7 +156,7 @@ contact?.addEventListener("input", function () {
     if (!pattern.test(contact.value)) {
         contactLabel.innerHTML = "Invalid Contact Number";  
         contactLabel.style.color = "red";
-        submit.disabled = true;
+        // submit.disabled = true;
         contactflag=1;
     } else {
         contactLabel.innerHTML = "Contact Number:";
@@ -165,11 +167,8 @@ contact?.addEventListener("input", function () {
         // submit.disabled = false;
     }
 });
-submitValidation();
-function submitValidation(){
-    if(emailflag==0 && passwordflag==0 && cpasswordflag==0 && billnoflag==0 && usernameflag==0 && contactflag==0){
-        submit.disabled = false;
-    }else{
-        submit.disabled = true;
+customer_form?.addEventListener("submit", function (e) {
+    if (!(usernameflag==0 && emailflag==0 && passwordflag==0 && cpasswordflag==0 && billnoflag==0 && contactflag==0)) {
+        e.preventDefault();
     }
-}
+});

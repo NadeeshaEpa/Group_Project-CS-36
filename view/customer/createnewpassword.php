@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../public/css/createnew_password.css">
+    <link rel="stylesheet" href="../../public/css/customer/createnew_password.css">
     <title>Forgot password</title>
 </head>
 <body>
@@ -17,7 +17,7 @@
             
              if(ctype_xdigit($selector) && ctype_xdigit($validator)){?>
              
-    <?php include '../../public/header.php'; ?>
+    <?php include '../header.php'; ?>
     <div class="container">
             <form action="../../controller/customer/forgotpassword_controller.php" method="POST" class="form">
                 <h1>Create New Password</h1> 

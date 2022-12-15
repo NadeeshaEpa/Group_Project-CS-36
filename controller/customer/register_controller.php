@@ -3,7 +3,7 @@ session_start();
 require_once("../../config.php");  //connect to database
 require_once '../../model/customer/customer_model.php';  //get customer model
 require_once '../../model/customer/checkcustomer_model.php';  // get check customer model
-require '../../textlocal.class.php';  //get textlocal class
+//require '../../textlocal.class.php';  //get textlocal class
 
 // if(isset($_POST['reqotp'])){
 //     $mobile=$_POST['contactnumber'];

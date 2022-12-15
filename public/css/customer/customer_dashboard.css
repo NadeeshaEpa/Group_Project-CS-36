@@ -4,12 +4,6 @@
 body{
     margin:0%;
     background-color: #fffdf0;
-    /* background-image: url(../images/gas.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed; */
-    
 
 }
 .sidebar{
@@ -19,10 +13,7 @@ body{
     padding: 20px;
     font-size: 15px;
     float: left;
-    background: #0f0c29;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    background-image: linear-gradient(to right bottom, #5b8467, #569369, #50a16a, #46b06b, #39bf6c, #3fc265, #46c55d, #4ec854, #63bf44, #72b734, #7eae25, #88a517);
 }
 .dcontainer{
     display: flex;

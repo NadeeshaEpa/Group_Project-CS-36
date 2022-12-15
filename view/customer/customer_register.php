@@ -6,13 +6,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../public/css/fago_register.css">
+    <link rel="stylesheet" href="../../public/css/customer/fago_register.css">
     <title>Customer Registration</title>
 </head>
 <body>
-    <?php include '../../public/header.php'; ?>
+    <?php include '../header.php'; ?>
     <div class="registration-form">  
-    <form action="../../controller/customer/register_controller.php" method="POST">
+    <form action="../../controller/customer/register_controller.php" method="POST" id="customer_form">
         <h2>Customer Registration Form</h2>
         <div>
             <label for="name">Name:</label><br>
