@@ -6,33 +6,103 @@ require_once("../../config.php");?>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../public/css/user_list.css">
+    <link rel="stylesheet" href="../../public/css/admin_delivery/user_list.css">
+    <link rel="stylesheet" href="../../public/css/admin_delivery/newdashboard.css">
     <title>staff list</title>
 </head>
 <body>
-   <!-- <?php include '../../public/user_header.php'; ?> -->
+   <?php include '../../public/user_header.php'; ?>
     
     <div class="split left">
-    <div class="vertical-menu">
+    <!-- <div class="vertical-menu">
     <a href="admin_dashboard.php" >Dashboard</a>
     <a href="#">Account</a>
     <a href="#" >Users</a>
     <div class="users">
                      
-                        <center><a href="#">Customers</a>
+                        <center><a href="../../controller/admin/customeracc_controller.php?id=viewcustomer">Customers</a>
                         <a href="#">Gas Agents</a>
                         <a href="#">Fuel Managers</a>
-                        <a href="../../controller/staff/account_controller.php?id=viewstaff" class="active">Staff</a>
+                        <a href="../../controller/admin/staffacc_controller.php?id=viewstaff" class="active">Staff</a>
                         <a href="#">Delivery Person</a></center>
                      
     </div>
     <a href="#">Orders</a>
     <a href="#">Reports</a>
-    </div>
+    </div> -->
+
+    <div class="left1">
+                <div class="active"> 
+                    <a href="admin_dashboard.php">
+                        <button class="active">
+                        <div class="left1-1">
+                            <img src="../../public/images/menu.png" alt="logo" width="20px" height="20px">
+                        </div>
+                        <p>Dashboard</p>
+                        <p>Admin Dashboard</p>
+        
+                        </button>    
+                    </a>
+                    
+                </div>  
+                </div>
+                <div class="left2">
+                    <form action="#" method="POST">
+                        <button name="orders">
+                            <div class="left2-1">
+                                <img src="../../public/images/user.png" alt="logo" width="20px" height="20px">
+                            </div>
+                            <p>Account</p>
+                            <p>Personal Information</P>
+                        </button>
+                    </form>    
+                </div>
+
+                <div class="left2">
+                <div class="dropdown">
+                    <button name="review">
+                        <div class="left2-1">
+                            <img src="../../public/images/group.png" alt="logo" width="20px" height="20px">
+                        </div>
+                        <p>User</p>
+                        <p>Manage User Account</P>
+                    </button>
+                     <div class="dropdown-content">
+                      <a href="../../controller/admin/customeracc_controller.php?id=viewCustomer">Customer</a>
+                      <a href="#">Gas Agent</a>
+                      <a href="#">Fuel Manager</a>
+                      <a href="../../controller/admin/staffacc_controller.php?id=viewStaff">Staff</a>
+                      <a href="#">Delivery Person</a>
+                      </div>
+                   </div>
+                </div>
+
+                <div class="left2">
+                <form action="#" method="POST">
+                    <button name="review">
+                        <div class="left2-1">
+                            <img src="../../public/images/report.png" alt="logo" width="20px" height="20px">
+                        </div>
+                        <p>Reports</p>
+                        <p>Generate Reports</P>
+                    </button>
+                    </form>
+                </div>
+                <div class="left2">
+                <form action="#" method="POST">
+                    <button name="review">
+                        <div class="left2-1">
+                            <img src="../../public/images/orders.png" alt="logo" width="20px" height="20px">
+                        </div>
+                        <p>Orders</p>
+                        <p>Gas Orders</P>
+                    </button>
+                    </form>
+                </div>
 
 </div>
 <div class="split right">
-    <button><a href="add_staff.php">Add Staff</a></button>
+   <a href="add_staff.php"> <button>Add Staff</button></a>
     <div class="list">
 
     <h3>All Staff Members</h3>
@@ -64,9 +134,9 @@ require_once("../../config.php");?>
                  <td>'.$uname.'</td>
                  <td>'.$email.'</td>
                  <td>
-                 <button class="button1"><a href="">View</a></button>
-                 <button class="button2"><a href="">Update</a></button>
-                 <button class="button3"><a href="">Delete</a></button>
+                 <a href=""><button class="button1">View</button></a>
+                 <a href=""><button class="button2">Update</button></a>
+                 <a href="delete.php? deleteid='.$user_id.'"><button class="button3">Delete</button></a>
                  </td>
             </tr>' ;
             

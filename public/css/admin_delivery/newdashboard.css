@@ -1,0 +1,205 @@
+.left {
+    width: 19%;
+    float: left;
+    /* display: grid;
+    grid-template-columns: minmax(min-content, 175px) minmax(max-content, 1fr) minmax(
+			min-content,
+			400px
+		); */
+
+    /* left: 0; */
+    /* width: 20%; */
+    /* height: 89%; */
+    /* position: relative; */
+    font-family: sans-serif;
+    background-color:#7b7a77;
+    color: black;
+    position: fixed;
+    padding-left: 10px;
+  }
+  
+  .right {
+    width:80%;
+    float:right;
+    /* min-height: 80vh;
+    width: 95%;
+    max-width: 1600px;
+    padding: 2vw 4vw 6vw;
+    display: flex;
+    flex-direction: column; */
+    /* right: 0; */
+    font-family: sans-serif;
+    /* width: 80%; */
+    /* height: 95%; */
+    /* position: relative; */
+    /* margin-left: 20px; */
+    background-color:#f2efef;
+    min-height: 100%;
+  
+  }
+
+  h2{
+    letter-spacing: 1px;
+    margin-left: 4%;
+  }
+
+  .vertical-menu {
+    width: 100%;
+  }
+
+  .vertical-menu button{
+    margin-left: 20px;
+    height: 72px;
+    width: 280px;
+    border-radius: 12px;
+    border: 2px solid #e7e7e7;
+    background-color: white;
+    text-align:left;
+    text-decoration: none;
+    color: black;
+  }
+  
+  .vertical-menu a {
+    color: black;
+    display: block;
+    padding: 30px;
+    text-decoration: none;
+  }
+  
+  .vertical-menu button:hover {
+    background-color:#989edb;
+    border: 2px solid #4E60FF;
+  }
+  
+  .vertical-menu button.active {
+    background-color:#F3F4FF;
+    border: 2px solid #4E60FF;
+  }
+
+  
+  .container {
+    width: 120px; 
+    margin-top: 15%; 
+    margin-left: 20%;
+    text-align: center;
+    font-family: sans-serif;
+    
+    /* Optional Styling */
+    padding: 20px;
+    border-style: solid;
+    background-color: white;
+    border-radius: 20px;
+    border-color: rgb(216, 223, 244);
+   
+   
+  }
+  .tiles{
+    display: grid;
+	  grid-template-columns: repeat(6, 1fr);
+    column-gap: 0.001rem;
+    row-gap: 1rem;
+    margin-top: 1.25rem;
+  }
+
+  .pic1{
+    margin-top: 1.70rem;
+    margin-left:2rem;
+    
+    
+  }
+
+  .pic2{
+    margin-top: 1.70rem;
+    margin-left:2rem;
+    width: 399px;
+    height: 499px;
+
+  }
+
+  
+  .graphs{
+    display: grid;
+	  grid-template-columns: repeat(3, 1fr);
+    column-gap: 1rem;
+    row-gap: 1rem;
+    margin-top: 1.25rem;
+
+  }
+  .left1 button, .left2 button{
+    border-radius: 12px;
+    border: 2px solid #e7e7e7;
+    background-color: white;
+    /* margin-left: 10px; */
+    padding: 15px;
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    border-radius: 10px;
+    width: 90%;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    padding-left: 5px;
+}
+.left2 button:hover,.left1 button:hover{
+  background-color:#b7bbe6;
+  border: 2px solid #4E60FF;
+}
+.left1 p, .left2 p{
+    font-size: 15px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: left;
+    padding-left: 0%;
+}
+.left1-1, .left2-1{
+    margin-top: 0px;
+    width: 30%;
+    float: left;
+}
+.left a{
+    text-decoration: none;
+    color: black;
+}
+.left1-1 img, .left2-1 img{
+    width: 50%;
+    height: 50%;
+    margin-right: 5px;
+    float: left;
+    margin-left: 5px;
+    margin-bottom: 2px;
+    padding-left: 15px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+ .dropdown-content a {
+  color: black;
+  padding: 20px 20px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #b7bbe6}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.split left button{
+  padding-left: 10px;
+}

@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once '../../config.php';
-include_once '../../model/staff/account_model.php';
+include_once '../../model/admin/account_model.php';
 
 
 if(isset($_GET['id'])){

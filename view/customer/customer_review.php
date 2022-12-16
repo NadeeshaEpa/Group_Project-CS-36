@@ -61,7 +61,7 @@
                     </div> 
                     <div class="dpname"> 
                         <p>Delivery Person Name:</p>
-                            <select name="dpname">
+                            <select name="dpname" required>
                                 <option selected disabled>Select the name of the delivery person</option>
                                 <?php
                                     if($_SESSION['deliverynames']==='failed'){

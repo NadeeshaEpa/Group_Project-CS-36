@@ -51,7 +51,7 @@
             <h2>
                 Registration request send successfully. You will receive an email within 48 hours
             </h2>
-            <a href="../../index.php"><button>OK</a></button>
+            <a href="../../index.php"><button>OK</button></a>
         </div>    
     </div>    
     <?php require_once 'customer_footer.php'; ?>

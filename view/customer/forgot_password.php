@@ -10,7 +10,7 @@
 <body>
     <?php include '../header.php'; ?>
     <div class="container">
-            <form action="../../controller/customer/forgotpassword_controller.php" method="POST" class="form">
+            <form action="../../controller/customer/forgotpassword_controller.php" method="POST" class="form" id="fpw_form">
                 <h1>Reset Password</h1>  
                 <div id="errmsg">
                     <?php
@@ -31,10 +31,11 @@
                     ?>  
                 </div> 
                 <input type="hidden" name="type" value="send" />     
-                <label for="email">Enter your email address:</label><br>
-                <input type="email" name="email" id="email" placeholder="Enter Email" class="box" required><br><br>
+                <label for="email" id="femail-label">Enter your email address:</label><br>
+                <input type="email" name="email" id="femail" placeholder="Enter Email" class="box" required><br><br>
                 <button type="submit" name="fsubmit" id="submit">Send</button>
             </form>
     </div>
+    <!-- <script src="../../public/js/forgotpw_validation.js"></script> -->
 </body>
 </html>
