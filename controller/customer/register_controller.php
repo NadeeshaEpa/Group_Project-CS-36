@@ -64,7 +64,7 @@ if(isset($_POST['register'])){        //check whether the register button is cli
     }
 }
 if(isset($_POST['cancelregister'])){
-    header("Location: ../../view/customer/customer_login.php");
+    header("Location: ../../view/login.php");
 }
 $connection->close();
 ?>

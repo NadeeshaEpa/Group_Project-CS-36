@@ -15,7 +15,7 @@ body{
     margin: 0 auto;
     padding-left: 60px;
     margin-top: 30px;
-    height: 94%;
+    margin-bottom: 20px;
 }
 .registration-form input{
     border-radius: 10px;

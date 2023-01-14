@@ -26,10 +26,10 @@ if(isset($_SESSION['locked'])){
     <title>Login</title>
 </head>
     <body>
-        <?php include '../header.php'; ?>
+        <?php include 'header.php'; ?>
         <div class="column">
             <div class="container">
-                <form action="../../controller/customer/login_controller.php" method="POST" class="form">
+                <form action="../../controller/Users/login_controller.php" method="POST" class="form">
                     <h2>Welocome</h2>
                     <p>Sign in using the data that you entered during your registration.</p>
                          <div class="err-msg">   
@@ -57,7 +57,7 @@ if(isset($_SESSION['locked'])){
                             <a href="forgot_password.php" >Forgot password?</a>
                         </div> 
                         <div class="reg">   
-                            <P>Don't have an account?<a href="customer_register.php">Register</a></P>
+                            <P>Don't have an account?<a href="registeras.php">Register</a></P>
                         </div>    
                         <div class="err-msg">
                             <?php

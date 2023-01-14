@@ -9,38 +9,42 @@
     <title>login</title>
 </head>
 <body>
-
-    <div class="msg">
-        <h2>
-            <?php
-                    if(isset($_SESSION['login'])){
-                        if($_SESSION['login']=="failed"){
-                            echo "Invalid username or password";
-                            echo '<br>';
-                            unset($_SESSION['login']);
+</div>
+    
+    
+        <div class="msg">
+            <h2>
+                <?php
+                        if(isset($_SESSION['login'])){
+                            if($_SESSION['login']=="failed"){
+                                echo "Invalid username or password";
+                                echo '<br>';
+                                unset($_SESSION['login']);
+                            }
                         }
-                    }
-                    
-                ?>
+                        
+                    ?>
+                </div>
+            </h2>  
+        <div class="container">
+            <div class="center">
+                <div class="content">
+                    <form action="../../controller/fuelmanager/fuelManager_login_controller.php" method="POST">
+                        <h2>Login</h2>
+                        <input type="text" name="username" id="username" placeholder="Username"  class="box" required><br>
+                        <input type="password" name="password" id="password" placeholder="Password"  class="box" required><br><br>           
+                        <button type="submit" name="login" id="submit">Login</button><br>
+                        <p>Don't have an account?<a href="fuelManager_Register.php"> Register</a><br>
+                        
+                        <div class="fp">
+                            <a href="forgot_password.php" >Forgot password?</a><br>
+                            <a href="http://localhost:8001/index.php">Home</a><br>
+                        </div>
+                    </form>
+                </div>
+                <div class="input_img"></div>
             </div>
-        </h2>
-    <div class="container">
-        <div class="center">
-            <div class="content">
-                <form action="../../controller/fuelmanager/fuelManager_login_controller.php" method="POST">
-                    <h2>Login</h2>
-                    <input type="text" name="username" id="username" placeholder="Username"  class="box" required><br>
-                    <input type="password" name="password" id="password" placeholder="Password"  class="box" required><br><br>           
-                    <button type="submit" name="login" id="submit">Login</button><br>
-                    <p>Don't have an account?<a href="fuelManager_Register.php"> Register</a><br>
-                    
-                    <div class="fp">
-                        <a href="forgot_password.php" >Forgot password?</a>
-                    </div>
-                </form>
-            </div>
-            <div class="input_img"></div>
         </div>
-    </div>
+   
 </body>
 </html>

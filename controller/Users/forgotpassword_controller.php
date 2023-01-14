@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once '../../config.php';
-require_once '../../model/customer/forgotpassword_model.php';
+require_once '../../model/Users/forgotpassword_model.php';
 require_once '../../model/customer/customer_model.php';
 require_once '../../model/customer/checkcustomer_model.php';
 
@@ -34,29 +34,29 @@ class forgotpassword_controller{
 
         if(empty($useremail)){
             $_SESSION['email-status']="Please enter your email address";
-            header("Location: ../../view/customer/forgot_password.php");
+            header("Location: ../../view/forgot_password.php");
             exit();
         }else if(!filter_var($useremail,FILTER_VALIDATE_EMAIL)){
             $_SESSION['email-status']="Please enter a valid email address";
-            header("Location: ../../view/customer/forgot_password.php");
+            header("Location: ../../view/forgot_password.php");
             exit();
         }
         $selector=bin2hex(random_bytes(8));
         $token=random_bytes(32);
-        $url="http://localhost/Group_36/view/customer/createnewpassword.php?selector=".$selector."&validator=".bin2hex($token);
+        $url="http://localhost/Group_36/view/createnewpassword.php?selector=".$selector."&validator=".bin2hex($token);
         $expires=date("U")+1800;
 
         $result1=$this->forgotpassword->deleteEmail($useremail,$connection);
         if(!$result1){
             $_SESSION['email-status']="There was an error1";
-            header("Location: ../../view/customer/forgot_password.php");
+            header("Location: ../../view/forgot_password.php");
             exit();
         }
         
         $result2=$this->forgotpassword->insertToken($selector,$token,$expires,$useremail,$connection);
         if(!$result2){
             $_SESSION['email-status']="There was an error2";
-            header("Location: ../../view/customer/forgot_password.php");
+            header("Location: ../../view/forgot_password.php");
             exit();
         }
 
@@ -74,10 +74,10 @@ class forgotpassword_controller{
         
         if($this->mail->Send()){
             $_SESSION['email-status-success']="Reset password link has been sent to your email";
-            header("Location: ../../view/customer/forgot_password.php");
+            header("Location: ../../view/forgot_password.php");
         }else{
             $_SESSION['email-status']="There was an error3";
-            header("Location: ../../view/customer/forgot_password.php");
+            header("Location: ../../view/forgot_password.php");
             exit();
         }
         
@@ -90,7 +90,7 @@ class forgotpassword_controller{
                 'password'=>trim($_POST['password']),
                 'cpassword'=>trim($_POST['cpassword'])
             ];
-            $url='../../view/customer/createnewpassword.php?selector='.$data['selector'].'&validator='.$data['validator'];
+            $url='../../view/createnewpassword.php?selector='.$data['selector'].'&validator='.$data['validator'];
 
             if(empty($_POST['password'])|| empty($_POST['cpassword'])){
                 $_SESSION['password-status']="Please fill all the fields";
@@ -154,7 +154,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $init->resetPassword($connection);
             break;
         default:
-        header("location: ../../view/customer/forgot_password.php"); 
+        header("location: ../../view/forgot_password.php"); 
     }
 }
 

@@ -43,22 +43,50 @@ class order_model{
             }
         }
     }
-    public function getweight($connection){
+    public function getweight($connection,$type){
         //store weight according to the Cylinder_Id
-        $sql="SELECT Cylinder_Id,Weight FROM `gascylinder`";
+        $sql="SELECT g.Cylinder_Id,g.Weight FROM `gascylinder` g inner join `gas_company` c on g.Type=c.company_id WHERE c.company_name='$type'";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;
         }else{
             $weight=[];
             while($row=$result->fetch_object()){
-                $weight[$row->Cylinder_Id]=$row->Weight;
+                array_push($weight,['Weight'=>$row->Weight]);
             }
+            //sort the array according to the weight in descending order get the highetq weight into the 0 th index
+            for($i=0;$i<count($weight);$i++){
+                for($j=$i+1;$j<count($weight);$j++){
+                    if($weight[$i]['Weight']<$weight[$j]['Weight']){
+                        $temp=$weight[$i];
+                        $weight[$i]=$weight[$j];
+                        $weight[$j]=$temp;
+                    }
+                }
+            }
+            // print_r($weight);
+            // die();
             return $weight;
         }
     }
-    public function viewLitro($connection,$weight){
-        $sql="Select DISTINCT g.GasAgent_Id from `gasagent` g INNER JOIN `sell_gas` s on g.GasAgent_Id=s.GasAgent_Id INNER JOIN `gascylinder` c on s.Cylinder_Id=c.Cylinder_Id WHERE c.Type='Litro';";
+
+    public function getshopnames($connection,$type){
+        $sql="SELECT g.Shop_name FROM `gasagent`g inner join `gas_company` c on g.Gas_Type=c.company_id WHERE c.company_name='$type'";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $shopnames=[];
+            while($row=$result->fetch_object()){
+                array_push($shopnames,['Shop_name'=>$row->Shop_name]);
+            }
+            // print_r($shopnames);
+            // die();
+            return $shopnames;
+        }
+    }
+    public function viewLitro($connection,$weight,$type){
+        $sql="Select DISTINCT g.GasAgent_Id from `gasagent` g INNER JOIN `sell_gas` s on g.GasAgent_Id=s.GasAgent_Id INNER JOIN `gas_company` c on g.Gas_Type=c.company_id WHERE c.company_name='$type';";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;
@@ -70,16 +98,21 @@ class order_model{
             $gas=[];
             foreach($gasagents as $gasagent){
                 $gasagent_id=$gasagent['GasAgent_Id'];
-                $sql="SELECT g.GasAgent_Id,g.Shop_name,s.Cylinder_Id,s.Quantity from `gasagent` g inner join `sell_gas` s on g.GasAgent_Id=s.GasAgent_Id inner join `gascylinder` c on c.Cylinder_Id=s.Cylinder_Id  WHERE g.GasAgent_Id='$gasagent_id' AND c.Type='Litro'";
+                $sql="SELECT g.GasAgent_Id,g.Shop_name,s.Cylinder_Id,s.Quantity,c.Weight FROM `gasagent` g INNER JOIN `sell_gas` s on g.GasAgent_Id=s.GasAgent_Id INNER JOIN `gascylinder` c on s.Cylinder_Id=c.Cylinder_Id  inner join `gas_company` co on c.Type=co.company_id WHERE g.GasAgent_Id='$gasagent_id' AND co.company_name='$type' ORDER BY c.Weight DESC";
                 $result=$connection->query($sql);
                 if($result->num_rows===0){
                     return false;
                 }else{
                     while($row=$result->fetch_object()){
-                        array_push($gas,['GasAgent_Id'=>$row->GasAgent_Id,'Shop_name'=>$row->Shop_name,'Cylinder_Id'=>$row->Cylinder_Id,'Quantity'=>$row->Quantity]);
+                        array_push($gas,['GasAgent_Id'=>$row->GasAgent_Id,'Shop_name'=>$row->Shop_name,'Cylinder_Id'=>$row->Cylinder_Id,'Quantity'=>$row->Quantity,'Weight'=>$row->Weight]);
                     }
                 }
             }
+            // foreach($gas as $gas1){
+            //     print_r($gas1);
+            //     echo "<br>";
+            // }
+            // die();
             return $gas;            
         }
     }

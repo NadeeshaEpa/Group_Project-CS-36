@@ -5,6 +5,7 @@ body{
     background-color:   rgb(136, 185, 138);
 }
 
+
 .center{
     width: 60%;
     height: 60%;
@@ -24,7 +25,14 @@ body{
     background-color: rgb(161, 207, 136);
     
 }
-
+.content a{
+    text-decoration: none;
+    text-align: center;
+    /* padding-left: 45%; */
+}
+.content_staff{
+     padding-left: 45%; 
+}
 .input_img{
     height: 100%;
     width: 50%;

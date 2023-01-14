@@ -19,48 +19,57 @@
                     $laugh=$_SESSION['viewlaugh'];
                     $count=count($laugh);
                 }
+                if(isset($_SESSION['laughweight'])){
+                    $laughweight=$_SESSION['laughweight'];
+                    $count1=count($laughweight);
+                }
+                if(isset($_SESSION['laughshopnames'])){
+                    $shops=$_SESSION['laughshopnames'];
+                    $count2=count($shops);
+                }
             ?>
             <h1>Laugh Gas</h1>
             <table>
                 <tr>
                     <th>Vendor</th>
-                    <th>12.5kg</th>
-                    <th>5kg</th>
-                    <th>2.3kg</th>
+                    <?php
+                    foreach($laughweight as $laughweight1){?>
+                        <th><?php echo $laughweight1['Weight']?>kg</th>
+                    <?php } ?>
                     <th>order</th>
                 </tr>
-                <?php 
-                for($i=0;$i<$count;$i++){?>
-                <tr>
-                    <td><?php echo $laugh[$i]['Shop_name']?></td>
-                    <td><?php 
-                        if($laugh[$i]['Quantity']==0){
-                            echo "Not available";
-                            $i++;
-                        }else{
-                            echo $laugh[$i]['Quantity'];
-                            $i++;
-                        }?>
-                    </td>                      
-                    <td><?php 
-                        if($laugh[$i]['Quantity']==0){
-                            echo "Not available";
-                            $i++;
-                        }else{
-                            echo $laugh[$i]['Quantity'];
-                            $i++;
-                        }?>
-                    </td>  
-                    <td><?php 
-                        if($laugh[$i]['Quantity']==0){
-                            echo "Not available";
-                        }else{
-                            echo $laugh[$i]['Quantity'];
-                        }?>
-                    </td>  
-                    <td><a href="customer_laughgas.php?laughid=<?php echo $laugh[$i]['GasAgent_Id']?>">View</a></td>
                 </tr>
-                <?php } ?>
+                    <?php 
+                    foreach($shops as $shop){?>
+                    <tr>
+                        <td><?php echo $shop['Shop_name']?></td>
+                        <?php 
+                        foreach($laughweight as $laughweight1){
+                            $flag=0;
+                            foreach($laugh as $laugh1){?>
+                            <?php 
+                            if($laugh1['Shop_name']==$shop['Shop_name'] && $laugh1['Weight']==$laughweight1['Weight']){?>
+                                <td><?php echo $laugh1['Quantity'];?></td>
+                                <?php
+                                $gasagent=$laugh1['GasAgent_Id'];
+                                $flag=1;
+                                break;
+                            }else{
+                                continue;
+                            }
+                            ?>
+                            <?php 
+                            }
+                            if($flag==0){?>
+                               <td><?php echo "Not available"; 
+                               $gasagent=$laugh1['GasAgent_Id'];
+                               ?></td>
+                            <?php 
+                            }
+                        } ?> 
+                        <td><a href="customer_laughgas.php?laughid=<?php echo $gasagent?>">View</a></td>              
+                    <?php } ?>
+                </tr>
             </table>
         </div>
     </div>    

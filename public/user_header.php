@@ -14,7 +14,7 @@
         </div>
         <li><img src="../../public/images/customer.png" alt="logo" width="100px" height="100px" class="user"></li>
         <li><img src="../../public/images/bell.png" alt="logo" width="10px" height="10px" class="notification"></li>
-        <li><a href="../../controller/customer/logout_controller.php">Logout</a></li>
+        <li><a href="../../controller/Users/logout_controller.php">Logout</a></li>
         <li><img src="../../public/images/logo.png" alt="logo" width="90px" height="90px"></li>
     </ul>   
 </body>

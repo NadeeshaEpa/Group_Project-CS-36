@@ -2,7 +2,7 @@
     font-family: 'Poppins', sans-serif;
 }
 body{
-    background-color: #FFFDF0;
+    background-color: white;
 }
 .para{
     font-size:25px;
@@ -67,4 +67,31 @@ button:hover{
 }
 .litro button, .laugh button, .fuel button{
     margin-left: 23%;
+}
+.down{
+    display: flex;
+    padding-top: 10px;
+}
+.gas{
+    float: left;
+}
+.gas h2{
+    padding: 30px;
+    padding-left: 50px;
+    padding-right: 0px;
+}
+.fago_shop{
+    float: right;
+}
+.gas_img{
+    width: 40%;
+    height: 60%;
+    padding: 30px;
+    padding-top: 10px;
+}
+#gas-type-selector{
+   width: 45%;
+   margin-left: 30px;
+   padding: 10px;
+   border-radius: 20px;
 }

@@ -3,7 +3,7 @@
 }
 body{
     margin:0%;
-    background-color: #fffdf0;
+    background-color:white;
 
 }
 .sidebar{
@@ -13,11 +13,12 @@ body{
     padding: 20px;
     font-size: 15px;
     float: left;
-    background-image: linear-gradient(to right bottom, #5b8467, #569369, #50a16a, #46b06b, #39bf6c, #3fc265, #46c55d, #4ec854, #63bf44, #72b734, #7eae25, #88a517);
+    /* background-image: linear-gradient(to right bottom, #5b8467, #569369, #50a16a, #46b06b, #39bf6c, #3fc265, #46c55d, #4ec854, #63bf44, #72b734, #7eae25, #88a517); */
+    background-color:#aeaeb3;
 }
 .dcontainer{
     display: flex;
-    height: 83%;
+    height: 90%;
 }
 .left1 button, .left2 button{
     background-color: white;
@@ -78,7 +79,7 @@ body{
     margin-top: 2px;
 }
 .right .data{
-    background-color: white;
+    background-color: aliceblue;
     padding: 20px;
     padding-left: 30px;
     border-radius: 20px;
@@ -175,7 +176,7 @@ body{
     margin-bottom: 20px;
 }
 .down2{
-   margin-right: 34px;
+   margin-right: 15px;
 }
 .down2 input{
     font-size: 20px;
@@ -227,7 +228,7 @@ body{
 }
 .review-con{
     display: flex;
-    height: 83%;
+    height: 90%;
 }
 .sidebar{
     float: left;
@@ -241,7 +242,7 @@ body{
     border-radius: 20px;
     width: 60%;
     margin-right: 5%;
-    height: 82%;
+    height: 80%;
 }
 .review-form form{
     background-color: rgb(226, 226, 226);
@@ -266,7 +267,7 @@ body{
     background-color: #9AE298;
 }
 .cusname, .dpname, .date, .desc{
-    font-size: 20px;
+    font-size: 18px;
     margin-bottom: 0px;
     transform: translate(18%, 25%);
 }
@@ -289,7 +290,7 @@ body{
     border: blue 2px solid;
     transform: translate(150%, 50%);
     margin-top: 20px;
-    margin-left: 15%;
+    margin-left: 10%;
     font-size: 18px;
     font-weight: bold;
 }
@@ -406,7 +407,7 @@ body{
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
     border-radius: 20px;
-    height: 50%;
+    height: 60%;
   }   
   /* The Modal Close Button (x) */
   .close {
@@ -439,13 +440,13 @@ body{
   }
 .review-details{
     float: right;
-    width: 70%;
+    width: 80%;
 }  
 .reviewtable{
     background-color: white;
-    width: 88%; 
+    width: 83%; 
     margin-top: 3%;
-    margin-left: 3%;
+    margin-left: 5%;
     padding-left: 50px;
     padding-right: 50px;
     padding-top: 10px;

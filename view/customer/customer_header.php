@@ -24,7 +24,7 @@
                 <?php } ?>
         </li></a>
         <li><img src="../../public/images/bell.png" alt="logo" width="20px" height="20px" class="notification"></li>
-        <li><a href="../../controller/customer/logout_controller.php">Logout</a></li>
+        <li><a href="../../controller/Users/logout_controller.php">Logout</a></li>
         <li><a href="customer_select.php">Fuel</a></li>
         <li><a href="customer_select.php">Gas</a></li>
         <li><img src="../../public/images/logo.png" alt="logo" width="100px" height="100px"></li>

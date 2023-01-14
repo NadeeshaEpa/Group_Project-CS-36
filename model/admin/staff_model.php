@@ -1,4 +1,5 @@
 <?php
+session_start();
 class staff_model{
     private $User_id;
     private $Firstname;
@@ -64,7 +65,8 @@ class staff_model{
     }
 
     public function setStaff($connection){
-        $sql="INSERT INTO staff(Staff_Id,NIC,Admin_Id,Registration_date,Status) VALUES ('$this->User_id','$this->nic',NULL,NULL,'1')";
+        $admin_id=$_SESSION['User_id'];
+        $sql="INSERT INTO staff(Staff_Id,NIC,Admin_Id,Registration_date,Status) VALUES ('$this->User_id','$this->nic','$admin_id',date('d-m-y'),'1')";
         if($connection->query($sql)){
             $_SESSION['registerMsg']="User Registered Successfully";
             return true;

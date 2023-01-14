@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../public/css/customer/forgot_password.css">
+    <link rel="stylesheet" href="../public/css/customer/forgot_password.css">
     <title>Forgot password</title>
 </head>
 <body>
-    <?php include '../header.php'; ?>
+    <?php include 'header.php'; ?>
     <div class="container">
-            <form action="../../controller/customer/forgotpassword_controller.php" method="POST" class="form" id="fpw_form">
+            <form action="../controller/Users/forgotpassword_controller.php" method="POST" class="form" id="fpw_form">
                 <h1>Reset Password</h1>  
                 <div id="errmsg">
                     <?php

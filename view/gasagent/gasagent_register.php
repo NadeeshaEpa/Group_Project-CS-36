@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../../public/css/gasagent/gasagentfago_register.css">
 </head>
 <body>
-<?php include '../header.php'; ?>
+<?php include '../../public/header.php'; ?>
     <div class="registration-form">  
     <form action="../../controller/gasagent/register_controller.php" method="POST">
         <h2>Gasagent Registration Form</h2>

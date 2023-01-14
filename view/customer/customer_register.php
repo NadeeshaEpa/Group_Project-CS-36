@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="../../public/css/customer/fago_register.css">
     <title>Customer Registration</title>
 </head>
+<?php include '../../public/header.php'; ?>
 <body>
-    <?php include '../header.php'; ?>
     <div class="registration-form">  
     <form action="../../controller/customer/register_controller.php" method="POST" id="customer_form">
         <h2>Customer Registration Form</h2>

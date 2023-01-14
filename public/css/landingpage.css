@@ -3,7 +3,7 @@
 }
 body{
     background-color: #FFFDF0;
-    height: 83%;
+    height: 80vh;
 }
 .customer img{
     width:150px;
@@ -23,6 +23,9 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.down{
+    margin-bottom: 5%;
 }
 p{
     font-size: 25px;
