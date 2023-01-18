@@ -1,10 +1,13 @@
 <?php session_start();
+if(!isset($_SESSION['User_id'])){
+    header('location:../../index.php');
+}
 ?>
 <html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../../public//css/Fuelmanagerdashboard.css">
+    <link rel="stylesheet" href="../../public/css/fuel_staff/Fuelmanagerdashboard.css">
     <title>Dashboard</title>
 </head>
 <body>
@@ -26,7 +29,7 @@
                 </div>
                 <div class="btn" >
                     <div class="icon">
-                        <img src="../../public/images/user.png" >
+                        <img src="../../public/images/fmuser.png" >
                     </div>
                     <div class="name"><h6>Account</h6></div>
                 </div>

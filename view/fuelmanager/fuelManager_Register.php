@@ -6,13 +6,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../public/css/FuelmanagerRegistration.css">
+    <link rel="stylesheet" href="../../public/css/fuel_staff/FuelmanagerRegistration.css">
     <title>Registration</title>
 </head>
 
-<body>
-    
-       
+<body>     
         <div class="contaner">
             <?php include '../../public/header.php'; ?>
             <div class="middle">
@@ -41,7 +39,7 @@
                     <div class="details">
                         <div class="abc">
                             <h1>Fuel Manager Registration form</h1>
-                            <form action="../../controller/fuelmanager/fuelManager_Register_Controller.php" method="post">
+                            <form action="../../controller/fuelmanager/fuelManager_Register_Controller.php" method="post" id="fmform">
                             
                                     
                                     <label for="name">Name: </label><br>

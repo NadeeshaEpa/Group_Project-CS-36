@@ -16,6 +16,8 @@ const usernameLabel = document.getElementById("username-label");
 const contact = document.getElementById("contactnumber");
 const contactLabel = document.getElementById("contactnum-label");
 
+const fuelmanager_form = document.getElementById("fmform");
+
 var emailflag=0;
 var passwordflag=0;
 var cpasswordflag=0;
@@ -137,7 +139,7 @@ function usernameexit(){
             }
         }
     };
-    xhttp.open("POST", "http://localhost/Group_Project-CS-36/controller/fuelmanager/validation_controller.php", true);
+    xhttp.open("POST", "http://localhost:8001/controller/fuelmanager/validation_controller.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("username=" + username.value);
 }
@@ -162,12 +164,12 @@ function emailValidation() {
             }
         }
     };
-    xhttp.open("POST", "http://localhost/Group_Project-CS-36/controller/fuelmanager/validation_controller.php", true);
+    xhttp.open("POST", "http://localhost:8001/controller/fuelmanager/validation_controller.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("email=" + email.value);
 }
 
-customer_form?.addEventListener("submit", function (e) {
+fuelmanager_form?.addEventListener("submit", function (e) {
     if (!(usernameflag==0 && emailflag==0 && passwordflag==0 && cpasswordflag==0 && billnoflag==0 && contactflag==0)) {
         e.preventDefault();
     }

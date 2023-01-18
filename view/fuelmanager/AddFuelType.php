@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="../../public/css/FuelmanagerAddFuelType.css">
+    <link rel="stylesheet" href="../../public/css/fuel_staff/FuelmanagerAddFuelType.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fuel_type</title>
 </head>
@@ -30,7 +30,7 @@
                 </div>
                 <div class="btn" onclick="location.href='fuelmanager_account.php'">
                     <div class="icon">
-                        <img src="../../public/images/user.png" >
+                        <img src="../../public/images/fmuser.png" >
                     </div>
                     <div class="name"><h6>Account</h6></div>
                 </div>
@@ -83,11 +83,11 @@
                                 <input type="text" name="FuelQuantity" id="FuelQuantity" placeholder="Fuel Quantity" required>
                                 <br>
                                 <label for="price" >Price</label>
-                                <input type="text" name="FuelPrice" id="FuelPrice" placeholder="Fuel Price" required><span style="margin-left:-21em;">Rs.</span> 
+                                <input type="text" name="FuelPrice" id="FuelPrice" placeholder="Fuel Price" required><span style="margin-left:-21em;">Rs.</span> <br>
                                 <button type="submit" name="AddFuelType" >ADD</button>
-                                
+                                <div class="abc"><a href="fuelmanager_manage.php">Back</a></div><br>
                             </form>
-                            <div class="abc"><a href="fuelmanager_manage.php">Back</a></div>
+                            
                         </div>
                     </div>
                 

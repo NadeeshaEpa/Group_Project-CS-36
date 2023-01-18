@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../../public/css/Fuelmanagerreg_sucesses.css">
+    <link rel="stylesheet" href="../../public/css/fuel_staff/Fuelmanagerreg_sucesses.css">
     <title>reg_sucesses</title>
 </head>
 <body>

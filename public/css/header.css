@@ -1,3 +1,6 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
 .header ul {
     list-style-type: none;
     margin: 0;
@@ -35,4 +38,5 @@ body{
     margin-left: 10px;
     margin-bottom: 5px;
 }
+
 

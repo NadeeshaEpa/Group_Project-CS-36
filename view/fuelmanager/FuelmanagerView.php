@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../public//css/Fuelmanagerview.css">
+    <link rel="stylesheet" href="../../public/css/fuel_staff/Fuelmanagerview.css">
     <title>view</title>
 </head>
     <body> 
@@ -29,7 +29,7 @@
                 </div>
                 <div class="btn" onclick="location.href='fuelmanager_account.php'">
                     <div class="icon">
-                        <img src="../../public/images/user.png" >
+                        <img src="../../public/images/fmuser.png" >
                     </div>
                     <div class="name"><h6>Account</h6></div>
                 </div>

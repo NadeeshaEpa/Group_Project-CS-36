@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../public/css/Fuelmanagersucessful.css">
+    <link rel="stylesheet" href="../../public/css/fuel_staff/Fuelmanagersucessful.css">
     <title>sucessful_page</title>
 </head>
 <body>

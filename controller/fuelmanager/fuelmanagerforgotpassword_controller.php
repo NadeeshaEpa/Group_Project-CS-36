@@ -9,7 +9,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
 
-require '../../vender/autoload.php';
+require '../../vendor/autoload.php';
 
 class forgotpassword_controller{
     private $mail;
@@ -43,7 +43,7 @@ class forgotpassword_controller{
         }
         $selector=bin2hex(random_bytes(8));
         $token=random_bytes(32);
-        $url="http://localhost/Group_Project-CS-36/view/fuelmanager/createnewpassword.php?selector=".$selector."&validator=".bin2hex($token);
+        $url="http://localhost/Group_36/view/fuelmanager/createnewpassword.php?selector=".$selector."&validator=".bin2hex($token);
         $expires=date("U")+1800;
 
         $result1=$this->forgotpassword->deleteEmail($useremail,$connection);

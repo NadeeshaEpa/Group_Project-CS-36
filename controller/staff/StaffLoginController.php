@@ -12,7 +12,7 @@ if(isset($_POST['login'])){
 }
 
 $username=$connection->real_escape_string($username);
-$password=($connection->real_escape_string($password));
+$password=md5($connection->real_escape_string($password));
 
 $user=new staff();
 $result=$user->loginStaff($connection,$username,$password);
