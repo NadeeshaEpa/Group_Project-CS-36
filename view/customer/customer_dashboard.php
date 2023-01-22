@@ -170,7 +170,7 @@
             </div>
         </div>
     </div>    
-    <?php include 'customer_footer.php'; ?>
+    <?php //include 'customer_footer.php'; ?>
 </div>
     <script>
     var modal = document.getElementById('id01');

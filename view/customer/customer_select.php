@@ -56,20 +56,25 @@ if(isset($_SESSION['gastype'])){
        <div class="gas">
             <h2>Gas Shop</h2>
             <img src="../../public/images/customer/gas.jpg" alt="" class="gas_img">
-            <div id="gas-shop">
-                <select id="gas-type-selector">
-                    <!-- create a disable option  and show it as the first value-->
-                    <option selected disabled>Choose Gas Type</option>
-                    <?php 
-                    $i=0;
-                    foreach($gastype as $gas){ ?>
-                        <option value="<?php echo $gas; ?>"><?php echo $gas; ?></option>
-                    <?php } ?>
-                </select>
+            <div id="gas-shop" class="gas_dropdown">
+                <form action="../../controller/customer/gas_controller.php" method="POST">
+                    <select id="gas-type-selector" name="gas_type">
+                        <!-- create a disable option  and show it as the first value-->
+                        <option selected disabled>Choose Gas Type</option>
+                        <?php 
+                        $i=0;
+                        foreach($gastype as $gas){ ?>
+                            <option value="<?php echo $gas; ?>"><?php echo $gas; ?></option>
+                        <?php } ?>
+                    </select>
+                    <button name="gas_button">Shop Now</button>
+                 <form>   
             </div>
        </div> 
        <div class="fago_shop">
             <h2>Fago Shop</h2>
+            <img src="../../public/images/customer/fago_shop.jpg" alt="" class="fago_img">
+            <button>Shop Now</button>
        </div>
     </div>
     <?php //include_once 'customer_footer.php'; ?>
