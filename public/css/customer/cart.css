@@ -1,0 +1,44 @@
+.cart-item{
+    display: flex;
+}
+.cart-item-left{
+    float: left;
+    width: 50%;
+    margin-left: 5%;
+}
+.cart-item-right{
+    float: right;
+    width: 50%;
+}
+.cart-item-left label{
+    font-size: 20px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.remove{
+    height: 50px;
+    width: 100px;
+    border-radius: 20px;
+    background-color: red;
+    font-size: 18px;
+    border:none;
+    float: right;
+    margin-right: 15%;
+    margin-top: 3%;
+}
+.remove:hover{
+    background-color:lightpink;
+}
+.checkout{
+    height: 50px;
+    width: 100px;
+    border-radius: 20px;
+    background-color: green;
+    font-size: 18px;
+    border:none;
+    float: right;
+    margin-right: 7%;
+}
+.checkout:hover{
+    background-color:lightgreen;
+}

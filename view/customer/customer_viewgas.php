@@ -45,6 +45,7 @@
                     <?php 
                     foreach($shops as $shop){?>
                     <tr>
+
                         <td><?php echo $shop['Shop_name']?></td>
                         <?php 
                         foreach($weight as $weight1){
@@ -55,6 +56,7 @@
                                 <td><?php echo $gas1['Quantity'];?></td>
                                 <?php
                                 $gasagent=$gas1['GasAgent_Id'];
+                                $_SESSION['gasagent']=$gasagent;
                                 $flag=1;
                                 break;
                             }else{
@@ -65,13 +67,14 @@
                             }
                             if($flag==0){?>
                                <td><?php echo "Not available"; 
-                               $gasagent=$gas1['GasAgent_Id'];
+                                $gasagent=$gas1['GasAgent_Id'];
+                                $_SESSION['gasagent']=$gasagent;
                                ?></td>
                             <?php 
                             }
                         } ?> 
                         <!-- call gas controller by passing the gas agent id -->
-                        <td><a href="../../controller/customer/gas_controller.php?gasid=<?php echo $gasagent?>">View</a></td>
+                        <td><a href="../../controller/customer/gas_controller.php?gasid=<?php echo $_SESSION['gasagent']?>">View</a></td>
                     <?php } ?>
                 </tr>
             </table>

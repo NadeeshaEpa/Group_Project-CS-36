@@ -11,21 +11,47 @@ h1{
     display: flex;
     margin: 2%;
     margin-left:15%;
-
+    /* width: 100%; */
 }
 .gas{
     float: left;
     margin-right: 5%;
     margin-top:0%;
+    width: 35%;
 }
 .gasdetails{
     float:right;
+    width: 50%;
+    /* display: flex; */
 }
-.gasdetails p{
-    margin-left: 5%;
-    margin-top: 22%;
-    font-size: 18px;
+.gasdetails label{
+    margin-left: 20%;
+    font-size: 25px;
 }
+.gasname, .price{
+    font-weight: bold;
+}
+.numberofgas{
+    margin-left: 2%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    height: 50px;
+    width: 100px;
+    border-radius: 20px;
+    font-size: 20px;
+    text-align: center;
+    border:2px solid black;
+}
+/* .gas-right{
+    display: flex;
+    margin-left: 16%;
+}
+.count{
+    float:left;
+}
+.order{
+    float:right;
+} */
 .order{
     margin-left: 45%;
     margin-top: 2%;
@@ -36,7 +62,34 @@ h1{
     background-color: green;
     font-size: 25px;
     border:none;
+    float: right;
 }
 .order:hover{
     background-color:lightgreen;
+}
+.viewcart{
+    height: 50px;
+    width: 200px;
+    border-radius: 20px;
+    background-color: rgb(86, 86, 235);
+    font-size: 25px;
+    border:none;
+    float: right;
+    margin-right: 10%;
+    margin-top: 3%;
+}
+.viewcart:hover{
+    background-color:lightblue;
+}
+.details{
+    display: flex;
+}
+.details-left{
+    float: left;
+    width: 50%;
+    margin-left: 5%;
+}
+.details-right{
+    float: right;
+    width: 50%;
 }

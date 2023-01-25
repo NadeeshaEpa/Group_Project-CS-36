@@ -126,14 +126,16 @@ class gas_model{
         return $availability;
     }
     public function getshopname($connection,$gasid){
-        $sql="Select Shop_name from gasagent WHERE GasAgent_Id='$gasid'";
+        $sql="Select g.GasAgent_Id,g.Shop_name,g.LastUpdatedTime,g.LastUpdatedDate,u.Contact_No from gasagent g inner join user_contact u on g.GasAgent_id=u.User_id WHERE GasAgent_Id='$gasid'";
         $result=$connection->query($sql);
+        $data=[];
         if($result->num_rows===0){
             return false;
         }else{
             while($row=$result->fetch_object()){
-                return $row->Shop_name;
+                array_push($data,['Gas_id'=>$row->GasAgent_Id,'Shop_name'=>$row->Shop_name,'Contact_No'=>$row->Contact_No,'LastUpdatedTime'=>$row->LastUpdatedTime,'LastUpdatedDate'=>$row->LastUpdatedDate]);
             }
+            return $data;
         }
     }
 }
