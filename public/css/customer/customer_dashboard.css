@@ -14,7 +14,7 @@ body{
     font-size: 15px;
     float: left;
     /* background-image: linear-gradient(to right bottom, #5b8467, #569369, #50a16a, #46b06b, #39bf6c, #3fc265, #46c55d, #4ec854, #63bf44, #72b734, #7eae25, #88a517); */
-    background-color:#aeaeb3;
+    background-color:#022b4c;
 }
 .dcontainer{
     display: flex;
@@ -78,8 +78,17 @@ body{
     margin: 0%;
     margin-top: 2px;
 }
+.data{
+    background-color: rgb(226, 226, 226);
+    padding: 20px;
+    padding-left: 30px;
+    border-radius: 20px;
+    margin-left: 8%;
+    margin-bottom: 10px;
+    padding-left:5%;
+}
 .right .data{
-    background-color: aliceblue;
+    background-color: rgb(226, 226, 226);
     padding: 20px;
     padding-left: 30px;
     border-radius: 20px;
@@ -88,6 +97,7 @@ body{
 }
 .right .data form{
     padding-left: 10px;
+    background-color: rgb(226, 226, 226);
 }
 .right .data img{
     border-radius: 20px;
@@ -332,15 +342,18 @@ body{
 }
 .ordertable table td a{
     text-decoration: none;
-    color: black;
+    color: white;
     border: green 1px solid;
     border-radius: 10px;
     padding: 5px;
     padding-left: 20px;
     padding-right: 20px;
-    background-color: #9AE298;
-    font-size: 18px;
+    background-color: green;
+    font-size: 17px;
     font-weight: bold;
+}
+.ordertable table td a:hover{
+    font-size: 18px;
 }
 .active button{
     background-color: #babff7;

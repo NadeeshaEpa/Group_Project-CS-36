@@ -46,13 +46,19 @@ if(isset($_POST['viewcart'])){
     $result=$cart->viewcart($connection,$User_id);
     if($result===false){
         $_SESSION['viewcart']="empty";
-        header("Location: ../../view/customer/view_cart.php");
+        header("Location: ../../view/customer/view_cart.php");  
+    }else if(sizeof($result)==0){
+        $_SESSION['viewcart']="empty";
+        header("Location: ../../view/customer/view_cart.php");   
     }else{
         $_SESSION['viewcart']=$result;
+        // print_r($_SESSION['viewcart']);
+        // die();
         header("Location: ../../view/customer/view_cart.php");
     }
 }
 if(isset($_POST['remove'])){
+    $User_id=$_SESSION['User_id'];
     $gasid=$_POST['agent_id'];
     $cartid=$connection->real_escape_string($gasid);
     $cart=new addtocart_model();
@@ -66,10 +72,28 @@ if(isset($_POST['remove'])){
         if($result===false){
             $_SESSION['viewcart']="empty";
             header("Location: ../../view/customer/view_cart.php");
+        }else if(sizeof($result)==0){
+            $_SESSION['viewcart']="empty";
+            header("Location: ../../view/customer/view_cart.php");
         }else{
             $_SESSION['viewcart']=$result;
             header("Location: ../../view/customer/view_cart.php");
         }
+    }
+}
+if(isset($_POST['checkout'])){
+    $User_id=$_SESSION['User_id'];
+    $gasagent=$_POST['agent_id'];
+    $cart=new addtocart_model();
+    $result=$cart->checkout($connection,$User_id,$gasagent);
+    if($result===false){
+        $_SESSION['checkout']="failed";
+        print_r("failed");
+        die();
+        header("Location: ../../view/customer/view_cart.php");
+    }else{
+        $_SESSION['checkout']=$result;
+        header("Location: ../../view/customer/view_checkout.php");
     }
 }
 // class addtocart_controller{

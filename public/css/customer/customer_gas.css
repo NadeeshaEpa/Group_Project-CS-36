@@ -18,6 +18,21 @@ body{
     float: left;
     width: 40%;
 }
+.left button{
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 18px;
+    margin-left: 10%;
+    margin-top: 20px;
+}
+.left button:hover{
+    font-size: 19px;
+}
 .right{
     float: right;
     width: 60%;
@@ -47,9 +62,9 @@ table td{
     padding: 20px;
 
 }
-table td a{
+table td a, table td button{
     text-decoration: none;
-    color: black;
+    color: white;
     border: green 1px solid;
     border-radius: 10px;
     padding: 5px;
@@ -57,6 +72,12 @@ table td a{
     padding-right: 20px;
     background-color:green ;
 }
+table td button{
+    background-color: black;
+    border:none;
+    font-size: 16px;
+}
 table td a:hover{
-    background-color: #9AE298;
+    background-color: lightgreen;
+    color: black;
 }

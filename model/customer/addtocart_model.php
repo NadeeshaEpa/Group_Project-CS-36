@@ -47,8 +47,11 @@ class addtocart_model{
                     return false;
                 }else{
                     while($row=$result->fetch_assoc()){
-                        //take the current time
-                        $time=date("Y-m-d H:i:s");
+                        //take the time of the last order accrording to the gasagent
+                        $sql="SELECT time FROM cart WHERE gasagent_id='$gas' ORDER BY time DESC LIMIT 1";
+                        $result=$connection->query($sql);
+                        $row1=$result->fetch_assoc();
+                        $time=$row1['time'];
                         array_push($cart,['gasagent_id'=>$gas,'total'=>$row['total'],'quantity'=>$row['quantity'],'shop_name'=>$row['Shop_name'],'time'=>$time]);
                     }
                 }
@@ -64,6 +67,19 @@ class addtocart_model{
             return false;
         }else{
             return true;
+        }
+    }
+    public function checkout($connection,$User_id,$gasagent){
+        $sql="SELECT c.cart_id,c.type,c.weight,c.quantity,c.price,g.Shop_name from cart c inner join gasagent g on c.gasagent_id=g.GasAgent_Id where c.User_id='$User_id' and c.gasagent_id='$gasagent'";
+        $result=$connection->query($sql);
+        if($result===false){
+            return false;
+        }else{
+            $cart=array();
+            while($row=$result->fetch_assoc()){
+                array_push($cart,['cart_id'=>$row['cart_id'],'type'=>$row['type'],'weight'=>$row['weight'],'quantity'=>$row['quantity'],'price'=>$row['price'],'shop_name'=>$row['Shop_name']]);
+            }
+            return $cart;
         }
     }
 }

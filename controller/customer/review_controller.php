@@ -35,7 +35,7 @@ if(isset($_POST['fillreview'])){
     if($dpid===false){
         $_SESSION['addreview']="failed";
     }else{
-        $result=$order->review($connection,$_SESSION['User_id'],$dpid,$date,$description);
+        $result=$order->review($connection,$_SESSION['User_id'],$dpid,$description);
         if($result===false){
             echo "Failed";
         }else{

@@ -1,0 +1,64 @@
+.card{
+    background-color:rgb(218, 216, 216);
+    border-radius: 20px;
+    width: 55%;
+    margin-left: 25%;
+    margin-top: 5%;
+}
+.images{
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    flex-direction: row;
+}
+.images img{
+    width:15%;
+    height: 15%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 4%;
+}
+.card-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 5%;
+    width: 60%;
+    margin-left: 20%;
+}
+.card-details label{
+    font-size: 18px;
+    margin-left: 5%;
+}
+.card-details input{
+    width: 80%;
+    height: 30px;
+    margin-left: 5%;
+    border-radius: 15px;
+    border: none;
+    font-size: 18px;
+    padding-left: 10px;
+    font-size: 15px;
+}
+.card-details button{
+    height: 50px;
+    width: 35%;
+    border-radius: 20px;
+    background-color: green;
+    font-size: 18px;
+    border:none;
+    float: right;
+    color: white;
+    margin-bottom: 4%;
+    margin-left: 30%;
+}
+.card-details button:hover{
+    font-size: 19px;
+}
+.card-details input:focus{
+    outline: none;
+}
+.card-details input::placeholder{
+    font-size: 12px;
+    padding-left: 10px;
+}

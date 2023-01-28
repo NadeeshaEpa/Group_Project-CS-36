@@ -11,6 +11,7 @@
     <?php include_once 'customer_header.php'; ?>
     <div class="container">
         <div class="left">
+            <button>Buy New Cylinder</button>
         <!-- <img src="../../public/images/litro2.jpg" alt="" class="litroimg"> -->
         </div>
         <div class="right">
@@ -20,6 +21,8 @@
                 }else{
                     if(isset($_SESSION['viewgas'])){
                         $gas=$_SESSION['viewgas'];
+                        // print_r($gas);
+                        // die();
                         $count=count($gas);
                     }
                     if(isset($_SESSION['weight'])){
@@ -43,6 +46,7 @@
                     <th>order</th>
                 </tr>
                     <?php 
+                    $i=0;
                     foreach($shops as $shop){?>
                     <tr>
 
@@ -66,15 +70,19 @@
                             <?php 
                             }
                             if($flag==0){?>
-                               <td><?php echo "Not available"; 
-                                $gasagent=$gas1['GasAgent_Id'];
-                                $_SESSION['gasagent']=$gasagent;
+                               <td><?php
+                                $i++;
+                                echo "Not available"; 
                                ?></td>
                             <?php 
                             }
                         } ?> 
                         <!-- call gas controller by passing the gas agent id -->
-                        <td><a href="../../controller/customer/gas_controller.php?gasid=<?php echo $_SESSION['gasagent']?>">View</a></td>
+                        <?php if($i==$count1){?>
+                            <td><button disabled>Order</button></td>
+                        <?php }else{?>
+                            <td><a href="../../controller/customer/gas_controller.php?gasid=<?php echo $gasagent?>">Order</a></td>
+                        <?php } ?>
                     <?php } ?>
                 </tr>
             </table>

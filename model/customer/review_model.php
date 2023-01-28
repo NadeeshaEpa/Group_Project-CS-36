@@ -40,9 +40,9 @@ class review_model{
             return $row->User_id;
         }
     }
-    public function review($connection,$user_id,$dpid,$date,$description){
+    public function review($connection,$user_id,$dpid,$description){
         //$this->setDpId($connection);
-        $sql="INSERT INTO `rateservice`(`Rate_Id`,`Date`, `Description`,`Customer_Id`, `DeliveryPerson_Id`) VALUES (' ','$date','$description','$user_id','$dpid')";
+        $sql="INSERT INTO `rateservice`(`Rate_Id`,`Description`,`Customer_Id`, `DeliveryPerson_Id`) VALUES (' ','$description','$user_id','$dpid')";
         $result=$connection->query($sql);
         if($result){
             return TRUE;

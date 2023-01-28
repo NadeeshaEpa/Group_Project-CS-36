@@ -79,6 +79,5 @@
             </div>
         </div>
     </div>
-    <?php require_once 'customer_footer.php';?>
 </body>
 </html>

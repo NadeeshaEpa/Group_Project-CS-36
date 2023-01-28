@@ -29,12 +29,9 @@ if(isset($_POST['gas_type'])){
                 header("Location: ../../view/customer/customer_viewgas.php");
             }
         }
-
 }
 if(isset($_GET['gasid'])){
     $gasid=$_GET['gasid'];
-    // print_r($gasid);
-    // die();
     $gasid=$connection->real_escape_string($gasid);
     $type=$_SESSION['gas_type'];
     $gasmodel=new gas_model();

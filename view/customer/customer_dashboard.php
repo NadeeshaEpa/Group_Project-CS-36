@@ -51,7 +51,7 @@
                             <img src="../../public/images/ratings.png" alt="logo" width="20px" height="20px">
                         </div>
                         <p>Reviews</p>
-                        <p>Rate delivery service</P>
+                        <p>provide your feedbacks</P>
                     </button>
                     </form>
                 </div>

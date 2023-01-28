@@ -9,6 +9,11 @@
 </head>
 <body>
     <?php include_once 'customer_header.php'; ?>
+    <div class="back">
+        <a href="customer_viewgas.php">
+            <img src="../../public/images/customer/back.png" alt="" class="backimg">
+        </a>
+    </div>
     <?php
         $button=0;
         if(isset($_SESSION['gasavailability'])){
@@ -31,13 +36,14 @@
             }else{
                 $button=2;
             }
+            unset($_SESSION['addtocart']);
         }
     ?>
     <h1><?php echo $shopname?></h1>
     <div class="details">
         <div class="details-left">
-            <h3>Contact No:<?php echo $contactno?></h3>
-            <h3>Last Updated:<?php echo $lastupdateddate?> <?php echo $lastupdatedtime?></h3>
+            <b>Contact No:</b><?php echo $contactno?><br><br>
+            <b>Last Updated:</b><?php echo $lastupdateddate?> <?php echo $lastupdatedtime?>
         </div>
         <div class="details-right">
             <!-- pass the button value as a post variable -->
@@ -53,14 +59,13 @@
             foreach($gasdetails as $gasdetail){?>
             <div class="ava">
                 <div class="gas">
-                    <img src="../../public/images/gascylinder/<?php echo $gasdetail['photo']?>" alt="" width="230px" height="320px">
+                    <img src="../../public/images/gascylinder/<?php echo $gasdetail['photo']?>" alt="">
                 </div>
-                <!-- <form action="../../controller/customer/addtocart_controller.php" method="post"> -->
                 <div class="gasdetails">    
                     <div class="gas-left">
                         <form action="../../controller/customer/addtocart_controller.php" method="post">
                             <label for="weight" class="gasname"><?php echo $type?> Gas <?php echo $gasdetail['Weight']?>kg Cylinder</label><br><br>
-                            <label for="Quantity">Availability:<?php echo $gasdetail['Quantity']?></label><br><br><br>   
+                            <label for="Quantity">Availability:<?php echo $gasdetail['Quantity']?></label><br><br>
                             <label for="price" class="price">Rs:<?php echo $gasdetail['price']?></label><br>
                             <input type="hidden" name="price" value="<?php echo $gasdetail['price']?>">
                             <input type="hidden" name="gasid" value="<?php echo $Gas_id?>">
@@ -85,9 +90,9 @@
                         </div>  
                         <div class="order">
                             <?php if($gasdetail['Quantity']==0){?>
-                                <button class="order" disabled>Add to Cart</button>
+                                <button class="dorder" disabled>Add to Cart</button>
                             <?php }else{?>
-                                <button class="order" name="addtocart">Add to Cart</button>
+                                <button class="order" name="addtocart" onclick="showPopup()";>Add to Cart</button>
                             <?php }?>
                         </div>         
                     </div>    
@@ -97,6 +102,10 @@
             </div>   
             <hr> 
         <?php } ?>
-       
+        <script>
+            function showPopup(){
+                alert("Items Added to Cart Successfully");
+            }
+        </script>
 </body>
 </html>

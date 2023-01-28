@@ -1,5 +1,7 @@
 <?php
 class user_model{
+    private $User_id;
+    private $Type;
     public function loginUser($connection,$username,$password){   //check whether the user entered correct username and password and the status is 1.
         $sql = "SELECT * FROM user WHERE username='$username' AND password='$password'";
         $result = $connection->query($sql);

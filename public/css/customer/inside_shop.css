@@ -15,9 +15,16 @@ h1{
 }
 .gas{
     float: left;
-    margin-right: 5%;
+    /* margin-right: 5%; */
     margin-top:0%;
     width: 35%;
+    margin-left: 5%;
+    height: 20%;
+}
+.gas img{
+    width: 30%;
+    height: 60%;
+    padding-bottom: 0%;
 }
 .gasdetails{
     float:right;
@@ -26,7 +33,7 @@ h1{
 }
 .gasdetails label{
     margin-left: 20%;
-    font-size: 25px;
+    font-size: 20px;
 }
 .gasname, .price{
     font-weight: bold;
@@ -35,10 +42,10 @@ h1{
     margin-left: 2%;
     margin-top: 2%;
     margin-bottom: 2%;
-    height: 50px;
-    width: 100px;
+    height: 40px;
+    width: 70px;
     border-radius: 20px;
-    font-size: 20px;
+    font-size: 15px;
     text-align: center;
     border:2px solid black;
 }
@@ -52,31 +59,39 @@ h1{
 .order{
     float:right;
 } */
-.order{
+.order button{
     margin-left: 45%;
     margin-top: 2%;
     margin-bottom: 2%;
-    height: 50px;
-    width: 200px;
+    height: 40px;
+    width: 150px;
     border-radius: 20px;
     background-color: green;
-    font-size: 25px;
+    font-size: 15px;
     border:none;
     float: right;
+    color: white;
 }
 .order:hover{
     background-color:lightgreen;
 }
+.dorder{
+    background-color: gray;
+    color: white;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
 .viewcart{
-    height: 50px;
-    width: 200px;
+    height: 40px;
+    width: 150px;
     border-radius: 20px;
     background-color: rgb(86, 86, 235);
-    font-size: 25px;
+    font-size: 15px;
     border:none;
     float: right;
     margin-right: 10%;
     margin-top: 3%;
+    color: white;
 }
 .viewcart:hover{
     background-color:lightblue;
@@ -88,8 +103,17 @@ h1{
     float: left;
     width: 50%;
     margin-left: 5%;
+    font-size: 20px;
 }
 .details-right{
     float: right;
     width: 50%;
+    margin-bottom: 0.5%;
+    margin-top:-2%;
+}
+.back img{
+    width: 30px;
+    height: 30px;
+    margin-left: 5%;
+    margin-top: 1%; 
 }

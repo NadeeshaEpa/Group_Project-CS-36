@@ -16,7 +16,7 @@
         <div class="name">
             <li><?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?></li>
         </div>
-        <a href="#">
+        <a href="../../controller/customer/account_controller.php?viewacc='1'">
         <li><?php if($_SESSION['img-status'] == 0){?>
                     <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                 <?php }else{?>

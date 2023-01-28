@@ -75,10 +75,6 @@
                                 ?>
                             </select> 
                     </div>
-                    <div class="date">
-                        <p>Date:</p>
-                        <input type="date" name="date" required>
-                    </div>
                     <div class="desc">
                         <p>Description:</p>
                         <textarea name="description" id="" cols="50" rows="30" placeholder="place Your Feedback" required></textarea>
@@ -99,6 +95,5 @@
             </form>    
         </div>
     </div>   
-    <?php require_once 'customer_footer.php'; ?> 
 </body>
 </html>

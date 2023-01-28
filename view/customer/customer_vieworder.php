@@ -83,11 +83,16 @@
                                     <td><?php echo $detail['Order_id']?></td>
                                     <td><?php echo $detail['Amount']?></td>
                                     <td><?php echo $detail['Delivery_Method']?></td>
-                                    <?php if($detail['Delivery_Status']==0){?>
-                                        <td>Not Delivered</td>
-                                    <?php }else{?>
-                                        <td>Delivered</td>
-                                    <?php }?>
+                                    <div class="status">
+                                        <?php if($detail['Delivery_Status']==2){?>
+                                            //change the color of the text abd make it bold
+                                            <td style="color:red"><b>No delivery</b></td>
+                                        <?php }else if($detail['Delivery_Status']==0){?>
+                                            <td style="color:#FDC801"><b>On the way</b></td>
+                                        <?php }else{?>
+                                            <td style="color:green"><b>Delivered</b></td>     
+                                        <?php }?>
+                                    </div>
                                     <td><a href="../../controller/customer/order_controller.php?id=<?php echo $detail['Order_id']?>">View</a></td>
                             </tr>
                         <?php }?>
@@ -95,6 +100,5 @@
             </div>    
         </div>
     </div>    
-    <?php require_once 'customer_footer.php'; ?>
 </body>
 </html>
