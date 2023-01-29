@@ -11,7 +11,7 @@ if(isset($_POST['viewacc'])){
                 $_SESSION['viewacc']="failed";
                 header("Location: ../../view/customer/customer_select.php");            
             }else{
-                //unset($_SESSION['viewacc']);
+                //unset($_SESSION['viewacc']); 2345
                 $_SESSION['viewacc_result']=$result;    
                 header("Location: ../../view/customer/customer_dashboard.php");   
             }
