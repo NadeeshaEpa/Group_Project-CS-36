@@ -11,8 +11,8 @@
 </head>
 <body>
    
-    <?php include '../../public/header.php'; ?>
-   
+    <!-- <?php include '../../public/header.php'; ?>
+    -->
    
     <div class="registration-form">  
     
