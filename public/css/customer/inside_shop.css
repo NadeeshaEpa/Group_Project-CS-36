@@ -1,0 +1,42 @@
+body{
+    background-color: white
+}
+h1{
+    text-align: center;
+    font-size: 50px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.ava{
+    display: flex;
+    margin: 2%;
+    margin-left:15%;
+
+}
+.gas{
+    float: left;
+    margin-right: 5%;
+    margin-top:0%;
+}
+.gasdetails{
+    float:right;
+}
+.gasdetails p{
+    margin-left: 5%;
+    margin-top: 22%;
+    font-size: 18px;
+}
+.order{
+    margin-left: 45%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    height: 50px;
+    width: 200px;
+    border-radius: 20px;
+    background-color: green;
+    font-size: 25px;
+    border:none;
+}
+.order:hover{
+    background-color:lightgreen;
+}

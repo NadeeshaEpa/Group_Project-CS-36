@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
-    <link rel="stylesheet" type="text/css" href="../../public/css/style2.css">
+    <link rel="stylesheet" type="text/css" href="../../public/css/gasagent/style2.css">
 </head>
 
 <body>
     <div class="login-form">
         <h1>Login Form</h1>
-        <form action="../../controller/gasagent/login_controller.php" method="POST" class="form">
+        <form action="../../controller/gasagent/login2_controller.php" method="POST" class="form">
         <?php
             if(isset($_SESSION['login'])){
                 if($_SESSION['login']=="failed"){

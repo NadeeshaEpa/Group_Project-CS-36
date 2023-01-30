@@ -14,12 +14,14 @@ if(isset($_POST['register'])){
     $password = $_POST['password'];
     $cpassword = $_POST['cpassword'];
     $shopnumber = $_POST['shopnumber'];
-    $business_reg_num = $POST['business_reg_num'];
+    $business_reg_num = $_POST['business_reg_num'];
     $email = $_POST['email'];
     $nic =$_POST['NIC'];
     $contactnumber = $_POST['contactnumber'];
     $accountnum= $_POST['accountnum'];
-   
+    $shopename= $_POST['shopName'];
+    $gastype= $_POST['gastype'];
+
 }else{
    echo "Invalid request";
    exit();
@@ -61,10 +63,11 @@ $business_reg_num=$connection->real_escape_string($business_reg_num);
 $shopnumber=$connection->real_escape_string($shopnumber);
 $nic=$connection->real_escape_string($nic);
 $accountnum=$connection->real_escape_string($accountnum);
-
+$shopename=$connection->real_escape_string($shopename);
+$gastype=$connection->real_escape_string($gastype);
 
 $user=new gasagent_model();
-$user->setDetails($firstname,$lastname,$username,$street,$city,$postalcode,$password,$email,$contactnumber,$business_reg_num,$shopnumber,$nic,$accountnum);
+$user->setDetails($firstname,$lastname,$username,$street,$city,$postalcode,$password,$email,$contactnumber,$business_reg_num,$shopnumber,$nic,$accountnum,$shopename);
 $result=$user->registergasagent($connection);
 if($result){
     $_SESSION['RegsuccessMsg'] = 'Registeration Request Sent Successfully';

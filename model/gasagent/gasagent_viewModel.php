@@ -17,7 +17,7 @@ class view{
 
     public function get_details($connection){
         $this->getGasAgentrUserId($connection);
-        $sql="SELECT  gascylinder.Type, gascylinder.Weight,sell_gas.Quantity, sell_gas.price FROM sell_gas INNER JOIN gascylinder ON sell_gas.Cylinder_Id=gascylinder.Cylinder_Id WHERE  sell_gas.GasAgent_Id='$this->GasagentId'";
+        $sql="SELECT  gascylinder.Type, gascylinder.Weight,sell_gas.Quantity, gascylinder.Price FROM sell_gas INNER JOIN gascylinder ON sell_gas.Cylinder_Id=gascylinder.Cylinder_Id WHERE  sell_gas.GasAgent_Id='$this->GasagentId'";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;
