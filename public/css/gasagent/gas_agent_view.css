@@ -289,4 +289,7 @@ body {
 }
 /* NAVBAR */
 
- 
+.bx-menu:before {
+    content: "\edc2";
+    font-size: 45px;
+}
