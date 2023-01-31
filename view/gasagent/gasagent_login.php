@@ -8,7 +8,7 @@
     <title>Login</title>
 </head>
 <body>
-<?php include '../header.php'; ?>
+<!-- <?php include '../header.php'; ?> -->
  <div class="container">  
     <form action="../../controller/gasagent/login_controller.php" method="POST" class="form">
         <h2>Login Form</h2><br><br>

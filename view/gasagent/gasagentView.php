@@ -20,13 +20,13 @@
 			<span class="text">FaGo</span>
 		</a>
 		<ul class="side-menu top">
-			<li class="active">
+			<li>
 				<a href="../../view/gasagent/gasagent_dashboard.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
-			<li>
+			<li class="active">
 				<a href="../../view/gasagent/gasagentView.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">View details</span>
