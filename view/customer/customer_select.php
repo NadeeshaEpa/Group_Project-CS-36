@@ -21,37 +21,6 @@ if(isset($_SESSION['gastype'])){
             <button type="submit" name="viewacc">View My Profile</button>
         </form>
     </div>    
-    <!-- <div class="down">
-        <div class="litro">
-            <img src="../../public/images/litro.jpg" alt="" class="litroimg">
-            <form action="../../controller/customer/order_controller.php" method="POST">
-                <button name="litroavailable">Gas</button>
-            </form>    
-        </div>
-        <div class="laugh">
-            <img src="../../public/images/laugh.png" alt="" class="litroimg">
-            <form action="../../controller/customer/order_controller.php" method="POST">    
-                <button name="laughavailable">Laugh gas</button>
-            </form>    
-        </div>
-        <!-- <div class="litro">
-            <img src="../../public/images/customer/gascylinders.webp" alt="" class="litroimg">
-            <form action="../../controller/customer/order_controller.php" method="POST">
-                <div class="dropdown">
-                    <button name="litroavailable" class="dropbtn">Gas</button>
-                    <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
-                    </div>
-                </div>
-            </form>
-        </div> -->
-        <!-- <div class="fuel">
-            <img src="../../public/images/fuel.jpg" alt="" class="litroimg"> 
-            <button>Fuel availability</button>
-        </div>   
-    </div>      --> 
     <div class="down">
        <div class="gas">
             <h2>Gas Shop</h2>
@@ -68,13 +37,13 @@ if(isset($_SESSION['gastype'])){
                         <?php } ?>
                     </select>
                     <button name="gas_button">Shop Now</button>
-                 <form>   
+                </form>   
             </div>
        </div> 
        <div class="fago_shop">
             <h2>Fago Shop</h2>
             <img src="../../public/images/customer/fago_shop.jpg" alt="" class="fago_img">
-            <button>Shop Now</button>
+            <a href="../../controller/customer/shop_controller.php"><button>Shop Now</button></a>
        </div>
     </div>
     <?php //include_once 'customer_footer.php'; ?>

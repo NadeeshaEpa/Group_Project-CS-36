@@ -37,7 +37,7 @@ if(isset($_POST['addtocart'])){
         //     }
     }
 }
-if(isset($_POST['viewcart'])){
+if(isset($_POST['viewcart'])|| isset($_GET['viewcart'])){
     $gasagent=$_POST['gas_id'];
     $_SESSION['gasagent']=$gasagent;
     $User_id=$_SESSION['User_id'];

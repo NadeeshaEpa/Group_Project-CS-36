@@ -10,16 +10,24 @@
 <body>
     <?php include_once 'customer_header.php'; ?>
     <div class="back">
-        <a href="inside_shop.php">
+        <!-- <a href="inside_shop.php">
             <img src="../../public/images/customer/back.png" alt="" class="backimg">
-        </a>
+        </a> -->
     </div>
     <h1>Shopping Cart</h1>
     <?php
         if(isset($_SESSION['viewcart'])){
-            if($_SESSION['viewcart']=="empty"){
-                echo "<h2>Cart is empty</h2>";
-                $data=[];
+            if($_SESSION['viewcart']=="empty"){?>
+                <div class="emptycartimg">
+                    <img src="../../public/images/customer/emptycart.gif" alt="">
+                </div>
+                <div class="emptycart">
+                    <?php echo "<h2>Add items to your Shopping Cart</h2>"; 
+                    $data=[];?>
+                    <p>Once you've added items to your Shopping Cart, you can check out quickly and easily.</p>
+                    <button class="continue"><a href="customer_select.php">Start shopping</a></button>
+                </div>
+            <?php
             }else{
                 $data=$_SESSION['viewcart'];
                 //sort the data array according to the time of adding to cart

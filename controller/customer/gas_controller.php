@@ -52,3 +52,25 @@ if(isset($_GET['gasid'])){
         }
     }
 }
+if(isset($_GET['newgasid'])){
+    $newgasid=$_GET['newgasid'];
+    $newgasid=$connection->real_escape_string($newgasid);
+    $type=$_SESSION['gas_type'];
+    $gasmodel=new gas_model();
+    $result=$gasmodel->cylinders($connection,$type);
+    if($result===false){
+        $_SESSION['cylinders']="failed";
+        header("Location: ../../view/customer/customer_viewgas.php");
+    }else{
+        $result1=$gasmodel->getavailability($connection,$type,$result,$newgasid);
+        if($result1===false){
+            $_SESSION['availability']="failed";
+            header("Location: ../../view/customer/customer_viewgas.php");
+        }else{
+            $_SESSION['gasavailability']=$result1;
+            $result3=$gasmodel->getshopname($connection,$newgasid);
+            $_SESSION['shopname']=$result3;
+            header("Location: ../../view/customer/inside_shopnew.php");
+        }
+    }
+}

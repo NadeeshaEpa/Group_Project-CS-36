@@ -8,6 +8,32 @@ h1{
     margin-left: 5%;
     margin-top: 1%; 
 }
+.emptycart{
+    text-align: center;
+    margin-right: 6%;
+}
+.emptycart p{
+    margin-left: 6%;
+}
+.emptycart button{
+    height: 40px;
+    border-radius: 20px;
+    background-color: black; 
+    color: white;
+    border: none;
+    margin-left: 10%;
+    width: 150px;
+}
+.emptycart button:hover{
+    font-size: 15px;
+}
+.emptycart a{
+    text-decoration: none;
+    color: white;
+}
+.emptycartimg img{
+    margin-left: 38%;
+}
 .cart-item{
     display: flex;
     flex-direction: row;

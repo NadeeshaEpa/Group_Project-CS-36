@@ -3,7 +3,7 @@ session_start();
 require_once '../../config.php';
 require_once '../../model/customer/review_model.php';
 
-if(isset($_POST['review'])){
+if(isset($_GET['reviewid'])){
     if(isset($_SESSION['User_id'])){
         $order=new review_model();
         $result=$order->deliverypersons($connection,$_SESSION['User_id']);
@@ -52,7 +52,7 @@ if(isset($_POST['fillreview'])){
         }
     }  
 }
-if(isset($_POST['view-review']) ){
+if(isset($_GET['view-review']) ){
     $review=new review_model();
     $result=$review->viewreview($connection,$_SESSION['User_id']);
     if($result===false){

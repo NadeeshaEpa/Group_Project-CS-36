@@ -102,23 +102,23 @@ class gas_model{
             $sql="Select Quantity from sell_gas WHERE Cylinder_Id='$cylinder' AND GasAgent_Id='$gasid'";
             $result=$connection->query($sql);
             if($result->num_rows===0){
-                $sql2="Select photo,price,Weight from gascylinder WHERE Cylinder_Id='$cylinder'";
+                $sql2="Select photo,price,Weight,newcylinder_price from gascylinder WHERE Cylinder_Id='$cylinder'";
                 $result2=$connection->query($sql2);
                 if($result2->num_rows===0){
-                    array_push($availability,['Quantity'=>0,'photo'=>0,'price'=>0]);
+                    array_push($availability,['Quantity'=>0,'photo'=>0,'price'=>0,'newcylinder_price'=>0]);
                 }else{
                     while($row=$result2->fetch_object()){
-                        array_push($availability,['Quantity'=>0,'photo'=>$row->photo,'price'=>$row->price,'Weight'=>$row->Weight]);
+                        array_push($availability,['Quantity'=>0,'photo'=>$row->photo,'price'=>$row->price,'newcylinder_price'=>$row->newcylinder_price,'Weight'=>$row->Weight]);
                     }
                 }
             }else{
-                $sql="SELECT g.Quantity,c.photo,c.price,c.Weight from sell_gas g inner join gascylinder c on g.Cylinder_Id=c.Cylinder_Id inner join gas_company co on c.Type=co.company_id WHERE g.Cylinder_Id='$cylinder' AND co.company_name='$type' AND g.GasAgent_Id='$gasid'";
+                $sql="SELECT g.Quantity,c.photo,c.price,c.Weight,c.newcylinder_price from sell_gas g inner join gascylinder c on g.Cylinder_Id=c.Cylinder_Id inner join gas_company co on c.Type=co.company_id WHERE g.Cylinder_Id='$cylinder' AND co.company_name='$type' AND g.GasAgent_Id='$gasid'";
                 $result=$connection->query($sql);
                 if($result->num_rows==0){
                     print_r("Error");
                 }else{
                     while($row=$result->fetch_object()){
-                        array_push($availability,['Quantity'=>$row->Quantity,'photo'=>$row->photo,'price'=>$row->price,'Weight'=>$row->Weight]);
+                        array_push($availability,['Quantity'=>$row->Quantity,'photo'=>$row->photo,'price'=>$row->price,'newcylinder_price'=>$row->newcylinder_price,'Weight'=>$row->Weight]);
                     }
                 }
             }

@@ -11,8 +11,6 @@
     <?php include_once 'customer_header.php'; ?>
     <div class="container">
         <div class="left">
-            <button>Buy New Cylinder</button>
-        <!-- <img src="../../public/images/litro2.jpg" alt="" class="litroimg"> -->
         </div>
         <div class="right">
             <?php 
@@ -43,7 +41,8 @@
                         foreach($weight as $weight1){?>
                             <th><?php echo $weight1['Weight']?>kg</th>
                         <?php } ?>
-                    <th>order</th>
+                    <th>Refilling</th>
+                    <th>New Cylinder</th>
                 </tr>
                     <?php 
                     $i=0;
@@ -82,6 +81,12 @@
                             <td><button disabled>Order</button></td>
                         <?php }else{?>
                             <td><a href="../../controller/customer/gas_controller.php?gasid=<?php echo $gasagent?>">Order</a></td>
+                        <?php } ?>
+
+                        <?php if($i==$count1){?>
+                            <td><button disabled>Buy</button></td>
+                        <?php }else{?>
+                            <td><a href="../../controller/customer/gas_controller.php?newgasid=<?php echo $gasagent?>">Buy</a></td>
                         <?php } ?>
                     <?php } ?>
                 </tr>

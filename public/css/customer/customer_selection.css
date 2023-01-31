@@ -21,6 +21,10 @@ button{
     border: green 1px solid;
     text-align: center;
 }
+a{
+    text-decoration: none;
+    color: white;
+}
 button:hover{
     background-color: lightgreen;
     color: black;

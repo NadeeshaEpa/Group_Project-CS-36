@@ -3,7 +3,7 @@ session_start();
 require_once '../../config.php';
 require_once '../../model/customer/order_model.php';
 
-if(isset($_POST['orders'])){
+if(isset($_GET['orderid'])){
     if(isset($_SESSION['User_id'])){
         $order=new order_model();
         $result=$order->viewOrders($connection,$_SESSION['User_id']);

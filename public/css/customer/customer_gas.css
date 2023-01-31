@@ -71,6 +71,7 @@ table td a, table td button{
     padding-left: 20px;
     padding-right: 20px;
     background-color:green ;
+    font-size: 18px;
 }
 table td button{
     background-color: black;
@@ -78,6 +79,5 @@ table td button{
     font-size: 16px;
 }
 table td a:hover{
-    background-color: lightgreen;
-    color: black;
+    font-size: 19px;
 }

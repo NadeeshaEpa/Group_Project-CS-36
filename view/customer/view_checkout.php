@@ -81,17 +81,13 @@
               </tr>
               <tr>
                 <td>Delivery fee:</td>
-                <td>Rs.<?php echo $total*0.1?></td>
-              </tr>
-              <tr>
-                <td>Service charge:</td>
                 <td>Rs.<?php echo $total*0.01?></td>
               </tr>
               <tr>
               </tr>
               <tr>
                 <td>Total:</td>
-                <td>Rs.<?php echo $total+$total*0.1+$total*0.1?></td>
+                <td>Rs.<?php echo $total+$total*0.01?></td>
               </tr>
           </table>
       </div>    
