@@ -34,11 +34,20 @@
                 echo "<div class='item'>";
                 //print the image of the product type 
                 ?>
+                <input type="hidden" name="item_code" value="<?php echo $gas['item_code']; ?>">
+                <input type="hidden" name="product_type" value="<?php echo $gas['product_type']; ?>">
+                <input type="hidden" name="Name" value="<?php echo $gas['Name']; ?>">
+                <input type="hidden" name="price" value="<?php echo $gas['price']; ?>">
+                <input type="hidden" name="Quantity" value="<?php echo $gas['Quantity']; ?>">
+                <input type="hidden" name="Description" value="<?php echo $gas['Description']; ?>">
+                <input type="hidden" name="Category" value="<?php echo $gas['Category']; ?>">
                 <img src="../../public/images/customer/<?php echo $gas['product_type']; ?>.jpg" alt="">
                 <?php
                 echo "<h3>".$gas['Name']."</h3>";
                 // echo "<p>".$gas['Description']."</p>";
-                echo "<p>Rs. ".$gas['price']."</p>";
+                echo "<div class='price'>";
+                    echo "<p >Rs. ".$gas['price']."</p>";
+                echo "</div>";
                 echo "<a href='../../controller/customer/shop_controller.php?addtocart=".$gas['item_code']."'><button>Add to Cart</button></a>";
                 echo "</div>";
                 if($i%4==3){
