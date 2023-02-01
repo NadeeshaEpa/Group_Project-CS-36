@@ -54,7 +54,7 @@
             }
         }
         ?>
-    <!-- <?php// include '../../view/customer/customer_footer.php'; ?> -->
+    <!-- // include '../../view/customer/customer_footer.php'; ?> -->
     <script src="../../public/js/Validation.js"></script>    
 </body>
 </html>

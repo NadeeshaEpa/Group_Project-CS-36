@@ -1,5 +1,8 @@
 <?php
 class user_model{
+    private $User_id;
+    private $Type;
+
     public function loginUser($connection,$username,$password){   //check whether the user entered correct username and password and the status is 1.
         $sql = "SELECT * FROM user WHERE username='$username' AND password='$password'";
         $result = $connection->query($sql);
@@ -7,6 +10,7 @@ class user_model{
             $row = $result->fetch_assoc();
 
             $this->User_id=$row['User_id'];
+            
             $_SESSION['User_id']=$this->User_id;
             $_SESSION['Username']=$row['Username'];
             $_SESSION['Firstname']=$row['First_Name'];
@@ -78,4 +82,22 @@ class user_model{
         }
         return $gastype;
     }
+
+    public function getUserDetails($connection){
+        $sql="SELECT u.Username,u.Email,u.First_Name,u.Last_Name,u.City,u.Street,u.Postalcode,c.Contact_No,u.Password,d.Account_No FROM user u INNER JOIN user_contact c on u.User_id=c.User_id INNER JOIN deliveryperson d on u.User_id=d.DeliveryPerson_Id WHERE u.User_id='$this->User_id'";
+        
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $answer=[];
+            while($row=$result->fetch_assoc()){
+                array_push($answer,['Username'=>$row['Username'],'Email'=>$row['Email'],'First_Name'=>$row['First_Name'],'Last_Name'=>$row['Last_Name'],'City'=>$row['City'],'Street'=>$row['Street'],'Postalcode'=>$row['Postalcode'],'Contact_No'=>$row['Contact_No'],'Password'=>md5($row['Password']),'Account_No'=>$row['Account_No']]);
+            }
+        }
+        return $answer;
+
+    }
+
+   
 }

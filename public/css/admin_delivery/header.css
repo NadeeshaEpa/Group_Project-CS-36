@@ -8,12 +8,21 @@ body{
 
 }
 
+.header{
+  position: fixed; /* Add position fixed to fix the header */
+  top: 0;
+  left: 0;
+  width: 80%;
+  height: 5%;
+  margin-left: 20%;
+}
+
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color:white;
+    background-color:#fcfcfd;
     
     
  }
@@ -23,19 +32,19 @@ li a {
     padding: 14px 16px;
     text-decoration: none;
     float: right;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 10px;
+    
     margin: 10px;
-    color: black;
+    color: rgba(0, 0, 0, 0.156);
 }
 
 li a:hover:not(.active) {
-   background-color:rgb(71, 108, 173);
+   color:rgb(0, 0, 5);
  }
 
 li img{
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     margin-top: 5px;
     margin-right: 10px;

@@ -14,13 +14,16 @@ if(isset($_POST['login'])){
     $result=$user->loginUser($connection,$username,$password);  //call the loginCustomer function of the customer model
     $result2=$user->gastype($connection);
     $_SESSION['gastype']=$result2;
+    $result3=$user->getUserDetails($connection);
+    $_SESSION['userDetails']=$result3;
+    
     
     if($result){
         $_SESSION['login']="success";  //if the login is successful, set the session variable
         if($_SESSION['Type']=="Customer")
             header("Location: ../../view/customer/customer_select.php");  //redirect to the selection page
         else if($_SESSION['Type']=="Delivery_Person")
-            header("Location: ../../view/deliveryperson/delivery_dashboard.php");  //redirect to the dashboard page
+            header("Location: ../../view/deliveryperson/DelivaryDashboard.php");  //redirect to the dashboard page
         else if($_SESSION['Type']=="gasagent")
             header("Location: ../../view/gasagent/gasagent_dashboard.php");  //redirect to the dashboard page
         else if($_SESSION['Type']=="FuelManager")
