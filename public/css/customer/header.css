@@ -6,7 +6,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color:white;
+    background-color:rgb(254, 253, 251);
 
 }
 body{
@@ -25,7 +25,7 @@ body{
 }
 
 .header li a:hover:not(.active) {
-   background-color:rgb(131, 131, 206);
+   font-size: 21px;
  }
 
 .header li img{

@@ -5,25 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/customer/home.css">
     <title>Document</title>
-    <style>
-    /* button{
-        background-color: #4CAF50;
-        border: none;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        margin-left: 45%;
-        margin-top: 10%;
-    } */
-    </style>
 </head>
 <body>
-    <?php //include 'public/header.php'; ?>
+    <?php include 'view/header.php'; ?>
     <div class="welcome">
         <div class="left">
             <p>WELCOME TO FAGO...</p>
@@ -48,13 +32,70 @@
         </div>
         <div class="login">
             Hello,<br>
-            Log into your account for the best experience with FAGO<br>
-            <button class="btnr">Register</button>
-            <button class="btnl">Login</button>
+            Log into your account for the best experience with<br> FAGO<br>
+            <a href="view/registeras.php"><button class="btnr">Register</button></a>
+            <a href="view/login.php"><button class="btnl">Login</button></a>
             
         </div>
     </div>
-    <a href="view/login.php"><button>Login</button></a>
-
+    <div class="fago">
+        <h1>What is FAGO?...</h1>
+        <p>FAGO is an online platform which connects gas agents of a particular area with customers. So customers can just register to this platform
+            and can order gas from their nearest gas agent. This platform also provides a way for gas agents to manage their customers and their orders. 
+            Also there are many delivery persons who are registered to this platform. So customers can order gas from their nearest gas agent and deliver it 
+            to their door step by just few clicks. FAGO Shop has a wide range of gas cylinders and accessories. So customers can order gas cylinders and accessories
+            in same platform. So, this is a one stop solution for all your gas needs. Just try it and you will love it.
+        </p>
+        <a href="view/aboutus.php">more information</a>
+    </div>
+    <div class="second">
+        <div class="regtext">
+            <p>We are just a fingertip away from you!
+            <b>Register</b> to the system and place your order..</p>
+            <a href="view/registeras.php"><button class="btnr">Register</button></a>
+        </div>
+        <div class="photoright">
+            <img src="public/images/customer/homepage.jpg" alt="" class="homeimg">  
+        </div>    
+    </div>
+    <div class="third">
+        <div class="email">
+            <img src="public/images/customer/email.webp" alt="" class="homeimg"><br><br><br>
+            <h2>Email</h2>
+            <p>fagoorders@gmail.com</p>
+        </div>
+        <div class="location">
+            <img src="public/images/customer/location.jpg" alt="" class="homeimg"><br><br><br>
+            <h2>Location</h2>
+            <p>No:25,<br> 
+                Galle road,Colombo<br>
+            </p>
+        </div>
+        <div class="contact">
+            <img src="public/images/customer/contact.png" alt="" class="homeimg"><br><br><br>
+            <h2>Contact</h2>
+            <p>011-1234567</p>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-left">
+            <img src="public/images/logo.png" alt="" class="homeimg">
+            <p>Visit our website and place your orders. This section provides you some information about FAGO and some links for imporatant pages.
+            Customers can order gas cylinders and accessories
+            in same platform. So, this is a one stop solution for all your gas needs. Just try it and you will love it.
+            </p>
+            <h2>Follow Us</h2>
+        </div>
+        <div class="footer-right">
+            <h2>Menu</h2>
+            <a href="index.php">Home</a><br><br>
+            <a href="view/aboutus.php">About Us</a><br><br>
+            <a href="view/ourservices.php">Our Services</a><br><br>
+            <a href="view/contact.php">Contact Us</a><br>
+        </div>
+        <div class="fagolink">
+            <p>© 2022 FAGO. All Rights Reserved.</p>
+        </div>
+    </div>
 </body>
 </html>
