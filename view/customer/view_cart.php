@@ -52,7 +52,7 @@
                 <div class="cart-item-right">
                     <form action="../../controller/customer/addtocart_controller.php" method="post">
                         <input type="hidden" name="agent_id" value="<?php echo $d['gasagent_id']?>">
-                        <button type="checkout" name="checkout" class="checkout">Checkout</button>
+                        <button type="checkout" name="checkout" class="checkout">View Items</button>
                         <button type="submit" name="remove" class="remove">Remove</button>
                     </form>
                 </div>

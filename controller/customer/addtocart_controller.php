@@ -38,11 +38,9 @@ if(isset($_POST['addtocart'])){
     }
 }
 if(isset($_POST['viewcart'])|| isset($_GET['viewcart'])){
-    $gasagent=$_POST['gas_id'];
-    $_SESSION['gasagent']=$gasagent;
     $User_id=$_SESSION['User_id'];
-    //$button=$connection->real_escape_string($button);
     $cart=new addtocart_model();
+
     $result=$cart->viewcart($connection,$User_id);
     if($result===false){
         $_SESSION['viewcart']="empty";

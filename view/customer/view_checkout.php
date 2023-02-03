@@ -30,8 +30,13 @@
           $i=1;
           foreach($checkout as $item){?>
             <tr>
-              <div class="item">
-                <td><?php echo $i.". ".$item['type']." ".$item['weight']." gas cylinder"?></td>
+              <div class="items">
+                <?php if($item['type']=="Gas Cooker"){?>
+                  <td class="itemname"><?php echo $i.". ".$item['weight']." model"?></td>
+                <?php 
+                }else{?>
+                  <td class="itemname"><?php echo $i.". ".$item['type']." ".$item['weight']."kg Gas Cylinder"?></td>
+                <?php } ?>       
               </div>
               <div class="price">
                 <td><?php echo "Rs.".$item['price']?></td>

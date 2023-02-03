@@ -13,4 +13,34 @@ class shop_model{
         }
         return $answer;
     }
+    public function stock_manager($connection){
+        $sql="Select id from stock_manager";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $answer=[];
+            while($row=$result->fetch_assoc()){
+                array_push($answer,['id'=>$row['id']]);
+            }
+        }
+        return $answer;
+    }
+    public function addtocart($connection,$User_id,$item_code,$product_type,$name,$quantity,$price,$category,$description){
+        $stock_manager=$this->stock_manager($connection);
+        $stock_manager_id=$stock_manager[0]['id'];
+        $_SESSION['stock_manager_id']=$stock_manager_id;
+        //combine 2 variables and create a new string variable
+        $nameandmodel=$name." ".$product_type;
+        $sql="INSERT INTO cart(User_id,gasagent_id,type,weight,quantity,price) VALUES('$User_id','$stock_manager_id','$category','$nameandmodel','$quantity','$price')";
+        $result=$connection->query($sql);
+        if($result===false){
+            print_r("Error");
+            die();
+            return false;
+        }else{
+            return true;
+        }
+        //divide the string into 2 string variables and take the last string variable as the model
+    }
 }
