@@ -136,5 +136,8 @@ class customer_model{
             return false;
         }
     }
+    // public function gastype($connection){
+
+    // }
 
 }

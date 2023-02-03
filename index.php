@@ -53,7 +53,10 @@
             <p>We are just a fingertip away from you!
             <b>Register</b> to the system and place your order..</p>
             <a href="view/registeras.php"><button class="btnr">Register</button></a>
+            <p>View our <b>Services</b> and <b>Products</b>...</p>
+            <a href="controller/Users/login_controller.php?unregview='1'"><button class="btnr">View</button></a>
         </div>
+        <!-- <div id="bg-changer"></div> -->
         <div class="photoright">
             <img src="public/images/customer/homepage.jpg" alt="" class="homeimg">  
         </div>    
