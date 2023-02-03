@@ -9,11 +9,6 @@
 </head>
 <body>
     <?php include_once 'customer_header.php'; ?>
-    <div class="back">
-        <a href="customer_viewgas.php">
-            <img src="../../public/images/customer/back.png" alt="" class="backimg">
-        </a>
-    </div>
     <?php
         $button=0;
         if(isset($_SESSION['gasavailability'])){
@@ -39,22 +34,29 @@
             unset($_SESSION['addtocart']);
         }
     ?>
-    <h1><?php echo $shopname?></h1>
-    <div class="details">
-        <div class="details-left">
-            <b>Contact No:</b><?php echo $contactno?><br><br>
-            <b>Last Updated:</b><?php echo $lastupdateddate?> <?php echo $lastupdatedtime?>
+        <div class="upcontainer">
+            <div class="back">
+                <a href="customer_viewgas.php">
+                    <img src="../../public/images/customer/back.png" alt="" class="backimg">
+                </a>
+            </div>
+            <h1><?php echo $shopname?></h1>
+            <div class="details">
+                <div class="details-left">
+                    <b style="color:black";>Contact No:</b><?php echo $contactno?><br><br>
+                    <b style="color:black";>Last Updated:</b><?php echo $lastupdateddate?> <?php echo $lastupdatedtime?>
+                </div>
+                <div class="details-right">
+                    <!-- pass the button value as a post variable -->
+                    <form action="../../controller/customer/addtocart_controller.php" method="post">
+                        <input type="hidden" name="button" value="<?php echo $button?>">
+                        <input type="hidden" name="gas_id" value="<?php echo $Gas_id?>">
+                        <button type="submit" name="viewcart" class="viewcart">View Cart</button>
+                    </form>
+                </div>    
+            </div>
+            <hr>
         </div>
-        <div class="details-right">
-            <!-- pass the button value as a post variable -->
-            <form action="../../controller/customer/addtocart_controller.php" method="post">
-                <input type="hidden" name="button" value="<?php echo $button?>">
-                <input type="hidden" name="gas_id" value="<?php echo $Gas_id?>">
-                <button type="submit" name="viewcart" class="viewcart">View Cart</button>
-            </form>
-        </div>    
-    </div>
-    <hr>
         <?php
             foreach($gasdetails as $gasdetail){?>
             <div class="ava">

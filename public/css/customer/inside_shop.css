@@ -7,6 +7,17 @@ h1{
     margin-top: 2%;
     margin-bottom: 2%;
 }
+.upcontainer{
+    background-image: url("../../images/customer/gasbackground.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position:center;
+    height: 241px;
+    width: 100%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    opacity: 0.9;
+}
 .ava{
     display: flex;
     margin: 2%;
@@ -104,6 +115,7 @@ h1{
     width: 50%;
     margin-left: 5%;
     font-size: 20px;
+    color: ivory;
 }
 .details-right{
     float: right;

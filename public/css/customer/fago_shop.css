@@ -10,15 +10,17 @@ body{
     align-items: center;
     padding: 10px 20px;
     background-color: white;
+    padding-left: 5%;
+    padding-right: 8%;
     /* margin-top: 2px; */
 
 }
   
 .navbar a {
-text-decoration: none;
-color: black;
-padding: 10px 20px;
-font-size: 18px;
+    text-decoration: none;
+    color: black;
+    padding: 10px 20px;
+    font-size: 18px;
 }
 
 .navbar a:hover {
