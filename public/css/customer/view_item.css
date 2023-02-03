@@ -22,6 +22,7 @@ form{
 }
 .image{
     float: left;
+    width: 55%;
 }
 .details{
     float:right;

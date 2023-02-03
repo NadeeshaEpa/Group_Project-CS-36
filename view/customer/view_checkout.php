@@ -31,7 +31,7 @@
           foreach($checkout as $item){?>
             <tr>
               <div class="items">
-                <?php if($item['type']=="Gas Cooker"){?>
+                <?php if($item['type']=="Gas Cooker" || $item['type']=="Regulator" || $item['type']=="Other"){?>
                   <td class="itemname"><?php echo $i.". ".$item['weight']." model"?></td>
                 <?php 
                 }else{?>

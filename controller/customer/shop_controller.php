@@ -15,7 +15,24 @@ if(isset($_GET['gascooker'])){
    }
 }
 if(isset($_GET['regulator'])){
-   
+   $regulator=new shop_model();
+   $result=$regulator->getRegulator($connection);
+   if($result==false){
+      echo "No regulator";
+   }else{
+      $_SESSION['regulator']=$result;
+      header("Location: ../../view/customer/inside_fagoshop_regulator.php");
+   }
+}
+if(isset($_GET['other'])){
+   $other=new shop_model();
+   $result=$other->getOther($connection);
+   if($result==false){
+      echo "No other";
+   }else{
+      $_SESSION['other']=$result;
+      header("Location: ../../view/customer/inside_fagoshop_other.php");
+   }
 }
 
 if(isset($_POST['view_item'])){
@@ -55,5 +72,4 @@ if(isset($_POST['shop_add'])){
       $_SESSION['addtocart']="success";
       header("Location: ../../view/customer/view_item.php");
    }
-
 }

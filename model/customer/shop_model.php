@@ -13,6 +13,32 @@ class shop_model{
         }
         return $answer;
     }
+    public function getRegulator($connection){
+        $sql="SELECT * FROM product WHERE Category='Regulator'";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $answer=[];
+            while($row=$result->fetch_assoc()){
+                array_push($answer,['item_code'=>$row['Item_code'],'Name'=>$row['Name'],'Quantity'=>$row['Quantity'],'price'=>$row['Price'],'Category'=>$row['Category'],'product_type'=>$row['Product_type'],'Description'=>$row['Description']]);
+            }
+            return $answer;
+        }
+    }
+    public function getOther($connection){
+        $sql="SELECT * FROM product WHERE Category='Other'";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $answer=[];
+            while($row=$result->fetch_assoc()){
+                array_push($answer,['item_code'=>$row['Item_code'],'Name'=>$row['Name'],'Quantity'=>$row['Quantity'],'price'=>$row['Price'],'Category'=>$row['Category'],'product_type'=>$row['Product_type'],'Description'=>$row['Description']]);
+            }
+            return $answer;
+        }
+    }
     public function stock_manager($connection){
         $sql="Select id from stock_manager";
         $result=$connection->query($sql);

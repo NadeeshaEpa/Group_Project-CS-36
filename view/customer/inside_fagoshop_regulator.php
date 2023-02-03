@@ -10,23 +10,23 @@
 <body>
     <?php include_once 'customer_header.php'; ?>
     <?php
-         if(isset($_SESSION['gascooker'])){
-             $gascooker=$_SESSION['gascooker'];
-             $count=count($gascooker);
+         if(isset($_SESSION['regulator'])){
+             $regulator=$_SESSION['regulator'];
+             $count=count($regulator);
          }
     ?>
-    <div class="navbar">
-        <div class="selected">   
-            <a href="../../controller/customer/shop_controller.php?gascooker='1'">Gas Cooker</a>
+    <div class="navbar">   
+        <a href="../../controller/customer/shop_controller.php?gascooker='1'">Gas Cooker</a>
+        <div class="selected">
+            <a href="../../controller/customer/shop_controller.php?regulator='1'">Regulator</a>
         </div>
-        <a href="../../controller/customer/shop_controller.php?regulator='1'">Regulator</a>
         <a href="../../controller/customer/shop_controller.php?other='1'">Other</a>
     </div>
     <div class="products">
         <!-- print the products as 4 items per row -->
         <?php
             $i=0;
-            foreach($gascooker as $gas){
+            foreach($regulator as $gas){
                 if($i%4==0){
                     echo "<div class='row'>";
                 }
@@ -41,6 +41,14 @@
                 <input type="hidden" name="Quantity" value="<?php echo $gas['Quantity']; ?>">
                 <input type="hidden" name="Description" value="<?php echo $gas['Description']; ?>">
                 <input type="hidden" name="Category" value="<?php echo $gas['Category']; ?>">
+                <!-- get the extension of the image -->
+                <?php
+                    // $image=$gas['product_type'];
+                    // $ext=explode(".",$image);
+                    // $ext=$ext[1];
+                    // print_r($ext);
+                    // die();
+                ?>
                 <img src="../../public/images/customer/<?php echo $gas['product_type']; ?>.jpg" alt="">
                 <?php
                 echo "<h3>".$gas['Name']."</h3>";
@@ -51,9 +59,9 @@
                     <button name="view_item">Add to Cart</button>
                 <?php
                 }else{?>
-                  <div class="disabled">
-                    <button style="color: red; border: 1px solid red;" disabled>Out of Stock</button>
-                  </div>
+                    <div class="disabled">
+                        <button style="color: red; border: 1px solid red;" disabled>Out of Stock</button>
+                    </div>
                 <?php }
             ?>    
             </form>   

@@ -81,3 +81,6 @@ font-size: 18px;
   color: #da3a3a;
   font-weight: bold;
 }
+.disabled button:hover{
+    background-color: white;
+}
