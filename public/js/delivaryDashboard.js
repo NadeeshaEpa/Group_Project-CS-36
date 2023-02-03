@@ -13,6 +13,7 @@
 //        }
 //    });
 
+
 const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
 
 allSideMenu.forEach(item=> {
@@ -121,5 +122,27 @@ function updateClock() {
     setTimeout(updateClock, 1000);
   }
 updateClock();
+
+/*count and amount of the delivary */
+
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    
+    var response = JSON.parse(this.responseText);
+    console.log(response);
+    incomeid2.innerHTML = response.total_fee['SUM(Delivery_fee)'];
+	Nodeliverid2.innerHTML = response.delivery_count['COUNT(*)'];
+    
+};
+xhttp.open("GET", "http://localhost/Group_Project-CS-36/controller/deliveryperson/deliveryCountcontroller.php", true);
+xhttp.send();
+
+/* */
+
+
+
+  
+
+
 
 

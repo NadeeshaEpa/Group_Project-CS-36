@@ -23,7 +23,6 @@ class delivaryProf_model{
 
     public function updateAccount_No($connection,$array){
         $sql="UPDATE `deliveryperson` SET `Account_No`='$array[1]' WHERE DeliveryPerson_Id='$array[0]'";
-        
         $result=$connection->query($sql);
         if($result){
             return true;

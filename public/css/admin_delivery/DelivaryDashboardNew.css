@@ -702,3 +702,56 @@ body {
 	}
 	
 }
+
+
+/* report css*/
+
+.dropdown_outter{
+	display: flex;
+	width: 100%;
+	height: 25%;
+
+}
+
+.dropdown{
+	width: 50%;
+	height: 100%;
+}
+
+.dropdown_outter .dropdown select {
+    background: rgb(255, 255, 255);;
+    border: 3px solid rgb(84, 73, 116);
+	border-radius: 15px;
+    width: 405px;
+    height: 40px;
+    font-size: large;
+    margin-bottom: 36px;
+    text-align: center;
+    
+  }
+
+  .dropdown_outter .dropdown button{
+	width: 150px;
+	margin-left: 350px;
+	height:40px ;
+	text-align: center;
+	border-radius: 15px;
+	background-color: #3C91E6;
+  }
+
+  .report_info_outter{
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-bottom: 3%;
+	margin-top: 2%;
+	display: flex;
+	border: 2px solid black; 
+	border-radius: 18px;
+  }
+
+  .report_info{
+	margin: auto;
+	font-size: 20px;
+	
+  }

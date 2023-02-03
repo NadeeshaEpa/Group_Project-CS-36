@@ -236,7 +236,6 @@
 	</section>
 	<!-- CONTENT -->
 	
-
-	<script src="../../public/js/delivaryDashboard.js"></script>
+    <script src="../../public/js/delivaryDashboard.js"></script>
 </body>
 </html>
