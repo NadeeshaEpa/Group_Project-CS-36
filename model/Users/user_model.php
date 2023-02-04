@@ -16,6 +16,14 @@ class user_model{
             $_SESSION['Type']=$row['Type'];
             $this->Type=$row['Type'];
 
+            $sql="SELECT * FROM cart WHERE User_id='$this->User_id'";
+            $result=$connection->query($sql);
+            if($result->num_rows > 0){
+                $_SESSION['cartcount']=$result->num_rows;
+            }else{
+                $_SESSION['cartcount']=0;
+            }
+
             $img="SELECT img_id,status,imgname FROM profileimg WHERE User_id='$this->User_id'";
             $resultimg=$connection->query($img);
             $rowimg=$resultimg->fetch_assoc();

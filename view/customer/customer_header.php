@@ -25,11 +25,17 @@
                         <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
                     <?php } ?>
             </li></a>
-            <li class="cart">	
-                <a href="../../controller/customer/addtocart_controller.php?viewcart='1'">
-                    <i class='bx bx-cart' ></i>
-                </a>
-            </li>
+            <?php 
+                $count=0;
+                if(isset($_SESSION['cartcount'])){
+                    if($_SESSION['cartcount'] >0){
+                        $count=$_SESSION['cartcount'];
+                        echo "<li class='cart'><a href='../../controller/customer/addtocart_controller.php?viewcart='1''><i class='bx bx-cart' ></i><span id='cart_count' class='text-warning bg-light'>$count</span></a></li>";
+                    }else{
+                        echo "<li class='cart'><a href='../../controller/customer/addtocart_controller.php?viewcart='1''><i class='bx bx-cart' ></i><span id='cart_count' class='text-warning bg-light'></span></a></li>";
+                    }
+                }
+            ?>
             <div class="bell">
                 <!-- <li><img src="../../public/images/customer/bell.png" alt="logo" width="20px" height="20px" class="notification"></li> -->
             </div>
@@ -39,5 +45,8 @@
             <!-- <li><img src="../../public/images/logo.png" alt="logo" width="100px" height="100px"></li> -->
         </ul>    
     </div>
+    <script>
+    
+    </script>
 </body>
 </html>

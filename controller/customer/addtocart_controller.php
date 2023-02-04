@@ -25,6 +25,7 @@ if(isset($_POST['addtocart'])){
          header("Location: ../../view/customer/inside_shop.php");
     }else{
          $_SESSION['addtocart']="success";
+         $_SESSION['cart']="Full";
          header("Location: ../../view/customer/inside_shop.php");
         //  $result3=$cart->getcylinderid($connection,$type,$weight);
         //  $result2=$cart->updatequantity($connection,$quantity,$gasid,$result3);
@@ -60,7 +61,7 @@ if(isset($_POST['remove'])){
     $gasid=$_POST['agent_id'];
     $cartid=$connection->real_escape_string($gasid);
     $cart=new addtocart_model();
-    $result=$cart->remove($connection,$gasid);
+    $result=$cart->remove($connection,$gasid,$User_id);
     if($result===false){
         $_SESSION['remove']="failed";
         header("Location: ../../view/customer/view_cart.php");

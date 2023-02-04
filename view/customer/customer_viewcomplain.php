@@ -43,7 +43,7 @@
                 </li>
                 <li class="active">
                     <a href="../../controller/customer/complain_controller.php?complainid='1'">
-                        <i class='bx bxs-doughnut-chart' ></i>
+                        <i class='bx bxs-badge-check' ></i>
                         <span class="text">Complains</span>
                     </a>
                 </li>

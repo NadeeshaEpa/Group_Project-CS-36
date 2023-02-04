@@ -6,6 +6,13 @@ class addtocart_model{
         if($result===false){
             return false;
         }else{
+            $sql="SELECT * FROM cart WHERE User_id='$User_id'";
+            $result=$connection->query($sql);
+            if($result->num_rows > 0){
+                $_SESSION['cartcount']=$result->num_rows;
+            }else{
+                $_SESSION['cartcount']=0;
+            }
             return true;
         }
     }
@@ -94,12 +101,19 @@ class addtocart_model{
         }
         
     }
-    public function remove($connection,$gasid){
+    public function remove($connection,$gasid,$User_id){
         $sql="DELETE FROM cart WHERE gasagent_id='$gasid'";
         $result=$connection->query($sql);
         if($result===false){
             return false;
         }else{
+            $sql="SELECT * FROM cart WHERE User_id='$User_id'";
+            $result=$connection->query($sql);
+            if($result->num_rows > 0){
+                $_SESSION['cartcount']=$result->num_rows;
+            }else{
+                $_SESSION['cartcount']=0;
+            }
             return true;
         }
     }

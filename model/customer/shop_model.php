@@ -65,6 +65,13 @@ class shop_model{
             die();
             return false;
         }else{
+            $sql="SELECT * FROM cart WHERE User_id='$User_id'";
+            $result=$connection->query($sql);
+            if($result->num_rows > 0){
+                $_SESSION['cartcount']=$result->num_rows;
+            }else{
+                $_SESSION['cartcount']=0;
+            }
             return true;
         }
         //divide the string into 2 string variables and take the last string variable as the model

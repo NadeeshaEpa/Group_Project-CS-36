@@ -56,10 +56,10 @@
             <p>View our <b>Services</b> and <b>Products</b>...</p>
             <a href="controller/Users/login_controller.php?unregview='1'"><button class="btnr">View</button></a>
         </div>
-        <!-- <div id="bg-changer"></div> -->
-        <div class="photoright">
+        <div id="bg-changer"></div>
+        <!-- <div class="photoright">
             <img src="public/images/customer/homepage.jpg" alt="" class="homeimg">  
-        </div>    
+        </div>     -->
     </div>
     <div class="third">
         <div class="email">
@@ -88,10 +88,12 @@
             in same platform. So, this is a one stop solution for all your gas needs. Just try it and you will love it.
             </p>
             <h2>Follow Us</h2>
+            <div class="socialmedia">
             <a href="https://www.facebook.com/"><img src="public/images/customer/facebook.png" alt="" class="homeimg"></a>
             <a href="https://www.instagram.com/"><img src="public/images/customer/insta.png" alt="" class="homeimg"></a>
             <a href="https://www.twitter.com/"><img src="public/images/customer/twitter.png" alt="" class="homeimg"></a>
-            <a href="https://www.youtube.com/"><img src="public/images/customer/linkd.png" alt="" class="homeimg"></a>
+            <a href="https://www.youtube.com/"><img src="public/images/customer/linkd.jpg" alt="" class="homeimg"></a>
+            </div>
         </div>
         <div class="footer-right">
             <h2>Menu</h2>
