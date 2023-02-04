@@ -36,14 +36,14 @@ if(isset($_SESSION['gastype'])){
                             <option value="<?php echo $gas; ?>"><?php echo $gas; ?></option>
                         <?php } ?>
                     </select>
-                    <button name="urgas_button">Shop Now</button>
+                    <button name="gas_button">Shop Now</button>
                 </form>   
             </div>
        </div> 
        <div class="fago_shop">
             <h2>Fago Shop</h2>
             <img src="../../public/images/customer/fago_shop.jpg" alt="" class="fago_img">
-            <a href="../../controller/customer/shop_controller.php?urgascooker='1'"><button>Shop Now</button></a>
+            <a href="../../controller/customer/shop_controller.php?gascooker='1'"><button>Shop Now</button></a>
        </div>
     </div>
     <?php //include_once 'customer_footer.php'; ?>

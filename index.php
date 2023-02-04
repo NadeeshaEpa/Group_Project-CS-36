@@ -88,6 +88,10 @@
             in same platform. So, this is a one stop solution for all your gas needs. Just try it and you will love it.
             </p>
             <h2>Follow Us</h2>
+            <a href="https://www.facebook.com/"><img src="public/images/customer/facebook.png" alt="" class="homeimg"></a>
+            <a href="https://www.instagram.com/"><img src="public/images/customer/insta.png" alt="" class="homeimg"></a>
+            <a href="https://www.twitter.com/"><img src="public/images/customer/twitter.png" alt="" class="homeimg"></a>
+            <a href="https://www.youtube.com/"><img src="public/images/customer/linkd.png" alt="" class="homeimg"></a>
         </div>
         <div class="footer-right">
             <h2>Menu</h2>

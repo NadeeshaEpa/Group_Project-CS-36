@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../../public/css/customer/fago_register.css">
     <title>Customer Registration</title>
 </head>
-<?php include '../../public/header.php'; ?>
+<?php include_once '../header.php'; ?>
 <body>
     <div class="registration-form">  
     <form action="../../controller/customer/register_controller.php" method="POST" id="customer_form">

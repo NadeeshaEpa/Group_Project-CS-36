@@ -206,7 +206,7 @@ h2{
 }
 .email p, .contact p, .location p{
     text-align: left;
-    font-size: 30px;
+    font-size: 25px;
 }
 .footer{
     width:100%;
@@ -281,3 +281,8 @@ h2{
       background-image: url(../../public/images/customer/gas.jpg);
     }
   } */
+  .homeimg{
+    width:20%;
+    float: left;
+    
+  }

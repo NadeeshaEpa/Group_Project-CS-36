@@ -10,7 +10,6 @@
     <title>Document</title>
 </head>
 <body>
-        <?php require_once 'customer_header.php'; ?>
         <div class="dcontainer">
         <section id="sidebar">
             <a href="#" class="brand">
@@ -34,6 +33,12 @@
                     <a href="../../controller/customer/review_controller.php?reviewid='1'">
                         <i class='bx bxs-doughnut-chart' ></i>
                         <span class="text">Reviews</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../../controller/customer/complain_controller.php?complainid='1'">
+                        <i class='bx bxs-badge-check' ></i>
+                        <span class="text">Complains</span>
                     </a>
                 </li>
             </ul>

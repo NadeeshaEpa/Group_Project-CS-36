@@ -38,6 +38,12 @@
                         <span class="text">Reviews</span>
                     </a>
                 </li>
+                <li>
+                    <a href="../../controller/customer/complain_controller.php?complainid='1'">
+                        <i class='bx bxs-badge-check' ></i>
+                        <span class="text">Complains</span>
+                    </a>
+                </li>
             </ul>
             <ul class="side-menu">
                 <li>
