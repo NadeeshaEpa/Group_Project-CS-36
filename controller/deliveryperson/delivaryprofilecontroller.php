@@ -2,6 +2,7 @@
 session_start();
 require_once("../../config.php");
 require_once("../../model/deliveryperson/delivaryprofilemodel.php");
+require_once("../../model/deliveryperson/checkdelivery_model.php");
 
 if(isset($_POST['update_dprof'])){
     if(isset($_SESSION['User_id'])){ 
@@ -49,5 +50,53 @@ if(isset($_POST['update_dprof'])){
             echo "Failed";
         }
 
+    }
+}
+
+if(isset($_POST['updatepwd'])){
+    if(isset($_SESSION['User_id'])){
+        $oldpwd=$_POST['pwd'];
+        $newpwd=$_POST['npwd'];
+        $confirmpwd=$_POST['cnpwd'];
+
+        $oldpwd=$connection->real_escape_string($oldpwd);
+        $newpwd=$connection->real_escape_string($newpwd);
+        $confirmpwd=$connection->real_escape_string($confirmpwd);
+
+        $acc=new delivaryProf_model();
+
+        $result1=checkpassword($confirmpwd,$newpwd);
+        if(!$result1){
+            $_SESSION['updatepwd-error']="New password and confirm password are not same";
+            header("Location: ../../view/deliveryperson/DeliveryProfile.php");
+        }else{
+            $result2=$acc->updatePassword($connection,$_SESSION['User_id'],$oldpwd,$newpwd,$confirmpwd);
+            if(!$result2){
+                $_SESSION['updatepwd-error']="Current password is incorrect";
+                header("Location: ../../view/deliveryperson/DeliveryProfile.php");
+            }else{
+                $_SESSION['updatepwd']="Password Updated Successfully";
+                header("Location: ../../view/deliveryperson/DeliveryProfile.php");
+            }
+        }
+    }
+}
+if(isset($_POST['cancelpwd'])){
+    if(isset($_SESSION['User_id'])){
+        header("Location: ../../view/deliveryperson/DeliveryProfile.php");
+    }
+}
+
+if(isset($_POST['deleteaccount'])){
+    if(isset($_SESSION['User_id'])){
+        $acc=new delivaryProf_model();
+        $result=$acc->deleteAccount($connection,$_SESSION['User_id']);
+        if($result){
+            $_SESSION['deleteacc']="success";
+            header("Location: ../../view/login.php");
+        }else{
+            $_SESSION['deleteacc']="failed";
+            header("Location: ../../view/deliveryperson/DeliveryProfile.php");
+        }
     }
 }

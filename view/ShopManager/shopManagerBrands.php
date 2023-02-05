@@ -8,7 +8,7 @@
 	<!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
-	<link rel="stylesheet" href="../../public/css/admin_delivery/DelivaryDashboardNew.css">
+	<link rel="stylesheet" href="../../public/css/ShopManager/shopmanagerDashboard.css">
 
 	<title>FaGo</title>
 </head>
@@ -22,38 +22,35 @@
 			<span class="text">FaGo</span>
 		</a>
 		<ul class="side-menu top">
-			<li class="active">
-				<a href="#">
+			<li >
+				<a href="../../view/ShopManager/shopManagerDashboard.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
 			<li >
-				<a href="../../view/deliveryperson/DeliveryProfile.php">
+				<a href="../../view/ShopManager/ShopManagerProfile.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
-					<span class="text">Profile
-						<form action="../../controller/deliveryperson/delivaryprofilecontroller.php" method="Post">
-						    <input type="hidden" name="prof_btn">
-						</form>
-					</span>
+					<span class="text">Profile</span>
 				</a>
 			</li>
 			<li>
-				<a href="../../view/deliveryperson/DeliveryReports.php">
+				<a href="../../view/ShopManager/shopManagerUpdatePQ.php">
 					<i class='bx bxs-doughnut-chart' ></i>
-					<span class="text">Daily Reports</span>
+					<span class="text">Update prices/Quantity</span>
 				</a>
 			</li>
 			<li>
-				<a href="../../view/deliveryperson/DelivaryReviews.php">
+				<a href="../../view/ShopManager/shopManagerAddNewBrands.php">
 					<i class='bx bxs-message-dots' ></i>
-					<span class="text">Reviews</span>
+					<span class="text">Add new brands</span>
 				</a>
 			</li>
-			<li>
-				<a href="../../view/deliveryperson/DelivaryComplains.php">
+			<li class="active">
+				<a href="#">
 					<i class='bx bxs-group' ></i>
-					<span class="text">Complains</span>
+                    <!-- add delete option here with show all the brands -->
+					<span class="text">Brands</span>
 				</a>
 			</li>
 		</ul>
@@ -99,10 +96,10 @@
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Dashboard</h1>
+					<h1>Brands</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="#">Dashboard</a>
+							<a href="#">Brands</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
@@ -111,33 +108,10 @@
 					</ul>
 				</div>
 
-				<div class="partInner1">
-                        <div class="ADmsg">
-                                <h6>
-                                <?php 
-                                    if(isset($_SESSION['updateActiveSucessfully'])){
-                                        echo"Delivary person activeted";
-                                        unset($_SESSION['updateActiveSucessfully']);
-                                    }
-                                    if(isset($_SESSION['updateDeactiveSucessfully'])){
-                                        echo"Delivary person deactiveted";
-                                        unset($_SESSION['updateDeactiveSucessfully']);
-                                    }
-                                
-                                ?>
-                                </h6>
-                        </div>
-                        <div class="ADbtn">
-                            <form action="../../controller/deliveryperson/dashboardController.php" method="post">
-                                <button class="cbtn1" id="btn1" name="btn1">Enable active</button><br>
-                                <button class="cbtn2" id="btn2" name="btn2">Disable active</button>
-                            </form>
-                        </div>
-                </div>
 				
 			</div>
 
-			<ul class="box-info">
+			<!-- <ul class="box-info">
                 <li>
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
@@ -167,7 +141,7 @@
 				</li>
                
 
-			</ul>
+			</ul> -->
 
 
 			<div class="table-data">
@@ -181,6 +155,6 @@
 	</section>
 	<!-- CONTENT -->
 	
-    <script src="../../public/js/delivaryDashboard.js"></script>
+    <script src="../../public/js/shopmanagerDashboard.js"></script>
 </body>
 </html>

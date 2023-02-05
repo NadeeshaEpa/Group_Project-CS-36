@@ -192,6 +192,10 @@
                                     <label>Account_No:</label><br>
                                     <input type="text" name="acc_no" value=<?php echo $result[0]['Account_No']; ?>> <br>
                                 </div>
+								<div class="down1"> 
+                                    <label>Username:</label><br>
+                                    <input type="text" name="username" value=<?php echo $result[0]['Username']; ?>> <br>
+                                </div>
                                    
                             </div>
                             <div class="down"> 
@@ -208,40 +212,87 @@
                                         <input type="text" name="postalcode" id="postalcodeid" value=<?php echo $result[0]['Postalcode']; ?>> <br>  
                                 </div>
                             </div> 
-                            <div class="down">
-                                <div class="down1"> 
-                                    <label>Username:</label><br>
-                                    <input type="text" name="username" value=<?php echo $result[0]['Username']; ?>> <br>
-                                </div>
-                                <div class="down1">
-                                    <label>Update Password:</label><br>
-                                    <!-- <form action='customer_changepassword.php' method="POST">
-                                       <button type="submit" name="changepassword" class="cp">Change password</button>
-                                    </form>    -->
-                                </div>    
-                            </div> 
-                            <div class="down">
-                                <button type="submit" class="b6" name="update_dprof">Update</button> 
-                            </div>  
-                            
-                    </div>     
-<!--             
-                    <button onclick="document.getElementById('id01').style.display='block'" class="b5">Delete Account</button>
-                    <div id="id01" class="modal">
-                        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
-                            <form class="modal-content" action="../../controller/customer/account_controller.php" method="POST">
-                                    <div class="container">
-                                        <h1>Delete Account</h1>
-                                        <p>Are you sure you want to delete your account?</p>
-                                        
-                                        <div class="clearfix">
-                                            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                                            <button type="submit" class="deletebtn" name="deleteaccount">Delete</button>
-                                        </div>
-                                    </div>
-                            </form>
-                    </div> -->
+							<div class="down">
+								<div class="down1btn"></div>
+								<div class="down1btn">
+								    <button name="update_dprof" style="margin-top: 0%; margin-left:48%;">Update</button>
+								    
+								</div>
+								  
+							</div>
+
+
+							
+                        </div>     
                 </form> 
+				            <div class="otherdeliveryProfilebtn">
+								<div class="otherdeliveryProfilebtndown1">
+								   <label id="outerrDownDelivaryid">Update Password:</label><br>
+                                   <button type="submit" name="d_changepassword" id="d_changepasswordid" class="dcp" style="margin-left: opx; margin-top:0%">Change password</button>
+								    <div class="down_updata" >
+                                    
+											<div class="err-msg">
+												<?php
+													if(isset($_SESSION['updatepwd-error'])){
+														echo $_SESSION['updatepwd-error'];
+														unset($_SESSION['updatepwd-error']);
+												}?>
+											</div>
+											<div class="success-msg">
+												<?php
+													if(isset($_SESSION['updatepwd'])){
+														echo $_SESSION['updatepwd'];
+														unset($_SESSION['updatepwd']);
+													}
+												?>
+											</div>
+							        </div> 
+								</div>
+								<div class="otherdeliveryProfilebtndown1">
+								<button onclick="document.getElementById('id01').style.display='block'" class="b5" id="deliveyDeletebtn">Delete Account</button>
+								</div>
+							</div>
+				         
+				            <div class="d_form" id="delivary_form_id" style="display:none;">
+								<h2>Change Password</h2>
+
+								<form action="../../controller/deliveryperson/delivaryprofilecontroller.php" method="POST">
+									
+									<div class="pwdcontainer" id="pwdcontainer">
+										<label for="cpsw">Current Password</label><br>
+										<input type="password" placeholder="Enter Current Password" name="pwd" id="pwdid" required><br>
+										<label  for="cpsw" id="newpasswordlableid">New Password</label><br>
+										<input  type="password" placeholder="Enter New Password" name="npwd" id="npwdid" required><br>
+										<label  for="psw" id="coformpasswordlableid">Confirm Password</label><br>
+										<input  type="password" placeholder="Confirm New Password" name="cnpwd" id="cnpwdid" required><br><br>
+										<div class="btn">
+											<button type="submit" name="updatepwd" class="updatebtn">Update</button>
+										</div>  
+									</div>
+								</form>
+								<form action="../../controller/deliveryperson/delivaryprofilecontroller.php" method="POST">
+								    <button type="submit"  name="cancelpwd" class="cancelbtn">Cancel</button>
+								</form>         
+                            </div>  
+
+							
+							<!-- <div class="down">
+								
+                                <div id="id01" class="modal">
+                                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
+                                    <form class="modal-content" action="../../controller/deliveryperson/delivaryprofilecontroller.php" method="POST">
+                                        <div class="container">
+                                            <h1>Delete Account</h1>
+                                            <p>Are you sure you want to delete your account?</p>
+                                        
+                                            <div class="clearfix">
+                                                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                                                <button type="submit" class="deletebtn" name="deleteaccount">Delete</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div> 
+							</div> -->
                 
             </div>
 			
@@ -251,7 +302,15 @@
 	</section>
 	<!-- CONTENT -->
 	
+    <script>
+		var modal = document.getElementById('id01');
 
+       window.onclick = function(event) {
+        if (event.target == modal) {
+	        modal.style.display = "none";
+        }            
+       }
+	</script>
 	<script src="../../public/js/delivaryDashboard.js"></script>
 </body>
 </html>

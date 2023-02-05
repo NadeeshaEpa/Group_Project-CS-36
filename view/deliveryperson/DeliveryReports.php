@@ -139,6 +139,52 @@
 							
 						
 					</div>
+					   <div class="delivary_nof_msg">
+							<h6><?php if(isset($_SESSION['No_result'])){
+									echo $_SESSION['No_result'];
+                                    unset($_SESSION['No_result']);
+							          }
+							?></h6><br>
+					   </div>
+						<div class="delivary_f_msg">
+							<h5><?php
+							        
+									if(isset($_SESSION['GasDayReports'])){
+										echo $_SESSION['GasDayReports'];
+										unset($_SESSION['GasDayReports']);
+									  }
+									  if(isset($_SESSION['GasDay7Reports'])){
+										echo $_SESSION['GasDay7Reports'];
+										unset($_SESSION['GasDay7Reports']);
+									  }
+									  if(isset($_SESSION['GasDay30Reports'])){
+										echo $_SESSION['GasDay30Reports'];
+										unset($_SESSION['GasDay30Reports']);
+									  }
+									  if(isset($_SESSION['GasAllReports'])){
+										echo $_SESSION['GasAllReports'];
+										unset($_SESSION['GasAllReports']);
+									  }
+									  if(isset($_SESSION['CusDayReports'])){
+										echo $_SESSION['CusDayReports'];
+										unset($_SESSION['CusDayReports']);
+									  }
+									  if(isset($_SESSION['CusDay7Reports'])){
+										echo $_SESSION['CusDay7Reports'];
+										unset($_SESSION['CusDay7Reports']);
+									  }
+									  if(isset($_SESSION['CusDay30Reports'])){
+										echo $_SESSION['CusDay30Reports'];
+										unset($_SESSION['CusDay30Reports']);
+									  }
+									  if(isset($_SESSION['CusAllReports'])){
+										echo $_SESSION['CusAllReports'];
+										unset($_SESSION['CusAllReports']);
+									  }
+							
+							?>
+							</h5>
+					   </div>
 					
 						<?php if(isset($_SESSION['DiliverReportview'])){
 							$result=$_SESSION['DiliverReportview'];
@@ -146,9 +192,11 @@
 							<div class="report_info_outter">
 								<div class="report_info">
 									<?php echo "Reference No : " . $row['Order_id']."<br>";
+									echo "Name : " . $row['Name']."<br>";
+									echo "Address : " . $row['Address']."<br>";
 									echo "Delivery Date : " . $row['Delivery_date']."<br>";
-									echo "Delivery_time : " . $row['Delivery_time']."<br>";
-									echo "Delivery_fee : " . $row['Delivery_fee']."<br>";?>
+									echo "Delivery time : " . $row['Delivery_time']."<br>";
+									echo "Delivery fee : " . $row['Delivery_fee']."<br>";?>
 									
 								</div>
 							</div>

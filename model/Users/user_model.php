@@ -52,16 +52,16 @@ class user_model{
                     return false;   //login will be unsuccessful
                 }
             }
-            else if($this->Type=="FuelManager"){
-                $r1="SELECT * FROM fuelmanager WHERE FuelManager_Id='$this->User_id' AND Status='1'";
-                if($connection->query($r1)->num_rows > 0){
-                    return true;   //login will be successful
-                }else{
-                    $_SESSION['login_attempts']+=1;
-                    return false;   //login will be unsuccessful
-                }
-            }
-            else if($this->Type=="Admin" || $this->Type=="Staff"){
+            // else if($this->Type=="Stock Manager"){
+            //     $r1="SELECT * FROM stock_manager WHERE id='$this->User_id' AND Status='1'";
+            //     if($connection->query($r1)->num_rows > 0){
+            //         return true;   //login will be successful
+            //     }else{
+            //         $_SESSION['login_attempts']+=1;
+            //         return false;   //login will be unsuccessful
+            //     }
+            // }
+            else if($this->Type=="Admin" || $this->Type=="Staff" ||$this->Type=="Stock Manager" ){
                 return true;   //login will be successful
             }else{
                 $_SESSION['login_attempts']+=1;

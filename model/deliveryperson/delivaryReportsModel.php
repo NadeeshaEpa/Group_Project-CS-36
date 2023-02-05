@@ -3,7 +3,7 @@ class reports{
     private $User_id;
     public function GasDayReports($connection){
         $this->User_id=$_SESSION['User_id'];
-        $sql="SELECT Order_id,Delivery_date,Delivery_time,Delivery_fee FROM `order` WHERE (Order_Status=1 && DeliveryPerson_Id=$this->User_id) && (Delivery_date = DATE(NOW()))";
+        $sql="SELECT o.Order_id,o.Delivery_date,o.Delivery_time,o.Delivery_fee,concat(u.First_Name,' ',u.Last_Name)AS Name,concat(u.Postalcode,' , ',u.Street,' , ' ,u.City)As Address FROM `order`o INNER JOIN placeorder p on o.Order_id=p.Order_Id INNER JOIN user u ON u.User_id=p.GasAgent_Id WHERE ((o.Order_Status=1 && o.DeliveryPerson_Id=$this->User_id) && (o.Delivery_date = DATE(NOW())))";
         $result=$connection->query($sql);
         
         if($result->num_rows===0){
@@ -11,7 +11,7 @@ class reports{
         }else{
             $answer=[];
             while($row=$result->fetch_assoc()){
-                array_push($answer,['Order_id'=>$row['Order_id'],'Delivery_date'=>$row['Delivery_date'],'Delivery_time'=>$row['Delivery_time'],'Delivery_fee'=>$row['Delivery_fee']]);
+                array_push($answer,['Order_id'=>$row['Order_id'],'Delivery_date'=>$row['Delivery_date'],'Delivery_time'=>$row['Delivery_time'],'Delivery_fee'=>$row['Delivery_fee'],'Name'=>$row['Name'],'Address'=>$row['Address']]);
             }
             return $answer;
         }
@@ -21,14 +21,14 @@ class reports{
 
     public function GasDay7Reports($connection){
         $this->User_id=$_SESSION['User_id'];
-        $sql="SELECT Order_id,Delivery_date,Delivery_time,Delivery_fee FROM `order` WHERE (Order_Status=1 && DeliveryPerson_Id=$this->User_id) && (Delivery_date >= DATE(NOW()) - INTERVAL 7 DAY)";
+        $sql="SELECT o.Order_id,o.Delivery_date,o.Delivery_time,o.Delivery_fee,concat(u.First_Name,' ',u.Last_Name)AS Name,concat(u.Postalcode,' , ',u.Street,' , ' ,u.City)As Address FROM `order`o INNER JOIN placeorder p on o.Order_id=p.Order_Id INNER JOIN user u ON u.User_id=p.GasAgent_Id WHERE (o.Order_Status=1 && o.DeliveryPerson_Id=$this->User_id) && (o.Delivery_date >= DATE(NOW()) - INTERVAL 7 DAY)";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;
         }else{
             $answer=[];
             while($row=$result->fetch_assoc()){
-                array_push($answer,['Order_id'=>$row['Order_id'],'Delivery_date'=>$row['Delivery_date'],'Delivery_time'=>$row['Delivery_time'],'Delivery_fee'=>$row['Delivery_fee']]);
+                array_push($answer,['Order_id'=>$row['Order_id'],'Delivery_date'=>$row['Delivery_date'],'Delivery_time'=>$row['Delivery_time'],'Delivery_fee'=>$row['Delivery_fee'],'Name'=>$row['Name'],'Address'=>$row['Address']]);
             }
             return $answer;
         }
@@ -39,14 +39,14 @@ class reports{
     public function GasDay30Reports($connection){
         $this->User_id=$_SESSION['User_id'];
         $this->User_id=$_SESSION['User_id'];
-        $sql="SELECT Order_id,Delivery_date,Delivery_time,Delivery_fee FROM `order` WHERE (Order_Status=1 && DeliveryPerson_Id=$this->User_id) && (Delivery_date BETWEEN CURDATE() - INTERVAL 30 DAY AND CURDATE())";
+        $sql="SELECT o.Order_id,o.Delivery_date,o.Delivery_time,o.Delivery_fee,concat(u.First_Name,' ',u.Last_Name)AS Name,concat(u.Postalcode,' , ',u.Street,' , ' ,u.City)As Address FROM `order`o INNER JOIN placeorder p on o.Order_id=p.Order_Id INNER JOIN user u ON u.User_id=p.GasAgent_Id WHERE (o.Order_Status=1 && o.DeliveryPerson_Id=$this->User_id) && (o.Delivery_date BETWEEN CURDATE() - INTERVAL 30 DAY AND CURDATE())";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;
         }else{
             $answer=[];
             while($row=$result->fetch_assoc()){
-                array_push($answer,['Order_id'=>$row['Order_id'],'Delivery_date'=>$row['Delivery_date'],'Delivery_time'=>$row['Delivery_time'],'Delivery_fee'=>$row['Delivery_fee']]);
+                array_push($answer,['Order_id'=>$row['Order_id'],'Delivery_date'=>$row['Delivery_date'],'Delivery_time'=>$row['Delivery_time'],'Delivery_fee'=>$row['Delivery_fee'],'Name'=>$row['Name'],'Address'=>$row['Address']]);
             }
             return $answer;
         }
@@ -55,14 +55,14 @@ class reports{
 
     public function GasAllReports($connection){
         $this->User_id=$_SESSION['User_id'];
-        $sql="SELECT Order_id,Delivery_date,Delivery_time,Delivery_fee FROM `order` WHERE (Order_Status=1 && DeliveryPerson_Id=$this->User_id)";
+        $sql="SELECT o.Order_id,o.Delivery_date,o.Delivery_time,o.Delivery_fee,concat(u.First_Name,' ',u.Last_Name)AS Name,concat(u.Postalcode,' , ',u.Street,' , ' ,u.City)As Address FROM `order`o INNER JOIN placeorder p on o.Order_id=p.Order_Id INNER JOIN user u ON u.User_id=p.GasAgent_Id WHERE (o.Order_Status=1 && o.DeliveryPerson_Id=$this->User_id)";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;
         }else{
             $answer=[];
             while($row=$result->fetch_assoc()){
-                array_push($answer,['Order_id'=>$row['Order_id'],'Delivery_date'=>$row['Delivery_date'],'Delivery_time'=>$row['Delivery_time'],'Delivery_fee'=>$row['Delivery_fee']]);
+                array_push($answer,['Order_id'=>$row['Order_id'],'Delivery_date'=>$row['Delivery_date'],'Delivery_time'=>$row['Delivery_time'],'Delivery_fee'=>$row['Delivery_fee'],'Name'=>$row['Name'],'Address'=>$row['Address']]);
             }
             return $answer;
         }
@@ -71,14 +71,14 @@ class reports{
 
     public function CusDayReports($connection){
         $this->User_id=$_SESSION['User_id'];
-        $sql="SELECT Order_id,Delivery_date,Delivery_time,Delivery_fee FROM `order` WHERE (Order_Status=1 && DeliveryPerson_Id=$this->User_id) && (Delivery_date = DATE(NOW()))";
+        $sql="SELECT o.Order_id,o.Delivery_date,o.Delivery_time,o.Delivery_fee,concat(u.First_Name,' ',u.Last_Name)AS Name,concat(u.Postalcode,' , ',u.Street,' , ' ,u.City)As Address FROM `order`o INNER JOIN placeorder p on o.Order_id=p.Order_Id INNER JOIN user u ON u.User_id=p.Customer_Id WHERE ((o.Order_Status=1 && o.DeliveryPerson_Id=$this->User_id) && (o.Delivery_date = DATE(NOW())))";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;
         }else{
             $answer=[];
             while($row=$result->fetch_assoc()){
-                array_push($answer,['Order_id'=>$row['Order_id'],'Delivery_date'=>$row['Delivery_date'],'Delivery_time'=>$row['Delivery_time'],'Delivery_fee'=>$row['Delivery_fee']]);
+                array_push($answer,['Order_id'=>$row['Order_id'],'Delivery_date'=>$row['Delivery_date'],'Delivery_time'=>$row['Delivery_time'],'Delivery_fee'=>$row['Delivery_fee'],'Name'=>$row['Name'],'Address'=>$row['Address']]);
             }
             return $answer;
         }
@@ -87,14 +87,14 @@ class reports{
 
     public function CusDay7Reports($connection){
         $this->User_id=$_SESSION['User_id'];
-        $sql="SELECT Order_id,Delivery_date,Delivery_time,Delivery_fee FROM `order` WHERE (Order_Status=1 && DeliveryPerson_Id=$this->User_id) && (Delivery_date >= DATE(NOW()) - INTERVAL 7 DAY)";
+        $sql="SELECT o.Order_id,o.Delivery_date,o.Delivery_time,o.Delivery_fee,concat(u.First_Name,' ',u.Last_Name)AS Name,concat(u.Postalcode,' , ',u.Street,' , ' ,u.City)As Address FROM `order`o INNER JOIN placeorder p on o.Order_id=p.Order_Id INNER JOIN user u ON u.User_id=p.Customer_Id WHERE (o.Order_Status=1 && o.DeliveryPerson_Id=$this->User_id) && (o.Delivery_date >= DATE(NOW()) - INTERVAL 7 DAY)";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;
         }else{
             $answer=[];
             while($row=$result->fetch_assoc()){
-                array_push($answer,['Order_id'=>$row['Order_id'],'Delivery_date'=>$row['Delivery_date'],'Delivery_time'=>$row['Delivery_time'],'Delivery_fee'=>$row['Delivery_fee']]);
+                array_push($answer,['Order_id'=>$row['Order_id'],'Delivery_date'=>$row['Delivery_date'],'Delivery_time'=>$row['Delivery_time'],'Delivery_fee'=>$row['Delivery_fee'],'Name'=>$row['Name'],'Address'=>$row['Address']]);
             }
             return $answer;
         }
@@ -104,14 +104,14 @@ class reports{
     public function CusDay30Reports($connection){
         $this->User_id=$_SESSION['User_id'];
         $this->User_id=$_SESSION['User_id'];
-        $sql="SELECT Order_id,Delivery_date,Delivery_time,Delivery_fee FROM `order` WHERE (Order_Status=1 && DeliveryPerson_Id=$this->User_id) && (Delivery_date BETWEEN CURDATE() - INTERVAL 30 DAY AND CURDATE())";
+        $sql="SELECT o.Order_id,o.Delivery_date,o.Delivery_time,o.Delivery_fee,concat(u.First_Name,' ',u.Last_Name)AS Name,concat(u.Postalcode,' , ',u.Street,' , ' ,u.City)As Address FROM `order`o INNER JOIN placeorder p on o.Order_id=p.Order_Id INNER JOIN user u ON u.User_id=p.Customer_Id WHERE (o.Order_Status=1 && o.DeliveryPerson_Id=$this->User_id) && (o.Delivery_date BETWEEN CURDATE() - INTERVAL 30 DAY AND CURDATE())";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;
         }else{
             $answer=[];
             while($row=$result->fetch_assoc()){
-                array_push($answer,['Order_id'=>$row['Order_id'],'Delivery_date'=>$row['Delivery_date'],'Delivery_time'=>$row['Delivery_time'],'Delivery_fee'=>$row['Delivery_fee']]);
+                array_push($answer,['Order_id'=>$row['Order_id'],'Delivery_date'=>$row['Delivery_date'],'Delivery_time'=>$row['Delivery_time'],'Delivery_fee'=>$row['Delivery_fee'],'Name'=>$row['Name'],'Address'=>$row['Address']]);
             }
             return $answer;
         }
@@ -120,14 +120,14 @@ class reports{
 
     public function CusAllReports($connection){
         $this->User_id=$_SESSION['User_id'];
-        $sql="SELECT Order_id,Delivery_date,Delivery_time,Delivery_fee FROM `order` WHERE (Order_Status=1 && DeliveryPerson_Id=$this->User_id)";
+        $sql="SELECT o.Order_id,o.Delivery_date,o.Delivery_time,o.Delivery_fee,concat(u.First_Name,' ',u.Last_Name)AS Name,concat(u.Postalcode,' , ',u.Street,' , ' ,u.City)As Address FROM `order`o INNER JOIN placeorder p on o.Order_id=p.Order_Id INNER JOIN user u ON u.User_id=p.Customer_Id WHERE (o.Order_Status=1 && o.DeliveryPerson_Id=$this->User_id)";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;
         }else{
             $answer=[];
             while($row=$result->fetch_assoc()){
-                array_push($answer,['Order_id'=>$row['Order_id'],'Delivery_date'=>$row['Delivery_date'],'Delivery_time'=>$row['Delivery_time'],'Delivery_fee'=>$row['Delivery_fee']]);
+                array_push($answer,['Order_id'=>$row['Order_id'],'Delivery_date'=>$row['Delivery_date'],'Delivery_time'=>$row['Delivery_time'],'Delivery_fee'=>$row['Delivery_fee'],'Name'=>$row['Name'],'Address'=>$row['Address']]);
             }
             return $answer;
         }
