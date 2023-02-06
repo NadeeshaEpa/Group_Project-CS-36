@@ -14,26 +14,6 @@
     <div class="registration-form">  
     <form action="../../controller/gasagent/register_controller.php" method="POST">
         <h2>Gasagent Registration Form</h2>
-        <div id="errmsg">
-            <?php
-                if(isset($_SESSION['emailerror'])){
-                    echo $_SESSION['emailerror'];
-                    echo '<br>';
-                    unset($_SESSION['emailerror']);
-                }
-                if(isset($_SESSION['usernameerror'])){
-                    echo $_SESSION['usernameerror'];
-                    echo '<br>';
-                    unset($_SESSION['usernameerror']);
-                }
-                if(isset($_SESSION['passworderror'])){
-                    echo $_SESSION['passworderror'];
-                    echo '<br>';
-                    unset($_SESSION['passworderror']);
-                }
-            ?>
-        </div>
-
         <div class="font">
         <label for=":" id="name" >Name:</label><br>
           <input type="text" name="firstname" id="firstname" placeholder="First Name"  required>

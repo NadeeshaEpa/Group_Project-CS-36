@@ -28,7 +28,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="../../view/gasagent/gasagentView.php">
+				<a href="../../controller/gasagent/gasagent_viewController.php?viewgas='1'">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">View details</span>
 				</a>

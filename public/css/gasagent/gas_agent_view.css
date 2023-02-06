@@ -521,6 +521,24 @@ body {
 /* MAIN */
 /* CONTENT */
 
+.tb {
+	border: 2px solid black;
+	align-content: center;
+	background-color: #10338e;
+}
+
+td{
+	text-align: center;
+	color: #eee;
+	font-weight: 600;
+	line-height: 60px;
+}
+
+th{
+	text-align: center;
+	background-color: #AAAAAA;
+	font-size: large;
+}
 
 
 
@@ -596,3 +614,7 @@ body {
     content: "\edc2";
     font-size: 45px;
 }
+
+
+
+

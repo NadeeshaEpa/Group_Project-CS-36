@@ -1,4 +1,4 @@
-
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,31 +95,33 @@
 
 <main>
         <div class="contaner">
-               
+               <?php 
+			   		if(isset($_SESSION['gas'])){
+                	$result=$_SESSION['gas']; 
+					// print_r($result);
+					// die();
+					}
+				?>
                
                 <div class="middle">
                 
                             <div class="tbl">
                                 <table class="tb">
-                                <tr>
-                                    <th>Type</th>
+                                <tr><br>
+                                    <!-- <th>Type</th> -->
                                     <th>SubType</th>
                                     <th>Quantity</th>
                                     
                                 </tr>
                                 <?php
-                                if(isset($_SESSION['view_result'])){
-                                    $result=$_SESSION['view_result']; 
-                                    foreach ($result as $row) {
+                                    foreach($result as $row) {
+
                                         echo "<tr>";
-                                        echo "<td>" . $row['Type'] . "</td>";
-                                        echo "<td>" . $row['Weight'] ." kg". "</td>";
-                                        echo "<td>" . $row['Quantity'] . "</td>";
+                                        echo "<td>" . $row['weight'] ." kg". "</td>";
+                                        echo "<td>" . $row['quantity'] . "</td>";
                                        
                                         echo "</tr>";
-                                    }
-                                    unset($_SESSION['view_result']);
-                                }
+									}
                                 
                                 ?>
                                 </table>
