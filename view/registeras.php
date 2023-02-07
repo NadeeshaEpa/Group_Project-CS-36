@@ -33,5 +33,4 @@
         </div>        
     </div>
 </body>
-<?php require_once 'customer/customer_footer.php'; ?>
 </html>

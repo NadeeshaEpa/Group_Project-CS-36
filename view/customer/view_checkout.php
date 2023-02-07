@@ -16,11 +16,15 @@
             }else{
                 $checkout=$_SESSION['checkout'];
                 $count=count($checkout);
+                if($count==0){
+                    header("location:../../controller/customer/addtocart_controller.php?viewcart='1'");
+                }
                 // print_r($checkout);
                 // die();
             }
       }
     ?>
+    
     <h1><?php echo $checkout[0]['shop_name']?></h1>
     <hr>
     <h2>Shopping Cart Items</h2>
@@ -42,9 +46,11 @@
                 <td><?php echo "Rs.".$item['price']?></td>
               </div>  
               <div class="btn">
-                <form action="#" method="Post">
-                    <td><button class="trash">Remove</button></td>
-                    <td><button class="edit">Edit</button></td>
+                <form action="../../controller/customer/addtocart_controller.php" method="Post">
+                    <input type="hidden" name="id" value="<?php echo $item['cart_id']?>">
+                    <input type="hidden" name="agent" value="<?php echo $item['gasagent_id']?>">
+                    <td><button name="dcartitem" class="trash">Remove</button></td>
+                    <td><button name="vcartitem" class="edit">Edit</button></td>
                 </form>
               </div>
             </tr>  

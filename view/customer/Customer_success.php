@@ -8,7 +8,7 @@
 
     <style>
        body{
-        background-color:#FFFDF0;
+        background-color:white;
        } 
        .container{
         height:62%;
@@ -16,30 +16,32 @@
        .para{
           width:60%;
           height:50%;
-          background-color:white;
-          margin-left:25%;
+          background-color:navy;
+          margin-left:20%;
           margin-top:10%;
           border-radius:20px;
+          color:white;
        }
        .para h2{
-        padding:30px;
+          padding:30px;
+          text-align:center;
        }
        .para button{
          width: 120px;
          height: 50px;
-         background-color:green;
-         color:white;
+         background-color:#00B8C4;
+         color:black;
          margin-left:45%;
          border-radius:20px;
+         font-size:20px;
          border:lightgreen;
+         font-weight:bold;
        }
        .para button:hover{
-         background-color:lightgreen;
-         color:black;
+         background-color:lightblue;
        }
        .para a{
          text-decoration:none;
-         color:white;
        }
        
     </style>
@@ -54,7 +56,5 @@
             <a href="../../index.php"><button>OK</button></a>
         </div>    
     </div>    
-    <?php require_once 'customer_footer.php'; ?>
-    <!-- <button><a href="customer_dashboard.php">Go to Dashboard</a></button> -->
 </body>
 </html>
