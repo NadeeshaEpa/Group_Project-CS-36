@@ -7,10 +7,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../public/css/customer/fago_register.css">
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2eSy5egkITKWg1EMsa1i1WcpPi29dgK0"></script>
+    <script>
+      function initMap() {
+        var colombo = {lat: 6.9271, lng: 79.8612};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: colombo
+        });
+        var marker = new google.maps.Marker({
+          position: colombo,
+          map: map,
+          draggable: true
+        });
+        google.maps.event.addListener(marker, 'dragend', function(event) {
+          document.getElementById("latitude").value = event.latLng.lat();
+          document.getElementById("longitude").value = event.latLng.lng();
+        });
+      }
+    </script>
+
     <title>Customer Registration</title>
 </head>
 <?php include_once '../header.php'; ?>
-<body>
+<body onload="initMap()">
     <div class="registration-form">  
     <form action="../../controller/customer/register_controller.php" method="POST" id="customer_form">
         <h2>Customer Registration Form</h2>
@@ -22,12 +43,18 @@
             <label id="username-label" for="username">Username:</label><br>
             <input type="text" name="username" id="username" placeholder="Username" class="box" required>
         </div>
+        <label>Drag the marker to your location:</label><br>
+        <div id="map" style="height: 500px; width: 90%; border-radius:20px;"></div><br>
+        <div>
+            <input type="hidden" id="latitude" name="latitude"><br>
+            <input type="hidden" id="longitude" name="longitude"><br>
+        </div>  
         <div>
             <label for="Address">Address:</label><br>
             <input type="text" name="street" id="street" placeholder="Street" class="box2" required>
             <input type="text" name="city" id="city" placeholder="City" class="box2" required>   
             <input type="text" name="postalcode" id="postalcode" placeholder="Postalcode" class="box2" required>
-        </div>
+        </div>  
         <div>    
             <label id="password-label" for="password">Password:</label><br>
             <input type="password" name="password" id="password" placeholder="Password" class="box" required>
@@ -44,28 +71,13 @@
             <label id="billnum-label" for="billnum">Electricity Bill Number:</label><br>
             <input id="billnum" type="text" name="billnum" id="billnum" placeholder="Electricity Bill Number" class="box" required><br><br>
         </div>
-        <?php
-            if(isset($_SESSION['otp-sent'])){
-                echo $_SESSION['otp-sent'];
-                echo '<br>';
-                unset($_SESSION['otp-sent']);
-            }
-        ?>
         <div>
             <label id="contactnum-label" for="contactnumber">Contact Number:</label><br>
             <div class="otpr">
                 <input type="text" name="cnumberstart" value="+94" class="box4" readonly>
                 <input type="text" name="contactnumber" id="contactnumber" placeholder="Contact Number" class="box5" pattern="[0-9]{9}" title="should include 9 numbers" required>
-                <!-- <button name="reqotp">Request OTP</button> -->
             </div>    
         </div>
-        <!-- <div>
-            <label for="OTP">OTP:</label><br>
-            <div class="otp">
-                <input type="text" name="OTP" id="OTP" placeholder="OTP" class="box5">
-                <button>Verify OTP</button>    
-            </div>     
-        </div> -->
         <div class="btn">
             <div class="sbtn">
                 <button id="submit-btn" type="submit" name="register">Register</button>

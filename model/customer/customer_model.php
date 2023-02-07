@@ -12,8 +12,10 @@ class customer_model{
     private $Type;
     private $Contactnumber;
     private $Billnum;
+    private $Latitude;
+    private $Longitude;
 
-    public function setDetails($firstname='',$lastname='',$username='',$street='',$city='',$postalcode='',$password='',$email='', $contactnumber='',$billnum=''){
+    public function setDetails($firstname='',$lastname='',$username='',$street='',$city='',$postalcode='',$password='',$email='', $contactnumber='',$billnum='', $latitude='',$longitude=''){
         $this->Firstname=$firstname;  //assign values to private variables from the parameters(values user entered in the registration form)
         $this->Lastname=$lastname;
         $this->Username=$username;
@@ -24,6 +26,8 @@ class customer_model{
         $this->Email=$email;
         $this ->Contactnumber=$contactnumber;
         $this->Billnum=$billnum;
+        $this->Latitude=$latitude;
+        $this->Longitude=$longitude;
         $this->Type="Customer";
     }
     public function setUserId($connection){  //set the user id of the customer
@@ -61,7 +65,7 @@ class customer_model{
     }
 
     public function setCustomer($connection){  //enter details to the customer table
-        $sql="INSERT INTO customer(Customer_Id,ElectricityBill_No,staff_Id,Registration_date,Status) VALUES ('$this->User_id','$this->Billnum',NULL,NULL,'0')";
+        $sql="INSERT INTO customer(Customer_Id,ElectricityBill_No,latitude,longitude,staff_Id,Registration_date,Status) VALUES ('$this->User_id','$this->Billnum','$this->Latitude',$this->Longitude,NULL,NULL,'0')";
         if($connection->query($sql)){
             $_SESSION['registerMsg']="User Registered Successfully";
             return true;

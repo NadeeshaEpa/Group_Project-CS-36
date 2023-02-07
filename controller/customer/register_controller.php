@@ -36,6 +36,8 @@ if(isset($_POST['register'])){        //check whether the register button is cli
     $email = $_POST['email'];
     $contactnumber = $_POST['contactnumber'];
     $billnum = $_POST['billnum'];
+    $latitude=$_POST['latitude'];
+    $longitude=$_POST['longitude'];
 
     //remove unwanted and harmful characters from the user entered details
     $firstname=$connection->real_escape_string($firstname);
@@ -48,11 +50,13 @@ if(isset($_POST['register'])){        //check whether the register button is cli
     $email=$connection->real_escape_string($email);
     $contactnumber=$connection->real_escape_string($contactnumber);
     $billnum=$connection->real_escape_string($billnum);
+    $latitude=$connection->real_escape_string($latitude);
+    $longitude=$connection->real_escape_string($longitude);
 
     //create a new customer object
     $user=new customer_model();
     //set the details of the customer
-    $user->setDetails($firstname,$lastname,$username,$street,$city,$postalcode,$password,$email,$contactnumber,$billnum);
+    $user->setDetails($firstname,$lastname,$username,$street,$city,$postalcode,$password,$email,$contactnumber,$billnum,$latitude,$longitude);
 
     //insert data into database
     $result=$user->registerCustomer($connection);
