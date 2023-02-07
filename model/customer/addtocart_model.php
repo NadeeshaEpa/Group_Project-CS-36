@@ -130,7 +130,7 @@ class addtocart_model{
             }else{
                 $cart=array();
                 while($row=$result->fetch_assoc()){
-                    array_push($cart,['cart_id'=>$row['cart_id'],'type'=>$row['type'],'weight'=>$row['weight'],'quantity'=>$row['quantity'],'price'=>$row['price'],'shop_name'=>$row['Shop_name']]);
+                    array_push($cart,['cart_id'=>$row['cart_id'],'type'=>$row['type'],'weight'=>$row['weight'],'quantity'=>$row['quantity'],'price'=>$row['price'],'shop_name'=>$row['Shop_name'],'gasagent_id'=>$gasagent]);
                 }
                 return $cart;
             }
@@ -142,10 +142,30 @@ class addtocart_model{
             }else{
                 $cart=array();
                 while($row=$result->fetch_assoc()){
-                    array_push($cart,['cart_id'=>$row['cart_id'],'type'=>$row['type'],'weight'=>$row['weight'],'quantity'=>$row['quantity'],'price'=>$row['price'],'shop_name'=>'Fago Shop']);
+                    array_push($cart,['cart_id'=>$row['cart_id'],'type'=>$row['type'],'weight'=>$row['weight'],'quantity'=>$row['quantity'],'price'=>$row['price'],'shop_name'=>'Fago Shop','gasagent_id'=>$gasagent]);
                 }
                 return $cart;
             }
         }
     }
+    public function deletecartitem($connection,$User_id,$cartid){
+        $sql="DELETE FROM cart WHERE cart_id='$cartid'";
+        $result=$connection->query($sql);
+        if($result===false){
+            return false;
+        }else{
+            return true;
+        }
+    }
+    public function getcartcount($connection,$User_id){
+        $sql="SELECT * FROM cart WHERE User_id='$User_id'";
+            $result=$connection->query($sql);
+            if($result->num_rows > 0){
+                $_SESSION['cartcount']=$result->num_rows;
+            }else{
+                $_SESSION['cartcount']=0;
+            }
+            return true;
+    }
+
 }
