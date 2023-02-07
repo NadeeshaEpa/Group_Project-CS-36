@@ -265,7 +265,8 @@ h2{
     border-radius: 50px;
     margin-top: 5%;
     margin-left: 5%;
-    border: 2px solid navy;
+    /* border: 2px solid #FDC801; */
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
     background: url(../../images/customer/homepage.jpg) center/cover no-repeat;
     animation: change-bg 20s infinite;
   }
