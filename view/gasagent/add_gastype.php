@@ -42,9 +42,9 @@
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="../../view/gasagent/gasagentUpdate.php">
 					<i class='bx bxs-message-dots' ></i>
-					<span class="text">Message</span>
+					<span class="text">Update or Delete</span>
 				</a>
 			</li>
 			<li>

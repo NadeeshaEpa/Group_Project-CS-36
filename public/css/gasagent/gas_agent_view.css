@@ -136,7 +136,7 @@ body {
 	background: var(--light);
 	display: flex;
 	align-items: center;
-	border-radius: 48px;
+	border-radius: 24px;
 	font-size: 16px;
 	color: var(--dark);
 	white-space: nowrap;
@@ -521,7 +521,7 @@ body {
 /* MAIN */
 /* CONTENT */
 
-.tb {
+/* .tb {
 	border: 2px solid black;
 	align-content: center;
 	background-color: #10338e;
@@ -538,7 +538,7 @@ th{
 	text-align: center;
 	background-color: #AAAAAA;
 	font-size: large;
-}
+} */
 
 
 

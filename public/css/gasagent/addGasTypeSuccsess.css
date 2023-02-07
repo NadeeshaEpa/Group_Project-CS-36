@@ -130,7 +130,7 @@ body {
 	background: var(--light);
 	display: flex;
 	align-items: center;
-	border-radius: 48px;
+	border-radius: 24px;
 	font-size: 16px;
 	color: var(--dark);
 	white-space: nowrap;

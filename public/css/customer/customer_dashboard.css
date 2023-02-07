@@ -6,61 +6,8 @@ body{
     background-color:white;
 
 }
-.sidebar{
-    /* margin-bottom: 5px;
-    margin-top: 30px; */
-    width: 18%;
-    padding: 20px;
-    font-size: 15px;
-    float: left;
-    /* background-image: linear-gradient(to right bottom, #5b8467, #569369, #50a16a, #46b06b, #39bf6c, #3fc265, #46c55d, #4ec854, #63bf44, #72b734, #7eae25, #88a517); */
-    background-color:#aeaeb3;
-}
-.dcontainer{
-    display: flex;
-    height: 90%;
-}
-.left1 button, .left2 button{
-    background-color: white;
-    /* margin-left: 10px; */
-    padding: 15px;
-    font-size: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-    border-radius: 10px;
-    width: 90%;
-    margin-top: 40px;
-    margin-bottom: 10px;
-    padding-left: 5px;
-}
-.left2 button:hover,.left1 button:hover{
-    background-color: #9AE298;
-}
-.left1 p, .left2 p{
-    font-size: 15px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    text-align: left;
-    padding-left: 0%;
-}
-.left1-1, .left2-1{
-    margin-top: 0px;
-    width: 30%;
-    float: left;
-}
-.left a{
-    text-decoration: none;
-    color: black;
-}
-.left1-1 img, .left2-1 img{
-    width: 50%;
-    height: 50%;
-    margin-right: 5px;
-    float: left;
-    margin-left: 5px;
-    margin-bottom: 2px;
-    padding-left: 15px;
-}
+
+
 
 .right{
     width:75%;
