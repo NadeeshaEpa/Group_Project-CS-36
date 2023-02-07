@@ -1,18 +1,37 @@
 <?php
 class gas_model{
-    public function getshopnames($connection,$type){
-        $sql="SELECT g.Shop_name FROM `gasagent`g inner join `gas_company` c on g.Gas_Type=c.company_id WHERE c.company_name='$type'";
+    public function getshopnames($connection,$type,$userid){
+        $sql="SELECT g.Shop_name,g.latitude,g.longitude FROM `gasagent`g inner join `gas_company` c on g.Gas_Type=c.company_id WHERE c.company_name='$type'";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;
         }else{
             $shopnames=[];
+            $shop_distance=[];
+            $locations=[];
             while($row=$result->fetch_object()){
-                array_push($shopnames,['Shop_name'=>$row->Shop_name]);
+                array_push($shopnames,['Shop_name'=>$row->Shop_name,'latitude'=>$row->latitude,'longitude'=>$row->longitude]);
             }
-            // print_r($shopnames);
-            // die();
-            return $shopnames;
+            foreach($shopnames as $shop){
+                array_push($locations,[$shop['Shop_name'],$shop['latitude'],$shop['longitude']]);
+            }
+            $_SESSION['locations']=$locations;
+            foreach($shopnames as $shop){
+                //call the distance function and get the value
+                $distance=$this->distance($userid,$shop['latitude'],$shop['longitude'],$connection);
+                array_push($shop_distance,['Shop_name'=>$shop['Shop_name'],'distance'=>$distance]);
+            }
+            //sort the array according to the distance in ascending order get the lowest distance into the 0 th index
+            for($i=0;$i<count($shop_distance);$i++){
+                for($j=$i+1;$j<count($shop_distance);$j++){
+                    if($shop_distance[$i]['distance']>$shop_distance[$j]['distance']){
+                        $temp=$shop_distance[$i];
+                        $shop_distance[$i]=$shop_distance[$j];
+                        $shop_distance[$j]=$temp;
+                    }
+                }
+            }
+            return $shop_distance;
         }
     }
     public function getweight($connection,$type){
@@ -137,5 +156,28 @@ class gas_model{
             }
             return $data;
         }
+    }
+    public function distance($userid,$latitude,$longitude,$connection){
+        $sql="Select latitude,longitude from `customer` where Customer_Id='$userid'";
+        $id=$connection->query($sql);
+        $row=$id->fetch_object();
+        $lat1=$row->latitude;
+        $lng1=$row->longitude;
+        $lat2=$latitude;
+        $lng2=$longitude;
+
+        $R = 6371;
+            $dLat = ($lat2 - $lat1) * (M_PI / 180);
+            $dLng = ($lng2 - $lng1) * (M_PI / 180);
+            $a = 
+              sin($dLat / 2) * sin($dLat / 2) +
+              cos($lat1 * (M_PI / 180)) * cos($lat2 * (M_PI / 180)) * 
+              sin($dLng / 2) * sin($dLng / 2)
+            ;
+            $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+            $d = $R * $c;
+        //round the value into 2 decimal places
+        $d=round($d,1);
+        return $d;    
     }
 }

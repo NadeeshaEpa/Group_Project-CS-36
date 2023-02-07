@@ -4,12 +4,13 @@ require_once("../../config.php");
 require_once("../../model/customer/gas_model.php");
 
 if(isset($_POST['gas_type'])){
+    $userid=$_SESSION['User_id'];
     $type=$_POST['gas_type'];
     $type=$connection->real_escape_string($type);
     $_SESSION['gas_type']=$type;
     //create new gas model
     $gasmodel=new gas_model();
-    $result2=$gasmodel->getshopnames($connection,$type);
+    $result2=$gasmodel->getshopnames($connection,$type,$userid);
         $_SESSION['shopnames']=$result2;
         $result1=$gasmodel->getweight($connection,$type);
         $_SESSION['weight']=$result1;
@@ -73,4 +74,9 @@ if(isset($_GET['newgasid'])){
             header("Location: ../../view/customer/inside_shopnew.php");
         }
     }
+}
+if(isset($_POST['urgas_button'])){
+    $gastype=$_POST['urgas_type'];
+    $_SESSION['unregcustomer_viewgas']=$gastype;
+    header("Location: ../../view/customer/unregcustomer_location.php");
 }
