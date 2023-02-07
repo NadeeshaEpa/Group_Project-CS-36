@@ -26,18 +26,7 @@ if(isset($_SESSION['gastype'])){
             <h2>Gas Shop</h2>
             <img src="../../public/images/customer/gas.jpg" alt="" class="gas_img">
             <div id="gas-shop" class="gas_dropdown">
-                <form action="../../controller/customer/gas_controller.php" method="POST">
-                    <select id="gas-type-selector" name="urgas_type">
-                        <!-- create a disable option  and show it as the first value-->
-                        <option selected disabled>Choose Gas Type</option>
-                        <?php 
-                        $i=0;
-                        foreach($gastype as $gas){ ?>
-                            <option value="<?php echo $gas; ?>"><?php echo $gas; ?></option>
-                        <?php } ?>
-                    </select>
-                    <button name="urgas_button">Shop Now</button>
-                </form>   
+                <a href="unreg_checkgas.php"><button name="urgas_button">Shop Now</button>
             </div>
        </div> 
        <div class="fago_shop">
