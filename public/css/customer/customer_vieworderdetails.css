@@ -1,0 +1,84 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+h1{
+    text-align: center;
+}
+.back button{
+    margin-top: 10%;
+    width: 150px;
+    margin-left: 20px;
+    height: 50px;
+    background-color:green;
+    border-radius: 10px;
+    float: left;
+}
+.back a{
+    text-decoration: none;
+    text-align: left;
+    color: white;
+}
+.back button:hover{
+    background-color: lightgreen;
+}
+.orderdetails{
+    height: 90%;
+    display: flex;
+}
+.odata{
+    float: right;
+    background-color: white;
+    padding-left: 40px;
+    margin-top: 3.6%;
+    border-radius: 20px;
+    width: 60%;
+    margin-right: 12%;
+    padding: 20px;
+    padding-left: 80px;
+    padding-bottom: 30px;
+}
+.odata h2{
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-right: 14%;
+}
+.half{
+    font-size: 20px;
+    margin-bottom: 0px;
+}
+.halfleft{
+    width: 50%;
+    float: left;
+}
+.halfright{
+    width: 50%;
+    float: right;
+}
+.customer{
+    font-size: 20px;
+    margin-bottom: 0px;
+    width: 100%;
+}
+.third{
+    width: 100%;
+    font-size: 20px;
+}
+.dcontainer input{
+    width: 70%;
+    height: 30px;
+    border-radius: 18px;
+    padding-left: 10px;
+    border: 1px solid black;
+    margin-left: 30px;
+    font-size: 18px;
+    margin-bottom: 2px;
+}
+.third input{
+    width: 85%;
+    
+}
+.customer input{
+    width: 85%;
+}

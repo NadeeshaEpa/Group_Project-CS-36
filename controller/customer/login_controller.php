@@ -12,7 +12,10 @@ if(isset($_POST['login'])){
 
     $user=new customer_model();  //create a new customer object
     $result=$user->loginCustomer($connection,$username,$password);  //call the loginCustomer function of the customer model
-
+    $gastype=$user->gastype($connection);
+    $_SESSION['gastype']=$gastype;
+    print_r($gastype);
+    die();
     if($result){
         $_SESSION['login']="success";  //if the login is successful, set the session variable
         header("Location: ../../view/customer/customer_select.php");  //redirect to the selection page
@@ -24,8 +27,13 @@ if(isset($_POST['login'])){
         $connection->close();
         exit();
     }
-}else{
-   echo "Invalid request";
-   exit();
+}
+if(isset($_GET['unregview'])){
+    $user=new customer_model();
+    $gastype=$user->gastype($connection);
+    $_SESSION['gastype']=$gastype;
+    header("Location: ../../view/customer/unregcustomer_select.php");
+    $connection->close();
+    exit();
 }
 
