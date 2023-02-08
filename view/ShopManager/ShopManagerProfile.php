@@ -47,10 +47,10 @@
 				</a>
 			</li>
 			<li>
-				<a href="../../view/ShopManager/shopManagerBrands.php">
+				<a href="../../view/ShopManager/shopManagerReports.php">
 					<i class='bx bxs-group' ></i>
-                    <!-- add delete option here with show all the brands -->
-					<span class="text">Brands</span>
+                    
+					<span class="text">Reports</span>
 				</a>
 			</li>
 		</ul>

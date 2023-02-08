@@ -588,4 +588,344 @@ body {
 	
 }
 
+/* add brands css */
+
+#Add_brands_outter_id{
+	
+	height: 150vh;
+	background-image: url(../../images/DeliveryPerson/D_add1.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-clip: content-box;
+	background-position: center bottom;
+	
+	animation: changeB_img_com 20s linear infinite;
+  }
+
+  @keyframes changeB_img_com {
+	0% {
+	  background-image: url(../../images/DeliveryPerson/D_add1.jpg);
+	}
+	20% {
+	  background-image: url(../../images/DeliveryPerson/D_add2.jpg);
+	}
+	40% {
+	  background-image: url(../../images/DeliveryPerson/D_add3.jpg);
+	}
+	60% {
+	  background-image: url(../../images/DeliveryPerson/D_add4.jpg);
+	}
+	80%{
+       background-image: url(../../images/DeliveryPerson/D_add5.jpg);
+	}
+	100%{
+		background-image: url(../../images/DeliveryPerson/D_add6.jpg);
+	}
+  }
+
+  .Add_brands_outter{
+	display: flex;
+  }
+
+  .Add_brands_form{
+    margin: auto;
+	width: 60%;
+	height: 75%;
+	background-color: white;
+	border-radius: 18px;
+	box-shadow: 10px 10px 20px 5px black;
+  }
+
+  .Add_brands_form .Add_brands_msg{
+	width: 100%;
+	height: 5%;
+  }
+  .Add_brands_form .Add_brands_info{
+	width: 100%;
+	height: 95%;
+  }
+
+  .Add_brands_form .Add_brands_msg h4{
+	font-size: 16px;
+	color: #046f34;
+	text-align: center;
+	margin: auto;
+  }
+  .Add_brands_form .Add_brands_msg h5{
+	font-size: 16px;
+	color: #da133e;
+	text-align: center;
+	margin: auto;
+  }
+  .Add_brands_form .Add_brands_info h5{
+	text-align: center;
+	font-size: 20px;
+	margin: auto;
+  }
+
+  .Add_brands_form .Add_brands_info label{
+	margin-left: 25px;
+    font-size: 16x;
+    margin-top: 15px;
+
+	
+  }
+  .Add_brands_form .Add_brands_info input{
+	padding: 10px 10px 10px 10px;
+	width: 70%;
+	margin-left: 15%;
+	border-radius: 15px;
+	background-color: rgb(253, 253, 253);
+	text-align: center;
+	font-size: 16px;
+	margin-top: 10px;
+	margin-bottom: 15px;
+  }
+
+  #productDescription_id{
+	padding: 10px 10px 120px 10px;
+  }
+
+  .Add_brands_form .Add_brands_info  button{
+	margin-top: 15px;
+	width: 150px;
+	margin-left: 270px;
+	height:40px ;
+	text-align: center;
+	border-radius: 15px;
+	background-color: #3C91E6;
+  }
+  
+  .Add_brands_form .Add_brands_info select {
+	padding: 10px 20px 10px 10px;
+    background-color: rgb(253, 253, 253);
+	border-color: #000000;
+    margin-left: 15%;
+    margin-top: 20px;
+    width: 70%;
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-align: center;
+	border-radius: 15px;
+    
+  }
+
+  /* */
+
+
+  /* Update Q and p css*/
+
+
+
+.showBrandQDataHeader {
+	width: 100%;
+	height: 2%;
+	
+}
+
+.showBrandQDataHeader .showBrandQDataHeaderErrormsg {
+	width: 100%;
+	height: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.showBrandQDataHeader .showBrandQDataHeaderTitle {
+	width: 100%;
+	height: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 22px;
+}
+
+.showBrandQDataHeader .showBrandQDataHeaderErrormsg h4 {
+	font-size: 18px;
+	color: red;
+	text-align: center;
+}
+
+.brandQinfoinner{
+	margin-top: 5%;
+	margin-left: 5%;
+	width: 90%;
+	height: 15%;
+	border-radius: 20px;
+	box-shadow: 10px 10px 20px 5px black;
+	background-color: white;
+	display: flex;
+	
+}
+.brandQinfoinner form{
+	width: 100%;
+	height: 100%;
+}
+
+.brandQinfoinner input{
+	height: 5%;
+	width:50% ;
+	padding: 10px 10px 10px 10px;
+	border-radius: 15px;
+	text-align: center;
+    font-size: 12px;
+	
+	margin-top: 2.5%;
+	margin-bottom: 2.5%;
+	background-color: white;
+}
+
+#BrandQpriceid{
+    margin-left: 88px;
+}
+
+#BrandQrefid{
+    margin-left: 24px;
+}
+
+#BrandQquentyid{
+    margin-left: 60px;
+}
+#Brandcatefid{
+    margin-left: 53px;
+}
+
+#BrandNameid{
+margin-left: 80px;
+}
+
+.brandQinfoinner label{
+	font-size: 16px;
+	margin-left: 5%;
+	margin-top: 2.5%;
+	margin-bottom: 2.5%;
+	display: inline-block;
+}
+
+.brandQinfoinner button{
+	
+	height: 10%;
+	
+	text-align: center;
+	background-color: #205d9a;
+	border-radius: 15px;
+	margin-left: 2%;
+	
+}
+
+#BrandQuenBtnid{
+    padding: 10px 75px 10px 40px;
+}
+
+#brandDeleteBtnid{
+    margin-bottom: 2%;
+	background-color: red;
+	margin-top: 1%;
+	margin-left: 70%;
+	padding: 10px 95px 10px 84px;
+}
+
+#BrandQpricebtnid{
+    padding: 10px 95px 10px 40px;
+	
+}
+
+/**/
+
+
+/* stock manager report css*/
+
+
+.dropdown_outter{
+	display: flex;
+	width: 100%;
+	height: 25%;
+
+}
+
+.dropdown{
+	width: 50%;
+	height: 100%;
+}
+
+.dropdown_outter .dropdown select {
+    background: rgb(255, 255, 255);;
+    border: 3px solid rgb(84, 73, 116);
+	border-radius: 15px;
+    width: 405px;
+    height: 40px;
+    font-size: large;
+    margin-bottom: 36px;
+    text-align: center;
+    
+  }
+
+  .dropdown_outter .dropdown button{
+	width: 150px;
+	margin-left: 350px;
+	height:40px ;
+	text-align: center;
+	border-radius: 15px;
+	background-color: #3C91E6;
+  }
+
+  .report_info_outter{
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-bottom: 3%;
+	margin-top: 2%;
+	display: flex;
+	border: 2px solid black; 
+	border-radius: 18px;
+  }
+
+  .report_info{
+	margin: auto;
+	font-size: 20px;
+	
+  }
+
+  .delivary_nof_msg{
+	width: 100%;
+	height: 10%;
+	margin-top: 3%;
+	display: flex;
+  }
+  .delivary_nof_msg h6{
+	margin: auto;
+	font-size: 20px;
+	text-align: center;
+	color: #DB504A;
+  }
+
+  .delivary_f_msg h5{
+	margin: auto;
+	font-size: 20px;
+	text-align: center;
+	color: #080808;
+  }
+
+  .delivary_f_msg{
+	width: 100%;
+	height: 10%;
+	display: flex;
+
+  }
+
+ 
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
 

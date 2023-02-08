@@ -92,6 +92,43 @@ switchMode.addEventListener('change', function () {
 })
 
 
+/*date creation function */
+let date = new Date();
+let month_index=date.getMonth();
+let day=date.getDate();
+
+let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+let monthName = months[month_index];
+
+let getDayLable=document.getElementById('dayid');
+let getMonthLable=document.getElementById('monthid');
+
+if(getDayLable){
+  getDayLable.innerHTML=day;
+}
+if(getMonthLable){
+  getMonthLable.innerHTML=monthName;
+}
+/*  */
+
+
+/*count and amount of the delivary */
+
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    
+    var response = JSON.parse(this.responseText);
+    console.log(response);
+    incomeid2.innerHTML = response.total_fee['SUM(o.Amount)'];
+	Nodeliverid2.innerHTML = response.Order_count['COUNT(*)'];
+    
+};
+xhttp.open("GET", "http://localhost/Group_Project-CS-36/controller/ShopManager/ShopManagerOrderCountController.php", true);
+xhttp.send();
+
+/* */
+
+
 
 
   

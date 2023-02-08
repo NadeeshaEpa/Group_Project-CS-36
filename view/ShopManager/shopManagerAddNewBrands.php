@@ -47,10 +47,10 @@
 				</a>
 			</li>
 			<li>
-				<a href="../../view/ShopManager/shopManagerBrands.php">
+				<a href="../../view/ShopManager/shopManagerReports.php">
 					<i class='bx bxs-group' ></i>
-                    <!-- add delete option here with show all the brands -->
-					<span class="text">Brands</span>
+                   
+					<span class="text">Reports</span>
 				</a>
 			</li>
 		</ul>
@@ -146,6 +146,53 @@
 
 			<div class="table-data">
 				<div class="order">
+				    <div class="Add_brands_outter" id="Add_brands_outter_id">
+						<div class="Add_brands_form">
+						    <div class="Add_brands_msg">
+								<h4>
+									<?php if(isset($_SESSION['Brand_add'])){
+									echo "New brand Added Successfully";
+									unset($_SESSION['Brand_add']);
+								} ?>
+								</h4><br>
+								<h5>
+									<?php if(isset($_SESSION['Brand_add_error'])){
+										echo "Error Occurred";
+										unset($_SESSION['Brand_add_error']);
+									} ?>
+
+								</h5>
+							</div>
+							<div class="Add_brands_info">
+								<form action="../../controller/ShopManager/ShopManagerAddBrandsController.php" method="Post">
+									<h5>Add Brands</h5>
+									<label for="">Name :</label><br>
+									<input type="text" name="productName"><br>
+									<label for="">Quantity :</label><br>
+									<input type="text" name="productQuantity"><br>
+									<label for="">Price :</label><br>
+									<input type="text" name="producPrice"><br>
+									<label for="">Category :</label><br>
+                                    <select name="Category" id="Category_id" required>
+                                        <option value="">---Select Type---</option>
+                                        <option value="Gas Cooker">Gas Cooker</option>
+                                        <option value="Regulator">Regulator</option>
+										<option value="Gas tube">Gas tube</option>
+                                    </select><br>
+									<label for="">Product_type :</label><br>
+									<input type="text" name="product_type"><br>
+									<label for="">Description :</label><br>
+									<input type="text" name="productDescription" id="productDescription_id"><br>
+                                    <button name="BrandAdd">Add</button>
+
+									
+								</form>
+                            </div>
+
+						</div>
+
+					</div>
+					
 					
 				</div>
 			

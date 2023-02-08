@@ -112,7 +112,30 @@
 
 			
 			<div class="table-data">
-				<div class="order">
+				<div class="order" >
+					<div class="delivary_reviewsback" id="delivary_reviewsbackid">
+						<div class="reviews_content">
+							<div class="re_msg">
+								<h4>
+									<?php if(isset($_SESSION['Readd'])){
+									echo "Review Added Successfully";
+									unset($_SESSION['Readd']);
+								} ?>
+								</h4>
+							</div>
+							<div class="Re_info">
+								<form action="../../controller/deliveryperson/deliveryPersonReviwControlller.php" method="Post">
+									<h5>Add Reviews</h5>
+									<label for="" >Enter the description :</label><br>
+
+									<input type="text" name="dis_input" required><br>
+									<button type="submit" name="revie_add">submit</button>
+								</form>
+                            </div>
+						</div>
+
+					</div>
+
 					
 				</div>
 			

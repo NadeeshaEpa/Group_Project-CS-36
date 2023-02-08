@@ -47,10 +47,10 @@
 				</a>
 			</li>
 			<li>
-				<a href="../../view/ShopManager/shopManagerBrands.php">
+				<a href="../../view/ShopManager/shopManagerReports.php">
 					<i class='bx bxs-group' ></i>
-                    <!-- add delete option here with show all the brands -->
-					<span class="text">Brands</span>
+                    
+					<span class="text">Reports</span>
 				</a>
 			</li>
 		</ul>
@@ -111,7 +111,7 @@
 				
 			</div>
 
-			<!-- <ul class="box-info">
+			<ul class="box-info">
                 <li>
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
@@ -119,16 +119,16 @@
                         <label for="" id="monthid"></label>
 					</span>
 				</li>
-				<li>
+				<!-- <li>
 					<i class='bx bxs-time-five' ></i>
 					<span class="text">
 						<label for="" id="timeid" style="margin-left: 40%; font-size:32px"></label>
 					</span>
-				</li>
+				</li> -->
 				<li>
 					<i class='bx bxs-group' ></i>
 					<span class="text">
-						<label for="" id="Nodeliverid1" style=" font-size:20px">Total delivary count:</label><br>
+						<label for="" id="Nodeliverid1" style=" font-size:20px">Total Order count:</label><br>
                         <label for="" id="Nodeliverid2" style="font-size: 32px; margin-left:35%">3</label>
 					</span>
 				</li>
@@ -141,7 +141,7 @@
 				</li>
                
 
-			</ul> -->
+			</ul>
 
 
 			<div class="table-data">

@@ -172,9 +172,37 @@
 
 			<div class="table-data">
 				<div class="order">
-					
+					<div class="tempD">
+						<div class="Dtempl">
+							<div>
+								<label for="">Name :</label>
+								<label for=""> Avishka prabhath</label><br>
+								<label for="">Address :</label>
+								<label for=""> No 23 nudegoda colombo 5</label><br>
+                            </div>
+						</div>
+						<div class="DtempR">
+						    <button id="temp1">Accept</button><br>
+							<button id="temp2">Decline</button><br>
+							<button id="temp3">Finalized order</button>
+						</div>
+					</div>
+					<div class="tempD">
+						<div class="Dtempl">
+							<div>
+								<label for="">Name :</label>
+								<label for=""> Dhanusha Thilakarathna</label><br>
+								<label for="">Address :</label>
+								<label for=""> No 23 Delkada colombo 5</label><br>
+                            </div>
+						</div>
+						<div class="DtempR">
+							<button id="temp1">Accept</button><br>
+							<button id="temp2">Decline</button><br>
+							<button id="temp3">Finalized order</button>
+						</div>
+					</div>
 				</div>
-			
 			</div>
 		</main>
 		<!-- MAIN -->

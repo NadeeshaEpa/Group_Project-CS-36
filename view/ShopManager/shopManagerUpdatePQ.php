@@ -47,10 +47,10 @@
 				</a>
 			</li>
 			<li>
-				<a href="../../view/ShopManager/shopManagerBrands.php">
+				<a href="../../view/ShopManager/shopManagerReports.php">
 					<i class='bx bxs-group' ></i>
-                    <!-- add delete option here with show all the brands -->
-					<span class="text">Brands</span>
+                   
+					<span class="text">Reports</span>
 				</a>
 			</li>
 		</ul>
@@ -111,44 +111,49 @@
 				
 			</div>
 
-			<!-- <ul class="box-info">
-                <li>
-					<i class='bx bxs-calendar-check' ></i>
-					<span class="text">
-						<label for="" id="dayid" style="margin-left: 40%;"></label><br>
-                        <label for="" id="monthid"></label>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-time-five' ></i>
-					<span class="text">
-						<label for="" id="timeid" style="margin-left: 40%; font-size:32px"></label>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-group' ></i>
-					<span class="text">
-						<label for="" id="Nodeliverid1" style=" font-size:20px">Total delivary count:</label><br>
-                        <label for="" id="Nodeliverid2" style="font-size: 32px; margin-left:35%">3</label>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-dollar-circle' ></i>
-					<span class="text">
-						<label for="" id="incomeid1" style=" font-size:20px"> Total income:</label><br>
-                        <label for="" id="incomeid2">Rs: 850</label>
-					</span>
-				</li>
-               
-
-			</ul> -->
-
-
 			<div class="table-data">
 				<div class="order">
-					
+				    <div class="showBrandQData">
+						<div class="showBrandQDataHeader">
+							<div class="showBrandQDataHeaderErrormsg">
+								<h4><?php if(isset($_SESSION['BrandQError'])){
+									echo "Data not found";
+									unset($_SESSION['BrandQError']);
+								} ?></h4>
+							</div>
+							<div class="showBrandQDataHeaderTitle">
+								<h4>All brands</h4>
+							</div>
+						</div>
+
+						<div class="showBrandQDataInner">
+							<?php if(isset($_SESSION['Product_details'])){
+								$result=$_SESSION['Product_details'];
+								foreach ($result as $row) { ?>
+									<div class="brandQinfoinner">
+										<form action="../../controller/ShopManager/ShopManagerBrandController.php">
+											<label for="">Reference No:</label>
+											<input type="text"  id="BrandQrefid" name="BrandQref" value="<?php echo $row['Item_code']; ?>" disabled><br>
+											<label for="">Name:</label>
+											<input type="text"  id="BrandNameid" value="<?php echo $row['Name']; ?>" disabled><br>
+											<label for="">Category:</label>
+											<input type="text" id="Brandcatefid" value="<?php echo $row['Category']; ?>" disabled><br>
+											<label for="">Quantity:</label>
+											<input type="text" id="BrandQquentyid" name="BrandQquenty" value="<?php echo $row['Quantity']; ?>" disabled>
+											<button name="BrandQuenBtn" id="BrandQuenBtnid">Update Quantity</button><br>
+											<label for="">Price:</label>
+											<input type="text" id="BrandQpriceid" value="<?php echo $row['Price']; ?>" disabled>
+											<button id="BrandQpricebtnid" name="BrandQpricebtn">Update Price</button><br>
+											
+											<button name="brandDeleteBtn" id="brandDeleteBtnid">Delete</button>
+										</form>
+									</div>
+								<?php }
+							} ?>
+						</div>
+                    </div>
+
 				</div>
-			
 			</div>
 		</main>
 		<!-- MAIN -->

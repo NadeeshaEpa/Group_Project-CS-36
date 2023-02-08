@@ -111,6 +111,37 @@
 
 			<div class="table-data">
 				<div class="order">
+					<div class="complane_outter" id="complaneoutterid">
+						<div class="complane_form">
+						    <div class="complane_msg">
+								<h4>
+									<?php if(isset($_SESSION['Complain_add'])){
+									echo " Complain Added Successfully";
+									unset($_SESSION['Complain_add']);
+								} ?>
+								</h4><br>
+								<h5>
+									<?php if(isset($_SESSION['Complain_err'])){
+										echo "Error Occurred";
+										unset($_SESSION['Complain_err']);
+									} ?>
+
+								</h5>
+							</div>
+							<div class="complane_info">
+								<form action="../../controller/deliveryperson/deliverypersonComplaneController.php" method="Post">
+									<h5>Add Complains</h5>
+									<label for="">Reference No :</label><br>
+									<input type="text" name="complaneRef" id="complaneRef_id"><br>
+                                    <label for="">Description :</label><br>
+									<input type="text" name="complane_diesf">
+									<button type="submit" name="complane_btn">submit</button>
+								</form>
+                            </div>
+
+						</div>
+
+					</div>
 					
 				</div>
 			

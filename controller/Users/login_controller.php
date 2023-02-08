@@ -16,6 +16,8 @@ if(isset($_POST['login'])){
     $_SESSION['gastype']=$result2;
     $result3=$user->getUserDetails($connection);
     $_SESSION['userDetails']=$result3;
+    $result4=$user->getProductDetails($connection);
+    $_SESSION['Product_details']=$result4;
     
     
     if($result){
