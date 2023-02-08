@@ -3,22 +3,42 @@
     if($_SESSION['available']=="failed" || $_SESSION['viewgas']=="failed"){
             header("location:error.php");
     }else{
-        if(isset($_SESSION['viewgas'])){
-            $gas=$_SESSION['viewgas'];
-            // print_r($gas);
-            // die();
-            $count=count($gas);
-        }
         if(isset($_SESSION['weight'])){
             $weight=$_SESSION['weight'];
-            $count1=count($weight);
+            if($weight!=NULL){
+                $count1=count($weight);
+            }else{
+                $weight=[];
+                $count1=0;
+            }
+        }else{
+            $weight=[];
+            $count1=0;
+        }
+        if(isset($_SESSION['viewgas'])){
+            $gas=$_SESSION['viewgas'];
+            $count=count($gas);
+        
+        }else{
+            $gasshop=[];
+            $count=0;
         }
         if(isset($_SESSION['shopnames'])){
             $shops=$_SESSION['shopnames'];
-            $count2=count($shops);
+            if($shops!=NULL){
+                $count2=count($shops);
+            }else{
+                $shops=[];
+                $count2=0;
+            }
+        }else{
+            $shops=[];
+            $count2=0;
         }
         if(isset($_SESSION['locations'])){
             $locations=$_SESSION['locations'];
+        }else{
+            $locations=[];
         }
     }
 ?>
