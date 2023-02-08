@@ -134,15 +134,15 @@ if(isset($_POST['edituser'])){
             }
             else{
                 $_SESSION['updateuser']="failed";
-                echo "Failed";
+                // echo "Failed";
             }
         }else{
             $_SESSION['updateuser']="failed";
-            echo "Failed";
+            // echo "Failed";
         }
     }else{
         $_SESSION['updateuser']="failed";
-        echo "Failed";
+        // echo "Failed";
     }
 
 

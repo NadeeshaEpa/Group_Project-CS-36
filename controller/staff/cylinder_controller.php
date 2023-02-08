@@ -13,7 +13,7 @@ if(isset($_GET['id'])){
         $_SESSION['cylinderdetails']=$result;
         header("Location:../../view/staff/gas_cylinder.php");
     }else{
-        echo "Error";
+        // echo "Error";
     }
 
 }

@@ -75,10 +75,10 @@ class staff_model{
         $sql="INSERT INTO user (User_id,First_Name,Last_Name,City,Street,Postalcode,Username,Password,Email,Type) VALUES ('$this->User_id',
         '$this->Firstname','$this->Lastname','$this->City','$this->Street','$this->Postalcode','$this->Username','$this->Password','$this->Email','$this->Type')";
         if($connection->query($sql)){
-            $_SESSION['registerMsg']="User table updated Successfully";
+            // $_SESSION['registerMsg']="User table updated Successfully";
             return true;
         }else{
-            $_SESSION['regerror']="User Registration Failed";
+            // $_SESSION['regerror']="User Registration Failed";
             return false;
         }
     }
@@ -86,10 +86,10 @@ class staff_model{
     public function setContact($connection){
         $sql="INSERT INTO user_contact(User_id,Contact_No) VALUES ('$this->User_id','$this->Contactnumber')";
         if($connection->query($sql)){
-            $_SESSION['registerMsg']="User contact updated Successfully";
+            // $_SESSION['registerMsg']="User contact updated Successfully";
             return true;
         }else{
-            $_SESSION['regerror']="User Registration Failed";
+            // $_SESSION['regerror']="User Registration Failed";
             return false;
         }
     }
@@ -97,10 +97,10 @@ class staff_model{
     public function setStaff($connection){
         $sql="INSERT INTO staff(Staff_Id,NIC,Admin_Id,Registration_date,Status) VALUES ('$this->User_id','$this->nic',NULL,NULL,'1')";
         if($connection->query($sql)){
-            $_SESSION['registerMsg']="User Registered Successfully";
+            // $_SESSION['registerMsg']="User Registered Successfully";
             return true;
         }else{
-            $_SESSION['regerror']="User Registration Failed";
+            // $_SESSION['regerror']="User Registration Failed";
             return false;
         }
     }
@@ -108,10 +108,10 @@ class staff_model{
     public function setprofilepic($connection){
         $sql="INSERT INTO `profileimg`(User_id,status,imgname) VALUES ('$this->User_id',0,'noprofile.png')";
         if($connection->query($sql)){
-            $_SESSION['registerMsg']="User Registered Successfully";
+            // $_SESSION['registerMsg']="User Registered Successfully";
             return true;
         }else{
-            $_SESSION['regerror']="User Registration Failed";
+            // $_SESSION['regerror']="User Registration Failed";
             return false;
         }
     }

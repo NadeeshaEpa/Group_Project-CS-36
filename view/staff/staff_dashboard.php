@@ -53,13 +53,6 @@
 			</li>
 
 			<li>
-				<a href="../../controller/admin/company_controller.php?id=viewcompany">
-					<i class='bx bxs-doughnut-chart' ></i>
-					<span class="text">Complains</span>
-				</a>	
-			</li>
-
-			<li>
 				<a href="../../view/staff/gas_cylinder.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Gas Cylinders</span>
@@ -73,7 +66,7 @@
 			</li>
 
 			<li>
-				<a href="../../controller/admin/company_controller.php?id=viewcompany">
+				<a href="deliveries.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Deliveries</span>
 				</a>

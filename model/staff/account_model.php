@@ -8,7 +8,7 @@ class account_model{
             while($row=mysqli_fetch_assoc($result)){
                 $staff[]=$row;
             }
-            print_r($staff);
+            // print_r($staff);
             return $staff;
         }else{
             return false;
@@ -23,7 +23,7 @@ class account_model{
             while($row=mysqli_fetch_assoc($result)){
                 $customer[]=$row;
             }
-            print_r($customer);
+            // print_r($customer);
             return $customer;
         }else{
             return false;
@@ -39,7 +39,7 @@ class account_model{
             while($row=mysqli_fetch_assoc($result)){
                 $gasagent[]=$row;
             }
-            print_r($gasagent);
+            // print_r($gasagent);
             return $gasagent;
         }else{
             return false;
@@ -54,7 +54,7 @@ class account_model{
             while($row=mysqli_fetch_assoc($result)){
                 $deliveryperson[]=$row;
             }
-            print_r($deliveryperson);
+            // print_r($deliveryperson);
             return $deliveryperson;
         }else{
             return false;
@@ -69,7 +69,7 @@ class account_model{
             while($row=mysqli_fetch_assoc($result)){
                 $cylinder[]=$row;
             }
-            print_r($cylinder);
+            // print_r($cylinder);
             return $cylinder;
         }else{
             return false;
@@ -84,7 +84,7 @@ class account_model{
             while($row=mysqli_fetch_assoc($result)){
                 $customer[]=$row;
             }
-            print_r($customer);
+            // print_r($customer);
             return $customer;
         }else{
             return false;
@@ -100,7 +100,7 @@ class account_model{
             while($row=mysqli_fetch_assoc($result)){
                 $gasagent[]=$row;
             }
-            print_r($gasagent);
+            // print_r($gasagent);
             return $gasagent;
         }else{
             return false;
@@ -115,7 +115,7 @@ class account_model{
             while($row=mysqli_fetch_assoc($result)){
                 $deliveryperson[]=$row;
             }
-            print_r($deliveryperson);
+            // print_r($deliveryperson);
             return $deliveryperson;
         }else{
             return false;

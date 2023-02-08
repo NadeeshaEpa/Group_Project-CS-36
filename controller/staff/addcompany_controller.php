@@ -58,7 +58,7 @@ $user=new company_model();
 $user->setDetails($company_name,$photo);
 $result=$user->Registercompany($connection);
 if($result){
-    $_SESSION['RegsuccessMsg'] = 'company Registered Successfully';
+    // $_SESSION['RegsuccessMsg'] = 'company Registered Successfully';
     header("Location:../../controller/admin/company_controller.php?id=viewcompany");
 }else{
     header("Location: ../../view/admin/gascompany.php");

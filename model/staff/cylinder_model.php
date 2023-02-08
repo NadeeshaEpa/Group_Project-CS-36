@@ -56,7 +56,7 @@ class cylinder_model{
             while($row=mysqli_fetch_assoc($result)){
                 $cylinder[]=$row;
             }
-            print_r($cylinder);
+            // print_r($cylinder);
             return $cylinder;
         }else{
             return false;

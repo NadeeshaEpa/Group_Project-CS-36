@@ -10,7 +10,7 @@ require_once("../../config.php");?>
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="../../public/css/admin_delivery/Dashboard.css">
-    <link rel="stylesheet" href="../../public/css/admin_delivery/user_list.css">
+    <link rel="stylesheet" href="../../public/css/admin_delivery/profile.css">
 
 	<title>FaGo</title>
 </head>
@@ -53,7 +53,7 @@ require_once("../../config.php");?>
 					<span class="text">Gas Companies</span>
 				</a>
 			</li>
-			<li  class="active">
+			<li class="active">
 				<a href="../../controller/admin/order_controller.php?id=vieworder">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Orders</span>
@@ -108,54 +108,89 @@ require_once("../../config.php");?>
 		<!-- NAVBAR -->
 
 		<!-- MAIN -->
-		<main>
-    <div class="list">
+	<main>
+    <div class="registration-form">
+    <?php 
+                   if(isset($_SESSION['viewuser'])){
+                      $result=$_SESSION['viewuser']; 
+                    //   $names=$result[1];
+                   }
+                ?>
+    <form action="../../controller/admin/order_controller.php" method="POST" id="staff_form">
+	     
+    <div class="data">
+	   
+   <div class="details">
 
-    <h3>Orders</h3>
+       <h2>Order Details</h2>
+        <div class="down">
+             <div class="down1">  
+		        <label>Order Date :</label><br>  
+                <input type="text" name="fname" value="10/02/2023" readonly><br>
+			</div>
+            <div class="down1">  
+		        <label>Customer Name :</label><br>  
+                <input type="text" name="fname" value="Tharindi Senadeera" readonly > <br>
+		     </div>
+		</div>
 
-    <table>
-    <tr>
-        <th>Order ID</th>
-        <th>Date</th>
-        <th>Customer Name</th>
-        <th>Amount</th>
-        <th>Delivery Status</th>
-        <th>Operations</th>
-    </tr>
+		<div class="down">
+		     <div class="down1">  
+		        <label>Shop name :</label><br>  
+                <input type="text" name="fname" value="ABC shop" readonly><br>
+		    </div>
 
-    <?php
-    $result=$_SESSION['orderdetails'];
-    if($result){
-        foreach($result as $row){
-            $order_id=$row['Order_id'];
-            $fname=$row['First_Name'];
-            $lname=$row['Last_Name'];
-            $amount=$row['Amount'];
-            $status=$row['Delivery_Status'];
-            $date=$row['Order_date'];
+			<div class="down1">  
+		        <label>Amount :</label><br>  
+                <input type="text" name="fname" value="RS.6500.00" readonly><br> 
+		     </div>
+		</div>
 
-            echo'<tr>
-                 <th>'.$order_id.'</th>
-                 <td>'.$date.'</td>
-                 <td>'.$fname. $lname.'</td>
-                 <td>'.$amount.'</td>
-                 <td>'.$status.'</td>
+		<div class="down">
+             <div class="down1">  
+		        <label>Delivery Person :</label><br>  
+                <input type="text" name="fname" value="Namal Perera" readonly><br>
+		     </div>
+		     <div class="down1">  
+		        <label>Delivery Fee :</label><br>  
+                <input type="text" name="fname" value="RS.600.00" readonly><br> 
+		    </div>
+		</div>
+
+		<div class="down"> 
+                                <div class="down2">     
+                                        <label>Address:</label><br> 
+                                        <input type="text" name="street" value="Homagama" readonly> <br>  
+                                </div> 
+                                <div class="down2">   
+                                        <label></label><br> 
+                                        <input type="text" name="city" value="Colombo" readonly> <br>  
+                                </div>  
+                                <div class="down2"> 
+                                        <label></label><br>      
+                                        <input type="text" name="postalcode" value="2210" readonly> <br>  
+                                </div>
+        </div></br></br>
         
-                 <td>
-                 <a href="order_view.php"><button class="button1" style="width:50%;">View</button></a>
-                 </td>
-            </tr>' ;
-            
-        }
-    }
+        <div class="down">
+         <div class="down1">  
+		        <label>Delivery Date :</label><br>  
+                <input type="text" name="fname" value="11/02/2023" readonly><br>
+		     </div>
+		     <div class="down1">  
+		        <label>Delivery Status :</label><br>  
+                <input type="text" name="fname" value="Driver Accepted" readonly><br> 
+		    </div>
+		</div>
 
-    ?>
-    
-    </table>
+         
+
+        
+		</div>
+
+    </form>
     </div>
 
-        
-    
     </main>
 		<!-- MAIN -->
 	</section>
@@ -163,9 +198,6 @@ require_once("../../config.php");?>
 	
 
 	<script src="../../public/js/script.js"></script>
-
-
-
-
-  
+    
 </body>
+</html>

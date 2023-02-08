@@ -6,7 +6,7 @@ include_once '../../model/staff/deliveryperson_model.php';
 
 
 if(isset($_GET['id'])){
-    echo "hello";
+    // echo "hello";
     $deliveryperson=new account_model();
     $result=$deliveryperson->viewDeliveryperson($connection);
     if($result){
@@ -20,7 +20,7 @@ if(isset($_GET['id'])){
 }
 
 if(isset($_GET['rid'])){
-    echo "hello";
+    // echo "hello";
     $deliveryperson=new account_model();
     $result=$deliveryperson->viewDeliverypersonRequests($connection);
     if($result){
@@ -126,11 +126,11 @@ if(isset($_POST['edituser'])){
             header("Location: ../../controller/staff/customeracc_controller.php?id=viewCustomer");
         }else{
             $_SESSION['updateuser']="failed";
-            echo "Failed";
+            // echo "Failed";
         }
     }else{
         $_SESSION['updateuser']="failed";
-        echo "Failed";
+        // echo "Failed";
     }
 
 }

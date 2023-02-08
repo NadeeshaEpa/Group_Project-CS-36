@@ -54,15 +54,9 @@ require_once("../../config.php");?>
 				</a>
 			</li>
 
-			<li>
-				<a href="../../controller/admin/company_controller.php?id=viewcompany">
-					<i class='bx bxs-doughnut-chart' ></i>
-					<span class="text">Complains</span>
-				</a>	
-			</li>
 
 			<li>
-				<a href="../../controller/admin/company_controller.php?id=viewcompany">
+				<a href="gas_cylinder.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Gas Cylinders</span>
 				</a>
@@ -79,6 +73,13 @@ require_once("../../config.php");?>
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Deliveries</span>
 				</a>
+			</li>
+
+			<li>
+				<a href="../../controller/admin/company_controller.php?id=viewcompany">
+					<i class='bx bxs-doughnut-chart' ></i>
+					<span class="text">Payments</span>
+				</a>	
 			</li>
 			
 		</ul>

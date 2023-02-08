@@ -125,11 +125,11 @@ if(isset($_POST['edituser'])){
             header("Location: ../../controller/staff/customeracc_controller.php?id=viewCustomer");
         }else{
             $_SESSION['updateuser']="failed";
-            echo "Failed";
+            // // echo "Failed";
         }
     }else{
         $_SESSION['updateuser']="failed";
-        echo "Failed";
+        // echo "Failed";
     }
 
 }

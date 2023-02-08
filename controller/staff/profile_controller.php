@@ -17,7 +17,7 @@ if(isset($_GET['viewacc'])){
                 header("Location: ../../view/staff/profile.php");   
             }
     }else{
-            echo "Please login first";
+            // echo "Please login first";
             header("Location: ../../view/staff/staff_login.php");
     }
 }
@@ -56,11 +56,11 @@ if(isset($_POST['updateaccount'])){
                 header("Location: ../../view/staff/profile.php");
             }else{
                 $_SESSION['updateuser']="failed";
-                echo "Failed";
+                // echo "Failed";
             }
         }else{
             $_SESSION['updateuser']="failed";
-            echo "Failed";
+            // echo "Failed";
         }
 
     }

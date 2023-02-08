@@ -9,7 +9,7 @@
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="../../public/css/admin_delivery/Dashboard.css">
-	<link rel="stylesheet" href="../../public/css/admin_delivery/card.css">
+    <link rel="stylesheet" href="../../public/css/admin_delivery/deliveries.css">
 
 	<title>FaGo</title>
 </head>
@@ -24,7 +24,7 @@
 		</a>
 		<ul class="side-menu top">
 			<li>
-				<a href="#">
+				<a href="staff_dashboard.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -54,14 +54,7 @@
 			</li>
 
 			<li>
-				<a href="../../controller/admin/company_controller.php?id=viewcompany">
-					<i class='bx bxs-doughnut-chart' ></i>
-					<span class="text">Complains</span>
-				</a>	
-			</li>
-
-			<li class="active">
-				<a href="../../controller/admin/company_controller.php?id=viewcompany">
+				<a href="../../view/staff/gas_cylinder.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Gas Cylinders</span>
 				</a>
@@ -73,7 +66,7 @@
 				</a>
 			</li>
 
-			<li>
+			<li class="active">
 				<a href="../../controller/admin/company_controller.php?id=viewcompany">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Deliveries</span>
@@ -89,12 +82,7 @@
 			
 		</ul>
 		<ul class="side-menu">
-			<!-- <li>
-				<a href="#">
-					<i class='bx bxs-cog' ></i>
-					<span class="text">Settings</span>
-				</a>
-			</li> -->
+			
 			<li>
 				<a href="#" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
@@ -105,18 +93,12 @@
 	</section>
 	<!-- SIDEBAR -->
 
+
+
 	<!-- CONTENT -->
 	<section id="content">
 		<!-- NAVBAR -->
 		<nav>
-			<i class='bx bx-menu' ></i>
-			<!-- <a href="#" class="nav-link">Categories</a> -->
-			<!-- <form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form> -->
 			<!-- <input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label> -->
 			
@@ -134,64 +116,90 @@
 
 		<!-- MAIN -->
 		<main>
-   <a href="add_cylinder.php"> <button style="width:200px;">Add Gas Cylinders</button></a><br><br>
-    <div class="list">
-
-    <h3>All Gas Cylinder Types</h3>
-
-
-<ul class="box-info">
-	<li>
-	<div class="card">
-  <img src="../../public/images/litro12.5.jfif" alt="John" style="width:100%">
-  <h1>LITRO</h1>
-  <p class="title">Weight : 12.4 KG</p>
-  <p>RS.6500.00</p>
-  <p><button>Update</button></p>
+        <a href="deliveries.php"><button>Deliveries</button></a>
+            <a href="delivery_request.php"><button style="background-color: #05be17;color:white;">Delivery Requests</button></a>
+            <br>
+			<!-- <form action="#" style="float:right;">
+				<div class="form-input">
+					<input type="search" placeholder="Search..." >
+					<button type="submit" class="search-btn" ><i class='bx bx-search' ></i></button>
 				</div>
-				</li>
-				<li>
-				<div class="card">
-  <img src="../../public/images/litro5.png" alt="John" style="width:100%">
-  <h1>LITRO</h1>
-  <p class="title">Weight : 5.0 KG</p>
-  <p>RS.3000.00</p>
-  <p><button>Update</button></p>
-				</div>
-				</li>
-				<li>
-				<div class="card">
-  <img src="../../public/images/laughs12.5.png" alt="John" style="width:100%">
-  <h1>LAUGHS</h1>
-  <p class="title">Weight : 12.4 KG</p>
-  <p>RS.6500.00</p>
-  <p><button>Update</button></p>
-				</div>
-				</li>
+			</form> -->
 
-				<li>
-				<div class="card">
-  <img src="../../public/images/laughs5.jpg" alt="John" style="width:100%">
-  <h1>LAUGHS</h1>
-  <p class="title">Weight : 5.0 KG</p>
-  <p>RS.3000.00<</p>
-  <p><button>Update</button></p>
-				</div>
-				</li>
-				</ul>
-</div>
 
-        
-    
-    </main>
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>Delivery Requests</h3>
+						<i class='bx bx-search' ></i>
+						<i class='bx bx-filter' ></i>
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>User</th>
+                                <th>Amount</th>
+								<th>Date Order</th>
+								<th>Time</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<img src="../../public/images/noprofile.png">
+									<p>Nisali Senadeera</p>
+								</td>
+                                <td>RS.6500.00</td>
+								<td>01-10-2021</td>
+								<td>10min Ago</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="../../public/images/noprofile.png">
+									<p>Promod Madawala</p>
+								</td>
+                                <td>RS.6500.00</td>
+								<td>01-10-2021</td>
+								<td>2hrs Ago</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="../../public/images/noprofile.png">
+									<p>Anoma Suraweera</p>
+								</td>
+                                <td>RS.6500.00</td>
+								<td>01-10-2021</td>
+								<td>3hrs Ago</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="../../public/images/noprofile.png">
+									<p>Nihal Priyantha</p>
+								</td>
+                                <td>RS.6500.00</td>
+								<td>01-10-2021</td>
+								<td>5hrs Ago</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="../../public/images/noprofile.png">
+									<p>Lakindu Wickramasingha</p>
+								</td>
+                                <td>RS.6500.00</td>
+								<td>01-10-2021</td>
+								<td>5hrs Ago</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			
+			</div>
+		</main>
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
 	
 
 	<script src="../../public/js/script.js"></script>
-
-
-
-  
 </body>
+</html>
