@@ -101,6 +101,7 @@
         
    
     <div class="registration-form">  
+
     
        
         <div id="errmsg">
@@ -116,7 +117,7 @@
         <br>     <br><br><br><br>   
         <div class="content">
                 <div class="gas_type">
-                    <h2>Add gas type</h2>
+                    <h2>Add gas type</h2><br><br>
                 
                     <form action="../../controller/gasagent/gastype_controller.php" method="POST">
                         <!-- <div class="dropdown">
@@ -131,7 +132,7 @@
                         <div class="dropdown">
                            <label for=""> Gas Weight</label>
                             <select name="gasWeight" id="gasWeight">
-                                <option value="">---Select Type---</option>
+                                <option value="">Select Type</option>
                                 <option value="37.5">37.5</option>
                                 <option value="12.5">12.5</option>
                                 <option value="5">5</option>
@@ -144,7 +145,7 @@
                         <!-- <label for="price" >Gas Price</label>
                         <input type="text" name="gasPrice" id="gasPrice" placeholder="   Gas Price" >
                         <br> -->
-                        <br><br>
+                        <br>
                         <button type="submit" name="AddgasType" >ADD</button>
                     </form>
                   
