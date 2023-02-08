@@ -27,7 +27,7 @@
 			<span class="text">FaGo</span>
 		</a>
 		<ul class="side-menu top">
-			<li class="active">
+			<li>
 				<a href="../../view/gasagent/gasagent_dashboard.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
@@ -36,9 +36,18 @@
 			<li>
 				<a href="../../controller/gasagent/gasagent_viewController.php?viewgas='1'">
 					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Order </span>
+				</a>
+			</li>
+
+            <li>
+				<a href="../../controller/gasagent/gasagent_viewController.php?viewgas='1'">
+					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">View details</span>
 				</a>
 			</li>
+
+
 			<li>
 				<a href="../../view/gasagent/add_gastype.php">
 					<i class='bx bxs-doughnut-chart' ></i>
@@ -59,12 +68,12 @@
 			</li>
 		</ul>
 		<ul class="side-menu">
-			<li>
+			<!-- <li>
 				<a href="#">
 					<i class='bx bxs-cog' ></i>
-					<span class="text">Settings</span>
+					<span class="text">Compliance</span>
 				</a>
-			</li>
+			</li> -->
 			<li>
 				<a href="#" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
@@ -130,11 +139,11 @@
                     }
                     ?>
                 <div class="up">
-                    <?php if($_SESSION['img-status'] == 0){?>
-                        <img src='../../public/images/people.png' alt='logo' width='100px' height='100px' class="image"> 
-                    <?php }else{?>
-                        <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
-                    <?php } ?>
+                    <?php //if($_SESSION['img-status'] == 0){?>
+                        <img src='../../public/images/people.JPEG' alt='logo' width='100px' height='100px' class="image"> 
+                    <?php //}else{?>
+                        <!-- <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                        -->
+                    <?php //} ?>
                     <div class="b3">
                         <form action="../../controller/customer/account_controller.php" method="POST" enctype="multipart/form-data">
                             <input type="file" name="image" id="image" class="image">
@@ -144,58 +153,56 @@
                     </div>     
                 </div>      
                 <form action="../../controller/customer/account_controller.php" method="POST">   
-                        <div class="details">  
-                            <div class="down">
-                                <div class="down1">
-                                    <label>First name:</label><br>  
-                                    <input type="text" name="fname" value=<?php echo $result[0]['First_Name']; ?>> <br>
-                                </div>
-                                <div class="down1">
-                                    <label>Last name:</label><br>
-                                    <input type="text" name="lname" value=<?php echo $result[0]['Last_Name']; ?>> <br>
-                                </div>    
-                            </div> 
-                            <div class="down">
-                                <div class="down1">   
-                                    <label>Email:</label><br>
-                                    <input type="text" name="email" value=<?php echo $result[0]['Email']; ?>> <br>
-                                </div>
-                                <div class="down1">
-                                    <label>Contact No:</label><br>
-                                    <input type="text" name="contactno" value=<?php echo $result[0]['Contact_No']; ?>> <br>
-                                </div>    
-                            </div> 
-                            <div class="down">
-                                <div class="down1"> 
-                                    <label>Username:</label><br>
-                                    <input type="text" name="username" value=<?php echo $result[0]['Username']; ?>> <br>
-                                </div>
-                                <div class="down1">
-                                    <label>Update Password:</label><br>
-                                    <form action='customer_changepassword.php' method="POST">
-                                       <button type="submit" name="changepassword" class="cp">Change password</button>
-                                    </form>   
-                                </div>    
-                            </div> 
-                            <div class="down"> 
-                                <div class="down2">     
-                                        <label>Address:</label><br> 
-                                        <input type="text" name="street" value="<?php echo $result[0]['Street']; ?>"> <br>  
-                                </div> 
-                                <div class="down2">   
-                                        <label></label><br> 
-                                        <input type="text" name="city" value=<?php echo $result[0]['City']; ?>> <br>  
-                                </div>  
-                                <div class="down2"> 
-                                        <label></label><br>      
-                                        <input type="text" name="postalcode" value=<?php echo $result[0]['Postalcode']; ?>> <br>  
-                                </div>
+                    <div class="details">  
+                        <div class="down">
+                            <div class="down1">
+                                <label>First name:</label><br>  
+                                <input type="text" name="fname" value=<?php echo $result[0]['First_Name']; ?>> <br>
                             </div>
-                            <button type="submit" class="b6" name="updateaccount">Update</button>   
-                            
+                            <div class="down1">
+                                <label>Last name:</label><br>
+                                <input type="text" name="lname" value=<?php echo $result[0]['Last_Name']; ?>> <br>
+                            </div>    
+                        </div> 
+                        <div class="down">
+                            <div class="down1">   
+                                <label>Email:</label><br>
+                                <input type="text" name="email" value=<?php echo $result[0]['Email']; ?>> <br>
+                            </div>
+                            <div class="down1">
+                                <label>Contact No:</label><br>
+                                <input type="text" name="contactno" value=<?php echo $result[0]['Contact_No']; ?>> <br>
+                            </div>    
+                        </div> 
+                        <div class="down">
+                            <div class="down1"> 
+                                <label>Username:</label><br>
+                                <input type="text" name="username" value=<?php echo $result[0]['Username']; ?>> <br>
+                            </div>
+                            <div class="down1">
+                                <label>Update Password:</label><br>
+                                <form action='customer_changepassword.php' method="POST">
+                                    <button type="submit" name="changepassword" class="cp">Change password</button>
+                                </form>   
+                            </div>    
+                        </div> 
+                        <div class="down"> 
+                            <div class="down2">     
+                                    <label>Address:</label><br> 
+                                    <input type="text" name="street" value="<?php echo $result[0]['Street']; ?>"> <br>  
+                            </div> 
+                            <div class="down2">   
+                                    <label></label><br> 
+                                    <input type="text" name="city" value=<?php echo $result[0]['City']; ?>> <br>  
+                            </div>  
+                            <div class="down2"> 
+                                    <label></label><br>      
+                                    <input type="text" name="postalcode" value=<?php echo $result[0]['Postalcode']; ?>> <br>  
+                            </div>
+                        </div>
+                        <button type="submit" class="b6" name="updateaccount">Update</button>   
+                        <button onclick="document.getElementById('id01').style.display='block'" class="b5">Delete Account</button>
                     </div>     
-            
-                    <button onclick="document.getElementById('id01').style.display='block'" class="b5">Delete Account</button>
                     <div id="id01" class="modal">
                         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
                             <form class="modal-content" action="../../controller/customer/account_controller.php" method="POST">
@@ -225,5 +232,6 @@
     }
     }
     </script> 
+    <script src="../../public/js/script.js"></script>
 </body>
 </html>

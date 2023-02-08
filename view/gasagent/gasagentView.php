@@ -26,6 +26,12 @@
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
+			<li>
+				<a href="../../view/gasagent/orders.php">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Order details</span>
+				</a>
+			</li>
 			<li class="active">
 				<a href="../../view/gasagent/gasagentView.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
@@ -52,12 +58,12 @@
 			</li>
 		</ul>
 		<ul class="side-menu">
-			<li>
+			<!-- <li>
 				<a href="#">
 					<i class='bx bxs-cog' ></i>
-					<span class="text">Settings</span>
+					<span class="text">Compliance</span>
 				</a>
-			</li>
+			</li> -->
 			<li>
 				<a href="#" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
@@ -86,7 +92,7 @@
 				<span class="num">8</span>
 			</a>
 			<a href="#" class="profile">
-				<img src="../../public/images/people.png">
+				<img src="../../public/images/people.JPEG">
 			</a>
 		</nav>
 		<!-- NAVBAR -->
@@ -137,11 +143,13 @@
                                 
                             </div>                 
                 </div>
+				<div class="img"></div>
                 
         </div>
         </main>      
         </section>
     <script src="../../public/js/script.js"></script>
+	
  
 </body>
 </html>

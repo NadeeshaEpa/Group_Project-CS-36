@@ -28,6 +28,12 @@
 				</a>
 			</li>
 			<li>
+				<a href="../../view/gasagent/orders.php">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Order details</span>
+				</a>
+			</li>
+			<li>
 				<a href="../../controller/gasagent/gasagent_viewController.php?viewgas='1'">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">View details</span>
@@ -46,21 +52,21 @@
 				</a>
 			</li>
 			<li>
-				<a href="../../view/gasagent/addgas_profile.php">
+				<a href="../../controller/gasagent/account_controller.php?viewacc='1'">
 					<i class='bx bxs-group' ></i>
 					<span class="text">profile details</span>
 				</a>
 			</li>
 		</ul>
 		<ul class="side-menu">
-			<li>
+			<!-- <li>
 				<a href="#">
 					<i class='bx bxs-cog' ></i>
 					<span class="text">Settings</span>
 				</a>
-			</li>
+			</li> -->
 			<li>
-				<a href="#" class="logout">
+				<a href="../../index.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -90,7 +96,7 @@
 				<span class="num">8</span>
 			</a>
 			<a href="#" class="profile">
-				<img src="../../public/images/people.png">
+				<img src="../../public/images/people.JPEG">
 			</a>
 		</nav>
 		<!-- NAVBAR -->
@@ -131,7 +137,7 @@
 				<li>
 					<i class='bx bxs-dollar-circle' ></i>
 					<span class="text">
-						<h3>$2543</h3>
+						<h3>rs 5543</h3>
 						<p>Total Sales</p>
 					</span>
 				</li>
@@ -141,57 +147,57 @@
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3>Gas types</h3>
+						<h3>Recent Orders</h3>
 						<i class='bx bx-search' ></i>
 						<i class='bx bx-filter' ></i>
 					</div>
 					<table>
 						<thead>
 							<tr>
-								<th>Gas Type /KG</th>
-								<th>Quantity</th>
-								
+								<th>User</th>
+								<th>Date Order</th>
+								<th>Status</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td>
-									
-									<p>12.5</p>
+									<img src="../../public/images/people.JPEG">
+									<p>Nadeesha</p>
 								</td>
-								<td>10</td>
+								<td>01-10-2021</td>
 								<td><span class="status completed">Completed</span></td>
 							</tr>
 							<tr>
 								<td>
-									
-									<p>2.3</p>
+									<img src="../../public/images/people.JPEG">
+									<p>Gayal</p>
 								</td>
-								<td>1</td>
+								<td>01-10-2021</td>
 								<td><span class="status pending">Pending</span></td>
 							</tr>
 							<tr>
 								<td>
-									
-									<p>37.5</p>
+									<img src="../../public/images/people.JPEG">
+									<p>Shehan</p>
 								</td>
-								<td>8</td>
+								<td>01-10-2021</td>
 								<td><span class="status process">Process</span></td>
 							</tr>
 							<tr>
 								<td>
-									
-									<p>7.5</p>
+									<img src="../../public/images/people.JPEG">
+									<p>kamal</p>
 								</td>
-								<td>56</td>
+								<td>01-10-2021</td>
 								<td><span class="status pending">Pending</span></td>
 							</tr>
 							<tr>
 								<td>
-									
-									<p>12.5</p>
+									<img src="../../public/images/people.JPEG">
+									<p>Avishka</p>
 								</td>
-								<td>45</td>
+								<td>01-10-2021</td>
 								<td><span class="status completed">Completed</span></td>
 							</tr>
 						</tbody>

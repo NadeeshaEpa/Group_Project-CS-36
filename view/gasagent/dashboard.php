@@ -16,24 +16,23 @@
 
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="#" class="brand">
+		<a href="../../view/gasagent/View.php" class="brand">
 			<i class='bx bxs-select-multiple'></i>
 			<span class="text">FaGo</span>
 		</a>
 		<ul class="side-menu top">
-			<li >
+			<li class="active">
 				<a href="../../view/gasagent/gasagent_dashboard.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
 			<li>
-				<a href="../../controller/gasagent/gasagent_viewController.php?viewgas='1'">
+				<a href="../../view/gasagent/orders.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Order details</span>
 				</a>
 			</li>
-
 			<li>
 				<a href="../../controller/gasagent/gasagent_viewController.php?viewgas='1'">
 					<i class='bx bxs-shopping-bag-alt' ></i>
@@ -46,8 +45,8 @@
 					<span class="text">Add gas </span>
 				</a>
 			</li>
-			<li class="active">
-				<a href="#">
+			<li>
+				<a href="../../view/gasagent/gasagentUpdate.php">
 					<i class='bx bxs-message-dots' ></i>
 					<span class="text">Update/Delete</span>
 				</a>
@@ -63,7 +62,7 @@
 			<!-- <li>
 				<a href="#">
 					<i class='bx bxs-cog' ></i>
-					<span class="text">Compliance</span>
+					<span class="text">Settings</span>
 				</a>
 			</li> -->
 			<li>
@@ -97,99 +96,7 @@
 				<span class="num">8</span>
 			</a>
 			<a href="#" class="profile">
-				<img src="../../public/images/people.png">
+				<img src="../../public/images/people.JPEG">
 			</a>
 		</nav>
 		<!-- NAVBAR -->
-
-		<!-- MAIN -->
-		<main>
-			<div class="head-title">
-				<div class="left">
-					<h1>Update or Delete</h1>
-					<ul class="breadcrumb">
-						<li>
-							<a href="#">Update</a>
-						</li>
-						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a class="active" href="#">Home</a>
-						</li>
-					</ul>
-				</div>
-				
-			</div>
-
-		
-
-
-			<div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3>Gas types</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
-					<table>
-						<thead>
-							<tr>
-								<th>Gas Type /KG</th>
-								<th>Quantity</th>
-								<th>Delete</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									
-									<p>12.5</p>
-								</td>
-								<td>10</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-							<tr>
-								<td>
-									
-									<p>2.3</p>
-								</td>
-								<td>1</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-							<tr>
-								<td>
-									
-									<p>37.5</p>
-								</td>
-								<td>8</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-							<tr>
-								<td>
-									
-									<p>7.5</p>
-								</td>
-								<td>56</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-							<tr>
-								<td>
-									
-									<p>12.5</p>
-								</td>
-								<td>45</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			
-			</div>
-		</main>
-		<!-- MAIN -->
-	</section>
-	<!-- CONTENT -->
-	
-
-	<script src="../../public/js/script.js"></script>
-</body>
-</html>

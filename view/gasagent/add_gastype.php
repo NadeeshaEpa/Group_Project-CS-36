@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Gas Type</title>
     <link rel="stylesheet" href="../../public/css/gasagent/add_gastype.css">
+	<link rel="stylesheet" href="../../public/css/gasagent/background.css">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
 
 </head>
 
 <body>
+	 <div class="img"></div>
 
     
-   
-     
-
 <!-- SIDEBAR -->
 <section id="sidebar">
 		<a href="#" class="brand">
@@ -27,6 +27,12 @@
 				<a href="../../view/gasagent/gasagent_dashboard.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="../../view/gasagent/gasagentView.php">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Order details</span>
 				</a>
 			</li>
 			<li>
@@ -48,19 +54,19 @@
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="../../controller/gasagent/account_controller.php?viewacc='1'">
 					<i class='bx bxs-group' ></i>
 					<span class="text">profile details</span>
 				</a>
 			</li>
 		</ul>
 		<ul class="side-menu">
-			<li>
+			<!-- <li>
 				<a href="#">
 					<i class='bx bxs-cog' ></i>
 					<span class="text">Settings</span>
 				</a>
-			</li>
+			</li> -->
 			<li>
 				<a href="#" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
@@ -89,7 +95,7 @@
 				<span class="num">8</span>
 			</a>
 			<a href="#" class="profile">
-				<img src="img/people.png">
+				<img src="../../public/images/people.jpeg">
 			</a>
 		</nav>
 		<!--NAVBAR -->
