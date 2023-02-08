@@ -13,31 +13,14 @@ if(isset($_SESSION['gastype'])){
 </head>
 <body>
     <?php include '../header.php'?>
-    <div class="up">
-        <div class="para">   
-            <p>By just few clicks....</p>
-        </div>
-        <form action="../../controller/customer/account_controller.php" method="POST" class="btn">
-            <button type="submit" name="viewacc">View My Profile</button>
-        </form>
+    <div class="up-gas">
     </div>    
     <div class="down">
        <div class="gas">
             <h2>Gas Shop</h2>
             <img src="../../public/images/customer/gas.jpg" alt="" class="gas_img">
-            <div id="gas-shop" class="gas_dropdown">
-                <form action="../../controller/customer/gas_controller.php" method="POST">
-                    <select id="gas-type-selector" name="urgas_type">
-                        <!-- create a disable option  and show it as the first value-->
-                        <option selected disabled>Choose Gas Type</option>
-                        <?php 
-                        $i=0;
-                        foreach($gastype as $gas){ ?>
-                            <option value="<?php echo $gas; ?>"><?php echo $gas; ?></option>
-                        <?php } ?>
-                    </select>
-                    <button name="urgas_button">Shop Now</button>
-                </form>   
+            <div id="ungas-shop" class="gas_dropdown">
+                <a href="unreg_checkgas.php"><button>Shop Now</button>
             </div>
        </div> 
        <div class="fago_shop">

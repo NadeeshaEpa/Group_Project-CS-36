@@ -140,7 +140,7 @@ body{
     margin-top: 1%;
 }
 .regtext{
-    width: 40%;
+    width: 35%;
     float: left;
     margin-left: 10%;
     font-size: 30px;
@@ -149,6 +149,16 @@ body{
     padding: 40px;
     border-radius: 50px;
     text-align: center;
+    padding-top: 10px;
+    height: 300px;
+}
+.regtext p{
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.regtext button{
+    margin-top: 2%;
 }
 .regtext button{
     margin-top:1%;
@@ -257,7 +267,7 @@ h2{
 }
 
 #bg-changer {
-    width: 50%;
+    width: 40%;
     float: right;
     margin-right: 10%;
     font-size: 35px;
