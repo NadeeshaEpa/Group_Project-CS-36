@@ -55,31 +55,25 @@ require_once("../../config.php");?>
 			</li>
 
 			<li>
-				<a href="../../controller/admin/company_controller.php?id=viewcompany">
-					<i class='bx bxs-doughnut-chart' ></i>
-					<span class="text">Complains</span>
-				</a>	
-			</li>
-
-			<li>
-				<a href="../../controller/admin/company_controller.php?id=viewcompany">
+				<a href="../../view/staff/gas_cylinder.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Gas Cylinders</span>
 				</a>
 			</li>
 			<li>
-				<a href="../../controller/staff/order_controller.php?id=vieworder">
-					<i class='bx bxs-shopping-bag-alt' ></i>
-					<span class="text">Orders</span>
-				</a>
-			</li>
-
-			<li>
-				<a href="../../controller/admin/company_controller.php?id=viewcompany">
+				<a href="deliveries.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Deliveries</span>
 				</a>
 			</li>
+
+			<li>
+				<a href="payments.php">
+					<i class='bx bxs-doughnut-chart' ></i>
+					<span class="text">Payments</span>
+				</a>
+			</li>
+			
 		</ul>
 		<ul class="side-menu">
 			<!-- <li>
@@ -89,7 +83,7 @@ require_once("../../config.php");?>
 				</a>
 			</li> -->
 			<li>
-				<a href="#" class="logout">
+				<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>

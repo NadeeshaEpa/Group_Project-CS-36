@@ -25,7 +25,7 @@ require_once("../../config.php");?>
 		</a>
 		<ul class="side-menu top">
 			<li>
-				<a href="#">
+				<a href="staff_dashboard.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -75,12 +75,20 @@ require_once("../../config.php");?>
 			</li>
 
 			<li>
-				<a href="../../controller/admin/company_controller.php?id=viewcompany">
+				<a href="payments.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Payments</span>
 				</a>
 			</li>
 			
+		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="../../controller/Users/logout_controller.php" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
 		</ul>
 	</section>
 	<!-- SIDEBAR -->

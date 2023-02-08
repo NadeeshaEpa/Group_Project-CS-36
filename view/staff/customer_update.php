@@ -69,17 +69,17 @@ require_once("../../config.php");?>
 			</li>
 
 			<li>
-				<a href="../../controller/admin/company_controller.php?id=viewcompany">
+				<a href="deliveries.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Deliveries</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="../../controller/admin/company_controller.php?id=viewcompany">
+				<a href="payments.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Payments</span>
-				</a>	
+				</a>
 			</li>
 			
 		</ul>
@@ -91,7 +91,7 @@ require_once("../../config.php");?>
 				</a>
 			</li> -->
 			<li>
-				<a href="#" class="logout">
+				<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>

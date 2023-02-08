@@ -40,7 +40,7 @@
 			<li class="active">
 			
 			<a href="../../view/staff/users.php">
-					<i class='bx bxs-shopping-bag-alt' ></i>
+					<i class='bx bxs-group' ></i>
 					<span class="text">Users</span>
 				</a>
 			</li>
@@ -53,14 +53,7 @@
 			</li>
 
 			<li>
-				<a href="../../controller/admin/company_controller.php?id=viewcompany">
-					<i class='bx bxs-doughnut-chart' ></i>
-					<span class="text">Complains</span>
-				</a>	
-			</li>
-
-			<li>
-				<a href="../../controller/admin/company_controller.php?id=viewcompany">
+				<a href="../../view/staff/gas_cylinder.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Gas Cylinders</span>
 				</a>
@@ -73,22 +66,23 @@
 			</li>
 
 			<li>
-				<a href="../../controller/admin/company_controller.php?id=viewcompany">
+				<a href="deliveries.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Deliveries</span>
+				</a>
+			</li>
+
+			<li>
+				<a href="payments.php">
+					<i class='bx bxs-doughnut-chart' ></i>
+					<span class="text">Payments</span>
 				</a>
 			</li>
 			
 		</ul>
 		<ul class="side-menu">
-			<!-- <li>
-				<a href="#">
-					<i class='bx bxs-cog' ></i>
-					<span class="text">Settings</span>
-				</a>
-			</li> -->
 			<li>
-				<a href="#" class="logout">
+				<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
