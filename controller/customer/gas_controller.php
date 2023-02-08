@@ -75,8 +75,40 @@ if(isset($_GET['newgasid'])){
         }
     }
 }
-if(isset($_POST['urgas_button'])){
-    $gastype=$_POST['urgas_type'];
-    $_SESSION['unregcustomer_viewgas']=$gastype;
-    header("Location: ../../view/customer/unregcustomer_location.php");
+if(isset($_POST['ungas_button'])){
+    $latitude=$_POST['latitude'];
+    $longitude=$_POST['longitude'];
+    $type=$_POST['ungas_type'];
+    $_SESSION['ungastype']=$type;
+
+    if($latitude==NULL){
+        $latitude=6.9271;
+    }
+    if($longitude==NULL){
+        $longitude=79.8612;
+    }
+    //create new gas model
+    $gasmodel=new gas_model();
+    $result2=$gasmodel->ungetshopnames($connection,$type,$latitude,$longitude);
+        $_SESSION['unshopnames']=$result2;
+        $result1=$gasmodel->getweight($connection,$type);
+        $_SESSION['unweight']=$result1;
+        // print_r($result1);
+        // die();
+        if($result1===false || $result2===false){
+            $_SESSION['unavailable']="failed";
+            header("Location: ../../view/customer/unreg_checkgas.php");
+        }else{      
+            $_SESSION['unavailable']="success";      
+            $result=$gasmodel->viewgas($connection,$result1,$type);
+            if($result===false){
+                print_r("1");
+                die();
+                $_SESSION['unviewgas']="failed";
+                header("Location: ../../view/customer/unreg_checkgas.php");
+            }else{     
+                $_SESSION['unviewgas']=$result;
+                header("Location: ../../view/customer/unreg_checkgas.php");
+            }
+        }
 }

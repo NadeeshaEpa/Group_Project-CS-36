@@ -13,20 +13,14 @@ if(isset($_SESSION['gastype'])){
 </head>
 <body>
     <?php include '../header.php'?>
-    <div class="up">
-        <div class="para">   
-            <p>By just few clicks....</p>
-        </div>
-        <form action="../../controller/customer/account_controller.php" method="POST" class="btn">
-            <button type="submit" name="viewacc">View My Profile</button>
-        </form>
+    <div class="up-gas">
     </div>    
     <div class="down">
        <div class="gas">
             <h2>Gas Shop</h2>
             <img src="../../public/images/customer/gas.jpg" alt="" class="gas_img">
-            <div id="gas-shop" class="gas_dropdown">
-                <a href="unreg_checkgas.php"><button name="urgas_button">Shop Now</button>
+            <div id="ungas-shop" class="gas_dropdown">
+                <a href="unreg_checkgas.php"><button>Shop Now</button>
             </div>
        </div> 
        <div class="fago_shop">

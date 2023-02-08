@@ -136,7 +136,7 @@ body{
 }
 .details label{
     padding-left: 5px;
-    font-size: 20px;
+    font-size: 18px;
 }
 .up{
     display: flex;
@@ -181,7 +181,7 @@ body{
 }
 
 .down1 input{
-    font-size: 20px;
+    font-size: 18px;
     border: black 1px solid;
     border-radius: 20px;
     width: 450px;
