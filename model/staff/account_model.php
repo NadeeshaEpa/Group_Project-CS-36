@@ -61,16 +61,16 @@ class account_model{
         }
     }
 
-    public function viewcompany($connection){
-        $sql="SELECT * FROM gas_company";
+    public function viewcylinder($connection){
+        $sql="SELECT c.Cylinder_Id, c.Weight, c.Price g.company_name FROM gascylinder c INNER JOIN gas_company g ON c.Type=g.company_id";
         $result=mysqli_query($connection,$sql);
         if($result){
-            $company=[];
+            $cylinder=[];
             while($row=mysqli_fetch_assoc($result)){
-                $company[]=$row;
+                $cylinder[]=$row;
             }
-            print_r($company);
-            return $company;
+            print_r($cylinder);
+            return $cylinder;
         }else{
             return false;
         }

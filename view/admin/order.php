@@ -142,9 +142,7 @@ require_once("../../config.php");?>
                  <td>'.$status.'</td>
         
                  <td>
-                 <a href=""><button class="button1">View</button></a>
-                 <a href="customer_update.php?updateid='.$order_id.'"><button class="button2">Update</button></a>
-                 <a href="customer_delete.php?deleteid='.$order_id.'"><button class="button3">Delete</button></a>
+                 <a href=""><button class="button1" style="width:50%;">View</button></a>
                  </td>
             </tr>' ;
             

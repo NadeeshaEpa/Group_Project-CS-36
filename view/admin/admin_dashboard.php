@@ -127,21 +127,21 @@
 				<li>
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
-						<h3>1020</h3>
+						<h3>15</h3>
 						<p>New Order</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-group' ></i>
 					<span class="text">
-						<h3>2834</h3>
+						<h3>20</h3>
 						<p>New Customers</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-dollar-circle' ></i>
 					<span class="text">
-						<h3>$2543</h3>
+						<h3>RS 50,000</h3>
 						<p>Total Sales</p>
 					</span>
 				</li>
@@ -166,40 +166,40 @@
 						<tbody>
 							<tr>
 								<td>
-									<img src="../../public/images/people.png">
-									<p>John Doe</p>
+									<img src="../../public/images/noprofile.png">
+									<p>Nisali Senadeera</p>
 								</td>
 								<td>01-10-2021</td>
 								<td><span class="status completed">Completed</span></td>
 							</tr>
 							<tr>
 								<td>
-									<img src="../../public/images/people.png">
-									<p>John Doe</p>
+									<img src="../../public/images/noprofile.png">
+									<p>Promod Madawala</p>
 								</td>
 								<td>01-10-2021</td>
 								<td><span class="status pending">Pending</span></td>
 							</tr>
 							<tr>
 								<td>
-									<img src="../../public/images/people.png">
-									<p>John Doe</p>
+									<img src="../../public/images/noprofile.png">
+									<p>Anoma Suraweera</p>
 								</td>
 								<td>01-10-2021</td>
 								<td><span class="status process">Process</span></td>
 							</tr>
 							<tr>
 								<td>
-									<img src="../../public/images/people.png">
-									<p>John Doe</p>
+									<img src="../../public/images/noprofile.png">
+									<p>Nihal Priyantha</p>
 								</td>
 								<td>01-10-2021</td>
 								<td><span class="status pending">Pending</span></td>
 							</tr>
 							<tr>
 								<td>
-									<img src="../../public/images/people.png">
-									<p>John Doe</p>
+									<img src="../../public/images/noprofile.png">
+									<p>Lakindu Wickramasingha</p>
 								</td>
 								<td>01-10-2021</td>
 								<td><span class="status completed">Completed</span></td>

@@ -1,4 +1,3 @@
-
 <!-- <?php session_start(); ?> -->
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +9,7 @@
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="../../public/css/admin_delivery/Dashboard.css">
-    <link rel="stylesheet" href="../../public/css/admin_delivery/user_list.css">
+	<link rel="stylesheet" href="../../public/css/admin_delivery/card.css">
 
 	<title>FaGo</title>
 </head>
@@ -25,14 +24,14 @@
 		</a>
 		<ul class="side-menu top">
 			<li>
-				<a href="../../view/admin/admin_dashboard.php">
+				<a href="#">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="../../controller/admin/profile_controller.php?viewacc=1">
+				<a href="../../controller/staff/profile_controller.php?viewacc=1">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Account</span>
 				</a>
@@ -41,8 +40,8 @@
 
 			<li>
 			
-			<a href="../../view/admin/users.php">
-					<i class='bx bxs-shopping-bag-alt' ></i>
+			<a href="../../view/staff/users.php">
+					<i class='bx bxs-group' ></i>
 					<span class="text">Users</span>
 				</a>
 			</li>
@@ -61,7 +60,7 @@
 				</a>	
 			</li>
 
-			<li>
+			<li class="active">
 				<a href="../../controller/admin/company_controller.php?id=viewcompany">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Gas Cylinders</span>
@@ -78,6 +77,13 @@
 				<a href="../../controller/admin/company_controller.php?id=viewcompany">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Deliveries</span>
+				</a>
+			</li>
+
+			<li>
+				<a href="../../controller/admin/company_controller.php?id=viewcompany">
+					<i class='bx bxs-doughnut-chart' ></i>
+					<span class="text">Payments</span>
 				</a>
 			</li>
 			
@@ -98,8 +104,6 @@
 		</ul>
 	</section>
 	<!-- SIDEBAR -->
-
-
 
 	<!-- CONTENT -->
 	<section id="content">
@@ -130,42 +134,52 @@
 
 		<!-- MAIN -->
 		<main>
-   <a href="add_company.php"> <button>Add Gas Company</button></a>
+   <a href="add_cylinder.php"> <button style="width:200px;">Add Gas Company</button></a><br><br>
     <div class="list">
 
-    <h3>All Gas Companies</h3>
+    <h3>All Gas Cylinder Types</h3>
 
-    <table>
-    <tr>
-        <th>Company ID</th>
-        <th>Company Name</th>
-        <th>Operations</th>
-    </tr>
 
-    <?php
-    $result=$_SESSION['companydetails'];
-    if($result){
-        foreach($result as $row){
-            $company_id=$row['company_id'];
-            $cname=$row['company_name'];
-    
-            echo'<tr>
-                 <th>'.$company_id.'</th>
-                 <td>'.$cname.'</td>
-                 <td>
-                 <a href="../../controller/admin/company_controller.php?vid='.$company_id.'"><button class="button1">View</button></a>
-                 <a href="../../controller/admin/company_controller.php?uid='.$company_id.'"><button class="button2">Update</button></a>
-                 <a href="../../controller/admin/company_controller.php?did='.$company_id.'"><button class="button3">Delete</button></a>
-                 </td>
-            </tr>' ;
-            
-        }
-    }
+<ul class="box-info">
+	<li>
+	<div class="card">
+  <img src="../../public/images/litro12.5.jfif" alt="John" style="width:100%">
+  <h1>LITRO</h1>
+  <p class="title">Weight : 12.4 KG</p>
+  <p>RS.6500.00</p>
+  <p><button>Update</button></p>
+				</div>
+				</li>
+				<li>
+				<div class="card">
+  <img src="../../public/images/litro5.png" alt="John" style="width:100%">
+  <h1>LITRO</h1>
+  <p class="title">Weight : 5.0 KG</p>
+  <p>RS.3000.00</p>
+  <p><button>Update</button></p>
+				</div>
+				</li>
+				<li>
+				<div class="card">
+  <img src="../../public/images/laughs12.5.png" alt="John" style="width:100%">
+  <h1>LAUGHS</h1>
+  <p class="title">Weight : 12.4 KG</p>
+  <p>RS.6500.00</p>
+  <p><button>Update</button></p>
+				</div>
+				</li>
 
-    ?>
-    
-    </table>
-    </div>
+				<li>
+				<div class="card">
+  <img src="../../public/images/laughs5.jpg" alt="John" style="width:100%">
+  <h1>LAUGHS</h1>
+  <p class="title">Weight : 5.0 KG</p>
+  <p>RS.3000.00<</p>
+  <p><button>Update</button></p>
+				</div>
+				</li>
+				</ul>
+</div>
 
         
     

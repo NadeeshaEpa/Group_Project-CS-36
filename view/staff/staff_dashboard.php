@@ -40,7 +40,7 @@
 			<li>
 			
 			<a href="../../view/staff/users.php">
-					<i class='bx bxs-shopping-bag-alt' ></i>
+					<i class='bx bxs-group' ></i>
 					<span class="text">Users</span>
 				</a>
 			</li>
@@ -60,7 +60,7 @@
 			</li>
 
 			<li>
-				<a href="../../controller/admin/company_controller.php?id=viewcompany">
+				<a href="../../view/staff/gas_cylinder.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Gas Cylinders</span>
 				</a>
@@ -76,6 +76,13 @@
 				<a href="../../controller/admin/company_controller.php?id=viewcompany">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Deliveries</span>
+				</a>
+			</li>
+
+			<li>
+				<a href="../../controller/admin/company_controller.php?id=viewcompany">
+					<i class='bx bxs-doughnut-chart' ></i>
+					<span class="text">Payments</span>
 				</a>
 			</li>
 			
@@ -148,24 +155,26 @@
 				<li>
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
-						<h3>1020</h3>
-						<p>New Order</p>
+						<h3>15</h3>
+						<p>New Orders</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-group' ></i>
 					<span class="text">
-						<h3>2834</h3>
+						<h3>20</h3>
 						<p>New Customers</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-dollar-circle' ></i>
 					<span class="text">
-						<h3>$2543</h3>
+						<h3>RS.50,000</h3>
 						<p>Total Sales</p>
 					</span>
 				</li>
+
+
 			</ul>
 
 
@@ -173,8 +182,8 @@
 				<div class="order">
 					<div class="head">
 						<h3>Recent Orders</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
+						<!-- <i class='bx bx-search' ></i>
+						<i class='bx bx-filter' ></i> -->
 					</div>
 					<table>
 						<thead>
@@ -187,40 +196,40 @@
 						<tbody>
 							<tr>
 								<td>
-									<img src="../../public/images/people.png">
-									<p>John Doe</p>
+									<img src="../../public/images/noprofile.png">
+									<p>Nisali Senadeera</p>
 								</td>
 								<td>01-10-2021</td>
 								<td><span class="status completed">Completed</span></td>
 							</tr>
 							<tr>
 								<td>
-									<img src="../../public/images/people.png">
-									<p>John Doe</p>
+									<img src="../../public/images/noprofile.png">
+									<p>Promod Madawala</p>
 								</td>
 								<td>01-10-2021</td>
 								<td><span class="status pending">Pending</span></td>
 							</tr>
 							<tr>
 								<td>
-									<img src="../../public/images/people.png">
-									<p>John Doe</p>
+									<img src="../../public/images/noprofile.png">
+									<p>Anoma Suraweera</p>
 								</td>
 								<td>01-10-2021</td>
 								<td><span class="status process">Process</span></td>
 							</tr>
 							<tr>
 								<td>
-									<img src="../../public/images/people.png">
-									<p>John Doe</p>
+									<img src="../../public/images/noprofile.png">
+									<p>Nihal Priyantha</p>
 								</td>
 								<td>01-10-2021</td>
 								<td><span class="status pending">Pending</span></td>
 							</tr>
 							<tr>
 								<td>
-									<img src="../../public/images/people.png">
-									<p>John Doe</p>
+									<img src="../../public/images/noprofile.png">
+									<p>Lakindu Wickramasingha</p>
 								</td>
 								<td>01-10-2021</td>
 								<td><span class="status completed">Completed</span></td>

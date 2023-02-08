@@ -54,7 +54,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="../../controller/admin/order_controller.php?id=vieworder">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Orders</span>
 				</a>
