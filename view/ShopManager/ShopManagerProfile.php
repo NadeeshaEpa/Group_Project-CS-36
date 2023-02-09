@@ -23,7 +23,7 @@
 		</a>
 		<ul class="side-menu top">
 			<li >
-				<a href="../../view/ShopManager/shopManagerDashboard.php">
+				<a href="../../controller/ShopManager/ShopManagerDashboardFirstController.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -35,7 +35,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="../../view/ShopManager/shopManagerUpdatePQ.php">
+				<a href="../../controller/ShopManager/ShopManagerBrandFirstController.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Update prices/Quantity</span>
 				</a>
@@ -146,6 +146,154 @@
 
 			<div class="table-data">
 				<div class="order">
+				<div class="welcome">
+                <h3>
+                <?php
+                    if(isset($_SESSION['login'])){
+                        if($_SESSION['login']=="success"){
+                            echo "<p>"."Welcome ".$_SESSION['Firstname']." ".$_SESSION['Lastname']."</p>";
+                            echo '<br>';                              
+                            //unset($_SESSION['login']);
+                        }
+                    }
+                ?>
+                </h3>
+            </div>
+            <div class="delivaryP_info">
+                
+                <?php 
+                    if(isset($_SESSION['ShopManager_details'])){
+                            $result=$_SESSION['ShopManager_details']; 
+                    }
+                ?>
+                <form action="../../controller/ShopManager/ShopManagerProfileController.php" method="POST">   
+                        <div class="prof_details">  
+                            <div class="down">
+                                <div class="down1">
+                                    <label>First name:</label><br>  
+                                    <input type="text" name="fname" value=<?php echo $result[0]['First_Name']; ?>> <br>
+                                </div>
+                                <div class="down1">
+                                    <label>Last name:</label><br>
+                                    <input type="text" name="lname" value=<?php echo $result[0]['Last_Name']; ?>> <br>
+                                </div>    
+                            </div> 
+                            <div class="down">
+                                <div class="down1">   
+                                    <label>Email:</label><br>
+                                    <input type="text" name="email" value=<?php echo $result[0]['Email']; ?>> <br>
+                                </div>
+                                <div class="down1">
+                                    <label>Contact No:</label><br>
+                                    <input type="text" name="contactno" value=<?php echo $result[0]['Contact_No']; ?>> <br>
+                                </div>    
+                            </div>
+                            <div class="down">
+                                <div class="down1">   
+                                    <label>NIC:</label><br>
+                                    <input type="text" name="nic" value=<?php echo $result[0]['NIC']; ?>> <br>
+                                </div>
+								<div class="down1"> 
+                                    <label>Username:</label><br>
+                                    <input type="text" name="username" value=<?php echo $result[0]['Username']; ?>> <br>
+                                </div>
+                                   
+                            </div>
+                            <div class="down"> 
+                                <div class="down2">     
+                                        <label>Address:</label><br> 
+                                        <input type="text" name="street" id="streetid" value="<?php echo $result[0]['Street']; ?>"> <br>  
+                                </div> 
+                                <div class="down2">   
+                                        <label></label><br> 
+                                        <input type="text" name="city" id="cityid" value=<?php echo $result[0]['City']; ?>> <br>  
+                                </div>  
+                                <div class="down2"> 
+                                        <label></label><br>      
+                                        <input type="text" name="postalcode" id="postalcodeid" value=<?php echo $result[0]['Postalcode']; ?>> <br>  
+                                </div>
+                            </div> 
+							<div class="down">
+								<div class="down1btn"></div>
+								<div class="down1btn">
+								    <button name="update_dprof" style="margin-top: 0%; margin-left:48%;">Update</button>
+								    
+								</div>
+								  
+							</div>
+
+
+							
+                        </div>     
+                </form> 
+				            <div class="otherdeliveryProfilebtn">
+								<div class="otherdeliveryProfilebtndown1">
+								   <label id="outerrDownDelivaryid">Update Password:</label><br>
+                                   <button type="submit" name="d_changepassword" id="d_changepasswordid" class="dcp" style="margin-left: opx; margin-top:0%">Change password</button>
+								    <div class="down_updata" >
+                                    
+											<div class="err-msg">
+												<?php
+													if(isset($_SESSION['updatepwd-error'])){
+														echo $_SESSION['updatepwd-error'];
+														unset($_SESSION['updatepwd-error']);
+												}?>
+											</div>
+											<div class="success-msg">
+												<?php
+													if(isset($_SESSION['updatepwd'])){
+														echo $_SESSION['updatepwd'];
+														unset($_SESSION['updatepwd']);
+													}
+												?>
+											</div>
+							        </div> 
+								</div>
+								<div class="otherdeliveryProfilebtndown1">
+								<button onclick="document.getElementById('id01').style.display='block'" class="b5" id="deliveyDeletebtn">Delete Account</button>
+								</div>
+							</div>
+				         
+				            <div class="d_form" id="delivary_form_id" style="display:none;">
+								<h2>Change Password</h2>
+
+								<form action="../../controller/deliveryperson/delivaryprofilecontroller.php" method="POST">
+									
+									<div class="pwdcontainer" id="pwdcontainer">
+										<label for="cpsw">Current Password</label><br>
+										<input type="password" placeholder="Enter Current Password" name="pwd" id="pwdid" required><br>
+										<label  for="cpsw" id="newpasswordlableid">New Password</label><br>
+										<input  type="password" placeholder="Enter New Password" name="npwd" id="npwdid" required><br>
+										<label  for="psw" id="coformpasswordlableid">Confirm Password</label><br>
+										<input  type="password" placeholder="Confirm New Password" name="cnpwd" id="cnpwdid" required><br><br>
+										<div class="btn">
+											<button type="submit" name="updatepwd" class="updatebtn">Update</button>
+										</div>  
+									</div>
+								</form>
+								<form action="../../controller/deliveryperson/delivaryprofilecontroller.php" method="POST">
+								    <button type="submit"  name="cancelpwd" class="cancelbtn">Cancel</button>
+								</form>         
+                            </div>  
+
+							
+							<!-- <div class="down">
+								
+                                <div id="id01" class="modal">
+                                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
+                                    <form class="modal-content" action="../../controller/deliveryperson/delivaryprofilecontroller.php" method="POST">
+                                        <div class="container">
+                                            <h1>Delete Account</h1>
+                                            <p>Are you sure you want to delete your account?</p>
+                                        
+                                            <div class="clearfix">
+                                                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                                                <button type="submit" class="deletebtn" name="deleteaccount">Delete</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div> 
+							</div> -->
 					
 				</div>
 			

@@ -23,19 +23,19 @@
 		</a>
 		<ul class="side-menu top">
 			<li >
-				<a href="../../view/ShopManager/shopManagerDashboard.php">
+				<a href="../../controller/ShopManager/ShopManagerDashboardFirstController.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
 			<li >
-				<a href="../../view/ShopManager/ShopManagerProfile.php">
+				<a href="../../controller/ShopManager/ShopManagerFirstProfileController.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Profile</span>
 				</a>
 			</li>
 			<li>
-				<a href="../../view/ShopManager/shopManagerUpdatePQ.php">
+				<a href="../../controller/ShopManager/ShopManagerBrandFirstController.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Update prices/Quantity</span>
 				</a>

@@ -99,21 +99,21 @@ class user_model{
 
     }
 
-    public function getProductDetails($connection){
-        $sql="SELECT Item_code, Name, Quantity, Price, Category, Product_type,Description FROM product order BY Date ASC";
+    // public function getProductDetails($connection){
+    //     $sql="SELECT Item_code, Name, Quantity, Price, Category, Product_type,Description FROM product order BY Date ASC";
         
-        $result=mysqli_query($connection,$sql);
-        if($result->num_rows===0){
-            return false;
-            $_SESSION['BrandQError']="No found data";
-        }else{
-            $answer=array();
-            while($row=$result->fetch_assoc()){
-                array_push($answer,['Item_code'=>$row['Item_code'],'Name'=>$row['Name'],'Quantity'=>$row['Quantity'],'Price'=>$row['Price'],'Category'=>$row['Category'],'Product_type'=>$row['Product_type'],'Description'=>$row['Description']]);
-            }
-        }
-        return $answer;
-    }
+    //     $result=mysqli_query($connection,$sql);
+    //     if($result->num_rows===0){
+    //         return false;
+    //         $_SESSION['BrandQError']="No found data";
+    //     }else{
+    //         $answer=array();
+    //         while($row=$result->fetch_assoc()){
+    //             array_push($answer,['Item_code'=>$row['Item_code'],'Name'=>$row['Name'],'Quantity'=>$row['Quantity'],'Price'=>$row['Price'],'Category'=>$row['Category'],'Product_type'=>$row['Product_type'],'Description'=>$row['Description']]);
+    //         }
+    //     }
+    //     return $answer;
+    // }
 
    
 }

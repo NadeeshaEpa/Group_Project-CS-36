@@ -16,8 +16,8 @@ if(isset($_POST['login'])){
     $_SESSION['gastype']=$result2;
     $result3=$user->getUserDetails($connection);
     $_SESSION['userDetails']=$result3;
-    $result4=$user->getProductDetails($connection);
-    $_SESSION['Product_details']=$result4;
+    // $result4=$user->getProductDetails($connection);
+    // $_SESSION['Product_details']=$result4;
     
     
     if($result){
@@ -29,7 +29,7 @@ if(isset($_POST['login'])){
         else if($_SESSION['Type']=="gasagent")
             header("Location: ../../view/gasagent/gasagent_dashboard.php");  //redirect to the dashboard page
         else if($_SESSION['Type']=="Stock Manager")
-            header("Location: ../../view/ShopManager/shopManagerDashboard.php");  //redirect to the dashboard page
+            header("Location: ../../controller/ShopManager/ShopManagerDashboardFirstController.php");  //redirect to the dashboard page
         else if($_SESSION['Type']=="Admin")
             header("Location: ../../view/admin/admin_dashboard.php"); //redirect to the dashboard page
         else if($_SESSION['Type']=="Staff")

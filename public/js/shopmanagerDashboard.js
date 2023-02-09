@@ -12,7 +12,27 @@
 //            menu.style.display = "none";
 //        }
 //    });
+/* profile update password section*/
 
+   // Get the menu button
+   var de_menuBtn = document.getElementById("d_changepasswordid");
+
+   // Get the menu
+   var de_menu = document.getElementById("delivary_form_id");
+
+   //validation part
+   const password= document.getElementById("npwdid");
+   const passwordLabel = document.getElementById("newpasswordlableid");
+
+   const cpassword = document.getElementById("cnpwdid");
+   const cpasswordLabel = document.getElementById("coformpasswordlableid");
+
+//    // delete account popup message
+//    var modal = document.getElementById('id01');
+   
+
+
+/* */
 
 const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
 
@@ -127,6 +147,63 @@ xhttp.open("GET", "http://localhost/Group_Project-CS-36/controller/ShopManager/S
 xhttp.send();
 
 /* */
+
+
+/* profile update password section*/
+
+   // Add an event listener to the menu button to toggle the menu
+   de_menuBtn.addEventListener("click", function() {
+	if (de_menu.style.display === "none") {
+		de_menu.style.display = "block";
+	} else {
+		de_menu.style.display = "none";
+	}
+});
+
+//new password validation
+
+password?.addEventListener("input", function () {
+    //password must be 8 characters long and contain at least one number and one lowercase letter and one uppercase letter
+    if(password.value.length < 8){
+        passwordLabel.innerHTML = "Password must be 8 characters long";
+        passwordLabel.style.color = "red";
+        //submit.disabled = true;
+    }else if(!password.value.match(/[a-z]/) || !password.value.match(/[A-Z]/)){
+        passwordLabel.innerHTML = "Password must contain at least one lowercase letter and one uppercase letter";
+        passwordLabel.style.color = "red";
+        //submit.disabled = true;
+    }else if(!password.value.match(/[0-9]/)){
+        passwordLabel.innerHTML = "Password must contain at least one number";
+        passwordLabel.style.color = "red";
+        //submit.disabled = true;
+        passwordflag=1;
+    }else{
+        passwordLabel.innerHTML = "Password:";
+        passwordLabel.style.color = "black";
+        password.style.borderColor = "green";
+        password.style.borderWidth = "2px";
+        passwordflag=0;
+        // submit.disabled = false;
+    }
+});
+
+cpassword?.addEventListener("input", function () {
+    if (cpassword.value != password.value) {
+        cpasswordLabel.innerHTML = "Passwords do not match";
+        cpasswordLabel.style.color = "red";
+        cpassword.style.borderColor = "red";
+        cpassword.style.borderWidth = "2px";
+        //submit.disabled = true;
+        cpasswordflag=1;
+    } else {
+        cpasswordLabel.innerHTML = "Confirm Password:";
+        cpasswordLabel.style.color = "black";
+        cpassword.style.borderColor = "green";
+        cpassword.style.borderWidth = "2px";
+        cpasswordflag=0;
+        // submit.disabled = false;
+    }
+});
 
 
 

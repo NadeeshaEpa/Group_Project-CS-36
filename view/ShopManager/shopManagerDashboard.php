@@ -29,13 +29,13 @@
 				</a>
 			</li>
 			<li >
-				<a href="../../view/ShopManager/ShopManagerProfile.php">
+				<a href="../../controller/ShopManager/ShopManagerFirstProfileController.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Profile</span>
 				</a>
 			</li>
 			<li>
-				<a href="../../view/ShopManager/shopManagerUpdatePQ.php">
+				<a href="../../controller/ShopManager/ShopManagerBrandFirstController.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Update prices/Quantity</span>
 				</a>
@@ -146,6 +146,33 @@
 
 			<div class="table-data">
 				<div class="order">
+					        <div class="tbl">
+                                    <table class="tb">
+                                    <tr>
+									    <th>Customer Name</th>
+                                        <th>Customer Address</th>
+                                        <th>Category</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                    </tr>
+                                    <?php
+                                    if(isset($_SESSION['Cus_Dashboard_details'])){
+                                        $result=$_SESSION['Cus_Dashboard_details']; 
+                                        foreach ($result as $row) {
+                                            echo "<tr>";
+                                            echo "<td>" . $row['Name'] . "</td>";
+                                            echo "<td>" . $row['Address'] . "</td>";
+                                            echo "<td>" . $row['Category'] . "</td>";
+                                            echo "<td>" . $row['Price'] . "</td>";
+											echo "<td>" . $row['Quantity'] . "</td>";
+                                            echo "</tr>";
+                                        }
+                                        unset($_SESSION['view_result']);
+                                    }
+                                    
+                                    ?>
+                                    </table>
+							</div>
 					
 				</div>
 			
