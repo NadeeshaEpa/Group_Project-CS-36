@@ -29,13 +29,9 @@
 				</a>
 			</li>
 			<li >
-				<a href="../../view/deliveryperson/DeliveryProfile.php">
+				<a href="../../controller/deliveryperson/deliveryPersonProfileFirstController.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
-					<span class="text">Profile
-						<form action="../../controller/deliveryperson/delivaryprofilecontroller.php" method="Post">
-						    <input type="hidden" name="prof_btn">
-						</form>
-					</span>
+					<span class="text">Profile</span>
 				</a>
 			</li>
 			<li>

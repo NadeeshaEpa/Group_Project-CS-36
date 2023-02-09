@@ -83,21 +83,21 @@ class user_model{
         return $gastype;
     }
 
-    public function getUserDetails($connection){
-        $sql="SELECT u.Username,u.Email,u.First_Name,u.Last_Name,u.City,u.Street,u.Postalcode,c.Contact_No,u.Password,d.Account_No FROM user u INNER JOIN user_contact c on u.User_id=c.User_id INNER JOIN deliveryperson d on u.User_id=d.DeliveryPerson_Id WHERE u.User_id='$this->User_id'";
+    // public function getUserDetails($connection){
+    //     $sql="SELECT u.Username,u.Email,u.First_Name,u.Last_Name,u.City,u.Street,u.Postalcode,c.Contact_No,u.Password,d.Account_No FROM user u INNER JOIN user_contact c on u.User_id=c.User_id INNER JOIN deliveryperson d on u.User_id=d.DeliveryPerson_Id WHERE u.User_id='$this->User_id'";
         
-        $result=$connection->query($sql);
-        if($result->num_rows===0){
-            return false;
-        }else{
-            $answer=[];
-            while($row=$result->fetch_assoc()){
-                array_push($answer,['Username'=>$row['Username'],'Email'=>$row['Email'],'First_Name'=>$row['First_Name'],'Last_Name'=>$row['Last_Name'],'City'=>$row['City'],'Street'=>$row['Street'],'Postalcode'=>$row['Postalcode'],'Contact_No'=>$row['Contact_No'],'Password'=>md5($row['Password']),'Account_No'=>$row['Account_No']]);
-            }
-        }
-        return $answer;
+    //     $result=$connection->query($sql);
+    //     if($result->num_rows===0){
+    //         return false;
+    //     }else{
+    //         $answer=[];
+    //         while($row=$result->fetch_assoc()){
+    //             array_push($answer,['Username'=>$row['Username'],'Email'=>$row['Email'],'First_Name'=>$row['First_Name'],'Last_Name'=>$row['Last_Name'],'City'=>$row['City'],'Street'=>$row['Street'],'Postalcode'=>$row['Postalcode'],'Contact_No'=>$row['Contact_No'],'Password'=>md5($row['Password']),'Account_No'=>$row['Account_No']]);
+    //         }
+    //     }
+    //     return $answer;
 
-    }
+    // }
 
     // public function getProductDetails($connection){
     //     $sql="SELECT Item_code, Name, Quantity, Price, Category, Product_type,Description FROM product order BY Date ASC";

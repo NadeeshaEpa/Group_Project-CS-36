@@ -1,6 +1,24 @@
 <?php
 class delivaryProf_model{
 
+    private $User_id;
+    public function getUserDetails($connection){
+        $this->User_id=$_SESSION['User_id'];
+        $sql="SELECT u.Username,u.Email,u.First_Name,u.Last_Name,u.City,u.Street,u.Postalcode,c.Contact_No,u.Password,d.Account_No FROM user u INNER JOIN user_contact c on u.User_id=c.User_id INNER JOIN deliveryperson d on u.User_id=d.DeliveryPerson_Id WHERE u.User_id='$this->User_id'";
+        
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $answer=[];
+            while($row=$result->fetch_assoc()){
+                array_push($answer,['Username'=>$row['Username'],'Email'=>$row['Email'],'First_Name'=>$row['First_Name'],'Last_Name'=>$row['Last_Name'],'City'=>$row['City'],'Street'=>$row['Street'],'Postalcode'=>$row['Postalcode'],'Contact_No'=>$row['Contact_No'],'Password'=>md5($row['Password']),'Account_No'=>$row['Account_No']]);
+            }
+        }
+        return $answer;
+
+    }
+
 
     public function updateUsers($connection,$array){
         $sql="UPDATE `user` SET `First_Name`='$array[1]',`Last_Name`='$array[2]',`City`='$array[3]',`Street`='$array[4]',`Postalcode`='$array[5]',`Username`='$array[6]',`Email`='$array[7]' WHERE User_id='$array[0]'";
