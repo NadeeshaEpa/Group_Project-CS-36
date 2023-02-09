@@ -476,7 +476,7 @@ body {
 	object-fit: cover;
 }
 #content main .table-data .order table tbody tr:hover {
-	background: var(--grey);
+	background-color: var(--grey);
 }
 #content main .table-data .order table tr td .status {
 	font-size: 10px;

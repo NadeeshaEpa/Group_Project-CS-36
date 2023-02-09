@@ -9,6 +9,8 @@
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="../../public/css/admin_delivery/Dashboard.css">
+    <link rel="stylesheet" href="../../public/css/admin_delivery/deliveries.css">
+
 	<title>FaGo</title>
 </head>
 <body>
@@ -21,8 +23,8 @@
 			<span class="text">FAGO</span>
 		</a>
 		<ul class="side-menu top">
-			<li >
-				<a href="../../view/staff/staff_dashboard.php">
+			<li>
+				<a href="staff_dashboard.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -36,7 +38,7 @@
 			</li>
 
 
-			<li class="active">
+			<li>
 			
 			<a href="../../view/staff/users.php">
 					<i class='bx bxs-group' ></i>
@@ -71,7 +73,7 @@
 				</a>
 			</li>
 
-			<li>
+			<li class="active">
 				<a href="payments.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Payments</span>
@@ -79,8 +81,10 @@
 			</li>
 			
 		</ul>
+		</ul>
 		<ul class="side-menu">
-			<li>
+			
+			<<li>
 				<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
@@ -97,13 +101,6 @@
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-			<!-- <a href="#" class="nav-link">Categories</a> -->
-			<!-- <form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form> -->
 			<!-- <input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label> -->
 			
@@ -121,80 +118,86 @@
 
 		<!-- MAIN -->
 		<main>
-			<div class="head-title">
-				<div class="left">
-					<h1>Users</h1>
-					<ul class="breadcrumb">
-						<li>
-							<a href="staff_dashboard.php">Dashboard</a>
-						</li>
-						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a class="active" href="#">Users</a>
-						</li>
-					</ul>
+			<a href="payments.php"><button style="background-color: #05be17;color:white;">Gas Agent</button></a>
+            <a href="payments1.php"><button>Delivery Person</button></a>
+            <br>
+			<!-- <form action="#" style="float:right;">
+				<div class="form-input">
+					<input type="search" placeholder="Search..." >
+					<button type="submit" class="search-btn" ><i class='bx bx-search' ></i></button>
 				</div>
-				
+			</form> -->
+
+
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>Kimuthu Kisal</h3>
+						<i class='bx bx-search' ></i>
+						<i class='bx bx-filter' ></i>
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>Order_ID</th>
+								<th>Date</th>
+								<th>Amount</th>
+                                <th>Payment</th>
+								
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+                                <td>45</td>
+                                <td>01-10-2021</td>
+                                <td>RS.6500.00</td>
+                                <td style="color:red;">Pending</td>
+								
+							</tr>
+							<tr>
+								
+                                <td>10</td>
+                                <td>01-10-2021</td>
+                                <td>RS.6500.00</td>
+                                <td style="color:red;">Pending</td>
+								
+								
+							</tr>
+							<tr>
+						
+                                <td>21</td>
+                                <td>01-10-2021</td>
+                                <td>RS.6500.00</td>
+								<td style="color:red;">Pending</td>
+								
+							</tr>
+							<tr>
+								
+                                <td>20</td>
+                                <td>01-10-2021</td>
+                                <td>RS.6500.00</td>
+			                    <td style="color:red;">Pending</td>
+								
+							</tr>
+							<tr>
+                                <td>96</td>
+                                <td>01-10-2021</td>
+                                <td>RS.6500.00</td>
+							    <td style="color:red;">Pending</td>
+								
+							</tr>
+                            <tr>
+                                <td></td>
+                                <td style="color:red;">Total :</td>
+                                <td style="color:red;">RS.50000.00</td>
+							    <td style="color:red;">Pending</td>
+								
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			
 			</div>
-
-			<ul class="box-info">
-				 
-                <a href="../../controller/staff/customeracc_controller.php?id=viewCustomer">
-                <li>
-				<img src="../../public/images/user.png" alt="John" style="width:10vh; height:10vh;">
-					<span class="text">
-						<h3>1000</h3>
-						<p>CUSTOMERS</p>
-					</span>
-                    </li>
-                </a>
-				
-				
-                <a href="../../controller/staff/gasagentacc_controller.php?id=viewGasagent">
-                <li>
-				<img src="../../public/images/user.png" alt="John" style="width:10vh; height:10vh;">
-					<span class="text">
-						<h3>250</h3>
-						<p>GAS AGENTS</p>
-					</span>
-				</li>
-                </a>
-
-                 <a href="../../controller/staff/staffacc_controller.php?id=viewStaff">
-                 <li>
-				 <img src="../../public/images/user.png" alt="John" style="width:10vh; height:10vh;">
-					<span class="text">
-						<h3>47</h3>
-						<p>STAFF</p>
-					</span>
-                </li>
-                </a>
-				
-
-            
-                <a href="../../controller/staff/deliverypersonacc_controller.php?id=viewDeliveryperson">
-                <li>
-				<img src="../../public/images/user.png" alt="John" style="width:10vh; height:10vh">
-					<span class="text">
-						<h3>238</h3>
-						<p>DELIVERY PERSON</p>
-					</span>
-                </li>
-                </a>
-				
-                <a href="../../controller/staff/stockmanageracc_controller.php?id=viewStockmanager">
-                <li>
-				<img src="../../public/images/user.png" alt="John" style="width:10vh; height:10vh">
-					<span class="text">
-						<h3>5</h3>
-						<p>STORE MANAGER</p>
-					</span>
-                </li>
-                </a>
-				
-			</ul>
-
-
 		</main>
 		<!-- MAIN -->
 	</section>

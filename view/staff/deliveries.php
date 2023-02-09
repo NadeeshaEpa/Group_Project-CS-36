@@ -100,6 +100,7 @@
 	<section id="content">
 		<!-- NAVBAR -->
 		<nav>
+			<i class='bx bx-menu' ></i>
 			<!-- <input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label> -->
 			
@@ -148,7 +149,7 @@
 							<tr>
 								<td>
 									<img src="../../public/images/noprofile.png">
-									<p>Nisali Senadeera</p>
+									<p>Trineesha Thathsarani</p>
 								</td>
                                 <td>RS.6500.00</td>
 								<td>01-10-2021</td>
@@ -157,7 +158,7 @@
 							<tr>
 								<td>
 									<img src="../../public/images/noprofile.png">
-									<p>Promod Madawala</p>
+									<p>Hashini Thilinika</p>
 								</td>
                                 <td>RS.6500.00</td>
 								<td>01-10-2021</td>
@@ -166,7 +167,7 @@
 							<tr>
 								<td>
 									<img src="../../public/images/noprofile.png">
-									<p>Anoma Suraweera</p>
+									<p>Thirani Upetha</p>
 								</td>
                                 <td>RS.6500.00</td>
 								<td>01-10-2021</td>
@@ -175,7 +176,7 @@
 							<tr>
 								<td>
 									<img src="../../public/images/noprofile.png">
-									<p>Nihal Priyantha</p>
+									<p>Kimuthu Kisal</p>
 								</td>
                                 <td>RS.6500.00</td>
 								<td>01-10-2021</td>
