@@ -1,4 +1,7 @@
-<?php session_start()?>
+<?php session_start();
+if(!isset($_SESSION['User_id'])){
+	header("Location:../../index.php");
+}?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,7 +62,7 @@
 		</ul>
 		<ul class="side-menu">
 			<li>
-				<a href="../../index.php" class="logout">
+				<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
