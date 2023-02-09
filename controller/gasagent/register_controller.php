@@ -20,7 +20,8 @@ if(isset($_POST['register'])){
     $contactnumber = $_POST['contactnumber'];
     $accountnum= $_POST['accountnum'];
     $shopename= $_POST['shopName'];
-   
+    $gastype= $_POST['gastype'];
+
 }else{
    echo "Invalid request";
    exit();
@@ -63,7 +64,7 @@ $shopnumber=$connection->real_escape_string($shopnumber);
 $nic=$connection->real_escape_string($nic);
 $accountnum=$connection->real_escape_string($accountnum);
 $shopename=$connection->real_escape_string($shopename);
-
+$gastype=$connection->real_escape_string($gastype);
 
 $user=new gasagent_model();
 $user->setDetails($firstname,$lastname,$username,$street,$city,$postalcode,$password,$email,$contactnumber,$business_reg_num,$shopnumber,$nic,$accountnum,$shopename);
