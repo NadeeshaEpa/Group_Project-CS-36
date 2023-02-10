@@ -14,7 +14,7 @@
     <img class="head" src="gas8.PNG" alt="" srcset="">
     <section class="about">
     <div class="main">
-    <img src="gas7.jpg" alt="" srcset="">
+    <img src="../../public/images/about.jpg" style="width:100%;height:50%;" alt="" srcset="">
     <div class="about-text">
     <h1>About Us</h1>
     <h5>Welcome you all to FAGO...

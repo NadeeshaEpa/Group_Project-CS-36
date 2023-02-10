@@ -182,7 +182,7 @@ if(!isset($_SESSION['User_id'])){
                                         <option value="">---Select Type---</option>
                                         <option value="Gas Cooker">Gas Cooker</option>
                                         <option value="Regulator">Regulator</option>
-										<option value="Gas tube">Gas tube</option>
+										<option value="Gas tube">Other</option>
                                     </select><br>
 									<label for="">Product_type :</label><br>
 									<input type="text" name="product_type"><br>
