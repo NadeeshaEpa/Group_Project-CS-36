@@ -130,7 +130,7 @@ if(!isset($_SESSION['User_id'])){
 				
 			</div>
 			<div class="btn">
-                            <form action="../../controller/deliveryperson/dashboardController.php" method="post">
+                            <form action="#" method="post">
                                 <button class="btn1" id="btn1" name="btn1">Shop Open</button>
                                 <button class="btn2" id="btn2" name="btn2">Shop Closed</button>
                             </form>

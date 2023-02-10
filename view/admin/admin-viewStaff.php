@@ -110,6 +110,7 @@ require_once("../../config.php");?>
 		<!-- MAIN -->
 		<main>
    <a href="add_staff.php"> <button>Add Staff</button></a>
+
     <div class="list">
 
     <h3>All Staff Members</h3>
