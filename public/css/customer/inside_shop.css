@@ -1,0 +1,131 @@
+body{
+    background-color: white
+}
+h1{
+    text-align: center;
+    font-size: 50px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.upcontainer{
+    background-image: url("../../images/customer/gasbackground.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position:center;
+    height: 241px;
+    width: 100%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    opacity: 0.9;
+}
+.ava{
+    display: flex;
+    margin: 2%;
+    margin-left:15%;
+    /* width: 100%; */
+}
+.gas{
+    float: left;
+    /* margin-right: 5%; */
+    margin-top:0%;
+    width: 35%;
+    margin-left: 5%;
+    height: 20%;
+}
+.gas img{
+    width: 30%;
+    height: 60%;
+    padding-bottom: 0%;
+}
+.gasdetails{
+    float:right;
+    width: 50%;
+    /* display: flex; */
+}
+.gasdetails label{
+    margin-left: 20%;
+    font-size: 20px;
+}
+.gasname, .price{
+    font-weight: bold;
+}
+.numberofgas{
+    margin-left: 2%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    height: 40px;
+    width: 70px;
+    border-radius: 20px;
+    font-size: 15px;
+    text-align: center;
+    border:2px solid black;
+}
+/* .gas-right{
+    display: flex;
+    margin-left: 16%;
+}
+.count{
+    float:left;
+}
+.order{
+    float:right;
+} */
+.order button{
+    margin-left: 45%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    height: 40px;
+    width: 150px;
+    border-radius: 20px;
+    background-color: green;
+    font-size: 15px;
+    border:none;
+    float: right;
+    color: white;
+}
+.order:hover{
+    background-color:lightgreen;
+}
+.dorder{
+    background-color: gray;
+    color: white;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+.viewcart{
+    height: 40px;
+    width: 150px;
+    border-radius: 20px;
+    background-color: rgb(86, 86, 235);
+    font-size: 15px;
+    border:none;
+    float: right;
+    margin-right: 10%;
+    margin-top: 3%;
+    color: white;
+}
+.viewcart:hover{
+    background-color:lightblue;
+}
+.details{
+    display: flex;
+}
+.details-left{
+    float: left;
+    width: 50%;
+    margin-left: 5%;
+    font-size: 20px;
+    color: ivory;
+}
+.details-right{
+    float: right;
+    width: 50%;
+    margin-bottom: 0.5%;
+    margin-top:-2%;
+}
+.back img{
+    width: 30px;
+    height: 30px;
+    margin-left: 5%;
+    margin-top: 1%; 
+}

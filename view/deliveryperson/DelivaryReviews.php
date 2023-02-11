@@ -1,4 +1,7 @@
-<?php session_start()?>
+<?php session_start();
+if(!isset($_SESSION['User_id'])){
+	header("Location:../../index.php");
+}?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +11,7 @@
 	<!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
-	<link rel="stylesheet" href="../../public/css/admin_delivery/DelivaryDashboardNew.css">
+	<link rel="stylesheet" href="../../public/css/stock_delivery/DelivaryDashboardNew.css">
 
 	<title>FaGo</title>
 </head>
@@ -55,7 +58,7 @@
 		</ul>
 		<ul class="side-menu">
 			<li>
-				<a href="../../index.php" class="logout">
+				<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -129,7 +132,7 @@
 									<label for="" >Enter the description :</label><br>
 
 									<input type="text" name="dis_input" required><br>
-									<button type="submit" name="revie_add">submit</button>
+									<button type="submit" name="revie_add">Submit</button>
 								</form>
                             </div>
 						</div>

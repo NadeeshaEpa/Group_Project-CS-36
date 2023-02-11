@@ -1,4 +1,7 @@
-<?php session_start()?>
+<?php session_start();
+if(!isset($_SESSION['User_id'])){
+	header("Location:../../index.php");
+}?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +11,7 @@
 	<!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
-	<link rel="stylesheet" href="../../public/css/admin_delivery/DelivaryDashboardNew.css">
+	<link rel="stylesheet" href="../../public/css/stock_delivery/DelivaryDashboardNew.css">
 
 	<title>FaGo</title>
 </head>
@@ -55,7 +58,7 @@
 		</ul>
 		<ul class="side-menu">
 			<li>
-				<a href="../../index.php" class="logout">
+				<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -134,7 +137,7 @@
 									<label for="">Reference No :</label><br>
 									<input type="text" name="complaneRef" id="complaneRef_id"><br>
                                     <label for="">Description :</label><br>
-									<input type="text" name="complane_diesf">
+									<input type="text-area" name="complaneDes" id="complaneDes_id"><br>
 									<button type="submit" name="complane_btn">submit</button>
 								</form>
                             </div>

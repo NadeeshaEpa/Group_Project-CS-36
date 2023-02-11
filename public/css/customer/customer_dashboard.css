@@ -6,15 +6,16 @@ body{
     background-color:white;
 
 }
-.sidebar{
-    /* margin-bottom: 5px;
-    margin-top: 30px; */
+/* .dcontainer{
+    display: flex;
+    height: 90%;
+} */
+/* .sidebar{
     width: 18%;
     padding: 20px;
     font-size: 15px;
     float: left;
-    /* background-image: linear-gradient(to right bottom, #5b8467, #569369, #50a16a, #46b06b, #39bf6c, #3fc265, #46c55d, #4ec854, #63bf44, #72b734, #7eae25, #88a517); */
-    background-color:#aeaeb3;
+    background-color:#022b4c;
 }
 .dcontainer{
     display: flex;
@@ -22,7 +23,6 @@ body{
 }
 .left1 button, .left2 button{
     background-color: white;
-    /* margin-left: 10px; */
     padding: 15px;
     font-size: 20px;
     margin-bottom: 20px;
@@ -60,8 +60,11 @@ body{
     margin-left: 5px;
     margin-bottom: 2px;
     padding-left: 15px;
+} */
+.header{
+    width: 81.7%;
+    float: right;
 }
-
 .right{
     width:75%;
     float:right;
@@ -72,19 +75,32 @@ body{
     font-weight: bold;
     padding-top: 5px;
     color: black;
+    height: 70px;
 }
 .right .welcome p{
     padding: 0%;
     margin: 0%;
-    margin-top: 2px;
+    margin-top: 10px;
 }
-.right .data{
-    background-color: aliceblue;
+.data{
+    background-color: rgb(226, 226, 226);
     padding: 20px;
     padding-left: 30px;
     border-radius: 20px;
     margin-left: 8%;
     margin-bottom: 10px;
+    padding-left:5%;
+}
+.right .data{
+    background-color: white;
+    /* background-color: rgb(226, 226, 226); */
+    padding: 20px;
+    padding-left: 30px;
+    border-radius: 20px;
+    margin-left: 0%;
+    margin-right: 5%;
+    margin-bottom: 10px;
+    padding-bottom: 10%;
 }
 .right .data form{
     padding-left: 10px;
@@ -104,23 +120,23 @@ body{
     font-weight: bold;
 }
 .b2{
-    background-color:lightblue;
-    border:blue 2px solid;
+    background-color:#79d37c;;
+    border:none;
 }
 .b4{
-    background-color: #9AE298;
-    border:green 2px solid;
+    background-color: #da3a3a;
+    border:none;
 }
     
 .b4:hover, .cu:hover{
-    background-color: green;
+    font-size: 19px;
 }
 .b2:hover, .cp:hover{
-    background-color: #4E60FF;
+    font-size: 19px;
 }
 .details label{
     padding-left: 5px;
-    font-size: 20px;
+    font-size: 18px;
 }
 .up{
     display: flex;
@@ -158,14 +174,14 @@ body{
     height: 40px;
 }
 .cp{
-    background-color:lightblue;
-    border: blue 2px solid;
+    background-color:#815bf6;
+    border:none;
     font-size: 18px;
     font-weight: bold;
 }
 
 .down1 input{
-    font-size: 20px;
+    font-size: 18px;
     border: black 1px solid;
     border-radius: 20px;
     width: 450px;
@@ -193,11 +209,12 @@ body{
     height: 40px;
     float: right;
     margin-right: 35px;
-    background-color: red;
+    background-color: #da3a3a;
     border-radius: 20px;
-    margin-top: 30px;
+    margin-top: 46px;
     font-size: 18px;
     font-weight: bold;
+    border: none;
 
 }
 .b6{
@@ -205,17 +222,18 @@ body{
     height: 40px;
     float: right;
     margin-right: 35px;
-    background-color: #9AE298;
+    background-color: #79d37c;
     border-radius: 20px;
     margin-top: 45px;
     font-size: 18px;
     font-weight: bold;
+    border: none;
 }
 .b5:hover, .b6:hover{
-    background-color: green;
+    font-size: 19px;
 }
 .b5:hover{
-    background-color: pink;
+    font-size: 19px;
 }
 .heading{
     text-align: center;
@@ -224,7 +242,8 @@ body{
     
 }
 .heading h1{
-    margin-top: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .review-con{
     display: flex;
@@ -233,45 +252,48 @@ body{
 .sidebar{
     float: left;
 }
-.review-form{
-    
+.review-form{  
     float:right;
     padding: 5px;
     margin-top: 0%;
-    margin-left: 2%;
     border-radius: 20px;
     width: 60%;
-    margin-right: 5%;
+    margin-right:15%;
     height: 80%;
 }
 .review-form form{
-    background-color: rgb(226, 226, 226);
+    /* background-color: rgb(226, 226, 226); */
+    background-color: white;
     border-radius: 20px;
-    height: 100%;
+    height: 95%;
     width: 100%;
     padding: 10px;
     margin-left: 6%;
+    margin-top: 2%;
 }
 .view-reviews button{
-    background-color: green;
-    float:right;
-    margin-top: 10%;
+    background-color: #79d37c;
+    margin-top: 1%;
     border-radius: 20px;
     height:45px;
     width: 150px;
     border: #9AE298;
     font-size: 18px;
     font-weight: bold;
+    margin-left: 105%;
 }
 .view-reviews button:hover{
-    background-color: #9AE298;
+    font-size: 19px;
 }
-.cusname, .dpname, .date, .desc{
+.cusname, .dpname, .desc{
     font-size: 18px;
     margin-bottom: 0px;
     transform: translate(18%, 25%);
 }
-.cusname input, .dpname select , .date input, .desc textarea{
+.dpname{
+    margin-top: 20px;
+}
+.cusname input, .dpname select , .desc textarea{
     width: 65%;
     height: 35px;
     border-radius: 10px;
@@ -280,30 +302,32 @@ body{
     padding-left: 10px;
 }
 .desc textarea{
-    height: 100px;
+    height: 150px;
 }
 .submitreview button{
     width: 200px;
     height: 40px;
-    background-color: #4E60FF;
+    background-color: #79d37c;
     border-radius: 20px;
-    border: blue 2px solid;
+    border: none;
     transform: translate(150%, 50%);
-    margin-top: 20px;
+    margin-top: 40px;
     margin-left: 10%;
     font-size: 18px;
     font-weight: bold;
 }
 .submitreview button:hover{
-    background-color: green;
+    font-size: 19px;
 }
 .order-form{
     float:left;
     height: 83%;
     width: 75%;
+    margin-left: 21%;
 }
 .ordertable{
-    background-color: rgb(226, 226, 226);
+    background-color: white;
+    /* background-color: rgb(226, 226, 226); */
     padding: 20px;
     padding-top: 30px;
     margin: 20px;
@@ -332,15 +356,18 @@ body{
 }
 .ordertable table td a{
     text-decoration: none;
+    border: none;
     color: black;
-    border: green 1px solid;
     border-radius: 10px;
     padding: 5px;
     padding-left: 20px;
     padding-right: 20px;
-    background-color: #9AE298;
-    font-size: 18px;
+    background-color: #79d37c;
+    font-size: 17px;
     font-weight: bold;
+}
+.ordertable table td a:hover{
+    font-size: 18px;
 }
 .active button{
     background-color: #babff7;
@@ -364,7 +391,7 @@ body{
   
   /* Add a color to the cancel button */
   .cancelbtn {
-    background-color: green;
+    background-color: #79d37c;
     color: black;
     float: left;
     margin-left: 20%;
@@ -373,7 +400,7 @@ body{
   
   /* Add a color to the delete button */
   .deletebtn {
-    background-color: #f44336;
+    background-color: #da3a3a;
     color: black;
     float: right;
     margin-right: 20%;
@@ -444,16 +471,16 @@ body{
 }  
 .reviewtable{
     background-color: white;
-    width: 83%; 
+    width: 90%; 
     margin-top: 3%;
-    margin-left: 5%;
+    margin-left: 0%;
     padding-left: 50px;
     padding-right: 50px;
     padding-top: 10px;
     border-radius: 20px;
     float: right;
-    margin-right: 20px;
-    height: 90%;
+    margin-right: 5%;
+    height: 75%;
 }
 .reviewtable table{
     width:100%;
@@ -475,28 +502,29 @@ body{
     text-align: left;
 }
 .editbtn a{
-    background-color:green;
+    background-color:#79d37c;
     color:black;
     border-radius: 10px;
     height: 30px;
-    width: 60px;
+    width: 90px;
     float: left;
     border:none;
     text-decoration: none;
     text-align: center;
-    padding-top: 10px;
+    padding-top: 5px;
     padding-left: 20px;
     padding-right: 20px;
     margin-left: 30px;
+    margin-right: 10px;
     font-size: 18px;
     font-weight: bold;
 }
 .editbtn a:hover{
-    background-color: #9AE298;
+    font-size: 19px;
 }
 .rdeletebtn a{
     color:black;
-    background-color: red;
+    background-color: #da3a3a;
     border-radius: 10px;
     height: 30px;
     width: 90px;
@@ -504,23 +532,23 @@ body{
     text-decoration: none;
     border:none;
     float: right;
-    padding-top: 10px;
+    padding-top: 5px;
     font-size: 16px;
     font-size: 18px;
     font-weight: bold;
 }
 .rdeletebtn a:hover{
-    background-color: lightcoral;
+   font-size: 19px;
 }
 .editreview-form{
-    width: 90%;
+    width: 80%;
     height: 80%;
     background-color: white;
     padding: 20px;
     border-radius: 20px;
     margin-top: 3%;
-    padding-left: 80px;
-    margin-left:10%;
+    padding-left:10%;
+    margin-left:7%;
 }
 .editreview-form h2{
     text-align:left;
@@ -533,6 +561,7 @@ body{
     font-size: 20px;
     color: black;
     padding-bottom: 10px;
+    padding-left: 2%;
 }
 .editreview-form input, .editreview-form textarea, .editreview-form select{
     width: 80%;
@@ -542,7 +571,7 @@ body{
     margin-bottom: 10px;
     padding-left: 10px;
     font-size: 18px;
-    margin-left: 20px;
+    margin-left: 5%;
 }
 .editreview-form button{
     width: 20%;
@@ -551,7 +580,7 @@ body{
     font-size: 20px;
     margin-top: 10px;
     margin-left: 35%;
-    background-color: green;
+    background-color: #79d37c;
     color: black;
     border: none;
     font-size: 18px;

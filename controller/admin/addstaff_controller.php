@@ -68,7 +68,7 @@ $user->setDetails($firstname,$lastname,$username,$nic,$street,$city,$postalcode,
 $result=$user->Registerstaff($connection);
 if($result){
     $_SESSION['RegsuccessMsg'] = 'Staff Registered Successfully';
-    header("Location: ../../view/admin/addstaff_success.php");
+    header("Location: ../../controller/admin/staffacc_controller.php?id=viewStaf");
 }else{
     header("Location: ../../view/admin/add_staff.php");
 }

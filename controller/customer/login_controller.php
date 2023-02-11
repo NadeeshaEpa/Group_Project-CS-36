@@ -27,8 +27,13 @@ if(isset($_POST['login'])){
         $connection->close();
         exit();
     }
-}else{
-   echo "Invalid request";
-   exit();
+}
+if(isset($_GET['unregview'])){
+    $user=new customer_model();
+    $gastype=$user->gastype($connection);
+    $_SESSION['gastype']=$gastype;
+    header("Location: ../../view/customer/unregcustomer_select.php");
+    $connection->close();
+    exit();
 }
 

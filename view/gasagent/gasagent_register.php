@@ -14,26 +14,6 @@
     <div class="registration-form">  
     <form action="../../controller/gasagent/register_controller.php" method="POST">
         <h2>Gasagent Registration Form</h2>
-        <div id="errmsg">
-            <?php
-                if(isset($_SESSION['emailerror'])){
-                    echo $_SESSION['emailerror'];
-                    echo '<br>';
-                    unset($_SESSION['emailerror']);
-                }
-                if(isset($_SESSION['usernameerror'])){
-                    echo $_SESSION['usernameerror'];
-                    echo '<br>';
-                    unset($_SESSION['usernameerror']);
-                }
-                if(isset($_SESSION['passworderror'])){
-                    echo $_SESSION['passworderror'];
-                    echo '<br>';
-                    unset($_SESSION['passworderror']);
-                }
-            ?>
-        </div>
-
         <div class="font">
         <label for=":" id="name" >Name:</label><br>
           <input type="text" name="firstname" id="firstname" placeholder="First Name"  required>
@@ -61,6 +41,21 @@
 
             <label for=":" id="shopnumberlabel">Shop Number:</label><br>
             <input type="text" name="shopnumber" id="shopnumber" placeholder="Shop Number" required><br>
+            
+           
+
+            <!-- new -->
+            </div><br> 
+                        <div class="dropdown">
+                           <label for=""> Gas Type</label>
+                            <select name="gastype" id="gastype">
+                                <option value="">---Select Type---</option>
+                                <option value="1">Litro</option>
+                                <option value="2">Laugh</option>
+                              
+                            </select>
+                        </div><br><br>
+
 
 
             <label for=":">Business Registration Number:</label><br>
@@ -83,7 +78,7 @@
         </div>   
     </form>
     </div>
-    <script src="../../public/js/newvalidation.js"></script>
+    <!-- <script src="../../public/js/newvalidation.js"></script> -->
 
 </body>
 </html>

@@ -1,4 +1,8 @@
-<?php session_start()?>
+<?php session_start(); 
+if(!isset($_SESSION['User_id'])){
+    header("Location: ../../index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,7 +60,7 @@
 		</ul>
 		<ul class="side-menu">
 			<li>
-				<a href="../../index.php" class="logout">
+				<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -214,10 +218,9 @@
                                 </div>
                             </div> 
 							<div class="down">
-								<div class="down1btn"></div>
-								<div class="down1btn">
-								    <button name="update_dprof" style="margin-top: 0%; margin-left:48%;">Update</button>
-								    
+								<div class="down2btn"></div>
+								<div class="down2btn">
+								    <button name="update_dprof" style="margin-left:62%;">Update</button>   
 								</div>
 								  
 							</div>
@@ -228,8 +231,8 @@
                 </form> 
 				            <div class="otherdeliveryProfilebtn">
 								<div class="otherdeliveryProfilebtndown1">
-								   <label id="outerrDownDelivaryid">Update Password:</label><br>
-                                   <button type="submit" name="d_changepassword" id="d_changepasswordid" class="dcp" style="margin-left: opx; margin-top:0%">Change password</button>
+								   <label id="outerrDownDelivaryid">Update Password:</label>
+                                   <button type="submit" name="d_changepassword" id="d_changepasswordid" class="dcp" style="margin-left: opx; margin-top:0%">Change password</button><br>
 								    <div class="down_updata" >
                                     
 											<div class="err-msg">
@@ -250,7 +253,8 @@
 							        </div> 
 								</div>
 								<div class="otherdeliveryProfilebtndown1">
-								<button onclick="document.getElementById('id01').style.display='block'" class="b5" id="deliveyDeletebtn">Delete Account</button>
+									<br>
+									<button onclick="document.getElementById('id01').style.display='block'" class="b5" id="deliveyDeletebtn">Delete Account</button>
 								</div>
 							</div>
 				         

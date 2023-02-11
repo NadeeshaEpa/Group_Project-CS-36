@@ -1,108 +1,116 @@
 <?php session_start();
 require_once("../../config.php");?>
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="../../public/css/admin_delivery/Dashboard.css">
     <link rel="stylesheet" href="../../public/css/admin_delivery/user_list.css">
-    <link rel="stylesheet" href="../../public/css/admin_delivery/newdashboard.css">
-    <title>staff list</title>
+
+	<title>FaGo</title>
 </head>
 <body>
-   <?php include '../../public/user_header.php'; ?>
-    
-    <div class="split left">
-    <!-- <div class="vertical-menu">
-    <a href="admin_dashboard.php" >Dashboard</a>
-    <a href="#">Account</a>
-    <a href="#" >Users</a>
-    <div class="users">
-                     
-                        <center><a href="../../controller/admin/customeracc_controller.php?id=viewcustomer">Customers</a>
-                        <a href="#">Gas Agents</a>
-                        <a href="#">Fuel Managers</a>
-                        <a href="../../controller/admin/staffacc_controller.php?id=viewstaff" class="active">Staff</a>
-                        <a href="#">Delivery Person</a></center>
-                     
-    </div>
-    <a href="#">Orders</a>
-    <a href="#">Reports</a>
-    </div> -->
 
-    <div class="left1">
-                <div class="active"> 
-                    <a href="admin_dashboard.php">
-                        <button class="active">
-                        <div class="left1-1">
-                            <img src="../../public/images/menu.png" alt="logo" width="20px" height="20px">
-                        </div>
-                        <p>Dashboard</p>
-                        <p>Admin Dashboard</p>
-        
-                        </button>    
-                    </a>
-                    
-                </div>  
-                </div>
-                <div class="left2">
-                    <form action="#" method="POST">
-                        <button name="orders">
-                            <div class="left2-1">
-                                <img src="../../public/images/user.png" alt="logo" width="20px" height="20px">
-                            </div>
-                            <p>Account</p>
-                            <p>Personal Information</P>
-                        </button>
-                    </form>    
-                </div>
 
-                <div class="left2">
-                <div class="dropdown">
-                    <button name="review">
-                        <div class="left2-1">
-                            <img src="../../public/images/group.png" alt="logo" width="20px" height="20px">
-                        </div>
-                        <p>User</p>
-                        <p>Manage User Account</P>
-                    </button>
-                     <div class="dropdown-content">
-                      <a href="../../controller/admin/customeracc_controller.php?id=viewCustomer">Customer</a>
-                      <a href="#">Gas Agent</a>
-                      <a href="#">Fuel Manager</a>
-                      <a href="../../controller/admin/staffacc_controller.php?id=viewStaff">Staff</a>
-                      <a href="#">Delivery Person</a>
-                      </div>
-                   </div>
-                </div>
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bxs-select-multiple'></i>
+			<span class="text">FAGO</span>
+		</a>
+		<ul class="side-menu top">
+			<li >
+				<a href="../../view/admin/admin_dashboard.php">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
 
-                <div class="left2">
-                <form action="#" method="POST">
-                    <button name="review">
-                        <div class="left2-1">
-                            <img src="../../public/images/report.png" alt="logo" width="20px" height="20px">
-                        </div>
-                        <p>Reports</p>
-                        <p>Generate Reports</P>
-                    </button>
-                    </form>
-                </div>
-                <div class="left2">
-                <form action="#" method="POST">
-                    <button name="review">
-                        <div class="left2-1">
-                            <img src="../../public/images/orders.png" alt="logo" width="20px" height="20px">
-                        </div>
-                        <p>Orders</p>
-                        <p>Gas Orders</P>
-                    </button>
-                    </form>
-                </div>
+			<li>
+				<a href="../../controller/admin/profile_controller.php?viewacc=1">
+					<i class='bx bxs-group' ></i>
+					<span class="text">Account</span>
+				</a>
+			</li>
 
-</div>
-<div class="split right">
+
+			<li class="active">
+			
+			<a href="../../view/admin/users.php">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Users</span>
+				</a>
+			</li>
+
+			<li>
+				<a href="../../controller/admin/company_controller.php?id=viewcompany">
+					<i class='bx bxs-doughnut-chart' ></i>
+					<span class="text">Gas Companies</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Orders</span>
+				</a>
+			</li>
+			
+		</ul>
+		<ul class="side-menu">
+			<!-- <li>
+				<a href="#">
+					<i class='bx bxs-cog' ></i>
+					<span class="text">Settings</span>
+				</a>
+			</li> -->
+			<li>
+				<a href="../../controller/Users/logout_controller.php" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu' ></i>
+			<!-- <a href="#" class="nav-link">Categories</a> -->
+			<!-- <form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search...">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form> -->
+			<!-- <input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label> -->
+			
+			
+			<a href="#" class="profile">
+			<?php if($_SESSION['img-status'] == 0){?>
+                    <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
+                <?php }else{?>
+                    <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
+            <?php } ?>
+			</a>
+			<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
    <a href="add_staff.php"> <button>Add Staff</button></a>
+
     <div class="list">
 
     <h3>All Staff Members</h3>
@@ -134,9 +142,9 @@ require_once("../../config.php");?>
                  <td>'.$uname.'</td>
                  <td>'.$email.'</td>
                  <td>
-                 <a href=""><button class="button1">View</button></a>
-                 <a href=""><button class="button2">Update</button></a>
-                 <a href="delete.php? deleteid='.$user_id.'"><button class="button3">Delete</button></a>
+                 <a href="../../controller/admin/staffacc_controller.php?vid='.$user_id.'"><button class="button1">View</button></a>
+                 <a href="../../controller/admin/staffacc_controller.php?uid='.$user_id.'"><button class="button2">Update</button></a>
+                 <a href="../../controller/admin/staffacc_controller.php?did='.$user_id.'"><button class="button3">Delete</button></a>
                  </td>
             </tr>' ;
             
@@ -150,8 +158,13 @@ require_once("../../config.php");?>
 
         
     
-</div>
+    </main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	
 
+	<script src="../../public/js/script.js"></script>
 
 
   

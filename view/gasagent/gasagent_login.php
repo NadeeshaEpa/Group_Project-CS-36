@@ -1,4 +1,8 @@
-<?php session_start(); ?>
+<?php session_start(); 
+if(!isset($_SESSION['User_id'])){
+    header("Location: ../../index.php");
+}
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +12,7 @@
     <title>Login</title>
 </head>
 <body>
-<?php include '../header.php'; ?>
+<!-- <?php include '../header.php'; ?> -->
  <div class="container">  
     <form action="../../controller/gasagent/login_controller.php" method="POST" class="form">
         <h2>Login Form</h2><br><br>

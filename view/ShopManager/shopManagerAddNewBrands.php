@@ -1,4 +1,8 @@
-<?php session_start()?>
+<?php session_start(); 
+if(!isset($_SESSION['User_id'])){
+    header("Location: ../../index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,12 +59,13 @@
 			</li>
 		</ul>
 		<ul class="side-menu">
-			<li>
-				<a href="../../index.php" class="logout">
+		<	<li>
+				<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
 			</li>
+
 		</ul>
 	</section>
 	<!-- SIDEBAR -->
@@ -177,7 +182,7 @@
                                         <option value="">---Select Type---</option>
                                         <option value="Gas Cooker">Gas Cooker</option>
                                         <option value="Regulator">Regulator</option>
-										<option value="Gas tube">Gas tube</option>
+										<option value="Gas tube">Other</option>
                                     </select><br>
 									<label for="">Product_type :</label><br>
 									<input type="text" name="product_type"><br>

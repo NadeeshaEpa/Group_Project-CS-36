@@ -21,55 +21,29 @@ if(isset($_SESSION['gastype'])){
             <button type="submit" name="viewacc">View My Profile</button>
         </form>
     </div>    
-    <!-- <div class="down">
-        <div class="litro">
-            <img src="../../public/images/litro.jpg" alt="" class="litroimg">
-            <form action="../../controller/customer/order_controller.php" method="POST">
-                <button name="litroavailable">Gas</button>
-            </form>    
-        </div>
-        <div class="laugh">
-            <img src="../../public/images/laugh.png" alt="" class="litroimg">
-            <form action="../../controller/customer/order_controller.php" method="POST">    
-                <button name="laughavailable">Laugh gas</button>
-            </form>    
-        </div>
-        <!-- <div class="litro">
-            <img src="../../public/images/customer/gascylinders.webp" alt="" class="litroimg">
-            <form action="../../controller/customer/order_controller.php" method="POST">
-                <div class="dropdown">
-                    <button name="litroavailable" class="dropbtn">Gas</button>
-                    <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
-                    </div>
-                </div>
-            </form>
-        </div> -->
-        <!-- <div class="fuel">
-            <img src="../../public/images/fuel.jpg" alt="" class="litroimg"> 
-            <button>Fuel availability</button>
-        </div>   
-    </div>      --> 
     <div class="down">
        <div class="gas">
             <h2>Gas Shop</h2>
             <img src="../../public/images/customer/gas.jpg" alt="" class="gas_img">
-            <div id="gas-shop">
-                <select id="gas-type-selector">
-                    <!-- create a disable option  and show it as the first value-->
-                    <option selected disabled>Choose Gas Type</option>
-                    <?php 
-                    $i=0;
-                    foreach($gastype as $gas){ ?>
-                        <option value="<?php echo $gas; ?>"><?php echo $gas; ?></option>
-                    <?php } ?>
-                </select>
+            <div id="gas-shop" class="gas_dropdown">
+                <form action="../../controller/customer/gas_controller.php" method="POST">
+                    <select id="gas-type-selector" name="gas_type">
+                        <!-- create a disable option  and show it as the first value-->
+                        <option selected disabled>Choose Gas Type</option>
+                        <?php 
+                        $i=0;
+                        foreach($gastype as $gas){ ?>
+                            <option value="<?php echo $gas; ?>"><?php echo $gas; ?></option>
+                        <?php } ?>
+                    </select>
+                    <button name="gas_button">Shop Now</button>
+                </form>   
             </div>
        </div> 
        <div class="fago_shop">
             <h2>Fago Shop</h2>
+            <img src="../../public/images/customer/fago_shop.jpg" alt="" class="fago_img">
+            <a href="../../controller/customer/shop_controller.php?gascooker='1'"><button>Shop Now</button></a>
        </div>
     </div>
     <?php //include_once 'customer_footer.php'; ?>

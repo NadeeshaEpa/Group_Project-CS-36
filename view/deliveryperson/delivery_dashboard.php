@@ -9,7 +9,7 @@ if(!isset($_SESSION['User_id'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../public/css/admin_delivery/newdashboard.css">
+    <link rel="stylesheet" href="../../public/css/stock_delivery/newdashboard.css">
     <title>Document</title>
 </head>
 <body>

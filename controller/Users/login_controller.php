@@ -14,12 +14,7 @@ if(isset($_POST['login'])){
     $result=$user->loginUser($connection,$username,$password);  //call the loginCustomer function of the customer model
     $result2=$user->gastype($connection);
     $_SESSION['gastype']=$result2;
-    // $result3=$user->getUserDetails($connection);
-    // $_SESSION['userDetails']=$result3;
-    // $result4=$user->getProductDetails($connection);
-    // $_SESSION['Product_details']=$result4;
-    
-    
+
     if($result){
         $_SESSION['login']="success";  //if the login is successful, set the session variable
         if($_SESSION['Type']=="Customer")
@@ -33,7 +28,7 @@ if(isset($_POST['login'])){
         else if($_SESSION['Type']=="Admin")
             header("Location: ../../view/admin/admin_dashboard.php"); //redirect to the dashboard page
         else if($_SESSION['Type']=="Staff")
-            header("Location: ../../view/staff/StaffDashboard.php");
+            header("Location: ../../view/staff/staff_dashboard.php");
         $connection->close();
         exit();
     }else{
@@ -42,8 +37,11 @@ if(isset($_POST['login'])){
         $connection->close();
         exit();
     }
-}else{
-   echo "Invalid request";
-   exit();
+}
+if(isset($_GET['unregview'])){
+    $user=new user_model();
+    $result2=$user->gastype($connection);
+    $_SESSION['gastype']=$result2;
+    header("Location: ../../view/customer/unregcustomer_select.php");
 }
 

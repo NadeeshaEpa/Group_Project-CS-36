@@ -12,11 +12,9 @@
     /* height: 89%; */
     /* position: relative; */
     font-family: sans-serif;
-    background-color:#7b7a77;
-   
-   
+    background-color:#39066b;
     color: black;
-    position: fixed;
+    /* position: absolute; */
     padding-left: 10px;
   }
   
@@ -33,10 +31,9 @@
     font-family: sans-serif;
     /* width: 80%; */
     /* height: 95%; */
-    /* position: relative; */
+     /* position: relative; */
     /* margin-left: 20px; */
-    /* background-color:#f2efef; */
-    background-color:#FFFDF0;
+    background-color:#FFFFFF;
     min-height: 100%;
   
   }

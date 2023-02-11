@@ -17,7 +17,6 @@ li {
 :root {
 	--poppins: 'Poppins', sans-serif;
 	--lato: 'Lato', sans-serif;
-
 	--light: #F9F9F9;
 	--blue: #3C91E6;
 	--light-blue: #CFE8FF;
@@ -802,19 +801,35 @@ margin-left: 80px;
 	display: inline-block;
 }
 
-.brandQinfoinner button{
-	
+.brandQinfoinner button, .BrandQquentyid2 button{
 	height: 10%;
-	
 	text-align: center;
-	background-color: #205d9a;
+	background-color: #815bf6;
 	border-radius: 15px;
 	margin-left: 2%;
+	padding-left: 50px;
+	color: white;
+	border:none;
 	
+}
+.BrandQpricebtnid2, #BrandQuenBtnid{
+	margin-left: 20%;
+	text-align: center;
+	background-color: #046f34;
+	border-radius: 15px;
+	text-align: center;
+	color: white;
+	border:none;
+	height: 40px;
+	width: 100px;
 }
 
 #BrandQuenBtnid{
-    padding: 10px 75px 10px 40px;
+	background-color: #79d37c;
+	margin-left: 2%;
+	width: 20%;
+	padding-left: 4px;
+    /* padding: 10px 75px 10px 40px; */
 }
 
 #brandDeleteBtnid{
@@ -826,10 +841,8 @@ margin-left: 80px;
 }
 
 #BrandQpricebtnid{
-    padding: 10px 95px 10px 40px;
-	
+	padding: 12px 61px 10px 72px;
 }
-
 /**/
 
 
@@ -913,7 +926,12 @@ margin-left: 80px;
 
   }
 
-
+  #viewReportId{
+	border: none;
+	color: white;
+	font-size: 18px;
+	
+  }
   /*profile details css*/
 
 .welcome{
@@ -924,7 +942,8 @@ margin-left: 80px;
 
 .welcome h3{
     text-align: center;
-    font-size: 20px;
+    font-size: 28px;
+	margin-bottom: 2%;
     
 }
 
@@ -957,18 +976,18 @@ margin-left: 80px;
 }
 
 .prof_details label{
-    margin-left: 15px;
-    font-size: 14px;
+    margin-left: 10px;
+    font-size: 17px;
     margin-top: 10px;
 }
 
 .prof_details input{
-    width: 500px;
+    width: 480px;
     height: 35px;
     border-radius: 15px;
     background-color: rgb(253, 253, 253);
     text-align: center;
-    font-size: 12px;
+    font-size: 16px;
     margin-top: 10px;
 }
 
@@ -1024,10 +1043,13 @@ margin-left: 80px;
     border-radius: 15px;
     margin-top: 2%;
 	margin-left: 20%;
+	border: none;
+	color: white;
+	font-size: 16px;
 
 }
 .d_form .updatebtn {
-     background-color: #046f34;
+     background-color: #79d37c;
 }
 .d_form .cancelbtn {
 	background-color: #da3a3a;
@@ -1056,19 +1078,21 @@ margin-left: 80px;
 
 #outerrDownDelivaryid {
 	
-	margin-left: 15px;
-    font-size: 14px;
+	margin-left: 10px;
+    font-size: 17px;
     margin-top: 10px;
 
 }
 
 #d_changepasswordid{
-	padding: 10px 65px 10px 55px;
-    margin-left: 100px;
-    background-color: #1543b9;
+    margin-left: 10px;
+    background-color: #815bf6;
     border-radius: 15px;
     height: 40px;
-	width: 240px;
+	width: 200px;
+	color: white;
+	font-size: 15px;
+	border: none;
 }
 
 .down_updata{
@@ -1078,19 +1102,22 @@ margin-left: 80px;
     margin-top: 10px;
 }
 
-.down1btn{
+.down2btn{
     height: 100%;
     width: 50%;
 	display: flex;
 }
 
-.down1btn button {
-    padding: 10px 65px 10px 55px;
-    
-    background-color:#1543b9;
+.down2btn button {
+    background-color:#79d37c;
     border-radius: 15px;
-    width: 200px;
+    width: 150px;
 	height: 40px;
+	color: white;
+	font-size: 16px;
+	border: none;
+	margin-top:5%;
+	margin-left: 10%;
 }
 
 .otherdeliveryProfilebtn{
@@ -1102,13 +1129,19 @@ margin-left: 80px;
 	height: 100%;
 	width: 50%;
 }
+.b5{
+	margin-left: 10%;
+}
 .otherdeliveryProfilebtndown1 #deliveyDeletebtn{
     margin-top: 21px;
-	width: 200px;
+	width: 150px;
 	border-radius: 15px;
     background-color:#da3a3a;
 	height: 40px;
-
+	color: white;
+	border: none;
+	font-size: 16px;
+	margin-left: 10%;
 }
 /*  */
 

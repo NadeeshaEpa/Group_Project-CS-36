@@ -1,5 +1,4 @@
 <?php
-session_start();
 class staff_model{
     private $User_id;
     private $Firstname;
@@ -65,8 +64,18 @@ class staff_model{
     }
 
     public function setStaff($connection){
-        $admin_id=$_SESSION['User_id'];
-        $sql="INSERT INTO staff(Staff_Id,NIC,Admin_Id,Registration_date,Status) VALUES ('$this->User_id','$this->nic','$admin_id',date('d-m-y'),'1')";
+        $sql="INSERT INTO staff(Staff_Id,NIC,Admin_Id,Registration_date,Status) VALUES ('$this->User_id','$this->nic',NULL,NULL,'1')";
+        if($connection->query($sql)){
+            $_SESSION['registerMsg']="User Registered Successfully";
+            return true;
+        }else{
+            $_SESSION['regerror']="User Registration Failed";
+            return false;
+        }
+    }
+
+    public function setprofilepic($connection){
+        $sql="INSERT INTO `profileimg`(User_id,status,imgname) VALUES ('$this->User_id',0,'noprofile.png')";
         if($connection->query($sql)){
             $_SESSION['registerMsg']="User Registered Successfully";
             return true;
@@ -81,13 +90,86 @@ class staff_model{
         $this->setUserId($connection);
         $result2=$this->setContact($connection);
         $result3=$this->setStaff($connection);
+        $result4=$this->setprofilepic($connection);
 
-        if($result1 && $result2 && $result3){
+        if($result1 && $result2 && $result3 && $result4){
             return true;
         }else{
             return false;
         }
     }
     
-    
+
+    public function deleteuser($connection,$user_id){
+        $sql = "UPDATE `staff` SET Status=2 WHERE Staff_Id='$user_id'";
+        // $sql="DELETE FROM `user` WHERE User_id='$user_id'";
+        $result=$connection->query($sql);
+        if($result==TRUE){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
+    }
+
+
+    public function edituser($connection,$user_id){
+        $sql="SELECT s.Staff_Id,u.First_Name, u.Last_Name, u.City, u.Street, u.Postalcode, u.Username, u.Email, uc.Contact_No, s.NIC, S.Registration_date from `user_contact` uc INNER JOIN `user` u ON uc.User_id=u.User_id INNER JOIN `staff` s ON u.User_id=s.Staff_Id WHERE u.User_id='$user_id'";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $staff=[];
+            while($row=$result->fetch_object()){
+                array_push($staff,['Staff_Id'=>$row->Staff_Id,'First_Name'=>$row->First_Name,'Last_Name'=>$row->Last_Name,'City'=>$row->City,'Street'=>$row->Street,'Postalcode'=>$row->Postalcode,'Username'=>$row->Username,'Email'=>$row->Email,'Contact_No'=>$row->Contact_No, 'NIC'=>$row->NIC, 'Registration_date'=>$row->Registration_date]);
+            }
+            return $staff;
+        }      
+    }
+    public function updateUser($connection,$array){
+        $sql="UPDATE `user` SET `First_Name`='$array[1]',`Last_Name`='$array[2]',`City`='$array[3]',`Street`='$array[4]',`Postalcode`='$array[5]',`Username`='$array[6]',`Email`='$array[7]' WHERE User_id='$array[0]'";
+        $result=$connection->query($sql);
+        if($result){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function updateContacts($connection,$array){
+        $sql="UPDATE `user_contact` SET `Contact_No`='$array[1]' WHERE User_id='$array[0]'";
+        $result=$connection->query($sql);
+        if($result){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+
+
+    public function viewuser($connection,$user_id){
+        $sql="SELECT s.Staff_Id,u.First_Name, u.Last_Name, u.City, u.Street, u.Postalcode, u.Username, u.Email, uc.Contact_No, s.NIC, S.Registration_date, i.imgname from `user_contact` uc INNER JOIN `user` u ON uc.User_id=u.User_id INNER JOIN `staff` s ON u.User_id=s.Staff_Id INNER JOIN `profileimg` i ON s.Staff_Id=i.User_id WHERE u.User_id='$user_id'";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $staff=[];
+            while($row=$result->fetch_object()){
+                array_push($staff,['Staff_Id'=>$row->Staff_Id,'First_Name'=>$row->First_Name,'Last_Name'=>$row->Last_Name,'City'=>$row->City,'Street'=>$row->Street,'Postalcode'=>$row->Postalcode,'Username'=>$row->Username,'Email'=>$row->Email,'Contact_No'=>$row->Contact_No, 'NIC'=>$row->NIC, 'Registration_date'=>$row->Registration_date, 'imgname'=>$row->imgname]);
+            }
+            return $staff;
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+    

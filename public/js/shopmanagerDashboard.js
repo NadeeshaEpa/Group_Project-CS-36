@@ -143,7 +143,7 @@ xhttp.onreadystatechange = function() {
 	Nodeliverid2.innerHTML = response.Order_count['COUNT(*)'];
     
 };
-xhttp.open("GET", "http://localhost/Group_Project-CS-36/controller/ShopManager/ShopManagerOrderCountController.php", true);
+xhttp.open("GET", "http://localhost:8001/controller/ShopManager/ShopManagerOrderCountController.php", true);
 xhttp.send();
 
 /* */

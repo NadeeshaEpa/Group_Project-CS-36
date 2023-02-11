@@ -1,4 +1,7 @@
-<?php session_start()?>
+<?php session_start();
+if(!isset($_SESSION['User_id'])){
+	header("Location:../../index.php");
+}?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +11,7 @@
 	<!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
-	<link rel="stylesheet" href="../../public/css/admin_delivery/DelivaryDashboardNew.css">
+	<link rel="stylesheet" href="../../public/css/stock_delivery/DelivaryDashboardNew.css">
 
 	<title>FaGo</title>
 </head>
@@ -31,7 +34,11 @@
 			<li >
 				<a href="../../controller/deliveryperson/deliveryPersonProfileFirstController.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
-					<span class="text">Profile</span>
+					<span class="text">Profile
+						<!-- <form action="../../controller/deliveryperson/delivaryprofilecontroller.php" method="Post">
+						    <input type="hidden" name="prof_btn">
+						</form> -->
+					</span>
 				</a>
 			</li>
 			<li>
@@ -55,7 +62,7 @@
 		</ul>
 		<ul class="side-menu">
 			<li>
-				<a href="../../index.php" class="logout">
+				<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -150,8 +157,8 @@
 				<li>
 					<i class='bx bxs-group' ></i>
 					<span class="text">
-						<label for="" id="Nodeliverid1" style=" font-size:20px">Total delivary count:</label><br>
-                        <label for="" id="Nodeliverid2" style="font-size: 32px; margin-left:35%">3</label>
+						<label for="" id="Nodeliverid1" style=" font-size:20px">Total delivary count:</label>
+                        <label for="" id="Nodeliverid2" style="font-size: 32px; margin-left:5%;"></label>
 					</span>
 				</li>
 				<li>
@@ -167,7 +174,56 @@
 
 
 			<div class="table-data">
-				<div class="order">
+				<table>
+					<tr>
+						<th>Customer Name</th>
+						<th>Address</th>
+						<th>Delivery Charge</th>
+						<th>Accept</th>
+						<th>Decline</th>
+						<th>Status</th>
+					</tr>	
+					<tr>
+						<td>Avishka prabhath</td>
+						<td>No:23 nudegoda colombo 5</td>
+						<td>Rs: 500</td>
+						<td><button id="temp1">Accept</button></td>
+						<td><button id="temp2">Decline</button></td>
+						<td><button id="temp3">Pending</button></td>
+					</tr>
+					<tr>
+						<td>Dhanusha Thilakarathne</td>
+						<td>No:172, Poorwarama Road, Colombo005</td>
+						<td>Rs: 200</td>
+						<td><button id="temp1">Accept</button></td>
+						<td><button id="temp2">Decline</button></td>
+						<td><button id="temp3">Pending</button></td>
+					</tr>
+					<tr>
+						<td>Nirupana Ganaganath</td>
+						<td>No:5, Second Street, Colombo</td>
+						<td>Rs: 800</td>
+						<td><button id="temp1">Accept</button></td>
+						<td><button id="temp2">Decline</button></td>
+						<td><button id="temp3">Pending</button></td>
+					</tr>
+					<tr>
+						<td>Gayal Sanajan</td>
+						<td>No:128, High level road, Colombo 7</td>
+						<td>Rs: 256</td>
+						<td><button id="temp1">Accept</button></td>
+						<td><button id="temp2">Decline</button></td>
+						<td><button id="temp3">Pending</button></td>
+					</tr>
+					<tr>
+						<td>Rusiru Rathmina</td>
+						<td>No:12, Poorwarama Road, Colombo 005</td>
+						<td>Rs: 200</td>
+						<td><button id="temp1">Accept</button></td>
+						<td><button id="temp2">Decline</button></td>
+						<td><button id="temp3">Pending</button></td>
+					</tr>
+				<!-- <div class="order">
 					<div class="tempD">
 						<div class="Dtempl">
 							<div>
@@ -198,7 +254,7 @@
 							<button id="temp3">Finalized order</button>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</main>
 		<!-- MAIN -->

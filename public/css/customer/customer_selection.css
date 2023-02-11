@@ -9,28 +9,10 @@ body{
     margin:30px;
     flex:80%
 }
-.litro{
-    font-size:20px;
-    margin:50px;
-    background-color:#6989B5;
-    flex:15%;
-}
-.laugh{
-    font-size:20px;
-    margin:50px;
-    background-color:#FDC801;
-    flex:15%;
-}
-.fuel{
-    font-size:20px;
-    margin:50px;
-    background-color:maroon;
-    flex:15%;
-}
 button{
     margin: 30px;
     margin-top: 0%;
-    width: 50%;
+    width: 60%;
     height: 50px;
     font-size: 20px;
     background-color: green;
@@ -38,6 +20,10 @@ button{
     border-radius: 10px;
     border: green 1px solid;
     text-align: center;
+}
+a{
+    text-decoration: none;
+    color: white;
 }
 button:hover{
     background-color: lightgreen;
@@ -52,36 +38,72 @@ button:hover{
 }
 .up{
     display: flex;
-}
-.down{
-    display:flex;
-    margin-top: -70px;
-}
-.litroimg{
-    width:70%;
-    height:70%;
-    padding: 40px;
-    padding-top: 11%;
-    padding-left: 15%
-   
-}
-.litro button, .laugh button, .fuel button{
-    margin-left: 23%;
+    height: 15%;
 }
 .down{
     display: flex;
-    padding-top: 10px;
+    width: 100%;
+}
+.gas,.fago_shop{
+    float: left;
+    /* background-color: #6989B5; */
+    padding: 5px;
+    padding-left: 5px;
+    width: 50%;
+    height: 100%;
 }
 .gas{
-    float: left;
+    margin-right: 5%;
 }
 .gas h2{
+    margin: 0%;
+    padding: 0%;
+    padding-top: 10px;
+    font-size: 40px;
     padding: 30px;
     padding-left: 50px;
     padding-right: 0px;
 }
+.gas img{
+    width: 70%;
+    height: 70%;
+    padding-top: 10px;
+    margin-left: 8%;
+}
+#gas-shop{
+    padding: 10px;
+    border-radius: 20px;
+    align-items: center;
+    
+}
+.gas_dropdown{
+    display:block;
+    width: 100%;
+}
+.gas_dropdown select{
+    float: left;
+    width: 40%;
+}
+.gas_dropdown button{
+    float: right;
+    width: 21%;
+}
 .fago_shop{
     float: right;
+    margin-left: 10%;
+}
+.fago_shop h2{
+    margin: 0%;
+    padding: 0%;
+    padding-top: 25px;
+    font-size: 40px;
+    color: black;
+}
+.fago_shop img{
+    width: 50%;
+    padding-top: 10px;
+    padding-bottom: 50px;
+    margin-left: 8%;
 }
 .gas_img{
     width: 40%;
@@ -90,8 +112,19 @@ button:hover{
     padding-top: 10px;
 }
 #gas-type-selector{
-   width: 45%;
+   width: 65%;
    margin-left: 30px;
    padding: 10px;
    border-radius: 20px;
+   font-size: 20px;
+   font-weight: bold;
+}
+#ungas-shop button{
+    width: 60%;
+    margin-right: 20%;
+    margin-top: 8px;
+}
+.up-gas{
+    width:100%;
+    margin-top: 3%;
 }

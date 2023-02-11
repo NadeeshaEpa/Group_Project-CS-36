@@ -3,52 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../public/css/customer/customer_dashboard.css">
+    <link rel="stylesheet" href="../../public/css/customer/newdashboard.css">
     <title>view order</title>
 </head>
 <body>
     <?php require_once 'customer_header.php'; ?>
     <div class="dcontainer">
-        <div class="sidebar">
-            <div class="left">
-                <div class="left1">
-                    <a href="customer_dashboard.php">
-                        <button>
-                        <div class="left1-1">
-                            <img src="../../public/images/account.png" alt="logo" width="20px" height="20px">
-                        </div>
-                        <p>Account</p>
-                        <p>personal infromation</P>
-                        </button>    
+    <section id="sidebar">
+            <a href="#" class="brand">
+                <i class='bx bxs-select-multiple'></i>
+                <span class="text">FaGo</span>
+            </a>
+            <ul class="side-menu top">	
+                <li class>	
+                    <a href="../../controller/customer/account_controller.php?viewacc='1'">
+                        <i class='bx bxs-dashboard' ></i>
+                        <span class="text">Dashboard</span>
                     </a>
-                </div>
-                <div class="left2">
-                    <form action="../../controller/customer/order_controller.php" method="POST">
-                    <div class="active">    
-                    <button name="orders">
-                        <div class="left2-1">
-                            <img src="../../public/images/order.png" alt="logo" width="20px" height="20px">
-                        </div>
-                        <p>My orders</p>
-                        <p>order details</P>
-                    </button>
-                    </div>
-                    </form>
-                </div>
-                <div class="left2">
-                <form action="../../controller/customer/review_controller.php" method="POST">
-                    <button name="review">
-                        <div class="left2-1">
-                            <img src="../../public/images/ratings.png" alt="logo" width="20px" height="20px">
-                        </div>
-                        <p>Reviews</p>
-                        <p>Rate delivery service</P>
-                    </button>
-                    </form>
-                </div>
-            </div>
-        </div>
+                </li>
+                <li class="active">
+                    <a href="../../controller/customer/order_controller.php?orderid='1'">
+                        <i class='bx bxs-shopping-bag-alt' ></i>
+                        <span class="text">My orders</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../../controller/customer/review_controller.php?reviewid='1'">
+                        <i class='bx bxs-doughnut-chart' ></i>
+                        <span class="text">Reviews</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../../controller/customer/complain_controller.php?complainid='1'">
+                        <i class='bx bxs-badge-check' ></i>
+                        <span class="text">Complains</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="side-menu">
+                <li>
+                    <a href="../../controller/Users/logout_controller.php" class="logout">
+                        <i class='bx bxs-log-out-circle' ></i>
+                        <span class="text">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+	<!-- SIDEBAR -->
+        <?php include_once 'customer_header.php'; ?>
         <div class="order-form">
             <?php 
                 if(isset($_SESSION['vieworders'])){
@@ -83,11 +88,16 @@
                                     <td><?php echo $detail['Order_id']?></td>
                                     <td><?php echo $detail['Amount']?></td>
                                     <td><?php echo $detail['Delivery_Method']?></td>
-                                    <?php if($detail['Delivery_Status']==0){?>
-                                        <td>Not Delivered</td>
-                                    <?php }else{?>
-                                        <td>Delivered</td>
-                                    <?php }?>
+                                    <div class="status">
+                                        <?php if($detail['Delivery_Status']==2){?>
+                                            //change the color of the text abd make it bold
+                                            <td style="color:red"><b>No delivery</b></td>
+                                        <?php }else if($detail['Delivery_Status']==0){?>
+                                            <td style="color:#FDC801"><b>On the way</b></td>
+                                        <?php }else{?>
+                                            <td style="color:green"><b>Delivered</b></td>     
+                                        <?php }?>
+                                    </div>
                                     <td><a href="../../controller/customer/order_controller.php?id=<?php echo $detail['Order_id']?>">View</a></td>
                             </tr>
                         <?php }?>
@@ -95,6 +105,5 @@
             </div>    
         </div>
     </div>    
-    <?php require_once 'customer_footer.php'; ?>
 </body>
 </html>

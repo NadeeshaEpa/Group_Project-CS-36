@@ -4,7 +4,7 @@ require_once("../../config.php");
 require_once("../../model/customer/account_model.php");
 require_once("../../model/customer/checkcustomer_model.php");
 
-if(isset($_POST['viewacc'])){
+if(isset($_POST['viewacc']) || isset($_GET['viewacc'])){
     if(isset($_SESSION['User_id'])){ 
             $acc=new account_model();
             $result=$acc->viewAccount($connection,$_SESSION['User_id']);

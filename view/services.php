@@ -32,25 +32,19 @@
             
        
     </div>
-
-
-
-
-
-
     <div class="footer">
         <div class="footer-left">
-            <img src="public/images/logo.png" alt="" class="homeimg">
+            <img src="../public/images/logo.png" alt="" class="homeimg">
             <p>Visit our website and place your orders. This section provides you some information about FAGO and some links for imporatant pages.
             Customers can order gas cylinders and accessories
             in same platform. So, this is a one stop solution for all your gas needs. Just try it and you will love it.
             </p>
             <h2>Follow Us</h2>
             <div class="socialmedia">
-            <a href="https://www.facebook.com/"><img src="public/images/customer/facebook.png" alt="" class="homeimg"></a>
-            <a href="https://www.instagram.com/"><img src="public/images/customer/insta.png" alt="" class="homeimg"></a>
-            <a href="https://www.twitter.com/"><img src="public/images/customer/twitter.png" alt="" class="homeimg"></a>
-            <a href="https://www.youtube.com/"><img src="public/images/customer/linkd.jpg" alt="" class="homeimg"></a>
+            <a href="https://www.facebook.com/"><img src="../public/images/customer/facebook.png" alt="" class="homeimg"></a>
+            <a href="https://www.instagram.com/"><img src="../public/images/customer/insta.png" alt="" class="homeimg"></a>
+            <a href="https://www.twitter.com/"><img src="../public/images/customer/twitter.png" alt="" class="homeimg"></a>
+            <a href="https://www.youtube.com/"><img src="../public/images/customer/linkd.jpg" alt="" class="homeimg"></a>
             </div>
         </div>
         <div class="footer-right">
@@ -65,7 +59,7 @@
         </div>
     </div>
 
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+ <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 </body>
