@@ -115,37 +115,7 @@ if(!isset($_SESSION['User_id'])){
 				
 			</div>
 
-			<!-- <ul class="box-info">
-                <li>
-					<i class='bx bxs-calendar-check' ></i>
-					<span class="text">
-						<label for="" id="dayid" style="margin-left: 40%;"></label><br>
-                        <label for="" id="monthid"></label>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-time-five' ></i>
-					<span class="text">
-						<label for="" id="timeid" style="margin-left: 40%; font-size:32px"></label>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-group' ></i>
-					<span class="text">
-						<label for="" id="Nodeliverid1" style=" font-size:20px">Total delivary count:</label><br>
-                        <label for="" id="Nodeliverid2" style="font-size: 32px; margin-left:35%">3</label>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-dollar-circle' ></i>
-					<span class="text">
-						<label for="" id="incomeid1" style=" font-size:20px"> Total income:</label><br>
-                        <label for="" id="incomeid2">Rs: 850</label>
-					</span>
-				</li>
-               
-
-			</ul> -->
+			
 
 
 			<div class="table-data">
@@ -220,7 +190,7 @@ if(!isset($_SESSION['User_id'])){
 							<div class="down">
 								<div class="down2btn"></div>
 								<div class="down2btn">
-								    <button name="update_dprof" style="margin-left:62%;">Update</button>   
+								    <button name="update_dprof" style="margin-left:42%; margin-top:40px">Update</button>   
 								</div>
 								  
 							</div>
@@ -232,7 +202,7 @@ if(!isset($_SESSION['User_id'])){
 				            <div class="otherdeliveryProfilebtn">
 								<div class="otherdeliveryProfilebtndown1">
 								   <label id="outerrDownDelivaryid">Update Password:</label>
-                                   <button type="submit" name="d_changepassword" id="d_changepasswordid" class="dcp" style="margin-left: opx; margin-top:0%">Change password</button><br>
+                                   <button type="submit" name="d_changepassword" id="d_changepasswordid" class="dcp" style="margin-left: opx; margin-top:12%">Change password</button><br>
 								    <div class="down_updata" >
                                     
 											<div class="err-msg">
@@ -261,7 +231,7 @@ if(!isset($_SESSION['User_id'])){
 				            <div class="d_form" id="delivary_form_id" style="display:none;">
 								<h2>Change Password</h2>
 
-								<form action="../../controller/deliveryperson/delivaryprofilecontroller.php" method="POST">
+								<form action="../../controller/ShopManager/ShopManagerProfileController.php" method="POST">
 									
 									<div class="pwdcontainer" id="pwdcontainer">
 										<label for="cpsw">Current Password</label><br>
@@ -275,7 +245,7 @@ if(!isset($_SESSION['User_id'])){
 										</div>  
 									</div>
 								</form>
-								<form action="../../controller/deliveryperson/delivaryprofilecontroller.php" method="POST">
+								<form action="../../controller/ShopManager/ShopManagerProfileController.php" method="POST">
 								    <button type="submit"  name="cancelpwd" class="cancelbtn">Cancel</button>
 								</form>         
                             </div>  

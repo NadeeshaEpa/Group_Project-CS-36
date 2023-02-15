@@ -127,6 +127,7 @@ if(!isset($_SESSION['User_id'])){
 							</div>
 							<div class="showBrandQDataHeaderTitle">
 								<h4>All brands</h4>
+								
 							</div>
 						</div>
 
@@ -135,18 +136,19 @@ if(!isset($_SESSION['User_id'])){
 								$result=$_SESSION['Product_details'];
 								foreach ($result as $row) { ?>
 									<div class="brandQinfoinner">
-										<form action="../../controller/ShopManager/ShopManagerBrandController.php">
+										<form action="../../controller/ShopManager/ShopManagerBrandController.php" method="POST">
 											<label for="">Reference No:</label>
+											<input type="hidden" name="BrandQref" value="<?php echo $row['Item_code']; ?>">
 											<input type="text"  id="BrandQrefid" name="BrandQref" value="<?php echo $row['Item_code']; ?>" disabled><br>
 											<label for="">Name:</label>
 											<input type="text"  id="BrandNameid" value="<?php echo $row['Name']; ?>" disabled><br>
 											<label for="">Category:</label>
 											<input type="text" id="Brandcatefid" value="<?php echo $row['Category']; ?>" disabled><br>
 											<label for="">Quantity:</label>
-											<input type="text" id="BrandQquentyid" name="BrandQquenty" value="<?php echo $row['Quantity']; ?>" disabled>
+											<input type="text" id="BrandQquentyid" name="BrandQquenty" value="<?php echo $row['Quantity']; ?>" >
 											<button name="BrandQuenBtn" id="BrandQuenBtnid">Update Quantity</button><br>
 											<label for="">Price:</label>
-											<input type="text" id="BrandQpriceid" value="<?php echo $row['Price']; ?>" disabled>
+											<input type="text" id="BrandQpriceid" name="BrandQprice" value="<?php echo $row['Price']; ?>">
 											<button id="BrandQpricebtnid" name="BrandQpricebtn">Update Price</button><br>
 											
 											<button name="brandDeleteBtn" id="brandDeleteBtnid">Delete</button>

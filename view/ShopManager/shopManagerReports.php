@@ -114,39 +114,7 @@ if(!isset($_SESSION['User_id'])){
 				
 			</div>
 
-			<!-- <ul class="box-info">
-                <li>
-					<i class='bx bxs-calendar-check' ></i>
-					<span class="text">
-						<label for="" id="dayid" style="margin-left: 40%;"></label><br>
-                        <label for="" id="monthid"></label>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-time-five' ></i>
-					<span class="text">
-						<label for="" id="timeid" style="margin-left: 40%; font-size:32px"></label>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-group' ></i>
-					<span class="text">
-						<label for="" id="Nodeliverid1" style=" font-size:20px">Total delivary count:</label><br>
-                        <label for="" id="Nodeliverid2" style="font-size: 32px; margin-left:35%">3</label>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-dollar-circle' ></i>
-					<span class="text">
-						<label for="" id="incomeid1" style=" font-size:20px"> Total income:</label><br>
-                        <label for="" id="incomeid2">Rs: 850</label>
-					</span>
-				</li>
-               
-
-			</ul> -->
-
-
+			
 			<div class="table-data">
 				<div class="order">
 				<form action="../../controller/ShopManager/ShopManagerReportController.php" method="POST">
@@ -222,52 +190,94 @@ if(!isset($_SESSION['User_id'])){
 							</h5>
 					   </div>
 					
-						<?php if(isset($_SESSION['BrandcusReportview'])){
-							$result=$_SESSION['BrandcusReportview'];
-							foreach ($result as $row) {?>
-							<div class="report_info_outter">
-								<div class="report_info">
-									<?php echo "Reference No : " . $row['Order_id']."<br>";
-									echo "Name : " . $row['Name']."<br>";
-									echo "Address : " . $row['Address']."<br>";
-									echo "Contact NO : " . $row['Contact_No']."<br>";
-									echo "Order Date : " . $row['Order_date']."<br>";
-									echo "Order time : " . $row['Time']."<br>";
-									echo "category : " . $row['Category']."<br>";
-									echo "Price : " . $row['Price']."<br>";
-									echo "Quantity : " . $row['Quantity']."<br>";?>
-									
-								</div>
-							</div>
-							<?php
-							}
-							unset($_SESSION['BrandcusReportview']);
-						}
+					
 
-						if(isset($_SESSION['BranddeReportview'])){
-							$result=$_SESSION['BranddeReportview'];
-							foreach ($result as $row) {?>
-							<div class="report_info_outter">
-								<div class="report_info">
-								    <?php echo "Reference No : " . $row['Order_id']."<br>";
-									echo "Name : " . $row['Name']."<br>";
-									echo "Address : " . $row['Address']."<br>";
-									echo "Contact NO : " . $row['Contact_No']."<br>";
-									echo "picked  Date : " . $row['Picked_date']."<br>";
-									echo "picked  time : " . $row['Picked_time']."<br>";
-									echo "category : " . $row['Category']."<br>";
-									echo "Price : " . $row['Price']."<br>";
-									echo "Quantity : " . $row['Quantity']."<br>";?>
+
+                            <div class="tbl">
+                                    <!-- Customer report generate -->
+                                    <?php
 									
-								</div>
-							</div>
-							<?php
-							}
-							unset($_SESSION['BranddeReportview']);
-						}
-						
-						
-						?>
+                                    if(isset($_SESSION['BrandcusReportview'])){?>
+									    <table class="tb">
+											<tr>
+											    <th>Reference No</th>
+												<th>Customer Name</th>
+												<th>Customer Address</th>
+												<th>Customer Contact No</th>
+												<th>Quantity</th>
+												<th>Order date</th>
+												<th>Order time</th>
+												<th>Category</th>
+												<th>Price</th>
+												
+											</tr>
+									<?php
+                                        $result=$_SESSION['BrandcusReportview']; 
+                                        foreach ($result as $row) {
+                                            echo "<tr>";
+											echo "<td>" . $row['Order_id'] . "</td>";
+                                            echo "<td>" . $row['Name'] . "</td>";
+                                            echo "<td>" . $row['Address'] . "</td>";
+											echo "<td>" . $row['Contact_No'] ."</td>";
+											echo "<td>" . $row['Quantity'] . "</td>";
+                                            echo "<td>" . $row['Order_date'] . "</td>";
+											echo "<td>" . $row['Time'] . "</td>";
+											echo "<td>" . $row['Category'] . "</td>";
+                                            echo "<td>" . $row['Amount'] . "</td>";
+											echo "</tr>";
+                                        }
+                                        unset($_SESSION['BrandcusReportview']);
+                                    }
+                                    
+                                    ?>
+                                    </table>
+
+									<!-- Delivery person report generate -->
+									<?php
+									
+                                    if(isset($_SESSION['BranddeReportview'])){?>
+									    <table class="tb">
+											<tr>
+											    <th>Reference No</th>
+												<th>person Name</th>
+												<th>person Address</th>
+												<th>person Contact No</th>
+												<th>Quantity</th>
+												<th>picked date</th>
+												<th>picked time</th>
+												<th>Category</th>
+												<th>Price</th>
+												
+											</tr>
+									<?php
+                                        $result=$_SESSION['BranddeReportview']; 
+                                        foreach ($result as $row) {
+                                            echo "<tr>";
+											echo "<td>" . $row['Order_id'] . "</td>";
+                                            echo "<td>" . $row['Name'] . "</td>";
+                                            echo "<td>" . $row['Address'] . "</td>";
+											echo "<td>" . $row['Contact_No'] ."</td>";
+											echo "<td>" . $row['Quantity'] . "</td>";
+                                            echo "<td>" . $row['Picked_date'] . "</td>";
+											echo "<td>" . $row['Picked_time'] . "</td>";
+											echo "<td>" . $row['Category'] . "</td>";
+                                            echo "<td>" . $row['Amount'] . "</td>";
+											echo "</tr>";
+                                        }
+                                        unset($_SESSION['BranddeReportview']);
+                                    }
+                                    
+                                    ?>
+                                    </table>
+
+
+
+
+
+
+
+
+						    </div>
 
 						
 					

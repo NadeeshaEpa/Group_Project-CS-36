@@ -155,9 +155,12 @@ if(!isset($_SESSION['User_id'])){
                                     <tr>
 									    <th>Customer Name</th>
                                         <th>Customer Address</th>
+										<th>Customer Contact No</th>
+										<th>Quantity</th>
                                         <th>Category</th>
+										<th>Order date</th>
+                                        <th>Delivery Method</th>
                                         <th>Price</th>
-                                        <th>Quantity</th>
                                     </tr>
                                     <?php
                                     if(isset($_SESSION['Cus_Dashboard_details'])){
@@ -166,10 +169,13 @@ if(!isset($_SESSION['User_id'])){
                                             echo "<tr>";
                                             echo "<td>" . $row['Name'] . "</td>";
                                             echo "<td>" . $row['Address'] . "</td>";
-                                            echo "<td>" . $row['Category'] . "</td>";
-                                            echo "<td>" . $row['Price'] . "</td>";
+											echo "<td>" . $row['Contact_No'] ."</td>";
 											echo "<td>" . $row['Quantity'] . "</td>";
-                                            echo "</tr>";
+                                            echo "<td>" . $row['Category'] . "</td>";
+											echo "<td>" . $row['Order_date'] . "</td>";
+											echo "<td>" . $row['Delivery_Method'] . "</td>";
+                                            echo "<td>" . $row['Amount'] . "</td>";
+											echo "</tr>";
                                         }
                                         unset($_SESSION['view_result']);
                                     }

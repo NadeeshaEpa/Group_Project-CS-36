@@ -116,37 +116,6 @@ if(!isset($_SESSION['User_id'])){
 				
 			</div>
 
-			<!-- <ul class="box-info">
-                <li>
-					<i class='bx bxs-calendar-check' ></i>
-					<span class="text">
-						<label for="" id="dayid" style="margin-left: 40%;"></label><br>
-                        <label for="" id="monthid"></label>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-time-five' ></i>
-					<span class="text">
-						<label for="" id="timeid" style="margin-left: 40%; font-size:32px"></label>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-group' ></i>
-					<span class="text">
-						<label for="" id="Nodeliverid1" style=" font-size:20px">Total delivary count:</label><br>
-                        <label for="" id="Nodeliverid2" style="font-size: 32px; margin-left:35%">3</label>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-dollar-circle' ></i>
-					<span class="text">
-						<label for="" id="incomeid1" style=" font-size:20px"> Total income:</label><br>
-                        <label for="" id="incomeid2">Rs: 850</label>
-					</span>
-				</li>
-               
-
-			</ul> -->
 
 
 			<div class="table-data">
@@ -172,11 +141,11 @@ if(!isset($_SESSION['User_id'])){
 								<form action="../../controller/ShopManager/ShopManagerAddBrandsController.php" method="Post">
 									<h5>Add Brands</h5>
 									<label for="">Name :</label><br>
-									<input type="text" name="productName"><br>
+									<input type="text" name="productName" required><br>
 									<label for="">Quantity :</label><br>
-									<input type="text" name="productQuantity"><br>
+									<input type="text" name="productQuantity"required><br>
 									<label for="">Price :</label><br>
-									<input type="text" name="producPrice"><br>
+									<input type="text" name="producPrice" required><br>
 									<label for="">Category :</label><br>
                                     <select name="Category" id="Category_id" required>
                                         <option value="">---Select Type---</option>
@@ -185,7 +154,7 @@ if(!isset($_SESSION['User_id'])){
 										<option value="Gas tube">Other</option>
                                     </select><br>
 									<label for="">Product_type :</label><br>
-									<input type="text" name="product_type"><br>
+									<input type="text" name="product_type" required><br>
 									<label for="">Description :</label><br>
 									<input type="text" name="productDescription" id="productDescription_id"><br>
                                     <button name="BrandAdd">Add</button>

@@ -70,22 +70,22 @@ if(isset($_POST['updatepwd'])){
         $result1=checkpassword($confirmpwd,$newpwd);
         if(!$result1){
             $_SESSION['updatepwd-error']="New password and confirm password are not same";
-            header("Location: ../../view/ShopManager/ShopManagerProfile.php");
+            header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
         }else{
             $result2=$acc->updatePassword($connection,$_SESSION['User_id'],$oldpwd,$newpwd,$confirmpwd);
             if(!$result2){
                 $_SESSION['updatepwd-error']="Current password is incorrect";
-                header("Location: ../../view/ShopManager/ShopManagerProfile.php");
+                header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
             }else{
                 $_SESSION['updatepwd']="Password Updated Successfully";
-                header("Location: ../../view/ShopManager/ShopManagerProfile.php");
+                header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
             }
         }
     }
 }
 if(isset($_POST['cancelpwd'])){
     if(isset($_SESSION['User_id'])){
-        header("Location: ../../view/ShopManager/ShopManagerProfile.php");
+        header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
     }
 }
 
@@ -98,7 +98,7 @@ if(isset($_POST['deleteaccount'])){
             header("Location: ../../view/login.php");
         }else{
             $_SESSION['deleteacc']="failed";
-            header("Location: ../../view/ShopManager/ShopManagerProfile.php");
+            header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
         }
     }
 }

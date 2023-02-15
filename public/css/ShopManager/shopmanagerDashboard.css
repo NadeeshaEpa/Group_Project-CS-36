@@ -806,11 +806,11 @@ margin-left: 80px;
 	text-align: center;
 	background-color: #815bf6;
 	border-radius: 15px;
-	margin-left: 2%;
+	margin-left: 4.3%;
 	padding-left: 50px;
 	color: white;
 	border:none;
-	
+	width: 220px;
 }
 .BrandQpricebtnid2, #BrandQuenBtnid{
 	margin-left: 20%;
@@ -826,18 +826,19 @@ margin-left: 80px;
 
 #BrandQuenBtnid{
 	background-color: #79d37c;
-	margin-left: 2%;
-	width: 20%;
+	margin-left: 4.3%;
+	width: 220px;
 	padding-left: 4px;
     /* padding: 10px 75px 10px 40px; */
 }
 
 #brandDeleteBtnid{
     margin-bottom: 2%;
+	width: 220px;
 	background-color: red;
 	margin-top: 1%;
-	margin-left: 70%;
-	padding: 10px 95px 10px 84px;
+	margin-left: 73%;
+	padding: 10px 95px 10px 80px;
 }
 
 #BrandQpricebtnid{
@@ -904,6 +905,7 @@ margin-left: 80px;
 	height: 10%;
 	margin-top: 3%;
 	display: flex;
+	margin-bottom: 3%;
   }
   .delivary_nof_msg h6{
 	margin: auto;
@@ -923,7 +925,7 @@ margin-left: 80px;
 	width: 100%;
 	height: 10%;
 	display: flex;
-
+    margin-bottom: 3%;
   }
 
   #viewReportId{
@@ -1111,7 +1113,7 @@ margin-left: 80px;
 .down2btn button {
     background-color:#79d37c;
     border-radius: 15px;
-    width: 150px;
+    width: 200px;
 	height: 40px;
 	color: white;
 	font-size: 16px;
@@ -1133,15 +1135,15 @@ margin-left: 80px;
 	margin-left: 10%;
 }
 .otherdeliveryProfilebtndown1 #deliveyDeletebtn{
-    margin-top: 21px;
-	width: 150px;
+    margin-top: 40px;
+	width: 200px;
 	border-radius: 15px;
     background-color:#da3a3a;
 	height: 40px;
 	color: white;
 	border: none;
 	font-size: 16px;
-	margin-left: 10%;
+	margin-left: 35%;
 }
 /*  */
 
