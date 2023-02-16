@@ -154,7 +154,8 @@ if(isset($_SESSION['unlocations'])){
                 <p id="waitingMessage">
                     You have to first register to the system.
                     <button class="register" onclick="register()";>Register</button>      
-                    <button class="close" onclick="closemsg()";>Close</button>         
+                    <button class="close" onclick="closemsg()";>Close</button><br>
+                    <button class="login" onclick="login()";>Login</button>         
                 </p>
             </div>            
         </div>
@@ -169,6 +170,9 @@ if(isset($_SESSION['unlocations'])){
         }
         function register(){
             window.location.href = "customer_register.php";
+        }
+        function login(){
+            window.location.href = "../../view/login.php";
         }
     </script>
 </body>

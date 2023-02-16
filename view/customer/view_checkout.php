@@ -11,17 +11,18 @@
     <?php include_once 'customer_header.php'; ?>
     <?php
       if(isset($_SESSION['checkout'])){
-            if($_SESSION['checkout']=="failed"){
-              header("location:error.php");
-            }else{
-                $checkout=$_SESSION['checkout'];
-                $count=count($checkout);
-                if($count==0){
-                    header("location:../../controller/customer/addtocart_controller.php?viewcart='1'");
-                }
-                // print_r($checkout);
-                // die();
-            }
+          if($_SESSION['checkout']=="failed"){
+            header("location:error.php");
+          }else{
+              $checkout=$_SESSION['checkout'];
+              $count=count($checkout);
+              if($count==0){
+                  header("location:../../controller/customer/addtocart_controller.php?viewcart='1'");
+              }
+          }
+      }
+      if(isset($_SESSION['delivery_fee'])){
+        $delivery_fee=$_SESSION['delivery_fee'];
       }
     ?>
     
@@ -50,7 +51,8 @@
                     <input type="hidden" name="id" value="<?php echo $item['cart_id']?>">
                     <input type="hidden" name="agent" value="<?php echo $item['gasagent_id']?>">
                     <td><button name="dcartitem" class="trash">Remove</button></td>
-                    <td><button name="vcartitem" class="edit">Edit</button></td>
+                    <!-- <td><button name="vcartitem" class="edit">Edit</button></td> -->
+                    <td>-<?php echo $item['quantity']?>+</td>
                 </form>
               </div>
             </tr>  
@@ -92,13 +94,13 @@
               </tr>
               <tr>
                 <td>Delivery fee:</td>
-                <td>Rs.<?php echo $total*0.01?></td>
+                <td>Rs.<?php echo $delivery_fee?></td>
               </tr>
               <tr>
               </tr>
               <tr>
                 <td>Total:</td>
-                <td>Rs.<?php echo $total+$total*0.01?></td>
+                <td>Rs.<?php echo $total+$delivery_fee?></td>
               </tr>
           </table>
       </div>    
