@@ -584,3 +584,41 @@ body {
     content: "\edc2";
     font-size: 45px;
 }
+
+
+
+
+.btn1 {
+	background-color:#10338e;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	border-radius: 16px;
+	border: 2px solid blue;
+  }
+
+  .btn2 {
+	background-color: rgb(209, 43, 43);
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	border-radius: 16px;
+	border: 2px solid blue;
+  }
+
+  .btn1:hover {
+	background-color: rgb(3, 14, 29);
+  }
+
+
+  .btn2:hover {
+	background-color: rgb(66, 14, 6);
+  }

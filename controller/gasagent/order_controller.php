@@ -45,7 +45,9 @@ if(isset($_POST['viewReport'])){
         }
         if($_POST['dateRange']=='30'){
             $result=$user->DelDay30Reports($connection);
+            
             if($result==false){
+                
                 $_SESSION['Brands_No_result']="No result found";
                 header("Location: ../../view/gasagent/orders.php");
                 $connection->close();

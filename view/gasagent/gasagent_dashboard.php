@@ -118,20 +118,27 @@
 				</div>
 				
 			</div>
+			<div class="btn">
+                            <form action="../../controller/deliveryperson/dashboardController.php" method="post">
+                                <button class="btn1" id="btn1" name="btn1">Shop Open</button><br>
+                                <button class="btn2" id="btn2" name="btn2">Shop Closed</button>
+                            </form>
+                        </div>
 
-			<ul class="box-info">
+			<!-- <ul class="box-info">
 				<li>
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
-						<h3>1020</h3>
+						<h3>52</h3>
 						<p>New Order</p>
 					</span>
 				</li>
 				<li>
-					<i class='bx bxs-group' ></i>
+					<i class='bx bxs-dashboard' ></i>
 					<span class="text">
-						<h3>2834</h3>
-						<p>Visitors</p>
+					<p id="dayid"></p>
+						<h3>283</h3>
+						<p>Total orders</p>
 					</span>
 				</li>
 				<li>
@@ -141,7 +148,39 @@
 						<p>Total Sales</p>
 					</span>
 				</li>
+			</ul> -->
+			<ul class="box-info">
+                <li>
+					<i class='bx bxs-calendar-check' ></i>
+					<span class="text">
+						<label for="" id="dayid" style="margin-left: 40%;"></label><br>
+                        <label for="" id="monthid"></label>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-time-five' ></i>
+					<span class="text">
+						<label for="" id="timeid" style="margin-left: 40%; font-size:32px"></label>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-group' ></i>
+					<span class="text">
+						<label for="" id="Nodeliverid1" style=" font-size:20px">Total orders:12</label>
+                        <label for="" id="Nodeliverid2" style="font-size: 32px; margin-left:5%;"></label>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-dollar-circle' ></i>
+					<span class="text">
+						<label for="" id="incomeid1" style=" font-size:20px"> Total income:</label><br>
+                        <label for="" id="incomeid2">Rs: 20000</label>
+					</span>
+				</li>
+               
+
 			</ul>
+
 
 
 			<div class="table-data">
@@ -162,42 +201,42 @@
 						<tbody>
 							<tr>
 								<td>
-									<img src="../../public/images/people.JPEG">
+									<img src="../../public/images/people2.JPEG">
 									<p>Nadeesha</p>
 								</td>
-								<td>01-10-2021</td>
+								<td>21-10-2022</td>
 								<td><span class="status completed">Completed</span></td>
 							</tr>
 							<tr>
 								<td>
-									<img src="../../public/images/people.JPEG">
+									<img src="../../public/images/people3.JPG">
 									<p>Gayal</p>
 								</td>
-								<td>01-10-2021</td>
+								<td>11-02-2022</td>
 								<td><span class="status pending">Pending</span></td>
 							</tr>
 							<tr>
 								<td>
-									<img src="../../public/images/people.JPEG">
+									<img src="../../public/images/people4.JPEG">
 									<p>Shehan</p>
 								</td>
-								<td>01-10-2021</td>
+								<td>03-02-2022</td>
 								<td><span class="status process">Process</span></td>
 							</tr>
 							<tr>
 								<td>
-									<img src="../../public/images/people.JPEG">
+									<img src="../../public/images/people5.PNG">
 									<p>kamal</p>
 								</td>
-								<td>01-10-2021</td>
+								<td>01-02-2022</td>
 								<td><span class="status pending">Pending</span></td>
 							</tr>
 							<tr>
 								<td>
-									<img src="../../public/images/people.JPEG">
+									<img src="../../public/images/people4.JPEG">
 									<p>Avishka</p>
 								</td>
-								<td>01-10-2021</td>
+								<td>01-01-2022</td>
 								<td><span class="status completed">Completed</span></td>
 							</tr>
 						</tbody>

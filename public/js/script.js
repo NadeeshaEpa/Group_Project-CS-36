@@ -22,6 +22,45 @@ menuBar.addEventListener('click', function () {
 	sidebar.classList.toggle('hide');
 })
 
+let date = new Date();
+let month_index=date.getMonth();
+let day=date.getDate();
+
+let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+let monthName = months[month_index];
+
+let getDayLable=document.getElementById('dayid');
+let getMonthLable=document.getElementById('monthid');
+
+if(getDayLable){
+  getDayLable.innerHTML=day;
+}
+if(getMonthLable){
+  getMonthLable.innerHTML=monthName;
+}
+
+
+//time calculate function
+function updateClock() {
+    var now = new Date();
+    var h = now.getHours();
+    var m = now.getMinutes();
+    
+    h = (h < 10) ? "0" + h : h;
+    m = (m < 10) ? "0" + m : m;
+    
+    var time = h + ":" + m ;
+    // document.getElementById("timeid").innerHTML = time;
+    // setTimeout(updateClock, 1000);
+	var timeId = document.getElementById("timeid");
+    if (timeId) {
+        timeId.innerHTML = time;
+        setTimeout(updateClock, 1000);
+    } else {
+        console.error("Element with id 'timeid' not found in the DOM");
+    }
+}
+updateClock();
 
 
 

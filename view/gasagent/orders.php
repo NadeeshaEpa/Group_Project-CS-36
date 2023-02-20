@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,13 +24,13 @@
 			<span class="text">FaGo</span>
 		</a>
 		<ul class="side-menu top">
-			<li class="active">
+			<li>
 				<a href="../../view/gasagent/gasagent_dashboard.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
-			<li>
+			<li class="active">
 				<a href="../../view/gasagent/orders.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Order details</span>
@@ -178,6 +179,7 @@
 						
 					</div>
 					   <div class="delivary_nof_msg">
+						      
 							<h6><?php if(isset($_SESSION['Brands_No_result'])){
 									echo $_SESSION['Brands_No_result'];
                                     unset($_SESSION['Brands_No_result']);
@@ -233,10 +235,6 @@
 									echo "Name : " . $row['Name']."<br>";
 									echo "Address : " . $row['Address']."<br>";
 									echo "Contact NO : " . $row['Contact_No']."<br>";
-									echo "Order Date : " . $row['Order_date']."<br>";
-									echo "Order time : " . $row['Time']."<br>";
-									echo "category : " . $row['Category']."<br>";
-									echo "Price : " . $row['Price']."<br>";
 									echo "Quantity : " . $row['Quantity']."<br>";?>
 									
 								</div>
@@ -255,10 +253,7 @@
 									echo "Name : " . $row['Name']."<br>";
 									echo "Address : " . $row['Address']."<br>";
 									echo "Contact NO : " . $row['Contact_No']."<br>";
-									echo "picked  Date : " . $row['Picked_date']."<br>";
-									echo "picked  time : " . $row['Picked_time']."<br>";
-									echo "category : " . $row['Category']."<br>";
-									echo "Price : " . $row['Price']."<br>";
+									
 									echo "Quantity : " . $row['Quantity']."<br>";?>
 									
 								</div>

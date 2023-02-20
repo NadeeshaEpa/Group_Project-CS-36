@@ -136,49 +136,52 @@
 								<th>Gas Type /KG</th>
 								<th>Quantity</th>
 								<th>Delete</th>
+								<th>Update</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
+							<!-- <tr>
 								<td>
 									
 									<p>12.5</p>
 								</td>
 								<td>10</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
+								<td><span class="status pending">Completed</span></td>
+								<td><span class="status completed">Update</span></td>
+
+							</tr> -->
 							<tr>
 								<td>
 									
 									<p>2.3</p>
 								</td>
 								<td>1</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
+								<td><span class="status pending">Completed</span></td>
+								<td><span class="status completed">Update</span></td>							</tr>
 							<tr>
 								<td>
 									
 									<p>37.5</p>
 								</td>
 								<td>8</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
+								<td><span class="status pending">Completed</span></td>
+								<td><span class="status completed">Update</span></td>							</tr>
 							<tr>
 								<td>
 									
 									<p>7.5</p>
 								</td>
 								<td>56</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
+								<td><span class="status pending">Completed</span></td>
+								<td><span class="status completed">Update</span></td>							</tr>
 							<tr>
 								<td>
 									
 									<p>12.5</p>
 								</td>
 								<td>45</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
+								<td><span class="status pending">Completed</span></td>
+								<td><span class="status completed">Update</span></td>							</tr>
 						</tbody>
 					</table>
 				</div>
