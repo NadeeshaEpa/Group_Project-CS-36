@@ -109,6 +109,9 @@ class customer_model{
             $_SESSION['Username']=$row['Username'];
             $_SESSION['Firstname']=$row['First_Name'];
             $_SESSION['Lastname']=$row['Last_Name'];
+            $_SESSION['Street']=$row['Street'];
+            $_SESSION['City']=$row['City'];
+            $_SESSION['Postalcode']=$row['Postalcode'];
             $_SESSION['Type']=$row['Type'];
             $this->Type=$row['Type'];
 

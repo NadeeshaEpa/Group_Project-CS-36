@@ -112,3 +112,58 @@ if(isset($_POST['dcartitem'])){
         header("Location: ../../view/customer/view_checkout.php");
     }
 }
+if(isset($_POST['cart_id'])){
+    $cartid=$_POST['cart_id'];
+    $quantity=$_POST['quantity'];
+    $User_id=$_SESSION['User_id'];
+    $gasagent=$_POST['agent_id'];
+    
+    $cart=new addtocart_model();
+
+    $result=$cart->updatecartquantity($connection,$cartid,$quantity,$gasagent);
+    if($result===false){
+        $_SESSION['updatecartquantity']="failed";
+        header("Location: ../../view/customer/view_checkout.php");
+    }else{
+        $_SESSION['updatecartquantity']="success";
+        $result2=$cart->checkout($connection,$User_id,$gasagent);
+        $_SESSION['checkout']=$result2;
+        $cart->getcartcount($connection,$User_id);
+        header("Location: ../../view/customer/view_checkout.php");
+    }
+}
+if(isset($_POST['dmbutton'])){
+    if(isset($_POST['delivery'])){
+        $latitude=$_POST['latitude'];
+        $longitude=$_POST['longitude'];
+        $gasagent=$_POST['agent'];
+        if($latitude==NULL || $longitude==NULL){
+            $latitude=$_SESSION['latitude'];
+            $longitude=$_SESSION['longitude'];
+        }
+        $_SESSION['cdlatitude']=$latitude;
+        $_SESSION['cdlongitude']=$longitude;
+        $cart=new addtocart_model();
+        $result=$cart->checkout($connection,$_SESSION['User_id'],$gasagent);
+        if($result===false){
+            $_SESSION['dcheckout']="failed";
+            header("Location: ../../view/customer/total.php");
+        }else{
+            $_SESSION['dcheckout']=$result;
+            header("Location: ../../view/customer/total.php");
+        }
+
+    }else if(isset($_POST['nodelivery'])){
+        $gasagent=$_POST['agent'];
+        $cart=new addtocart_model();
+        $result=$cart->checkout($connection,$_SESSION['User_id'],$gasagent);
+        if($result===false){
+            $_SESSION['dcheckout']="failed";
+            header("Location: ../../view/customer/total.php");
+        }else{
+            $_SESSION['dcheckout']=$result;
+            $_SESSION['delivery_fee']=0;
+            header("Location: ../../view/customer/total.php");
+        }
+    }
+}

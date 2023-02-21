@@ -121,6 +121,7 @@ class addtocart_model{
         //stock manager id
         $stock_manager_id=$this->stock_manager($connection);
         $stock_manager_id=$stock_manager_id[0]['id'];
+        $_SESSION['stock_manager']=$stock_manager_id;
 
         if($gasagent!=$stock_manager_id){
             $sql="SELECT c.cart_id,c.type,c.weight,c.quantity,c.price,g.Shop_name from cart c inner join gasagent g on c.gasagent_id=g.GasAgent_Id where c.User_id='$User_id' and c.gasagent_id='$gasagent'";
@@ -128,7 +129,7 @@ class addtocart_model{
             if($result===false){
                 return false;
             }else{
-                $cart=array();
+                $cart=[];
                 while($row=$result->fetch_assoc()){
                     array_push($cart,['cart_id'=>$row['cart_id'],'type'=>$row['type'],'weight'=>$row['weight'],'quantity'=>$row['quantity'],'price'=>$row['price'],'shop_name'=>$row['Shop_name'],'gasagent_id'=>$gasagent]);
                 }
@@ -143,7 +144,7 @@ class addtocart_model{
             if($result===false){
                 return false;
             }else{
-                $cart=array();
+                $cart=[];
                 while($row=$result->fetch_assoc()){
                     array_push($cart,['cart_id'=>$row['cart_id'],'type'=>$row['type'],'weight'=>$row['weight'],'quantity'=>$row['quantity'],'price'=>$row['price'],'shop_name'=>'Fago Shop','gasagent_id'=>$gasagent]);
                 }
@@ -173,8 +174,51 @@ class addtocart_model{
             }
             return true;
     }
+
+    public function updatecartquantity($connection,$cartid,$quantity,$gasagent){
+        $sql="UPDATE cart SET quantity='$quantity' WHERE cart_id='$cartid'";
+        $result=$connection->query($sql);
+        //update total price
+        $sql="SELECT weight,type FROM cart WHERE cart_id='$cartid';";
+        $result=$connection->query($sql);
+        $row=$result->fetch_assoc();
+        $weight=$row['weight'];
+        $type=$row['type'];
+        
+        if($gasagent!=$_SESSION['stock_manager']){
+            $sql2="SELECT g.Price from gascylinder g inner JOIN gas_company gc on g.Type=gc.company_id where gc.company_name='$type' and g.Weight='$weight'";
+            $result=$connection->query($sql2);
+            $row2=$result->fetch_assoc();
+            $price=$row2['Price'];
+        }else{
+            //divide the weight into 2 parts as the last word as one and the rest as another
+            $weight=explode(" ",$weight);
+            $count=count($weight);
+            $Product_type=$weight[$count-1];
+            $category=$type;
+            //name equals to the rest of the words
+            $name="";
+            for($i=0;$i<$count-1;$i++){
+                $name=$name.$weight[$i]." ";
+            }
+            $sql3="select price from product where Name='$name' and Product_type='$Product_type' and Category='$category'";
+            $result=$connection->query($sql3);
+            $row3=$result->fetch_assoc();
+            $price=$row3['price'];
+        }
+
+        $total=$price*$quantity;
+        $sql3="UPDATE cart SET price='$total' WHERE cart_id='$cartid'";
+        $result=$connection->query($sql3);
+        if($result===false){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
     public function gas_delivery_fee($connection,$cart){
-        $weight=[];
+        $count=0;
         $delivery_fee=0;
         $gasagent_id=$cart[0]['gasagent_id'];
         $sql="select latitude,longitude from gasagent where GasAgent_Id='$gasagent_id'";
@@ -185,47 +229,51 @@ class addtocart_model{
             $row=$result->fetch_assoc();
             $latitude=$row['latitude'];
             $longitude=$row['longitude'];
-            $distance=$this->distance($_SESSION['User_id'],$latitude,$longitude,$connection);
+            $clatitude=$_SESSION['cdlatitude'];
+            $clongitude=$_SESSION['cdlongitude'];
+            $distance=$this->distance($clatitude,$clongitude,$latitude,$longitude,$connection);
         }
         foreach($cart as $c){
-            array_push($weight,$c['weight']);
+            $count=$count+$c['quantity'];
         }
-        $weight=array_unique($weight);
-        $count=count($weight);
+        // print_r($count);
+        // die();
         $flag=0;
         foreach($cart as $c){
             $weight=$c['weight'];
             if($weight>12.5){
                 $flag=1;
             }
-            if($flag==1 || $count>=4){
-                $sql="SELECT price from delivery_fee where vehicle='Lorry";
-                $result=$connection->query($sql);
-                if($result===false){
-                    return false;
-                }else{
-                    $row=$result->fetch_assoc();
-                    $delivery_fee=$delivery_fee+$row['price'];
-                }
-            }else if($count>=2 && $count<4){
-                $sql="SELECT price from delivery_fee where vehicle='Three Wheel'";
-                $result=$connection->query($sql);
-                if($result===false){
-                    return false;
-                }else{
-                    $row=$result->fetch_assoc();
-                    $delivery_fee=$delivery_fee+$row['price'];
-                }
-                
+        }
+        if($flag==1 || $count>=4){
+            $sql="SELECT price FROM delivery_fee WHERE vehicle='Lorry';";
+            $result=$connection->query($sql);
+            if($result===false){
+                print_r("Error1");
+                die();
+                return false;
             }else{
-                $sql="SELECT price from delivery_fee where vehicle='Bike'";
-                $result=$connection->query($sql);
-                if($result===false){
-                    return false;
-                }else{
-                    $row=$result->fetch_assoc();
-                    $delivery_fee=$delivery_fee+$row['price'];
-                }
+                $row=$result->fetch_assoc();
+                $delivery_fee=$row['price'];
+            }
+        }else if($count>=2 && $count<4){
+            $sql="SELECT price from delivery_fee where vehicle='Three Wheel'";
+            $result=$connection->query($sql);
+            if($result===false){
+                return false;
+            }else{
+                $row=$result->fetch_assoc();
+                $delivery_fee=$row['price'];
+            }
+            
+        }else if($count==1){
+            $sql="SELECT price from delivery_fee where vehicle='Bike'";
+            $result=$connection->query($sql);
+            if($result===false){
+                return false;
+            }else{
+                $row=$result->fetch_assoc();
+                $delivery_fee=$row['price'];
             }
         }
         if($distance>1){
@@ -237,12 +285,10 @@ class addtocart_model{
     }
 
     public function gas_fagodelivery_fee($connection,$cart){
-        $weight=[];
+        $count=0;
         foreach($cart as $c){
-            array_push($weight,$c['weight']);
+            $count=$count+$c['quantity'];
         }
-        $weight=array_unique($weight);
-        $count=count($weight);
         $flag=0;
         $delivery_fee=0;
 
@@ -254,38 +300,37 @@ class addtocart_model{
             $row=$result->fetch_assoc();
             $latitude=$row['latitude'];
             $longitude=$row['longitude'];
-            $distance=$this->distance($_SESSION['User_id'],$latitude,$longitude,$connection);
+            $clatitude=$_SESSION['cdlatitude'];
+            $clongitude=$_SESSION['cdlongitude'];
+            $distance=$this->distance($clatitude,$clongitude,$latitude,$longitude,$connection);
         }
-
-        foreach($cart as $c){
-            if($count>4){
-                $sql="SELECT price from delivery_fee where vehicle='Lorry";
-                $result=$connection->query($sql);
-                if($result===false){
-                    return false;
-                }else{
-                    $row=$result->fetch_assoc();
-                    $delivery_fee=$delivery_fee+$row['price'];
-                }
-            }else if($count>=2 && $count<4){
-                $sql="SELECT price from delivery_fee where vehicle='Three Wheel'";
-                $result=$connection->query($sql);
-                if($result===false){
-                    return false;
-                }else{
-                    $row=$result->fetch_assoc();
-                    $delivery_fee=$delivery_fee+$row['price'];
-                }
-                
+        if($count>5){
+            $sql="SELECT price FROM delivery_fee WHERE vehicle='Lorry';";
+            $result=$connection->query($sql);
+            if($result===false){
+                return false;
             }else{
-                $sql="SELECT price from delivery_fee where vehicle='Bike'";
-                $result=$connection->query($sql);
-                if($result===false){
-                    return false;
-                }else{
-                    $row=$result->fetch_assoc();
-                    $delivery_fee=$delivery_fee+$row['price'];
-                }
+                $row=$result->fetch_assoc();
+                $delivery_fee=$row['price'];
+            }
+        }else if($count>2 && $count<=4){
+            $sql="SELECT price from delivery_fee where vehicle='Three Wheel'";
+            $result=$connection->query($sql);
+            if($result===false){
+                return false;
+            }else{
+                $row=$result->fetch_assoc();
+                $delivery_fee=$row['price'];
+            }
+            
+        }else if($count>=1 && $count<=2){
+            $sql="SELECT price from delivery_fee where vehicle='Bike'";
+            $result=$connection->query($sql);
+            if($result===false){
+                return false;
+            }else{
+                $row=$result->fetch_assoc();
+                $delivery_fee=$row['price'];
             }
         }
         if($distance>1){
@@ -296,12 +341,9 @@ class addtocart_model{
         return $delivery_fee;
     }
 
-    public function distance($userid,$latitude,$longitude,$connection){
-        $sql="Select latitude,longitude from `customer` where Customer_Id='$userid'";
-        $id=$connection->query($sql);
-        $row=$id->fetch_object();
-        $lat1=$row->latitude;
-        $lng1=$row->longitude;
+    public function distance($clatitude,$clongitude,$latitude,$longitude,$connection){
+        $lat1=$clatitude;
+        $lng1=$clongitude;
         $lat2=$latitude;
         $lng2=$longitude;
 
