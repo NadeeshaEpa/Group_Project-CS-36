@@ -112,7 +112,7 @@ if(isset($_POST['dcartitem'])){
         header("Location: ../../view/customer/view_checkout.php");
     }
 }
-if(isset($_POST['cart_id'])){
+if(isset($_POST['updatecartquantity'])){
     $cartid=$_POST['cart_id'];
     $quantity=$_POST['quantity'];
     $User_id=$_SESSION['User_id'];
