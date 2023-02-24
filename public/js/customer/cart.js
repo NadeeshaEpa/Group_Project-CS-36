@@ -67,7 +67,7 @@ function updatecart(cartid,agentid,quantity){
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             //auto refresh the page after 1 second to update the cart quantity and total price 
-            setTimeout(function(){ location.reload(); }, 1000);
+            setTimeout(function(){ location.reload(); }, 500);
 
         }
     };

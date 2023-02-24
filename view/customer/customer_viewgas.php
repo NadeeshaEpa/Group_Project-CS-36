@@ -40,6 +40,11 @@
         }else{
             $locations=[];
         }
+        if(isset($_SESSION['shop_count'])){
+            $shop_count=$_SESSION['shop_count'];
+        }else{
+            $shop_count=0;
+        }
     }
 ?>
 <html lang="en">
@@ -118,8 +123,42 @@
                 <?php// } ?>
                 </tr>
             </table>
+            <?php 
+                if(isset($_SESSION['page'])){
+                $page=$_SESSION['page'];
+                }else{
+                $page=1;
+                }
+                if(isset($_SESSION['total_pages'])){
+                    $total_pages=$_SESSION['total_pages'];
+                }else{
+                    $total_pages=1;
+                }    
+            ?>
+            <div class="pagination">
+            <?php if($page>1){?>
+                <!-- pass value as form -->
+                <div class="p-left">
+                    <form action="../../controller/customer/gas_controller.php" method="GET">
+                        <input type="hidden" name="page" value="<?php echo $page-1?>">
+                        <input type="hidden" name="gas_type" value="<?php echo $_SESSION['gas_type']?>">
+                        <input type="submit" value="Previous">
+                    </form>
+                </div>
+            <?php } ?>
+            <?php if($page<$total_pages){?>
+                <!-- pass value as form -->
+                <div class="p-right">
+                    <form action="../../controller/customer/gas_controller.php" method="GET">
+                        <input type="hidden" name="page" value="<?php echo $page+1?>">
+                        <input type="hidden" name="gas_type" value="<?php echo $_SESSION['gas_type']?>">
+                        <input type="submit" value="Next">
+                    </form>
+                </div>
+            <?php } ?>
+            </div>
         </div>
-    </div>    
+    </div>  
     <script>
     function initMap() {
     var locations = <?php echo json_encode($locations); ?>;

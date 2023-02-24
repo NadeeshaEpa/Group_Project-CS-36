@@ -41,6 +41,7 @@
                 <input type="hidden" name="Quantity" value="<?php echo $gas['Quantity']; ?>">
                 <input type="hidden" name="Description" value="<?php echo $gas['Description']; ?>">
                 <input type="hidden" name="Category" value="<?php echo $gas['Category']; ?>">
+                <input type="hidden" name="agent" value="stock_manager">
                 <img src="../../public/images/customer/<?php echo $gas['product_type']; ?>.jpg" alt="">
                 <?php
                 echo "<h3>".$gas['Name']."</h3>";
@@ -48,10 +49,12 @@
                     echo "<p >Rs. ".$gas['price']."</p>";
                 echo "</div>";
                 if($gas['Quantity']>0){?>
+                    <button name="buy_item">Buy It Now</button>
                     <button name="view_item">Add to Cart</button>
                 <?php
                 }else{?>
                   <div class="disabled">
+                    <button style="color: red; border: 1px solid red;" disabled>Buy It Now</button>
                     <button style="color: red; border: 1px solid red;" disabled>Out of Stock</button>
                   </div>
                 <?php }

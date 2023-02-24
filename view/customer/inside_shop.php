@@ -92,8 +92,10 @@
                         </div>  
                         <div class="order">
                             <?php if($gasdetail['Quantity']==0){?>
+                                <button class="dorder" style="background-color:#492f98" disabled>Buy It Now</button>
                                 <button class="dorder" disabled>Add to Cart</button>
                             <?php }else{?>
+                                <button class="order" name="buyitnow" style="background-color:#492f98">Buy It Now</button>
                                 <button class="order" name="addtocart" onclick="showPopup()";>Add to Cart</button>
                             <?php }?>
                         </div>         

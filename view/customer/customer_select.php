@@ -26,7 +26,7 @@ if(isset($_SESSION['gastype'])){
             <h2>Gas Shop</h2>
             <img src="../../public/images/customer/gas.jpg" alt="" class="gas_img">
             <div id="gas-shop" class="gas_dropdown">
-                <form action="../../controller/customer/gas_controller.php" method="POST">
+                <form action="../../controller/customer/gas_controller.php" method="GET">
                     <select id="gas-type-selector" name="gas_type">
                         <!-- create a disable option  and show it as the first value-->
                         <option selected disabled>Choose Gas Type</option>
