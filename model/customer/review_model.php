@@ -60,6 +60,10 @@ class review_model{
             while($row=$result->fetch_object()){
                 array_push($reviews,['Rate_id'=>$row->Rate_Id,'Date'=>$row->Date,'Description'=>$row->Description,'First_Name'=>$row->First_Name,'Last_Name'=>$row->Last_Name]);
             }
+            //sort by date in descending order
+            usort($reviews,function($a,$b){
+                return strtotime($b['Date'])-strtotime($a['Date']);
+            });
             return $reviews;
         }
     }

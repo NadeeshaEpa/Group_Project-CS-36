@@ -52,8 +52,23 @@ if(isset($_POST['fillreview'])){
         }
     }  
 }
-if(isset($_GET['view-review']) ){
+if(isset($_GET['view-review'])){
     $review=new review_model();
+
+    // //pagination for view orders
+    // $limit = 8;
+    // $page = isset($_GET['page']) ? $_GET['page'] : 1;
+    // $_SESSION['page']=$page;
+    // $offset = ($page - 1) * $limit;
+    
+    // //get the total number of orders
+    // $total_records=$order->order_count($connection,$userid);
+    // $_SESSION['shop_count']=$total_records;
+
+    // //calculate the total number of pages
+    // $total_pages = ceil($total_records / $limit);
+    // $_SESSION['total_pages']=$total_pages;
+
     $result=$review->viewreview($connection,$_SESSION['User_id']);
     if($result===false){
         $_SESSION['viewreview']="failed";
