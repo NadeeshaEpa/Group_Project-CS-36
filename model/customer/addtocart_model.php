@@ -149,7 +149,7 @@ class addtocart_model{
                     array_push($cart,['cart_id'=>$row['cart_id'],'type'=>$row['type'],'weight'=>$row['weight'],'quantity'=>$row['quantity'],'price'=>$row['price'],'shop_name'=>'Fago Shop','gasagent_id'=>$gasagent]);
                 }
                 //call gas delivery fee function
-                $del=$this->gas_fagodelivery_fee($connection,$cart);
+                $del=$this->fagodelivery_fee($connection,$cart);
                 $_SESSION['delivery_fee']=$del;
                 return $cart;
             }
@@ -284,7 +284,7 @@ class addtocart_model{
         return $delivery_fee;
     }
 
-    public function gas_fagodelivery_fee($connection,$cart){
+    public function fagodelivery_fee($connection,$cart){
         $count=0;
         foreach($cart as $c){
             $count=$count+$c['quantity'];

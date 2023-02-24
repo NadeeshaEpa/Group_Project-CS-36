@@ -83,6 +83,8 @@ if(isset($_POST['remove'])){
 if(isset($_POST['checkout'])){
     $User_id=$_SESSION['User_id'];
     $gasagent=$_POST['agent_id'];
+    // print_r($gasagent);
+    // die();
     $cart=new addtocart_model();
     $result=$cart->checkout($connection,$User_id,$gasagent);
     if($result===false){
@@ -143,6 +145,7 @@ if(isset($_POST['dmbutton'])){
         }
         $_SESSION['cdlatitude']=$latitude;
         $_SESSION['cdlongitude']=$longitude;
+        
         $cart=new addtocart_model();
         $result=$cart->checkout($connection,$_SESSION['User_id'],$gasagent);
         if($result===false){
