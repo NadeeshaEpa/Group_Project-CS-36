@@ -72,6 +72,7 @@
                             <input type="hidden" name="quantity" value="<?php echo $gasdetail['Quantity']?>">
                             <input type="hidden" name="weight" value="<?php echo $gasdetail['Weight']?>">
                             <input type="hidden" name="gastype" value="<?php echo $type?>">
+                            <input type="hidden" name="cylinder" value="new">
                     </div>  
                     <!-- create a drop down to count the number of gas cylinders -->
                     <div class="gas-right">

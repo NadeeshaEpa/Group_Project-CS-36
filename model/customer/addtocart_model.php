@@ -1,7 +1,41 @@
 <?php
 class addtocart_model{
-    public function addtocart($connection,$User_id,$gasid,$weight,$quantity,$total,$type){
-        $sql="INSERT INTO cart(User_id,gasagent_id,type,weight,quantity,price) VALUES('$User_id','$gasid','$type','$weight','$quantity','$total')";
+    public function get_cylinder_price($connection,$type,$weight,$cylinder){
+       if($cylinder=="new"){
+           $sql="SELECT newcylinder_price as cprice FROM gascylinder g inner join gas_company c on g.Type=c.company_id WHERE c.company_name='$type' AND g.weight='$weight'";   
+       }else{
+           $sql="SELECT price as cprice FROM gascylinder g inner join gas_company c on g.Type=c.company_id WHERE c.company_name='$type' AND g.weight='$weight'";
+       }
+       $price=$connection->query($sql);
+        if($price===false){
+            return false;
+        }else{
+            $row=$price->fetch_assoc();
+            return $row['cprice'];
+        }
+    }
+    public function get_product_price($connection,$type,$weight){
+        $weight=explode(" ",$weight);
+        $count=count($weight);
+        $Product_type=$weight[$count-1];
+        $category=$type;
+        //name equals to the rest of the words
+        $name="";
+        for($i=0;$i<$count-1;$i++){
+            $name=$name.$weight[$i]." ";
+        }
+        $sql3="select price from product where Name='$name' and Product_type='$Product_type' and Category='$category'";
+        $price=$connection->query($sql3);
+        if($price===false){
+            return false;
+        }else{
+            $row=$price->fetch_assoc();
+            return $row['price'];
+        }
+
+    }
+    public function addtocart($connection,$User_id,$gasid,$weight,$quantity,$total,$type,$cylinder){
+        $sql="INSERT INTO cart(User_id,gasagent_id,type,weight,cylinder_type,quantity,price) VALUES('$User_id','$gasid','$type','$weight','$cylinder','$quantity','$total')";
         $result=$connection->query($sql);
         if($result===false){
             return false;
@@ -47,6 +81,61 @@ class addtocart_model{
             }
         }
         return $answer;
+    }
+    public function checkandupdate($connection,$User_id){
+        //check whether the prices in the cart are same as the prices in the database
+        $sql="SELECT * FROM cart WHERE User_id='$User_id'";
+        $result=$connection->query($sql);
+        if($result===false){
+            return false;
+        }else{
+            while($row=$result->fetch_assoc()){
+                $cartid=$row['cart_id'];
+                $gasid=$row['gasagent_id'];
+                $type=$row['type'];
+                $weight=$row['weight'];
+                $cylinder=$row['cylinder_type'];
+                $quantity=$row['quantity'];
+                $price=$row['price'];
+                
+                //get stock manager id
+                $stock_manager_id=$this->stock_manager($connection);
+                $stock_manager_id=$stock_manager_id[0]['id'];
+
+                if($gasid!=$stock_manager_id){
+                    //get the price of the cylinder
+                    $newprice=$this->get_cylinder_price($connection,$type,$weight,$cylinder);
+                    if($newprice===false){
+                        return false;
+                    }else{
+                        //update the price row in cart
+                        $newprice=$newprice*$quantity;
+                        $sql="UPDATE cart SET price='$newprice' WHERE cart_id='$cartid'";
+                        $result=$connection->query($sql);
+                        if($result===false){
+                            return false;
+                        }else{
+                            return true;
+                        }
+                    }
+                }else{
+                    //get the price of the item 
+                    $newprice=$this->get_product_price($connection,$type,$weight);
+                    if($newprice===false){
+                        return false;
+                    }else{
+                        $newprice=$newprice*$quantity;
+                        $sql="UPDATE cart SET price='$newprice' WHERE cart_id='$cartid'";
+                        $result=$connection->query($sql);
+                        if($result===false){
+                            return false;
+                        }else{
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
     }
     public function viewcart($connection,$User_id){
         //stock manager id
@@ -179,32 +268,18 @@ class addtocart_model{
         $sql="UPDATE cart SET quantity='$quantity' WHERE cart_id='$cartid'";
         $result=$connection->query($sql);
         //update total price
-        $sql="SELECT weight,type FROM cart WHERE cart_id='$cartid';";
+        $sql="SELECT weight,type,cylinder_type FROM cart WHERE cart_id='$cartid';";
         $result=$connection->query($sql);
         $row=$result->fetch_assoc();
         $weight=$row['weight'];
         $type=$row['type'];
+        $cylinder=$row['cylinder_type'];
         
         if($gasagent!=$_SESSION['stock_manager']){
-            $sql2="SELECT g.Price from gascylinder g inner JOIN gas_company gc on g.Type=gc.company_id where gc.company_name='$type' and g.Weight='$weight'";
-            $result=$connection->query($sql2);
-            $row2=$result->fetch_assoc();
-            $price=$row2['Price'];
+            $price=$this->get_cylinder_price($connection,$type,$weight,$cylinder);
+
         }else{
-            //divide the weight into 2 parts as the last word as one and the rest as another
-            $weight=explode(" ",$weight);
-            $count=count($weight);
-            $Product_type=$weight[$count-1];
-            $category=$type;
-            //name equals to the rest of the words
-            $name="";
-            for($i=0;$i<$count-1;$i++){
-                $name=$name.$weight[$i]." ";
-            }
-            $sql3="select price from product where Name='$name' and Product_type='$Product_type' and Category='$category'";
-            $result=$connection->query($sql3);
-            $row3=$result->fetch_assoc();
-            $price=$row3['price'];
+            $price=$this->get_product_price($connection,$type,$weight);
         }
 
         $total=$price*$quantity;

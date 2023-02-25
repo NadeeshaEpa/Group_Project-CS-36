@@ -10,6 +10,7 @@ if(isset($_POST['addtocart'])){
    $quantity=$_POST['quantity'];
    $type=$_POST['gastype'];
    $User_id=$_SESSION['User_id'];
+   $cylinder=$_POST['cylinder'];
 
    $price=$connection->real_escape_string($price);
    $gasid=$connection->real_escape_string($gasid);
@@ -19,28 +20,30 @@ if(isset($_POST['addtocart'])){
 
    $total=$price*$quantity;
    $cart=new addtocart_model();
-   $result=$cart->addtocart($connection,$User_id,$gasid,$weight,$quantity,$total,$type);
+  
+   $result=$cart->addtocart($connection,$User_id,$gasid,$weight,$quantity,$total,$type,$cylinder);
     if($result===false){
-         $_SESSION['addtocart']="failed";
-         header("Location: ../../view/customer/inside_shop.php");
+        $_SESSION['addtocart']="failed";
+        if($cylinder=="new"){
+            header("Location: ../../view/customer/inside_shopnew.php");
+        }else{
+            header("Location: ../../view/customer/inside_shop.php");
+        }
     }else{
          $_SESSION['addtocart']="success";
          $_SESSION['cart']="Full";
-         header("Location: ../../view/customer/inside_shop.php");
-        //  $result3=$cart->getcylinderid($connection,$type,$weight);
-        //  $result2=$cart->updatequantity($connection,$quantity,$gasid,$result3);
-        //     if($result2===false){
-        //         $_SESSION['updatequantity']="failed";
-        //         header("Location: ../../view/customer/inside_shop.php");
-        //     }else{
-        //         $_SESSION['updatequantity']="success";
-        //         header("Location: ../../controller/customer/gas_controller.php?gasid=$gasid");
-        //     }
+         if($cylinder=="new"){
+            header("Location: ../../view/customer/inside_shopnew.php");
+         }else{
+            header("Location: ../../view/customer/inside_shop.php");
+        }
     }
 }
 if(isset($_POST['viewcart'])|| isset($_GET['viewcart'])){
     $User_id=$_SESSION['User_id'];
     $cart=new addtocart_model();
+
+    $check=$cart->checkandupdate($connection,$User_id);
 
     $result=$cart->viewcart($connection,$User_id);
     if($result===false){
@@ -51,8 +54,6 @@ if(isset($_POST['viewcart'])|| isset($_GET['viewcart'])){
         header("Location: ../../view/customer/view_cart.php");   
     }else{
         $_SESSION['viewcart']=$result;
-        // print_r($_SESSION['viewcart']);
-        // die();
         header("Location: ../../view/customer/view_cart.php");
     }
 }

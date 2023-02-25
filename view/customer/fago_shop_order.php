@@ -25,7 +25,8 @@
                     </a>
                 </li>
                 <li class="active">
-                    <a href="../../controller/customer/order_controller.php?orderid='1'">    
+                    <!-- <a href="../../controller/customer/order_controller.php?orderid='1'"> -->
+                    <a href="select_order_type.php">     
                         <i class='bx bxs-shopping-bag-alt' ></i>
                         <span class="text">My orders</span>
                     </a>
@@ -69,16 +70,15 @@
             <div class="heading">
             <h1>My orders</h1>
             </div>   
-            <!-- print order details as a table -->
             <div class="type">
-                <a href="../../controller/customer/order_controller.php?orderid='1'"><button class="selected">Gas Orders</button></a>
-                <a href="../../controller/customer/order_controller.php?shoporderid='2'"><button>Fago Shop Orders</button></a>
+                <a href="../../controller/customer/order_controller.php?orderid='1'"><button>Gas Orders</button></a>
+                <a href="../../controller/customer/order_controller.php?shoporderid='2'"><button class="selected">Fago Shop Orders</button></a>
             </div>
+            <!-- print order details as a table -->
             <div class="ordertable">
                 <h2>All Orders</h2>
                 <table>
                     <tr>
-                        <th>Gas Agent Name</th>
                         <th>Order No</th>
                         <th>Amount</th>
                         <th>Delivery Method</th>
@@ -88,7 +88,6 @@
                     <?php
                         foreach($details as $detail){?>
                             <tr>
-                                    <td><?php echo $detail['First_Name']." ".$detail['Last_Name']?></td>
                                     <td><?php echo $detail['Order_id']?></td>
                                     <td><?php echo $detail['Amount']?></td>
                                     <td><?php echo $detail['Delivery_Method']?></td>
@@ -107,32 +106,32 @@
                         <?php }?>
                 </table>
                 <?php 
-                    if(isset($_SESSION['page'])){
-                      $page=$_SESSION['page'];
+                    if(isset($_SESSION['shop_page'])){
+                      $shop_page=$_SESSION['page'];
                     }else{
-                      $page=1;
+                      $shop_page=1;
                     }
-                    if(isset($_SESSION['total_pages'])){
-                        $total_pages=$_SESSION['total_pages'];
+                    if(isset($_SESSION['shop_total_pages'])){
+                        $shop_total_pages=$_SESSION['shop_total_pages'];
                     }else{
-                        $total_pages=1;
+                        $shop_total_pages=1;
                     }    
                 ?>
                 <div class="pagination">
-                    <?php if($page>1){?>
+                    <?php if($shop_page>1){?>
                         <!-- pass value as form -->
                         <div class="p-left">
                             <form action="../../controller/customer/order_controller.php" method="GET">
-                                <input type="hidden" name="page" value="<?php echo $page-1?>">
+                                <input type="hidden" name="shop_page" value="<?php echo $shop_page-1?>">
                                 <input type="submit" value="Previous">
                             </form>
                         </div>
                     <?php } ?>
-                    <?php if($page<$total_pages){?>
+                    <?php if($shop_page<$shop_total_pages){?>
                         <!-- pass value as form -->
                         <div class="p-right">
                             <form action="../../controller/customer/order_controller.php" method="GET">
-                                <input type="hidden" name="page" value="<?php echo $page+1?>">
+                                <input type="hidden" name="shop_page" value="<?php echo $shop_page+1?>">
                                 <input type="submit" value="Next">
                             </form>
                         </div>
