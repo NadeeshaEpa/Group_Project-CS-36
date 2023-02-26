@@ -44,7 +44,7 @@ if(isset($_POST['viewcart'])|| isset($_GET['viewcart'])){
     $cart=new addtocart_model();
 
     $check=$cart->checkandupdate($connection,$User_id);
-
+   
     $result=$cart->viewcart($connection,$User_id);
     if($result===false){
         $_SESSION['viewcart']="empty";

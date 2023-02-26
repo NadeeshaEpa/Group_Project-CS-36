@@ -94,7 +94,6 @@
                                     <td><?php echo $detail['Delivery_Method']?></td>
                                     <div class="status">
                                         <?php if($detail['Delivery_Status']==2){?>
-                                            //change the color of the text abd make it bold
                                             <td style="color:red"><b>No delivery</b></td>
                                         <?php }else if($detail['Delivery_Status']==0){?>
                                             <td style="color:#FDC801"><b>On the way</b></td>

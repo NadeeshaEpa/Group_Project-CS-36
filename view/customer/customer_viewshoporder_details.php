@@ -75,15 +75,14 @@
                 $delivery_fee=$order_data[0]['Delivery_fee'];
 
                 //array_push($order_items,['GasAgent_Name'=>$gasagent_name,'Cylinder_Type'=>$cylinder_type,'Order_Type'=>$order_type,'Quantity'=>$quantity,'Price'=>$price,'Cylinder_details'=>$cylinder_details]);
-                $gasagent_name=$order_items[0]['GasAgent_Name'];
-                $order_type=$order_items[0]['Order_Type'];
+                $sm_name=$order_items[0]['StockManager_Name'];
                 
                 $items=[];
                 foreach($order_items as $item){
                     $quantity=$item['Quantity'];
                     $price=$item['Price'];
-                    $cylinder_details=$item['Cylinder_details'];
-                    $item_details=['Quantity'=>$quantity,'Price'=>$price,'Cylinder_details'=>$cylinder_details];
+                    $product_details=$item['Product_details'];
+                    $item_details=['Quantity'=>$quantity,'Price'=>$price,'Product_details'=>$product_details];
                     array_push($items,$item_details);
                 }
                 
@@ -121,24 +120,20 @@
                     </tr>
                     <tr>
                         <td>Gas Agent</td>
-                        <td><?php echo $gasagent_name;?></td>
-                    </tr>
-                    <tr>
-                        <td>Order Type</td>
-                        <td><?php echo $order_type;?></td>
+                        <td><?php echo $sm_name;?></td>
                     </tr>
                     <tr>
                         <td>Items</td>
                         <td>
                             <table class="table2">
                                 <tr>
-                                    <th>Cylinder Details</th>
+                                    <th>Product Details</th>
                                     <th>Quantity</th>
                                     <th>Price</th>
                                 </tr>
                                 <?php foreach($items as $item){?>
                                 <tr>
-                                    <td><?php echo $item['Cylinder_details']." Cylinder";?></td>
+                                    <td><?php echo $item['Product_details'];?></td>
                                     <td><?php echo $item['Quantity'];?></td>
                                     <td><?php echo "Rs.".$item['Price'];?></td>
                                     

@@ -78,3 +78,17 @@ if(isset($_GET['id'])){
     }
 
 }
+if(isset($_GET['shopid'])){
+    $order_id=$_GET['shopid'];
+    $order=new order_model();
+    $userid=$_SESSION['User_id'];
+
+    $result=$order->view_fagoOrderDetails($connection,$order_id,$userid);
+    if($result===false){
+        echo "No orders";
+    }else{
+        $_SESSION['vieworderdetails']=$result;
+        header("Location: ../../view/customer/customer_viewshoporder_details.php");
+    }
+
+}

@@ -78,7 +78,7 @@
                     $i=0;
                     foreach($shops as $shop){?>
                     <tr>
-                        <?php// if($shop['distance']<10){?>
+                        <?php if($shop['distance']<10){?>
                             <td><?php echo $shop['Shop_name']?></td>
                             <td><?php echo $shop['distance']?>km</td>
                             <?php 
@@ -120,7 +120,7 @@
                                 <td><a href="../../controller/customer/gas_controller.php?newgasid=<?php echo $gasagent?>">Buy</a></td>
                             <?php } ?>
                         <?php } ?>
-                <?php// } ?>
+                <?php } ?>
                 </tr>
             </table>
             <?php 

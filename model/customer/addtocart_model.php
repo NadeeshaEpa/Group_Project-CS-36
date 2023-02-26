@@ -111,30 +111,21 @@ class addtocart_model{
                         //update the price row in cart
                         $newprice=$newprice*$quantity;
                         $sql="UPDATE cart SET price='$newprice' WHERE cart_id='$cartid'";
-                        $result=$connection->query($sql);
-                        if($result===false){
-                            return false;
-                        }else{
-                            return true;
-                        }
+                        $connection->query($sql);
                     }
                 }else{
                     //get the price of the item 
-                    $newprice=$this->get_product_price($connection,$type,$weight);
-                    if($newprice===false){
+                    $new_product_price=$this->get_product_price($connection,$type,$weight);
+                    if($new_product_price===false){
                         return false;
                     }else{
-                        $newprice=$newprice*$quantity;
-                        $sql="UPDATE cart SET price='$newprice' WHERE cart_id='$cartid'";
-                        $result=$connection->query($sql);
-                        if($result===false){
-                            return false;
-                        }else{
-                            return true;
-                        }
+                        $new_product_price=$new_product_price*$quantity;
+                        $sql="UPDATE cart SET price='$new_product_price' WHERE cart_id='$cartid'";
+                        $connection->query($sql);                     
                     }
                 }
             }
+            return true;
         }
     }
     public function viewcart($connection,$User_id){

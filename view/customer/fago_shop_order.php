@@ -25,8 +25,7 @@
                     </a>
                 </li>
                 <li class="active">
-                    <!-- <a href="../../controller/customer/order_controller.php?orderid='1'"> -->
-                    <a href="select_order_type.php">     
+                    <a href="../../controller/customer/order_controller.php?orderid='1'">    
                         <i class='bx bxs-shopping-bag-alt' ></i>
                         <span class="text">My orders</span>
                     </a>
@@ -101,7 +100,7 @@
                                             <td style="color:green"><b>Delivered</b></td>     
                                         <?php }?>
                                     </div>
-                                    <td><a href="../../controller/customer/order_controller.php?id=<?php echo $detail['Order_id']?>">View</a></td>
+                                    <td><a href="../../controller/customer/order_controller.php?shopid=<?php echo $detail['Order_id']?>">View</a></td>
                             </tr>
                         <?php }?>
                 </table>

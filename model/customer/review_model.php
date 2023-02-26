@@ -1,17 +1,29 @@
 <?php
 class review_model{
     public function deliverypersons($connection,$user_id){
-        $sql="SELECT o.DeliveryPerson_Id from `order` o INNER JOIN `placeorder` p ON o.Order_id=p.Order_Id WHERE p.Customer_Id='$user_id'";
+        $sql="SELECT distinct o.DeliveryPerson_Id,o.Delivery_date from `order` o INNER JOIN `placeorder` p ON o.Order_id=p.Order_Id WHERE p.Customer_Id='$user_id'";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;
         }else{
             $delivery=[];
             while($row=$result->fetch_object()){
-                array_push($delivery,['DeliveryPerson_Id'=>$row->DeliveryPerson_Id]);            
+                if($row->DeliveryPerson_Id!=NULL){
+                    $date=$this->get_date_differance($row->Delivery_date);
+                    if($date>0 and $date<30){
+                        array_push($delivery,['DeliveryPerson_Id'=>$row->DeliveryPerson_Id]);  
+                    } 
+                }         
             }
             return $delivery;
         }
+    }
+    public function get_date_differance($date){
+        $date1=date_create(date("Y-m-d"));
+        $date2=date_create($date);
+        $diff=date_diff($date2,$date1);
+        return $diff->format("%R%a");
+
     } 
     public function finddeliveryname($connection,$delivery){
         $names=[];
