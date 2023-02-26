@@ -107,6 +107,7 @@ if(isset($_SESSION['unlocations'])){
                         foreach($weight as $weight1){?>
                             <th><?php echo $weight1['Weight']?>kg</th>
                         <?php } ?>
+                    <th>order</th>    
                 </tr>
                     <?php 
                     $i=0;
@@ -141,10 +142,38 @@ if(isset($_SESSION['unlocations'])){
                                 <?php 
                                 }
                             } ?> 
+                            <td><button name="order" id="popup" onclick="popup()">Order</button></td>
                         <?php } ?>
                     </tr>
             </table>    
         </div>
     </div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div>
+                <p id="waitingMessage">
+                    You have to first register to the system.
+                    <button class="register" onclick="register()";>Register</button>      
+                    <button class="close" onclick="closemsg()";>Close</button><br>
+                    <button class="login" onclick="login()";>Login</button>         
+                </p>
+            </div>            
+        </div>
+    </div> 
+    <script>
+        function popup(){
+            document.getElementById("myModal").style.display = "block";
+        }
+        function closemsg(){
+            document.getElementById("myModal").style.display = "none";
+            // window.location.href = "../../controller/customer/shop_controller.php?urgascooker='1'";
+        }
+        function register(){
+            window.location.href = "customer_register.php";
+        }
+        function login(){
+            window.location.href = "../../view/login.php";
+        }
+    </script>
 </body>
 </html>

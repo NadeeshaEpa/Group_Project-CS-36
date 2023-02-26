@@ -74,13 +74,30 @@ if(isset($_POST['view_item'])){
    $description=$_POST['Description'];
    $User_id=$_SESSION['User_id'];
     
-   $gascooker=[];
-   array_push($gascooker,['item_code'=>$item_code,'product_type'=>$product_type,'name'=>$name,'quantity'=>$quantity,'price'=>$price,'category'=>$category,'description'=>$description,'User_id'=>$User_id]);
-   $_SESSION['gascookerview']=$gascooker;
+   $items=[];
+   array_push($items,['item_code'=>$item_code,'product_type'=>$product_type,'name'=>$name,'quantity'=>$quantity,'price'=>$price,'category'=>$category,'description'=>$description,'User_id'=>$User_id]);
+   $_SESSION['gascookerview']=$items;
    header("Location: ../../view/customer/view_item.php");
 
 }
-
+if(isset($_POST['buy_item'])){
+   $item_code=$_POST['item_code'];
+   $product_type=$_POST['product_type'];
+   $name=$_POST['Name'];
+   $quantity=$_POST['Quantity'];
+   $price=$_POST['price'];
+   $category=$_POST['Category'];
+   $agent=$_POST['agent'];
+   $User_id=$_SESSION['User_id'];
+ 
+   $shop=new shop_model();
+   $shop->setloc($User_id,$connection);
+   $items=[];
+   $agentid=$shop->stock_manager($connection);
+   array_push($items,['name'=>$name,'product_type'=>$product_type,'price'=>$price,'type'=>$category,'shop'=>"Fago Shop",'agent_id'=>$agentid[0]['id']]);
+   $_SESSION['viewitems']=$items;
+   header("Location: ../../view/customer/buy_item.php");
+}
 
 if(isset($_POST['shop_add'])){
    $item_code=$_POST['item_code'];
@@ -100,5 +117,40 @@ if(isset($_POST['shop_add'])){
    }else{
       $_SESSION['addtocart']="success";
       header("Location: ../../view/customer/view_item.php");
+   }
+}
+
+if(isset($_POST['dmbutton'])){
+   if(isset($_POST['delivery'])){
+       $latitude=$_POST['latitude'];
+       $longitude=$_POST['longitude'];
+       $gasagent=$_POST['agent'];
+       $price=$_POST['price'];
+
+       if($latitude==NULL || $longitude==NULL){
+           $latitude=$_SESSION['latitude'];
+           $longitude=$_SESSION['longitude'];
+       }
+       $_SESSION['cdlatitude']=$latitude;
+       $_SESSION['cdlongitude']=$longitude;
+       
+       $shop=new shop_model();
+       $result=$shop->getdeliveryfee($_SESSION['User_id'],$connection,$_SESSION['cdlatitude'],$_SESSION['cdlongitude']);
+       if($result===false){
+           $_SESSION['dcheckout']=[];
+           header("Location: ../../view/customer/total.php");
+       }else{
+           $buy_now_price=[];
+           array_push($buy_now_price,['price'=>$price,'delivery_fee'=>$result,'shop_name'=>"Fago Shop"]);
+           $_SESSION['dnowcheckout']=$buy_now_price;
+           header("Location: ../../view/customer/total_now.php");
+       }
+
+   }else if(isset($_POST['nodelivery'])){
+         $price=$_POST['price'];
+         $buy_now_price=[];
+         array_push($buy_now_price,['price'=>$price,'delivery_fee'=>0,'shop_name'=>"Fago Shop"]);
+         $_SESSION['dnowcheckout']=$buy_now_price;
+         header("Location: ../../view/customer/total_now.php");
    }
 }

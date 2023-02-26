@@ -1,0 +1,78 @@
+.dropdown_outter{
+	display: flex;
+	width: 100%;
+	height: 25%;
+
+}
+
+.dropdown{
+	width: 50%;
+	height: 100%;
+}
+
+.dropdown_outter .dropdown select {
+    background: rgb(255, 255, 255);;
+    border: 3px solid rgb(84, 73, 116);
+	border-radius: 15px;
+	margin-left: 13px;
+    width:375px;
+    height: 85px;
+    font-size: large;
+    margin-bottom: 36px;
+    text-align: center;
+    
+  }
+
+  .dropdown_outter .dropdown button{
+	width: 150px;
+	margin-left: -84px;
+	height:40px ;
+	text-align: center;
+	border-radius: 15px;
+	background-color:#10338e;
+	color: white;
+  }
+
+  .report_info_outter{
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-bottom: 3%;
+	margin-top: 2%;
+	display: flex;
+	border: 2px solid black; 
+	border-radius: 18px;
+  }
+
+  .report_info{
+	margin: auto;
+	font-size: 20px;
+	
+  }
+
+  .delivary_nof_msg{
+	width: 100%;
+	height: 10%;
+	margin-top: 3%;
+	display: flex;
+  }
+  .delivary_nof_msg h6{
+	margin: auto;
+	font-size: 20px;
+	text-align: center;
+	color: #DB504A;
+  }
+
+  .delivary_f_msg h5{
+	margin: auto;
+	font-size: 20px;
+	text-align: center;
+	color: #080808;
+  }
+
+  .delivary_f_msg{
+	width: 100%;
+	height: 10%;
+	display: flex;
+
+  }

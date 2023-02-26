@@ -13,6 +13,9 @@ class user_model{
             $_SESSION['Username']=$row['Username'];
             $_SESSION['Firstname']=$row['First_Name'];
             $_SESSION['Lastname']=$row['Last_Name'];
+            $_SESSION['Street']=$row['Street'];
+            $_SESSION['City']=$row['City'];
+            $_SESSION['Postalcode']=$row['Postalcode'];
             $_SESSION['Type']=$row['Type'];
             $this->Type=$row['Type'];
 
@@ -34,6 +37,9 @@ class user_model{
             if($this->Type=="Customer"){
                 $r1="SELECT * FROM customer WHERE Customer_Id='$this->User_id' AND Status='1'";
                 if($connection->query($r1)->num_rows > 0){
+                    $row=$connection->query($r1)->fetch_assoc();
+                    $_SESSION['latitude']=$row['latitude'];
+                    $_SESSION['longitude']=$row['longitude'];
                     return true;   //login will be successful
                 }else{
                     $_SESSION['login_attempts']+=1;
@@ -58,16 +64,7 @@ class user_model{
                     return false;   //login will be unsuccessful
                 }
             }
-            else if($this->Type=="FuelManager"){
-                $r1="SELECT * FROM fuelmanager WHERE FuelManager_Id='$this->User_id' AND Status='1'";
-                if($connection->query($r1)->num_rows > 0){
-                    return true;   //login will be successful
-                }else{
-                    $_SESSION['login_attempts']+=1;
-                    return false;   //login will be unsuccessful
-                }
-            }
-            else if($this->Type=="Admin" || $this->Type=="Staff"){
+            else if($this->Type=="Admin" || $this->Type=="Staff" || $this->Type=="Stock Manager"){
                 return true;   //login will be successful
             }else{
                 $_SESSION['login_attempts']+=1;

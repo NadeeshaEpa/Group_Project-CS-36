@@ -3,14 +3,31 @@ session_start();
 require_once("../../config.php");
 require_once("../../model/customer/gas_model.php");
 
-if(isset($_POST['gas_type'])){
+if(isset($_GET['gas_type'])||isset($_GET['page'])){
     $userid=$_SESSION['User_id'];
-    $type=$_POST['gas_type'];
+    $type=$_GET['gas_type'];
     $type=$connection->real_escape_string($type);
     $_SESSION['gas_type']=$type;
     //create new gas model
     $gasmodel=new gas_model();
-    $result2=$gasmodel->getshopnames($connection,$type,$userid);
+
+    //pagination
+    //print 5 records per page
+    $limit = 5;
+    $page = isset($_GET['page']) ? $_GET['page'] : 1;
+    $_SESSION['page']=$page;
+    $offset = ($page - 1) * $limit;
+    
+    //get the total number of records
+    $total_records=$gasmodel->shop_count($connection,$type,$userid);
+    $_SESSION['shop_count']=$total_records;
+
+    //calculate the total number of pages
+    $total_pages = ceil($total_records / $limit);
+    $_SESSION['total_pages']=$total_pages;
+
+    //get the shop names according to the page number and gas type
+    $result2=$gasmodel->getshopnames($connection,$type,$userid,$limit,$offset);
         $_SESSION['shopnames']=$result2;
         $result1=$gasmodel->getweight($connection,$type);
         $_SESSION['weight']=$result1;
@@ -25,7 +42,8 @@ if(isset($_POST['gas_type'])){
                 die();
                 $_SESSION['viewgas']="failed";
                 header("Location: ../../view/customer/customer_viewgas.php");
-            }else{     
+            }else{ 
+
                 $_SESSION['viewgas']=$result;
                 header("Location: ../../view/customer/customer_viewgas.php");
             }

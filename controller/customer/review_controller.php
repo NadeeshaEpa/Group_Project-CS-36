@@ -23,7 +23,6 @@ if(isset($_GET['reviewid'])){
 }
 if(isset($_POST['fillreview'])){
     $dpname=$_POST['dpname'];
-    $date=$_POST['date'];
     $description=$_POST['description'];
 
     $dpname=$connection->real_escape_string($dpname);
@@ -41,7 +40,13 @@ if(isset($_POST['fillreview'])){
         }else{
             $_SESSION['addreview']="success";
             $review=new review_model();
-            $result=$review->viewreview($connection,$_SESSION['User_id']);
+
+            $rc=new review_controller();
+            $rc->pagination($connection,$userid);
+            $limit=$_SESSION['limit'];
+            $offset=$_SESSION['offset'];
+
+            $result=$review->viewreview($connection,$_SESSION['User_id'],$limit,$offset);
             if($result===false){
                 $_SESSION['viewreview']="failed";
                 header("Location: ../../view/customer/customer_viewreviews.php");
@@ -52,9 +57,16 @@ if(isset($_POST['fillreview'])){
         }
     }  
 }
-if(isset($_GET['view-review']) ){
+if(isset($_GET['view-review']) || isset($_GET['page'])){
     $review=new review_model();
-    $result=$review->viewreview($connection,$_SESSION['User_id']);
+    $userid=$_SESSION['User_id'];
+
+    $rc=new review_controller();
+    $rc->pagination($connection,$userid);
+    $limit=$_SESSION['limit'];
+    $offset=$_SESSION['offset'];
+
+    $result=$review->viewreview($connection,$_SESSION['User_id'],$limit,$offset);
     if($result===false){
         $_SESSION['viewreview']="failed";
         header("Location: ../../view/customer/customer_viewreviews.php");
@@ -74,7 +86,13 @@ if(isset($_GET['drid'])){
     }else{
         $_SESSION['deletereview']="success";
         $review=new review_model();
-        $result=$review->viewreview($connection,$_SESSION['User_id']);
+
+        $rc=new review_controller();
+        $rc->pagination($connection,$userid);
+        $limit=$_SESSION['limit'];
+        $offset=$_SESSION['offset'];
+
+        $result=$review->viewreview($connection,$_SESSION['User_id'],$limit,$offset);
         if($result===false){
             $_SESSION['viewreview']="failed";
             header("Location: ../../view/customer/customer_viewreviews.php");
@@ -117,7 +135,13 @@ if(isset($_POST['editreview'])){
     }else{
         $_SESSION['updatereview']="success";
         $review=new review_model();
-        $result=$review->viewreview($connection,$_SESSION['User_id']);
+
+        $rc=new review_controller();
+        $rc->pagination($connection,$userid);
+        $limit=$_SESSION['limit'];
+        $offset=$_SESSION['offset'];
+
+        $result=$review->viewreview($connection,$_SESSION['User_id'],$limit,$offset);
         if($result===false){
             $_SESSION['viewreview']="failed";
             header("Location: ../../view/customer/customer_viewreviews.php");
@@ -127,4 +151,27 @@ if(isset($_POST['editreview'])){
         }
     }
 
+}
+class review_controller{
+    public function pagination($connection,$userid){
+        $review=new review_model();
+
+        //pagination for view orders
+        $limit = 6;
+        $page = isset($_GET['page']) ? $_GET['page'] : 1;
+        $_SESSION['page']=$page;
+        $offset = ($page - 1) * $limit;
+        
+        //get the total number of orders
+        $total_records=$review->review_count($connection,$userid);
+        $_SESSION['shop_count']=$total_records;
+
+        //calculate the total number of pages
+        $total_pages = ceil($total_records / $limit);
+        $_SESSION['total_pages']=$total_pages;
+        
+        //set the limit and offset
+        $_SESSION['limit']=$limit;
+        $_SESSION['offset']=$offset;
+    }
 }

@@ -74,7 +74,6 @@
                                 <option selected disabled>Select the name of the delivery person</option>
                                 <?php
                                     if($_SESSION['deliverynames']==='failed'){
-                                        echo "<script>alert('No delivery persons found')</script>";
                                         $_SESSION['deliverynames']=[];
                                     }else if(isset($_SESSION['deliverynames'])){
                                         foreach($_SESSION['deliverynames'] as $name){

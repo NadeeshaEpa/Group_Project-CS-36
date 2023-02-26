@@ -1,17 +1,29 @@
 <?php
 class review_model{
     public function deliverypersons($connection,$user_id){
-        $sql="SELECT o.DeliveryPerson_Id from `order` o INNER JOIN `placeorder` p ON o.Order_id=p.Order_Id WHERE p.Customer_Id='$user_id'";
+        $sql="SELECT distinct o.DeliveryPerson_Id,o.Delivery_date from `order` o INNER JOIN `placeorder` p ON o.Order_id=p.Order_Id WHERE p.Customer_Id='$user_id'";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;
         }else{
             $delivery=[];
             while($row=$result->fetch_object()){
-                array_push($delivery,['DeliveryPerson_Id'=>$row->DeliveryPerson_Id]);            
+                if($row->DeliveryPerson_Id!=NULL){
+                    $date=$this->get_date_differance($row->Delivery_date);
+                    if($date>0 and $date<30){
+                        array_push($delivery,['DeliveryPerson_Id'=>$row->DeliveryPerson_Id]);  
+                    } 
+                }         
             }
             return $delivery;
         }
+    }
+    public function get_date_differance($date){
+        $date1=date_create(date("Y-m-d"));
+        $date2=date_create($date);
+        $diff=date_diff($date2,$date1);
+        return $diff->format("%R%a");
+
     } 
     public function finddeliveryname($connection,$delivery){
         $names=[];
@@ -50,8 +62,8 @@ class review_model{
             return FALSE;
         }
     }
-    public function viewreview($connection,$user_id){
-        $sql="SELECT r.Rate_Id,r.Date,r.Description,u.First_Name,u.Last_Name from `rateservice` r INNER JOIN `user` u ON r.DeliveryPerson_Id=u.User_id WHERE r.Customer_Id='$user_id'";
+    public function viewreview($connection,$user_id,$limit,$offset){
+        $sql="SELECT r.Rate_Id,r.Date,r.Description,u.First_Name,u.Last_Name from `rateservice` r INNER JOIN `user` u ON r.DeliveryPerson_Id=u.User_id WHERE r.Customer_Id='$user_id' LIMIT $limit OFFSET $offset";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;
@@ -60,6 +72,10 @@ class review_model{
             while($row=$result->fetch_object()){
                 array_push($reviews,['Rate_id'=>$row->Rate_Id,'Date'=>$row->Date,'Description'=>$row->Description,'First_Name'=>$row->First_Name,'Last_Name'=>$row->Last_Name]);
             }
+            //sort the array according to the date rate id latest review come first
+            usort($reviews,function($a,$b){
+                return $a['Rate_id']<$b['Rate_id'];
+            });
             return $reviews;
         }
     }
@@ -96,6 +112,16 @@ class review_model{
             return true;
         }else{
             return false;
+        }
+    }
+    public function review_count($connection,$userid){
+        $sql="SELECT COUNT(*) AS count FROM `rateservice` WHERE Customer_Id='$userid'";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $row=$result->fetch_object();
+            return $row->count;
         }
     }
 }

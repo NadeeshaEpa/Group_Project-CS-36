@@ -25,7 +25,7 @@
                     </a>
                 </li>
                 <li class="active">
-                    <a href="../../controller/customer/order_controller.php?orderid='1'">
+                    <a href="../../controller/customer/order_controller.php?orderid='1'">    
                         <i class='bx bxs-shopping-bag-alt' ></i>
                         <span class="text">My orders</span>
                     </a>
@@ -70,6 +70,10 @@
             <h1>My orders</h1>
             </div>   
             <!-- print order details as a table -->
+            <div class="type">
+                <a href="../../controller/customer/order_controller.php?orderid='1'"><button class="selected">Gas Orders</button></a>
+                <a href="../../controller/customer/order_controller.php?shoporderid='2'"><button>Fago Shop Orders</button></a>
+            </div>
             <div class="ordertable">
                 <h2>All Orders</h2>
                 <table>
@@ -90,7 +94,6 @@
                                     <td><?php echo $detail['Delivery_Method']?></td>
                                     <div class="status">
                                         <?php if($detail['Delivery_Status']==2){?>
-                                            //change the color of the text abd make it bold
                                             <td style="color:red"><b>No delivery</b></td>
                                         <?php }else if($detail['Delivery_Status']==0){?>
                                             <td style="color:#FDC801"><b>On the way</b></td>
@@ -102,6 +105,38 @@
                             </tr>
                         <?php }?>
                 </table>
+                <?php 
+                    if(isset($_SESSION['page'])){
+                      $page=$_SESSION['page'];
+                    }else{
+                      $page=1;
+                    }
+                    if(isset($_SESSION['total_pages'])){
+                        $total_pages=$_SESSION['total_pages'];
+                    }else{
+                        $total_pages=1;
+                    }    
+                ?>
+                <div class="pagination">
+                    <?php if($page>1){?>
+                        <!-- pass value as form -->
+                        <div class="p-left">
+                            <form action="../../controller/customer/order_controller.php" method="GET">
+                                <input type="hidden" name="page" value="<?php echo $page-1?>">
+                                <input type="submit" value="Previous">
+                            </form>
+                        </div>
+                    <?php } ?>
+                    <?php if($page<$total_pages){?>
+                        <!-- pass value as form -->
+                        <div class="p-right">
+                            <form action="../../controller/customer/order_controller.php" method="GET">
+                                <input type="hidden" name="page" value="<?php echo $page+1?>">
+                                <input type="submit" value="Next">
+                            </form>
+                        </div>
+                    <?php } ?>
+                </div>
             </div>    
         </div>
     </div>    

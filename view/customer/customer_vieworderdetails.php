@@ -15,9 +15,6 @@
        if(isset($_SESSION['vieworderdetails'])){
               $details=$_SESSION['vieworderdetails'];
        }
-       if(isset($_SESSION['vieworders'])){
-              $order=$_SESSION['vieworders'];
-       }
     ?>
     <?php require_once 'customer_header.php';?> 
         <div class="dcontainer">
@@ -65,60 +62,94 @@
             <?php include_once 'customer_header.php'; ?>
             <form class="odata">
             <h2>Order Details</h2>
-                <div class="customer">
-                    <label for="Customername">Customer Name:</label><br>
-                    <input type="text" name="Customername" value="<?php echo $details[1]['CFirst_Name']." ".$details[1]['CLast_Name']; ?>" readonly><br><br>
-                </div>
-                <!-- <div class="customer">
-                    <label for="GAname">Gas Agent Name:</label><br>
-                    <input type="text" name="GAname" value="<?php echo $order['First_Name']." ".$order['Last_Name']; ?>" readonly><br><br>
-                </div> -->
-                <div class="half">
-                    <div class="halfleft">
-                        <label for="orderid">Order ID:</label><br>
-                        <input type="text" name="order_id" value="<?php echo $details[2]['Order_id']; ?>" readonly><br><br>
-                    </div>
-                    <div class="halfright">
-                    <label for="ordertime">Order Time:</label><br>
-                    <input type="text" name="order_time" value="<?php echo $details[0]['Time']; ?>" readonly><br><br>
-                    </div>
-                </div>    
-                <div class="half">
-                    <div class="halfleft">
-                        <lable for="amount">Total Amount:</lable><br>
-                        <input type="text" name="amount" value="<?php echo $details[0]['Amount']; ?>" readonly><br><br>
-                    </div>
-                    <div class="halfright">
-                        <label for="orderdate">Order Date:</label><br>
-                        <input type="text" name="order_date" value="<?php echo $details[0]['Order_date']; ?>" readonly><br><br>
-                    </div>
-                </div>    
-                <div class="third">
-                    <label for="address">Address:</label><br>
-                    <input type="text" name="street" value="<?php echo $details[1]['Street']; ?>" readonly>
-                    <input type="text" name="city" value="<?php echo $details[1]['City']; ?>" readonly>
-                    <input type="text" name="postalcode" value="<?php echo $details[1]['Postalcode']; ?>" readonly><br><br>
-                </div>
-                <div class="half">
-                    <div class="halfleft">
-                        <label for="dperson">Delivery Person:</label><br>
-                        <input type="text" name="dperson" value="<?php echo $details[0]['DFirst_Name']." ".$details[0]['DLast_Name']; ?>" readonly><br><br>
-                    </div>
-                    <div class="halfright">
-                        <label for="deliverycharge">Delivery Charge:</label><br>
-                        <input type="text" name="deliverycharge" value="<?php echo $details[0]['Delivery_fee']; ?>" readonly><br><br>
-                    </div>
-                </div>
-                <!-- <div class="half"> 
-                    <div class="halfleft">   
-                        <label for="deliverydate">Delivery Date:</label><br>
-                        <input type="text" name="deliverydate" value="<?php echo $details[0]['Delivery_date']; ?>" readonly><br><br>
-                    </div>
-                    <div class="halfright">
-                        <label for="deliverytime">Delivery Time:</label><br>
-                        <input type="text" name="deliverytime" value="<?php echo $details[0]['Delivery_time']; ?>" readonly><br><br>
-                    </div>
-                </div>   -->
+               <?php 
+
+                $order_data=$details[0]['Order_data'];
+                $order_items=$details[0]['Order_items'];
+                
+                $order_id=$order_data[0]['order_id'];
+                $order_date=$order_data[0]['Order_date'];
+                $order_time=$order_data[0]['Time'];
+                $total_amount=$order_data[0]['Amount'];
+                $delivery_person=$order_data[0]['Delivery_person'];
+                $delivery_fee=$order_data[0]['Delivery_fee'];
+
+                //array_push($order_items,['GasAgent_Name'=>$gasagent_name,'Cylinder_Type'=>$cylinder_type,'Order_Type'=>$order_type,'Quantity'=>$quantity,'Price'=>$price,'Cylinder_details'=>$cylinder_details]);
+                $gasagent_name=$order_items[0]['GasAgent_Name'];
+                $order_type=$order_items[0]['Order_Type'];
+                
+                $items=[];
+                foreach($order_items as $item){
+                    $quantity=$item['Quantity'];
+                    $price=$item['Price'];
+                    $cylinder_details=$item['Cylinder_details'];
+                    $item_details=['Quantity'=>$quantity,'Price'=>$price,'Cylinder_details'=>$cylinder_details];
+                    array_push($items,$item_details);
+                }
+                
+               ?>      
+               <table>
+                    <tr>
+                        <td>Order ID</td>
+                        <td><?php echo $order_id;?></td>
+                    </tr>
+                    <tr>
+                        <td>Order Date</td>
+                        <td><?php echo $order_date;?></td>
+                    </tr>
+                    <tr>
+                        <td>Order Time</td>
+                        <td><?php echo $order_time;?></td>
+                    </tr>
+                    <tr>
+                        <td>Total Amount</td>
+                        <td><?php echo $total_amount;?></td>
+                    </tr>
+                    <tr>
+                        <td>Delivery Person</td>
+                        <td><?php 
+                           if($delivery_person==null){
+                               echo " Still Not Assigned";
+                            }else{
+                                echo $delivery_person;
+                            }
+                        ?></td>
+                    </tr>
+                    <tr>
+                        <td>Delivery Fee</td>
+                        <td><?php echo $delivery_fee;?></td>
+                    </tr>
+                    <tr>
+                        <td>Gas Agent</td>
+                        <td><?php echo $gasagent_name;?></td>
+                    </tr>
+                    <tr>
+                        <td>Order Type</td>
+                        <td><?php echo $order_type;?></td>
+                    </tr>
+                    <tr>
+                        <td>Items</td>
+                        <td>
+                            <table class="table2">
+                                <tr>
+                                    <th>Cylinder Details</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                </tr>
+                                <?php foreach($items as $item){?>
+                                <tr>
+                                    <td><?php echo $item['Cylinder_details']." Cylinder";?></td>
+                                    <td><?php echo $item['Quantity'];?></td>
+                                    <td><?php echo "Rs.".$item['Price'];?></td>
+                                    
+                                </tr>
+                                <?php }?>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    
+               </table>     
             </form>       
         </div>   
 </body>
