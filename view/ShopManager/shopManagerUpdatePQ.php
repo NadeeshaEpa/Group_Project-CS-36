@@ -76,22 +76,21 @@ if(!isset($_SESSION['User_id'])){
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-			<!-- <a href="#" class="nav-link">Categories</a> -->
-			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
-			<a href="#" class="profile">
-				<img src="../../public/images/user.jpg">
-			</a>
+			<li class="profile">
+			    <?php if($_SESSION['img-status'] == 0){?>
+					<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
+				<?php }else{?>
+					<img src='../../public/images/ShopManager/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
+				<?php } ?>								
+			</li>
+			<li class="user_info">
+				<h6><?php if(isset($_SESSION['Firstname']) && isset($_SESSION['Lastname'])){
+					     echo $_SESSION['Firstname'] ," " ,$_SESSION['Lastname'] ;
+					}?></h6>
+				<h5><?php if(isset($_SESSION['Type'])){
+					     echo $_SESSION['Type'];
+					}?></h5>
+			</li>
 			
 		</nav>
 		<!-- NAVBAR -->
@@ -120,10 +119,44 @@ if(!isset($_SESSION['User_id'])){
 				    <div class="showBrandQData">
 						<div class="showBrandQDataHeader">
 							<div class="showBrandQDataHeaderErrormsg">
-								<h4><?php if(isset($_SESSION['BrandQError'])){
-									echo "Data not found";
-									unset($_SESSION['BrandQError']);
-								} ?></h4>
+								<h4><?php 
+									if(isset($_SESSION['BrandQError'])){
+										echo $_SESSION['BrandQError'];
+										unset($_SESSION['BrandQError']);
+									} 
+									
+									if(isset($_SESSION['Q_Updated_error'])){
+										echo $_SESSION['Q_Updated_error'];
+										unset($_SESSION['Q_Updated_error']);
+									} 
+									
+									if(isset($_SESSION['P_Updated_error'])){
+										echo $_SESSION['P_Updated_error'];
+										unset($_SESSION['P_Updated_error']);
+									} 
+									
+								    
+								    if(isset($_SESSION['delete_error'])){
+										echo $_SESSION['delete_error'];
+										unset($_SESSION['delete_error']);
+									} 
+								?></h4>
+								<h5><?php
+								     if(isset($_SESSION['Brand_Quentity_updated'])){
+										echo $_SESSION['Brand_Quentity_updated'];
+										unset($_SESSION['Brand_Quentity_updated']);
+									} 
+									if(isset($_SESSION['Brand_price_updated'])){
+										echo $_SESSION['Brand_price_updated'];
+										unset($_SESSION['Brand_price_updated']);
+									} 
+									if(isset($_SESSION['Brand_delete'])){
+										echo $_SESSION['Brand_delete'];
+										unset($_SESSION['Brand_delete']);
+									} 
+								
+								 ?></h5>
+								
 							</div>
 							<div class="showBrandQDataHeaderTitle">
 								<h4>All brands</h4>

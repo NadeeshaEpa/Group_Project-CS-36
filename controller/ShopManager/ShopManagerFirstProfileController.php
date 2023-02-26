@@ -9,6 +9,7 @@ $result=$user->getShopManagerDetails($connection);
 
 if($result==true){
     $_SESSION['ShopManager_details']=$result;
+    
     header("Location: ../../view/ShopManager/ShopManagerProfile.php");
     $connection->close();
     exit();

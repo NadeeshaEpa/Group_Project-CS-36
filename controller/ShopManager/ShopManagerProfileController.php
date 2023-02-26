@@ -102,3 +102,62 @@ if(isset($_POST['deleteaccount'])){
         }
     }
 }
+
+
+
+if(isset($_POST['uploadimg'])){
+    $file=$_FILES['image'];
+
+    $fileName=$_FILES['image']['name'];
+    $fileTmpName=$_FILES['image']['tmp_name'];
+    $fileSize=$_FILES['image']['size'];
+    $fileError=$_FILES['image']['error'];
+    $fileType=$_FILES['image']['type'];
+
+    $fileExt=explode('.',$fileName);
+    $fileActualExt=strtolower(end($fileExt));
+
+    $allowed=array('jpg','jpeg','png');
+    if(in_array($fileActualExt,$allowed)){
+        if($fileError === 0){
+            if($fileSize < 10000000){
+                $fileNameNew=uniqid('',true).".".$fileActualExt;
+                $fileDestination='../../public/images/ShopManager/profile_img/'.$fileNameNew;
+                move_uploaded_file($fileTmpName,$fileDestination);
+                $acc=new shopManager();
+                $result=$acc->updateImage($connection,$_SESSION['User_id'],$fileNameNew);
+                if($result){
+                    $_SESSION['updateimg']="success";
+                    header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
+                }else{
+                    $_SESSION['updateimg']="failed";
+                    header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
+                }
+            }else{
+                header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
+                $_SESSION['upload_error_1']="Your file is too big";
+                
+            }
+
+        }else{
+            header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
+            $_SESSION['upload_error_2']="There was an error uploading your file";
+            
+        }        
+    }else{
+        header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
+        $_SESSION['upload_error_3']="You cannot upload files of this type";
+        
+    }
+}
+if(isset($_POST['removeimg'])){
+    $acc=new shopManager();
+    $result=$acc->removeImage($connection,$_SESSION['User_id']);
+    if($result){
+        $_SESSION['removeimg']="success";
+        header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
+    }else{
+        $_SESSION['removeimg']="failed";
+        header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
+    }
+}
