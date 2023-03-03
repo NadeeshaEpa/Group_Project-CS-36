@@ -76,7 +76,7 @@
                     }
                 ?>
             </div>
-            <div class="data">
+            <div class="viewdata">
                     <?php
                         echo  "<h2>"."My profile"."</h2>";
                         if(isset($_SESSION['viewacc'])){
@@ -98,66 +98,34 @@
                     <?php }else{?>
                         <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
                     <?php } ?>
-                    <div class="b3">
-                        <form action="../../controller/customer/account_controller.php" method="POST" enctype="multipart/form-data">
-                            <input type="file" name="image" id="image" class="image">
-                            <button class="b4" name="removeimg">Remove</button>
-                            <button name="uploadimg" class="b2">Upload</button>
-                        </form>   
-                    </div>     
-                </div>      
-                <form action="../../controller/customer/account_controller.php" method="POST">   
-                        <div class="details">  
-                            <div class="down">
-                                <div class="down1">
-                                    <label>First name:</label><br>  
-                                    <input type="text" name="fname" value=<?php echo $result[0]['First_Name']; ?>> <br>
-                                </div>
-                                <div class="down1">
-                                    <label>Last name:</label><br>
-                                    <input type="text" name="lname" value=<?php echo $result[0]['Last_Name']; ?>> <br>
-                                </div>    
-                            </div> 
-                            <div class="down">
-                                <div class="down1">   
-                                    <label>Email:</label><br>
-                                    <input type="text" name="email" value=<?php echo $result[0]['Email']; ?>> <br>
-                                </div>
-                                <div class="down1">
-                                    <label>Contact No:</label><br>
-                                    <input type="text" name="contactno" value=<?php echo $result[0]['Contact_No']; ?>> <br>
-                                </div>    
-                            </div> 
-                            <div class="down">
-                                <div class="down1"> 
-                                    <label>Username:</label><br>
-                                    <input type="text" name="username" value=<?php echo $result[0]['Username']; ?>> <br>
-                                </div>
-                                <div class="down1">
-                                    <label>Update Password:</label><br>
-                                    <form action='customer_changepassword.php' method="POST">
-                                       <button type="submit" name="changepassword" class="cp">Change password</button>
-                                    </form>   
-                                </div>    
-                            </div> 
-                            <div class="down"> 
-                                <div class="down2">     
-                                        <label>Address:</label><br> 
-                                        <input type="text" name="street" value="<?php echo $result[0]['Street']; ?>"> <br>  
-                                </div> 
-                                <div class="down2">   
-                                        <label></label><br> 
-                                        <input type="text" name="city" value=<?php echo $result[0]['City']; ?>> <br>  
-                                </div>  
-                                <div class="down2"> 
-                                        <label></label><br>      
-                                        <input type="text" name="postalcode" value=<?php echo $result[0]['Postalcode']; ?>> <br>  
-                                </div>
-                            </div>
-                            <button type="submit" class="b6" name="updateaccount">Update</button>   
-                            
-                    </div>     
-            
+                </div>        
+                    <table class="view-profile">
+                        <tr>
+                            <td><b>First Name:</b></td>
+                            <td><?php echo $result[0]['First_Name']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><b>Last Name:</b></td>
+                            <td><?php echo $result[0]['Last_Name']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><b>Username:</b></td>
+                            <td><?php echo $result[0]['Username']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><b>Email:</b></td>
+                            <td><?php echo $result[0]['Email']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><b>Phone:</b></td>
+                            <td><?php echo $result[0]['Contact_No']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><b>Address:</b></td>
+                            <td><?php echo $result[0]['Street'].",".$result[0]['City'].",".$result[0]['Postalcode']; ?></td>
+                        </tr>
+                    </table>  
+                    <a href="customer_update_profile.php"><button type="submit" class="b6" name="updateaccount">Update</button></a> 
                     <button onclick="document.getElementById('id01').style.display='block'" class="b5">Delete Account</button>
                     <div id="id01" class="modal">
                         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
@@ -172,8 +140,7 @@
                                         </div>
                                     </div>
                             </form>
-                    </div>
-                </form>   
+                    </div>        
             </div>
         </div>
     </div>

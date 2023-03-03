@@ -30,9 +30,16 @@
               </tr>
               <tr>
                 <td><b>Delivery fee:</b></td>
-                <td id="deliveryfee" value="<?php echo $dcheckout[0]['delivery_fee'] ?>">Rs.<?php echo $dcheckout[0]['delivery_fee'] ?></td>
-              </tr>
-              <tr>
+                <td ><?php 
+                  if(isset($_SESSION['fago_distance_limit'])){
+                    if($_SESSION['fago_distance_limit']=="high"){
+                      echo "You will recieve your order via a courier service.";
+                      // $_SESSION['fago_distance_limit']="low";
+                    }else{
+                      echo "Rs.".$delivery_fee;
+                    }
+                  }
+                ?></td>
               </tr>
               <tr>
                 <td><b>Total:</b></td>

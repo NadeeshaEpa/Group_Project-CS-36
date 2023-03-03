@@ -35,7 +35,7 @@
     font-family: Arial, sans-serif;
     font-size: 18px;
     background-color: white;
-    margin-top: 1.5%;
+    margin-top: 3%;
     padding-top: 20px;
     padding-bottom: 10px;
     border-radius: 20px;
@@ -78,10 +78,12 @@
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
+    color: black;
   }
   
   th {
     background-color: #dddddd;
+    color: black;
   }
   
   tr:nth-child(even) {
@@ -93,7 +95,11 @@
     background-color:green;
     border-radius: 10px;
     border: none;
+    margin-top: 2%;
     font-size: 18px;
+    margin-bottom: 1%;
+    margin-right: 2%;
+    margin-left: 4%;
   }
   .pay a{
     text-decoration: none;

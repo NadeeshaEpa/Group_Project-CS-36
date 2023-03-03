@@ -111,7 +111,13 @@ if(isset($_SESSION['unlocations'])){
                 </tr>
                     <?php 
                     $i=0;
-                    foreach($shops as $shop){?>
+                    $j=0;
+                    foreach($shops as $shop){
+                    $j++;
+                    if($j>5){
+                        break;
+                    }
+                    ?>
                     <tr>
                         <?php// if($shop['distance']<10){?>
                             <td><?php echo $shop['Shop_name']?></td>
@@ -145,7 +151,10 @@ if(isset($_SESSION['unlocations'])){
                             <td><button name="order" id="popup" onclick="popup()">Order</button></td>
                         <?php } ?>
                     </tr>
-            </table>    
+            </table>
+            <div class="seemore">
+                <button onclick="popup()">See more</button> 
+            </div>    
         </div>
     </div>
     <div id="myModal" class="modal">

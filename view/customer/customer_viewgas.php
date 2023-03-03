@@ -62,6 +62,9 @@
         <div class="left" id="map">
         </div>
         <div class="right">
+            <?php if($shop_count==0){
+                header("location:noshops.php");
+            } ?>
             <h1><?php echo $_SESSION['gas_type']?> Gas</h1>
             <table>
                 <tr>
@@ -78,7 +81,6 @@
                     $i=0;
                     foreach($shops as $shop){?>
                     <tr>
-                        <?php if($shop['distance']<10){?>
                             <td><?php echo $shop['Shop_name']?></td>
                             <td><?php echo $shop['distance']?>km</td>
                             <?php 
@@ -120,7 +122,6 @@
                                 <td><a href="../../controller/customer/gas_controller.php?newgasid=<?php echo $gasagent?>">Buy</a></td>
                             <?php } ?>
                         <?php } ?>
-                <?php } ?>
                 </tr>
             </table>
             <?php 

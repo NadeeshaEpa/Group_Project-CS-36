@@ -21,9 +21,7 @@ containers.forEach((container) => {
         }
       }
       display.textContent = quantity;
-      console.log(cartid);
       console.log(quantity);
-      console.log(agentid);
       updatecart(cartid,agentid,quantity);
     }
   });
@@ -32,19 +30,15 @@ containers.forEach((container) => {
 const deliveryCheckbox = document.getElementById('delivery');
 const nodeliveryCheckbox = document.getElementById('nodelivery');
 
+const deliveryLabel= document.getElementById('delivery-label');
+
 const form = document.getElementById('delivery-form');
 form.addEventListener('submit', function(event) {
   if (!deliveryCheckbox.checked && !nodeliveryCheckbox.checked) {
     event.preventDefault();
-    alert('Please select at least one delivery option.');
+    alert('Please select a delivery option.');
   }
 });
-
-// const deliveryFeeElement = document.getElementById("deliveryfee");
-// const totalElement = document.getElementById("total");
-
-// const deliveryFee = parseFloat(deliveryFeeElement.getAttribute("value"));
-// const total = parseFloat(totalElement.getAttribute("value"));
 
 deliveryCheckbox.addEventListener('change', () => {
     if (deliveryCheckbox.checked) {
@@ -80,9 +74,8 @@ function deleteitem(cartid,agentid){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            //auto refresh the page after 1 second to update the cart quantity and total price 
-            setTimeout(function(){ location.reload(); }, 500);
-
+              //auto refresh the page after 1 second to update the cart quantity and total price 
+              setTimeout(function(){ location.reload(); }, 500);
         }
     };
     xhttp.open("POST","http://localhost:8001/controller/customer/addtocart_controller.php", true);

@@ -48,6 +48,23 @@
       if(isset($_SESSION['delivery_fee'])){
         $delivery_fee=$_SESSION['delivery_fee'];
       }
+      if(isset($_SESSION['quantity_check'])){
+        if($_SESSION['quantity_check']=="failed"){
+          $error=$_SESSION['error_item'];
+          $errorType = $error[0]['type'];
+          $errorWeight = $error[0]['weight'];
+          $errorQuantity = $error[0]['quantity'];
+
+          $msg = "Quantity is not enough for the item - $errorType $errorWeight <br>" .
+                "Available quantity is $errorQuantity.";
+          ?>
+          <div class="qmsg">
+            <p><?php echo $msg ?></p>
+          </div>
+          <?php
+          unset($_SESSION['quantity_check']);
+        }
+      }
     ?>
     
     <h1><?php echo $checkout[0]['shop_name']?></h1>
@@ -64,7 +81,14 @@
                   <td class="itemname"><?php echo $i.". ".$item['weight']." model"?></td>
                 <?php 
                 }else{?>
-                  <td class="itemname"><?php echo $i.". ".$item['type']." ".$item['weight']."kg Gas Cylinder"?></td>
+                  <td class="itemname"><?php 
+                    echo $i.". ".$item['type']." ".$item['weight']."kg Gas Cylinder";
+                    if($item['cylinder_type']=="old"){
+                      echo " (Refill Cylinder)";
+                    }else{
+                      echo " (New Cylinder)";
+                    }
+                  ?></td>
                 <?php } ?>       
               </div>
               <div class="price">
@@ -97,25 +121,65 @@
       <input type="hidden" name="agent" id="agent" value="<?php echo $checkout[0]['gasagent_id']?>">
       <div class="delivery">
           <div class="delivery-left"> 
+            <?php $flag1=0; $flag2=0; $flag3=0;?>
+            <?php if(isset($_SESSION['shop_closed'])){
+              if($_SESSION['shop_closed']==true){
+                //create a hidden checkbox
+                $flag3=1;
+                echo "<input type='hidden' name='delivery' id='delivery' value='pickup'>";
+                echo "<p style='color:red'>**Sorry, the shop is closed now. If you want you can reserve the gas cylinder by choosing the pick up option.**</p>";
+              }else{
+              ?>
+                <?php $flag1=1; ?>
+              <?php
+              }
+            }
+            if(isset($_SESSION['cylinder_Count'])){
+              if($_SESSION['cylinder_Count']>20 && $flag3==0){
+                //create a hidden checkbox
+                echo "<input type='hidden' name='delivery' id='delivery' value='pickup'>";
+                echo "<p style='color:red'>**Sorry, we can't deliver that much quantity. If you want you can reserve the gas cylinder by choosing the pick up option.**</p>";
+              }else{
+              ?>
+                <?php $flag2=1; ?>
+              <?php
+              }
+            }
+            ?>          
+            <?php
+              if(isset($_SESSION['distance_limit'])){
+                if($_SESSION['distance_limit']=="high"){
+                  echo "<p style='color:red'>**Sorry, we can't deliver the gas cylinder to the location you previously choosed. Please choose another delivery location or use pick up option.**</p>";
+                  $_SESSION['distance_limit']="low";
+                  unset($_SESSION['distance_limit']);
+                }
+              }
+            ?>
+            <?php
+            if($flag1==1 && $flag2==1){
+              ?>
               <input type="checkbox" name="delivery" id="delivery" value="delivery">
-              <label for="delivery">Get delivered</label><br><br>
-              <label>Drag the marker to your delivery location:</label><br>
-              <p>This map shows your current location that you have given when you registered. 
-                If you want to change your delivery locaion please drag the marker to the your new location.<br>
-                <b>If you don't want to change your delivery location you can leave it as it is.</b>
-              </p>
-              <div id="map" style="height: 400px; width: 100%; border-radius:20px;"></div><br>
-              <div>
-                  <input type="hidden" id="latitude" name="latitude"><br>
-                  <input type="hidden" id="longitude" name="longitude"><br>
-              </div>
-          </div>
-          <div class="delivery-right">
-              <input type="checkbox" name="nodelivery" id="nodelivery" value="nodelivery">
-              <label for="nodelivery">Pick up</label><br>
-              <p>Please notice that if you request for a pickup you have to pickup the cylinder within 48hrs from the shop.<br>
-              <b>If you are not ordering a new cylinder then it's compulsory to bring your old cylinder.<b></p>
-          </div>
+              <label for="delivery" id="delivery-label">Get delivered</label><br><br>
+            <?php
+            }
+            ?>
+            <label>Drag the marker to your delivery location:</label><br>
+            <p>This map shows your current location that you have given when you registered. 
+              If you want to change your delivery locaion please drag the marker to the your new location.<br>
+              <b>If you don't want to change your delivery location you can leave it as it is.</b>
+            </p>
+            <div id="map" style="height: 400px; width: 100%; border-radius:20px;"></div><br>
+            <div>
+                <input type="hidden" id="latitude" name="latitude"><br>
+                <input type="hidden" id="longitude" name="longitude"><br>
+            </div>
+            </div>
+            <div class="delivery-right">
+                <input type="checkbox" name="nodelivery" id="nodelivery" value="nodelivery">
+                <label for="nodelivery">Pick up</label><br>
+                <p>Please notice that if you request for a pickup you have to pickup the cylinder within 48hrs from the shop.<br>
+                <b>If you are not ordering a new cylinder then it's compulsory to bring your old cylinder.<b></p>
+            </div>
       </div>
     <hr>
     <button type="submit" name="dmbutton" class="dmbutton">Checkout</button>
