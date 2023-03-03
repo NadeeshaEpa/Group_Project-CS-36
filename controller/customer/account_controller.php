@@ -28,12 +28,16 @@ if(isset($_POST['updateaccount'])){
         $email=$_POST['email'];
         $contactno=$_POST['contactno'];
         $username=$_POST['username'];
-        $street=$_POST['street'];
-        $city=$_POST['city'];
-        $postalcode=$_POST['postalcode'];
         $latitude=$_POST['latitude'];
         $longitude=$_POST['longitude'];
-    
+        $address=$_POST['address'];
+
+        //devide the address into street,city and postalcode
+        $address=explode(",",$address);
+        $street=$address[0];
+        $city=$address[1];
+        $postalcode=$address[2];
+
         $fname=$connection->real_escape_string($fname);
         $lname=$connection->real_escape_string($lname);
         $email=$connection->real_escape_string($email);

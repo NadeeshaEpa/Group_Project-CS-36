@@ -11,7 +11,9 @@
 	
     <link rel="stylesheet" href="../../public/css/customer/customer_dashboard.css">
     <link rel="stylesheet" href="../../public/css/customer/newdashboard.css">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2eSy5egkITKWg1EMsa1i1WcpPi29dgK0"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBijs3YopDeNYhNj_8QSqo0Gh3-JoMU54&callback=initMap">
+    </script>
     <script>
       function initMap() {
         var latitude= <?php echo $_SESSION['latitude']; ?>;
@@ -24,17 +26,32 @@
         var marker = new google.maps.Marker({
           position: colombo,
           map: map,
+          title: 'Drag me!',
           draggable: true
         });
+
+        geocoder = new google.maps.Geocoder();
         google.maps.event.addListener(marker, 'dragend', function(event) {
           document.getElementById("latitude").value = event.latLng.lat();
           document.getElementById("longitude").value = event.latLng.lng();
+
+          geocoder.geocode({'location': event.latLng}, function(results, status) {
+            if (status === 'OK') {
+            if (results[0]) {
+                document.getElementById('address').value = results[0].formatted_address;
+            } else {
+                window.alert('No results found');
+            }
+            } else {
+            window.alert('Geocoder failed due to: ' + status);
+            }
+          });
         });
       }
     </script>
 	<title>FaGo</title>
 </head>
-<body onload="initMap()">
+<body>
 	<!-- SIDEBAR -->
     <div class="dcontainer">
         <section id="sidebar">
@@ -157,11 +174,16 @@
                             </div> 
                             <label>Drag the marker to your location:</label><br>
                             <div id="map" style="height: 400px; width: 98%; border-radius:20px;"></div><br>
-                            <div>
-                                <input type="hidden" id="latitude" name="latitude"><br>
-                                <input type="hidden" id="longitude" name="longitude"><br>
-                            </div> 
-                            <div class="down"> 
+                            <label id="address-label">Address:</label><br>
+                            <div class="down3">
+                                <div>
+                                    <input type="hidden" id="latitude" name="latitude">
+                                    <input type="hidden" id="longitude" name="longitude">
+                                    <input type="text" id="address" name="address" placeholder="Address"><br>
+                                    <!-- break the address value into 3 parts -->
+                                </div> 
+                            </div>
+                            <!-- <div class="down"> 
                                 <div class="down2">     
                                         <label>Address:</label><br> 
                                         <input type="text" name="street" value="<?php echo $result[0]['Street']; ?>"> <br>  
@@ -174,7 +196,7 @@
                                         <label></label><br>      
                                         <input type="text" name="postalcode" value=<?php echo $result[0]['Postalcode']; ?>> <br>  
                                 </div>
-                            </div>
+                            </div> -->
                             <button type="submit" class="b6" name="updateaccount" id="update-btn">Update</button>   
                             
                     </div>     
