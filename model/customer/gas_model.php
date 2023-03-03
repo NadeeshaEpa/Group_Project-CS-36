@@ -13,24 +13,23 @@ class gas_model{
             //get all the shop names and the latitude and longitude
             while($row=$result->fetch_object()){
                 array_push($shopnames,['Shop_name'=>$row->Shop_name,'latitude'=>$row->latitude,'longitude'=>$row->longitude]);
-            }
-
-            //change the array structure as the 0th index should be the shop name and the 1st index should be the latitude and the 2nd index should be the longitude
-            //this is the format that the google map api accepts
-            foreach($shopnames as $shop){
-                array_push($locations,[$shop['Shop_name'],$shop['latitude'],$shop['longitude']]);
-            }
-            //store the locations array into the session 
-            $_SESSION['locations']=$locations;
+            }           
 
             //get the distance between the user and the shop
             foreach($shopnames as $shop){
                 //call the distance function and get the value
                 $distance=$this->distance($userid,$shop['latitude'],$shop['longitude'],$connection);
-
+                
                 //store the shop name and the distance into the shop_distance array
-                array_push($shop_distance,['Shop_name'=>$shop['Shop_name'],'distance'=>$distance]);
+                if($distance<=10){
+                  array_push($shop_distance,['Shop_name'=>$shop['Shop_name'],'distance'=>$distance]);
+                  //change the array structure as the 0th index should be the shop name and the 1st index should be the latitude and the 2nd index should be the longitude
+                 //this is the format that the google map api accepts
+                  array_push($locations,[$shop['Shop_name'],$shop['latitude'],$shop['longitude']]);
+                }
             }
+            //store the locations array into the session 
+            $_SESSION['locations']=$locations;
             
             //sort the array according to the distance in ascending order get the lowest distance into the 0 th index
             for($i=0;$i<count($shop_distance);$i++){
@@ -245,20 +244,20 @@ class gas_model{
         $d=round($d,1);
         return $d;    
     }
-    public function shop_count($connection,$type,$userid){
+    public function shop_count($userid,$connection,$type){
         $count=0;
-        $sql="SELECT g.Shop_name FROM `gasagent`g inner join `gas_company` c on g.Gas_Type=c.company_id WHERE c.company_name='$type'";
+        $sql="SELECT g.Shop_name,g.latitude,g.longitude FROM `gasagent`g inner join `gas_company` c on g.Gas_Type=c.company_id WHERE c.company_name='$type'";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return 0;
         }else{
             while($row=$result->fetch_object()){
-                $count++;
+                $distance=$this->distance($userid,$row->latitude,$row->longitude,$connection);
+                if($distance<10){
+                    $count++;
+                }
             }
             return $count;
         }
-    }
-    public function get_items($connection,$limit,$offset){
-
     }
 }

@@ -19,7 +19,7 @@ if(isset($_GET['gas_type'])||isset($_GET['page'])){
     $offset = ($page - 1) * $limit;
     
     //get the total number of records
-    $total_records=$gasmodel->shop_count($connection,$type,$userid);
+    $total_records=$gasmodel->shop_count($userid,$connection,$type);
     $_SESSION['shop_count']=$total_records;
 
     //calculate the total number of pages
@@ -93,11 +93,29 @@ if(isset($_GET['newgasid'])){
         }
     }
 }
-if(isset($_POST['ungas_button'])){
+if(isset($_POST['ungas_button'])||isset($_GET['unpage'])){
     $latitude=$_POST['latitude'];
     $longitude=$_POST['longitude'];
     $type=$_POST['ungas_type'];
     $_SESSION['ungastype']=$type;
+
+    //create new gas model
+    $gasmodel=new gas_model();
+
+    //pagination
+    //print 5 records per page
+    // $limit = 1;
+    // $page = isset($_GET['unpage']) ? $_GET['unpage'] : 1;
+    // $_SESSION['page']=$page;
+    // $offset = ($page - 1) * $limit;
+    
+    // //get the total number of records
+    // $total_records=$gasmodel->shop_count($connection,$type);
+    // $_SESSION['shop_count']=$total_records;
+
+    // //calculate the total number of pages
+    // $total_pages = ceil($total_records / $limit);
+    // $_SESSION['total_pages']=$total_pages;
 
     if($latitude==NULL){
         $latitude=6.9271;
@@ -105,8 +123,7 @@ if(isset($_POST['ungas_button'])){
     if($longitude==NULL){
         $longitude=79.8612;
     }
-    //create new gas model
-    $gasmodel=new gas_model();
+
     $result2=$gasmodel->ungetshopnames($connection,$type,$latitude,$longitude);
         $_SESSION['unshopnames']=$result2;
         $result1=$gasmodel->getweight($connection,$type);

@@ -16,6 +16,10 @@ if(isset($_POST['submitcomplain'])){
     $complain=$_POST['complain'];
     $userid=$_SESSION['User_id'];
 
+    $complain=$connection->real_escape_string($complain);
+    $order_id=$connection->real_escape_string($order_id);
+    $customer_id=$connection->real_escape_string($customer_id);
+
     $complainmodel=new complain_model;
     //pagination for view orders
     $cc=new complain_controller;

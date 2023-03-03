@@ -23,13 +23,15 @@ class order_model{
             while($row=$result->fetch_object()){
                 array_push($orders,['Order_id'=>$row->Order_id,'Delivery_Method'=>$row->Delivery_Method,'Amount'=>$row->Amount,'Delivery_Status'=>$row->Delivery_Status,'First_Name'=>$row->First_Name,'Last_Name'=>$row->Last_Name,'Time'=>$row->Time]);
             }
-            //sort the array where the latest order is at the top
-            $orders=array_reverse($orders);
+            //sort the array such as the latest order is at the top
+            usort($orders,function($a,$b){
+                return $a['Order_id']<$b['Order_id'];
+            });
             return $orders;
         }
     }
     public function view_fagoOrders($connection,$userid,$limit,$offset){
-        $sql="SELECT o.Order_id,o.Delivery_Method,o.Amount,o.Delivery_Status,o.Time,o.Order_date from `order` o INNER JOIN `shop_placeorder` p ON o.Order_id=p.Order_id WHERE p.Customer_Id='$userid' LIMIT $limit OFFSET $offset";
+        $sql="SELECT distinct o.Order_id,o.Delivery_Method,o.Amount,o.Delivery_Status,o.Time,o.Order_date from `order` o INNER JOIN `shop_placeorder` p ON o.Order_id=p.Order_id WHERE p.Customer_Id='$userid' LIMIT $limit OFFSET $offset";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;
@@ -38,8 +40,10 @@ class order_model{
             while($row=$result->fetch_object()){
                 array_push($orders,['Order_id'=>$row->Order_id,'Delivery_Method'=>$row->Delivery_Method,'Amount'=>$row->Amount,'Delivery_Status'=>$row->Delivery_Status,'Time'=>$row->Time]);
             }
-            //sort the array where the latest order is at the top
-            $orders=array_reverse($orders);
+            //sort the array where the latest order id is at the top
+            usort($orders,function($a,$b){
+                return $a['Order_id']<$b['Order_id'];
+            });
             return $orders;
         }
     }

@@ -40,7 +40,7 @@ class addtocart_model{
         if($result===false){
             return false;
         }else{
-            $sql="SELECT * FROM cart WHERE User_id='$User_id'";
+            $sql="SELECT distinct gasagent_id FROM cart WHERE User_id='$User_id'";
             $result=$connection->query($sql);
             if($result->num_rows > 0){
                 $_SESSION['cartcount']=$result->num_rows;
@@ -187,7 +187,7 @@ class addtocart_model{
         if($result===false){
             return false;
         }else{
-            $sql="SELECT * FROM cart WHERE User_id='$User_id'";
+            $sql="SELECT distinct gasagent_id FROM cart WHERE User_id='$User_id'";
             $result=$connection->query($sql);
             if($result->num_rows > 0){
                 $_SESSION['cartcount']=$result->num_rows;
@@ -204,18 +204,31 @@ class addtocart_model{
         $_SESSION['stock_manager']=$stock_manager_id;
 
         if($gasagent!=$stock_manager_id){
-            $sql="SELECT c.cart_id,c.type,c.weight,c.quantity,c.price,g.Shop_name from cart c inner join gasagent g on c.gasagent_id=g.GasAgent_Id where c.User_id='$User_id' and c.gasagent_id='$gasagent'";
+            $sql="SELECT c.cart_id,c.cylinder_type,c.type,c.weight,c.quantity,c.price,g.Shop_name from cart c inner join gasagent g on c.gasagent_id=g.GasAgent_Id where c.User_id='$User_id' and c.gasagent_id='$gasagent'";
             $result=$connection->query($sql);
             if($result===false){
                 return false;
             }else{
                 $cart=[];
                 while($row=$result->fetch_assoc()){
-                    array_push($cart,['cart_id'=>$row['cart_id'],'type'=>$row['type'],'weight'=>$row['weight'],'quantity'=>$row['quantity'],'price'=>$row['price'],'shop_name'=>$row['Shop_name'],'gasagent_id'=>$gasagent]);
+                    array_push($cart,['cart_id'=>$row['cart_id'],'type'=>$row['type'],'weight'=>$row['weight'],'quantity'=>$row['quantity'],'price'=>$row['price'],'shop_name'=>$row['Shop_name'],'gasagent_id'=>$gasagent,'cylinder_type'=>$row['cylinder_type']]);
                 }
                 //call gas delivery fee function
                 $del=$this->gas_delivery_fee($connection,$cart);
                 $_SESSION['delivery_fee']=$del;
+                //check whether the shop is closed or not 
+                $shop=$this->shop_closed($connection,$gasagent);
+                if($shop==true){
+                    $_SESSION['shop_closed']=true;
+                }else{
+                    $_SESSION['shop_closed']=false;
+                }
+                //count the number of cylinders in the cart
+                $cylinder_Count=0;
+                foreach($cart as $c){
+                    $cylinder_Count=$cylinder_Count+$c['quantity'];
+                }
+                $_SESSION['cylinder_Count']=$cylinder_Count;
                 return $cart;
             }
         }else{
@@ -231,6 +244,14 @@ class addtocart_model{
                 //call gas delivery fee function
                 $del=$this->fagodelivery_fee($connection,$cart);
                 $_SESSION['delivery_fee']=$del;
+                //check whether the shop is closed or not
+                $shop=$this->shop_closed($connection,$gasagent);
+                if($shop==true){
+                    $_SESSION['shop_closed']=true;
+                }else{
+                    $_SESSION['shop_closed']=false;
+                }
+                $_SESSION['cylinder_Count']=0;
                 return $cart;
             }
         }
@@ -245,7 +266,7 @@ class addtocart_model{
         }
     }
     public function getcartcount($connection,$User_id){
-        $sql="SELECT * FROM cart WHERE User_id='$User_id'";
+        $sql="SELECT distinct gasagent_id FROM cart WHERE User_id='$User_id'";
             $result=$connection->query($sql);
             if($result->num_rows > 0){
                 $_SESSION['cartcount']=$result->num_rows;
@@ -254,7 +275,6 @@ class addtocart_model{
             }
             return true;
     }
-
     public function updatecartquantity($connection,$cartid,$quantity,$gasagent){
         $sql="UPDATE cart SET quantity='$quantity' WHERE cart_id='$cartid'";
         $result=$connection->query($sql);
@@ -282,7 +302,6 @@ class addtocart_model{
             return true;
         }
     }
-
     public function gas_delivery_fee($connection,$cart){
         $count=0;
         $delivery_fee=0;
@@ -298,17 +317,24 @@ class addtocart_model{
             $clatitude=$_SESSION['cdlatitude'];
             $clongitude=$_SESSION['cdlongitude'];
             $distance=$this->distance($clatitude,$clongitude,$latitude,$longitude,$connection);
+            if($distance>10){
+                $_SESSION['distance_limit']="high";
+            }else{
+                $_SESSION['distance_limit']="low";
+            }
         }
         foreach($cart as $c){
             $count=$count+$c['quantity'];
         }
-        // print_r($count);
-        // die();
         $flag=0;
+        $checknew=0;
         foreach($cart as $c){
             $weight=$c['weight'];
             if($weight>12.5){
                 $flag=1;
+            }
+            if($c['cylinder_type']=='new'){
+                $checknew=1;
             }
         }
         if($flag==1 || $count>=4){
@@ -343,9 +369,18 @@ class addtocart_model{
             }
         }
         if($distance>1){
-            $delivery_fee=$delivery_fee*$distance;
+            if($checknew==1 && $count==1){
+                $delivery_fee=$delivery_fee*$distance;
+            }else{
+                $delivery_fee=$delivery_fee*$distance*2;
+            }
+           
         }else{
-            $delivery_fee=$delivery_fee;
+            if($checknew==1 && $count==1){
+                $delivery_fee=$delivery_fee;
+            }else{
+                $delivery_fee=$delivery_fee*2;
+            }
         }
         return $delivery_fee;
     }
@@ -369,6 +404,14 @@ class addtocart_model{
             $clatitude=$_SESSION['cdlatitude'];
             $clongitude=$_SESSION['cdlongitude'];
             $distance=$this->distance($clatitude,$clongitude,$latitude,$longitude,$connection);
+
+            if($distance>10){
+                $_SESSION['fago_distance_limit']="high";
+                $delivery_fee=0;
+                return $delivery_fee;
+            }else{
+                $_SESSION['fago_distance_limit']="low";
+            }
         }
         if($count>5){
             $sql="SELECT price FROM delivery_fee WHERE vehicle='Lorry';";
@@ -426,6 +469,30 @@ class addtocart_model{
         //round the value into 2 decimal places
         $d=round($d,1);
         return $d;    
+    }
+
+    public function shop_closed($connection,$gasagent){
+        $stock_manager=$this->stock_manager($connection,$gasagent);
+        $stock_manager_id=$stock_manager[0]['id'];
+        if($gasagent!=$stock_manager_id){
+            $sql="select closed_time from gasagent where GasAgent_Id='$gasagent'";
+        }else{
+            $sql="select closed_time from stock_manager where id='$stock_manager_id'";
+        }
+        $result=$connection->query($sql);
+        if($result===false){
+            return false;
+        }else{
+            $row=$result->fetch_assoc();
+            $closed_time=$row['closed_time'];
+            date_default_timezone_set('Asia/Colombo');
+            $current_time=date("H:i:s");
+            if($current_time>$closed_time){
+                return true;
+            }else{
+                return false;
+            }
+        }
     }
 
 }

@@ -140,10 +140,15 @@ if(isset($_POST['dmbutton'])){
            $_SESSION['dcheckout']=[];
            header("Location: ../../view/customer/total.php");
        }else{
-           $buy_now_price=[];
-           array_push($buy_now_price,['price'=>$price,'delivery_fee'=>$result,'shop_name'=>"Fago Shop"]);
-           $_SESSION['dnowcheckout']=$buy_now_price;
-           header("Location: ../../view/customer/total_now.php");
+            if($_SESSION['distance_limit']=="high"){
+               header("Location: ../../view/customer/total_now.php");
+            }else{
+               $buy_now_price=[];
+               array_push($buy_now_price,['price'=>$price,'delivery_fee'=>$result,'shop_name'=>"Fago Shop"]);
+               $_SESSION['dnowcheckout']=$buy_now_price;
+               header("Location: ../../view/customer/total_now.php");
+            }
+            
        }
 
    }else if(isset($_POST['nodelivery'])){

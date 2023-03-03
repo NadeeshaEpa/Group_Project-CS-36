@@ -31,6 +31,8 @@ if(isset($_POST['updateaccount'])){
         $street=$_POST['street'];
         $city=$_POST['city'];
         $postalcode=$_POST['postalcode'];
+        $latitude=$_POST['latitude'];
+        $longitude=$_POST['longitude'];
     
         $fname=$connection->real_escape_string($fname);
         $lname=$connection->real_escape_string($lname);
@@ -40,6 +42,13 @@ if(isset($_POST['updateaccount'])){
         $street=$connection->real_escape_string($street);
         $city=$connection->real_escape_string($city);
         $postalcode=$connection->real_escape_string($postalcode);
+        $latitude=$connection->real_escape_string($latitude);
+        $longitude=$connection->real_escape_string($longitude);
+
+        if($latitude=="" || $longitude==""){
+            $latitude=$_SESSION['latitude'];
+            $longitude=$_SESSION['longitude'];
+        }
 
         $acc=new account_model();
         $inputs1=array($_SESSION['User_id'],$fname,$lname,$city,$street,$postalcode,$username,$email);
@@ -48,21 +57,17 @@ if(isset($_POST['updateaccount'])){
         array_push($result3,['Username'=>$inputs1[6],'Email'=>$inputs1['7'],'First_Name'=>$inputs1['1'],'Last_Name'=>$inputs1['2'],'City'=>$inputs1['3'],'Street'=>$inputs1['4'],'Postalcode'=>$inputs1['5'],'Contact_No'=>$inputs2['1']]);
 
         $result1=$acc->updateUsers($connection,$inputs1);
-        if($result1){
-            $result2=$acc->updateContacts($connection,$inputs2);
-            if($result2){
-                $_SESSION['updateuser']="success";
-                $_SESSION['viewacc_result']=$result3;
-                header("Location: ../../view/customer/customer_dashboard.php");
-            }else{
-                $_SESSION['updateuser']="failed";
-                echo "Failed";
-            }
+        $result2=$acc->updateContacts($connection,$contactno,$_SESSION['User_id']);
+        $result4=$acc->updateLocations($connection,$latitude,$longitude,$_SESSION['User_id']);
+
+        if($result1 && $result2 && $result4){
+            $_SESSION['updateuser']="success";
+            $_SESSION['viewacc_result']=$result3;
+            header("Location: ../../view/customer/customer_dashboard.php");
         }else{
             $_SESSION['updateuser']="failed";
             echo "Failed";
         }
-
     }
 }
 if(isset($_POST['changepassword'])){

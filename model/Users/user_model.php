@@ -85,4 +85,36 @@ class user_model{
         }
         return $gastype;
     }
+    public function limit_order($connection,$User_id){
+        $sql="select limit_status,time_period from admin";
+        $result=$connection->query($sql);
+        $row=$result->fetch_assoc();
+        $limit_status=$row['limit_status'];
+        $time_period=$row['time_period'];
+
+        //get the lsat order date of the user and check whether the time period is exceeded or not
+        if($limit_status==0){
+            return true;
+        }else{
+            $sql="select o.order_date from `order` o inner join `placeorder` p on o.Order_id=p.Order_Id where p.Customer_Id='$User_id' order by o.order_date desc limit 1";
+            $result=$connection->query($sql);
+            if($result->num_rows > 0){
+                $row=$result->fetch_assoc();
+                $last_order_date=$row['order_date'];
+                $last_order_date=date_create($last_order_date);
+                $current_date=date_create(date("Y-m-d"));
+                $diff=date_diff($last_order_date,$current_date);
+                $diff=$diff->format("%a");
+                if($diff > $time_period){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                return true;
+            }
+        }
+        
+
+    }
 }

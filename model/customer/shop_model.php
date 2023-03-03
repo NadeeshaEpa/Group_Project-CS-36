@@ -101,6 +101,13 @@ class shop_model{
            $lon1=$row['longitude'];
         }
         $distance=$this->distance($lat2,$lon2,$lat1,$lon1,$connection);
+        if($distance>10){
+            $_SESSION['fago_distance_limit']="high";
+            $delivery_fee=0;
+            return $delivery_fee;
+        }else{
+            $_SESSION['fago_distance_limit']="low";
+        }
 
         $sql3="select price from delivery_fee where vehicle='Bike'";
         $result3=$connection->query($sql3);
