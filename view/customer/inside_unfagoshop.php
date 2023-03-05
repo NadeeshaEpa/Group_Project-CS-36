@@ -45,7 +45,7 @@
                 <input type="hidden" name="Quantity" value="<?php echo $gas['Quantity']; ?>">
                 <input type="hidden" name="Description" value="<?php echo $gas['Description']; ?>">
                 <input type="hidden" name="Category" value="<?php echo $gas['Category']; ?>">
-                <img src="../../public/images/customer/<?php echo $gas['product_type']; ?>.jpg" alt="">
+                <img src="../../public/images/product/<?php echo $gas['image']?>">
                 <?php
                 echo "<h3>".$gas['Name']."</h3>";
                 echo "<div class='price'>";

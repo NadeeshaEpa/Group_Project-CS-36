@@ -33,8 +33,11 @@
             }
             unset($_SESSION['addtocart']);
         }
+        if(isset($_SESSION['shopimage'])){
+            $shopimage=$_SESSION['shopimage'];
+        }
     ?>
-        <div class="upcontainer">
+        <div class="upcontainer" style="background-image:url('../../public/images/gascylinder/<?php echo $shopimage?>');">
             <div class="back">
                 <a href="customer_viewgas.php">
                     <img src="../../public/images/customer/back.png" alt="" class="backimg">
@@ -55,8 +58,8 @@
                     </form>
                 </div>    
             </div>
-            <hr>
         </div>
+       
         <?php
             foreach($gasdetails as $gasdetail){?>
             <div class="ava">

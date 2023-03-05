@@ -36,7 +36,8 @@
             </tr>
             <?php } ?>
         </table>
-        <h3>Total price: <?php echo $order[0]['total']?></h3>
+        <h3>Delivery fee:Rs.<?php echo $order[0]['delivery_fee']?></h3>
+        <h3>Total price:Rs.<?php echo $order[0]['total']?></h3>
         <h3>Shop name : <?php echo $order[0]['shop']?></h3>
         <button type="submit" name="pay" class="pay"><a href="../../controller/Users/logout_controller.php">Back to Home</a></button>
         <button type="submit" name="pay" class="pay"><a href="customer_select.php">Continue Shopping</a></button>

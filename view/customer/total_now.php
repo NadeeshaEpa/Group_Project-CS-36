@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php session_start(); 
+require_once '../../payment_config.php';
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -36,7 +38,7 @@
                       echo "You will recieve your order via a courier service.";
                       // $_SESSION['fago_distance_limit']="low";
                     }else{
-                      echo "Rs.".$delivery_fee;
+                      echo "Rs.".$dcheckout[0]['delivery_fee'];
                     }
                   }
                 ?></td>
@@ -49,15 +51,21 @@
               </tr>
           </table>
       </div>    
-      <div class="check">
-        <!-- <form action="../../controller/customer/payment_controller.php" method="Post"> -->
-          <input type="hidden" name="agentid" value="<?php echo $_SESSION['stock_manager_id'] ?>">
-          <button  name="pay" class="checkout-btn" onclick="pay(<?php echo $_SESSION['stock_manager_id'] ?>);">Pay</button>
-        <!-- </form> -->
-      </div>
     </div>
-    <!-- link payment.js file -->
-    <script src="../../public/js/customer/payment.js"></script>
-    <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
+    <form action="../../controller/customer/payment_controller.php" method="post">
+        <input type="hidden" name="amount" value="<?php echo ($total_amount)?>">
+        <input type="hidden" name="agentid" value="<?php echo $_SESSION['stock_manager_id'] ?>">
+        <script
+          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<?php echo $publishableKey?>"
+          data-amount="<?php echo ($total+$delivery_fee)*100?>"
+          data-name="Fago"
+          data-description="Payment for your order"
+          data-image="../../public/images/logo.png"
+          data-currency="lkr"
+          data-email="fagoorders@gmail.com"
+        >
+        </script>
+    </form>
 </body>
 </html>

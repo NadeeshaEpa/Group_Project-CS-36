@@ -23,8 +23,8 @@
          <input type="hidden" name="Category" value="<?php echo $gas[0]['category']; ?>">
          
         <div class="card">
-        <div class="image">   
-                <img src="../../public/images/customer/<?php echo $gas[0]['product_type']; ?>.jpg" alt="">   
+        <div class="image"> 
+            <img src="../../public/images/product/<?php echo $gas[0]['image']?>">  
         </div>
         <div class="details">
          <!-- print the item as a card -->

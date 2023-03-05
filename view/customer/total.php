@@ -62,13 +62,7 @@ require_once '../../payment_config.php';
                 <td>Rs.<?php echo $total+$delivery_fee?></td>
               </tr>
           </table>
-      </div>    
-      <div class="check">
-        <!-- <form action="../../controller/customer/payment_controller.php" method="Post"> -->
-          <!-- <input type="hidden" name="agentid" value="<?php echo $dcheckout[0]['gasagent_id'] ?>">
-          <button  name="pay" class="checkout-btn" onclick="pay(<?php echo $dcheckout[0]['gasagent_id'] ?>);">Pay</button> -->
-        <!-- </form> -->
-      </div>
+    </div>    
     </div>
     <form action="../../controller/customer/payment_controller.php" method="post">
         <input type="hidden" name="amount" value="<?php echo ($total+$delivery_fee)?>">
