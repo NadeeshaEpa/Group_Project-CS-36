@@ -475,9 +475,9 @@ class addtocart_model{
         $stock_manager=$this->stock_manager($connection,$gasagent);
         $stock_manager_id=$stock_manager[0]['id'];
         if($gasagent!=$stock_manager_id){
-            $sql="select closed_time from gasagent where GasAgent_Id='$gasagent'";
+            $sql="select closed_time,open_time from gasagent where GasAgent_Id='$gasagent'";
         }else{
-            $sql="select closed_time from stock_manager where id='$stock_manager_id'";
+            $sql="select closed_time,open_time from stock_manager where id='$stock_manager_id'";
         }
         $result=$connection->query($sql);
         if($result===false){
@@ -487,7 +487,7 @@ class addtocart_model{
             $closed_time=$row['closed_time'];
             date_default_timezone_set('Asia/Colombo');
             $current_time=date("H:i:s");
-            if($current_time>$closed_time){
+            if($current_time>$closed_time || $current_time<$row['open_time']){
                 return true;
             }else{
                 return false;

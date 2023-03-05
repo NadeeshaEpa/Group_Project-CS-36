@@ -196,13 +196,30 @@ class payment_model{
             }
         }
     }
+    public function pay($connection,$agent,$amount){
+        $sql="select Order_Id from `order` order by Order_Id desc limit 1";
+        $result=$connection->query($sql);
+        $row=$result->fetch_assoc();
+        $orderid=$row['Order_Id'];
+
+        $stock_manager=$this->stock_manager($connection);
+
+        if($_SESSION['delivery_method']=="Reserve" && $agent!=$stock_manager){
+            $sql="insert into payment(order_id,user_id,staff_id,amount,date,paid) values('$orderid','$agent',NULL,'$amount',NULL,'0')";
+            $result=$connection->query($sql);
+            if(!$result){
+                return false;
+            }
+        }
+        return true;
+    }
     public function emptycart($connection,$userid,$agent){
         $sql="delete from cart where user_id='$userid' and gasagent_id='$agent'";
         $result=$connection->query($sql);
         if(!$result){
             return false;
         }else{
-            $sql="SELECT distint gasagent_id FROM cart WHERE User_id='$userid'";
+            $sql="SELECT distinct gasagent_id FROM cart WHERE User_id='$userid'";
             $result=$connection->query($sql);
             if($result->num_rows > 0){
                 $_SESSION['cartcount']=$result->num_rows;
@@ -247,7 +264,7 @@ class payment_model{
                     $row=$result4->fetch_assoc();
                     $price=$row['price'];
 
-                    $sql5="select Order_Id,order_date from `order` order by Order_Id desc limit 1";
+                    $sql5="select Order_Id,order_date,delivery_fee from `order` order by Order_Id desc limit 1";
                     $result5=$connection->query($sql5);
                     $row=$result5->fetch_assoc();
                     $orderid=$row['Order_Id'];
@@ -271,7 +288,7 @@ class payment_model{
                     $delivery_fee=$row['delivery_fee'];
                     $total=$amount+$delivery_fee;
 
-                    $answer[]=array("name"=>$username,"email"=>$useremail,"orderid"=>$orderid,"orderdate"=>$order_date,"shop"=>$shop,"itemname"=>$name,"quantity"=>$quantity,"price"=>$price,"total"=>$total);
+                    $answer[]=array("name"=>$username,"email"=>$useremail,"orderid"=>$orderid,"orderdate"=>$order_date,"shop"=>$shop,"itemname"=>$name,"quantity"=>$quantity,"price"=>$price,"total"=>$total,"delivery_fee"=>$delivery_fee);
                 }
             }else{
                 $answer=[];

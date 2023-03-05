@@ -8,7 +8,7 @@ class shop_model{
         }else{
             $answer=[];
             while($row=$result->fetch_assoc()){
-                array_push($answer,['item_code'=>$row['Item_code'],'Name'=>$row['Name'],'Quantity'=>$row['Quantity'],'price'=>$row['Price'],'Category'=>$row['Category'],'product_type'=>$row['Product_type'],'Description'=>$row['Description']]);
+                array_push($answer,['item_code'=>$row['Item_code'],'Name'=>$row['Name'],'Quantity'=>$row['Quantity'],'price'=>$row['Price'],'Category'=>$row['Category'],'product_type'=>$row['Product_type'],'Description'=>$row['Description'],'image'=>$row['Product_img']]);
             }
         }
         return $answer;
@@ -21,7 +21,7 @@ class shop_model{
         }else{
             $answer=[];
             while($row=$result->fetch_assoc()){
-                array_push($answer,['item_code'=>$row['Item_code'],'Name'=>$row['Name'],'Quantity'=>$row['Quantity'],'price'=>$row['Price'],'Category'=>$row['Category'],'product_type'=>$row['Product_type'],'Description'=>$row['Description']]);
+                array_push($answer,['item_code'=>$row['Item_code'],'Name'=>$row['Name'],'Quantity'=>$row['Quantity'],'price'=>$row['Price'],'Category'=>$row['Category'],'product_type'=>$row['Product_type'],'Description'=>$row['Description'],'image'=>$row['Product_img']]);
             }
             return $answer;
         }
@@ -34,7 +34,7 @@ class shop_model{
         }else{
             $answer=[];
             while($row=$result->fetch_assoc()){
-                array_push($answer,['item_code'=>$row['Item_code'],'Name'=>$row['Name'],'Quantity'=>$row['Quantity'],'price'=>$row['Price'],'Category'=>$row['Category'],'product_type'=>$row['Product_type'],'Description'=>$row['Description']]);
+                array_push($answer,['item_code'=>$row['Item_code'],'Name'=>$row['Name'],'Quantity'=>$row['Quantity'],'price'=>$row['Price'],'Category'=>$row['Category'],'product_type'=>$row['Product_type'],'Description'=>$row['Description'],'image'=>$row['Product_img']]);
             }
             return $answer;
         }

@@ -25,12 +25,12 @@ if(isset($_POST['stripeToken'])){
     if ($charge->status == 'succeeded') {
         $order=$payment->order($connection,$agent,$_SESSION['User_id'],$amount);
         $placeorder=$payment->placeorder($connection,$_SESSION['User_id'],$agent);
-        //get customer name,email,order id,order date,shop name,item name,quantity,price
         $final_orderdetails=$payment->getorderdetails($connection,$_SESSION['User_id'],$agent);
         $_SESSION['final_orderdetails']=$final_orderdetails;
+        $pay=$payment->pay($connection,$agent,$amount);
         $cart=$payment->emptycart($connection,$_SESSION['User_id'],$agent);
 
-        if($order===false || $placeorder===false || $cart===false){
+        if($order===false || $placeorder===false || $cart===false || $pay===false){
             $_SESSION['payment']="failed";
             header("Location: ../../view/customer/total.php");
         }else{
@@ -38,8 +38,7 @@ if(isset($_POST['stripeToken'])){
             //email order details to customer using php mailer library
             require_once '../../model/customer/email_model.php';
             $email=new email_model();
-            $email->order_details($connection,$final_orderdetails);
-            $email->sendEmail($connection);
+            $email->sendEmail($final_orderdetails);
             header("Location: ../../view/customer/order_successfull.php");
         }
 

@@ -9,8 +9,6 @@ use PHPMailer\PHPMailer\SMTP;
 require '../../vendor/autoload.php';
 
 class email_model{
-    private $orderdetails;
-
     function __construct(){
         $this->mail = new PHPMailer();
         $this->mail->isSMTP();
@@ -21,25 +19,34 @@ class email_model{
         $this->mail->Username = 'fagoorders@gmail.com';
         $this->mail->Password = 'lfvsvbxdkoeomuya';
     }
-    public function sendEmail($connection){
+    public function sendEmail($orders){
         //email order details to customer
-        $useremail=$orderdetails[0]['email'];
+        $useremail=$orders[0]['email'];
         $subject="Order Details";
         $message="Your order has been placed successfully. Your order details are as follows: <br>";
+        $message.="<br>Order ID: ".$orders[0]['orderid'];
+        $message.="<br>Order Date: ".$orders[0]['orderdate'];
+        $message.="<br>Order Total: ".$orders[0]['total'];
+        $message.="<table border='1'>";
+        $message.="<tr><th>Product Name</th><th>Quantity</th><th>Price</th></tr>";
+        foreach($orders as $order){
+            $message.="<tr><td>".$order['itemname']."</td><td>".$order['quantity']."</td><td>".$order['price']."</td></tr>";
+        }
+        $message.="</table>";
+
+        $message.="<br>Thank you for shopping with us. We hope to see you again soon.";
+        $message.="<br>Regards,<br>Fago Team";
         
         $this->mail->setFrom('fagoorders@gmail.com', 'Fago');
         $this->mail->addAddress($useremail);
         $this->mail->isHTML(true);
         $this->mail->Subject = $subject;
         $this->mail->Body = $message;
+        $this->mail->send();
+        
 
     }
-    public function order_details($connection,$order){
-        //set order details to a variable to be used in sendEmail function
-        $this->orderdetails=$order;
-        // print_r($this->orderdetails);
-        // die();
-    }
+    
 }
 
 
