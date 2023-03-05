@@ -105,5 +105,4 @@
     <button type="submit" name="dmbutton" class="dmbutton">Checkout</button>
     </form>
     <script src="../../public/js/customer/cart.js"></script>
-</body>
 </html>

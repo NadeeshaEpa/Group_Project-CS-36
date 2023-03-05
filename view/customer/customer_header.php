@@ -22,7 +22,7 @@
             <li><?php if($_SESSION['img-status'] == 0){?>
                         <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                     <?php }else{?>
-                        <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
+                        <img src='../../public/images/customer/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
                     <?php } ?>
             </li></a>
             <?php 

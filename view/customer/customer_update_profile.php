@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../../public/css/customer/customer_dashboard.css">
     <link rel="stylesheet" href="../../public/css/customer/newdashboard.css">
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBijs3YopDeNYhNj_8QSqo0Gh3-JoMU54&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2eSy5egkITKWg1EMsa1i1WcpPi29dgK0&callback=initMap">
     </script>
     <script>
       function initMap() {
@@ -128,7 +128,7 @@
                     <?php if($_SESSION['img-status'] == 0){?>
                         <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
                     <?php }else{?>
-                        <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
+                        <img src='../../public/images/customer/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
                     <?php } ?>
                     <div class="b3">
                         <form action="../../controller/customer/account_controller.php" method="POST" enctype="multipart/form-data">

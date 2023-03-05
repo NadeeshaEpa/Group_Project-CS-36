@@ -58,7 +58,6 @@
             <?php 
                 if(isset($_SESSION['vieworders'])){
                     if($_SESSION['vieworders']==='failed'){
-                        echo "<script>alert('No orders found')</script>";
                         unset($_SESSION['vieworders']);
                         $details=[];
                     }else{
