@@ -260,4 +260,14 @@ class gas_model{
             return $count;
         }
     }
+    public function getshopimage($connection,$type){
+        $sql="select photo from gas_company where company_name='$type'";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $row=$result->fetch_object();
+            return $row->photo;
+        }  
+    }
 }

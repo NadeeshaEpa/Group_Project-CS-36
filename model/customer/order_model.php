@@ -14,7 +14,7 @@ class order_model{
         return $answer[0]['id'];
     }
     public function viewOrders($connection,$user_id,$limit,$offset){
-        $sql="SELECT distinct o.Order_id,o.Delivery_Method,o.Amount,o.Delivery_Status,o.Time,o.Order_date,u.First_Name,u.Last_Name from `order` o INNER JOIN `placeorder` p ON o.Order_id=p.Order_Id INNER JOIN `user` u ON p.GasAgent_Id=u.User_id WHERE p.Customer_Id='$user_id' LIMIT $limit OFFSET $offset";
+        $sql="SELECT distinct o.Order_id,o.Delivery_Method,o.Amount,o.Delivery_Status,o.Time,o.Order_date,u.First_Name,u.Last_Name from `order` o INNER JOIN `placeorder` p ON o.Order_id=p.Order_Id INNER JOIN `user` u ON p.GasAgent_Id=u.User_id WHERE p.Customer_Id='$user_id' group by order_id order by o.order_id desc LIMIT $limit OFFSET $offset";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;
@@ -23,15 +23,11 @@ class order_model{
             while($row=$result->fetch_object()){
                 array_push($orders,['Order_id'=>$row->Order_id,'Delivery_Method'=>$row->Delivery_Method,'Amount'=>$row->Amount,'Delivery_Status'=>$row->Delivery_Status,'First_Name'=>$row->First_Name,'Last_Name'=>$row->Last_Name,'Time'=>$row->Time]);
             }
-            //sort the array such as the latest order is at the top
-            usort($orders,function($a,$b){
-                return $a['Order_id']<$b['Order_id'];
-            });
             return $orders;
         }
     }
     public function view_fagoOrders($connection,$userid,$limit,$offset){
-        $sql="SELECT distinct o.Order_id,o.Delivery_Method,o.Amount,o.Delivery_Status,o.Time,o.Order_date from `order` o INNER JOIN `shop_placeorder` p ON o.Order_id=p.Order_id WHERE p.Customer_Id='$userid' LIMIT $limit OFFSET $offset";
+        $sql="SELECT distinct o.Order_id,o.Delivery_Method,o.Amount,o.Delivery_Status,o.Time,o.Order_date from `order` o INNER JOIN `shop_placeorder` p ON o.Order_id=p.Order_id WHERE p.Customer_Id='$userid' group by order_id order by o.order_id desc LIMIT $limit OFFSET $offset";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;
@@ -40,10 +36,6 @@ class order_model{
             while($row=$result->fetch_object()){
                 array_push($orders,['Order_id'=>$row->Order_id,'Delivery_Method'=>$row->Delivery_Method,'Amount'=>$row->Amount,'Delivery_Status'=>$row->Delivery_Status,'Time'=>$row->Time]);
             }
-            //sort the array where the latest order id is at the top
-            usort($orders,function($a,$b){
-                return $a['Order_id']<$b['Order_id'];
-            });
             return $orders;
         }
     }
@@ -121,7 +113,7 @@ class order_model{
         }
     }
     public function order_count($connection,$userid){
-        $sql="Select * from `order` o INNER JOIN `placeorder` p ON o.Order_id=p.Order_Id WHERE p.Customer_Id='$userid'";
+        $sql="Select distinct order_id from `placeorder` WHERE Customer_Id='$userid'";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return 0;
@@ -130,7 +122,7 @@ class order_model{
         }
     }
     public function fago_order_count($connection,$userid){
-        $sql="Select * from `order` o INNER JOIN `shop_placeorder` p ON o.Order_id=p.Order_Id WHERE p.Customer_Id='$userid'";
+        $sql="Select distinct order_id from `shop_placeorder` Customer_Id='$userid'";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return 0;
@@ -166,7 +158,7 @@ class order_model{
         }else{
             $delivery_method=$result->fetch_object()->Delivery_Method;
         }
-        if($delivery_method=="Reserve"){
+        if($delivery_method=="Reserve" || $delivery_method=="Courier service"){
             $sql="Select Amount,time,order_date from `order` WHERE Order_id='$order_id'";
             $result=$connection->query($sql);
             if($result->num_rows===0){
@@ -174,9 +166,12 @@ class order_model{
             }else{
                $order_data=[];
                $row=$result->fetch_object();
-               array_push($order_data,['order_id'=>$order_id,'Amount'=>$row->Amount,'Time'=>$row->time,'Order_date'=>$row->order_date,'Delivery_person'=>"Not Assigned",'Delivery_fee'=>"Rs.0"]);
-
-               $order_details=$this->set_order_details($connection,$order_id,$order_data);
+               if($delivery_method=="Reserve"){
+                    array_push($order_data,['order_id'=>$order_id,'Amount'=>$row->Amount,'Time'=>$row->time,'Order_date'=>$row->order_date,'Delivery_person'=>"Not Assigned",'Delivery_fee'=>"Rs.0"]);
+               }else{
+                    array_push($order_data,['order_id'=>$order_id,'Amount'=>$row->Amount,'Time'=>$row->time,'Order_date'=>$row->order_date,'Delivery_person'=>"Courier Service",'Delivery_fee'=>"Will be notified by the courier service"]);
+               }
+               $order_details=$this->set_fagoorder_details($connection,$order_id,$order_data);
                return $order_details;
             }
         }else{

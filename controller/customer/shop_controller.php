@@ -72,10 +72,10 @@ if(isset($_POST['view_item'])){
    $price=$_POST['price'];
    $category=$_POST['Category'];
    $description=$_POST['Description'];
-   $User_id=$_SESSION['User_id'];
+   $image=$_POST['image'];
     
    $items=[];
-   array_push($items,['item_code'=>$item_code,'product_type'=>$product_type,'name'=>$name,'quantity'=>$quantity,'price'=>$price,'category'=>$category,'description'=>$description,'User_id'=>$User_id]);
+   array_push($items,['item_code'=>$item_code,'product_type'=>$product_type,'name'=>$name,'quantity'=>$quantity,'price'=>$price,'category'=>$category,'description'=>$description,'User_id'=>$User_id,'image'=>$image]);
    $_SESSION['gascookerview']=$items;
    header("Location: ../../view/customer/view_item.php");
 
@@ -88,9 +88,11 @@ if(isset($_POST['buy_item'])){
    $price=$_POST['price'];
    $category=$_POST['Category'];
    $agent=$_POST['agent'];
+   $description=$_POST['Description'];
    $User_id=$_SESSION['User_id'];
- 
+   
    $shop=new shop_model();
+   $result=$shop->addtocart($connection,$User_id,$item_code,$product_type,$name,$quantity,$price,$category,$description);
    $shop->setloc($User_id,$connection);
    $items=[];
    $agentid=$shop->stock_manager($connection);

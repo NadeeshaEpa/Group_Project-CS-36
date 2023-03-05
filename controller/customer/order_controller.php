@@ -26,7 +26,6 @@ if(isset($_GET['orderid'])||isset($_GET['page'])){
         $result=$order->viewOrders($connection,$_SESSION['User_id'],$limit,$offset);
         if($result===false){
             $_SESSION['vieworders']="failed";
-            // echo "<script>alert('No orders found')</script>";
             header("Location: ../../view/customer/customer_vieworder.php");
         }else{
             $_SESSION['vieworders']=$result;
