@@ -26,6 +26,17 @@ require_once '../../payment_config.php';
     <?php include_once 'customer_header.php'; ?>
     <h1><?php echo $dcheckout[0]['shop_name']?></h1>
     <hr>
+    <?php 
+    if(isset($_SESSION['error_message'])){?>
+    <div class="payment-failed">
+      <p>Sorry!, payment failed due to no sufficient stock available for the order.<br>
+      Please change the quantity or try from another gas agent.
+      </p>
+    </div>
+    <?php
+      // unset($_SESSION['error_message']);
+    }
+    ?>
     <h2>Total Payment</h2>
     <div class="last">
     <?php 

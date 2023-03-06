@@ -7,10 +7,21 @@ require('../../payment_config.php');
 if(isset($_POST['stripeToken'])){
     $amount=$_POST['amount'];
     $agent=$_POST['agentid'];
+    $userid=$_SESSION['User_id'];
 
     \Stripe\Stripe::setVerifySslCerts(false);
 
     $token=$_POST['stripeToken'];
+
+    $payment=new payment_model();
+
+    $availableQuantity = $payment->checkquantity($connection,$agent,$userid);
+    if ($availableQuantity === false) {
+        $_SESSION['payment']="failed";
+        $_SESSION['error_message'] = "Not enough stock available for the order.";
+        header("Location: ../../view/customer/total.php");
+        exit;
+    }
 
     $charge = \Stripe\Charge::create(array(
         "amount"=>$_POST['amount']*100,
@@ -18,8 +29,6 @@ if(isset($_POST['stripeToken'])){
         "description"=>"Payment for your order",
         "source"=>$token,
     ));
-
-    $payment=new payment_model();
 
 
     if ($charge->status == 'succeeded') {

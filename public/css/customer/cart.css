@@ -300,3 +300,16 @@ h2{
     font-size: 20px;
     padding: 10px;
 }
+.payment-failed{
+    background-color: rgb(238, 163, 163);
+    color: red;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 5px;
+    
+}
+hr{
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
