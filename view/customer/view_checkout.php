@@ -56,7 +56,7 @@
           $errorQuantity = $error[0]['quantity'];
 
           $msg = "Quantity is not enough for the item - $errorType $errorWeight <br>" .
-                "Available quantity is $errorQuantity.";
+                " The available quantity is $errorQuantity.";
           ?>
           <div class="qmsg">
             <p><?php echo $msg ?></p>
@@ -184,6 +184,13 @@
     <hr>
     <button type="submit" name="dmbutton" class="dmbutton">Checkout</button>
     </form>
+    <div id="myModal" class="popup">
+        <p id="waitingMessage">
+            Please select a delivery option.<br>  
+            <img src="../../public/images/customer/delivery.jfif" alt="loading" id="loading">
+        </p>
+        
+    </div> 
     <script src="../../public/js/customer/cart.js"></script>
 </body>
 </html>
