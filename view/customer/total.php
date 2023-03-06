@@ -64,6 +64,7 @@ require_once '../../payment_config.php';
           </table>
     </div>    
     </div>
+    <div class="payment-btn">
     <form action="../../controller/customer/payment_controller.php" method="post">
         <input type="hidden" name="amount" value="<?php echo ($total+$delivery_fee)?>">
         <input type="hidden" name="agentid" value="<?php echo $dcheckout[0]['gasagent_id'] ?>">
@@ -79,5 +80,6 @@ require_once '../../payment_config.php';
         >
         </script>
     </form>
+    </div>
 </body>
 </html>
