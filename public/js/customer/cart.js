@@ -36,7 +36,10 @@ const form = document.getElementById('delivery-form');
 form.addEventListener('submit', function(event) {
   if (!deliveryCheckbox.checked && !nodeliveryCheckbox.checked) {
     event.preventDefault();
-    alert('Please select a delivery option.');
+    //create a popup to notify the customer to select a delivery option
+    popup();
+    //wait for 3 seconds and close the popup
+    setTimeout(function(){ closemsg(); }, 2000);
   }
 });
 
@@ -82,4 +85,11 @@ function deleteitem(cartid,agentid){
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("id="+cartid+"&agent="+agentid+"&dcartitem=delete");
     
+}
+function popup(){
+  document.getElementById("myModal").style.display = "block";
+}
+function closemsg(){
+  console.log("close");
+  document.getElementById("myModal").style.display = "none";
 }

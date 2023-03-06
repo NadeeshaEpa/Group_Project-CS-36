@@ -27,6 +27,8 @@ class email_model{
         $message.="<br>Order ID: ".$orders[0]['orderid'];
         $message.="<br>Order Date: ".$orders[0]['orderdate'];
         $message.="<br>Order Total: ".$orders[0]['total'];
+        $message.="<br>Delivery Method: ".$orders[0]['delivery_method'];
+        $message.="<br>Delivery Fee: ".$orders[0]['delivery_fee'];
         $message.="<table border='1'>";
         $message.="<tr><th>Product Name</th><th>Quantity</th><th>Price</th></tr>";
         foreach($orders as $order){

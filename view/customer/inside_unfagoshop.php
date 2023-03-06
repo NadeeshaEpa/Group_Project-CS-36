@@ -16,10 +16,6 @@
              $count=count($gascooker);
          }
     ?>
-    <!-- <div class="selection">
-        <button>Gas Shops</button>
-        <button>Fago Shop</button>
-    </div> -->
     <div class="navbar">
         <div class="selected">   
             <a href="../../controller/customer/shop_controller.php?urgascooker='1'">Gas Cooker</a>

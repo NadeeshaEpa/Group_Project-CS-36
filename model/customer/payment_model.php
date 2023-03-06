@@ -1,5 +1,21 @@
 <?php
 class payment_model{
+    public function addquantity($result){
+        $new_array = array();
+
+        foreach ($result as $item) {
+            $key = $item['type'] . '_' . $item['weight'];
+            if (isset($new_array[$key])) {
+                $new_array[$key]['quantity'] += $item['quantity'];
+            } else {
+                $new_array[$key] = $item;
+            }
+        }
+
+        $new_array = array_values($new_array); // reindex the array
+
+        return $new_array;
+    }
     public function checkquantity($connection,$agentid,$userid){
         $sql="Select * from cart where gasagent_id='$agentid' and user_id='$userid'";
         $result=$connection->query($sql);
@@ -8,6 +24,9 @@ class payment_model{
             if($result->num_rows===0){
                 return false;
             }else{
+                $result=$result->fetch_all(MYSQLI_ASSOC);
+                $result=$this->addquantity($result);
+
                 foreach($result as $item){
                     $weight=$item['weight'];
                     $type=$item['type'];
@@ -39,6 +58,10 @@ class payment_model{
             if($result->num_rows===0){
                 return false;
             }else{
+                //if there are items with same weight and type, then add the quantity
+                $result=$result->fetch_all(MYSQLI_ASSOC);
+                $result=$this->addquantity($result);
+
                 foreach($result as $item){
                     $weight=$item['weight'];
                     $type=$item['type'];
@@ -116,6 +139,9 @@ class payment_model{
             if($result->num_rows===0){
                 return false;
             }else{
+                $result=$result->fetch_all(MYSQLI_ASSOC);
+                $result=$this->addquantity($result);
+
                 foreach($result as $item){
                     $weight=$item['weight'];
                     $type=$item['type'];
@@ -162,6 +188,9 @@ class payment_model{
             if($result->num_rows===0){
                 return false;
             }else{
+                $result=$result->fetch_all(MYSQLI_ASSOC);
+                $result=$this->addquantity($result);
+
                 foreach($result as $item){
                     $weight=$item['weight'];
                     $type=$item['type'];
@@ -238,6 +267,9 @@ class payment_model{
             return false;
         }else{
             if($stock_manager==$agent){
+                $result=$result->fetch_all(MYSQLI_ASSOC);
+                $result=$this->addquantity($result);
+
                 $answer=[];
                 foreach($result as $item){
                     $weight=$item['weight'];
@@ -264,7 +296,7 @@ class payment_model{
                     $row=$result4->fetch_assoc();
                     $price=$row['price'];
 
-                    $sql5="select Order_Id,order_date,delivery_fee from `order` order by Order_Id desc limit 1";
+                    $sql5="select Order_Id,order_date from `order` order by Order_Id desc limit 1";
                     $result5=$connection->query($sql5);
                     $row=$result5->fetch_assoc();
                     $orderid=$row['Order_Id'];
@@ -281,16 +313,20 @@ class payment_model{
                     $username=$firstname." ".$lastname;
                     $useremail=$row['Email'];
 
-                    $sql="select amount,delivery_fee from `order` where Order_Id='$orderid'";
+                    $sql="select amount,delivery_fee,delivery_method from `order` where Order_Id='$orderid'";
                     $result=$connection->query($sql);
                     $row=$result->fetch_assoc();
                     $amount=$row['amount'];
                     $delivery_fee=$row['delivery_fee'];
                     $total=$amount+$delivery_fee;
+                    $delivery_method=$row['delivery_method'];
 
-                    $answer[]=array("name"=>$username,"email"=>$useremail,"orderid"=>$orderid,"orderdate"=>$order_date,"shop"=>$shop,"itemname"=>$name,"quantity"=>$quantity,"price"=>$price,"total"=>$total,"delivery_fee"=>$delivery_fee);
+                    $answer[]=array("name"=>$username,"email"=>$useremail,"orderid"=>$orderid,"orderdate"=>$order_date,"shop"=>$shop,"itemname"=>$name,"quantity"=>$quantity,"price"=>$price,"total"=>$total,"delivery_fee"=>$delivery_fee,"delivery_method"=>$delivery_method);
                 }
             }else{
+                $result=$result->fetch_all(MYSQLI_ASSOC);
+                $result=$this->addquantity($result);
+
                 $answer=[];
                 $sql="select * from cart where user_id='$userid' and gasagent_id='$agent'";
                 $result=$connection->query($sql);
@@ -332,14 +368,15 @@ class payment_model{
                     $username=$firstname." ".$lastname;
                     $useremail=$row['Email'];
 
-                    $sql="select amount,delivery_fee from `order` where Order_Id='$orderid'";
+                    $sql="select amount,delivery_fee,delivery_method from `order` where Order_Id='$orderid'";
                     $result=$connection->query($sql);
                     $row=$result->fetch_assoc();
                     $amount=$row['amount'];
                     $delivery_fee=$row['delivery_fee'];
                     $total=$amount+$delivery_fee;
+                    $delivery_method=$row['delivery_method'];
 
-                    array_push($answer,['name'=>$username,'email'=>$useremail,'orderid'=>$orderid,'orderdate'=>$order_date,'shop'=>$shop,'itemname'=>$itemname,'quantity'=>$quantity,'price'=>$price,'total'=>$total]);
+                    array_push($answer,['name'=>$username,'email'=>$useremail,'orderid'=>$orderid,'orderdate'=>$order_date,'shop'=>$shop,'itemname'=>$itemname,'quantity'=>$quantity,'price'=>$price,'total'=>$total,'delivery_fee'=>$delivery_fee,'delivery_method'=>$delivery_method]);
                 }
             }
             return $answer;

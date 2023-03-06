@@ -36,7 +36,11 @@
             </tr>
             <?php } ?>
         </table>
-        <h3>Delivery fee:Rs.<?php echo $order[0]['delivery_fee']?></h3>
+        <h3>Delivery Method: <?php echo $order[0]['delivery_method']?></h3>
+        <?php 
+        if($order[0]['delivery_method']=="Delivered by agent"){?>
+            <h3>Delivery fee:Rs.<?php echo $order[0]['delivery_fee']?></h3>
+        <?php } ?>
         <h3>Total price:Rs.<?php echo $order[0]['total']?></h3>
         <h3>Shop name : <?php echo $order[0]['shop']?></h3>
         <button type="submit" name="pay" class="pay"><a href="../../controller/Users/logout_controller.php">Back to Home</a></button>

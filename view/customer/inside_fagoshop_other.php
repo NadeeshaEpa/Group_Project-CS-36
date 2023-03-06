@@ -22,6 +22,25 @@
             <a href="../../controller/customer/shop_controller.php?other='1'">Other</a>
         </div> 
     </div>
+    <?php
+    if(isset($_SESSION['addtocart'])){?>
+            <div class="success-msg">
+            <?php       
+            if($_SESSION['addtocart']=="success"){
+                echo "Item Added To Cart Successfully";
+            ?>
+            </div> 
+            <?php
+            }else{?>
+            <div class="error-msg">
+            <?php
+                echo "Item not added to cart";
+            }?>
+            </div>
+            <?php
+            unset($_SESSION['addtocart']);
+        }
+    ?>
     <div class="products">
         <!-- print the products as 4 items per row -->
         <?php
@@ -50,12 +69,12 @@
                     echo "<p >Rs. ".$gas['price']."</p>";
                 echo "</div>";
                 if($gas['Quantity']>0){?>
-                    <button name="buy_item">Buy It Now</button>
+                    <!-- <button name="buy_item">Buy It Now</button> -->
                     <button name="view_item">Add to Cart</button>
                 <?php
                 }else{?>
                     <div class="disabled">
-                        <button style="color: red; border: 1px solid red;" disabled>Buy It Now</button>
+                        <!-- <button style="color: red; border: 1px solid red;" disabled>Buy It Now</button> -->
                         <button style="color: red; border: 1px solid red;" disabled>Out of Stock</button>
                     </div>
                 <?php }

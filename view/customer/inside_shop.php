@@ -25,19 +25,11 @@
             $lastupdateddate=$data[0]['LastUpdatedDate'];
             $Gas_id=$data[0]['Gas_id'];
         }
-        if(isset($_SESSION['addtocart'])){
-            if($_SESSION['addtocart']=="success"){
-                $button=1;
-            }else{
-                $button=2;
-            }
-            unset($_SESSION['addtocart']);
-        }
         if(isset($_SESSION['shopimage'])){
             $shopimage=$_SESSION['shopimage'];
         }
     ?>
-        <div class="upcontainer" style="background-image:url('../../public/images/gascylinder/<?php echo $shopimage?>');">
+        <div class="upcontainer" style="background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('../../public/images/gascylinder/<?php echo $shopimage?>');">
             <div class="back">
                 <a href="customer_viewgas.php">
                     <img src="../../public/images/customer/back.png" alt="" class="backimg">
@@ -46,20 +38,38 @@
             <h1><?php echo $shopname?></h1>
             <div class="details">
                 <div class="details-left">
-                    <b style="color:black";>Contact No:</b><?php echo $contactno?><br><br>
-                    <b style="color:black";>Last Updated:</b><?php echo $lastupdateddate?> <?php echo $lastupdatedtime?>
+                    <b >Contact No:</b><?php echo $contactno?><br><br>
+                    <b >Last Updated:</b><?php echo $lastupdateddate?> <?php echo $lastupdatedtime?>
                 </div>
                 <div class="details-right">
                     <!-- pass the button value as a post variable -->
                     <form action="../../controller/customer/addtocart_controller.php" method="post">
-                        <input type="hidden" name="button" value="<?php echo $button?>">
-                        <input type="hidden" name="gas_id" value="<?php echo $Gas_id?>">
+                        <!-- <input type="hidden" name="button" value="<?php echo $button?>">
+                        <input type="hidden" name="gas_id" value="<?php echo $Gas_id?>"> -->
                         <button type="submit" name="viewcart" class="viewcart">View Cart</button>
                     </form>
                 </div>    
             </div>
         </div>
-       
+        <?php
+        if(isset($_SESSION['addtocart'])){?>
+            <div class="success-msg">
+            <?php       
+            if($_SESSION['addtocart']=="success"){
+                echo "Item Added To Cart Successfully";
+            ?>
+            </div> 
+            <?php
+            }else{?>
+            <div class="error-msg">
+            <?php
+                echo "Item not added to cart";
+            }?>
+            </div>
+            <?php
+            unset($_SESSION['addtocart']);
+        }
+        ?>
         <?php
             foreach($gasdetails as $gasdetail){?>
             <div class="ava">
@@ -96,24 +106,17 @@
                         </div>  
                         <div class="order">
                             <?php if($gasdetail['Quantity']==0){?>
-                                <!-- <button class="dorder" style="background-color:#492f98" disabled>Buy It Now</button> -->
                                 <button class="dorder" disabled>Add to Cart</button>
                             <?php }else{?>
-                                <!-- <button class="order" name="buyitnow" style="background-color:#492f98">Buy It Now</button> -->
-                                <button class="order" name="addtocart" onclick="showPopup()";>Add to Cart</button>
+                                <button id="addtocart" type="submit" name="addtocart">Add to Cart</button>
                             <?php }?>
                         </div>         
                     </div>    
-                    
-                </div>
-                </form>
+                    </form>
+                </div>        
             </div>   
             <hr> 
         <?php } ?>
-        <script>
-            function showPopup(){
-                alert("Items Added to Cart Successfully");
-            }
-        </script>
+       
 </body>
 </html>

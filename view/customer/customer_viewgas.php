@@ -66,6 +66,16 @@
                 header("location:noshops.php");
             } ?>
             <h1><?php echo $_SESSION['gas_type']?> Gas</h1>
+                <?php if(isset($_SESSION['last_order'])){
+                    if($_SESSION['last_order']==0){?>
+                    <div class="order-limit">
+                        <p>We're sorry, but due to the current economic situation, we have had to temporarily limit the number of gas cylinders that can be ordered.<br>
+                            Please try again at a later time when we are able to offer our full range of services. <br>
+                            Thank you for your understanding and support during these challenging times.
+                        </p>
+                    </div>
+                    <?php }
+                }?>
             <table>
                 <tr>
                     <th>Vendor</th>
@@ -110,13 +120,13 @@
                                 }
                             } ?> 
                             <!-- call gas controller by passing the gas agent id -->
-                            <?php if($i==$count1){?>
+                            <?php if($i==$count1 ||$_SESSION['last_order']==0){?>
                                 <td><button disabled>Order</button></td>
-                            <?php }else{?>
+                            <?php }else{?> 
                                 <td><a href="../../controller/customer/gas_controller.php?gasid=<?php echo $gasagent?>">Order</a></td>
                             <?php } ?>
 
-                            <?php if($i==$count1){?>
+                            <?php if($i==$count1 ||$_SESSION['last_order']==0){?>
                                 <td><button disabled>Buy</button></td>
                             <?php }else{?>
                                 <td><a href="../../controller/customer/gas_controller.php?newgasid=<?php echo $gasagent?>">Buy</a></td>

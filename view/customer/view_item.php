@@ -49,7 +49,7 @@
             </div>           
             <?php
                 if($gas[0]['quantity']>0){?>
-                    <button name="shop_add" onclick="showPopup()">Add to Cart</button>
+                    <button name="shop_add">Add to Cart</button>
                 <?php
                 }else{?>
                     <button disabled>Out of Stock</button>
@@ -57,10 +57,5 @@
             ?>
         </div>
     </form> 
-    <script>
-        function showPopup(){
-            alert("Item added to cart");
-        }
-    </script> 
 </body>
 </html>
