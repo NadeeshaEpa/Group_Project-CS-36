@@ -118,7 +118,7 @@ if(isset($_POST['shop_add'])){
       header("Location: ../../view/customer/inside_fagoshop.php");
    }else{
       $_SESSION['addtocart']="success";
-      header("Location: ../../view/customer/view_item.php");
+      header("Location: ../../view/customer/inside_fagoshop.php");
    }
 }
 

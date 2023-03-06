@@ -107,3 +107,11 @@ table td button{
     color: blueviolet;
     background-color: white;
 }
+.order-limit{
+    background-color: green;
+    padding-left:3%;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin-bottom: 1%;
+    color: white;
+}

@@ -96,7 +96,13 @@ class user_model{
         if($limit_status==0){
             return true;
         }else{
-            $sql="select o.order_date from `order` o inner join `placeorder` p on o.Order_id=p.Order_Id where p.Customer_Id='$User_id' order by o.order_date desc limit 1";
+            $ebil="select ElectricityBill_No from customer where Customer_Id='$User_id'";
+            $result=$connection->query($ebil);
+            $row=$result->fetch_assoc();
+            $ebil_no=$row['ElectricityBill_No'];
+
+            //find the last order date of the users which has the same ebil no
+            $sql="select o.order_date from `order` o inner join `placeorder` p on o.Order_id=p.Order_Id inner join customer c on p.Customer_Id=c.Customer_Id where c.ElectricityBill_No='$ebil_no' order by o.order_date desc limit 1";
             $result=$connection->query($sql);
             if($result->num_rows > 0){
                 $row=$result->fetch_assoc();
