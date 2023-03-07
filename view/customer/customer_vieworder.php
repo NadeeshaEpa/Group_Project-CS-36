@@ -92,15 +92,17 @@
                                     <td><?php echo $detail['Amount']?></td>
                                     <td><?php echo $detail['Delivery_Method']?></td>
                                     <div class="status">
-                                        <?php if($detail['Delivery_Status']==3){?>
-                                            <td style="color:blue"><b>Courier</b></td>
+                                        <?php if($detail['Delivery_Status']==NULL){?>
+                                            <td style="color:lightgreen"><b>Not Assigned</b></td>
+                                        <?php }else if($detail['Delivery_Status']==3){?>
+                                            <td style="color:blue"><b>Courier Service</b></td>
                                         <?php }else if($detail['Delivery_Status']==2){?>
                                             <td style="color:red"><b>No delivery</b></td>
                                         <?php }else if($detail['Delivery_Status']==0){?>
                                             <td style="color:#FDC801"><b>On the way</b></td>
-                                        <?php }else{?>
+                                        <?php }else if($detail['Delivery_Status']==1){?>
                                             <td style="color:green"><b>Delivered</b></td>     
-                                        <?php }?>
+                                        <?php } ?>
                                     </div>
                                     <td><a href="../../controller/customer/order_controller.php?id=<?php echo $detail['Order_id']?>">View</a></td>
                             </tr>

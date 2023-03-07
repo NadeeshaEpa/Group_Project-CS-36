@@ -301,12 +301,12 @@ h2{
     padding: 10px;
 }
 .payment-failed{
-    background-color: rgb(238, 163, 163);
+    background-color: rgb(243, 184, 184);
     color: red;
     text-align: center;
     font-size: 17px;
     font-weight: 500;
-    padding: 5px;
+    padding: 2px;
     
 }
 hr{

@@ -118,7 +118,7 @@ class payment_model{
         $delivery_fee=$_SESSION['delivery_fee'];
         $amount=$amount-$delivery_fee;
         if($delivery_method=="Delivered by agent"){
-            $delivery_status="0";
+            $delivery_status='NULL';
         }else if($delivery_method=="Reserve"){
             $delivery_status="2";
         }else if($delivery_method=="Courier service"){

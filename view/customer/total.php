@@ -30,11 +30,11 @@ require_once '../../payment_config.php';
     if(isset($_SESSION['error_message'])){?>
     <div class="payment-failed">
       <p>Sorry!, payment failed due to no sufficient stock available for the order.<br>
-      Please change the quantity or try from another gas agent.
+      Please change the quantity or try again later.
       </p>
     </div>
     <?php
-      // unset($_SESSION['error_message']);
+      unset($_SESSION['error_message']);
     }
     ?>
     <h2>Total Payment</h2>
