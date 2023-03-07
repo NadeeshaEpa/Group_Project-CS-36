@@ -44,7 +44,36 @@
                     }
                 ?>
                 <form action="../../controller/deliveryperson/delivaryprofilecontroller.php" method="POST">   
-                        <div class="prof_details">  
+                        <div class="prof_details">
+                            <div class="down">
+                                <div class="down1">
+									<label for="">Profile image: </label><br>
+									<?php if($_SESSION['img-status'] == 0){?>
+									    <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
+									<?php }else{?>
+									    <img src='../../public/images/DeliveryPerson/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
+									<?php } ?>
+                                </div>
+                                <div class="down1">
+								        <h6><?php if(isset($_SESSION['upload_error_1'])) {
+										      echo $_SESSION['upload_error_1'];
+											  unset($_SESSION['upload_error_1']);
+										      }
+											  if(isset($_SESSION['upload_error_2'])) {
+												echo $_SESSION['upload_error_2'];
+												unset($_SESSION['upload_error_2']);
+												}
+												if(isset($_SESSION['upload_error_3'])) {
+													echo $_SESSION['upload_error_3'];
+													unset($_SESSION['upload_error_3']);
+													}
+										?></h6>
+										<input type="file" name="image" id="image" class="image">
+										<button name="uploadimg" id="pic_add_btn_id">Upload</button>
+										<button id="pic_remove_btn_id" name="removeimg">Remove</button>
+                                    
+                                </div>    
+                            </div>   
                             <div class="down">
                                 <div class="down1">
                                     <label>First name:</label><br>  

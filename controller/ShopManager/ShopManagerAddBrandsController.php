@@ -37,8 +37,8 @@ if(isset($_POST['BrandAdd'])){
     if(in_array($fileActualExt,$allowed)){
         if($fileError === 0){
             if($fileSize < 10000000){
-                $fileNameNew=uniqid('',true).".".$fileActualExt;
-                $fileDestination='../../public/images/ShopManager/'.$fileNameNew;
+                $fileNameNew=$product_type.".".$fileActualExt;
+                $fileDestination='../../public/images/ShopManager/Brands/'.$fileNameNew;
                 move_uploaded_file($fileTmpName,$fileDestination);
                 $user=new Add_Brands;
                 $result=$user->Add_Brands($connection,$name,$Quantity,$price,$description,$Category,$fileNameNew,$product_type);

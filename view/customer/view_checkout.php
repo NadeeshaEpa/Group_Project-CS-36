@@ -104,9 +104,10 @@
       </div>    
       <div class="check">
         <form action="customer_payment.php" method="Post">
-          <button class="checkout-btn">Checkout</button>
+          <button  class="checkout-btn">Checkout</button>
         </form>
       </div>
     </div>
+    
 </body>
 </html>

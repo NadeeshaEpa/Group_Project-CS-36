@@ -276,7 +276,26 @@ body {
 	height: 36px;
 	object-fit: cover;
 	border-radius: 50%;
+	margin-left: 960px;
+	
 }
+/*add user info to header */
+#content nav .user_info h6 {
+	text-align: center;
+	font-size: 14px;
+	margin-top: 10px;
+	margin-left: 10px;
+	cursor: pointer;
+	
+}
+#content nav .user_info h5 {
+	text-align: center;
+	font-size: 16px;
+	cursor: pointer;
+	margin-left: 10px;
+	
+}
+/**/
 #content nav .switch-mode {
 	display: block;
 	min-width: 50px;
@@ -640,7 +659,7 @@ body {
 
 .d_form{
 	width: 80%;
-    height: 45%;
+    height: 39%;
     margin-top: 20px;
 	margin-left: 20%;
 
@@ -671,10 +690,14 @@ body {
 
 }
 .d_form .updatebtn {
-     background-color: #046f34;
+     background-color: #79d37c;
+	 color: white;
+	 font-size: 18px;
 }
 .d_form .cancelbtn {
 	background-color: #da3a3a;
+	color: white;
+	font-size: 18px;
 }
 .d_form h2{
 	font-size: 16px;
@@ -759,7 +782,49 @@ body {
     width: 200px;
 	height: 40px;
 	border:none;
+    margin-left: 41%;
+}
 
+
+#pic_add_btn_id{
+	background-color:#79d37c;
+	width: 120px;
+	height: 40px;
+	padding: 10px 10px 10px 10px;
+	margin-top: 35px;
+	margin-left: 40px;
+	color: white;
+}
+
+#pic_remove_btn_id{
+    background-color: #da3a3a;
+	width: 120px;
+	height: 40px;
+	padding: 10px 10px 10px 10px;
+	margin-top: 35px;
+	margin-left: 10px;
+	color: white;
+}
+
+#image{
+	width: 250px;
+    height: 35px;
+    border-radius: 0%;
+    background-color:  rgb(177 175 175 / 40%);
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+	padding:5px 2px 10px 1px;
+	margin-left: 45px;
+}
+.down1 img{
+	margin-left: 120px;
+	margin-top: 20px;
+}
+
+.down1 h6{
+	background-color: red;
+	text-align: center;
 }
 /*  */
 
@@ -1145,12 +1210,48 @@ body {
 	border: none;
 	font-size: 17px;
   }
+ /* complane and rewies view button css*/
+  .head-title .right-button a{
+	text-decoration: none;
+	color: white;
+	font-size: 18px;
+	width: 200px;
+	height: 10px;
+	padding: 10px 10px 10px 10px;
+	background-color: #79d37c;
+	border-radius: 15px;
+  }
+ /**/
+
+ /*complain and review delete button */
+ #ComplainDeleteBtn_Id{
+    background-color: #da3a3a;
+    color: white;
+    
+	height: 15%;
+	width: 150px;
+	border-radius: 15px;
+	padding: 10px 10px 10px 10px;
+ }
+
+ #reviewDeleteBtn_id{
+	background-color: #da3a3a;
+    color: white;
+    
+	height: 15%;
+	width: 150px;
+	border-radius: 15px;
+	padding: 10px 10px 10px 10px;
+
+ }
+ /**/
+
 
   /**/
 
 /* dashboard hard codede tempory css*/
 
-.tempD{
+/* .tempD{
 	margin-left: 210px;
 	margin-bottom: 10px;
     display: flex;
@@ -1228,9 +1329,85 @@ body {
 
 #temp2{
 	background-color:#da3a3a ;
-}
+} */
 
 /* */
+
+
+/* profile delete account popup section*/
+
+.modal{
+	position: absolute;
+    left: 25%;
+    top: 25%;
+    width: 50%;
+    height: 50%;
+    overflow: auto;
+    background-color: #D9D9D9;
+    padding-top: 50px;
+    border-radius: 20px;
+}
+
+.modal .container {
+    padding: 16px;
+    text-align: center;
+}
+
+.modal .container h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.modal .container p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+#profilecancelbtnid{
+    background-color: #79d37c;
+    color: black;
+    float: left;
+    margin-left: 20%;
+	height: 10%;
+	width: 20%;
+	border-radius: 15px;
+	padding: 10px 10px 10px 10px;
+}
+
+#profiledeletebtnid{
+    background-color: #da3a3a;
+    color: black;
+    float: right;
+    margin-right: 20%;
+	height: 15%;
+	width: 20%;
+	border-radius: 15px;
+	padding: 10px 10px 10px 10px;
+}
+
+.close {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    font-size: 40px;
+    font-weight: bold;
+    color:  black;
+}
+
+.close:hover, .close:focus {
+    color: #f44336;
+    cursor: pointer;
+}
+
+/**/
 
 
   

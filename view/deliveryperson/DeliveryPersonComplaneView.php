@@ -25,8 +25,8 @@ if(!isset($_SESSION['User_id'])){
 			<span class="text">FaGo</span>
 		</a>
 		<ul class="side-menu top">
-			<li class="active">
-				<a href="#">
+			<li >
+				<a href="../../view/deliveryperson/DelivaryDashboard.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -34,11 +34,7 @@ if(!isset($_SESSION['User_id'])){
 			<li >
 				<a href="../../controller/deliveryperson/deliveryPersonProfileFirstController.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
-					<span class="text">Profile
-						<!-- <form action="../../controller/deliveryperson/delivaryprofilecontroller.php" method="Post">
-						    <input type="hidden" name="prof_btn">
-						</form> -->
-					</span>
+					<span class="text">Profile</span>
 				</a>
 			</li>
 			<li>
@@ -53,7 +49,7 @@ if(!isset($_SESSION['User_id'])){
 					<span class="text">Reviews</span>
 				</a>
 			</li>
-			<li>
+			<li class="active">
 				<a href="../../view/deliveryperson/DelivaryComplains.php">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Complains</span>
@@ -78,7 +74,6 @@ if(!isset($_SESSION['User_id'])){
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-			
 			<li class="profile">
 			    <?php if($_SESSION['img-status'] == 0){?>
 					<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
@@ -102,10 +97,10 @@ if(!isset($_SESSION['User_id'])){
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Dashboard</h1>
+					<h1>Complains View</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="#">Dashboard</a>
+							<a href="#">Complains View</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
@@ -113,78 +108,55 @@ if(!isset($_SESSION['User_id'])){
 						</li>
 					</ul>
 				</div>
-
-				<div class="partInner1">
-                        <div class="ADmsg">
-                                <h6>
-                                <?php 
-                                    if(isset($_SESSION['updateActiveSucessfully'])){
-                                        echo"Delivary person activeted";
-                                        unset($_SESSION['updateActiveSucessfully']);
-                                    }
-                                    if(isset($_SESSION['updateDeactiveSucessfully'])){
-                                        echo"Delivary person deactiveted";
-                                        unset($_SESSION['updateDeactiveSucessfully']);
-                                    }
-                                
-                                ?>
-                                </h6>
-                        </div>
-                        <div class="ADbtn">
-                            <form action="../../controller/deliveryperson/dashboardController.php" method="post">
-                                <button class="cbtn1" id="btn1" name="btn1">Enable active</button><br>
-                                <button class="cbtn2" id="btn2" name="btn2">Disable active</button>
-                            </form>
-                        </div>
-                </div>
+                
 				
 			</div>
 
-			<ul class="box-info">
-                <li>
-					<i class='bx bxs-calendar-check' ></i>
-					<span class="text">
-						<label for="" id="dayid" style="margin-left: 40%;"></label><br>
-                        <label for="" id="monthid"></label>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-time-five' ></i>
-					<span class="text">
-						<label for="" id="timeid" style="margin-left: 40%; font-size:32px"></label>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-group' ></i>
-					<span class="text">
-						<label for="" id="Nodeliverid1" style=" font-size:20px">Total delivary count:</label>
-                        <label for="" id="Nodeliverid2" style="font-size: 32px; margin-left:5%;"></label>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-dollar-circle' ></i>
-					<span class="text">
-						<label for="" id="incomeid1" style=" font-size:20px"> Total income:</label><br>
-                        <label for="" id="incomeid2">Rs: 850</label>
-					</span>
-				</li>
-               
-
-			</ul>
-
-
 			<div class="table-data">
 				<div class="order">
+				        <div class="tbl">
+                            <table class="tb">
+                                    <tr>
+									    <th>Ref_No</th>
+									    <th>Date</th>
+                                        <th>Description</th>
+										
+                                    </tr>
+                                    <?php
+                                    if(isset($_SESSION['userComplainDetails'])){
+                                        $result=$_SESSION['userComplainDetails']; 
+                                        foreach ($result as $row) {
+                                            echo "<tr>";
+											echo "<td>" . $row['order_id'] . "</td>";
+                                            echo "<td>" . $row['date'] . "</td>";
+                                            echo "<td>" . $row['Description'] . "</td>";
+											?>
+											<td>
+												<form action="../../controller/deliveryperson/DeliveryPersonComplane&ReviewsViewController.php" method="post">
+													<Button name="ComplainDeleteBtn" id="ComplainDeleteBtn_Id">Delete</Button>
+													<input name="Complain_Id_Name" type="hidden" value="<?php echo $row['Complain_id']?>">
+												</form>
+											</td>
+					                        <?php
+											echo "</tr>";
+                                        }
+                                        
+                                    }
+                                    
+                                    ?>
+                                    
+							</table>
+						</div>       
 					
 				</div>
+			
 			</div>
 		</main>
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
 	
-    <script src="../../public/js/delivaryDashboard.js"></script>
-	<script src="../../public/js/liveLocation.js"></script>
-	<script src="../../public/js/deliveryAdd.js"></script>
+
+	<script src="../../public/js/delivaryDashboard.js"></script>
 </body>
 </html>

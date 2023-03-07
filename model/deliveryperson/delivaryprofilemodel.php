@@ -78,12 +78,12 @@ class delivaryProf_model{
             $result2=$connection->query($sql2);
             $sql3="DELETE FROM `deliveryperson` WHERE DeliveryPerson_Id='$User_id'";
             $result3=$connection->query($sql3);
-            // $sql5="DELETE FROM `profileimg` WHERE User_id='$User_id'";
-            // $result5=$connection->query($sql5);
+            $sql5="DELETE FROM `profileimg` WHERE User_id='$User_id'";
+            $result5=$connection->query($sql5);
             //enable foreign key checks
             $sql4="SET FOREIGN_KEY_CHECKS=1";
             $result4=$connection->query($sql4);
-            if($result1===true && $result2===true && $result3===true && $result4===true ){
+            if($result1===true && $result2===true && $result3===true && $result4===true && $result5===true){
                 return true;
             }else{
                 return false;
@@ -93,6 +93,30 @@ class delivaryProf_model{
         }
     }
 
-   
+    public function updateImage($connection,$user_id,$fileNameNew){
+        //update image name and status
+        $sql="UPDATE `profileimg` SET `imgname`='$fileNameNew',`status`=1 WHERE User_id='$user_id'";
+        
+        $result=$connection->query($sql);
+        if($result){
+            $_SESSION['User_img']=$fileNameNew;
+            $_SESSION['img-status']="1";
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+    public function removeImage($connection,$User_id){
+        $sql="UPDATE `profileimg` SET `imgname`='noprofile.png',`status`=0 WHERE User_id='$User_id'";
+        $result=$connection->query($sql);
+        if($result){
+            $_SESSION['User_img']="noprofile.png";
+            $_SESSION['img-status']="0";
+            return true;
+        }else{
+            return false;
+        }
+    }
 
 }

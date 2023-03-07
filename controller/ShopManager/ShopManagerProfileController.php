@@ -121,7 +121,7 @@ if(isset($_POST['uploadimg'])){
     if(in_array($fileActualExt,$allowed)){
         if($fileError === 0){
             if($fileSize < 10000000){
-                $fileNameNew=uniqid('',true).".".$fileActualExt;
+                $fileNameNew=$_SESSION['User_id'].".".$fileActualExt;
                 $fileDestination='../../public/images/ShopManager/profile_img/'.$fileNameNew;
                 move_uploaded_file($fileTmpName,$fileDestination);
                 $acc=new shopManager();

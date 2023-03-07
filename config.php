@@ -3,7 +3,7 @@
     $username = "root";
     $password = "";
     $db = "fago";
-
+    // $db = "another_fago";
     
     $connection = new mysqli($serverName, $username, $password, $db);    //establish the connection with the database
 
