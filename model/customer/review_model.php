@@ -19,6 +19,7 @@ class review_model{
         }
     }
     public function get_date_differance($date){
+        date_default_timezone_set('Asia/Colombo');
         $date1=date_create(date("Y-m-d"));
         $date2=date_create($date);
         $diff=date_diff($date2,$date1);

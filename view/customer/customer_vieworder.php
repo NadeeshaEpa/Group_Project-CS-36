@@ -83,6 +83,7 @@
                         <th>Delivery Method</th>
                         <th>Delivery Status</th>
                         <th>Full Details</th>
+                        <th>Cancel Order</th>
                     </tr>
                     <?php
                         foreach($details as $detail){?>
@@ -104,7 +105,23 @@
                                             <td style="color:green"><b>Delivered</b></td>     
                                         <?php } ?>
                                     </div>
-                                    <td><a href="../../controller/customer/order_controller.php?id=<?php echo $detail['Order_id']?>">View</a></td>
+                                    <td><a href="../../controller/customer/order_controller.php?id=<?php echo $detail['Order_id']?>">View</a></td>    
+                                    <?php
+                                    //get the difference between current date and order date 
+                                    date_default_timezone_set('Asia/Colombo');
+                                    $date1=date_create(date("Y-m-d"));
+                                    $date2=date_create($detail['Order_date']);
+                                    $diff=date_diff($date1,$date2);
+                                    $diff=$diff->format("%a");
+                                    
+                                    if(($detail['Delivery_Status']==NULL && $diff<2)||($detail['Delivery_Status']==2 && $diff<1)){?>
+                                    <div class="cancelbutton">
+                                        <td><button id="cancelbutton" onclick="cancelorder(<?php echo $detail['Order_id']?>);">Cancel</button></td>
+                                    </div>
+                                    <?php }else{?>
+                                        <td></td>
+                                    <?php }
+                                    ?>
                             </tr>
                         <?php }?>
                 </table>
@@ -142,6 +159,42 @@
                 </div>
             </div>    
         </div>
-    </div>    
+    </div>  
+    <!-- pop up message -->
+    <div id="cancel_popup">
+        <div class="cancel_contect">
+            <p>Are you sure you want to cancel this order?</p>
+            <div class="buttons">
+                <button id="yes">Yes</button>
+                <button id="no">No</button>
+            </div>
+        </div>
+    <div>
+    <!--can't cancel the order pop up message  -->
+    <!-- <div id="cannotcancel_popup">
+        <div class="cannotcancel_contect">
+            <p>You can't cancel this order because it is on it's way to your home.</p>
+            <div class="buttons">
+                <button id="ok">OK</button>
+            </div>
+        </div>
+    </div> -->
+    <script>
+        function cancelorder(id){
+            document.getElementById("cancel_popup").style.display="block";
+            document.getElementById("yes").addEventListener("click",function(){
+                window.location.href="../../controller/customer/order_controller.php?cancelid="+id;
+            });
+            document.getElementById("no").addEventListener("click",function(){
+                document.getElementById("cancel_popup").style.display="none";
+            });
+        }  
+        // function cannotcancelorder(){
+        //     document.getElementById("cannotcancel_popup").style.display="block";
+        //     document.getElementById("ok").addEventListener("click",function(){
+        //         document.getElementById("cannotcancel_popup").style.display="none";
+        //     });
+        // }
+    </script>
 </body>
 </html>

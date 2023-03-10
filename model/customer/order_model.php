@@ -14,27 +14,27 @@ class order_model{
         return $answer[0]['id'];
     }
     public function viewOrders($connection,$user_id,$limit,$offset){
-        $sql="SELECT distinct o.Order_id,o.Delivery_Method,o.Amount,o.Delivery_Status,o.Time,o.Order_date,u.First_Name,u.Last_Name from `order` o INNER JOIN `placeorder` p ON o.Order_id=p.Order_Id INNER JOIN `user` u ON p.GasAgent_Id=u.User_id WHERE p.Customer_Id='$user_id' group by order_id order by o.order_id desc LIMIT $limit OFFSET $offset";
+        $sql="SELECT distinct o.Order_id,o.Delivery_Method,o.Amount,o.Delivery_Status,o.Time,o.Order_date,u.First_Name,u.Last_Name from `order` o INNER JOIN `placeorder` p ON o.Order_id=p.Order_Id INNER JOIN `user` u ON p.GasAgent_Id=u.User_id WHERE p.Customer_Id='$user_id' and o.Order_Status=1 group by order_id order by o.order_id desc LIMIT $limit OFFSET $offset";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;
         }else{
             $orders=[];
             while($row=$result->fetch_object()){
-                array_push($orders,['Order_id'=>$row->Order_id,'Delivery_Method'=>$row->Delivery_Method,'Amount'=>$row->Amount,'Delivery_Status'=>$row->Delivery_Status,'First_Name'=>$row->First_Name,'Last_Name'=>$row->Last_Name,'Time'=>$row->Time]);
+                array_push($orders,['Order_id'=>$row->Order_id,'Delivery_Method'=>$row->Delivery_Method,'Amount'=>$row->Amount,'Delivery_Status'=>$row->Delivery_Status,'First_Name'=>$row->First_Name,'Last_Name'=>$row->Last_Name,'Time'=>$row->Time,'Order_date'=>$row->Order_date]);
             }
             return $orders;
         }
     }
     public function view_fagoOrders($connection,$userid,$limit,$offset){
-        $sql="SELECT distinct o.Order_id,o.Delivery_Method,o.Amount,o.Delivery_Status,o.Time,o.Order_date from `order` o INNER JOIN `shop_placeorder` p ON o.Order_id=p.Order_id WHERE p.Customer_Id='$userid' group by order_id order by o.order_id desc LIMIT $limit OFFSET $offset";
+        $sql="SELECT distinct o.Order_id,o.Delivery_Method,o.Amount,o.Delivery_Status,o.Time,o.Order_date from `order` o INNER JOIN `shop_placeorder` p ON o.Order_id=p.Order_id WHERE p.Customer_Id='$userid' and o.Order_Status=1 group by order_id order by o.order_id desc LIMIT $limit OFFSET $offset";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;
         }else{
             $orders=[];
             while($row=$result->fetch_object()){
-                array_push($orders,['Order_id'=>$row->Order_id,'Delivery_Method'=>$row->Delivery_Method,'Amount'=>$row->Amount,'Delivery_Status'=>$row->Delivery_Status,'Time'=>$row->Time]);
+                array_push($orders,['Order_id'=>$row->Order_id,'Delivery_Method'=>$row->Delivery_Method,'Amount'=>$row->Amount,'Delivery_Status'=>$row->Delivery_Status,'Time'=>$row->Time,'Order_date'=>$row->Order_date]);
             }
             return $orders;
         }
@@ -122,7 +122,7 @@ class order_model{
         }
     }
     public function fago_order_count($connection,$userid){
-        $sql="Select distinct order_id from `shop_placeorder` Customer_Id='$userid'";
+        $sql="Select distinct order_id from `shop_placeorder` where Customer_Id='$userid'";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return 0;
@@ -231,4 +231,116 @@ class order_model{
             return $row->name." ".$row->product_type;
         }
     }
+    public function cancelOrder($connection,$order_id){
+        $sql="select GasAgent_Id from `placeorder` WHERE Order_id='$order_id'";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            //get the gas agent id
+            $gasagent_id=$result->fetch_object()->GasAgent_Id;
+
+            //make Order_status=2 in order table
+            $sql="update `order` set Order_status=2 where Order_id='$order_id'";
+            $result=$connection->query($sql);
+            if($result===false){
+                return false;
+            }
+            //get the qunatity of the each gas cylinder in the order
+            $data="select Cylinder_id,Quantity from `placeorder` WHERE Order_id='$order_id'";
+            $gasdetails=$connection->query($data);
+            if($gasdetails->num_rows===0){
+                return false;
+            }else{
+                while($row=$gasdetails->fetch_object()){
+                    $cylinder_id=$row->Cylinder_id;
+                    $quantity=$row->Quantity;
+                    //get the current quantity of the gas cylinder
+                    $sql="update sell_gas set Quantity=Quantity+$quantity where Cylinder_id='$cylinder_id' and GasAgent_Id='$gasagent_id'";
+                    $result=$connection->query($sql);
+                    if($result===false){
+                        return false;
+                    }
+                }
+            }
+            //delete from payment table
+            $sql="delete from payment where Order_id='$order_id'";
+            $result=$connection->query($sql);
+            if($result===false){
+                return false;
+            }
+            return true;
+        }
+    }
+    public function cancelShopOrder($connection,$order_id){
+        //make Order_status=2 in order table
+        $sql="update `order` set Order_status=2 where Order_id='$order_id'";
+        $result=$connection->query($sql);
+        if($result===false){
+            return false;
+        }
+        //get the qunatity of the each gas cylinder in the order
+        $data="select Product_id,Quantity from `shop_placeorder` WHERE Order_id='$order_id'";
+        $gasdetails=$connection->query($data);
+        if($gasdetails->num_rows===0){
+            return false;
+        }else{
+            while($row=$gasdetails->fetch_object()){
+                $Product_Id=$row->Product_id;
+                $quantity=$row->Quantity;
+                //get the current quantity of the gas cylinder
+                $sql="update product set Quantity=Quantity+$quantity where Item_code='$Product_Id'";
+                $result=$connection->query($sql);
+                if($result===false){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    public function getChargeId($connection,$order_id){
+        $sql="select Charge_id from `order` WHERE Order_id='$order_id'";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $charge_id=$result->fetch_object()->Charge_id;
+            return $charge_id;
+        }
+    }
+    public function getTotalAmount($connection,$order_id){
+        $sql="select Delivery_fee,Amount from `order` WHERE Order_id='$order_id'";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $row=$result->fetch_object();
+            $delivery_fee=$row->Delivery_fee;
+            $amount=$row->Amount;
+            $total_amount=$delivery_fee+$amount;
+            return $total_amount;
+        }
+    }
+    public function getUserEmail($connection,$order_id,$shop){
+        if($shop=="gas"){
+            $sql="select Customer_Id from `placeorder` WHERE Order_Id='$order_id'";
+        }else{
+            $sql="select Customer_Id from `shop_placeorder` WHERE Order_Id='$order_id'";
+        }
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $user_id=$result->fetch_object()->Customer_Id;
+            $sql="select Email from user WHERE User_id='$user_id'";
+            $result=$connection->query($sql);
+            if($result->num_rows===0){
+                return false;
+            }else{
+                $email=$result->fetch_object()->Email;
+                return $email;
+            }
+        }
+    }
+    
 }
