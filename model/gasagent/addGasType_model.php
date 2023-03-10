@@ -17,4 +17,8 @@ class add_gasType{
             return false;
         }
    }
+
+   public function deleteGasType($connection,$typeId){
+      
+   }
 }

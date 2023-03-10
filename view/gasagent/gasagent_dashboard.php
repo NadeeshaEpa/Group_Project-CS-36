@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +47,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="../../view/gasagent/gasagentUpdate.php">
+				<a href="../../controller/gasagent/gasagentUpdateFirst.php">
 					<i class='bx bxs-message-dots' ></i>
 					<span class="text">Update/Delete</span>
 				</a>
@@ -55,6 +56,13 @@
 				<a href="../../controller/gasagent/account_controller.php?viewacc='1'">
 					<i class='bx bxs-group' ></i>
 					<span class="text">profile details</span>
+				</a>
+			</li>
+
+			<li>
+				<a href="../../view/gasagent/compalin.php">
+					<i class='bx bxs-group' ></i>
+					<span class="text">Complaine</span>
 				</a>
 			</li>
 		</ul>
@@ -66,7 +74,7 @@
 				</a>
 			</li> -->
 			<li>
-				<a href="../../index.php" class="logout">
+				<a href="../../view/gasagent/gasagent_login.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -120,10 +128,28 @@
 			</div>
 			<div class="btn">
                             <form action="../../controller/deliveryperson/dashboardController.php" method="post">
-                                <button class="btn1" id="btn1" name="btn1">Shop Open</button><br>
+                                <button class="btn1" id="btn1" name="btn1">Shop Open</button>
                                 <button class="btn2" id="btn2" name="btn2">Shop Closed</button>
                             </form>
                         </div>
+			<div>
+				<?php
+				if(isset($_SESSION['low_stack_details'])){
+					$result=$_SESSION['low_stack_details'];
+					unset($_SESSION['low_stack_details']);
+					foreach($result as $re){
+						?>
+						<div class="stock">
+						<p>Low stock on <?php echo $re['Weight']?>KG</p>
+						</div>
+						<?php
+					}
+					?>
+					<?php
+				}
+				
+				?>
+			</div>
 
 			<!-- <ul class="box-info">
 				<li>
@@ -185,8 +211,43 @@
 
 			<div class="table-data">
 				<div class="order">
-					<div class="head">
-						<h3>Recent Orders</h3>
+					
+					<div class="tbl">
+                                    <table class="tb">
+                                    <tr>
+                      					<th>Customer Name</th>
+                                        <th>Customer Address</th>
+                    					<th>Customer Contact No</th>
+                    					<th>Quantity</th>
+                                       
+										<th>weight</th>
+                    					<th>Order date</th>
+                                        <th>Delivery Method</th>
+                                        <th>Price</th>
+                                    </tr>
+                                    <?php
+                                    if(isset($_SESSION['Gas_Dashboard_details'])){
+                                        $result=$_SESSION['Gas_Dashboard_details']; 
+                                        foreach ($result as $row) {
+                                            echo "<tr>";
+                                            echo "<td>" . $row['Name'] . "</td>";
+                                            echo "<td>" . $row['Address'] . "</td>";
+                      						echo "<td>" . $row['Contact_No'] ."</td>";
+                      						echo "<td>" . $row['Quantity'] . "</td>";
+                                           
+											echo "<td>" . $row['weight'] . "</td>";
+                      						echo "<td>" . $row['Order_date'] . "</td>";
+                      						echo "<td>" . $row['Delivery_Method'] . "</td>";
+                                            echo "<td>" . $row['Amount'] . "</td>";
+                      						echo "</tr>";
+                                        }
+                                      
+                                    }
+                                    
+                                    ?>
+                                    </table>
+                    </div>
+						<!-- <h3>Recent Orders</h3>
 						<i class='bx bx-search' ></i>
 						<i class='bx bx-filter' ></i>
 					</div>
@@ -240,7 +301,7 @@
 								<td><span class="status completed">Completed</span></td>
 							</tr>
 						</tbody>
-					</table>
+					</table> -->
 				</div>
 			
 			</div>

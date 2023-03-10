@@ -22,7 +22,7 @@ if(isset($_POST['login'])){
         else if($_SESSION['Type']=="Delivery_Person")
             header("Location: ../../view/deliveryperson/delivery_dashboard.php");  //redirect to the dashboard page
         else if($_SESSION['Type']=="gasagent")
-            header("Location: ../../view/gasagent/gasagent_dashboard.php");  //redirect to the dashboard page
+            header("Location: ../../controller/gasagent/gasagent_order_controller.php");  //redirect to the dashboard page
         else if($_SESSION['Type']=="FuelManager")
             header("Location: ../../view/fuelmanager/fuelManager_Dashboard.php");  //redirect to the dashboard page
         else if($_SESSION['Type']=="Admin")

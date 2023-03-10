@@ -3,6 +3,8 @@ session_start();
 
 include_once('../../config.php');
 include_once('../../model/gasagent/addGasType_model.php');
+include_once('../../model/gasagent/deleteGasType_model.php');
+include_once('../../model/gasagent/update_gasQuantity_model.php');
 
 if(isset($_POST['AddgasType'])){   
     // $gasType=$_POST['gasType'];
@@ -35,6 +37,39 @@ $user=new add_gasType();
         echo "error";
     }
 }
+
+if(isset($_POST['deleteBtn'])){
+    $deleteId = $connection->real_escape_string($_POST['deleteBtn']);   
+    $deletetype = new delete_gasType();
+    $delete = $deletetype->deleteGasType($connection,$deleteId);
+    if($delete)
+    {
+        header("Location: ../../view/gasagent/addGasTypeSucsess.php");
+    }
+}
+
+
+if(isset($_POST['quantityUpdateBtn'])){
+    $updateId = $connection->real_escape_string($_POST['quantityUpdateBtn']);
+    $quantity = $connection->real_escape_string($_POST['updateQuantity']);
+    $updateGasQuantity = new  update_gasQuantity(); 
+    $res = $updateGasQuantity->updateGasQuantity($connection, $updateId, $quantity);
+    if($res) {
+        $render = $_SESSION['Gas_UP_details'];
+        $temp = [];
+        foreach($render as $r){
+            if ($r['Cylinder_Id'] == $updateId) $r['Quantity'] = $quantity;
+            $temp[] = $r;
+        }
+        $_SESSION['Gas_UP_details'] = $temp;
+        
+        header("Location: ../../view/gasagent/gasagentUpdate.php");
+    }
+
+
+}
+
+
 
 
 

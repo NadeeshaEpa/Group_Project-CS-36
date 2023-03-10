@@ -21,7 +21,7 @@
 		</a>
 		<ul class="side-menu top">
 			<li>
-				<a href="../../view/gasagent/gasagent_dashboard.php">
+				<a href="../../controller/gasagent/gasagent_order_controller.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -45,7 +45,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="../../view/gasagent/gasagentUpdate.php">
+				<a href="../../controller/gasagent/gasagentUpdateFirst.php">
 					<i class='bx bxs-message-dots' ></i>
 					<span class="text">Update or Delete</span>
 				</a>
@@ -54,6 +54,12 @@
 				<a href="#">
 					<i class='bx bxs-group' ></i>
 					<span class="text">profile details</span>
+				</a>
+			</li>
+			<li>
+				<a href="../../view/gasagent/compalin.php">
+					<i class='bx bxs-group' ></i>
+					<span class="text">Complaine</span>
 				</a>
 			</li>
 		</ul>
@@ -65,7 +71,7 @@
 				</a>
 			</li> -->
 			<li>
-				<a href="#" class="logout">
+				<a href="../../view/gasagent/gasagent_login.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
