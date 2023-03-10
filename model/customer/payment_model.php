@@ -107,7 +107,7 @@ class payment_model{
         }
         return $answer[0]['id'];
     }
-    public function order($connection,$agent,$userid,$amount){
+    public function order($connection,$agent,$userid,$amount,$charge_id){
         //change the time to sri lanka time zone
         date_default_timezone_set("Asia/Colombo");
         $time=date("h:i:sa");
@@ -124,8 +124,11 @@ class payment_model{
         }else if($delivery_method=="Courier service"){
             $delivery_status="3";
         }
-
-        $sql="insert into `order` (Time,Order_date,Delivery_Method,Order_Status,Amount,Delivery_Status,Delivery_fee,latitude,longitude) values ('$time','$date','$delivery_method','1','$amount','$delivery_status','$delivery_fee','$latitude','$longitude')";
+        if($delivery_status=='NULL'){
+            $sql="insert into `order` (Time,Order_date,Delivery_Method,Order_Status,Amount,Charge_id,Delivery_Status,Delivery_fee,latitude,longitude) values ('$time','$date','$delivery_method','1','$amount','$charge_id',NULL,'$delivery_fee','$latitude','$longitude')";
+        }else{
+            $sql="insert into `order` (Time,Order_date,Delivery_Method,Order_Status,Amount,Charge_id,Delivery_Status,Delivery_fee,latitude,longitude) values ('$time','$date','$delivery_method','1','$amount','$charge_id','$delivery_status','$delivery_fee','$latitude','$longitude')";
+        }
         $result=$connection->query($sql);
         if($result){
             return true;
@@ -330,8 +333,6 @@ class payment_model{
                 $result=$this->addquantity($result);
 
                 $answer=[];
-                $sql="select * from cart where user_id='$userid' and gasagent_id='$agent'";
-                $result=$connection->query($sql);
                 foreach($result as $item){
                     $weight=$item['weight'];
                     $type=$item['type'];

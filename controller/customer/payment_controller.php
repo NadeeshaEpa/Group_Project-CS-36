@@ -2,8 +2,8 @@
 session_start();
 require_once '../../config.php';
 require_once '../../model/customer/payment_model.php';
-
 require('../../payment_config.php');
+
 if(isset($_POST['stripeToken'])){
     $amount=$_POST['amount'];
     $agent=$_POST['agentid'];
@@ -30,9 +30,10 @@ if(isset($_POST['stripeToken'])){
         "source"=>$token,
     ));
 
+    $charge_id=$charge->id;
 
     if ($charge->status == 'succeeded') {
-        $order=$payment->order($connection,$agent,$_SESSION['User_id'],$amount);
+        $order=$payment->order($connection,$agent,$_SESSION['User_id'],$amount,$charge_id);
         $placeorder=$payment->placeorder($connection,$_SESSION['User_id'],$agent);
         $final_orderdetails=$payment->getorderdetails($connection,$_SESSION['User_id'],$agent);
         $_SESSION['final_orderdetails']=$final_orderdetails;

@@ -44,8 +44,6 @@
                 <div class="details-right">
                     <!-- pass the button value as a post variable -->
                     <form action="../../controller/customer/addtocart_controller.php" method="post">
-                        <!-- <input type="hidden" name="button" value="<?php echo $button?>">
-                        <input type="hidden" name="gas_id" value="<?php echo $Gas_id?>"> -->
                         <button type="submit" name="viewcart" class="viewcart">View Cart</button>
                     </form>
                 </div>    
