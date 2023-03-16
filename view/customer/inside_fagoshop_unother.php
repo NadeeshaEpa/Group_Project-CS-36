@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <?php include_once '../header.php'; ?>
+    <?php include_once '../unreguser_header.php'; ?>
     <?php
          if(isset($_SESSION['other'])){
              $regulator=$_SESSION['other'];

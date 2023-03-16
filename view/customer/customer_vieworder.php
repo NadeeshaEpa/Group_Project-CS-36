@@ -119,7 +119,7 @@
                                         <td><button id="cancelbutton" onclick="cancelorder(<?php echo $detail['Order_id']?>);">Cancel</button></td>
                                     </div>
                                     <?php }else{?>
-                                        <td></td>
+                                        <td><button id="dcancelbutton">Cancel</button></td>
                                     <?php }
                                     ?>
                             </tr>
@@ -169,16 +169,7 @@
                 <button id="no">No</button>
             </div>
         </div>
-    <div>
-    <!--can't cancel the order pop up message  -->
-    <!-- <div id="cannotcancel_popup">
-        <div class="cannotcancel_contect">
-            <p>You can't cancel this order because it is on it's way to your home.</p>
-            <div class="buttons">
-                <button id="ok">OK</button>
-            </div>
-        </div>
-    </div> -->
+    </div>
     <script>
         function cancelorder(id){
             document.getElementById("cancel_popup").style.display="block";
@@ -189,12 +180,6 @@
                 document.getElementById("cancel_popup").style.display="none";
             });
         }  
-        // function cannotcancelorder(){
-        //     document.getElementById("cannotcancel_popup").style.display="block";
-        //     document.getElementById("ok").addEventListener("click",function(){
-        //         document.getElementById("cannotcancel_popup").style.display="none";
-        //     });
-        // }
     </script>
 </body>
 </html>

@@ -22,40 +22,39 @@ if(isset($_GET['reviewid'])){
     }
 }
 if(isset($_POST['fillreview'])){
-    $dpname=$_POST['dpname'];
+    $dpid=$_POST['dpname'];
     $description=$_POST['description'];
 
-    $dpname=$connection->real_escape_string($dpname);
-    $date=$connection->real_escape_string($date);
+    $dpid=$connection->real_escape_string($dpid);
     $description=$connection->real_escape_string($description);
 
+    //extract delivery person id from the name
+    $dpid=substr($dpid,0,strpos($dpid,"-"));
+    $dpid=$connection->real_escape_string($dpid);
+
     $order=new review_model();
-    $dpid=$order->finddeliveryid($connection,$dpname);
-    if($dpid===false){
+    $result=$order->review($connection,$_SESSION['User_id'],$dpid,$description);
+    if($result===false){
         $_SESSION['addreview']="failed";
+        header("Location: ../../view/customer/error.php");
     }else{
-        $result=$order->review($connection,$_SESSION['User_id'],$dpid,$description);
+        $_SESSION['addreview']="success";
+        $review=new review_model();
+
+        $rc=new review_controller();
+        $rc->pagination($connection,$userid);
+        $limit=$_SESSION['limit'];
+        $offset=$_SESSION['offset'];
+
+        $result=$review->viewreview($connection,$_SESSION['User_id'],$limit,$offset);
         if($result===false){
-            echo "Failed";
+            $_SESSION['viewreview']="failed";
+            header("Location: ../../view/customer/customer_reviews.php");
         }else{
-            $_SESSION['addreview']="success";
-            $review=new review_model();
-
-            $rc=new review_controller();
-            $rc->pagination($connection,$userid);
-            $limit=$_SESSION['limit'];
-            $offset=$_SESSION['offset'];
-
-            $result=$review->viewreview($connection,$_SESSION['User_id'],$limit,$offset);
-            if($result===false){
-                $_SESSION['viewreview']="failed";
-                header("Location: ../../view/customer/customer_viewreviews.php");
-            }else{
-                $_SESSION['viewreview']=$result;
-                header("Location: ../../view/customer/customer_viewreviews.php");
-            }
+            $_SESSION['viewreview']=$result;
+            header("Location: ../../view/customer/customer_viewreviews.php");
         }
-    }  
+    } 
 }
 if(isset($_GET['view-review']) || isset($_GET['page'])){
     $review=new review_model();

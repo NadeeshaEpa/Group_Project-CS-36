@@ -69,7 +69,7 @@ if(isset($_SESSION['unlocations'])){
     </script>
 </head>
 <body onload="initMap()">
-    <?php include '../header.php'?>
+    <?php include_once '../unreguser_header.php'; ?>
     <div class="container">
         <div class="up">
             <form action="../../controller/customer/gas_controller.php" method="POST">
@@ -152,9 +152,11 @@ if(isset($_SESSION['unlocations'])){
                         <?php } ?>
                     </tr>
             </table>
-            <div class="seemore">
-                <button onclick="popup()">See more</button> 
-            </div>    
+            <?php if(isset($_SESSION['unshopnames'])){?>
+                <div class="seemore">
+                    <button onclick="popup()">See more</button> 
+                </div> 
+            <?php } ?>   
         </div>
     </div>
     <div id="myModal" class="modal">

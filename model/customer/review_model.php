@@ -35,11 +35,23 @@ class review_model{
                 return false;
             }else{    
                 while($row=$result->fetch_object()){
-                    array_push($names,['First_Name'=>$row->First_Name,'Last_Name'=>$row->Last_Name]);
+                    $profile=$this->getuserimg($connection,$d['DeliveryPerson_Id']);
+                    array_push($names,['First_Name'=>$row->First_Name,'Last_Name'=>$row->Last_Name,'DeliveryPerson_Id'=>$d['DeliveryPerson_Id'],'image'=>$profile]);
                 }
             }
         }
         return $names;
+    }
+    public function getuserimg($connection,$delivery){
+        $sql="select imgname from `profileimg` where User_id='$delivery'";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $image=$result->fetch_object();
+            $imagename=$image->imgname;
+        }
+        return $imagename;
     }
     public function finddeliveryid($connection,$dpname){
         $words=[];
@@ -64,14 +76,15 @@ class review_model{
         }
     }
     public function viewreview($connection,$user_id,$limit,$offset){
-        $sql="SELECT r.Rate_Id,r.Date,r.Description,u.First_Name,u.Last_Name from `rateservice` r INNER JOIN `user` u ON r.DeliveryPerson_Id=u.User_id WHERE r.Customer_Id='$user_id' LIMIT $limit OFFSET $offset";
+        $sql="SELECT r.DeliveryPerson_Id,r.Rate_Id,r.Date,r.Description,u.First_Name,u.Last_Name from `rateservice` r INNER JOIN `user` u ON r.DeliveryPerson_Id=u.User_id WHERE r.Customer_Id='$user_id' LIMIT $limit OFFSET $offset";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;
         }else{
             $reviews=[];
             while($row=$result->fetch_object()){
-                array_push($reviews,['Rate_id'=>$row->Rate_Id,'Date'=>$row->Date,'Description'=>$row->Description,'First_Name'=>$row->First_Name,'Last_Name'=>$row->Last_Name]);
+                $image=$this->getuserimg($connection,$row->DeliveryPerson_Id);
+                array_push($reviews,['Rate_id'=>$row->Rate_Id,'Date'=>$row->Date,'Description'=>$row->Description,'First_Name'=>$row->First_Name,'Last_Name'=>$row->Last_Name,'image'=>$image]);
             }
             //sort the array according to the date rate id latest review come first
             usort($reviews,function($a,$b){

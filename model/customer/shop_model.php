@@ -140,5 +140,18 @@ class shop_model{
         $d=round($d,1);
         return $d;    
     }
+    public function search($connection,$type,$item){
+        $sql="SELECT * FROM product WHERE Category='$type' AND Name LIKE '%$item%'";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $answer=[];
+            while($row=$result->fetch_assoc()){
+                array_push($answer,['item_code'=>$row['Item_code'],'Name'=>$row['Name'],'Quantity'=>$row['Quantity'],'price'=>$row['Price'],'Category'=>$row['Category'],'product_type'=>$row['Product_type'],'Description'=>$row['Description'],'image'=>$row['Product_img']]);
+            }
+        }
+        return $answer;
+    }
     
 }

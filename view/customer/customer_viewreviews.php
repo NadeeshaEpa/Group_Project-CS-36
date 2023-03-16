@@ -58,6 +58,7 @@
                         <h1>All Reviews</h1>
                         <table>
                             <tr>
+                                <th>Delivery Person</th>
                                 <th>Delivery Person name</th>
                                 <th>Date</th>
                                 <th>Description</th>
@@ -66,7 +67,6 @@
                             <?php
                                 if(isset($_SESSION['viewreview'])){
                                     if($_SESSION['viewreview']==='failed'){
-                                        echo "<script>alert('No reviews found')</script>";
                                         unset($_SESSION['viewreview']);
                                         $details=[];
                                     }else{
@@ -75,6 +75,8 @@
                                 }
                                 foreach($details as $detail){?>
                                     <tr>
+
+                                        <td><img src="../../public/images/DeliveryPerson/<?php echo $detail['image'] ?>" width="50px" height="50px"></td>
                                         <td><?php echo $detail['First_Name']." ".$detail['Last_Name']; ?></td>
                                         <td><?php echo $detail['Date']; ?></td>
                                         <td><?php echo $detail['Description']; ?></td> 

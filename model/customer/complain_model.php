@@ -34,14 +34,19 @@ class complain_model{
         }
     }
     public function viewcomplain($connection,$userid,$limit,$offset){
-        $sql="Select complain_id,Description,order_id,status,date from `complains` where user_id='$userid' LIMIT $limit OFFSET $offset";
+        $sql="Select complain_id,Description,order_id,status,date,message from `complains` where user_id='$userid' LIMIT $limit OFFSET $offset";
         $result=$connection->query($sql);
         $complain=[];
         if($result->num_rows==0){
             return $complain;
         }else{
             while($row=$result->fetch_object()){
-                array_push($complain,['complain_id'=>$row->complain_id,'complain'=>$row->Description,'order_id'=>$row->order_id,'status'=>$row->status,'date'=>$row->date]);
+                if($row->message==NULL){
+                    $row->message="Still not checked";
+                }else{
+                    $row->message=$row->message;
+                }
+                array_push($complain,['complain_id'=>$row->complain_id,'complain'=>$row->Description,'order_id'=>$row->order_id,'status'=>$row->status,'date'=>$row->date,'message'=>$row->message]);
             }
             //sort the array to show the latest complain first
             usort($complain,function($a,$b){

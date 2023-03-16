@@ -70,6 +70,7 @@ if(isset($_POST['updateaccount'])){
             header("Location: ../../view/customer/customer_dashboard.php");
         }else{
             $_SESSION['updateuser']="failed";
+            header("Location: ../../view/customer/error.php");
             echo "Failed";
         }
     }
@@ -118,7 +119,7 @@ if(isset($_POST['deleteaccount'])){
         $result=$acc->deleteAccount($connection,$_SESSION['User_id']);
         if($result){
             $_SESSION['deleteacc']="success";
-            header("Location: ../../view/customer/customer_login.php");
+            header("Location: ../../view/login.php");
         }else{
             $_SESSION['deleteacc']="failed";
             header("Location: ../../view/customer/customer_dashboard.php");

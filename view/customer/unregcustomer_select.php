@@ -12,7 +12,7 @@ if(isset($_SESSION['gastype'])){
     <title>Document</title>
 </head>
 <body>
-    <?php include '../header.php'?>
+    <?php include_once '../unreguser_header.php'; ?>
     <div class="up-gas">
     </div>    
     <div class="down">

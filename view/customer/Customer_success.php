@@ -4,54 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../public/css/customer/reg_request.css">
     <title>Document</title>
 
-    <style>
-       body{
-        background-color:white;
-       } 
-       .container{
-        height:62%;
-       }
-       .para{
-          width:60%;
-          height:50%;
-          background-color:navy;
-          margin-left:20%;
-          margin-top:10%;
-          border-radius:20px;
-          color:white;
-       }
-       .para h2{
-          padding:30px;
-          text-align:center;
-       }
-       .para button{
-         width: 120px;
-         height: 50px;
-         background-color:#00B8C4;
-         color:black;
-         margin-left:45%;
-         border-radius:20px;
-         font-size:20px;
-         border:lightgreen;
-         font-weight:bold;
-       }
-       .para button:hover{
-         background-color:lightblue;
-       }
-       .para a{
-         text-decoration:none;
-       }
-       
-    </style>
 </head>
 <body>
-    <?php require_once '../header.php'; ?> 
+    <?php require_once '../unreguser_header.php'; ?> 
     <div class="container">
-        <div class="para">    
+        <div class="para" id="bg-changer">    
             <h2>
-                Registration request send successfully. You will receive an email within 48 hours
+               Regitration request sent successfully. Please wait for the approval.
+               You will be notified via email within 48 hours.<br>
+               Thank you for your patience.
             </h2>
             <a href="../../index.php"><button>OK</button></a>
         </div>    

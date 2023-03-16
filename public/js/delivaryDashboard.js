@@ -188,7 +188,7 @@ xhttp.onreadystatechange = function() {
 	Nodeliverid2.innerHTML = response.delivery_count['COUNT(*)'];
     
 };
-xhttp.open("GET", "http://localhost:8001/controller/deliveryperson/deliveryCountcontroller.php", true);
+xhttp.open("GET", "http://localhost/Group_36/controller/deliveryperson/deliveryCountcontroller.php", true);
 xhttp.send();
 
 /* */

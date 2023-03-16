@@ -41,7 +41,19 @@
             unset($_SESSION['addtocart']);
         }
     ?>
+    <div class="serach-bar">
+        <form method="get" action="../../controller/customer/shop_controller.php">
+            <label for="search">Search for products:</label>
+            <input type="text" id="search" name="searchitem">
+            <button type="submit" name="gsearch">Search</button>
+        </form>
+    </div>    
     <div class="products">
+        <?php
+            if($count==0){
+                echo "<div class='success-msg'>No items found</div>";
+            }
+        ?>
         <!-- print the products as 4 items per row -->
         <?php
             $i=0;

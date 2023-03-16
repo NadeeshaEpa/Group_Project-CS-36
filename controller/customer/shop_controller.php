@@ -8,7 +8,8 @@ if(isset($_GET['gascooker'])){
    $gascooker=new shop_model();
    $result=$gascooker->getGasCooker($connection);
    if($result==false){
-      echo "No gas cooker";
+      $_SESSION['gascooker']=[];
+      header("Location: ../../view/customer/inside_fagoshop.php");
    }else{
       $_SESSION['gascooker']=$result;
       header("Location: ../../view/customer/inside_fagoshop.php");
@@ -18,7 +19,8 @@ if(isset($_GET['regulator'])){
    $regulator=new shop_model();
    $result=$regulator->getRegulator($connection);
    if($result==false){
-      echo "No regulator";
+      $_SESSION['regulator']=[];
+      header("Location: ../../view/customer/inside_fagoshop_regulator.php");
    }else{
       $_SESSION['regulator']=$result;
       header("Location: ../../view/customer/inside_fagoshop_regulator.php");
@@ -28,7 +30,8 @@ if(isset($_GET['other'])){
    $other=new shop_model();
    $result=$other->getOther($connection);
    if($result==false){
-      echo "No other";
+      $_SESSION['other']=[];
+      header("Location: ../../view/customer/inside_fagoshop_other.php");
    }else{
       $_SESSION['other']=$result;
       header("Location: ../../view/customer/inside_fagoshop_other.php");
@@ -118,7 +121,34 @@ if(isset($_POST['shop_add'])){
       header("Location: ../../view/customer/inside_fagoshop.php");
    }else{
       $_SESSION['addtocart']="success";
-      header("Location: ../../view/customer/inside_fagoshop.php");
+      if($category=="Gas Cooker"){
+         $result=$gascooker->getGasCooker($connection);
+         if($result==false){
+            $_SESSION['gascooker']=[];
+            header("Location: ../../view/customer/inside_fagoshop.php");
+         }else{
+            $_SESSION['gascooker']=$result;
+            header("Location: ../../view/customer/inside_fagoshop.php");
+         } 
+      }else if($category=="Regulator"){
+         $result=$gascooker->getRegulator($connection);
+         if($result==false){
+            $_SESSION['regulator']=[];
+            header("Location: ../../view/customer/inside_fagoshop_regulator.php");
+         }else{
+            $_SESSION['regulator']=$result;
+            header("Location: ../../view/customer/inside_fagoshop_regulator.php");
+         }
+      }else{
+         $result=$gascooker->getOther($connection);
+         if($result==false){
+            $_SESSION['other']=[];
+            header("Location: ../../view/customer/inside_fagoshop_other.php");
+         }else{
+            $_SESSION['other']=$result;
+            header("Location: ../../view/customer/inside_fagoshop_other.php");
+         }
+      }
    }
 }
 
@@ -159,5 +189,45 @@ if(isset($_POST['dmbutton'])){
          array_push($buy_now_price,['price'=>$price,'delivery_fee'=>0,'shop_name'=>"Fago Shop"]);
          $_SESSION['dnowcheckout']=$buy_now_price;
          header("Location: ../../view/customer/total_now.php");
+   }
+}
+
+if(isset($_GET['gsearch'])){
+   $type="Gas Cooker";
+   $shop=new shop_model();
+   $item=$_GET['searchitem'];
+   $result=$shop->search($connection,$type,$item);
+   if($result==false){
+      $_SESSION['gascooker']=[];
+      header("Location: ../../view/customer/inside_fagoshop.php");
+   }else{
+      $_SESSION['gascooker']=$result;
+      header("Location: ../../view/customer/inside_fagoshop.php");
+   }
+}
+if(isset($_GET['rsearch'])){
+   $type="Regulator";
+   $shop=new shop_model();
+   $item=$_GET['searchitem'];
+   $result=$shop->search($connection,$type,$item);
+   if($result==false){
+      $_SESSION['regulator']=[];
+      header("Location: ../../view/customer/inside_fagoshop_regulator.php");
+   }else{
+      $_SESSION['regulator']=$result;
+      header("Location: ../../view/customer/inside_fagoshop_regulator.php");
+   }
+}
+if(isset($_GET['osearch'])){
+   $type="Other";
+   $shop=new shop_model();
+   $item=$_GET['searchitem'];
+   $result=$shop->search($connection,$type,$item);
+   if($result==false){
+      $_SESSION['other']=[];
+      header("Location: ../../view/customer/inside_fagoshop_other.php");
+   }else{
+      $_SESSION['other']=$result;
+      header("Location: ../../view/customer/inside_fagoshop_other.php");
    }
 }

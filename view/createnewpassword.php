@@ -34,7 +34,7 @@
                         if(isset($_SESSION['password-status-success'])){
                             echo $_SESSION['password-status-success']."<br>"."Please wait you will redirect to the login page";
                             unset($_SESSION['password-status-success']);
-                            header("refresh:3;url=../../view/login.php");
+                            header("refresh:3;url=login.php");
                         }
                     ?>
                 </div>    

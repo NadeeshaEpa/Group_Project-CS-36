@@ -504,6 +504,9 @@ body{
     padding: 10px;
     text-align: left;
 }
+.reviewtable img{
+    margin-left: 40px;
+}
 .editbtn a{
     background-color:#79d37c;
     color:black;
@@ -517,8 +520,6 @@ body{
     padding-top: 5px;
     padding-left: 20px;
     padding-right: 20px;
-    margin-left: 30px;
-    margin-right: 10px;
     font-size: 18px;
     font-weight: bold;
 }

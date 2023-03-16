@@ -139,7 +139,7 @@ function usernameexit(){
             }
         }
     };
-    xhttp.open("POST", "http://localhost:8001/controller/admin/validation_controller.php", true);
+    xhttp.open("POST", "http://localhost/Group_36/controller/admin/validation_controller.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("username=" + username.value);
 }
@@ -164,7 +164,7 @@ function emailValidation() {
             }
         }
     };
-    xhttp.open("POST", "http://localhost:8001/controller/admin/validation_controller.php", true);
+    xhttp.open("POST", "http://localhost/Group_36/controller/admin/validation_controller.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("email=" + email.value);
 }
@@ -189,7 +189,7 @@ function nicValidation() {
             }
         }
     };
-    xhttp.open("POST", "http://localhost:8001/controller/admin/validation_controller.php", true);
+    xhttp.open("POST", "http://localhost/Group_36/controller/admin/validation_controller.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("nic=" + nic.value);
 }

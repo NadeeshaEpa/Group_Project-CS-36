@@ -36,9 +36,6 @@
                     }
                 }
             ?>
-            <div class="bell">
-                <!-- <li><img src="../../public/images/customer/bell.png" alt="logo" width="20px" height="20px" class="notification"></li> -->
-            </div>
             <li><a href="../../controller/Users/logout_controller.php">Logout</a></li>
             <li><a href="../../controller/customer/shop_controller.php?gascooker='1'">Fago Shop</a></li>
             <li><a href="customer_select.php">Gas</a></li>

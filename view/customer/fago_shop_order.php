@@ -58,7 +58,6 @@
             <?php 
                 if(isset($_SESSION['vieworders'])){
                     if($_SESSION['vieworders']==='failed'){
-                        echo "<script>alert('No orders found')</script>";
                         unset($_SESSION['vieworders']);
                         $details=[];
                     }else{
@@ -118,7 +117,7 @@
                                     <td><button id="cancelbutton" onclick="cancelorder(<?php echo $detail['Order_id']?>);">Cancel</button></td>
                                 </div>
                                 <?php }else{?>
-                                    <td></td>
+                                    <td><button id="dcancelbutton">Cancel</button></td>
                                 <?php }
                                 ?>
                             </tr>

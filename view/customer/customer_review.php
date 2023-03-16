@@ -76,9 +76,10 @@
                                     if($_SESSION['deliverynames']==='failed'){
                                         $_SESSION['deliverynames']=[];
                                     }else if(isset($_SESSION['deliverynames'])){
-                                        foreach($_SESSION['deliverynames'] as $name){
-                                            echo "<option>".$name['First_Name']." ".$name['Last_Name']."</option>";
-                                        }
+                                        foreach($_SESSION['deliverynames'] as $name){?>
+                                            <!-- print the options with the image -->
+                                            <option style="background-image: url('../../public/images/<?php echo $name['image'] ?>');"><?php echo $name['DeliveryPerson_Id']."-".$name['First_Name']." ".$name['Last_Name']?></option>
+                                        <?php }
                                     }
                                 ?>
                             </select> 

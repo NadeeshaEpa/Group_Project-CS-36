@@ -43,7 +43,7 @@
         <?php } ?>
         <h3>Total price:Rs.<?php echo $order[0]['total']?></h3>
         <h3>Shop name : <?php echo $order[0]['shop']?></h3>
-        <button type="submit" name="pay" class="pay"><a href="../../controller/Users/logout_controller.php">Back to Home</a></button>
+        <button type="submit" name="pay" class="pay"><a href="../../controller/customer/order_controller.php?orderid='1'">Back to Orders</a></button>
         <button type="submit" name="pay" class="pay"><a href="customer_select.php">Continue Shopping</a></button>
     </div>
 </body>
