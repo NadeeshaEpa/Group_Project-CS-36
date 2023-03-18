@@ -110,7 +110,13 @@ if(!isset($_SESSION['User_id'])){
 						</li>
 					</ul>
 				</div>
-
+                
+				<div class="SeperateView">
+					<form action="../../controller/ShopManager/shopManagerOrdresController.php" method="POST">
+						<Button id="DeliveredOrderId" name="DeliveredOrder">Delivered Orders</Button><br>
+						<button id="PickedPrderedId" name="PickedOrder">Picked Orders</button>
+					</form>
+				</div>
 				
 			</div>
 

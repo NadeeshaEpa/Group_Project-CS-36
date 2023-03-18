@@ -1,7 +1,8 @@
-<?php session_start();
+<?php session_start(); 
 if(!isset($_SESSION['User_id'])){
-	header("Location:../../index.php");
-}?>
+    header("Location: ../../index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +12,7 @@ if(!isset($_SESSION['User_id'])){
 	<!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
-	<link rel="stylesheet" href="../../public/css/stock_delivery/DelivaryDashboardNew.css">
+	<link rel="stylesheet" href="../../public/css/ShopManager/shopmanagerDashboard.css">
 
 	<title>FaGo</title>
 </head>
@@ -25,34 +26,35 @@ if(!isset($_SESSION['User_id'])){
 			<span class="text">FaGo</span>
 		</a>
 		<ul class="side-menu top">
-			<li >
-				<a href="../../controller/deliveryperson/deliveryDashboardFirstController.php">
+			<li class="active">
+				<a href="../../controller/ShopManager/ShopManagerDashboardFirstController.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
 			<li >
-				<a href="../../controller/deliveryperson/deliveryPersonProfileFirstController.php">
+				<a href="../../controller/ShopManager/ShopManagerFirstProfileController.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Profile</span>
 				</a>
 			</li>
 			<li>
-				<a href="../../view/deliveryperson/DeliveryReports.php">
+				<a href="../../controller/ShopManager/ShopManagerBrandFirstController.php">
 					<i class='bx bxs-doughnut-chart' ></i>
-					<span class="text">Daily Reports</span>
-				</a>
-			</li>
-			<li  class="active">
-				<a href="../../view/deliveryperson/DelivaryReviews.php">
-					<i class='bx bxs-message-dots' ></i>
-					<span class="text">Reviews</span>
+					<span class="text">Update prices/Quantity</span>
 				</a>
 			</li>
 			<li>
-				<a href="../../view/deliveryperson/DelivaryComplains.php">
+				<a href="../../view/ShopManager/shopManagerAddNewBrands.php">
+					<i class='bx bxs-message-dots' ></i>
+					<span class="text">Add new brands</span>
+				</a>
+			</li>
+			<li>
+				<a href="../../view/ShopManager/shopManagerReports.php">
 					<i class='bx bxs-group' ></i>
-					<span class="text">Complains</span>
+                    
+					<span class="text">Reports</span>
 				</a>
 			</li>
 		</ul>
@@ -74,12 +76,11 @@ if(!isset($_SESSION['User_id'])){
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-			
 			<li class="profile">
 			    <?php if($_SESSION['img-status'] == 0){?>
 					<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
 				<?php }else{?>
-					<img src='../../public/images/DeliveryPerson/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
+					<img src='../../public/images/ShopManager/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
 				<?php } ?>								
 			</li>
 			<li class="user_info">
@@ -98,10 +99,10 @@ if(!isset($_SESSION['User_id'])){
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Reviews View</h1>
+					<h1>Delivered Orders</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="#">Reviews View</a>
+							<a href="#">Delivered Orders</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
@@ -109,44 +110,49 @@ if(!isset($_SESSION['User_id'])){
 						</li>
 					</ul>
 				</div>
+                
 				
 				
 			</div>
 
 			
+
+
 			<div class="table-data">
-				<div class="order" >
-				        <div class="tbl">
-                                <table class="tb">
+				<div class="order">
+					        <div class="tbl">
+                                    <table class="tb">
                                     <tr>
-									    <th>Date</th>
-                                        <th>Description</th>
-										
+									    <th>Customer Name</th>
+                                        <th>Customer Address</th>
+										<th>Customer Contact No</th>
+										<th>Quantity</th>
+                                        <th>Category</th>
+										<th>Order date</th>
+                                        <!-- <th>Delivery Method</th> -->
+                                        <th>Price</th>
                                     </tr>
                                     <?php
-                                    if(isset($_SESSION['userReviewsDetails'])){
-                                        $result=$_SESSION['userReviewsDetails']; 
+                                    if(isset($_SESSION['DeliveredOrder'])){
+                                        $result=$_SESSION['DeliveredOrder']; 
                                         foreach ($result as $row) {
                                             echo "<tr>";
-                                            echo "<td>" . $row['Date'] . "</td>";
-                                            echo "<td>" . $row['Description'] . "</td>";
-											?>
-											<td>
-												<form action="../../controller/deliveryperson/DeliveryPersonComplane&ReviewsViewController.php" method="post">
-													<Button name="reviewDeleteBtn" id="reviewDeleteBtn_id">Delete</Button>
-													<input name="Review_Id_Name" type="hidden" value="<?php echo $row['Rate_Id']?>">
-												</form>
-											</td>
-					                        <?php
+                                            echo "<td>" . $row['Name'] . "</td>";
+                                            echo "<td>" . $row['Address'] . "</td>";
+											echo "<td>" . $row['Contact_No'] ."</td>";
+											echo "<td>" . $row['Quantity'] . "</td>";
+                                            echo "<td>" . $row['Category'] . "</td>";
+											echo "<td>" . $row['Order_date'] . "</td>";
+											// echo "<td>" . $row['Delivery_Method'] . "</td>";
+                                            echo "<td>" . $row['Amount'] . "</td>";
 											echo "</tr>";
                                         }
                                         
                                     }
                                     
                                     ?>
-                                    
-							</table>
-						</div>
+                                    </table>
+							</div>
 					
 				</div>
 			
@@ -156,7 +162,6 @@ if(!isset($_SESSION['User_id'])){
 	</section>
 	<!-- CONTENT -->
 	
-
-	<script src="../../public/js/delivaryDashboard.js"></script>
+    <script src="../../public/js/shopmanagerDashboard.js"></script>
 </body>
 </html>

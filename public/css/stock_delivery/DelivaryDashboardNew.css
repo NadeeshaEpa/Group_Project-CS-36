@@ -276,7 +276,7 @@ body {
 	height: 36px;
 	object-fit: cover;
 	border-radius: 50%;
-	margin-left: 960px;
+	margin-left: 950px;
 	
 }
 /*add user info to header */
@@ -1407,6 +1407,150 @@ body {
     cursor: pointer;
 }
 
+/**/
+
+/* Dashboard Delivery person Add css*/
+
+.DeliveryRequest{
+	width: 75%;
+	height: 150px;
+	box-shadow: 10px 10px 20px 5px black;
+	border-radius: 15px;
+	margin-top: 5%;
+	margin-left: 12.5%;
+	background-image: url(../../images/DeliveryPerson/home-delivery-scene_6231920.jpg);
+	
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+
+
+#DeliveryRefreshId{
+	width: 150px;
+	background-color: #CFE8FF;
+	margin-left: 87%;
+	margin-top: 20px;
+	padding: 10px 10px 10px 10px;
+	border-radius: 15px;
+}
+
+
+/**/
+
+/* Dashboard Delivery person Delivery info page css*/
+
+.DeliveryRequestInfo{
+	width: 75%;
+	height: 200px;
+	box-shadow: 10px 10px 20px 5px black;
+	border-radius: 15px;
+	margin-top: 5%;
+	margin-left: 12.5%;
+	
+}
+
+#DeliveryReAcceptId{
+	width: 100px;
+	
+	height:30px ;
+	text-align: center;
+	border-radius: 15px;
+	border: none;
+	color: white;
+	background-color: #79d37c;
+	font-size: 17px;	
+}
+
+#DeliveryReDeclineId{
+	width: 100px;
+	
+	height:30px ;
+	text-align: center;
+	border-radius: 15px;
+	border: none;
+	color: white;
+	background-color: #f44336;
+	font-size: 17px;	
+}
+
+/* Row change color */
+.highlight{
+	background-color: #5ad893;
+}
+/**/
+
+
+/**/
+
+
+/*DeliveryRequest Accept details show page css*/
+
+.ReContainer{
+	
+	height: 700px;
+	display: flex;
+	
+}
+
+.ReContainer .ReContainerInner{
+	margin: auto;
+	display: flex;
+	width: 90%;
+	height: 80%;
+	
+}
+
+.ReContainer .Re_right{
+    width: 50%;
+	height: 100%;
+	
+}
+
+.ReContainer .Re_left{
+    width: 50%;
+	height: 100%;
+	
+}
+
+.ReContainer .Re_right  h2{
+    text-align: center;
+	font-size: 18px;
+	
+	margin-top: 5%;
+	margin-bottom: 3%;
+	
+}
+
+.ReContainer .Re_right  label{
+    
+	font-size: 16px;
+	margin-left: 10%;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	font-weight: bold;
+	
+}
+
+.ReContainer .Re_right  input{
+    
+	font-size: 16px;
+	width: 60%;
+	margin-top: 5%;
+	background-color: transparent;
+    border: none;
+	
+}
+
+#DeliveryRePendingId{
+    width: 300px;
+	height: 30px;
+	
+	border-radius: 15px;
+	background-color:#79d37c ;
+	margin-top: 2.5%;
+	margin-left: 30%;
+}
 /**/
 
 

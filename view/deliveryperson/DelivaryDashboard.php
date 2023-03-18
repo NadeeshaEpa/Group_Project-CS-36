@@ -172,10 +172,45 @@ if(!isset($_SESSION['User_id'])){
 
 			</ul>
 
-
+            <form action="../../controller/deliveryperson/deliveryPersonAddDeliveryController.php" method="POST"><Button name="check" id="DeliveryRefreshId">Refresh</Button></form>
 			<div class="table-data">
 				<div class="order">
 					
+					<?php if(isset($_SESSION['DeliveryRequestDetails'])){
+						?><div class="tbl">
+                            <table class="tb">
+                                    <tr>
+										<th>Customer Name</th>
+										<th>Argent Nmae</th>
+										<th>Distance</th>
+										<th>Delivery Fee</th>
+                                    </tr><?php
+
+								$result=$_SESSION['DeliveryRequestDetails'];
+								
+								foreach ($result as $row) {?>
+									<tr <?php if ($row['Color']=='GREEN'){echo 'class="highlight"';} ?>>
+									  <td><?= $row['customer_Name'] ?></td>
+									  <td><?= $row['Argent_Name'] ?></td>
+									  <td><?= $row['Distance_Shop_customer']," ","Km" ?></td>
+									  <td><?= "Rs."," ",$row['Delivery fee'] ?></td>
+									  <form action="../../controller/deliveryperson/deliveryPersonAddDeliveryController.php" method="POST">
+										<input name="DeliveryOrder" type="hidden" value="<?= $row['Order_id'] ?>">
+										<td><button name="DeliveryReAcceptName" id="DeliveryReAcceptId">Accept</button><br></td>
+										<td><button name="DeliveryReDeclineName" id="DeliveryReDeclineId">Decline</button></td>
+									  </form>
+									</tr>
+								  <?php }?>
+							</table>
+					     </div>	
+					<?php } 
+					     else{
+							?> <h3>No delivery Request Add or You are unavalable. Please Refesh the page or chek your avelability and Location avelability.</h3><?php
+						 }
+					
+					?>
+						
+						
 				</div>
 			</div>
 		</main>
@@ -184,7 +219,8 @@ if(!isset($_SESSION['User_id'])){
 	<!-- CONTENT -->
 	
     <script src="../../public/js/delivaryDashboard.js"></script>
+	<!-- <script src="../../public/js/deliveryAdd.js"></script> -->
 	<script src="../../public/js/liveLocation.js"></script>
-	<script src="../../public/js/deliveryAdd.js"></script>
+	
 </body>
 </html>

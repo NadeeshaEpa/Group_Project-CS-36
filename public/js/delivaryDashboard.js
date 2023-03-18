@@ -125,15 +125,36 @@ updateClock();
 
 /*count and amount of the delivary */
 
+// var xhttp = new XMLHttpRequest();
+// xhttp.onreadystatechange = function() {
+    
+//     var response = JSON.parse(this.responseText);
+//     console.log(response);
+//     incomeid2.innerHTML = response.total_fee['SUM(Delivery_fee)'];
+// 	Nodeliverid2.innerHTML = response.delivery_count['COUNT(*)'];
+    
+// };
+// xhttp.open("GET", "http://localhost/Group_Project-CS-36/controller/deliveryperson/deliveryCountcontroller.php", true);
+// xhttp.send();
+
 var xhttp = new XMLHttpRequest();
+
 xhttp.onreadystatechange = function() {
-    
-    var response = JSON.parse(this.responseText);
-    console.log(response);
-    incomeid2.innerHTML = response.total_fee['SUM(Delivery_fee)'];
-	Nodeliverid2.innerHTML = response.delivery_count['COUNT(*)'];
-    
+    if (this.readyState == 4) {
+        if (this.status == 200) {
+            try {
+                var response = JSON.parse(this.responseText);
+                incomeid2.innerHTML = response.total_fee['SUM(Delivery_fee)'];
+                Nodeliverid2.innerHTML = response.delivery_count['COUNT(*)'];
+            } catch (e) {
+                console.error("Error parsing JSON:", e);
+            }
+        } else {
+            console.error("Error loading data. Status:", this.status);
+        }
+    }
 };
+
 xhttp.open("GET", "http://localhost/Group_Project-CS-36/controller/deliveryperson/deliveryCountcontroller.php", true);
 xhttp.send();
 
@@ -149,6 +170,8 @@ xhttp.send();
 		de_menu.style.display = "none";
 	}
 });
+
+
 
 //new password validation
 
