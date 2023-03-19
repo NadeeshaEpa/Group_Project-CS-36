@@ -70,22 +70,37 @@ if(isset($_POST['updatepwd'])){
         $result1=checkpassword($confirmpwd,$newpwd);
         if(!$result1){
             $_SESSION['updatepwd-error']="New password and confirm password are not same";
+<<<<<<< HEAD
             header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
+=======
+            header("Location: ../../view/ShopManager/ShopManagerProfile.php");
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
         }else{
             $result2=$acc->updatePassword($connection,$_SESSION['User_id'],$oldpwd,$newpwd,$confirmpwd);
             if(!$result2){
                 $_SESSION['updatepwd-error']="Current password is incorrect";
+<<<<<<< HEAD
                 header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
             }else{
                 $_SESSION['updatepwd']="Password Updated Successfully";
                 header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
+=======
+                header("Location: ../../view/ShopManager/ShopManagerProfile.php");
+            }else{
+                $_SESSION['updatepwd']="Password Updated Successfully";
+                header("Location: ../../view/ShopManager/ShopManagerProfile.php");
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
             }
         }
     }
 }
 if(isset($_POST['cancelpwd'])){
     if(isset($_SESSION['User_id'])){
+<<<<<<< HEAD
         header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
+=======
+        header("Location: ../../view/ShopManager/ShopManagerProfile.php");
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
     }
 }
 
@@ -98,6 +113,7 @@ if(isset($_POST['deleteaccount'])){
             header("Location: ../../view/login.php");
         }else{
             $_SESSION['deleteacc']="failed";
+<<<<<<< HEAD
             header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
         }
     }
@@ -160,4 +176,9 @@ if(isset($_POST['removeimg'])){
         $_SESSION['removeimg']="failed";
         header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
     }
+=======
+            header("Location: ../../view/ShopManager/ShopManagerProfile.php");
+        }
+    }
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 }

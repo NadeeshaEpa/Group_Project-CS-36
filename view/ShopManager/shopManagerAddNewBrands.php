@@ -77,6 +77,7 @@ if(!isset($_SESSION['User_id'])){
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
+<<<<<<< HEAD
 			<li class="profile">
 			    <?php if($_SESSION['img-status'] == 0){?>
 					<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
@@ -92,6 +93,24 @@ if(!isset($_SESSION['User_id'])){
 					     echo $_SESSION['Type'];
 					}?></h5>
 			</li>
+=======
+			<!-- <a href="#" class="nav-link">Categories</a> -->
+			<form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search...">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+			<a href="#" class="notification">
+				<i class='bx bxs-bell' ></i>
+				<span class="num">8</span>
+			</a>
+			<a href="#" class="profile">
+				<img src="../../public/images/user.jpg">
+			</a>
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 			
 		</nav>
 		<!-- NAVBAR -->
@@ -115,6 +134,40 @@ if(!isset($_SESSION['User_id'])){
 				
 			</div>
 
+<<<<<<< HEAD
+=======
+			<!-- <ul class="box-info">
+                <li>
+					<i class='bx bxs-calendar-check' ></i>
+					<span class="text">
+						<label for="" id="dayid" style="margin-left: 40%;"></label><br>
+                        <label for="" id="monthid"></label>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-time-five' ></i>
+					<span class="text">
+						<label for="" id="timeid" style="margin-left: 40%; font-size:32px"></label>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-group' ></i>
+					<span class="text">
+						<label for="" id="Nodeliverid1" style=" font-size:20px">Total delivary count:</label><br>
+                        <label for="" id="Nodeliverid2" style="font-size: 32px; margin-left:35%">3</label>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-dollar-circle' ></i>
+					<span class="text">
+						<label for="" id="incomeid1" style=" font-size:20px"> Total income:</label><br>
+                        <label for="" id="incomeid2">Rs: 850</label>
+					</span>
+				</li>
+               
+
+			</ul> -->
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 
 
 			<div class="table-data">
@@ -137,6 +190,7 @@ if(!isset($_SESSION['User_id'])){
 								</h5>
 							</div>
 							<div class="Add_brands_info">
+<<<<<<< HEAD
 								<form action="../../controller/ShopManager/ShopManagerAddBrandsController.php" method="POST" enctype="multipart/form-data">
 									<h5>Add Brands</h5>
 									<label for="">Name :</label><br>
@@ -145,6 +199,16 @@ if(!isset($_SESSION['User_id'])){
 									<input type="text" name="productQuantity"required><br>
 									<label for="">Price :</label><br>
 									<input type="text" name="producPrice" required><br>
+=======
+								<form action="../../controller/ShopManager/ShopManagerAddBrandsController.php" method="Post">
+									<h5>Add Brands</h5>
+									<label for="">Name :</label><br>
+									<input type="text" name="productName"><br>
+									<label for="">Quantity :</label><br>
+									<input type="text" name="productQuantity"><br>
+									<label for="">Price :</label><br>
+									<input type="text" name="producPrice"><br>
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 									<label for="">Category :</label><br>
                                     <select name="Category" id="Category_id" required>
                                         <option value="">---Select Type---</option>
@@ -152,6 +216,7 @@ if(!isset($_SESSION['User_id'])){
                                         <option value="Regulator">Regulator</option>
 										<option value="Gas tube">Other</option>
                                     </select><br>
+<<<<<<< HEAD
 									<label for="">Product image :</label><br>
 									<input type="file" name="image" id="Brand_img_id" ><br>
 									<label for="">Product Type :</label><br>
@@ -162,6 +227,17 @@ if(!isset($_SESSION['User_id'])){
 							    </form>
                             </div>
 							
+=======
+									<label for="">Product_type :</label><br>
+									<input type="text" name="product_type"><br>
+									<label for="">Description :</label><br>
+									<input type="text" name="productDescription" id="productDescription_id"><br>
+                                    <button name="BrandAdd">Add</button>
+
+									
+								</form>
+                            </div>
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 
 						</div>
 

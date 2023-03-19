@@ -55,9 +55,20 @@
         <?php include_once 'customer_header.php'; ?>
             <div class="review-details">
                 <div class="reviewtable">
+                    <?php
+                        if(isset($_SESSION['updatereview'])){
+                            if($_SESSION['updatereview']=="failed"){?>
+                            <div class="error-msg">
+                                <p>You can't update a review which published more than 7 days ago.</p>
+                            </div>
+                        <?php }
+                            unset($_SESSION['updatereview']);
+                        } 
+                    ?>
                         <h1>All Reviews</h1>
                         <table>
                             <tr>
+                                <th>Delivery Person</th>
                                 <th>Delivery Person name</th>
                                 <th>Date</th>
                                 <th>Description</th>
@@ -66,7 +77,6 @@
                             <?php
                                 if(isset($_SESSION['viewreview'])){
                                     if($_SESSION['viewreview']==='failed'){
-                                        echo "<script>alert('No reviews found')</script>";
                                         unset($_SESSION['viewreview']);
                                         $details=[];
                                     }else{
@@ -75,6 +85,8 @@
                                 }
                                 foreach($details as $detail){?>
                                     <tr>
+
+                                        <td><img src="../../public/images/DeliveryPerson/<?php echo $detail['image'] ?>" width="50px" height="50px"></td>
                                         <td><?php echo $detail['First_Name']." ".$detail['Last_Name']; ?></td>
                                         <td><?php echo $detail['Date']; ?></td>
                                         <td><?php echo $detail['Description']; ?></td> 
@@ -89,6 +101,38 @@
                                     </tr>
                                 <?php } ?>
                         </table>
+                        <?php 
+                            if(isset($_SESSION['page'])){
+                            $page=$_SESSION['page'];
+                            }else{
+                            $page=1;
+                            }
+                            if(isset($_SESSION['total_pages'])){
+                                $total_pages=$_SESSION['total_pages'];
+                            }else{
+                                $total_pages=1;
+                            }    
+                        ?>
+                        <div class="pagination">
+                            <?php if($page>1){?>
+                                <!-- pass value as form -->
+                                <div class="p-left">
+                                    <form action="../../controller/customer/review_controller.php" method="GET">
+                                        <input type="hidden" name="page" value="<?php echo $page-1?>">
+                                        <input type="submit" value="Previous">
+                                    </form>
+                                </div>
+                            <?php } ?>
+                            <?php if($page<$total_pages){?>
+                                <!-- pass value as form -->
+                                <div class="p-right">
+                                    <form action="../../controller/customer/review_controller.php" method="GET">
+                                        <input type="hidden" name="page" value="<?php echo $page+1?>">
+                                        <input type="submit" value="Next">
+                                    </form>
+                                </div>
+                            <?php } ?>
+                        </div>
                 </div>
             </div> 
     </div>

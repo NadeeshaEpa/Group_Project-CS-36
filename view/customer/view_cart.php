@@ -16,6 +16,18 @@
     </div>
     <h1>Shopping Cart</h1>
     <?php
+     if(isset($_SESSION['last_order'])){
+        if($_SESSION['last_order']==0){?>
+        <div class="order-limit">
+            <p>We're sorry, but due to the current economic situation, we have had to temporarily limit the number of gas cylinders that can be ordered. <br>
+                We apologize for any inconvenience this may cause. <br>
+                Please try again at a later time when we are able to offer our full range of services.<br> 
+                Thank you for your understanding and support during these challenging times.<br>
+            </p>
+        </div>
+        <?php }
+    }?>
+    <?php
         if(isset($_SESSION['viewcart'])){
             if($_SESSION['viewcart']=="empty"){?>
                 <div class="emptycartimg">
@@ -52,8 +64,13 @@
                 <div class="cart-item-right">
                     <form action="../../controller/customer/addtocart_controller.php" method="post">
                         <input type="hidden" name="agent_id" value="<?php echo $d['gasagent_id']?>">
-                        <button type="checkout" name="checkout" class="checkout">View Items</button>
-                        <button type="submit" name="remove" class="remove">Remove</button>
+                        <?php if($_SESSION['last_order']==0){
+                            echo "<button type='submit' name='checkout' class='checkout' disabled>View Items</button>";
+                            echo "<button type='submit' name='remove' class='remove' disabled>Remove</button>";
+                        }else{?>
+                            <button type="checkout" name="checkout" class="checkout">View Items</button>
+                            <button type="submit" name="remove" class="remove">Remove</button>
+                        <?php }?>
                     </form>
                 </div>
             </div>

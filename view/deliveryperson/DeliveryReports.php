@@ -26,7 +26,11 @@ if(!isset($_SESSION['User_id'])){
 		</a>
 		<ul class="side-menu top">
 			<li >
+<<<<<<< HEAD
 				<a href="../../controller/deliveryperson/deliveryDashboardFirstController.php">
+=======
+				<a href="../../view/deliveryperson/DelivaryDashboard.php">
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -74,6 +78,7 @@ if(!isset($_SESSION['User_id'])){
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
+<<<<<<< HEAD
 			
 			<li class="profile">
 			    <?php if($_SESSION['img-status'] == 0){?>
@@ -90,6 +95,24 @@ if(!isset($_SESSION['User_id'])){
 					     echo $_SESSION['Type'];
 					}?></h5>
 			</li>
+=======
+			<!-- <a href="#" class="nav-link">Categories</a> -->
+			<form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search...">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+			<a href="#" class="notification">
+				<i class='bx bxs-bell' ></i>
+				<span class="num">8</span>
+			</a>
+			<a href="#" class="profile">
+				<img src="../../public/images/user.jpg">
+			</a>
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 			
 		</nav>
 		<!-- NAVBAR -->
@@ -118,13 +141,20 @@ if(!isset($_SESSION['User_id'])){
 				<div class="order">
 				<form action="../../controller/deliveryperson/deliveryReportsController.php" method="POST">
 					<div class="dropdown_outter">
+<<<<<<< HEAD
 					   
+=======
+						
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 							<div class="dropdown">
 								<select name="customerType" id="fuelType" required>
 									<option value="">---Select Type---</option>
 									<option value="GasAgent">Gas Agent</option>
 									<option value="Customer">Customer</option>
+<<<<<<< HEAD
 									<option value="Shop_manager">Shop manager</option>
+=======
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 								</select>
 							</div>
 
@@ -143,7 +173,10 @@ if(!isset($_SESSION['User_id'])){
 							
 						
 					</div>
+<<<<<<< HEAD
 				
+=======
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 					   <div class="delivary_nof_msg">
 							<h6><?php if(isset($_SESSION['No_result'])){
 									echo $_SESSION['No_result'];
@@ -186,6 +219,7 @@ if(!isset($_SESSION['User_id'])){
 										echo $_SESSION['CusAllReports'];
 										unset($_SESSION['CusAllReports']);
 									  }
+<<<<<<< HEAD
 									  if(isset($_SESSION['ShopDayReports'])){
 										echo $_SESSION['ShopDayReports'];
 										unset($_SESSION['ShopDayReports']);
@@ -202,11 +236,14 @@ if(!isset($_SESSION['User_id'])){
 										echo $_SESSION['ShopAllReports'];
 										unset($_SESSION['ShopAllReports']);
 									  }
+=======
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 							
 							?>
 							</h5>
 					   </div>
 					
+<<<<<<< HEAD
 					   <div class="tbl">
                                     <!-- Customer report generate -->
                                     <?php
@@ -314,6 +351,30 @@ if(!isset($_SESSION['User_id'])){
                     </form> 	
 					
 				
+=======
+						<?php if(isset($_SESSION['DiliverReportview'])){
+							$result=$_SESSION['DiliverReportview'];
+							foreach ($result as $row) {?>
+							<div class="report_info_outter">
+								<div class="report_info">
+									<?php echo "Reference No : " . $row['Order_id']."<br>";
+									echo "Name : " . $row['Name']."<br>";
+									echo "Address : " . $row['Address']."<br>";
+									echo "Delivery Date : " . $row['Delivery_date']."<br>";
+									echo "Delivery time : " . $row['Delivery_time']."<br>";
+									echo "Delivery fee : " . $row['Delivery_fee']."<br>";?>
+									
+								</div>
+							</div>
+							<?php
+							}
+							unset($_SESSION['DiliverReportview']);
+						}?>
+
+						
+					
+				</form>
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 				</div>
 		    </div>
 		</main>

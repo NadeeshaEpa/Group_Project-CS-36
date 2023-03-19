@@ -61,10 +61,6 @@
         <?php include_once 'customer_header.php'; ?>
         <?php if(isset($_SESSION['viewcomplain'])){
             $complain=$_SESSION['viewcomplain'];
-            //sort the array according to the value in date variable
-            // usort($complain, function($a, $b) {
-            //     return strtotime($a['date']) - strtotime($b['date']);
-            // });
         } ?>
         <div class="complain-table">
             <h1>All Complains</h1>
@@ -75,6 +71,7 @@
                     <th>Complain</th>
                     <th>Complain Date</th>
                     <th>Status</th>
+                    <th>Actions</th>
                     <th>Delete</th>
                     
                 </tr>
@@ -87,17 +84,67 @@
                     <?php if($complain['status']==0){ ?>
                         <!-- change the color of text to red -->
                         <td style="color: red;"><?php echo "Unchecked"; ?></td>
-                    <?php }else{ ?>
+                    <?php }else if($complain['status']==2){ ?>
                         <!-- change the color of text to green -->
                         <td style="color: green;"><?php echo "Checked"; ?></td>
                     <?php } ?>
+                    <td><button onclick="viewaction('<?php echo $complain['message'] ?>');">View</button></td>
                     <td><a href="../../controller/customer/complain_controller.php?deletecomplainid=<?php echo $complain['complain_id']; ?>"><button>Delete</button</a></td>
+                    
                 </tr>
                 <?php } ?>
             </table>
-            
+                 <?php 
+                    if(isset($_SESSION['page'])){
+                      $page=$_SESSION['page'];
+                    }else{
+                      $page=1;
+                    }
+                    if(isset($_SESSION['total_pages'])){
+                        $total_pages=$_SESSION['total_pages'];
+                    }else{
+                        $total_pages=1;
+                    }    
+                ?>
+                <div class="pagination">
+                    <?php if($page>1){?>
+                        <!-- pass value as form -->
+                        <div class="p-left">
+                            <form action="../../controller/customer/complain_controller.php" method="GET">
+                                <input type="hidden" name="page" value="<?php echo $page-1?>">
+                                <input type="submit" value="Previous">
+                            </form>
+                        </div>
+                    <?php } ?>
+                    <?php if($page<$total_pages){?>
+                        <!-- pass value as form -->
+                        <div class="p-right">
+                            <form action="../../controller/customer/complain_controller.php" method="GET">
+                                <input type="hidden" name="page" value="<?php echo $page+1?>">
+                                <input type="submit" value="Next">
+                            </form>
+                        </div>
+                    <?php } ?>
+                </div>
         </div>
     </div>
-    
+    <!-- pop up message -->
+    <div id="complain_popup">
+        <div class="complain_contect">
+            <div class="complain_header">
+                <a href="../../controller/customer/complain_controller.php?view-complain='1'">X</a>
+                <h1>Message</h1>
+            </div>
+            <div class="complain_body">
+                <p id="message"></p>
+            </div>
+        </div>
+    </div>  
+    <script>
+        function viewaction(message){
+            document.getElementById("message").innerHTML=message;
+            document.getElementById("complain_popup").style.display="block";
+        }
+    </script>
 </body>
 </html>

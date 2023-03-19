@@ -1,4 +1,4 @@
-<html lang="en">
+<!-- <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="public/css/customer/home.css">
     <title>Document</title>
 </head>
-<body>
-    <?php include 'view/header.php'; ?>
-    <div class="welcome">
+<body> -->
+    <?php //include 'view/header.php'; ?>
+    <!-- <div class="welcome">
         <div class="left">
             <p>WELCOME TO FAGO...</p>
         </div>
@@ -25,8 +25,8 @@
                 Galle road,Colombo<br>
             </div>
         </div>
-    </div>    
-    <div class="first">
+    </div>     -->
+    <!-- <div class="first">
         <div class="photo">
             <img src="public/images/customer/gas.jpg" alt="" class="homeimg">
         </div>
@@ -37,8 +37,8 @@
             <a href="view/login.php"><button class="btnl">Login</button></a>
             
         </div>
-    </div>
-    <div class="fago">
+    </div> -->
+    <!-- <div class="fago">
         <h1>What is FAGO?...</h1>
         <p>FAGO is an online platform which connects gas agents of a particular area with customers. So customers can just register to this platform
             and can order gas from their nearest gas agent. This platform also provides a way for gas agents to manage their customers and their orders. 
@@ -47,8 +47,8 @@
             in same platform. So, this is a one stop solution for all your gas needs. Just try it and you will love it.
         </p>
         <a href="view/aboutus.php">more information</a>
-    </div>
-    <div class="second">
+    </div> -->
+    <!-- <div class="second">
         <div class="regtext">
             <p>We are just a fingertip away from you!
             <b>Register</b> to the system and place your order..</p>
@@ -57,11 +57,8 @@
             <a href="controller/Users/login_controller.php?unregview='1'"><button class="btnr">View</button></a>
         </div>
         <div id="bg-changer"></div>
-        <!-- <div class="photoright">
-            <img src="public/images/customer/homepage.jpg" alt="" class="homeimg">  
-        </div>     -->
-    </div>
-    <div class="third">
+    </div> -->
+    <!-- <div class="third">
         <div class="email">
             <img src="public/images/customer/email.webp" alt="" class="homeimg"><br><br><br>
             <h2>Email</h2>
@@ -79,8 +76,8 @@
             <h2>Contact</h2>
             <p>011-1234567</p>
         </div>
-    </div>
-    <div class="footer">
+    </div> -->
+    <!-- <div class="footer">
         <div class="footer-left">
             <img src="public/images/logo.png" alt="" class="homeimg">
             <p>Visit our website and place your orders. This section provides you some information about FAGO and some links for imporatant pages.
@@ -105,6 +102,13 @@
         <div class="fagolink">
             <p>© 2022 FAGO. All Rights Reserved.</p>
         </div>
-    </div>
-</body>
-</html>
+    </div> -->
+<!-- </body>
+</html> -->
+
+<!-- chnage the path to home.php -->
+<?php
+    include 'view/home.php';
+    //http://localhost/Group_36/view/
+    
+?>

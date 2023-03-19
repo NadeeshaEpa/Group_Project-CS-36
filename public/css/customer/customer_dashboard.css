@@ -116,7 +116,7 @@ body{
     height:30px;
     margin-right: 20px;
     border-radius: 20px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
 }
 .b2{
@@ -129,14 +129,14 @@ body{
 }
     
 .b4:hover, .cu:hover{
-    font-size: 19px;
+    font-size: 17px;
 }
 .b2:hover, .cp:hover{
-    font-size: 19px;
+    font-size: 17px;
 }
 .details label{
     padding-left: 5px;
-    font-size: 18px;
+    font-size: 16px;
 }
 .up{
     display: flex;
@@ -167,7 +167,7 @@ body{
     flex:50%;
 }
 .down1 button{
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     border-radius: 20px;
     width: 230px;
@@ -176,12 +176,12 @@ body{
 .cp{
     background-color:#815bf6;
     border:none;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
 }
 
 .down1 input{
-    font-size: 18px;
+    font-size: 16px;
     border: black 1px solid;
     border-radius: 20px;
     width: 450px;
@@ -194,8 +194,8 @@ body{
 .down2{
    margin-right: 15px;
 }
-.down2 input{
-    font-size: 20px;
+.down2 input, .down3 input{
+    font-size: 16px;
     border: black 1px solid;
     border-radius: 20px;
     width: 319px;
@@ -203,6 +203,9 @@ body{
     text-align: center;
     margin-top: 0%;
     padding-top: 10px;
+}
+.down3 input{
+    width:98%;
 }
 .b5{
     width: 200px;
@@ -212,7 +215,7 @@ body{
     background-color: #da3a3a;
     border-radius: 20px;
     margin-top: 46px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     border: none;
 
@@ -225,7 +228,7 @@ body{
     background-color: #79d37c;
     border-radius: 20px;
     margin-top: 45px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     border: none;
 }
@@ -290,9 +293,9 @@ body{
     margin-bottom: 0px;
     transform: translate(18%, 25%);
 }
-.dpname{
+/* .dpname{
     margin-top: 20px;
-}
+} */
 .cusname input, .dpname select , .desc textarea{
     width: 65%;
     height: 35px;
@@ -395,7 +398,7 @@ body{
     color: black;
     float: left;
     margin-left: 20%;
-    
+    border: none;
   }
   
   /* Add a color to the delete button */
@@ -404,7 +407,7 @@ body{
     color: black;
     float: right;
     margin-right: 20%;
-
+    border: none;
   }
   
   /* Add padding and center-align text to the container */
@@ -417,7 +420,7 @@ body{
   .modal {
     display: none; /* Hidden by default */
     position: absolute; /* Stay in place */
-    left: 25%;
+    left: 35%;
     top: 25%;
     width: 50%; /* Full width */
     height: 50%; /* Full height */
@@ -430,7 +433,7 @@ body{
   /* Modal Content/Box */
   .modal-content {
     background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    margin: 5% auto 8% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
     border-radius: 20px;
@@ -501,6 +504,9 @@ body{
     padding: 10px;
     text-align: left;
 }
+.reviewtable img{
+    margin-left: 40px;
+}
 .editbtn a{
     background-color:#79d37c;
     color:black;
@@ -514,8 +520,6 @@ body{
     padding-top: 5px;
     padding-left: 20px;
     padding-right: 20px;
-    margin-left: 30px;
-    margin-right: 10px;
     font-size: 18px;
     font-weight: bold;
 }
@@ -585,4 +589,12 @@ body{
     border: none;
     font-size: 18px;
     font-weight: bold;
+}
+.error-msg{
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: rgb(243, 173, 173);
+    padding: 0.5%;
+    text-align: center;
 }

@@ -86,7 +86,8 @@ button:hover{
 }
 .gas_dropdown button{
     float: right;
-    width: 21%;
+    width: 20%;
+    margin-left:15px;
 }
 .fago_shop{
     float: right;
@@ -122,9 +123,13 @@ button:hover{
 #ungas-shop button{
     width: 60%;
     margin-right: 20%;
+<<<<<<< HEAD
 
     margin-top: 8px;
 
+=======
+    margin-top: 8px;
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 }
 .up-gas{
     width:100%;

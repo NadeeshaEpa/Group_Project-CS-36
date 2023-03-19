@@ -69,7 +69,7 @@ if(isset($_SESSION['unlocations'])){
     </script>
 </head>
 <body onload="initMap()">
-    <?php include '../header.php'?>
+    <?php include_once '../unreguser_header.php'; ?>
     <div class="container">
         <div class="up">
             <form action="../../controller/customer/gas_controller.php" method="POST">
@@ -107,13 +107,23 @@ if(isset($_SESSION['unlocations'])){
                         foreach($weight as $weight1){?>
                             <th><?php echo $weight1['Weight']?>kg</th>
                         <?php } ?>
+<<<<<<< HEAD
 
                     <th>order</th>    
 
+=======
+                    <th>order</th>    
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
                 </tr>
                     <?php 
                     $i=0;
-                    foreach($shops as $shop){?>
+                    $j=0;
+                    foreach($shops as $shop){
+                    $j++;
+                    if($j>5){
+                        break;
+                    }
+                    ?>
                     <tr>
                         <?php// if($shop['distance']<10){?>
                             <td><?php echo $shop['Shop_name']?></td>
@@ -144,22 +154,39 @@ if(isset($_SESSION['unlocations'])){
                                 <?php 
                                 }
                             } ?> 
+<<<<<<< HEAD
 
                             <td><button name="order" id="popup" onclick="popup()">Order</button></td>
 
+=======
+                            <td><button name="order" id="popup" onclick="popup()">Order</button></td>
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
                         <?php } ?>
                     </tr>
-            </table>    
+            </table>
+            <?php if(isset($_SESSION['unshopnames'])){?>
+                <div class="seemore">
+                    <button onclick="popup()">See more</button> 
+                </div> 
+            <?php } ?>   
         </div>
     </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
     <div id="myModal" class="modal">
         <div class="modal-content">
             <div>
                 <p id="waitingMessage">
                     You have to first register to the system.
                     <button class="register" onclick="register()";>Register</button>      
+<<<<<<< HEAD
                     <button class="close" onclick="closemsg()";>Close</button>         
+=======
+                    <button class="close" onclick="closemsg()";>Close</button><br>
+                    <button class="login" onclick="login()";>Login</button>         
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
                 </p>
             </div>            
         </div>
@@ -175,7 +202,14 @@ if(isset($_SESSION['unlocations'])){
         function register(){
             window.location.href = "customer_register.php";
         }
+<<<<<<< HEAD
     </script>
 
+=======
+        function login(){
+            window.location.href = "../../view/login.php";
+        }
+    </script>
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 </body>
 </html>

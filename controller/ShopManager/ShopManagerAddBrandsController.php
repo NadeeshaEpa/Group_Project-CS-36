@@ -9,6 +9,7 @@ if(isset($_POST['BrandAdd'])){
     $price=$_POST['producPrice'];
     $description=$_POST['productDescription'];
     $Category=$_POST['Category'];
+<<<<<<< HEAD
     $product_type=$_POST['product_type'];
 
     $file=$_FILES['image'];
@@ -18,12 +19,16 @@ if(isset($_POST['BrandAdd'])){
     $fileError=$_FILES['image']['error'];
     $fileType=$_FILES['image']['type'];
     
+=======
+    $Product_type=$_POST['product_type'];
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 
     $name=$connection->real_escape_string($name);
     $Quantity=$connection->real_escape_string($Quantity);
     $price=$connection->real_escape_string($price);
     $description=$connection->real_escape_string($description);
     $Category=$connection->real_escape_string($Category);
+<<<<<<< HEAD
     $product_type=$connection->real_escape_string($product_type);
     
     $fileExt=explode('.',$fileName);
@@ -52,6 +57,12 @@ if(isset($_POST['BrandAdd'])){
     }else{
         echo "You cannot upload files of this type";
     }
+=======
+    $Product_type=$connection->real_escape_string($Product_type);
+    
+    $user=new Add_Brands;
+    $result=$user->Add_Brands($connection,$name,$Quantity,$price,$description,$Category,$Product_type);
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
     
     if($result==true){
         $_SESSION['Brand_add']="New brand Added Successfully";
@@ -72,6 +83,7 @@ else{
     header("Location: ../../view/ShopManager/shopManagerAddNewBrands.php");
     $connection->close();
     exit();
+<<<<<<< HEAD
 }
 
 
@@ -79,3 +91,6 @@ else{
 
 
 
+=======
+}
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2

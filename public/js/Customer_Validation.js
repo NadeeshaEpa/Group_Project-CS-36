@@ -30,6 +30,7 @@ email?.addEventListener("input", function () {
     if (!reg.test(email.value)) {
         emailLabel.innerHTML = "Invalid Email";
         emailLabel.style.color = "red";
+        emailLabel.style.fontSize = "15px";
         //submit.disabled = true;
         emailflag=1;
     } else {
@@ -39,23 +40,16 @@ email?.addEventListener("input", function () {
 
 password?.addEventListener("input", function () {
     //password must be 8 characters long and contain at least one number and one lowercase letter and one uppercase letter
-    if(password.value.length < 8){
-        passwordLabel.innerHTML = "Password must be 8 characters long";
+    if(password.value.length < 8 || !password.value.match(/[a-z]/) ||!password.value.match(/[A-Z]/)||!password.value.match(/[0-9]/)){
+        passwordLabel.innerHTML = "*Password must be 8 characters long and contain at least one number and one lowercase letter and one uppercase letter*";
         passwordLabel.style.color = "red";
-        //submit.disabled = true;
-    }else if(!password.value.match(/[a-z]/) || !password.value.match(/[A-Z]/)){
-        passwordLabel.innerHTML = "Password must contain at least one lowercase letter and one uppercase letter";
-        passwordLabel.style.color = "red";
-        //submit.disabled = true;
-    }else if(!password.value.match(/[0-9]/)){
-        passwordLabel.innerHTML = "Password must contain at least one number";
-        passwordLabel.style.color = "red";
-        //submit.disabled = true;
+        passwordLabel.style.fontSize = "15px";
         passwordflag=1;
     }else{
         passwordLabel.innerHTML = "Password:";
         passwordLabel.style.color = "black";
         password.style.borderColor = "green";
+        passwordLabel.style.fontSize = "18px";
         password.style.borderWidth = "2px";
         passwordflag=0;
         // submit.disabled = false;
@@ -66,12 +60,14 @@ cpassword?.addEventListener("input", function () {
         cpasswordLabel.innerHTML = "Passwords do not match";
         cpasswordLabel.style.color = "red";
         cpassword.style.borderColor = "red";
+        cpasswordLabel.style.fontSize = "15px";
         cpassword.style.borderWidth = "2px";
         //submit.disabled = true;
         cpasswordflag=1;
     } else {
         cpasswordLabel.innerHTML = "Confirm Password:";
         cpasswordLabel.style.color = "black";
+        cpasswordLabel.style.fontSize = "18px";
         cpassword.style.borderColor = "green";
         cpassword.style.borderWidth = "2px";
         cpasswordflag=0;
@@ -84,11 +80,13 @@ billnum?.addEventListener("input", function () {
     if (!pattern.test(billnum.value)) {
         billnoLabel.innerHTML = "Invalid Bill Number";
         billnoLabel.style.color = "red";
+        billnoLabel.style.fontSize = "15px";
         //submit.disabled = true;
         billnoflag=1;
     } else {
         billnoLabel.innerHTML = "Electricity Bill Number:";
         billnoLabel.style.color = "black";
+        billnoLabel.style.fontSize = "18px";
         billno.style.borderColor = "green";
         billno.style.borderWidth = "2px";
         billnoflag=0;
@@ -110,10 +108,12 @@ function usernameexit(){
             if (response == "true") {
                 usernameLabel.innerHTML = "Username already exists";
                 usernameLabel.style.color = "red";
+                usernameLabel.style.fontSize = "15px";
                 usernameflag=1;
             } else {
                 usernameLabel.innerHTML = "Username";
                 usernameLabel.style.color = "black";
+                usernameLabel.style.fontSize = "18px";
                 username.style.borderColor = "green";
                 username.style.borderWidth = "2px";
                 usernameflag=0;
@@ -121,7 +121,7 @@ function usernameexit(){
             }
         }
     };
-    xhttp.open("POST", "http://localhost:8001/controller/customer/validation_controller.php", true);
+    xhttp.open("POST", "http://localhost/Group_36/controller/customer/validation_controller.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("username=" + username.value);
 }
@@ -135,10 +135,12 @@ function emailValidation() {
             if (response == "true") {
                 emailLabel.innerHTML = "Email already exists";
                 emailLabel.style.color = "red";
+                emailLabel.style.fontSize = "15px";
                 emailflag=1;
             } else {
                 emailLabel.innerHTML = "Email";
                 emailLabel.style.color = "black";
+                emailLabel.style.fontSize = "18px";
                 email.style.borderColor = "green";
                 email.style.borderWidth = "2px";
                 // submit.disabled = false;
@@ -146,7 +148,7 @@ function emailValidation() {
             }
         }
     };
-    xhttp.open("POST", "http://localhost:8001/controller/customer/validation_controller.php", true);
+    xhttp.open("POST", "http://localhost/Group_36/controller/customer/validation_controller.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("email=" + email.value);
 }
@@ -156,11 +158,13 @@ contact?.addEventListener("input", function () {
     if (!pattern.test(contact.value)) {
         contactLabel.innerHTML = "Invalid Contact Number";  
         contactLabel.style.color = "red";
+        contactLabel.style.fontSize = "15px";
         // submit.disabled = true;
         contactflag=1;
     } else {
         contactLabel.innerHTML = "Contact Number:";
         contactLabel.style.color = "black";
+        contactLabel.style.fontSize = "18px";
         contact.style.borderColor = "green";
         contact.style.borderWidth = "2px";
         contactflag=0;

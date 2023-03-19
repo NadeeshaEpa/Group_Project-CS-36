@@ -2,6 +2,7 @@
 session_start();
 require_once("../../config.php");
 require_once("../../model/customer/addtocart_model.php");
+require_once("../../model/customer/payment_model.php");
 
 if(isset($_POST['addtocart'])){
    $price=$_POST['price'];
@@ -10,6 +11,7 @@ if(isset($_POST['addtocart'])){
    $quantity=$_POST['quantity'];
    $type=$_POST['gastype'];
    $User_id=$_SESSION['User_id'];
+   $cylinder=$_POST['cylinder'];
 
    $price=$connection->real_escape_string($price);
    $gasid=$connection->real_escape_string($gasid);
@@ -19,29 +21,31 @@ if(isset($_POST['addtocart'])){
 
    $total=$price*$quantity;
    $cart=new addtocart_model();
-   $result=$cart->addtocart($connection,$User_id,$gasid,$weight,$quantity,$total,$type);
+  
+   $result=$cart->addtocart($connection,$User_id,$gasid,$weight,$quantity,$total,$type,$cylinder);
     if($result===false){
-         $_SESSION['addtocart']="failed";
-         header("Location: ../../view/customer/inside_shop.php");
+        $_SESSION['addtocart']="failed";
+        if($cylinder=="new"){
+            header("Location: ../../view/customer/inside_shopnew.php");
+        }else{
+            header("Location: ../../view/customer/inside_shop.php");
+        }
     }else{
          $_SESSION['addtocart']="success";
          $_SESSION['cart']="Full";
-         header("Location: ../../view/customer/inside_shop.php");
-        //  $result3=$cart->getcylinderid($connection,$type,$weight);
-        //  $result2=$cart->updatequantity($connection,$quantity,$gasid,$result3);
-        //     if($result2===false){
-        //         $_SESSION['updatequantity']="failed";
-        //         header("Location: ../../view/customer/inside_shop.php");
-        //     }else{
-        //         $_SESSION['updatequantity']="success";
-        //         header("Location: ../../controller/customer/gas_controller.php?gasid=$gasid");
-        //     }
+         if($cylinder=="new"){
+            header("Location: ../../view/customer/inside_shopnew.php");
+         }else{
+            header("Location: ../../view/customer/inside_shop.php");
+        }
     }
 }
 if(isset($_POST['viewcart'])|| isset($_GET['viewcart'])){
     $User_id=$_SESSION['User_id'];
     $cart=new addtocart_model();
 
+    $check=$cart->checkandupdate($connection,$User_id);
+   
     $result=$cart->viewcart($connection,$User_id);
     if($result===false){
         $_SESSION['viewcart']="empty";
@@ -51,8 +55,6 @@ if(isset($_POST['viewcart'])|| isset($_GET['viewcart'])){
         header("Location: ../../view/customer/view_cart.php");   
     }else{
         $_SESSION['viewcart']=$result;
-        // print_r($_SESSION['viewcart']);
-        // die();
         header("Location: ../../view/customer/view_cart.php");
     }
 }
@@ -83,12 +85,18 @@ if(isset($_POST['remove'])){
 if(isset($_POST['checkout'])){
     $User_id=$_SESSION['User_id'];
     $gasagent=$_POST['agent_id'];
+    // print_r($gasagent);
+    // die();
     $cart=new addtocart_model();
+
+    $_SESSION['cdlatitude']=$_SESSION['latitude'];
+    $_SESSION['cdlongitude']=$_SESSION['longitude'];
+
+
+    $_SESSION['quantity_check']="success";
     $result=$cart->checkout($connection,$User_id,$gasagent);
     if($result===false){
         $_SESSION['checkout']="failed";
-        print_r("failed");
-        die();
         header("Location: ../../view/customer/view_cart.php");
     }else{
         $_SESSION['checkout']=$result;
@@ -110,5 +118,89 @@ if(isset($_POST['dcartitem'])){
         $_SESSION['checkout']=$result;
         $cart->getcartcount($connection,$User_id);
         header("Location: ../../view/customer/view_checkout.php");
+    }
+}
+if(isset($_POST['updatecartquantity'])){
+    $cartid=$_POST['cart_id'];
+    $quantity=$_POST['quantity'];
+    $User_id=$_SESSION['User_id'];
+    $gasagent=$_POST['agent_id'];
+    
+    $cart=new addtocart_model();
+
+    $result=$cart->updatecartquantity($connection,$cartid,$quantity,$gasagent);
+    if($result===false){
+        $_SESSION['updatecartquantity']="failed";
+        header("Location: ../../view/customer/view_checkout.php");
+    }else{
+        $_SESSION['updatecartquantity']="success";
+        $result2=$cart->checkout($connection,$User_id,$gasagent);
+        $_SESSION['checkout']=$result2;
+        $cart->getcartcount($connection,$User_id);
+        header("Location: ../../view/customer/view_checkout.php");
+    }
+
+}
+if(isset($_POST['dmbutton'])){
+    if(isset($_POST['delivery'])){
+        $_SESSION['delivery_method']="Delivered by agent";
+        $latitude=$_POST['latitude'];
+        $longitude=$_POST['longitude'];
+        $gasagent=$_POST['agent'];
+        if($latitude==NULL || $longitude==NULL){
+            $latitude=$_SESSION['latitude'];
+            $longitude=$_SESSION['longitude'];
+        }
+        $_SESSION['cdlatitude']=$latitude;
+        $_SESSION['cdlongitude']=$longitude;
+        
+        $cart=new addtocart_model();
+        $payment=new payment_model();
+
+        $quantity_check=$payment->checkquantity($connection,$gasagent,$_SESSION['User_id']);
+        if($quantity_check===false){
+            $_SESSION['quantity_check']="failed";
+            header("Location: ../../view/customer/view_checkout.php");
+        }else{
+            $result=$cart->checkout($connection,$_SESSION['User_id'],$gasagent);
+            if($result===false){
+                $_SESSION['dcheckout']="failed";
+                header("Location: ../../view/customer/view_checkout.php");
+            }else{
+                if(isset($_SESSION['distance_limit'])){
+                    if($_SESSION['distance_limit']=="high"){
+                        header("Location: ../../view/customer/view_checkout.php");
+                    }else{
+                        $_SESSION['distance_limit']=="low";
+                        $_SESSION['dcheckout']=$result;                
+                        header("Location: ../../view/customer/total.php");
+                    }             
+                }else{
+                    $_SESSION['dcheckout']=$result;
+                    header("Location: ../../view/customer/total.php");              
+                }
+            }
+        }
+    }else if(isset($_POST['nodelivery'])){
+        $_SESSION['delivery_method']="Reserve";
+        $gasagent=$_POST['agent'];
+        $cart=new addtocart_model();
+        $payment=new payment_model();
+
+        $quantity_check=$payment->checkquantity($connection,$gasagent,$_SESSION['User_id']);
+        if($quantity_check===false){
+            $_SESSION['quantity_check']="failed";
+            header("Location: ../../view/customer/view_checkout.php");
+        }else{
+            $result=$cart->checkout($connection,$_SESSION['User_id'],$gasagent);
+            if($result===false){
+                $_SESSION['dcheckout']="failed";
+                header("Location: ../../view/customer/total.php");
+            }else{
+                $_SESSION['dcheckout']=$result;
+                $_SESSION['delivery_fee']=0;
+                header("Location: ../../view/customer/total.php");
+            }
+        }
     }
 }

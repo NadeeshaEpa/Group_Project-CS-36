@@ -57,7 +57,10 @@ body{
 }
 table{
     margin-top: 5%;
+<<<<<<< HEAD
 
+=======
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 }
 .modal {
     display: none;
@@ -109,5 +112,29 @@ table{
     border-radius: 10px;
     margin-top: 15%;
     border: none;
+<<<<<<< HEAD
 
+=======
+}
+.login{
+    background-color:navy;
+    margin-left: 32%;
+    font-size: 18px;
+    width: 100px;
+    height: 30px;
+    color: white;
+    border-radius: 10px;
+    margin-top: 15%;
+    border: none;
+}
+.seemore button{
+    display: flex;
+    float: right;
+    margin-top: 2%;
+    margin-right: 5%;
+    background-color: #f9f9f9;
+    border: none;
+    color: blueviolet;
+    font-size: 17px;
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 }

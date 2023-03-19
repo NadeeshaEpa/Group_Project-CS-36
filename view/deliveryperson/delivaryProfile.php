@@ -44,6 +44,7 @@
                     }
                 ?>
                 <form action="../../controller/deliveryperson/delivaryprofilecontroller.php" method="POST">   
+<<<<<<< HEAD
                         <div class="prof_details">
                             <div class="down">
                                 <div class="down1">
@@ -74,6 +75,9 @@
                                     
                                 </div>    
                             </div>   
+=======
+                        <div class="prof_details">  
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
                             <div class="down">
                                 <div class="down1">
                                     <label>First name:</label><br>  

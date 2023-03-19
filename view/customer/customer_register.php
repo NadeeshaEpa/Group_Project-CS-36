@@ -7,11 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../public/css/customer/fago_register.css">
-    
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2eSy5egkITKWg1EMsa1i1WcpPi29dgK0"></script>
+
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2eSy5egkITKWg1EMsa1i1WcpPi29dgK0&callback=initMap">
+    </script>
     <script>
       function initMap() {
-        var colombo = {lat: 6.9271, lng: 79.8612};
+        var latitude= 6.9271;
+        var longitude= 79.8612;
+        var colombo = {lat: latitude, lng: longitude};
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 12,
           center: colombo
@@ -19,19 +23,34 @@
         var marker = new google.maps.Marker({
           position: colombo,
           map: map,
+          title: 'Drag me!',
           draggable: true
         });
+
+        geocoder = new google.maps.Geocoder();
         google.maps.event.addListener(marker, 'dragend', function(event) {
           document.getElementById("latitude").value = event.latLng.lat();
           document.getElementById("longitude").value = event.latLng.lng();
+
+          geocoder.geocode({'location': event.latLng}, function(results, status) {
+            if (status === 'OK') {
+            if (results[0]) {
+                document.getElementById('address').value = results[0].formatted_address;
+            } else {
+                window.alert('No results found');
+            }
+            } else {
+            window.alert('Geocoder failed due to: ' + status);
+            }
+          });
         });
       }
     </script>
 
     <title>Customer Registration</title>
 </head>
-<?php include_once '../header.php'; ?>
-<body onload="initMap()">
+<?php include_once '../unreguser_header.php'; ?>
+<body>
     <div class="registration-form">  
     <form action="../../controller/customer/register_controller.php" method="POST" id="customer_form">
         <h2>Customer Registration Form</h2>
@@ -44,11 +63,16 @@
             <input type="text" name="username" id="username" placeholder="Username" class="box" required>
         </div>
         <label>Drag the marker to your location:</label><br>
-        <div id="map" style="height: 500px; width: 90%; border-radius:20px;"></div><br>
-        <div>
-            <input type="hidden" id="latitude" name="latitude"><br>
-            <input type="hidden" id="longitude" name="longitude"><br>
-        </div>  
+        <div id="map" style="height: 400px; width: 98%; border-radius:20px;"></div><br>
+            <label id="address-label">Address:</label><br>
+            <div class="down3">
+                <div>
+                    <input type="hidden" id="latitude" name="latitude">
+                    <input type="hidden" id="longitude" name="longitude">
+                    <input type="text" id="address" name="address" placeholder="Address"><br>
+                    <!-- break the address value into 3 parts -->
+                </div> 
+            </div>  
         <div>
             <label for="Address">Address:</label><br>
             <input type="text" name="street" id="street" placeholder="Street" class="box2" required>

@@ -75,6 +75,7 @@ if(!isset($_SESSION['User_id'])){
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
+<<<<<<< HEAD
 			<li class="profile">
 			    <?php if($_SESSION['img-status'] == 0){?>
 					<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
@@ -90,6 +91,24 @@ if(!isset($_SESSION['User_id'])){
 					     echo $_SESSION['Type'];
 					}?></h5>
 			</li>
+=======
+			<!-- <a href="#" class="nav-link">Categories</a> -->
+			<form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search...">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+			<a href="#" class="notification">
+				<i class='bx bxs-bell' ></i>
+				<span class="num">8</span>
+			</a>
+			<a href="#" class="profile">
+				<img src="../../public/images/user.jpg">
+			</a>
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 			
 		</nav>
 		<!-- NAVBAR -->
@@ -113,7 +132,43 @@ if(!isset($_SESSION['User_id'])){
 				
 			</div>
 
+<<<<<<< HEAD
 			
+=======
+			<!-- <ul class="box-info">
+                <li>
+					<i class='bx bxs-calendar-check' ></i>
+					<span class="text">
+						<label for="" id="dayid" style="margin-left: 40%;"></label><br>
+                        <label for="" id="monthid"></label>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-time-five' ></i>
+					<span class="text">
+						<label for="" id="timeid" style="margin-left: 40%; font-size:32px"></label>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-group' ></i>
+					<span class="text">
+						<label for="" id="Nodeliverid1" style=" font-size:20px">Total delivary count:</label><br>
+                        <label for="" id="Nodeliverid2" style="font-size: 32px; margin-left:35%">3</label>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-dollar-circle' ></i>
+					<span class="text">
+						<label for="" id="incomeid1" style=" font-size:20px"> Total income:</label><br>
+                        <label for="" id="incomeid2">Rs: 850</label>
+					</span>
+				</li>
+               
+
+			</ul> -->
+
+
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 			<div class="table-data">
 				<div class="order">
 				<form action="../../controller/ShopManager/ShopManagerReportController.php" method="POST">
@@ -189,6 +244,7 @@ if(!isset($_SESSION['User_id'])){
 							</h5>
 					   </div>
 					
+<<<<<<< HEAD
 					
 
 
@@ -277,6 +333,54 @@ if(!isset($_SESSION['User_id'])){
 
 
 						    </div>
+=======
+						<?php if(isset($_SESSION['BrandcusReportview'])){
+							$result=$_SESSION['BrandcusReportview'];
+							foreach ($result as $row) {?>
+							<div class="report_info_outter">
+								<div class="report_info">
+									<?php echo "Reference No : " . $row['Order_id']."<br>";
+									echo "Name : " . $row['Name']."<br>";
+									echo "Address : " . $row['Address']."<br>";
+									echo "Contact NO : " . $row['Contact_No']."<br>";
+									echo "Order Date : " . $row['Order_date']."<br>";
+									echo "Order time : " . $row['Time']."<br>";
+									echo "category : " . $row['Category']."<br>";
+									echo "Price : " . $row['Price']."<br>";
+									echo "Quantity : " . $row['Quantity']."<br>";?>
+									
+								</div>
+							</div>
+							<?php
+							}
+							unset($_SESSION['BrandcusReportview']);
+						}
+
+						if(isset($_SESSION['BranddeReportview'])){
+							$result=$_SESSION['BranddeReportview'];
+							foreach ($result as $row) {?>
+							<div class="report_info_outter">
+								<div class="report_info">
+								    <?php echo "Reference No : " . $row['Order_id']."<br>";
+									echo "Name : " . $row['Name']."<br>";
+									echo "Address : " . $row['Address']."<br>";
+									echo "Contact NO : " . $row['Contact_No']."<br>";
+									echo "picked  Date : " . $row['Picked_date']."<br>";
+									echo "picked  time : " . $row['Picked_time']."<br>";
+									echo "category : " . $row['Category']."<br>";
+									echo "Price : " . $row['Price']."<br>";
+									echo "Quantity : " . $row['Quantity']."<br>";?>
+									
+								</div>
+							</div>
+							<?php
+							}
+							unset($_SESSION['BranddeReportview']);
+						}
+						
+						
+						?>
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 
 						
 					

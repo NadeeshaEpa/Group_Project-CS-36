@@ -14,7 +14,10 @@
     <div class="registration-form">  
     <form action="../../controller/gasagent/register_controller.php" method="POST">
         <h2>Gasagent Registration Form</h2>
+<<<<<<< HEAD
 
+=======
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
         <div class="font">
         <label for=":" id="name" >Name:</label><br>
           <input type="text" name="firstname" id="firstname" placeholder="First Name"  required>
@@ -42,6 +45,21 @@
 
             <label for=":" id="shopnumberlabel">Shop Number:</label><br>
             <input type="text" name="shopnumber" id="shopnumber" placeholder="Shop Number" required><br>
+            
+           
+
+            <!-- new -->
+            </div><br> 
+                        <div class="dropdown">
+                           <label for=""> Gas Type</label>
+                            <select name="gastype" id="gastype">
+                                <option value="">---Select Type---</option>
+                                <option value="1">Litro</option>
+                                <option value="2">Laugh</option>
+                              
+                            </select>
+                        </div><br><br>
+
 
             
            
@@ -81,8 +99,12 @@
         </div>   
     </form>
     </div>
+<<<<<<< HEAD
 
     <script src="../../public/js/newvalidation.js"></script>
+=======
+    <!-- <script src="../../public/js/newvalidation.js"></script> -->
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 
 
 </body>

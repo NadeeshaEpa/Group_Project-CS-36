@@ -76,6 +76,7 @@ if(!isset($_SESSION['User_id'])){
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
+<<<<<<< HEAD
 			<li class="profile">
 			    <?php if($_SESSION['img-status'] == 0){?>
 					<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
@@ -91,6 +92,24 @@ if(!isset($_SESSION['User_id'])){
 					     echo $_SESSION['Type'];
 					}?></h5>
 			</li>
+=======
+			<!-- <a href="#" class="nav-link">Categories</a> -->
+			<form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search...">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+			<a href="#" class="notification">
+				<i class='bx bxs-bell' ></i>
+				<span class="num">8</span>
+			</a>
+			<a href="#" class="profile">
+				<img src="../../public/images/user.jpg">
+			</a>
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 			
 		</nav>
 		<!-- NAVBAR -->
@@ -110,6 +129,7 @@ if(!isset($_SESSION['User_id'])){
 						</li>
 					</ul>
 				</div>
+<<<<<<< HEAD
                 
 				<div class="SeperateView">
 					<form action="../../controller/ShopManager/shopManagerOrdresController.php" method="POST">
@@ -117,6 +137,9 @@ if(!isset($_SESSION['User_id'])){
 						<button id="PickedPrderedId" name="PickedOrder">Picked Orders</button>
 					</form>
 				</div>
+=======
+
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 				
 			</div>
 
@@ -128,6 +151,15 @@ if(!isset($_SESSION['User_id'])){
                         <label for="" id="monthid"></label>
 					</span>
 				</li>
+<<<<<<< HEAD
+=======
+				<!-- <li>
+					<i class='bx bxs-time-five' ></i>
+					<span class="text">
+						<label for="" id="timeid" style="margin-left: 40%; font-size:32px"></label>
+					</span>
+				</li> -->
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 				<li>
 					<i class='bx bxs-group' ></i>
 					<span class="text">
@@ -154,12 +186,18 @@ if(!isset($_SESSION['User_id'])){
                                     <tr>
 									    <th>Customer Name</th>
                                         <th>Customer Address</th>
+<<<<<<< HEAD
 										<th>Customer Contact No</th>
 										<th>Quantity</th>
                                         <th>Category</th>
 										<th>Order date</th>
                                         <th>Delivery Method</th>
                                         <th>Price</th>
+=======
+                                        <th>Category</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
                                     </tr>
                                     <?php
                                     if(isset($_SESSION['Cus_Dashboard_details'])){
@@ -168,6 +206,7 @@ if(!isset($_SESSION['User_id'])){
                                             echo "<tr>";
                                             echo "<td>" . $row['Name'] . "</td>";
                                             echo "<td>" . $row['Address'] . "</td>";
+<<<<<<< HEAD
 											echo "<td>" . $row['Contact_No'] ."</td>";
 											echo "<td>" . $row['Quantity'] . "</td>";
                                             echo "<td>" . $row['Category'] . "</td>";
@@ -177,6 +216,14 @@ if(!isset($_SESSION['User_id'])){
 											echo "</tr>";
                                         }
                                         
+=======
+                                            echo "<td>" . $row['Category'] . "</td>";
+                                            echo "<td>" . $row['Price'] . "</td>";
+											echo "<td>" . $row['Quantity'] . "</td>";
+                                            echo "</tr>";
+                                        }
+                                        unset($_SESSION['view_result']);
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
                                     }
                                     
                                     ?>

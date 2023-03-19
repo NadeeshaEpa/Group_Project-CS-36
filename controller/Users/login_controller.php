@@ -17,8 +17,15 @@ if(isset($_POST['login'])){
 
     if($result){
         $_SESSION['login']="success";  //if the login is successful, set the session variable
-        if($_SESSION['Type']=="Customer")
+        if($_SESSION['Type']=="Customer"){
+            $last_order=$user->limit_order($connection,$_SESSION['User_id']);
+            if($last_order){
+                $_SESSION['last_order']=1;
+            }else{
+                $_SESSION['last_order']=0;
+            }
             header("Location: ../../view/customer/customer_select.php");  //redirect to the selection page
+<<<<<<< HEAD
         else if($_SESSION['Type']=="Delivery_Person")
 
             header("Location: ../../controller/deliveryperson/deliveryDashboardFirstController.php");  //redirect to the dashboard page
@@ -31,6 +38,19 @@ if(isset($_POST['login'])){
         else if($_SESSION['Type']=="Staff")
             header("Location: ../../view/staff/staff_dashboard.php");
 
+=======
+        }else if($_SESSION['Type']=="Delivery_Person"){
+            header("Location: ../../view/deliveryperson/DelivaryDashboard.php");  //redirect to the dashboard page
+        }else if($_SESSION['Type']=="gasagent"){
+            header("Location: ../../view/gasagent/gasagent_dashboard.php");  //redirect to the dashboard page
+        }else if($_SESSION['Type']=="Stock Manager"){
+            header("Location: ../../controller/ShopManager/ShopManagerDashboardFirstController.php");  //redirect to the dashboard page
+        }else if($_SESSION['Type']=="Admin"){
+            header("Location: ../../view/admin/admin_dashboard.php"); //redirect to the dashboard page
+        }else if($_SESSION['Type']=="Staff"){
+            header("Location: ../../view/staff/staff_dashboard.php");
+        }
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
         $connection->close();
         exit();
     }else{

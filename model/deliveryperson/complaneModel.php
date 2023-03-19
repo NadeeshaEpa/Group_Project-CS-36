@@ -13,6 +13,7 @@ class Complain{
             return false;
         }
     }
+<<<<<<< HEAD
 
     public function getUserComplainsDetails($connection){
         $this->User_id=$_SESSION['User_id'];
@@ -41,4 +42,6 @@ class Complain{
             return false;
         }
      }
+=======
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 }

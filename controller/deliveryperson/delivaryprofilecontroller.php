@@ -101,6 +101,7 @@ if(isset($_POST['deleteaccount'])){
             header("Location: ../../view/deliveryperson/DeliveryProfile.php");
         }
     }
+<<<<<<< HEAD
 }
 
 
@@ -160,4 +161,6 @@ if(isset($_POST['removeimg'])){
         $_SESSION['removeimg']="failed";
         header("Location: ../../view/deliveryperson/DeliveryProfile.php");
     }
+=======
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 }

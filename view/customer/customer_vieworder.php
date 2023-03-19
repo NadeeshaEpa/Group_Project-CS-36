@@ -25,7 +25,7 @@
                     </a>
                 </li>
                 <li class="active">
-                    <a href="../../controller/customer/order_controller.php?orderid='1'">
+                    <a href="../../controller/customer/order_controller.php?orderid='1'">    
                         <i class='bx bxs-shopping-bag-alt' ></i>
                         <span class="text">My orders</span>
                     </a>
@@ -58,7 +58,6 @@
             <?php 
                 if(isset($_SESSION['vieworders'])){
                     if($_SESSION['vieworders']==='failed'){
-                        echo "<script>alert('No orders found')</script>";
                         unset($_SESSION['vieworders']);
                         $details=[];
                     }else{
@@ -70,6 +69,10 @@
             <h1>My orders</h1>
             </div>   
             <!-- print order details as a table -->
+            <div class="type">
+                <a href="../../controller/customer/order_controller.php?orderid='1'"><button class="selected">Gas Orders</button></a>
+                <a href="../../controller/customer/order_controller.php?shoporderid='2'"><button>Fago Shop Orders</button></a>
+            </div>
             <div class="ordertable">
                 <h2>All Orders</h2>
                 <table>
@@ -80,6 +83,7 @@
                         <th>Delivery Method</th>
                         <th>Delivery Status</th>
                         <th>Full Details</th>
+                        <th>Cancel Order</th>
                     </tr>
                     <?php
                         foreach($details as $detail){?>
@@ -89,21 +93,93 @@
                                     <td><?php echo $detail['Amount']?></td>
                                     <td><?php echo $detail['Delivery_Method']?></td>
                                     <div class="status">
-                                        <?php if($detail['Delivery_Status']==2){?>
-                                            //change the color of the text abd make it bold
+                                        <?php if($detail['Delivery_Status']==NULL){?>
+                                            <td style="color:lightgreen"><b>Not Assigned</b></td>
+                                        <?php }else if($detail['Delivery_Status']==3){?>
+                                            <td style="color:blue"><b>Courier Service</b></td>
+                                        <?php }else if($detail['Delivery_Status']==2){?>
                                             <td style="color:red"><b>No delivery</b></td>
                                         <?php }else if($detail['Delivery_Status']==0){?>
                                             <td style="color:#FDC801"><b>On the way</b></td>
-                                        <?php }else{?>
+                                        <?php }else if($detail['Delivery_Status']==1){?>
                                             <td style="color:green"><b>Delivered</b></td>     
-                                        <?php }?>
+                                        <?php } ?>
                                     </div>
-                                    <td><a href="../../controller/customer/order_controller.php?id=<?php echo $detail['Order_id']?>">View</a></td>
+                                    <td><a href="../../controller/customer/order_controller.php?id=<?php echo $detail['Order_id']?>">View</a></td>    
+                                    <?php
+                                    //get the difference between current date and order date 
+                                    date_default_timezone_set('Asia/Colombo');
+                                    $date1=date_create(date("Y-m-d"));
+                                    $date2=date_create($detail['Order_date']);
+                                    $diff=date_diff($date1,$date2);
+                                    $diff=$diff->format("%a");
+                                    
+                                    if(($detail['Delivery_Status']==NULL && $diff<2)||($detail['Delivery_Status']==2 && $diff<1)){?>
+                                    <div class="cancelbutton">
+                                        <td><button id="cancelbutton" onclick="cancelorder(<?php echo $detail['Order_id']?>);">Cancel</button></td>
+                                    </div>
+                                    <?php }else{?>
+                                        <td><button id="dcancelbutton">Cancel</button></td>
+                                    <?php }
+                                    ?>
                             </tr>
                         <?php }?>
                 </table>
+                <?php 
+                    if(isset($_SESSION['gas_page'])){
+                      $page=$_SESSION['gas_page'];
+                    }else{
+                      $page=1;
+                    }
+                    if(isset($_SESSION['gas_total_pages'])){
+                        $total_pages=$_SESSION['gas_total_pages'];
+                    }else{
+                        $total_pages=1;
+                    }    
+                ?>
+                <div class="pagination">
+                    <?php if($page>1){?>
+                        <!-- pass value as form -->
+                        <div class="p-left">
+                            <form action="../../controller/customer/order_controller.php" method="GET">
+                                <input type="hidden" name="page" value="<?php echo $page-1?>">
+                                <input type="submit" value="Previous">
+                            </form>
+                        </div>
+                    <?php } ?>
+                    <?php if($page<$total_pages){?>
+                        <!-- pass value as form -->
+                        <div class="p-right">
+                            <form action="../../controller/customer/order_controller.php" method="GET">
+                                <input type="hidden" name="page" value="<?php echo $page+1?>">
+                                <input type="submit" value="Next">
+                            </form>
+                        </div>
+                    <?php } ?>
+                </div>
             </div>    
         </div>
-    </div>    
+    </div>  
+    <!-- pop up message -->
+    <div id="cancel_popup">
+        <div class="cancel_contect">
+            <p>Are you sure you want to cancel this order?</p>
+            <div class="buttons">
+                <button id="yes">Yes</button>
+                <button id="no">No</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function cancelorder(id){
+            document.getElementById("cancel_popup").style.display="block";
+            document.getElementById("yes").addEventListener("click",function(){
+                window.location.href="../../controller/customer/order_controller.php?cancelid="+id;
+            });
+            document.getElementById("no").addEventListener("click",function(){
+                document.getElementById("cancel_popup").style.display="none";
+            });
+        }  
+    </script>
 </body>
 </html>

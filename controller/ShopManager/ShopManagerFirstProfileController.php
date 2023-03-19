@@ -9,7 +9,10 @@ $result=$user->getShopManagerDetails($connection);
 
 if($result==true){
     $_SESSION['ShopManager_details']=$result;
+<<<<<<< HEAD
     
+=======
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
     header("Location: ../../view/ShopManager/ShopManagerProfile.php");
     $connection->close();
     exit();
