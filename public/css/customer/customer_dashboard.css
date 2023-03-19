@@ -293,9 +293,9 @@ body{
     margin-bottom: 0px;
     transform: translate(18%, 25%);
 }
-.dpname{
+/* .dpname{
     margin-top: 20px;
-}
+} */
 .cusname input, .dpname select , .desc textarea{
     width: 65%;
     height: 35px;
@@ -589,4 +589,12 @@ body{
     border: none;
     font-size: 18px;
     font-weight: bold;
+}
+.error-msg{
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: rgb(243, 173, 173);
+    padding: 0.5%;
+    text-align: center;
 }

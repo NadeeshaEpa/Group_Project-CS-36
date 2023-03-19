@@ -55,6 +55,16 @@
         <?php include_once 'customer_header.php'; ?>
             <div class="review-details">
                 <div class="reviewtable">
+                    <?php
+                        if(isset($_SESSION['updatereview'])){
+                            if($_SESSION['updatereview']=="failed"){?>
+                            <div class="error-msg">
+                                <p>You can't update a review which published more than 7 days ago.</p>
+                            </div>
+                        <?php }
+                            unset($_SESSION['updatereview']);
+                        } 
+                    ?>
                         <h1>All Reviews</h1>
                         <table>
                             <tr>

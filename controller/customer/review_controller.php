@@ -11,7 +11,11 @@ if(isset($_GET['reviewid'])){
             $_SESSION['deliverynames']="failed";
             header("Location: ../../view/customer/customer_review.php");
         }else{
-            $names=$order->finddeliveryname($connection,$result);
+            if($result===[]){
+                $_SESSION['deliverynames']="failed";
+                header("Location: ../../view/customer/customer_review.php");
+            }
+            $names=$order->finddeliveryname($connection,$result[0]);
             if($names===false){
                $_SESSION['deliverynames']="failed";
             }else{
@@ -22,15 +26,12 @@ if(isset($_GET['reviewid'])){
     }
 }
 if(isset($_POST['fillreview'])){
-    $dpid=$_POST['dpname'];
+    $dpid=$_POST['dpid'];
     $description=$_POST['description'];
 
     $dpid=$connection->real_escape_string($dpid);
     $description=$connection->real_escape_string($description);
 
-    //extract delivery person id from the name
-    $dpid=substr($dpid,0,strpos($dpid,"-"));
-    $dpid=$connection->real_escape_string($dpid);
 
     $order=new review_model();
     $result=$order->review($connection,$_SESSION['User_id'],$dpid,$description);
@@ -117,20 +118,17 @@ if(isset($_GET['erid'])){
 }
 if(isset($_POST['editreview'])){
     $rateid=$_POST['rateid'];
-    $dpname=$_POST['dpname'];
-    $date=$_POST['date'];
     $desc=$_POST['desc'];
 
-    $rateid=$connection->real_escape_string($rateid);
-    $dpname=$connection->real_escape_string($dpname);
-    $date=$connection->real_escape_string($date);   
+    $rateid=$connection->real_escape_string($rateid);   
     $desc=$connection->real_escape_string($desc);
 
     $review=new review_model();
-    $result=$review->updatereview($connection,$rateid,$dpname,$date,$desc);
+    $userid=$_SESSION['User_id'];
+    $result=$review->updatereview($connection,$rateid,$desc,$userid);
     if($result===false){
         $_SESSION['updatereview']="failed";
-        header("Location: ../../view/customer/customer_editreview.php");
+        header("Location: ../../view/customer/customer_viewreviews.php");
     }else{
         $_SESSION['updatereview']="success";
         $review=new review_model();
