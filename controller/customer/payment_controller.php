@@ -39,6 +39,7 @@ if(isset($_POST['stripeToken'])){
         $_SESSION['final_orderdetails']=$final_orderdetails;
         $pay=$payment->pay($connection,$agent,$amount);
         $cart=$payment->emptycart($connection,$_SESSION['User_id'],$agent);
+        $gasagentemail=$payment->getgasagentemail($connection,$agent);
 
         if($order===false || $placeorder===false || $cart===false || $pay===false){
             $_SESSION['payment']="failed";
@@ -48,7 +49,7 @@ if(isset($_POST['stripeToken'])){
             //email order details to customer using php mailer library
             require_once '../../model/customer/email_model.php';
             $email=new email_model();
-            $email->sendEmail($final_orderdetails);
+            $email->sendEmail($final_orderdetails,$gasagentemail);
             header("Location: ../../view/customer/order_successfull.php");
         }
 

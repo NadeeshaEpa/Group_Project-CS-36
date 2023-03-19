@@ -19,7 +19,7 @@ class email_model{
         $this->mail->Username = 'fagoorders@gmail.com';
         $this->mail->Password = 'lfvsvbxdkoeomuya';
     }
-    public function sendEmail($orders){
+    public function sendEmail($orders,$gasagentemail){
         //email order details to customer
         $useremail=$orders[0]['email'];
         $subject="Order Details";
@@ -41,6 +41,7 @@ class email_model{
         
         $this->mail->setFrom('fagoorders@gmail.com', 'Fago');
         $this->mail->addAddress($useremail);
+        $this->mail->addCC($gasagentemail);
         $this->mail->isHTML(true);
         $this->mail->Subject = $subject;
         $this->mail->Body = $message;
@@ -71,7 +72,6 @@ class email_model{
         if(!$this->mail->send()){
             echo "Message could not be sent.";
             echo "Mailer Error: " . $this->mail->ErrorInfo;
-            die();
         }else{
             echo "Message has been sent";
         }

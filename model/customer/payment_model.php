@@ -404,4 +404,16 @@ class payment_model{
             return true;
         }
     }
+    public function getgasagentemail($connection,$agent){
+        $sql="select Email from gasagent where User_id='$agent'";
+        $result=$connection->query($sql);
+        if(!$result){
+            return false;
+        }else{
+            $row=$result->fetch_assoc();
+            $email=$row['Email'];
+            return $email;
+        }
+
+    }
 }
