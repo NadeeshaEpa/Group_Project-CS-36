@@ -63,7 +63,6 @@
             <form class="odata">
             <h2>Order Details</h2>
                <?php 
-
                 $order_data=$details[0]['Order_data'];
                 $order_items=$details[0]['Order_items'];
                 
@@ -74,7 +73,6 @@
                 $delivery_person=$order_data[0]['Delivery_person'];
                 $delivery_fee=$order_data[0]['Delivery_fee'];
 
-                //array_push($order_items,['GasAgent_Name'=>$gasagent_name,'Cylinder_Type'=>$cylinder_type,'Order_Type'=>$order_type,'Quantity'=>$quantity,'Price'=>$price,'Cylinder_details'=>$cylinder_details]);
                 $gasagent_name=$order_items[0]['GasAgent_Name'];
                 $order_type=$order_items[0]['Order_Type'];
                 

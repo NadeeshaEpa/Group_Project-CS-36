@@ -7,15 +7,14 @@ body{
 .customer img{
     width:150px;
     height:150px;
-    border-radius: 150px;
     padding: 60px;
     padding-top: 20px;
     padding-bottom: 20px;
 
 }
 .customer img:hover{
-    width: 155px;
-    height: 155px; 
+    width: 152px;
+    height: 152px; 
 }
 .up , .down{
     width: 100%;

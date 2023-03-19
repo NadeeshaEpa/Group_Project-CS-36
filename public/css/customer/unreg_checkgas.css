@@ -120,3 +120,13 @@ table{
     margin-top: 15%;
     border: none;
 }
+.seemore button{
+    display: flex;
+    float: right;
+    margin-top: 2%;
+    margin-right: 5%;
+    background-color: #f9f9f9;
+    border: none;
+    color: blueviolet;
+    font-size: 17px;
+}

@@ -2,6 +2,7 @@
 session_start();
 require_once("../../config.php");
 require_once("../../model/customer/addtocart_model.php");
+require_once("../../model/customer/payment_model.php");
 
 if(isset($_POST['addtocart'])){
    $price=$_POST['price'];
@@ -87,11 +88,15 @@ if(isset($_POST['checkout'])){
     // print_r($gasagent);
     // die();
     $cart=new addtocart_model();
+
+    $_SESSION['cdlatitude']=$_SESSION['latitude'];
+    $_SESSION['cdlongitude']=$_SESSION['longitude'];
+
+
+    $_SESSION['quantity_check']="success";
     $result=$cart->checkout($connection,$User_id,$gasagent);
     if($result===false){
         $_SESSION['checkout']="failed";
-        print_r("failed");
-        die();
         header("Location: ../../view/customer/view_cart.php");
     }else{
         $_SESSION['checkout']=$result;
@@ -134,9 +139,11 @@ if(isset($_POST['updatecartquantity'])){
         $cart->getcartcount($connection,$User_id);
         header("Location: ../../view/customer/view_checkout.php");
     }
+
 }
 if(isset($_POST['dmbutton'])){
     if(isset($_POST['delivery'])){
+        $_SESSION['delivery_method']="Delivered by agent";
         $latitude=$_POST['latitude'];
         $longitude=$_POST['longitude'];
         $gasagent=$_POST['agent'];
@@ -148,26 +155,52 @@ if(isset($_POST['dmbutton'])){
         $_SESSION['cdlongitude']=$longitude;
         
         $cart=new addtocart_model();
-        $result=$cart->checkout($connection,$_SESSION['User_id'],$gasagent);
-        if($result===false){
-            $_SESSION['dcheckout']="failed";
-            header("Location: ../../view/customer/total.php");
-        }else{
-            $_SESSION['dcheckout']=$result;
-            header("Location: ../../view/customer/total.php");
-        }
+        $payment=new payment_model();
 
+        $quantity_check=$payment->checkquantity($connection,$gasagent,$_SESSION['User_id']);
+        if($quantity_check===false){
+            $_SESSION['quantity_check']="failed";
+            header("Location: ../../view/customer/view_checkout.php");
+        }else{
+            $result=$cart->checkout($connection,$_SESSION['User_id'],$gasagent);
+            if($result===false){
+                $_SESSION['dcheckout']="failed";
+                header("Location: ../../view/customer/view_checkout.php");
+            }else{
+                if(isset($_SESSION['distance_limit'])){
+                    if($_SESSION['distance_limit']=="high"){
+                        header("Location: ../../view/customer/view_checkout.php");
+                    }else{
+                        $_SESSION['distance_limit']=="low";
+                        $_SESSION['dcheckout']=$result;                
+                        header("Location: ../../view/customer/total.php");
+                    }             
+                }else{
+                    $_SESSION['dcheckout']=$result;
+                    header("Location: ../../view/customer/total.php");              
+                }
+            }
+        }
     }else if(isset($_POST['nodelivery'])){
+        $_SESSION['delivery_method']="Reserve";
         $gasagent=$_POST['agent'];
         $cart=new addtocart_model();
-        $result=$cart->checkout($connection,$_SESSION['User_id'],$gasagent);
-        if($result===false){
-            $_SESSION['dcheckout']="failed";
-            header("Location: ../../view/customer/total.php");
+        $payment=new payment_model();
+
+        $quantity_check=$payment->checkquantity($connection,$gasagent,$_SESSION['User_id']);
+        if($quantity_check===false){
+            $_SESSION['quantity_check']="failed";
+            header("Location: ../../view/customer/view_checkout.php");
         }else{
-            $_SESSION['dcheckout']=$result;
-            $_SESSION['delivery_fee']=0;
-            header("Location: ../../view/customer/total.php");
+            $result=$cart->checkout($connection,$_SESSION['User_id'],$gasagent);
+            if($result===false){
+                $_SESSION['dcheckout']="failed";
+                header("Location: ../../view/customer/total.php");
+            }else{
+                $_SESSION['dcheckout']=$result;
+                $_SESSION['delivery_fee']=0;
+                header("Location: ../../view/customer/total.php");
+            }
         }
     }
 }

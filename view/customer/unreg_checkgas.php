@@ -69,7 +69,7 @@ if(isset($_SESSION['unlocations'])){
     </script>
 </head>
 <body onload="initMap()">
-    <?php include '../header.php'?>
+    <?php include_once '../unreguser_header.php'; ?>
     <div class="container">
         <div class="up">
             <form action="../../controller/customer/gas_controller.php" method="POST">
@@ -111,7 +111,13 @@ if(isset($_SESSION['unlocations'])){
                 </tr>
                     <?php 
                     $i=0;
-                    foreach($shops as $shop){?>
+                    $j=0;
+                    foreach($shops as $shop){
+                    $j++;
+                    if($j>5){
+                        break;
+                    }
+                    ?>
                     <tr>
                         <?php// if($shop['distance']<10){?>
                             <td><?php echo $shop['Shop_name']?></td>
@@ -145,7 +151,12 @@ if(isset($_SESSION['unlocations'])){
                             <td><button name="order" id="popup" onclick="popup()">Order</button></td>
                         <?php } ?>
                     </tr>
-            </table>    
+            </table>
+            <?php if(isset($_SESSION['unshopnames'])){?>
+                <div class="seemore">
+                    <button onclick="popup()">See more</button> 
+                </div> 
+            <?php } ?>   
         </div>
     </div>
     <div id="myModal" class="modal">

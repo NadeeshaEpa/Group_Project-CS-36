@@ -63,7 +63,6 @@
             <form class="odata">
             <h2>Order Details</h2>
                <?php 
-
                 $order_data=$details[0]['Order_data'];
                 $order_items=$details[0]['Order_items'];
                 

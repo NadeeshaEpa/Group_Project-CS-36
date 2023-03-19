@@ -23,8 +23,8 @@
          <input type="hidden" name="Category" value="<?php echo $gas[0]['category']; ?>">
          
         <div class="card">
-        <div class="image">   
-                <img src="../../public/images/customer/<?php echo $gas[0]['product_type']; ?>.jpg" alt="">   
+        <div class="image"> 
+            <img src="../../public/images/product/<?php echo $gas[0]['image']?>">  
         </div>
         <div class="details">
          <!-- print the item as a card -->
@@ -49,7 +49,7 @@
             </div>           
             <?php
                 if($gas[0]['quantity']>0){?>
-                    <button name="shop_add" onclick="showPopup()">Add to Cart</button>
+                    <button name="shop_add">Add to Cart</button>
                 <?php
                 }else{?>
                     <button disabled>Out of Stock</button>
@@ -57,10 +57,5 @@
             ?>
         </div>
     </form> 
-    <script>
-        function showPopup(){
-            alert("Item added to cart");
-        }
-    </script> 
 </body>
 </html>

@@ -37,7 +37,7 @@ function usernameexit(){
             }
         }
     };
-    xhttp.open("POST", "http://localhost:8001/controller/deliveryperson/validation_controller.php", true);
+    xhttp.open("POST", "http://localhost/Group_36/controller/deliveryperson/validation_controller.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("username=" + username.value);
 }

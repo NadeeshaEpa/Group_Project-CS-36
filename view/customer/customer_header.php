@@ -22,7 +22,7 @@
             <li><?php if($_SESSION['img-status'] == 0){?>
                         <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                     <?php }else{?>
-                        <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
+                        <img src='../../public/images/customer/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
                     <?php } ?>
             </li></a>
             <?php 
@@ -36,9 +36,6 @@
                     }
                 }
             ?>
-            <div class="bell">
-                <!-- <li><img src="../../public/images/customer/bell.png" alt="logo" width="20px" height="20px" class="notification"></li> -->
-            </div>
             <li><a href="../../controller/Users/logout_controller.php">Logout</a></li>
             <li><a href="../../controller/customer/shop_controller.php?gascooker='1'">Fago Shop</a></li>
             <li><a href="customer_select.php">Gas</a></li>

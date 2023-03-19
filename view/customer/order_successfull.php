@@ -10,50 +10,41 @@
 <body>
     <?php include_once 'customer_header.php'; ?>
     <!-- display that order placed successfully -->
+    <?php 
+    if(isset($_SESSION['final_orderdetails'])){
+        $order=$_SESSION['final_orderdetails'];
+    }
+    ?>
     <div class="order-success">
         <img src="../../public/images/customer/successfull.png" alt="order-success">
         <h1>Order Placed Successfully</h1>
         <h2>Thank you for shopping with us</h2>
-        <h3>Customer Name: Nadeesha Nethmini</h3>
-        <h3>Order ID: 1</h3>
-        <h3>Order Date: 2023/02/09</h3>
+        <h3>Customer Name: <?php echo $order[0]['name'] ?> </h3>
+        <h3>Order ID: <?php echo $order[0]['orderid']?></h3>
+        <h3>Order Date: <?php echo $order[0]['orderdate']?></h3>
         <table>
             <tr>
                 <th>Item Name</th>
                 <th>Item Price</th>
                 <th>Item Quantity</th>
             </tr>
-            
+            <?php foreach($order as $item){ ?>
             <tr>
-                <td>Litro 12.5kg Gas Cylinder</td>
-                <td>Rs. 4409</td>
-                <td>1</td>
+                <td><?php echo $item['itemname']?></td>
+                <td><?php echo $item['price']?></td>
+                <td><?php echo $item['quantity']?></td>
             </tr>
-            <tr>
-                <td>Litro 5kg Gas Cylinder</td>
-                <td>Rs. 1770</td>
-                <td>1</td>
-            </tr>
+            <?php } ?>
         </table>
-        <h3>Total price: Rs.6179</h3>
-        <h3>Order Delivery Address: 69/A/1,Weihena,Mattaka</h3>
-        <h3>Shop name : PQR Stores</h3>
-        <h3>Delivery Person : Sadun Tharaka</h3>
-        <button type="submit" name="pay" class="pay"><a href="../../controller/Users/logout_controller.php">Back to Home</a></button>
+        <h3>Delivery Method: <?php echo $order[0]['delivery_method']?></h3>
+        <?php 
+        if($order[0]['delivery_method']=="Delivered by agent"){?>
+            <h3>Delivery fee:Rs.<?php echo $order[0]['delivery_fee']?></h3>
+        <?php } ?>
+        <h3>Total price:Rs.<?php echo $order[0]['total']?></h3>
+        <h3>Shop name : <?php echo $order[0]['shop']?></h3>
+        <button type="submit" name="pay" class="pay"><a href="../../controller/customer/order_controller.php?orderid='1'">Back to Orders</a></button>
         <button type="submit" name="pay" class="pay"><a href="customer_select.php">Continue Shopping</a></button>
     </div>
 </body>
 </html>
-
-<?php
-                // $item_name = $_SESSION['item_name'];
-                // $item_price = $_SESSION['item_price'];
-                // $item_quantity = $_SESSION['item_quantity'];
-                // for($i = 0; $i < count($item_name); $i++){
-                //     echo "<tr>";
-                //     echo "<td>".$item_name[$i]."</td>";
-                //     echo "<td>".$item_price[$i]."</td>";
-                //     echo "<td>".$item_quantity[$i]."</td>";
-                //     echo "</tr>";
-                // }
-                ?>

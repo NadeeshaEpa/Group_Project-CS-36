@@ -2,6 +2,7 @@
 session_start();
 require_once '../../config.php';
 require_once '../../model/customer/order_model.php';
+require('../../payment_config.php');
 
 if(isset($_GET['orderid'])||isset($_GET['page'])){
     if(isset($_SESSION['User_id'])){
@@ -9,9 +10,9 @@ if(isset($_GET['orderid'])||isset($_GET['page'])){
         $userid=$_SESSION['User_id'];
 
         //pagination for view orders
-        $limit = 6;
+        $limit = 7;
         $page = isset($_GET['page']) ? $_GET['page'] : 1;
-        $_SESSION['page']=$page;
+        $_SESSION['gas_page']=$page;
         $offset = ($page - 1) * $limit;
         
         //get the total number of orders
@@ -20,13 +21,12 @@ if(isset($_GET['orderid'])||isset($_GET['page'])){
 
         //calculate the total number of pages
         $total_pages = ceil($total_records / $limit);
-        $_SESSION['total_pages']=$total_pages;
+        $_SESSION['gas_total_pages']=$total_pages;
 
         
         $result=$order->viewOrders($connection,$_SESSION['User_id'],$limit,$offset);
         if($result===false){
             $_SESSION['vieworders']="failed";
-            // echo "<script>alert('No orders found')</script>";
             header("Location: ../../view/customer/customer_vieworder.php");
         }else{
             $_SESSION['vieworders']=$result;
@@ -40,7 +40,7 @@ if(isset($_GET['shoporderid'])||isset($_GET['shop_page'])){
         $userid=$_SESSION['User_id'];
 
         //pagination for view orders
-        $limit = 8;
+        $limit = 7;
         $page = isset($_GET['page']) ? $_GET['page'] : 1;
         $_SESSION['page']=$page;
         $offset = ($page - 1) * $limit;
@@ -91,4 +91,60 @@ if(isset($_GET['shopid'])){
         header("Location: ../../view/customer/customer_viewshoporder_details.php");
     }
 
+}
+if(isset($_GET['cancelid'])){   
+    $order_id=$_GET['cancelid']; 
+    $order=new order_model();
+    //implement refund using stripe
+    $charge_id=$order->getChargeId($connection,$order_id);
+    $amount=$order->getTotalAmount($connection,$order_id);   
+
+    $refund = \Stripe\Refund::create([
+        'charge' => $charge_id,
+        'amount' => $amount,
+    ]);
+    if ($refund->status == 'succeeded') {
+        $result=$order->cancelOrder($connection,$order_id);
+        if($result===false){
+            $_SESSION['cancelorder']="failed";
+            header("Location: ../../view/customer/error.php");
+        }else{
+            require_once '../../model/customer/email_model.php';
+            $email=new email_model();
+            $shop="gas";
+            $useremail=$order->getUserEmail($connection,$order_id,$shop);
+            $email->sendRefundEmail($connection,$order_id,$useremail);
+            header("Location: ../../view/customer/customer_cancelorder.php");
+        }
+    }else{
+        header("Location: ../../view/customer/error.php");
+    }
+}
+if(isset($_GET['shop_cancelid'])){
+    $order_id=$_GET['shop_cancelid'];
+    $order=new order_model();
+    //implement refund using stripe
+    $charge_id=$order->getChargeId($connection,$order_id);
+    $amount=$order->getTotalAmount($connection,$order_id);   
+
+    $refund = \Stripe\Refund::create([
+        'charge' => $charge_id,
+        'amount' => $amount,
+    ]);
+    if ($refund->status == 'succeeded') {
+        $result=$order->cancelShopOrder($connection,$order_id);
+        if($result===false){
+            $_SESSION['cancelorder']="failed";
+            header("Location: ../../view/customer/error.php");
+        }else{
+            require_once '../../model/customer/email_model.php';
+            $email=new email_model();
+            $shop="fago_shop";
+            $useremail=$order->getUserEmail($connection,$order_id,$shop);
+            $email->sendRefundEmail($connection,$order_id,$useremail);
+            header("Location: ../../view/customer/customer_cancelorder.php");
+        }
+    } else {
+        header("Location: ../../view/customer/error.php");
+    }
 }

@@ -9,17 +9,13 @@
     <title>Document</title>
 </head>
 <body>
-    <?php include_once '../header.php'; ?>
+    <?php include_once '../unreguser_header.php'; ?>
     <?php
          if(isset($_SESSION['gascooker'])){
              $gascooker=$_SESSION['gascooker'];
              $count=count($gascooker);
          }
     ?>
-    <!-- <div class="selection">
-        <button>Gas Shops</button>
-        <button>Fago Shop</button>
-    </div> -->
     <div class="navbar">
         <div class="selected">   
             <a href="../../controller/customer/shop_controller.php?urgascooker='1'">Gas Cooker</a>
@@ -45,7 +41,7 @@
                 <input type="hidden" name="Quantity" value="<?php echo $gas['Quantity']; ?>">
                 <input type="hidden" name="Description" value="<?php echo $gas['Description']; ?>">
                 <input type="hidden" name="Category" value="<?php echo $gas['Category']; ?>">
-                <img src="../../public/images/customer/<?php echo $gas['product_type']; ?>.jpg" alt="">
+                <img src="../../public/images/product/<?php echo $gas['image']?>">
                 <?php
                 echo "<h3>".$gas['Name']."</h3>";
                 echo "<div class='price'>";

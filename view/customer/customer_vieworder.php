@@ -58,7 +58,6 @@
             <?php 
                 if(isset($_SESSION['vieworders'])){
                     if($_SESSION['vieworders']==='failed'){
-                        echo "<script>alert('No orders found')</script>";
                         unset($_SESSION['vieworders']);
                         $details=[];
                     }else{
@@ -84,6 +83,7 @@
                         <th>Delivery Method</th>
                         <th>Delivery Status</th>
                         <th>Full Details</th>
+                        <th>Cancel Order</th>
                     </tr>
                     <?php
                         foreach($details as $detail){?>
@@ -93,26 +93,46 @@
                                     <td><?php echo $detail['Amount']?></td>
                                     <td><?php echo $detail['Delivery_Method']?></td>
                                     <div class="status">
-                                        <?php if($detail['Delivery_Status']==2){?>
+                                        <?php if($detail['Delivery_Status']==NULL){?>
+                                            <td style="color:lightgreen"><b>Not Assigned</b></td>
+                                        <?php }else if($detail['Delivery_Status']==3){?>
+                                            <td style="color:blue"><b>Courier Service</b></td>
+                                        <?php }else if($detail['Delivery_Status']==2){?>
                                             <td style="color:red"><b>No delivery</b></td>
                                         <?php }else if($detail['Delivery_Status']==0){?>
                                             <td style="color:#FDC801"><b>On the way</b></td>
-                                        <?php }else{?>
+                                        <?php }else if($detail['Delivery_Status']==1){?>
                                             <td style="color:green"><b>Delivered</b></td>     
-                                        <?php }?>
+                                        <?php } ?>
                                     </div>
-                                    <td><a href="../../controller/customer/order_controller.php?id=<?php echo $detail['Order_id']?>">View</a></td>
+                                    <td><a href="../../controller/customer/order_controller.php?id=<?php echo $detail['Order_id']?>">View</a></td>    
+                                    <?php
+                                    //get the difference between current date and order date 
+                                    date_default_timezone_set('Asia/Colombo');
+                                    $date1=date_create(date("Y-m-d"));
+                                    $date2=date_create($detail['Order_date']);
+                                    $diff=date_diff($date1,$date2);
+                                    $diff=$diff->format("%a");
+                                    
+                                    if(($detail['Delivery_Status']==NULL && $diff<2)||($detail['Delivery_Status']==2 && $diff<1)){?>
+                                    <div class="cancelbutton">
+                                        <td><button id="cancelbutton" onclick="cancelorder(<?php echo $detail['Order_id']?>);">Cancel</button></td>
+                                    </div>
+                                    <?php }else{?>
+                                        <td><button id="dcancelbutton">Cancel</button></td>
+                                    <?php }
+                                    ?>
                             </tr>
                         <?php }?>
                 </table>
                 <?php 
-                    if(isset($_SESSION['page'])){
-                      $page=$_SESSION['page'];
+                    if(isset($_SESSION['gas_page'])){
+                      $page=$_SESSION['gas_page'];
                     }else{
                       $page=1;
                     }
-                    if(isset($_SESSION['total_pages'])){
-                        $total_pages=$_SESSION['total_pages'];
+                    if(isset($_SESSION['gas_total_pages'])){
+                        $total_pages=$_SESSION['gas_total_pages'];
                     }else{
                         $total_pages=1;
                     }    
@@ -139,6 +159,27 @@
                 </div>
             </div>    
         </div>
-    </div>    
+    </div>  
+    <!-- pop up message -->
+    <div id="cancel_popup">
+        <div class="cancel_contect">
+            <p>Are you sure you want to cancel this order?</p>
+            <div class="buttons">
+                <button id="yes">Yes</button>
+                <button id="no">No</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function cancelorder(id){
+            document.getElementById("cancel_popup").style.display="block";
+            document.getElementById("yes").addEventListener("click",function(){
+                window.location.href="../../controller/customer/order_controller.php?cancelid="+id;
+            });
+            document.getElementById("no").addEventListener("click",function(){
+                document.getElementById("cancel_popup").style.display="none";
+            });
+        }  
+    </script>
 </body>
 </html>

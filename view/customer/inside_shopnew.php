@@ -9,11 +9,6 @@
 </head>
 <body>
     <?php include_once 'customer_header.php'; ?>
-    <div class="back">
-        <a href="customer_viewgas.php">
-            <img src="../../public/images/customer/back.png" alt="" class="backimg">
-        </a>
-    </div>
     <?php
         $button=0;
         if(isset($_SESSION['gasavailability'])){
@@ -30,31 +25,49 @@
             $lastupdateddate=$data[0]['LastUpdatedDate'];
             $Gas_id=$data[0]['Gas_id'];
         }
-        if(isset($_SESSION['addtocart'])){
-            if($_SESSION['addtocart']=="success"){
-                $button=1;
-            }else{
-                $button=2;
-            }
-            unset($_SESSION['addtocart']);
+        if(isset($_SESSION['shopimage'])){
+            $shopimage=$_SESSION['shopimage'];
         }
     ?>
-    <h1><?php echo $shopname?></h1>
-    <div class="details">
-        <div class="details-left">
-            <b>Contact No:</b><?php echo $contactno?><br><br>
-            <b>Last Updated:</b><?php echo $lastupdateddate?> <?php echo $lastupdatedtime?>
+        <div class="upcontainer" style="background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('../../public/images/gascylinder/<?php echo $shopimage?>');">
+            <div class="back">
+                <a href="customer_viewgas.php">
+                    <img src="../../public/images/customer/back.png" alt="" class="backimg">
+                </a>
+            </div>
+            <h1><?php echo $shopname?></h1>
+            <div class="details">
+                <div class="details-left">
+                    <b >Contact No:</b><?php echo $contactno?><br><br>
+                    <b >Last Updated:</b><?php echo $lastupdateddate?> <?php echo $lastupdatedtime?>
+                </div>
+                <div class="details-right">
+                    <!-- pass the button value as a post variable -->
+                    <form action="../../controller/customer/addtocart_controller.php" method="post">
+                        <button type="submit" name="viewcart" class="viewcart">View Cart</button>
+                    </form>
+                </div>    
+            </div>
         </div>
-        <div class="details-right">
-            <!-- pass the button value as a post variable -->
-            <form action="../../controller/customer/addtocart_controller.php" method="post">
-                <input type="hidden" name="button" value="<?php echo $button?>">
-                <input type="hidden" name="gas_id" value="<?php echo $Gas_id?>">
-                <button type="submit" name="viewcart" class="viewcart">View Cart</button>
-            </form>
-        </div>    
-    </div>
-    <hr>
+        <?php
+        if(isset($_SESSION['addtocart'])){?>
+            <div class="success-msg">
+            <?php       
+            if($_SESSION['addtocart']=="success"){
+                echo "Item Added To Cart Successfully";
+            ?>
+            </div> 
+            <?php
+            }else{?>
+            <div class="error-msg">
+            <?php
+                echo "Item not added to cart";
+            }?>
+            </div>
+            <?php
+            unset($_SESSION['addtocart']);
+        }
+        ?>
         <?php
             foreach($gasdetails as $gasdetail){?>
             <div class="ava">
@@ -93,7 +106,7 @@
                             <?php if($gasdetail['Quantity']==0){?>
                                 <button class="dorder" disabled>Add to Cart</button>
                             <?php }else{?>
-                                <button class="order" name="addtocart" onclick="showPopup()";>Add to Cart</button>
+                                <button class="order" name="addtocart">Add to Cart</button>
                             <?php }?>
                         </div>         
                     </div>    
@@ -103,10 +116,5 @@
             </div>   
             <hr> 
         <?php } ?>
-        <script>
-            function showPopup(){
-                alert("Items Added to Cart Successfully");
-            }
-        </script>
 </body>
 </html>

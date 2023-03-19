@@ -58,7 +58,6 @@
                 <?php 
                    if(isset($_SESSION['editreview'])){
                       $result=$_SESSION['editreview']; 
-                      $names=$result[1];
                    }
                 ?>
                 <div class="editreview-form">
@@ -66,16 +65,11 @@
                         <h2>Edit feedback</h2>
                         <input type="hidden" name="rateid" value="<?php echo $result[0]['Rate_id']?>">
                         <label for="customername">Customer Name:</lable><br>
-                        <input type="text" name="customername" value="<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']?>"><br>
+                        <input type="text" name="customername" value="<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']?>" disabled><br>
                         <label for="Dpname">Delivery Person Name:</lable><br>
-                        <select name="dpname">
-                            <option selected><?php echo $result[0]['First_Name']." ".$result[0]['Last_Name'];?> 
-                            <?php foreach($names as $name){ ?>
-                                <option><?php echo $name['First_Name']." ".$name['Last_Name'] ?></option>
-                            <?php } ?>
-                        </select><br>
+                        <input type="text" name="Dpname" value="<?php echo $result[0]['First_Name']." ".$result[0]['Last_Name']?>" disabled><br>
                         <label for="date">Date:</label><br>
-                        <input type="date" name="date" value="<?php echo $result[0]['Date']?>"><br>
+                        <input type="date" name="date" value="<?php echo $result[0]['Date']?>" disabled><br>
                         <label for="desc">Description:</label><br>
                         <textarea name="desc" id="" cols="30" rows="10"><?php echo $result[0]['Description']?></textarea><br>
                         <button name="editreview">Edit</button>

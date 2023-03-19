@@ -8,7 +8,7 @@ class shop_model{
         }else{
             $answer=[];
             while($row=$result->fetch_assoc()){
-                array_push($answer,['item_code'=>$row['Item_code'],'Name'=>$row['Name'],'Quantity'=>$row['Quantity'],'price'=>$row['Price'],'Category'=>$row['Category'],'product_type'=>$row['Product_type'],'Description'=>$row['Description']]);
+                array_push($answer,['item_code'=>$row['Item_code'],'Name'=>$row['Name'],'Quantity'=>$row['Quantity'],'price'=>$row['Price'],'Category'=>$row['Category'],'product_type'=>$row['Product_type'],'Description'=>$row['Description'],'image'=>$row['Product_img']]);
             }
         }
         return $answer;
@@ -21,7 +21,7 @@ class shop_model{
         }else{
             $answer=[];
             while($row=$result->fetch_assoc()){
-                array_push($answer,['item_code'=>$row['Item_code'],'Name'=>$row['Name'],'Quantity'=>$row['Quantity'],'price'=>$row['Price'],'Category'=>$row['Category'],'product_type'=>$row['Product_type'],'Description'=>$row['Description']]);
+                array_push($answer,['item_code'=>$row['Item_code'],'Name'=>$row['Name'],'Quantity'=>$row['Quantity'],'price'=>$row['Price'],'Category'=>$row['Category'],'product_type'=>$row['Product_type'],'Description'=>$row['Description'],'image'=>$row['Product_img']]);
             }
             return $answer;
         }
@@ -34,7 +34,7 @@ class shop_model{
         }else{
             $answer=[];
             while($row=$result->fetch_assoc()){
-                array_push($answer,['item_code'=>$row['Item_code'],'Name'=>$row['Name'],'Quantity'=>$row['Quantity'],'price'=>$row['Price'],'Category'=>$row['Category'],'product_type'=>$row['Product_type'],'Description'=>$row['Description']]);
+                array_push($answer,['item_code'=>$row['Item_code'],'Name'=>$row['Name'],'Quantity'=>$row['Quantity'],'price'=>$row['Price'],'Category'=>$row['Category'],'product_type'=>$row['Product_type'],'Description'=>$row['Description'],'image'=>$row['Product_img']]);
             }
             return $answer;
         }
@@ -66,7 +66,7 @@ class shop_model{
             die();
             return false;
         }else{
-            $sql="SELECT * FROM cart WHERE User_id='$User_id'";
+            $sql="SELECT distinct gasagent_id FROM cart WHERE User_id='$User_id'";
             $result=$connection->query($sql);
             if($result->num_rows > 0){
                 $_SESSION['cartcount']=$result->num_rows;
@@ -101,6 +101,13 @@ class shop_model{
            $lon1=$row['longitude'];
         }
         $distance=$this->distance($lat2,$lon2,$lat1,$lon1,$connection);
+        if($distance>10){
+            $_SESSION['fago_distance_limit']="high";
+            $delivery_fee=0;
+            return $delivery_fee;
+        }else{
+            $_SESSION['fago_distance_limit']="low";
+        }
 
         $sql3="select price from delivery_fee where vehicle='Bike'";
         $result3=$connection->query($sql3);
@@ -132,6 +139,19 @@ class shop_model{
         //round the value into 2 decimal places
         $d=round($d,1);
         return $d;    
+    }
+    public function search($connection,$type,$item){
+        $sql="SELECT * FROM product WHERE Category='$type' AND Name LIKE '%$item%'";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $answer=[];
+            while($row=$result->fetch_assoc()){
+                array_push($answer,['item_code'=>$row['Item_code'],'Name'=>$row['Name'],'Quantity'=>$row['Quantity'],'price'=>$row['Price'],'Category'=>$row['Category'],'product_type'=>$row['Product_type'],'Description'=>$row['Description'],'image'=>$row['Product_img']]);
+            }
+        }
+        return $answer;
     }
     
 }

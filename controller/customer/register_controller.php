@@ -3,27 +3,7 @@ session_start();
 require_once("../../config.php");  //connect to database
 require_once '../../model/customer/customer_model.php';  //get customer model
 require_once '../../model/customer/checkcustomer_model.php';  // get check customer model
-//require '../../textlocal.class.php';  //get textlocal class
 
-// if(isset($_POST['reqotp'])){
-//     $mobile=$_POST['contactnumber'];
-//     $apikey=urldecode('NDY0YjU1NmQ0ZDcxMzk2NTY5NDMzMzRjNjM0MzRkNTU=');
-//     $Textlocal=new Textlocal(false,false,$apikey);
-
-//     $numbers=array($mobile);
-//     $sender='FAGO';
-//     $otp=rand(100000,999999);
-//     $_SESSION['otp']=$otp;
-//     $message="Your OTP is ".$otp;
-
-//     try{
-//         $result=$Textlocal->sendSms($numbers,$message,$sender);
-//         $_SESSION['otp-sent']="OTP sent successfully to your mobile number";
-//         header('Location: ../../view/customer/customer_register.php');
-//     }catch(Exception $e){
-//         die('Error: '.$e->getMessage());
-//     }
-// }
 if(isset($_POST['register'])){        //check whether the register button is clicked
     $firstname = $_POST['firstname'];   //assign the user entered details to variables
     $lastname = $_POST['lastname'];
