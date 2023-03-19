@@ -26,7 +26,11 @@ if(!isset($_SESSION['User_id'])){
 		</a>
 		<ul class="side-menu top">
 			<li >
+<<<<<<< HEAD
+				<a href="../../controller/deliveryperson/deliveryDashboardFirstController.php">
+=======
 				<a href="../../view/deliveryperson/DelivaryDashboard.php">
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -74,6 +78,23 @@ if(!isset($_SESSION['User_id'])){
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
+<<<<<<< HEAD
+			<li class="profile">
+			    <?php if($_SESSION['img-status'] == 0){?>
+					<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
+				<?php }else{?>
+					<img src='../../public/images/DeliveryPerson/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
+				<?php } ?>								
+			</li>
+			<li class="user_info">
+				<h6><?php if(isset($_SESSION['Firstname']) && isset($_SESSION['Lastname'])){
+					     echo $_SESSION['Firstname'] ," " ,$_SESSION['Lastname'] ;
+					}?></h6>
+				<h5><?php if(isset($_SESSION['Type'])){
+					     echo $_SESSION['Type'];
+					}?></h5>
+			</li>
+=======
 			<form action="#">
 				<div class="form-input">
 					<input type="search" placeholder="Search...">
@@ -89,6 +110,7 @@ if(!isset($_SESSION['User_id'])){
 			<a href="#" class="profile">
 				<img src="../../public/images/user.jpg">
 			</a>
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 			
 		</nav>
 		<!-- NAVBAR -->
@@ -108,7 +130,13 @@ if(!isset($_SESSION['User_id'])){
 						</li>
 					</ul>
 				</div>
+<<<<<<< HEAD
+                <div class="right-button">
+					<a href="../../controller/deliveryperson/deliveryPersonComplainViewFirstController.php">View Complains</a>
+				</div>
+=======
 
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 				
 			</div>
 

@@ -4,7 +4,10 @@ class user_model{
     private $Type;
     public function loginUser($connection,$username,$password){   //check whether the user entered correct username and password and the status is 1.
         $sql = "SELECT * FROM user WHERE username='$username' AND password='$password'";
+
         $result = $connection->query($sql);
+
+
         if($result->num_rows == 1){
             $row = $result->fetch_assoc();
 
@@ -18,6 +21,7 @@ class user_model{
             $_SESSION['Postalcode']=$row['Postalcode'];
             $_SESSION['Type']=$row['Type'];
             $this->Type=$row['Type'];
+
 
             $sql="SELECT * FROM cart WHERE User_id='$this->User_id'";
             $result=$connection->query($sql);
@@ -46,8 +50,10 @@ class user_model{
                     return false;   //login will be unsuccessful
                 }
             }
+
             else if($this->Type=="Delivery_Person"){
                 $r1="SELECT * FROM deliveryperson WHERE DeliveryPerson_Id='$this->User_id' AND Status='1'";
+
                 if($connection->query($r1)->num_rows > 0){
                     return true;   //login will be successful
                 }else{
@@ -64,7 +70,13 @@ class user_model{
                     return false;   //login will be unsuccessful
                 }
             }
+<<<<<<< HEAD
+
             else if($this->Type=="Admin" || $this->Type=="Staff" || $this->Type=="Stock Manager"){
+
+=======
+            else if($this->Type=="Admin" || $this->Type=="Staff" || $this->Type=="Stock Manager"){
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
                 return true;   //login will be successful
             }else{
                 $_SESSION['login_attempts']+=1;

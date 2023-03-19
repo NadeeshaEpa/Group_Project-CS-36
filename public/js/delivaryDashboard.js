@@ -60,6 +60,8 @@ menuBar.addEventListener('click', function () {
 	sidebar.classList.toggle('hide');
 })
 
+<<<<<<< HEAD
+=======
 
 
 
@@ -114,6 +116,7 @@ switchMode.addEventListener('change', function () {
 })
 
 
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 /*////////////////////////////////get a current time and date of month*/
 
 
@@ -179,6 +182,39 @@ updateClock();
 
 /*count and amount of the delivary */
 
+<<<<<<< HEAD
+// var xhttp = new XMLHttpRequest();
+// xhttp.onreadystatechange = function() {
+    
+//     var response = JSON.parse(this.responseText);
+//     console.log(response);
+//     incomeid2.innerHTML = response.total_fee['SUM(Delivery_fee)'];
+// 	Nodeliverid2.innerHTML = response.delivery_count['COUNT(*)'];
+    
+// };
+// xhttp.open("GET", "http://localhost/Group_Project-CS-36/controller/deliveryperson/deliveryCountcontroller.php", true);
+// xhttp.send();
+
+var xhttp = new XMLHttpRequest();
+
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4) {
+        if (this.status == 200) {
+            try {
+                var response = JSON.parse(this.responseText);
+                incomeid2.innerHTML = response.total_fee['SUM(Delivery_fee)'];
+                Nodeliverid2.innerHTML = response.delivery_count['COUNT(*)'];
+            } catch (e) {
+                console.error("Error parsing JSON:", e);
+            }
+        } else {
+            console.error("Error loading data. Status:", this.status);
+        }
+    }
+};
+
+xhttp.open("GET", "http://localhost/Group_Project-CS-36/controller/deliveryperson/deliveryCountcontroller.php", true);
+=======
 var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
     
@@ -189,6 +225,7 @@ xhttp.onreadystatechange = function() {
     
 };
 xhttp.open("GET", "http://localhost/Group_36/controller/deliveryperson/deliveryCountcontroller.php", true);
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 xhttp.send();
 
 /* */
@@ -204,6 +241,11 @@ xhttp.send();
 	}
 });
 
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 //new password validation
 
 password?.addEventListener("input", function () {

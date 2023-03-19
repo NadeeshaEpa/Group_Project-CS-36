@@ -76,6 +76,23 @@ if(!isset($_SESSION['User_id'])){
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
+<<<<<<< HEAD
+			<li class="profile">
+			    <?php if($_SESSION['img-status'] == 0){?>
+					<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
+				<?php }else{?>
+					<img src='../../public/images/ShopManager/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
+				<?php } ?>								
+			</li>
+			<li class="user_info">
+				<h6><?php if(isset($_SESSION['Firstname']) && isset($_SESSION['Lastname'])){
+					     echo $_SESSION['Firstname'] ," " ,$_SESSION['Lastname'] ;
+					}?></h6>
+				<h5><?php if(isset($_SESSION['Type'])){
+					     echo $_SESSION['Type'];
+					}?></h5>
+			</li>
+=======
 			<!-- <a href="#" class="nav-link">Categories</a> -->
 			<form action="#">
 				<div class="form-input">
@@ -92,6 +109,7 @@ if(!isset($_SESSION['User_id'])){
 			<a href="#" class="profile">
 				<img src="../../public/images/user.jpg">
 			</a>
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 			
 		</nav>
 		<!-- NAVBAR -->
@@ -111,7 +129,17 @@ if(!isset($_SESSION['User_id'])){
 						</li>
 					</ul>
 				</div>
+<<<<<<< HEAD
+                
+				<div class="SeperateView">
+					<form action="../../controller/ShopManager/shopManagerOrdresController.php" method="POST">
+						<Button id="DeliveredOrderId" name="DeliveredOrder">Delivered Orders</Button><br>
+						<button id="PickedPrderedId" name="PickedOrder">Picked Orders</button>
+					</form>
+				</div>
+=======
 
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 				
 			</div>
 
@@ -123,12 +151,15 @@ if(!isset($_SESSION['User_id'])){
                         <label for="" id="monthid"></label>
 					</span>
 				</li>
+<<<<<<< HEAD
+=======
 				<!-- <li>
 					<i class='bx bxs-time-five' ></i>
 					<span class="text">
 						<label for="" id="timeid" style="margin-left: 40%; font-size:32px"></label>
 					</span>
 				</li> -->
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 				<li>
 					<i class='bx bxs-group' ></i>
 					<span class="text">
@@ -155,9 +186,18 @@ if(!isset($_SESSION['User_id'])){
                                     <tr>
 									    <th>Customer Name</th>
                                         <th>Customer Address</th>
+<<<<<<< HEAD
+										<th>Customer Contact No</th>
+										<th>Quantity</th>
+                                        <th>Category</th>
+										<th>Order date</th>
+                                        <th>Delivery Method</th>
+                                        <th>Price</th>
+=======
                                         <th>Category</th>
                                         <th>Price</th>
                                         <th>Quantity</th>
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
                                     </tr>
                                     <?php
                                     if(isset($_SESSION['Cus_Dashboard_details'])){
@@ -166,12 +206,24 @@ if(!isset($_SESSION['User_id'])){
                                             echo "<tr>";
                                             echo "<td>" . $row['Name'] . "</td>";
                                             echo "<td>" . $row['Address'] . "</td>";
+<<<<<<< HEAD
+											echo "<td>" . $row['Contact_No'] ."</td>";
+											echo "<td>" . $row['Quantity'] . "</td>";
+                                            echo "<td>" . $row['Category'] . "</td>";
+											echo "<td>" . $row['Order_date'] . "</td>";
+											echo "<td>" . $row['Delivery_Method'] . "</td>";
+                                            echo "<td>" . $row['Amount'] . "</td>";
+											echo "</tr>";
+                                        }
+                                        
+=======
                                             echo "<td>" . $row['Category'] . "</td>";
                                             echo "<td>" . $row['Price'] . "</td>";
 											echo "<td>" . $row['Quantity'] . "</td>";
                                             echo "</tr>";
                                         }
                                         unset($_SESSION['view_result']);
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
                                     }
                                     
                                     ?>

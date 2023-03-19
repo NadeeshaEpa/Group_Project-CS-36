@@ -1,7 +1,13 @@
 <?php
 class gas_model{
+<<<<<<< HEAD
+    public function getshopnames($connection,$type,$userid){
+        $sql="SELECT g.Shop_name,g.latitude,g.longitude FROM `gasagent`g inner join `gas_company` c on g.Gas_Type=c.company_id WHERE c.company_name='$type'";
+
+=======
     public function getshopnames($connection,$type,$userid,$limit,$offset){
         $sql="SELECT g.Shop_name,g.latitude,g.longitude FROM `gasagent`g inner join `gas_company` c on g.Gas_Type=c.company_id WHERE c.company_name='$type' limit $limit offset $offset";
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;

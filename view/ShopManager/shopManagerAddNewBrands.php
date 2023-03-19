@@ -77,6 +77,23 @@ if(!isset($_SESSION['User_id'])){
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
+<<<<<<< HEAD
+			<li class="profile">
+			    <?php if($_SESSION['img-status'] == 0){?>
+					<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
+				<?php }else{?>
+					<img src='../../public/images/ShopManager/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
+				<?php } ?>								
+			</li>
+			<li class="user_info">
+				<h6><?php if(isset($_SESSION['Firstname']) && isset($_SESSION['Lastname'])){
+					     echo $_SESSION['Firstname'] ," " ,$_SESSION['Lastname'] ;
+					}?></h6>
+				<h5><?php if(isset($_SESSION['Type'])){
+					     echo $_SESSION['Type'];
+					}?></h5>
+			</li>
+=======
 			<!-- <a href="#" class="nav-link">Categories</a> -->
 			<form action="#">
 				<div class="form-input">
@@ -93,6 +110,7 @@ if(!isset($_SESSION['User_id'])){
 			<a href="#" class="profile">
 				<img src="../../public/images/user.jpg">
 			</a>
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 			
 		</nav>
 		<!-- NAVBAR -->
@@ -116,6 +134,8 @@ if(!isset($_SESSION['User_id'])){
 				
 			</div>
 
+<<<<<<< HEAD
+=======
 			<!-- <ul class="box-info">
                 <li>
 					<i class='bx bxs-calendar-check' ></i>
@@ -147,6 +167,7 @@ if(!isset($_SESSION['User_id'])){
                
 
 			</ul> -->
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 
 
 			<div class="table-data">
@@ -169,6 +190,16 @@ if(!isset($_SESSION['User_id'])){
 								</h5>
 							</div>
 							<div class="Add_brands_info">
+<<<<<<< HEAD
+								<form action="../../controller/ShopManager/ShopManagerAddBrandsController.php" method="POST" enctype="multipart/form-data">
+									<h5>Add Brands</h5>
+									<label for="">Name :</label><br>
+									<input type="text" name="productName" required><br>
+									<label for="">Quantity :</label><br>
+									<input type="text" name="productQuantity"required><br>
+									<label for="">Price :</label><br>
+									<input type="text" name="producPrice" required><br>
+=======
 								<form action="../../controller/ShopManager/ShopManagerAddBrandsController.php" method="Post">
 									<h5>Add Brands</h5>
 									<label for="">Name :</label><br>
@@ -177,6 +208,7 @@ if(!isset($_SESSION['User_id'])){
 									<input type="text" name="productQuantity"><br>
 									<label for="">Price :</label><br>
 									<input type="text" name="producPrice"><br>
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 									<label for="">Category :</label><br>
                                     <select name="Category" id="Category_id" required>
                                         <option value="">---Select Type---</option>
@@ -184,6 +216,18 @@ if(!isset($_SESSION['User_id'])){
                                         <option value="Regulator">Regulator</option>
 										<option value="Gas tube">Other</option>
                                     </select><br>
+<<<<<<< HEAD
+									<label for="">Product image :</label><br>
+									<input type="file" name="image" id="Brand_img_id" ><br>
+									<label for="">Product Type :</label><br>
+									<input type="text" name="product_type" id="product_type_id"><br> 
+									<label for="">Description :</label><br>
+									<input type="text" name="productDescription" id="productDescription_id"><br>
+									<button name="BrandAdd">Add</button>
+							    </form>
+                            </div>
+							
+=======
 									<label for="">Product_type :</label><br>
 									<input type="text" name="product_type"><br>
 									<label for="">Description :</label><br>
@@ -193,6 +237,7 @@ if(!isset($_SESSION['User_id'])){
 									
 								</form>
                             </div>
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 
 						</div>
 

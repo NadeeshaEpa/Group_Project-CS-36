@@ -9,17 +9,60 @@ if(isset($_POST['BrandAdd'])){
     $price=$_POST['producPrice'];
     $description=$_POST['productDescription'];
     $Category=$_POST['Category'];
+<<<<<<< HEAD
+    $product_type=$_POST['product_type'];
+
+    $file=$_FILES['image'];
+    $fileName=$_FILES['image']['name'];
+    $fileTmpName=$_FILES['image']['tmp_name'];
+    $fileSize=$_FILES['image']['size'];
+    $fileError=$_FILES['image']['error'];
+    $fileType=$_FILES['image']['type'];
+    
+=======
     $Product_type=$_POST['product_type'];
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 
     $name=$connection->real_escape_string($name);
     $Quantity=$connection->real_escape_string($Quantity);
     $price=$connection->real_escape_string($price);
     $description=$connection->real_escape_string($description);
     $Category=$connection->real_escape_string($Category);
+<<<<<<< HEAD
+    $product_type=$connection->real_escape_string($product_type);
+    
+    $fileExt=explode('.',$fileName);
+    $fileActualExt=strtolower(end($fileExt));
+    
+    
+   
+   
+    
+    $allowed=array('jpg','jpeg','png');
+    if(in_array($fileActualExt,$allowed)){
+        if($fileError === 0){
+            if($fileSize < 10000000){
+                $fileNameNew=$product_type.".".$fileActualExt;
+                $fileDestination='../../public/images/ShopManager/Brands/'.$fileNameNew;
+                move_uploaded_file($fileTmpName,$fileDestination);
+                $user=new Add_Brands;
+                $result=$user->Add_Brands($connection,$name,$Quantity,$price,$description,$Category,$fileNameNew,$product_type);
+            }else{
+                echo "Your file is too big";
+            }
+
+        }else{
+            echo "There was an error uploading your file";
+        }        
+    }else{
+        echo "You cannot upload files of this type";
+    }
+=======
     $Product_type=$connection->real_escape_string($Product_type);
     
     $user=new Add_Brands;
     $result=$user->Add_Brands($connection,$name,$Quantity,$price,$description,$Category,$Product_type);
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
     
     if($result==true){
         $_SESSION['Brand_add']="New brand Added Successfully";
@@ -40,4 +83,14 @@ else{
     header("Location: ../../view/ShopManager/shopManagerAddNewBrands.php");
     $connection->close();
     exit();
+<<<<<<< HEAD
 }
+
+
+
+
+
+
+=======
+}
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2

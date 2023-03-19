@@ -101,4 +101,66 @@ if(isset($_POST['deleteaccount'])){
             header("Location: ../../view/deliveryperson/DeliveryProfile.php");
         }
     }
+<<<<<<< HEAD
+}
+
+
+
+if(isset($_POST['uploadimg'])){
+    $file=$_FILES['image'];
+
+    $fileName=$_FILES['image']['name'];
+    $fileTmpName=$_FILES['image']['tmp_name'];
+    $fileSize=$_FILES['image']['size'];
+    $fileError=$_FILES['image']['error'];
+    $fileType=$_FILES['image']['type'];
+
+    $fileExt=explode('.',$fileName);
+    $fileActualExt=strtolower(end($fileExt));
+
+    $allowed=array('jpg','jpeg','png');
+    if(in_array($fileActualExt,$allowed)){
+        if($fileError === 0){
+            if($fileSize < 10000000){
+                $fileNameNew=$_SESSION['User_id'].".".$fileActualExt;
+                $fileDestination='../../public/images/DeliveryPerson/profile_img/'.$fileNameNew;
+                move_uploaded_file($fileTmpName,$fileDestination);
+                $acc=new delivaryProf_model();
+                $result=$acc->updateImage($connection,$_SESSION['User_id'],$fileNameNew);
+                if($result){
+                    $_SESSION['updateimg']="success";
+                    header("Location: ../../view/deliveryperson/DeliveryProfile.php");
+                }else{
+                    $_SESSION['updateimg']="failed";
+                    header("Location: ../../view/deliveryperson/DeliveryProfile.php");
+                }
+            }else{
+                header("Location: ../../view/deliveryperson/DeliveryProfile.php");
+                $_SESSION['upload_error_1']="Your file is too big";
+                
+            }
+
+        }else{
+            header("Location: ../../view/deliveryperson/DeliveryProfile.php");
+            $_SESSION['upload_error_2']="There was an error uploading your file";
+            
+        }        
+    }else{
+        header("Location: ../../view/deliveryperson/DeliveryProfile.php");
+        $_SESSION['upload_error_3']="You cannot upload files of this type";
+        
+    }
+}
+if(isset($_POST['removeimg'])){
+    $acc=new delivaryProf_model();
+    $result=$acc->removeImage($connection,$_SESSION['User_id']);
+    if($result){
+        $_SESSION['removeimg']="success";
+        header("Location: ../../view/deliveryperson/DeliveryProfile.php");
+    }else{
+        $_SESSION['removeimg']="failed";
+        header("Location: ../../view/deliveryperson/DeliveryProfile.php");
+    }
+=======
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 }

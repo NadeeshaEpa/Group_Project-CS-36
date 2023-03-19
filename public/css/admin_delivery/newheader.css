@@ -1,4 +1,8 @@
 body{
+<<<<<<< HEAD
+
+=======
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
     font-family: 'Poppins', sans-serif;
     margin:0%;
     /* border-bottom: 2px solid rgb(174, 169, 169);
@@ -9,37 +13,83 @@ body{
 }
 
 ul {
+<<<<<<< HEAD
+
+    margin:0%;
+}
+*{
+    font-family: 'Poppins', sans-serif;
+}
+.header ul {
+
+=======
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
+<<<<<<< HEAD
+
+=======
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
     background-color:white;
     
     
  }
 li a {
     display: block;
+<<<<<<< HEAD
+
+    background-color:lightgray;
+ }
+.header li a {
+     display: block;
+    color:black;
+
+=======
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     float: right;
+<<<<<<< HEAD
+    font-size: 18px;
+=======
     font-size: 20px;
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
     font-weight: bold;
     margin: 10px;
     color: black;
 }
 
+<<<<<<< HEAD
+
+li a:hover:not(.active) {
+   background-color:rgb(71, 108, 173);
+
+.header li a:hover:not(.active) {
+   font-size: 19px;  
+
+ }
+
+.header li img{
+=======
 li a:hover:not(.active) {
    background-color:rgb(71, 108, 173);
  }
 
 li img{
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
     width: 60px;
     height: 60px;
     border-radius: 50%;
     margin-top: 5px;
     margin-right: 10px;
+<<<<<<< HEAD
+    float: right;
+=======
     float: left;
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
     margin-left: 10px;
     margin-bottom: 5px;
 }
@@ -66,9 +116,30 @@ li img{
 .name{
     float: right;
     margin-right: 10px;
+<<<<<<< HEAD
+
+    margin-top: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+
+    margin-top: 10px;
+    font-size: 18px;
+
+    font-weight: bold;
+}
+.bell li img{
+    width: 25px;
+    height:25px;
+    margin-top: 1.5%;
+}
+#cart_count{
+    font-size: 12px;
+}
+=======
     margin-top: 15px;
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
     font-weight: bold;
 }
 
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2

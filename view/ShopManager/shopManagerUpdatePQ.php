@@ -76,6 +76,23 @@ if(!isset($_SESSION['User_id'])){
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
+<<<<<<< HEAD
+			<li class="profile">
+			    <?php if($_SESSION['img-status'] == 0){?>
+					<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
+				<?php }else{?>
+					<img src='../../public/images/ShopManager/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
+				<?php } ?>								
+			</li>
+			<li class="user_info">
+				<h6><?php if(isset($_SESSION['Firstname']) && isset($_SESSION['Lastname'])){
+					     echo $_SESSION['Firstname'] ," " ,$_SESSION['Lastname'] ;
+					}?></h6>
+				<h5><?php if(isset($_SESSION['Type'])){
+					     echo $_SESSION['Type'];
+					}?></h5>
+			</li>
+=======
 			<!-- <a href="#" class="nav-link">Categories</a> -->
 			<form action="#">
 				<div class="form-input">
@@ -92,6 +109,7 @@ if(!isset($_SESSION['User_id'])){
 			<a href="#" class="profile">
 				<img src="../../public/images/user.jpg">
 			</a>
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 			
 		</nav>
 		<!-- NAVBAR -->
@@ -120,6 +138,50 @@ if(!isset($_SESSION['User_id'])){
 				    <div class="showBrandQData">
 						<div class="showBrandQDataHeader">
 							<div class="showBrandQDataHeaderErrormsg">
+<<<<<<< HEAD
+								<h4><?php 
+									if(isset($_SESSION['BrandQError'])){
+										echo $_SESSION['BrandQError'];
+										unset($_SESSION['BrandQError']);
+									} 
+									
+									if(isset($_SESSION['Q_Updated_error'])){
+										echo $_SESSION['Q_Updated_error'];
+										unset($_SESSION['Q_Updated_error']);
+									} 
+									
+									if(isset($_SESSION['P_Updated_error'])){
+										echo $_SESSION['P_Updated_error'];
+										unset($_SESSION['P_Updated_error']);
+									} 
+									
+								    
+								    if(isset($_SESSION['delete_error'])){
+										echo $_SESSION['delete_error'];
+										unset($_SESSION['delete_error']);
+									} 
+								?></h4>
+								<h5><?php
+								     if(isset($_SESSION['Brand_Quentity_updated'])){
+										echo $_SESSION['Brand_Quentity_updated'];
+										unset($_SESSION['Brand_Quentity_updated']);
+									} 
+									if(isset($_SESSION['Brand_price_updated'])){
+										echo $_SESSION['Brand_price_updated'];
+										unset($_SESSION['Brand_price_updated']);
+									} 
+									if(isset($_SESSION['Brand_delete'])){
+										echo $_SESSION['Brand_delete'];
+										unset($_SESSION['Brand_delete']);
+									} 
+								
+								 ?></h5>
+								
+							</div>
+							<div class="showBrandQDataHeaderTitle">
+								<h4>All brands</h4>
+								
+=======
 								<h4><?php if(isset($_SESSION['BrandQError'])){
 									echo "Data not found";
 									unset($_SESSION['BrandQError']);
@@ -127,6 +189,7 @@ if(!isset($_SESSION['User_id'])){
 							</div>
 							<div class="showBrandQDataHeaderTitle">
 								<h4>All brands</h4>
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 							</div>
 						</div>
 
@@ -135,18 +198,31 @@ if(!isset($_SESSION['User_id'])){
 								$result=$_SESSION['Product_details'];
 								foreach ($result as $row) { ?>
 									<div class="brandQinfoinner">
+<<<<<<< HEAD
+										<form action="../../controller/ShopManager/ShopManagerBrandController.php" method="POST">
+											<label for="">Reference No:</label>
+											<input type="hidden" name="BrandQref" value="<?php echo $row['Item_code']; ?>">
+=======
 										<form action="../../controller/ShopManager/ShopManagerBrandController.php">
 											<label for="">Reference No:</label>
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 											<input type="text"  id="BrandQrefid" name="BrandQref" value="<?php echo $row['Item_code']; ?>" disabled><br>
 											<label for="">Name:</label>
 											<input type="text"  id="BrandNameid" value="<?php echo $row['Name']; ?>" disabled><br>
 											<label for="">Category:</label>
 											<input type="text" id="Brandcatefid" value="<?php echo $row['Category']; ?>" disabled><br>
 											<label for="">Quantity:</label>
+<<<<<<< HEAD
+											<input type="text" id="BrandQquentyid" name="BrandQquenty" value="<?php echo $row['Quantity']; ?>" >
+											<button name="BrandQuenBtn" id="BrandQuenBtnid">Update Quantity</button><br>
+											<label for="">Price:</label>
+											<input type="text" id="BrandQpriceid" name="BrandQprice" value="<?php echo $row['Price']; ?>">
+=======
 											<input type="text" id="BrandQquentyid" name="BrandQquenty" value="<?php echo $row['Quantity']; ?>" disabled>
 											<button name="BrandQuenBtn" id="BrandQuenBtnid">Update Quantity</button><br>
 											<label for="">Price:</label>
 											<input type="text" id="BrandQpriceid" value="<?php echo $row['Price']; ?>" disabled>
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 											<button id="BrandQpricebtnid" name="BrandQpricebtn">Update Price</button><br>
 											
 											<button name="brandDeleteBtn" id="brandDeleteBtnid">Delete</button>

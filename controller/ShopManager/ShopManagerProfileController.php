@@ -70,22 +70,37 @@ if(isset($_POST['updatepwd'])){
         $result1=checkpassword($confirmpwd,$newpwd);
         if(!$result1){
             $_SESSION['updatepwd-error']="New password and confirm password are not same";
+<<<<<<< HEAD
+            header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
+=======
             header("Location: ../../view/ShopManager/ShopManagerProfile.php");
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
         }else{
             $result2=$acc->updatePassword($connection,$_SESSION['User_id'],$oldpwd,$newpwd,$confirmpwd);
             if(!$result2){
                 $_SESSION['updatepwd-error']="Current password is incorrect";
+<<<<<<< HEAD
+                header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
+            }else{
+                $_SESSION['updatepwd']="Password Updated Successfully";
+                header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
+=======
                 header("Location: ../../view/ShopManager/ShopManagerProfile.php");
             }else{
                 $_SESSION['updatepwd']="Password Updated Successfully";
                 header("Location: ../../view/ShopManager/ShopManagerProfile.php");
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
             }
         }
     }
 }
 if(isset($_POST['cancelpwd'])){
     if(isset($_SESSION['User_id'])){
+<<<<<<< HEAD
+        header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
+=======
         header("Location: ../../view/ShopManager/ShopManagerProfile.php");
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
     }
 }
 
@@ -98,7 +113,72 @@ if(isset($_POST['deleteaccount'])){
             header("Location: ../../view/login.php");
         }else{
             $_SESSION['deleteacc']="failed";
+<<<<<<< HEAD
+            header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
+        }
+    }
+}
+
+
+
+if(isset($_POST['uploadimg'])){
+    $file=$_FILES['image'];
+
+    $fileName=$_FILES['image']['name'];
+    $fileTmpName=$_FILES['image']['tmp_name'];
+    $fileSize=$_FILES['image']['size'];
+    $fileError=$_FILES['image']['error'];
+    $fileType=$_FILES['image']['type'];
+
+    $fileExt=explode('.',$fileName);
+    $fileActualExt=strtolower(end($fileExt));
+
+    $allowed=array('jpg','jpeg','png');
+    if(in_array($fileActualExt,$allowed)){
+        if($fileError === 0){
+            if($fileSize < 10000000){
+                $fileNameNew=$_SESSION['User_id'].".".$fileActualExt;
+                $fileDestination='../../public/images/ShopManager/profile_img/'.$fileNameNew;
+                move_uploaded_file($fileTmpName,$fileDestination);
+                $acc=new shopManager();
+                $result=$acc->updateImage($connection,$_SESSION['User_id'],$fileNameNew);
+                if($result){
+                    $_SESSION['updateimg']="success";
+                    header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
+                }else{
+                    $_SESSION['updateimg']="failed";
+                    header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
+                }
+            }else{
+                header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
+                $_SESSION['upload_error_1']="Your file is too big";
+                
+            }
+
+        }else{
+            header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
+            $_SESSION['upload_error_2']="There was an error uploading your file";
+            
+        }        
+    }else{
+        header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
+        $_SESSION['upload_error_3']="You cannot upload files of this type";
+        
+    }
+}
+if(isset($_POST['removeimg'])){
+    $acc=new shopManager();
+    $result=$acc->removeImage($connection,$_SESSION['User_id']);
+    if($result){
+        $_SESSION['removeimg']="success";
+        header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
+    }else{
+        $_SESSION['removeimg']="failed";
+        header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
+    }
+=======
             header("Location: ../../view/ShopManager/ShopManagerProfile.php");
         }
     }
+>>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 }
