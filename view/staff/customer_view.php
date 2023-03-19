@@ -127,7 +127,7 @@ require_once("../../config.php");?>
     <?php 
                    if(isset($_SESSION['viewuser'])){
                       $result=$_SESSION['viewuser']; 
-                    //   $names=$result[1];
+                   
                    }
                 ?>
     <form action="../../controller/staff/customeracc_controller.php" method="POST" id="staff_form" enctype="multipart/form-data">

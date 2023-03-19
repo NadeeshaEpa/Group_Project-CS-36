@@ -109,7 +109,7 @@
 
 		<!-- MAIN -->
 		<main>
-   <a href="add_company.php"> <button>Add Gas Company</button></a>
+   <a href="add_company.php"> <button style="width:20%; background-color:#CFE8FF;">Add Gas Company</button></a>
     <div class="list">
 
     <h3>All Gas Companies</h3>

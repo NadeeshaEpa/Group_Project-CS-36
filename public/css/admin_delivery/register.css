@@ -26,17 +26,19 @@
     border: 1px solid #e3e3e3;
     padding: 10px;
     margin-bottom: 20px;
-    width:90%;
-    background: #4E60FF;
-    border-radius: 20px;
+    float:right;
+    width:20%;
+    background: #41cb4f;
+    /* border-radius: 20px; */
     align-items: center;
     color: white;
     text-decoration: none;
 }
 
+
 .registration-form button:hover{
-    background: #6EDC79;
-    color:black;
+    background: #2eae3b;
+    /* color:black; */
 }
 .registration-form h2{
     margin-bottom: 20px;

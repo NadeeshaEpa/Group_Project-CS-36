@@ -23,8 +23,8 @@
 			<span class="text">FAGO</span>
 		</a>
 		<ul class="side-menu top">
-			<li>
-				<a href="staff_dashboard.php">
+		<li>
+				<a href="../../controller/staff/dashboard_controller.php?id=profitdetails">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -40,21 +40,21 @@
 
 			<li>
 			
-			<a href="../../view/staff/users.php">
+			<a href="../../controller/staff/users_controller.php?id=userdetails">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Users</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="../../view/staff/user_request.php">
+				<a href="../../controller/staff/users_controller.php?rid=userrequestdetails">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Registration Requests</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="../../view/staff/gas_cylinder.php">
+				<a href="../../controller/staff/cylinder_controller.php?id=viewcylinder">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Gas Cylinders</span>
 				</a>
@@ -66,17 +66,25 @@
 				</a>
 			</li>
 
+
 			<li class="active">
-				<a href="deliveries.php">
+				<a href="../../controller/staff/delivery_controller.php?id=viewdelivery">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Deliveries</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="payments.php">
+				<a href="../../controller/staff/payment_controller.php?id=gaspaymentdetails">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Payments</span>
+				</a>
+			</li>
+
+			<li>
+				<a href="../../controller/staff/complain_controller.php?id=complaindetails">
+					<i class='bx bxs-doughnut-chart' ></i>
+					<span class="text">Complains</span>
 				</a>
 			</li>
 			
@@ -84,7 +92,7 @@
 		</ul>
 		<ul class="side-menu">
 			
-			<<li>
+			<li>
 				<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
@@ -117,8 +125,8 @@
 
 		<!-- MAIN -->
 		<main>
-        <a href="deliveries.php"><button>Deliveries</button></a>
-            <a href="delivery_request.php"><button style="background-color: #05be17;color:white;">Delivery Requests</button></a>
+        <a href="../../controller/staff/delivery_controller.php?id=viewdelivery"><button>Deliveries</button></a>
+            <a href="../../controller/staff/delivery_controller.php?id=viewdelivery"><button style="background-color: #05be17;color:white;">Delivery Requests</button></a>
             <br>
 			<!-- <form action="#" style="float:right;">
 				<div class="form-input">
@@ -138,58 +146,43 @@
 					<table>
 						<thead>
 							<tr>
-								<th>User</th>
-                                <th>Amount</th>
-								<th>Date Order</th>
+								<th>Customer</th>
+                                <th>Customer ID</th>
+								<th>Order ID</th>
+								<th>Date</th>
 								<th>Time</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
+					   <?php
+						$result=$_SESSION['deliveryrequestdetails'];
+						if($result){
+							foreach($result as $row){
+								$order_id=$row['Order_id'];
+								$fname=$row['First_Name'];
+								$lname=$row['Last_Name'];
+								$User_id=$row['Customer_Id'];
+								$time=$row['Time'];
+								$date=$row['Order_date'];
+								$imgname=$row['imgname'];
+
+								echo'
+								<tr class="details" id='.$order_id.'>
 								<td>
-									<img src="../../public/images/noprofile.png">
-									<p>Nisali Senadeera</p>
+									<img src="../../public/images/'.$imgname.'">
+									<p>'.$fname. $lname.'</p>
 								</td>
-                                <td>RS.6500.00</td>
-								<td>01-10-2021</td>
-								<td>10min Ago</td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/noprofile.png">
-									<p>Promod Madawala</p>
-								</td>
-                                <td>RS.6500.00</td>
-								<td>01-10-2021</td>
-								<td>2hrs Ago</td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/noprofile.png">
-									<p>Anoma Suraweera</p>
-								</td>
-                                <td>RS.6500.00</td>
-								<td>01-10-2021</td>
-								<td>3hrs Ago</td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/noprofile.png">
-									<p>Nihal Priyantha</p>
-								</td>
-                                <td>RS.6500.00</td>
-								<td>01-10-2021</td>
-								<td>5hrs Ago</td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/noprofile.png">
-									<p>Lakindu Wickramasingha</p>
-								</td>
-                                <td>RS.6500.00</td>
-								<td>01-10-2021</td>
-								<td>5hrs Ago</td>
-							</tr>
+								<td>'.$User_id.'</td>
+                                <td>'.$order_id.'</td>
+								<td>'.$date.'</td>
+								<td><span class="status completed">'.$time.'</span></td>
+							    </tr>' ;
+								
+							}
+						}
+						?>
+
+							
 						</tbody>
 					</table>
 				</div>
@@ -199,7 +192,16 @@
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
-	
+	<script>
+		elementsArray=document.querySelectorAll(".details");
+		elementsArray.forEach(function(elem){
+			elem.addEventListener("click",function(){
+				location.href='../../controller/staff/delivery_controller.php?oid='+elem.id;
+				
+			});
+		});
+
+	</script>
 
 	<script src="../../public/js/script.js"></script>
 </body>

@@ -12,9 +12,31 @@ class gasagent_model{
         }
     }
 
+    public function decline($connection,$user_id){
+        $sql = "DELETE FROM `gasagent` WHERE GasAgent_Id='$user_id'";
+        // $sql="DELETE FROM `user` WHERE User_id='$user_id'";
+        $result=$connection->query($sql);
+        if($result==TRUE){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
+    }
+
+    public function accept($connection,$user_id){
+        $sql = "UPDATE `gasagent` SET Status=1 WHERE GasAgent_Id='$user_id'";
+        // $sql="DELETE FROM `user` WHERE User_id='$user_id'";
+        $result=$connection->query($sql);
+        if($result==TRUE){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
+    }
+
 
     public function edituser($connection,$user_id){
-        $sql="SELECT g.GasAgent_Id,u.First_Name, u.Last_Name, u.City, u.Street, u.Postalcode, u.Username, u.Email, uc.Contact_No, g.NIC, g.Registration_date,g.Account_No, g.BusinessReg_No,g.Shop_name,i.imgname from `user_contact` uc INNER JOIN `user` u ON uc.User_id=u.User_id INNER JOIN `gasagent` g ON u.User_id=g.GasAgent_Id INNER JOIN `profileimg` i ON u.User_id_Id=i.User_id WHERE u.User_id='$user_id'";
+        $sql="SELECT g.GasAgent_Id,u.First_Name, u.Last_Name, u.City, u.Street, u.Postalcode, u.Username, u.Email, uc.Contact_No, g.NIC, g.Registration_date,g.Account_No, g.BusinessReg_No,g.Shop_name,i.imgname from `user_contact` uc INNER JOIN `user` u ON uc.User_id=u.User_id INNER JOIN `gasagent` g ON u.User_id=g.GasAgent_Id INNER JOIN `profileimg` i ON g.GasAgent_Id=i.User_id WHERE u.User_id='$user_id'";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;
@@ -58,14 +80,29 @@ class gasagent_model{
 
 
     public function viewuser($connection,$user_id){
-        $sql="SELECT g.GasAgent_Id,u.First_Name, u.Last_Name, u.City, u.Street, u.Postalcode, u.Username, u.Email, uc.Contact_No, g.NIC, g.Registration_date,g.Account_No, g.BusinessReg_No,g.Shop_name,i.imgname from `user_contact` uc INNER JOIN `user` u ON uc.User_id=u.User_id INNER JOIN `gasagent` g ON u.User_id=g.GasAgent_Id INNER JOIN `profileimg` i ON u.User_id_Id=i.User_id WHERE u.User_id='$user_id'";
+        $sql="SELECT g.GasAgent_Id,u.First_Name, u.Last_Name, u.City, u.Street, u.Postalcode, u.Username, u.Email, uc.Contact_No, g.NIC, g.Registration_date,g.Account_No, g.BusinessReg_No,g.Shop_name,i.imgname from `user` u INNER JOIN `user_contact` uc ON u.User_id=uc.User_id INNER JOIN `gasagent` g ON uc.User_id=g.GasAgent_Id INNER JOIN `profileimg` i ON g.GasAgent_Id=i.User_id WHERE u.User_id='$user_id'";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;
         }else{
             $gasagent=[];
             while($row=$result->fetch_object()){
-                array_push($gasagent,['GasAgent_Id'=>$row->GasAgent_Id,'First_Name'=>$row->First_Name,'Last_Name'=>$row->Last_Name,'City'=>$row->City,'Street'=>$row->Street,'Postalcode'=>$row->Postalcode,'Username'=>$row->Username,'Email'=>$row->Email,'Contact_No'=>$row->Contact_No, 'NIC'=>$row->NIC, 'Registration_date'=>$row->Registration_date,'Account_No'=>$row->Account_No,'BusinessReg_No'=>$row->BusinessReg_No,'Shop_name'=>$row->Shop_name]);
+                array_push($gasagent,['GasAgent_Id'=>$row->GasAgent_Id,'First_Name'=>$row->First_Name,'Last_Name'=>$row->Last_Name,'City'=>$row->City,'Street'=>$row->Street,'Postalcode'=>$row->Postalcode,'Username'=>$row->Username,'Email'=>$row->Email,'Contact_No'=>$row->Contact_No,'imgname'=>$row->imgname, 'NIC'=>$row->NIC, 'Registration_date'=>$row->Registration_date,'Account_No'=>$row->Account_No,'BusinessReg_No'=>$row->BusinessReg_No,'Shop_name'=>$row->Shop_name]);
+                
+            }
+            return $gasagent;
+        }
+    }
+
+    public function viewrequest($connection,$user_id){
+        $sql="SELECT g.GasAgent_Id,u.First_Name, u.Last_Name, u.City, u.Street, u.Postalcode, u.Username, u.Email, uc.Contact_No, g.NIC,g.Account_No, g.BusinessReg_No,g.Shop_name,i.imgname from `user_contact` uc INNER JOIN `user` u ON uc.User_id=u.User_id INNER JOIN `gasagent` g ON u.User_id=g.GasAgent_Id INNER JOIN `profileimg` i ON g.GasAgent_Id=i.User_id WHERE u.User_id='$user_id'";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $gasagent=[];
+            while($row=$result->fetch_object()){
+                array_push($gasagent,['GasAgent_Id'=>$row->GasAgent_Id,'First_Name'=>$row->First_Name,'Last_Name'=>$row->Last_Name,'City'=>$row->City,'Street'=>$row->Street,'Postalcode'=>$row->Postalcode,'Username'=>$row->Username,'Email'=>$row->Email,'Contact_No'=>$row->Contact_No,'imgname'=>$row->imgname, 'NIC'=>$row->NIC,'Account_No'=>$row->Account_No,'BusinessReg_No'=>$row->BusinessReg_No,'Shop_name'=>$row->Shop_name]);
             }
             return $gasagent;
         }

@@ -25,7 +25,7 @@ require_once("../../config.php");?>
 		</a>
 		<ul class="side-menu top">
 			<li >
-				<a href="../../view/staff/staff_dashboard.php">
+				<a href="../../controller/staff/dashboard_controller.php?id=profitdetails">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -41,21 +41,21 @@ require_once("../../config.php");?>
 
 			<li class="active">
 			
-			<a href="../../view/staff/users.php">
+			<a href="../../controller/staff/users_controller.php?id=userdetails">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Users</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="../../view/staff/user_request.php">
+				<a href="../../controller/staff/users_controller.php?rid=userrequestdetails">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Registration Requests</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="../../view/staff/gas_cylinder.php">
+				<a href="../../controller/staff/cylinder_controller.php?id=viewcylinder">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Gas Cylinders</span>
 				</a>
@@ -68,16 +68,23 @@ require_once("../../config.php");?>
 			</li>
 
 			<li>
-				<a href="deliveries.php">
+				<a href="../../controller/staff/delivery_controller.php?id=viewdelivery">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Deliveries</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="payments.php">
+				<a href="../../controller/staff/payment_controller.php?id=gaspaymentdetails">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Payments</span>
+				</a>
+			</li>
+
+			<li>
+				<a href="../../controller/staff/complain_controller.php?id=complaindetails">
+					<i class='bx bxs-doughnut-chart' ></i>
+					<span class="text">Complains</span>
 				</a>
 			</li>
 			
@@ -131,7 +138,7 @@ require_once("../../config.php");?>
                     //   $names=$result[1];
                    }
                 ?>
-    <form action="../../controller/staff/staffacc_controller.php" method="POST" id="staff_form" enctype="multipart/form-data">
+    <form action="../../controller/staff/deliverypersonacc_controller.php" method="POST" id="staff_form" enctype="multipart/form-data">
 	     
     <div class="data">
 	   
@@ -144,7 +151,7 @@ require_once("../../config.php");?>
         <div class="down">
              <div class="down1">  
 		        <label>User ID:</label><br>  
-                <input type="text" name="fname" value=<?php echo $result[0]['Staff_Id']; ?> readonly><br>
+                <input type="text" name="delivery_id" value=<?php echo $result[0]['DeliveryPerson_Id']; ?> readonly><br>
 			</div>
             <div class="down1">  
 		        <label>Registration Date :</label><br>  
@@ -162,6 +169,19 @@ require_once("../../config.php");?>
                 <input type="text" name="fname" value=<?php echo $result[0]['Username']; ?> readonly><br>
 		    </div>
 		</div>
+
+		<div class="down">
+             <div class="down1">  
+		        <label>Vehicle Type :</label><br>  
+                <input type="text" name="vehicletype" value=<?php echo $result[0]['Vehicle_Type']; ?> readonly><br> 
+		     </div>
+		     <div class="down1">  
+		        <label>Vehicle Number :</label><br>  
+                <input type="text" name="vehiclenum" value=<?php echo $result[0]['Vehicle_No']; ?> readonly><br>
+		    </div>
+		</div>
+		
+
 
 		<div class="down">
              <div class="down1">  
@@ -187,9 +207,17 @@ require_once("../../config.php");?>
                                         <label></label><br>      
                                         <input type="text" name="postalcode" value=<?php echo $result[0]['Postalcode']; ?> readonly> <br>  
                                 </div>
-                            </div>
+         </div>
+		 <br>
+		 <div class="down">
+             <div class="down1">  
+		        <label>Account Number :</label><br>  
+                <input type="text" name="accountnum" value=<?php echo $result[0]['Account_No']; ?> readonly><br>
+		     </div>
+		    
+		</div>
 
-         
+		
 
         
 		</div>

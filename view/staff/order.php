@@ -11,6 +11,7 @@ require_once("../../config.php");?>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="../../public/css/admin_delivery/Dashboard.css">
     <link rel="stylesheet" href="../../public/css/admin_delivery/user_list.css">
+	<link rel="stylesheet" href="../../public/css/admin_delivery/deliveries.css">
 
 	<title>FaGo</title>
 </head>
@@ -25,7 +26,7 @@ require_once("../../config.php");?>
 		</a>
 		<ul class="side-menu top">
 			<li>
-				<a href="staff_dashboard.php">
+			<a href="../../controller/staff/dashboard_controller.php?id=profitdetails">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -41,21 +42,21 @@ require_once("../../config.php");?>
 
 			<li>
 			
-			<a href="../../view/staff/users.php">
+			<a href="../../controller/staff/users_controller.php?id=userdetails">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Users</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="../../view/staff/user_request.php">
+				<a href="../../controller/staff/users_controller.php?rid=userrequestdetails">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Registration Requests</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="../../view/staff/gas_cylinder.php">
+				<a href="../../controller/staff/cylinder_controller.php?id=viewcylinder">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Gas Cylinders</span>
 				</a>
@@ -68,16 +69,23 @@ require_once("../../config.php");?>
 			</li>
 
 			<li>
-				<a href="deliveries.php">
+				<a href="../../controller/staff/delivery_controller.php?id=viewdelivery">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Deliveries</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="payments.php">
+				<a href="../../controller/staff/payment_controller.php?id=gaspaymentdetails">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Payments</span>
+				</a>
+			</li>
+
+			<li>
+				<a href="../../controller/staff/complain_controller.php?id=complaindetails">
+					<i class='bx bxs-doughnut-chart' ></i>
+					<span class="text">Complains</span>
 				</a>
 			</li>
 			
@@ -124,6 +132,10 @@ require_once("../../config.php");?>
 
 		<!-- MAIN -->
 		<main>
+
+		<a href="../../controller/staff/order_controller.php?id=vieworder"><button style="background-color: #05be17;color:white;">Gas Orders</button></a>
+            <a href="../../controller/staff/order_controller.php?fid=viewfagoorder"><button style="background-color:transparent;color:black;">Fago Shop Orders</button></a>
+            <br>
     <div class="list">
 
     <h3>Orders</h3>
@@ -152,12 +164,12 @@ require_once("../../config.php");?>
             echo'<tr>
                  <th>'.$order_id.'</th>
                  <td>'.$date.'</td>
-                 <td>'.$fname. $lname.'</td>
+                 <td>'.$fname." ". $lname.'</td>
                  <td>'.$amount.'</td>
                  <td>'.$status.'</td>
         
                  <td>
-                 <a href="order_view.php"><button class="button1" style="width:50%;">View</button></a>
+				 <a href="../../controller/staff/order_controller.php?vid='.$order_id.'"><button class="button1" style="width:50%;">View</button></a>
                  </td>
             </tr>' ;
             

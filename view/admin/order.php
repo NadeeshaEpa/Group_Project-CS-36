@@ -11,6 +11,7 @@ require_once("../../config.php");?>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="../../public/css/admin_delivery/Dashboard.css">
     <link rel="stylesheet" href="../../public/css/admin_delivery/user_list.css">
+	<link rel="stylesheet" href="../../public/css/admin_delivery/deliveries.css">
 
 	<title>FaGo</title>
 </head>
@@ -25,7 +26,7 @@ require_once("../../config.php");?>
 		</a>
 		<ul class="side-menu top">
 			<li >
-				<a href="../../view/admin/admin_dashboard.php">
+				<a href="../../controller/admin/dashboard_controller.php?id=profitdetails">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -109,6 +110,9 @@ require_once("../../config.php");?>
 
 		<!-- MAIN -->
 		<main>
+		<a href="../../controller/admin/order_controller.php?id=vieworder"><button style="background-color: #05be17;color:white;">Gas Orders</button></a>
+            <a href="../../controller/admin/order_controller.php?fid=viewfagoorder"><button style="background-color:transparent;color:black;">Fago Shop Orders</button></a>
+            <br>
     <div class="list">
 
     <h3>Orders</h3>
@@ -142,7 +146,7 @@ require_once("../../config.php");?>
                  <td>'.$status.'</td>
         
                  <td>
-                 <a href="order_view.php"><button class="button1" style="width:50%;">View</button></a>
+                 <a href="../../controller/admin/order_controller.php?vid='.$order_id.'"><button class="button1" style="width:50%;">View</button></a>
                  </td>
             </tr>' ;
             

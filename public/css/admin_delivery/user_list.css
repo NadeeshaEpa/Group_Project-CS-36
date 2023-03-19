@@ -112,3 +112,37 @@ h3{
     cursor: pointer;
     
 }
+.form-input {
+	display: flex;
+	align-items: center;
+	height: 36px;
+  float:right;
+  
+}
+.form-input input {
+	flex-grow: 1;
+	padding: 0 16px;
+	height: 100%;
+	border: none;
+	background-color: #ffffff;
+	border-radius: 36px 0 0 36px;
+	outline: none;
+	width: 100%;
+	color: var(--dark);
+}
+
+.form-input button {
+	width: 36px;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: hsl(205, 65%, 76%);
+	color: #205d9a;
+	font-size: 18px;
+	border: none;
+	outline: none;
+	border-radius: 0 36px 36px 0;
+	cursor: pointer;
+  
+}

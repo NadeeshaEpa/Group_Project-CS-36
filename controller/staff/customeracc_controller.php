@@ -52,6 +52,54 @@ if(isset($_GET['did'])){
         }
     }
 }
+
+if(isset($_GET['rvid'])){
+    $user_id=$_GET['rvid'];
+    $user_id=$connection->real_escape_string($user_id);
+    $_SESSION['rvid']=$user_id;
+    $customer=new customer_model();
+    $result=$customer->viewuser($connection,$user_id);
+    if($result===false){
+        $_SESSION['viewrequest']="failed";
+        header("Location: ../../view/staff/Customer_requestlist.php");
+    }else{
+        $_SESSION['viewrequest']=$result;
+        header("Location: ../../view/staff/customer_request.php");
+    }
+}
+
+if(isset($_GET['aid'])){
+    $user_id=$_GET['aid'];
+    $user_id=$connection->real_escape_string($user_id);
+    $customer=new customer_model();
+    $result=$customer->accept($connection,$user_id);
+    if($result===false){
+        $_SESSION['acceptuser']="failed";
+        header("Location: ../../view/staff/Customer_requestlist.php");
+    }else{
+        $_SESSION['acceptuser']="success";
+        header("Location: ../../controller/staff/customeracc_controller.php?rid=viewCustomerRequests");
+        
+    }
+}
+
+if(isset($_GET['deid'])){
+    $user_id=$_GET['deid'];
+    $user_id=$connection->real_escape_string($user_id);
+    $customer=new customer_model();
+    $result=$customer->decline($connection,$user_id);
+    if($result===false){
+        $_SESSION['declineuser']="failed";
+        header("Location: ../../view/staff/Customer_requestlist.php");
+    }else{
+        $_SESSION['declineuser']="success";
+        header("Location: ../../controller/staff/customeracc_controller.php?rid=viewCustomerRequests");
+        
+    }
+}
+
+
+   
 if(isset($_GET['uid'])){
     $user_id=$_GET['uid'];
     $user_id=$connection->real_escape_string($user_id);
@@ -64,6 +112,20 @@ if(isset($_GET['uid'])){
     }else{
         $_SESSION['edituser']=$result;
         header("Location: ../../view/staff/customer_update.php");
+    }
+}
+
+if(isset($_POST['search'])){
+    $name=$_POST['name'];
+    $name=$connection->real_escape_string($name);
+    $customer=new customer_model();
+    $result=$customer->searchcustomer($connection,$name);
+    if($result){
+        $_SESSION['customerdetails']=$result;
+        header("Location:../../view/staff/staff-viewCustomer.php");
+    }else{
+        $_SESSION['customerdetails']=[];
+        header("Location:../../view/staff/staff-viewCustomer.php");
     }
 }
 
@@ -133,3 +195,6 @@ if(isset($_POST['edituser'])){
     }
 
 }
+
+
+?>

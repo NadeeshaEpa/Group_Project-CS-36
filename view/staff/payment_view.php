@@ -10,6 +10,7 @@
 	<!-- My CSS -->
 	<link rel="stylesheet" href="../../public/css/admin_delivery/Dashboard.css">
     <link rel="stylesheet" href="../../public/css/admin_delivery/deliveries.css">
+	<link rel="stylesheet" href="../../public/css/admin_delivery/user_list.css">
 
 	<title>FaGo</title>
 </head>
@@ -24,7 +25,7 @@
 		</a>
 		<ul class="side-menu top">
 			<li>
-				<a href="staff_dashboard.php">
+			<a href="../../controller/staff/dashboard_controller.php?id=profitdetails">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -40,21 +41,21 @@
 
 			<li>
 			
-			<a href="../../view/staff/users.php">
+			<a href="../../controller/staff/users_controller.php?id=userdetails">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Users</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="../../view/staff/user_request.php">
+				<a href="../../controller/staff/users_controller.php?rid=userrequestdetails">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Registration Requests</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="../../view/staff/gas_cylinder.php">
+				<a href="../../controller/staff/cylinder_controller.php?id=viewcylinder">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Gas Cylinders</span>
 				</a>
@@ -67,16 +68,23 @@
 			</li>
 
 			<li>
-				<a href="deliveries.php">
+				<a href="../../controller/staff/delivery_controller.php?id=viewdelivery">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Deliveries</span>
 				</a>
 			</li>
 
 			<li class="active">
-				<a href="payments.php">
+				<a href="../../controller/staff/payment_controller.php?id=gaspaymentdetails">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Payments</span>
+				</a>
+			</li>
+
+			<li>
+				<a href="../../controller/staff/complain_controller.php?id=complaindetails">
+					<i class='bx bxs-doughnut-chart' ></i>
+					<span class="text">Complains</span>
 				</a>
 			</li>
 			
@@ -84,7 +92,7 @@
 		</ul>
 		<ul class="side-menu">
 			
-			<<li>
+			<li>
 				<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
@@ -118,96 +126,52 @@
 
 		<!-- MAIN -->
 		<main>
-			<a href="payments.php"><button>Gas Agent</button></a>
-            <a href="payments1.php"><button  style="background-color: #05be17;color:white;">Delivery Person</button></a>
-            <br>
+		
+			
 			<!-- <form action="#" style="float:right;">
 				<div class="form-input">
 					<input type="search" placeholder="Search..." >
 					<button type="submit" class="search-btn" ><i class='bx bx-search' ></i></button>
 				</div>
 			</form> -->
+			<div class="list">
 
+						<h3>Payment Details</h3><br>
 
-			<div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3>Delivery Payments</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
-					<table>
-						<thead>
-							<tr>
-								<th>Delivery Person</th>
-                                <th>User ID</th>
-								<th>Date</th>
-								<th>Total Fee</th>
+						<table>
+						<tr>
+						        <th>Order ID</th>
+						       <th>Date</th>
+								<th>Amount</th>
 								<th>Payment</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									<img src="../../public/images/noprofile.png">
-									<p>Hashini Thilinika</p>
-								</td>
-                                <td>45</td>
-                                <td>01-10-2021</td>
-                                <td>RS.6500.00</td>
-								<td><a href="user_payment.php" style="color:red;">Pending</a></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/noprofile.png">
-									<p>Kimuthu Kisal</p>
-								</td>
-                                <td>10</td>
-                                <td>01-10-2021</td>
-                                <td>RS.6500.00</td>
-								<td style="color:red;">Pending</i></td>
 								
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/noprofile.png">
-									<p>Thirani Upetha</p>
-								</td>
-                                <td>21</td>
-                                <td>01-10-2021</td>
-                                <td>RS.6500.00</td>
-								<td style="color:red;">Pending</td>
+						</tr>
+
+						<?php
+						$result=$_SESSION['viewpayment'];
+						if($result){
+							foreach($result as $row){
+								$Order_Id=$row['Order_Id'];
+								$Order_date=$row['Order_date'];
+								$Amount=$row['Amount'];
+								$Paid=$row['Paid'];
+
+								echo'
 								
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/noprofile.png">
-									<p>Trineesha Thathsarani</p>
-								</td>
-                                <td>20</td>
-                                <td>01-10-2021</td>
-                                <td>RS.6500.00</td>
-								<td style="color:red;">Pending</td>
-			
+								<tr>
+								    <th>'.$Order_Id.'</th>
+									<td>'.$Order_date.'</td>
+									<td>RS. '.$Amount.'.00</td>
+									<td style="color:red;">Pending</td>
+									
+								</tr>' ;
 								
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/noprofile.png">
-									<p>Pasindu Guruge</p>
-								</td>
-                                <td>96</td>
-                                <td>01-10-2021</td>
-                                <td>RS.6500.00</td>
-								<td style="color:red;">Pending</td>
-							
-								
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			
+							}
+						}
+
+						?>
 			</div>
+		   
 		</main>
 		<!-- MAIN -->
 	</section>

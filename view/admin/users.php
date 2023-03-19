@@ -126,10 +126,10 @@
 			<ul class="box-info">
 				 
                 <a href="../../controller/admin/customeracc_controller.php?id=viewCustomer">
-                <li>
-					<i class='bx bxs-calendar-check' ></i>
+				<li style="background-color:#CFE8FF">
+				<img src="../../public/images/user.png" alt="John" style="width:10vh; height:10vh;">
 					<span class="text">
-						<h3>1020</h3>
+						<h3>25</h3>
 						<p>CUSTOMERS</p>
 					</span>
                     </li>
@@ -137,20 +137,20 @@
 				
 				
                 <a href="../../controller/admin/gasagentacc_controller.php?id=viewGasagent">
-                <li>
-					<i class='bx bxs-group' ></i>
+                <li style="background-color:#b5e7b5">
+				<img src="../../public/images/user.png" alt="John" style="width:10vh; height:10vh;">
 					<span class="text">
-						<h3>2834</h3>
+						<h3>15</h3>
 						<p>GAS AGENTS</p>
 					</span>
 				</li>
                 </a>
 
                  <a href="../../controller/admin/staffacc_controller.php?id=viewStaff">
-                 <li>
-					<i class='bx bxs-dollar-circle' ></i>
+                 <li style="background-color:#fde595">
+				<img src="../../public/images/user.png" alt="John" style="width:10vh; height:10vh;">
 					<span class="text">
-						<h3>2543</h3>
+						<h3>16</h3>
 						<p>STAFF</p>
 					</span>
                 </li>
@@ -159,20 +159,20 @@
 
             
                 <a href="../../controller/admin/deliverypersonacc_controller.php?id=viewDeliveryperson">
-                <li>
-					<i class='bx bxs-group' ></i>
+				<li style="background-color:#eac3fc">
+				<img src="../../public/images/user.png" alt="John" style="width:10vh; height:10vh;">
 					<span class="text">
-						<h3>2834</h3>
+						<h3>17</h3>
 						<p>DELIVERY PERSON</p>
 					</span>
                 </li>
                 </a>
 				
                 <a href="../../controller/admin/stockmanageracc_controller.php?id=viewStockmanager">
-                <li>
-					<i class='bx bxs-calendar-check' ></i>
+				<li style="background-color:#f8ab8a">
+				<img src="../../public/images/user.png" alt="John" style="width:10vh; height:10vh;">
 					<span class="text">
-						<h3>1020</h3>
+						<h3>1</h3>
 						<p>STORE MANAGER</p>
 					</span>
                 </li>

@@ -25,7 +25,7 @@ require_once("../../config.php");?>
 		</a>
 		<ul class="side-menu top">
 			<li >
-				<a href="../../view/staff/admin_dashboard.php">
+				<a href="../../controller/staff/dashboard_controller.php?id=profitdetails">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -41,21 +41,21 @@ require_once("../../config.php");?>
 
 			<li class="active">
 			
-			<a href="../../view/staff/users.php">
+			<a href="../../controller/staff/users_controller.php?id=userdetails">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Users</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="../../view/staff/user_request.php">
+				<a href="../../controller/staff/users_controller.php?rid=userrequestdetails">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Registration Requests</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="../../view/staff/gas_cylinder.php">
+				<a href="../../controller/staff/cylinder_controller.php?id=viewcylinder">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Gas Cylinders</span>
 				</a>
@@ -68,16 +68,23 @@ require_once("../../config.php");?>
 			</li>
 
 			<li>
-				<a href="deliveries.php">
+				<a href="../../controller/staff/delivery_controller.php?id=viewdelivery">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Deliveries</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="payments.php">
+				<a href="../../controller/staff/payment_controller.php?id=gaspaymentdetails">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Payments</span>
+				</a>
+			</li>
+
+			<li>
+				<a href="../../controller/staff/complain_controller.php?id=complaindetails">
+					<i class='bx bxs-doughnut-chart' ></i>
+					<span class="text">Complains</span>
 				</a>
 			</li>
 			
@@ -101,12 +108,7 @@ require_once("../../config.php");?>
 		<nav>
 			<i class='bx bx-menu' ></i>
 			<!-- <a href="#" class="nav-link">Categories</a> -->
-			<!-- <form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form> -->
+			
 			<!-- <input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label> -->
 			
@@ -148,6 +150,13 @@ require_once("../../config.php");?>
     <div class="list">
 
     <h3>All Customers</h3>
+
+	<form action="../../controller/staff/customeracc_controller.php" method="POST">
+				<div class="form-input">
+					<input type="search" name="customer_name" placeholder="Search by name...">
+					<button type="submit" name="search" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+	</form>
 
     <table>
     <tr>

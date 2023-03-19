@@ -22,7 +22,7 @@
 		</a>
 		<ul class="side-menu top">
 			<li >
-				<a href="../../view/staff/staff_dashboard.php">
+				<a href="../../controller/staff/dashboard_controller.php?id=profitdetails">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -38,21 +38,21 @@
 
 			<li class="active">
 			
-			<a href="../../view/staff/users.php">
+			<a href="../../controller/staff/users_controller.php?id=userdetails">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Users</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="../../view/staff/user_request.php">
+				<a href="../../controller/staff/users_controller.php?rid=userrequestdetails">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Registration Requests</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="../../view/staff/gas_cylinder.php">
+				<a href="../../controller/staff/cylinder_controller.php?id=viewcylinder">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Gas Cylinders</span>
 				</a>
@@ -65,16 +65,23 @@
 			</li>
 
 			<li>
-				<a href="deliveries.php">
+				<a href="../../controller/staff/delivery_controller.php?id=viewdelivery">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Deliveries</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="payments.php">
+				<a href="../../controller/staff/payment_controller.php?id=gaspaymentdetails">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Payments</span>
+				</a>
+			</li>
+
+			<li>
+				<a href="../../controller/staff/complain_controller.php?id=complaindetails">
+					<i class='bx bxs-doughnut-chart' ></i>
+					<span class="text">Complains</span>
 				</a>
 			</li>
 			
@@ -121,6 +128,13 @@
 
 		<!-- MAIN -->
 		<main>
+		     <?php 
+                   if(isset($_SESSION['userdetails'])){
+                      $result=$_SESSION['userdetails']; 
+					  
+                    //   $names=$result[1];
+                   }
+                ?>
 			<div class="head-title">
 				<div class="left">
 					<h1>Users</h1>
@@ -140,10 +154,10 @@
 			<ul class="box-info">
 				 
                 <a href="../../controller/staff/customeracc_controller.php?id=viewCustomer">
-                <li>
+                <li style="background-color:#CFE8FF">
 				<img src="../../public/images/user.png" alt="John" style="width:10vh; height:10vh;">
 					<span class="text">
-						<h3>1000</h3>
+						<h3><?php echo $result[0]['num_customers']?></h3>
 						<p>CUSTOMERS</p>
 					</span>
                     </li>
@@ -151,20 +165,20 @@
 				
 				
                 <a href="../../controller/staff/gasagentacc_controller.php?id=viewGasagent">
-                <li>
+                <li style="background-color:#b5e7b5">
 				<img src="../../public/images/user.png" alt="John" style="width:10vh; height:10vh;">
 					<span class="text">
-						<h3>250</h3>
+						<h3><?php echo $result[1]['num_gasagents']?></h3>
 						<p>GAS AGENTS</p>
 					</span>
 				</li>
                 </a>
 
                  <a href="../../controller/staff/staffacc_controller.php?id=viewStaff">
-                 <li>
+                 <li style="background-color:#fde595">
 				 <img src="../../public/images/user.png" alt="John" style="width:10vh; height:10vh;">
 					<span class="text">
-						<h3>47</h3>
+						<h3><?php echo $result[3]['num_staff']?></h3>
 						<p>STAFF</p>
 					</span>
                 </li>
@@ -173,24 +187,24 @@
 
             
                 <a href="../../controller/staff/deliverypersonacc_controller.php?id=viewDeliveryperson">
-                <li>
+                <li style="background-color:#eac3fc">
 				<img src="../../public/images/user.png" alt="John" style="width:10vh; height:10vh">
 					<span class="text">
-						<h3>238</h3>
+						<h3><?php echo $result[2]['num_delivery']?></h3>
 						<p>DELIVERY PERSON</p>
 					</span>
                 </li>
                 </a>
 				
-                <a href="../../controller/staff/stockmanageracc_controller.php?id=viewStockmanager">
-                <li>
+                <!-- <a href="../../controller/staff/stockmanageracc_controller.php?id=viewStockmanager">
+                <li style="background-color:#f8ab8a">
 				<img src="../../public/images/user.png" alt="John" style="width:10vh; height:10vh">
 					<span class="text">
 						<h3>5</h3>
 						<p>STORE MANAGER</p>
 					</span>
                 </li>
-                </a>
+                </a> -->
 				
 			</ul>
 

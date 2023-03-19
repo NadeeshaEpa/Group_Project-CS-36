@@ -31,6 +31,7 @@ li {
 	--light-orange: #FFE0D3;
 	--light-green:hsl(120, 100%, 90%);
 	--green:#87dc87;
+	--mgreen:#eac3fc;
 }
 
 html {
@@ -424,10 +425,11 @@ body {
 	margin-top: 24px;
 	width: 100%;
 	color: var(--dark);
+	
 }
 #content main .table-data > div {
 	border-radius: 20px;
-	background: var(--light);
+	background: #f3f3f3;
 	padding: 24px;
 	overflow-x: auto;
 }
@@ -449,6 +451,7 @@ body {
 #content main .table-data .order {
 	flex-grow: 1;
 	flex-basis: 500px;
+	
 }
 #content main .table-data .order table {
 	width: 100%;

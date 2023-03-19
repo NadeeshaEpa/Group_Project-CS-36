@@ -182,7 +182,7 @@ require_once("../../config.php");?>
                  <td>'.$uname.'</td>
                  <td>'.$email.'</td>
                  <td>
-                 <a href="../../controller/staff/customeracc_controller.php?vid='.$user_id.'"><button class="button1">View</button></a>
+                 <a href="../../controller/staff/customeracc_controller.php?rvid='.$user_id.'"><button class="button1">View</button></a>
                  <a href="../../controller/staff/customeracc_controller.php?aid='.$user_id.'"><button class="button2">Accept</button></a>
                  <a href="../../controller/staff/customeracc_controller.php?deid='.$user_id.'"><button class="button3">Decline</button></a>
                  </td>

@@ -41,7 +41,7 @@ require_once("../../config.php");?>
 
 			<li class="active">
 			
-			<<a href="../../view/staff/users.php">
+			<a href="../../view/staff/users.php">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Users</span>
 				</a>
