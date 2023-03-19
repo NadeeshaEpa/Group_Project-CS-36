@@ -19,6 +19,7 @@ class gasagent_model{
     private $gastype;
 
     public function setDetails($firstname='',$lastname='',$username='',$street='',$city='',$postalcode='',$password='',$email='', $contactnumber='',$business_reg_num='',$shopnumber='',$nic='',$accountnum='',$shopname='',$gastype=''){
+
         $this->Firstname=$firstname;
         $this->Lastname=$lastname;
         $this->Username=$username;
@@ -34,6 +35,7 @@ class gasagent_model{
         $this->accountno=$accountnum;
         $this->Shopname=$shopname;
         $this->gastype=$gastype;
+
         $this->Type="gasagent";
     }
 
@@ -83,8 +85,10 @@ class gasagent_model{
     }
 
     public function setgasagent($connection){
+
         $sql="INSERT INTO gasagent(GasAgent_Id,NIC,Account_No,NextArrival_Date,BusinessReg_No,Staff_Id,Registration_date,Status,LastUpdatedTime,LastUpdatedDate,Shop_name,Gas_Type) VALUES ('
         $this->User_id','$this->nic','$this->accountno',NULL,'$this->business_reg_num',NULL,NULL,'0',NULL,NULL,'$this->Shopname',$this->gastype)";
+
         if($connection->query($sql)){
             $_SESSION['registerMsg']="User Registered Successfully";
             return true;
@@ -119,15 +123,12 @@ class gasagent_model{
             $_SESSION['Lastname']=$row['Last_Name'];
             $_SESSION['Type']=$row['Type'];
             $this->Type=$row['Type'];
-
-
             $img="SELECT img_id,status,imgname FROM profileimg WHERE User_id='$this->User_id'";
             $resultimg=$connection->query($img);
             $rowimg=$resultimg->fetch_assoc();
             $_SESSION['img_id']=$rowimg['img_id'];
             $_SESSION['img-status']=$rowimg['status'];
             $_SESSION['User_img']=$rowimg['imgname'];
-            
 
             $r1="SELECT * FROM gasagent WHERE GasAgent_Id='$this->User_id' AND Status='1'";
             if($connection->query($r1)->num_rows > 0){

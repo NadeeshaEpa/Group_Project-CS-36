@@ -107,7 +107,9 @@ if(isset($_SESSION['unlocations'])){
                         foreach($weight as $weight1){?>
                             <th><?php echo $weight1['Weight']?>kg</th>
                         <?php } ?>
+
                     <th>order</th>    
+
                 </tr>
                     <?php 
                     $i=0;
@@ -142,12 +144,15 @@ if(isset($_SESSION['unlocations'])){
                                 <?php 
                                 }
                             } ?> 
+
                             <td><button name="order" id="popup" onclick="popup()">Order</button></td>
+
                         <?php } ?>
                     </tr>
             </table>    
         </div>
     </div>
+
     <div id="myModal" class="modal">
         <div class="modal-content">
             <div>
@@ -171,5 +176,6 @@ if(isset($_SESSION['unlocations'])){
             window.location.href = "customer_register.php";
         }
     </script>
+
 </body>
 </html>

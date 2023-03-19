@@ -57,6 +57,7 @@ body{
 }
 table{
     margin-top: 5%;
+
 }
 .modal {
     display: none;
@@ -108,4 +109,5 @@ table{
     border-radius: 10px;
     margin-top: 15%;
     border: none;
+
 }

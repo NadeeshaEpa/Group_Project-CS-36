@@ -128,7 +128,6 @@ if(!isset($_SESSION['User_id'])){
 										<th>Quantity</th>
                                         <th>Category</th>
 										<th>Order date</th>
-                                        <!-- <th>Delivery Method</th> -->
                                         <th>Price</th>
                                     </tr>
                                     <?php
@@ -142,8 +141,7 @@ if(!isset($_SESSION['User_id'])){
 											echo "<td>" . $row['Quantity'] . "</td>";
                                             echo "<td>" . $row['Category'] . "</td>";
 											echo "<td>" . $row['Order_date'] . "</td>";
-											// echo "<td>" . $row['Delivery_Method'] . "</td>";
-                                            echo "<td>" . $row['Amount'] . "</td>";
+											echo "<td>" . $row['Amount'] . "</td>";
 											echo "</tr>";
                                         }
                                         

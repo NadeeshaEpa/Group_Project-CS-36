@@ -15,6 +15,7 @@ if(isset($_POST['check'])){
     
     }
     else{
+        unset($_SESSION['DeliveryRequestDetails']);
         header("Location: ../../view/deliveryperson/DelivaryDashboard.php");
         $connection->close();
         exit();

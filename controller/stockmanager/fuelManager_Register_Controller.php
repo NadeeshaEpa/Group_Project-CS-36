@@ -1,8 +1,9 @@
 <?php
 session_start();
-require_once("../../config.php");
-require_once '../../model/gasagent/gasagent_model.php';
-require_once '../../model/gasagent/checkgasagent_model.php';
+
+include_once('../../config.php');
+include_once('../../model/fuelmanager/checkFuelManager_model.php');
+include_once('../../model/fuelmanager/fuelManager_model.php');
 
 if(isset($_POST['register'])){
     $firstname = $_POST['firstname'];
@@ -13,40 +14,37 @@ if(isset($_POST['register'])){
     $postalcode = $_POST['postalcode'];
     $password = $_POST['password'];
     $cpassword = $_POST['cpassword'];
-    $shopnumber = $_POST['shopnumber'];
-    $business_reg_num = $_POST['business_reg_num'];
+    $nic=$_POST['nic'];
     $email = $_POST['email'];
-    $nic =$_POST['NIC'];
     $contactnumber = $_POST['contactnumber'];
-    $accountnum= $_POST['accountnum'];
-    $shopename= $_POST['shopName'];
-
-    $gastype= $_POST['gastype'];
+    $BRegNo = $_POST['bRegNo'];
+    $shopName=$_POST['shopName'];
 
 }else{
-   echo "Invalid request";
-   exit();
+    echo('invalid request');
+    exit();
 }
+
 //check whether the email address is unique
-if(checkemail($email,$connection)){
+if(checkfuelManageremail($email,$connection)){
     $_SESSION['emailerror'] = "Email already exists";
-    header("Location: ../../view/gasagent/gasagent_register.php");
+    header("Location: ../../view/fuelmanager/fuelManager_Register.php");
     $connection->close();
     exit();
 }
 
 //check whether the username is unique
-if(checkusername($username,$connection)){
+if(checkFuelManagerUsername($username,$connection)){
     $_SESSION['usernameerror'] = "Username already exists";
-    header("Location: ../../view/gasagent/gasagent_register.php");
+    header("Location: ../../view/fuelmanager/fuelManager_Register.php");
     $connection->close();
     exit();
 }
 
 //check whether the password and confirm password are same
-if(!checkpassword($password,$cpassword)){
+if(!checkSamePassword($password,$cpassword)){
     $_SESSION['passworderror'] = "Password and Confirm Password are not same";
-    header("Location: ../../view/gasagent/gasagent_register.php");
+    header("Location: ../../view/fuelmanager/fuelManager_Register.php");
     $connection->close();
     exit();
 }
@@ -60,24 +58,24 @@ $postalcode=$connection->real_escape_string($postalcode);
 $password=md5($connection->real_escape_string($password));
 $email=$connection->real_escape_string($email);
 $contactnumber=$connection->real_escape_string($contactnumber);
-$business_reg_num=$connection->real_escape_string($business_reg_num);
-$shopnumber=$connection->real_escape_string($shopnumber);
+$BRegNo=$connection->real_escape_string($BRegNo);
 $nic=$connection->real_escape_string($nic);
-$accountnum=$connection->real_escape_string($accountnum);
-$shopename=$connection->real_escape_string($shopename);
-
-$gastype=$connection->real_escape_string($gastype);
+$shopName=$connection->real_escape_string($shopName);
 
 
-$user=new gasagent_model();
-$user->setDetails($firstname,$lastname,$username,$street,$city,$postalcode,$password,$email,$contactnumber,$business_reg_num,$shopnumber,$nic,$accountnum,$shopename);
-$result=$user->registergasagent($connection);
+$user=new fuel_manager();
+$user->setDetails($firstname,$lastname,$username,$street,$city,$postalcode,$password,$nic,$email,$contactnumber,$BRegNo,$shopName);
+$result=$user->registerFuelManager($connection);
 if($result){
     $_SESSION['RegsuccessMsg'] = 'Registeration Request Sent Successfully';
-    header("Location: ../../view/gasagent/gasagentRegister_success.php");
+    header("Location: ../../view/fuelmanager/fuelManager_RegistationSusses.php");
 }else{
-    echo "Error";
-    header("Location: ../../view/gasagent/gasagent_register.php");
+    header("Location: ../../view/fuelmanager/fuelManager_Register.php");
 }
 
 $connection->close();
+
+
+
+
+

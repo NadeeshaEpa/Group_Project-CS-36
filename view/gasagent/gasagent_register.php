@@ -14,6 +14,7 @@
     <div class="registration-form">  
     <form action="../../controller/gasagent/register_controller.php" method="POST">
         <h2>Gasagent Registration Form</h2>
+
         <div class="font">
         <label for=":" id="name" >Name:</label><br>
           <input type="text" name="firstname" id="firstname" placeholder="First Name"  required>
@@ -41,6 +42,7 @@
 
             <label for=":" id="shopnumberlabel">Shop Number:</label><br>
             <input type="text" name="shopnumber" id="shopnumber" placeholder="Shop Number" required><br>
+
             
            
 
@@ -55,6 +57,7 @@
                               
                             </select>
                         </div><br><br>
+
 
 
 
@@ -78,7 +81,9 @@
         </div>   
     </form>
     </div>
-    <!-- <script src="../../public/js/newvalidation.js"></script> -->
+
+    <script src="../../public/js/newvalidation.js"></script>
+
 
 </body>
 </html>

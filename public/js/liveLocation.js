@@ -117,6 +117,10 @@
 // }, 5000);
 
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 function getLocation(callback) {
   if (navigator.geolocation) {
     // Get the current position
@@ -165,4 +169,8 @@ setInterval(function() {
     }
   });
 }, 10000);
+
+
+
+
 

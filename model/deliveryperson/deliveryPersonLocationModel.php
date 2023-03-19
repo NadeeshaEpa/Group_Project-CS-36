@@ -214,6 +214,11 @@ class location{
                             if($weight==37.5){
                                 continue;
                             }
+                            else{
+                                if($quantity>1){
+                                    $color='GREEN';
+                                }
+                            }
                            
                         }
                         if($Delivery_Vehicle_Type=='Bike'){

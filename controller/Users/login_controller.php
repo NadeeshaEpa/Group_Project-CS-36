@@ -20,6 +20,7 @@ if(isset($_POST['login'])){
         if($_SESSION['Type']=="Customer")
             header("Location: ../../view/customer/customer_select.php");  //redirect to the selection page
         else if($_SESSION['Type']=="Delivery_Person")
+
             header("Location: ../../controller/deliveryperson/deliveryDashboardFirstController.php");  //redirect to the dashboard page
         else if($_SESSION['Type']=="gasagent")
             header("Location: ../../view/gasagent/gasagent_dashboard.php");  //redirect to the dashboard page
@@ -29,6 +30,7 @@ if(isset($_POST['login'])){
             header("Location: ../../view/admin/admin_dashboard.php"); //redirect to the dashboard page
         else if($_SESSION['Type']=="Staff")
             header("Location: ../../view/staff/staff_dashboard.php");
+
         $connection->close();
         exit();
     }else{
