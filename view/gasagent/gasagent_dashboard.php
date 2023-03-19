@@ -140,7 +140,7 @@
 					foreach($result as $re){
 						?>
 						<div class="stock">
-						<p>Low stock on <?php echo $re['Weight']?>KG</p>
+						<p>Low stock on <?php echo $re['Weight']?>KG!</p>
 						</div>
 						<?php
 					}

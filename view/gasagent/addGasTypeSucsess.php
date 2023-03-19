@@ -10,6 +10,26 @@
     <title>fago</title>
 </head>
 <body>
+
+
+<h2>
+    <?php
+        if(isset($_SESSION['RegsuccessMsg'])){
+            echo $_SESSION['RegsuccessMsg'];
+            echo '<br>';
+            unset($_SESSION['RegsuccessMsg']);
+        }
+    ?>
+    </h2>
+   
+<div id="success-message" class="modal">
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <p> Success!</p><br>
+    <i class="fa fa-check-circle"></i>
+  </div>
+</div>
+
 	
 	 <section id="sidebar">
 		<a href="../../view/gasagent/View.php" class="brand">
@@ -107,24 +127,6 @@
 
    
 
-
-    <h2>
-    <?php
-        if(isset($_SESSION['RegsuccessMsg'])){
-            echo $_SESSION['RegsuccessMsg'];
-            echo '<br>';
-            unset($_SESSION['RegsuccessMsg']);
-        }
-    ?>
-    </h2>
-   
-    <div id="success-message" class="modal">
-  <div class="modal-content">
-    <span class="close-button">&times;</span>
-    <p> Success!</p><br>
-    <i class="fa fa-check-circle"></i>
-  </div>
-</div>
 
 
      

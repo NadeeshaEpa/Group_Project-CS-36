@@ -144,12 +144,16 @@
 									}
                                 
                                 ?>
+								
                                 </tbody>
                                 </table>
                                 
                             </div>                 
                 </div>
-				<div class="img"></div>
+				<br>
+				<div class="img"><img src="../../public/images/gas7.jpg"></div>
+				
+				
                 
         </div>
         </main>      

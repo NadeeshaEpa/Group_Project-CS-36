@@ -12,46 +12,7 @@
 <body>
     <?php require_once 'customer_header.php'; ?>
     <div class="dcontainer">
-        <div class="sidebar">
-            <div class="left">
-                <div class="left1">
-                <div class="active"> 
-                    <a href="customer_dashboard.php">
-                        <button>
-                        <div class="left1-1">
-                            <img src="../../public/images/account.png" alt="logo" width="20px" height="20px">
-                        </div>
-                        <p>Account</p>
-                        <p>personal infromation</P>
-                        </button>    
-                    </a>
-                    
-                </div>  
-                </div>
-                <div class="left2">
-                    <form action="../../controller/customer/order_controller.php" method="POST">
-                        <button name="orders">
-                            <div class="left2-1">
-                                <img src="../../public/images/order.png" alt="logo" width="20px" height="20px">
-                            </div>
-                            <p>My orders</p>
-                            <p>order details</P>
-                        </button>
-                    </form>    
-                </div>
-                <div class="left2">
-                <form action="../../controller/customer/review_controller.php" method="POST">
-                    <button name="review">
-                        <div class="left2-1">
-                            <img src="../../public/images/ratings.png" alt="logo" width="20px" height="20px">
-                        </div>
-                        <p>Reviews</p>
-                        <p>Rate delivery service</P>
-                    </button>
-                    </form>
-                </div>
-            </div>
-        </div>
+       
         <div class="form">
             <h2>Change Password</h2>
 

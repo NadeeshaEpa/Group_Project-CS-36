@@ -365,8 +365,9 @@ body {
     margin-left: 40%;
     font-weight: bold;
     width:20%;
-    background: #4E60FF;
-    border-radius: 20px;
+    background: #44925e;
+	color: white;
+    border-radius: 8px;
     align-items: center;
     margin-top: 5%;
 
