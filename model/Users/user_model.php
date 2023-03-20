@@ -70,13 +70,11 @@ class user_model{
                     return false;   //login will be unsuccessful
                 }
             }
-<<<<<<< HEAD
+
 
             else if($this->Type=="Admin" || $this->Type=="Staff" || $this->Type=="Stock Manager"){
 
-=======
-            else if($this->Type=="Admin" || $this->Type=="Staff" || $this->Type=="Stock Manager"){
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
                 return true;   //login will be successful
             }else{
                 $_SESSION['login_attempts']+=1;

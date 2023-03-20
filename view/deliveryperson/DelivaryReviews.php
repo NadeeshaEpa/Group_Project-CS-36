@@ -26,11 +26,9 @@ if(!isset($_SESSION['User_id'])){
 		</a>
 		<ul class="side-menu top">
 			<li >
-<<<<<<< HEAD
+
 				<a href="../../controller/deliveryperson/deliveryDashboardFirstController.php">
-=======
-				<a href="../../view/deliveryperson/DelivaryDashboard.php">
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>

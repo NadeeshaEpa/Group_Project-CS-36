@@ -4,11 +4,7 @@ class shopManager{
     public function getShopManagerDetails($connection){
         $this->User_id=$_SESSION['User_id'];
         $sql="SELECT u.Username,u.Email,u.First_Name,u.Last_Name,u.City,u.Street,u.Postalcode,c.Contact_No,u.Password,s.NIC FROM user u INNER JOIN user_contact c on u.User_id=c.User_id INNER JOIN stock_manager s on u.User_id=s.id WHERE u.User_id=$this->User_id";
-<<<<<<< HEAD
-        
-=======
-       
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
         $result=mysqli_query($connection,$sql);
         if($result->num_rows===0){
             return false;
@@ -80,7 +76,7 @@ class shopManager{
             $result1=$connection->query($sql1);
             $sql2="DELETE FROM `user_contact` WHERE User_id='$User_id'";
             $result2=$connection->query($sql2);
-<<<<<<< HEAD
+
             $sql3="DELETE FROM `stock_manager` WHERE id='$User_id'";
             
             $result3=$connection->query($sql3);
@@ -91,16 +87,7 @@ class shopManager{
             $result4=$connection->query($sql4);
             if($result1===true && $result2===true && $result3===true && $result4===true && $result5==true){
                 
-=======
-            $sql3="DELETE FROM `deliveryperson` WHERE DeliveryPerson_Id='$User_id'";
-            $result3=$connection->query($sql3);
-            // $sql5="DELETE FROM `profileimg` WHERE User_id='$User_id'";
-            // $result5=$connection->query($sql5);
-            //enable foreign key checks
-            $sql4="SET FOREIGN_KEY_CHECKS=1";
-            $result4=$connection->query($sql4);
-            if($result1===true && $result2===true && $result3===true && $result4===true ){
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
                 return true;
             }else{
                 return false;
@@ -109,7 +96,7 @@ class shopManager{
             return false;
         }
     }
-<<<<<<< HEAD
+
     public function updateImage($connection,$user_id,$fileNameNew){
         //update image name and status
         $sql="UPDATE `profileimg` SET `imgname`='$fileNameNew',`status`=1 WHERE User_id='$user_id'";
@@ -135,6 +122,5 @@ class shopManager{
             return false;
         }
     }
-=======
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
 }
