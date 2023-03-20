@@ -26,11 +26,9 @@ if(!isset($_SESSION['User_id'])){
 		</a>
 		<ul class="side-menu top">
 			<li >
-<<<<<<< HEAD
+
 				<a href="../../controller/deliveryperson/deliveryDashboardFirstController.php">
-=======
-				<a href="../../view/deliveryperson/DelivaryDashboard.php">
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -78,7 +76,7 @@ if(!isset($_SESSION['User_id'])){
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-<<<<<<< HEAD
+
 			
 			<li class="profile">
 			    <?php if($_SESSION['img-status'] == 0){?>
@@ -95,24 +93,7 @@ if(!isset($_SESSION['User_id'])){
 					     echo $_SESSION['Type'];
 					}?></h5>
 			</li>
-=======
-			<!-- <a href="#" class="nav-link">Categories</a> -->
-			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
-			<a href="#" class="profile">
-				<img src="../../public/images/user.jpg">
-			</a>
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
 			
 		</nav>
 		<!-- NAVBAR -->
@@ -191,7 +172,7 @@ if(!isset($_SESSION['User_id'])){
                             $result=$_SESSION['userDetails']; 
                     }
                 ?>
-<<<<<<< HEAD
+
                 <form action="../../controller/deliveryperson/delivaryprofilecontroller.php" method="POST" enctype="multipart/form-data">   
                         <div class="prof_details">
 						      
@@ -224,10 +205,7 @@ if(!isset($_SESSION['User_id'])){
                                     
                                 </div>    
                             </div>  
-=======
-                <form action="../../controller/deliveryperson/delivaryprofilecontroller.php" method="POST">   
-                        <div class="prof_details">  
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
                             <div class="down">
                                 <div class="down1">
                                     <label>First name:</label><br>  
@@ -311,10 +289,7 @@ if(!isset($_SESSION['User_id'])){
 								</div>
 								<div class="otherdeliveryProfilebtndown1">
 								<button onclick="document.getElementById('id01').style.display='block'" class="b5" id="deliveyDeletebtn">Delete Account</button>
-<<<<<<< HEAD
-								
-=======
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
 								</div>
 							</div>
 				         
@@ -339,24 +314,17 @@ if(!isset($_SESSION['User_id'])){
 								    <button type="submit"  name="cancelpwd" class="cancelbtn">Cancel</button>
 								</form>         
                             </div>  
-<<<<<<< HEAD
+
                             <div id="id01" class="modal" style="display: none">
                                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close">×</span>
-=======
 
-							
-							<!-- <div class="down">
-								
-                                <div id="id01" class="modal">
-                                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
                                     <form class="modal-content" action="../../controller/deliveryperson/delivaryprofilecontroller.php" method="POST">
                                         <div class="container">
                                             <h1>Delete Account</h1>
                                             <p>Are you sure you want to delete your account?</p>
                                         
                                             <div class="clearfix">
-<<<<<<< HEAD
+
                                                 <button type="button" onclick="document.getElementById('id01').style.display='none'" id="profilecancelbtnid">Cancel</button>
                                                 <button type="submit" id="profiledeletebtnid" name="deleteaccount">Delete</button>
                                             </div>
@@ -367,17 +335,7 @@ if(!isset($_SESSION['User_id'])){
 							
                 
                 </div>
-=======
-                                                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                                                <button type="submit" class="deletebtn" name="deleteaccount">Delete</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div> 
-							</div> -->
-                
-            </div>
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
 			
 			</div> 
 		</main>
@@ -385,18 +343,8 @@ if(!isset($_SESSION['User_id'])){
 	</section>
 	<!-- CONTENT -->
 	
-<<<<<<< HEAD
-=======
-    <script>
-		var modal = document.getElementById('id01');
 
-       window.onclick = function(event) {
-        if (event.target == modal) {
-	        modal.style.display = "none";
-        }            
-       }
-	</script>
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
 	<script src="../../public/js/delivaryDashboard.js"></script>
 </body>
 </html>

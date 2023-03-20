@@ -276,7 +276,7 @@ body {
 	height: 36px;
 	object-fit: cover;
 	border-radius: 50%;
-<<<<<<< HEAD
+
 	margin-left: 950px;
 	
 }
@@ -297,9 +297,7 @@ body {
 	
 }
 /**/
-=======
-}
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
 #content nav .switch-mode {
 	display: block;
 	min-width: 50px;
@@ -663,11 +661,9 @@ body {
 
 .d_form{
 	width: 80%;
-<<<<<<< HEAD
+
     height: 39%;
-=======
-    height: 45%;
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
     margin-top: 20px;
 	margin-left: 20%;
 
@@ -698,7 +694,7 @@ body {
 
 }
 .d_form .updatebtn {
-<<<<<<< HEAD
+
      background-color: #79d37c;
 	 color: white;
 	 font-size: 18px;
@@ -707,12 +703,7 @@ body {
 	background-color: #da3a3a;
 	color: white;
 	font-size: 18px;
-=======
-     background-color: #046f34;
-}
-.d_form .cancelbtn {
-	background-color: #da3a3a;
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
 }
 .d_form h2{
 	font-size: 16px;
@@ -797,7 +788,7 @@ body {
     width: 200px;
 	height: 40px;
 	border:none;
-<<<<<<< HEAD
+
     margin-left: 41%;
 }
 
@@ -841,9 +832,7 @@ body {
 .down1 h6{
 	background-color: red;
 	text-align: center;
-=======
 
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 }
 /*  */
 
@@ -976,10 +965,9 @@ body {
 	height: 10%;
 	margin-top: 3%;
 	display: flex;
-<<<<<<< HEAD
+
 	margin-bottom: 3%;
-=======
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
   }
   .delivary_nof_msg h6{
 	margin: auto;
@@ -999,10 +987,9 @@ body {
 	width: 100%;
 	height: 10%;
 	display: flex;
-<<<<<<< HEAD
+
 	margin-bottom: 3%;
-=======
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
 
   }
 
@@ -1122,11 +1109,9 @@ body {
 
   #complaneoutterid{
 	
-<<<<<<< HEAD
+
 	height: 75vh;
-=======
-	height: 65vh;
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
 	background-image: url(../../images/DeliveryPerson/D_add1.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -1239,7 +1224,7 @@ body {
 	border: none;
 	font-size: 17px;
   }
-<<<<<<< HEAD
+
  /* complane and rewies view button css*/
   .head-title .right-button a{
 	text-decoration: none;
@@ -1276,18 +1261,15 @@ body {
  }
  /**/
 
-=======
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
 
   /**/
 
 /* dashboard hard codede tempory css*/
 
-<<<<<<< HEAD
+
 /* .tempD{
-=======
-.tempD{
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
 	margin-left: 210px;
 	margin-bottom: 10px;
     display: flex;
@@ -1365,16 +1347,14 @@ body {
 
 #temp2{
 	background-color:#da3a3a ;
-<<<<<<< HEAD
+
 } */
-=======
-}
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
 
 /* */
 
 
-<<<<<<< HEAD
+
 /* profile delete account popup section*/
 
 .modal{
@@ -1595,8 +1575,7 @@ body {
 /**/
 
 
-=======
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
   
   
   

@@ -2,7 +2,7 @@
 
 class brand{
 
-<<<<<<< HEAD
+
     public function BrandQuentityUpdate($connection,$Quantity,$code){
         $sql="UPDATE product SET Quantity=$Quantity,`Date`=CURDATE() WHERE  Item_code=$code";
         $result=$connection->query($sql);
@@ -33,13 +33,7 @@ class brand{
         if($result){
             return true;
             
-=======
-    public function BrandQuenBtn($connection,$Quantity,$code){
-        $sql="UPDATE product SET Quantity=$Quantity WHERE  Item_code=$code";
-        $result=$connection->query($sql);
-        if($result){
-            return true;
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
         }
         else{
             return false;

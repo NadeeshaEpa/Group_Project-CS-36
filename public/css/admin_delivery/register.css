@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 /* body{
     margin: 0%;
@@ -6,32 +5,15 @@
     font-family: 'Poppins', sans-serif;
 } */
 
-body{
-    margin: 0%;
-    background-color: #fffdf0;
-    font-family: 'Poppins', sans-serif;
-}
-
-=======
-/* body{
-    margin: 0%;
-    background-color: #fffdf0;
-    font-family: 'Poppins', sans-serif;
-} */
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 .registration-form{
     background: #fff;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     margin-top: 30px;
-<<<<<<< HEAD
 
     width: 70%;
 
-=======
-    width: 70%;
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
     margin: 0 auto;
     padding-left: 60px;
     margin-top: 30px;

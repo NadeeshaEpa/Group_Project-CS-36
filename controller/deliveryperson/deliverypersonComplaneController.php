@@ -5,11 +5,9 @@ require_once("../../model/deliveryperson/complaneModel.php");
 
 if(isset($_POST['complane_btn'])){
     $refNo=$_POST['complaneRef'];
-<<<<<<< HEAD
+
     $discription=$_POST['complaneDes'];
-=======
-    $discription=$_POST['complane_diesf'];
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
     $discription=$connection->real_escape_string($discription);
     $refNo=$connection->real_escape_string($refNo);
     
