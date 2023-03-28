@@ -405,7 +405,7 @@ class payment_model{
         }
     }
     public function getgasagentemail($connection,$agent){
-        $sql="select Email from gasagent where User_id='$agent'";
+        $sql="select Email from user where User_id='$agent'";
         $result=$connection->query($sql);
         if(!$result){
             return false;

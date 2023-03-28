@@ -95,8 +95,11 @@
                                                     <a href="../../controller/customer/review_controller.php?erid=<?php echo $detail['Rate_id']; ?>">Edit</a>
                                                 </div>
                                                 <div class="rdeletebtn">
-                                                    <a href="../../controller/customer/review_controller.php?drid=<?php echo $detail['Rate_id']; ?>">Delete</a>
+                                                <button onclick="deletereview(<?php echo $detail['Rate_id']; ?>);">Delete</button>
                                                 </div>
+                                                <!-- <div class="rdeletebtn">
+                                                    <a href="../../controller/customer/review_controller.php?drid=<?php echo $detail['Rate_id']; ?>">Delete</a>
+                                                </div> -->
                                         </td>
                                     </tr>
                                 <?php } ?>
@@ -136,5 +139,30 @@
                 </div>
             </div> 
     </div>
+    <!-- pop up message -->
+    <div id="backgr">
+        <div id="cancel_popup">
+            <div class="cancel_contect">
+                <p>Are you sure you want to Delete this review?</p>
+                <div class="buttons">
+                    <button id="yes">Yes</button>
+                    <button id="no">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function deletereview(id){
+            document.getElementById("backgr").style.display="block";
+            document.getElementById("cancel_popup").style.display="block";
+            document.getElementById("yes").addEventListener("click",function(){
+                window.location.href="../../controller/customer/review_controller.php?drid="+id;
+            });
+            document.getElementById("no").addEventListener("click",function(){
+                document.getElementById("backgr").style.display="none";
+                document.getElementById("cancel_popup").style.display="none";
+            });
+        }  
+    </script> 
 </body>
 </html>

@@ -16,7 +16,8 @@
     <div class="header"> 
         <ul>
             <div class="name">
-                <li><?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?></li>
+                <li><?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']?></li>
+                <li class="user-type"><?php echo $_SESSION['Type'] ?></li>
             </div>
             <a href="../../controller/customer/account_controller.php?viewacc='1'">
             <li><?php if($_SESSION['img-status'] == 0){?>

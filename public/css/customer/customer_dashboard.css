@@ -526,7 +526,7 @@ body{
 .editbtn a:hover{
     font-size: 19px;
 }
-.rdeletebtn a{
+.rdeletebtn button{
     color:black;
     background-color: #da3a3a;
     border-radius: 10px;
@@ -541,8 +541,21 @@ body{
     font-size: 18px;
     font-weight: bold;
 }
-.rdeletebtn a:hover{
+.rdeletebtn button:hover{
    font-size: 19px;
+}
+.deletepopup{
+    display: none;
+    position: absolute;
+    left: 60%;
+    top: 25%;
+    width: 50%; /* Full width */
+    height: 50%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color:#D9D9D9;
+    padding-top: 50px;
+    border-radius: 20px;
+    color: black;
 }
 .editreview-form{
     width: 80%;
