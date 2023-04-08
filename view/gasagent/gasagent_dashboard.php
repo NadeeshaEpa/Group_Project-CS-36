@@ -92,10 +92,10 @@
 			<i class='bx bx-menu' ></i>
 			<a href="#" class="nav-link">Categories</a>
 			<form action="#">
-				<div class="form-input">
+				<!-- <div class="form-input">
 					<input type="search" placeholder="Search...">
 					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
+				</div> -->
 			</form>
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
@@ -192,7 +192,7 @@
 				<li>
 					<i class='bx bxs-group' ></i>
 					<span class="text">
-						<label for="" id="Nodeliverid1" style=" font-size:20px">Total orders:12</label>
+						<label for="" id="Nodeliverid1" style=" font-size:20px">Total orders:3</label>
                         <label for="" id="Nodeliverid2" style="font-size: 32px; margin-left:5%;"></label>
 					</span>
 				</li>
