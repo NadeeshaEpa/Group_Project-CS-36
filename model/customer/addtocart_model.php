@@ -320,6 +320,7 @@ class addtocart_model{
         }
         $flag=0;
         $checknew=0;
+        $newcylinders=0;
         foreach($cart as $c){
             $weight=$c['weight'];
             if($weight>12.5){
@@ -327,6 +328,7 @@ class addtocart_model{
             }
             if($c['cylinder_type']=='new'){
                 $checknew=1;
+                $newcylinders=$newcylinders+$c['quantity'];
             }
         }
         if($flag==1 || $count>=4){
@@ -361,14 +363,14 @@ class addtocart_model{
             }
         }
         if($distance>1){
-            if($checknew==1 && $count==1){
+            if($checknew==1 && $count==$newcylinders){
                 $delivery_fee=$delivery_fee*$distance;
             }else{
                 $delivery_fee=$delivery_fee*$distance*2;
             }
            
         }else{
-            if($checknew==1 && $count==1){
+            if($checknew==1 && $count==$newcylinders){
                 $delivery_fee=$delivery_fee;
             }else{
                 $delivery_fee=$delivery_fee*2;

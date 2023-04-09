@@ -27,7 +27,7 @@ require_once '../../payment_config.php';
     <h1><?php echo $dcheckout[0]['shop_name']?></h1>
     <hr>
     <?php 
-    if(isset($_SESSION['error_message'])){?>
+    if(isset($_SESSION['error_message']) ||isset($_SESSION['quantity_error']) ){?>
     <div class="payment-failed">
       <p>Sorry!, payment failed due to no sufficient stock available for the order.<br>
       Please change the quantity or try again later.
@@ -35,6 +35,7 @@ require_once '../../payment_config.php';
     </div>
     <?php
       unset($_SESSION['error_message']);
+      unset($_SESSION['quantity_error']);
     }
     ?>
     <h2>Total Payment</h2>

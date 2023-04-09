@@ -33,6 +33,9 @@ if(isset($_POST['stripeToken'])){
     $charge_id=$charge->id;
 
     if ($charge->status == 'succeeded') {
+
+        $conn->begin_transaction();
+
         $order=$payment->order($connection,$agent,$_SESSION['User_id'],$amount,$charge_id);
         $placeorder=$payment->placeorder($connection,$_SESSION['User_id'],$agent);
         $final_orderdetails=$payment->getorderdetails($connection,$_SESSION['User_id'],$agent);
@@ -43,8 +46,20 @@ if(isset($_POST['stripeToken'])){
 
         if($order===false || $placeorder===false || $cart===false || $pay===false){
             $_SESSION['payment']="failed";
-            header("Location: ../../view/customer/total.php");
+            $refund = \Stripe\Refund::create([
+                'charge' => $charge_id,
+                'amount' => $amount,
+            ]);
+            if($refund->status == 'succeeded'){
+                $conn->rollback();
+                $_SESSION['quantity_error'] = "Not enough stock available for the order.";
+                header("Location: ../../view/customer/total.php");
+            }else{
+                $conn->rollback();
+                header("Location: ../../view/customer/error.php");
+            }
         }else{
+            $conn->commit();
             $_SESSION['payment']="success";
             //email order details to customer using php mailer library
             require_once '../../model/customer/email_model.php';
