@@ -253,10 +253,11 @@ class payment_model{
                     $price=$item['price'];
                     $productid=$item['item_id'];
 
-                    $sql4="select price from product where item_code='$productid'";
+                    $sql4="select price,name from product where item_code='$productid'";
                     $result4=$connection->query($sql4);
                     $row=$result4->fetch_assoc();
                     $price=$row['price'];
+                    $name=$row['name'];
 
                     $sql5="select Order_Id,order_date from `order` order by Order_Id desc limit 1";
                     $result5=$connection->query($sql5);

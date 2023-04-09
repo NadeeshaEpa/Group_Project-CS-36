@@ -108,7 +108,10 @@ class user_model{
                 $row=$result->fetch_assoc();
                 $last_order_date=$row['order_date'];
                 $last_order_date=date_create($last_order_date);
+
+                date_default_timezone_set('Asia/Colombo');
                 $current_date=date_create(date("Y-m-d"));
+                
                 $diff=date_diff($last_order_date,$current_date);
                 $diff=$diff->format("%a");
                 if($diff > $time_period){
