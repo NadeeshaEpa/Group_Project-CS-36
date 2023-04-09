@@ -7,6 +7,7 @@ require_once("../../model/customer/payment_model.php");
 if(isset($_POST['addtocart'])){
    $price=$_POST['price'];
    $gasid=$_POST['gasid'];
+   $item_id=$_POST['item_id'];
    $weight=$_POST['weight'];
    $quantity=$_POST['quantity'];
    $type=$_POST['gastype'];
@@ -14,6 +15,7 @@ if(isset($_POST['addtocart'])){
    $cylinder=$_POST['cylinder'];
 
    $price=$connection->real_escape_string($price);
+   $item=$connection->real_escape_string($item_id);
    $gasid=$connection->real_escape_string($gasid);
    $weight=$connection->real_escape_string($weight);
    $quantity=$connection->real_escape_string($quantity);
@@ -22,7 +24,7 @@ if(isset($_POST['addtocart'])){
    $total=$price*$quantity;
    $cart=new addtocart_model();
   
-   $result=$cart->addtocart($connection,$User_id,$gasid,$weight,$quantity,$total,$type,$cylinder);
+   $result=$cart->addtocart($connection,$item_id,$User_id,$gasid,$weight,$quantity,$total,$type,$cylinder);
     if($result===false){
         $_SESSION['addtocart']="failed";
         if($cylinder=="new"){

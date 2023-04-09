@@ -31,17 +31,9 @@ class payment_model{
                     $weight=$item['weight'];
                     $type=$item['type'];
                     $quantity=$item['quantity'];
+                    $item_id=$item['item_id'];
 
-                    $weight1=explode(" ",$weight);
-                    $count=count($weight1);
-                    $Product_type=$weight1[$count-1];
-                    $category=$type;
-                    //name equals to the rest of the words
-                    $name="";
-                    for($i=0;$i<$count-1;$i++){
-                        $name=$name.$weight1[$i]." ";
-                    }
-                    $sql3="select quantity from product where Name='$name' and Product_type='$Product_type' and Category='$category'";
+                    $sql3="select quantity from product where Item_code='$item_id'";
                     $result3=$connection->query($sql3);
                     $row=$result3->fetch_assoc();
                     $quantityall=$row['quantity'];
@@ -152,21 +144,8 @@ class payment_model{
                     $type=$item['type'];
                     $quantity=$item['quantity'];
                     $price=$item['price'];
-
-                    $weight1=explode(" ",$weight);
-                    $count=count($weight1);
-                    $Product_type=$weight1[$count-1];
-                    $category=$type;
-                    //name equals to the rest of the words
-                    $name="";
-                    for($i=0;$i<$count-1;$i++){
-                        $name=$name.$weight1[$i]." ";
-                    }
-                    $sql3="select item_code from product where Name='$name' and Product_type='$Product_type' and Category='$category'";
-                    $result3=$connection->query($sql3);
-                    $row=$result3->fetch_assoc();
-                    $productid=$row['item_code'];
-
+                    $productid=$item['item_id'];
+                
                     $this->updatestock($connection,$quantity,$productid);
 
                     $sql4="select price from product where item_code='$productid'";
@@ -202,16 +181,7 @@ class payment_model{
                     $quantity=$item['quantity'];
                     $price=$item['price'];
                     $cylinder_type=$item['cylinder_type'];
-
-                    $sql3="select company_id from gas_company where company_name='$type'";
-                    $result3=$connection->query($sql3);
-                    $row=$result3->fetch_assoc();
-                    $companyid=$row['company_id'];
-                    
-                    $sql4="select Cylinder_Id from gascylinder where Type='$companyid' and Weight='$weight'";
-                    $result4=$connection->query($sql4);
-                    $row=$result4->fetch_assoc();
-                    $cylinderid=$row['Cylinder_Id'];
+                    $cylinderid=$item['item_id'];                    
 
                     $this->updateagent($connection,$agent,$quantity,$cylinderid);
 
@@ -281,20 +251,7 @@ class payment_model{
                     $type=$item['type'];
                     $quantity=$item['quantity'];
                     $price=$item['price'];
-
-                    $weight1=explode(" ",$weight);
-                    $count=count($weight1);
-                    $Product_type=$weight1[$count-1];
-                    $category=$type;
-                    //name equals to the rest of the words
-                    $name="";
-                    for($i=0;$i<$count-1;$i++){
-                        $name=$name.$weight1[$i]." ";
-                    }
-                    $sql3="select item_code from product where Name='$name' and Product_type='$Product_type' and Category='$category'";
-                    $result3=$connection->query($sql3);
-                    $row=$result3->fetch_assoc();
-                    $productid=$row['item_code'];
+                    $productid=$item['item_id'];
 
                     $sql4="select price from product where item_code='$productid'";
                     $result4=$connection->query($sql4);

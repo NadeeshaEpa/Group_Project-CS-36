@@ -113,7 +113,7 @@ class order_model{
         }
     }
     public function order_count($connection,$userid){
-        $sql="Select distinct order_id from `placeorder` WHERE Customer_Id='$userid'";
+        $sql="Select distinct p.order_id from `placeorder` p inner join `order` o ON o.Order_id=p.Order_Id WHERE p.Customer_Id='$userid' and o.order_status=1";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return 0;
@@ -122,7 +122,7 @@ class order_model{
         }
     }
     public function fago_order_count($connection,$userid){
-        $sql="Select distinct order_id from `shop_placeorder` where Customer_Id='$userid'";
+        $sql="Select distinct p.order_id from `shop_placeorder` p inner join `order` o ON o.Order_id=p.Order_Id where p.Customer_Id='$userid' and o.order_status=1";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return 0;

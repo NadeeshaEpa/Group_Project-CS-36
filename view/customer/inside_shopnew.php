@@ -80,6 +80,7 @@
                             <label for="weight" class="gasname"><?php echo $type?> Gas <?php echo $gasdetail['Weight']?>kg Cylinder</label><br><br>
                             <label for="Quantity">Availability:<?php echo $gasdetail['Quantity']?></label><br><br>
                             <label for="price" class="price">Rs:<?php echo $gasdetail['newcylinder_price']?></label><br>
+                            <input type="hidden" name="item_id" value="<?php echo $gasdetail['item_id']?>">
                             <input type="hidden" name="price" value="<?php echo $gasdetail['newcylinder_price']?>">
                             <input type="hidden" name="gasid" value="<?php echo $Gas_id?>">
                             <input type="hidden" name="quantity" value="<?php echo $gasdetail['Quantity']?>">
