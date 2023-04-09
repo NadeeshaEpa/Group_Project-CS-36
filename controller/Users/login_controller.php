@@ -17,6 +17,11 @@ if(isset($_POST['login'])){
 
     if($result){
         $_SESSION['login']="success";  //if the login is successful, set the session variable
+
+        //set time zone to Sri Lanka
+        date_default_timezone_set('Asia/Colombo');
+        $_SESSION['login_time']=time();  //set the login time
+
         if($_SESSION['Type']=="Customer"){
             $last_order=$user->limit_order($connection,$_SESSION['User_id']);
             if($last_order){
