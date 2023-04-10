@@ -116,59 +116,6 @@
         </table>      
     </div>
     <hr>
-<<<<<<< HEAD
-    <h2>Delivery Details</h2>
-    <div class="delivery">
-        <div class="delivery-left">
-          <form action="#" method="Post">  
-            <input type="checkbox" name="delivery" id="delivery" value="delivery">
-            <label for="delivery">Get delivered</label><br><br>
-            <label for="address">Address:</label><br>
-            <input type="text" name="address" id="address" placeholder="Enter your address" class="address"><br>
-          </form>
-        </div>
-        <div class="delivery-right">
-            <input type="checkbox" name="nodelivery" id="nodelivery" value="nodelivery">
-            <label for="delivery">Pick up</label><br>
-            <p>Please notice that if you request for a pickup you have to pickup the cylinder within 48hrs from the shop. Its compulsory to bring your old cylinder.</p>
-        </div>
-    </div>
-    <hr>
-    <div class="last">
-      <?php 
-        $total=0;
-        foreach($checkout as $item){
-          $total+=$item['price'];
-        }
-      ?>
-      <div class="total-left">
-          <table class="total">
-              <tr>
-                <td>Sub total:</td>
-                <td>Rs.<?php echo $total?></td>
-              </tr>
-              <tr>
-                <td>Delivery fee:</td>
-                <td>Rs.<?php echo $total*0.01?></td>
-              </tr>
-              <tr>
-              </tr>
-              <tr>
-                <td>Total:</td>
-                <td>Rs.<?php echo $total+$total*0.01?></td>
-              </tr>
-          </table>
-      </div>    
-      <div class="check">
-        <form action="customer_payment.php" method="Post">
-
-          <button  class="checkout-btn">Checkout</button>
-        </form>
-      </div>
-    </div>
-    
-
-=======
     <h2>Delivery Details</h2><br>
     <form action="../../controller/customer/addtocart_controller.php" method="POST" id="delivery-form">
       <input type="hidden" name="agent" id="agent" value="<?php echo $checkout[0]['gasagent_id']?>">
@@ -245,6 +192,5 @@
         
     </div> 
     <script src="../../public/js/customer/cart.js"></script>
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 </body>
 </html>
