@@ -125,7 +125,7 @@
                 </table>
                 <?php 
                     if(isset($_SESSION['shop_page'])){
-                      $shop_page=$_SESSION['page'];
+                      $shop_page=$_SESSION['shop_page'];
                     }else{
                       $shop_page=1;
                     }

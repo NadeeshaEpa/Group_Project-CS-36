@@ -3,9 +3,9 @@
        header("Location: ../../index.php");
    }
    if (isset($_SESSION['login_time'])) {// Check if the user's login time has expired
-    if (time() - $_SESSION['login_time'] > 3600) { // Destroy the session and redirect to the login page
+    if (time() - $_SESSION['login_time'] > 6400) { // Destroy the session and redirect to the login page
       session_destroy();
-      header('Location: ../login.php');
+      header('Location: ../login.php?session=expired');
       exit;
     }
   }
