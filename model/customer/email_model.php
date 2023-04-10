@@ -67,8 +67,32 @@ class email_model{
         $this->mail->isHTML(true);
         $this->mail->Subject = $subject;
         $this->mail->Body = $message;
-        // $this->mail->send();
-        //check whether the email is sent successfully
+
+        if(!$this->mail->send()){
+            echo "Message could not be sent.";
+            echo "Mailer Error: " . $this->mail->ErrorInfo;
+        }else{
+            echo "Message has been sent";
+        }
+    }
+    public function sendRefundEmail_agent($connection,$order_id,$gasagentemail){
+        $sql="SELECT * FROM `order` WHERE Order_id='$order_id'";
+        $result=$connection->query($sql);
+        $order=$result->fetch_assoc();
+
+        $subject="Refund Details - Agent";
+        $message="The order which is for your shop under the order ID ".$order['Order_id']." has been refunded successfully.<br>
+         The refund details are as follows: <br>";
+        $message.="<br>Order ID: ".$order['Order_id'];
+        $message.="<br>Order Date: ".$order['Order_date'];
+        $message.="<br>Regards,<br>Fago Team";
+
+        $this->mail->setFrom('fagoorders@gmail.com', 'Fago');
+        $this->mail->addAddress($gasagentemail);
+        $this->mail->isHTML(true);
+        $this->mail->Subject = $subject;
+        $this->mail->Body = $message;
+
         if(!$this->mail->send()){
             echo "Message could not be sent.";
             echo "Mailer Error: " . $this->mail->ErrorInfo;

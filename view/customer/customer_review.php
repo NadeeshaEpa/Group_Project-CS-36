@@ -4,6 +4,7 @@ if(isset($_SESSION['deliverynames'])){
         $names=[];
     }else{
         $names=$_SESSION['deliverynames'];
+
     }
 }
 ?>

@@ -19,9 +19,6 @@ if(isset($_POST['register'])){
     $contactnumber = $_POST['contactnumber'];
     $accountnum= $_POST['accountnum'];
     $shopename= $_POST['shopName'];
-
-
-    
     $gastype= $_POST['gastype'];
     $latitude= $_POST['latitude'];
     $longitude= $_POST['longitude'];

@@ -342,5 +342,39 @@ class order_model{
             }
         }
     }
+    public function getGasAgentEmail($connection,$order_id){
+        $sql="select GasAgent_Id from `placeorder` WHERE Order_Id='$order_id'";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $gasagent_id=$result->fetch_object()->GasAgent_Id;
+            $sql="select Email from user WHERE User_id='$gasagent_id'";
+            $result=$connection->query($sql);
+            if($result->num_rows===0){
+                return false;
+            }else{
+                $email=$result->fetch_object()->Email;
+                return $email;
+            }
+        }
+    }
+    public function getstockmanagerEmail($connection,$order_id){
+        $sql="select StockManager_Id from `shop_placeorder` WHERE Order_Id='$order_id'";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $stockmanager_id=$result->fetch_object()->StockManager_Id;
+            $sql="select Email from user WHERE User_id='$stockmanager_id'";
+            $result=$connection->query($sql);
+            if($result->num_rows===0){
+                return false;
+            }else{
+                $email=$result->fetch_object()->Email;
+                return $email;
+            }
+        }
+    }
     
 }

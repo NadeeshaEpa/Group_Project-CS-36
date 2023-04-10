@@ -112,7 +112,9 @@ if(isset($_GET['cancelid'])){
             $email=new email_model();
             $shop="gas";
             $useremail=$order->getUserEmail($connection,$order_id,$shop);
+            $gasagentemail=$order->getGasAgentEmail($connection,$order_id);
             $email->sendRefundEmail($connection,$order_id,$useremail);
+            $email->sendRefundEmail_agent($connection,$order_id,$gasagentemail);
             header("Location: ../../view/customer/customer_cancelorder.php");
         }
     }else{
@@ -140,7 +142,9 @@ if(isset($_GET['shop_cancelid'])){
             $email=new email_model();
             $shop="fago_shop";
             $useremail=$order->getUserEmail($connection,$order_id,$shop);
+            $stockmanager=$order->getstockmanagerEmail($connection,$order_id);
             $email->sendRefundEmail($connection,$order_id,$useremail);
+            $email->sendRefundEmail_agent($connection,$order_id,$stockmanager);
             header("Location: ../../view/customer/customer_cancelorder.php");
         }
     } else {
