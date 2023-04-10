@@ -97,9 +97,6 @@
                                                 <div class="rdeletebtn">
                                                 <button onclick="deletereview(<?php echo $detail['Rate_id']; ?>);">Delete</button>
                                                 </div>
-                                                <!-- <div class="rdeletebtn">
-                                                    <a href="../../controller/customer/review_controller.php?drid=<?php echo $detail['Rate_id']; ?>">Delete</a>
-                                                </div> -->
                                         </td>
                                     </tr>
                                 <?php } ?>
