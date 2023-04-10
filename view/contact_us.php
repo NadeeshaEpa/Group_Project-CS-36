@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <?php include 'header.php'; ?>
+    <?php include 'home_header.php'; ?>
     <img src="../public/images/contact.jpeg" alt="contact-us" width="100%" height="75%">
     <h1>Contact us for any clarification</h1>
     <div class="box-info">

@@ -126,4 +126,14 @@ class user_model{
         
 
     }
+    public function review($connection){
+        $sql="select u.First_Name,u.Last_Name,u.Type,c.description,c.date,p.imgname from user u inner join profileimg p on u.User_id=p.User_id inner join company_review c on p.User_id=c.customer_id";
+        $result=$connection->query($sql);
+        $reviews=[];
+        foreach($result as $row){
+            array_push($reviews,['First_Name'=>$row['First_Name'],'Last_Name'=>$row['Last_Name'],'Type'=>$row['Type'],'description'=>$row['description'],'date'=>$row['date'],'imgname'=>$row['imgname']]);
+        }
+        return $reviews;
+
+    }
 }

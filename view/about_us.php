@@ -1,3 +1,11 @@
+<?php
+session_start();
+if(isset($_SESSION['company_reviews'])){
+    $reviews=$_SESSION['company_reviews'];
+}else{
+    $reviews=[];    
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,25 +14,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About us section </title>
     <link rel="stylesheet" href="../public/css/admin_delivery/contact_us.css">
-    <!-- <link rel="stylesheet" href="../public/css/about_us.css"> -->
+    <link rel="stylesheet" href="../public/css/about_us.css">
 </head>
 <body>
-    <?php include 'header.php'; ?>
-    <img class="head" src="gas8.PNG" alt="" srcset="">
-    <section class="about">
-    <div class="main">
-    <img src="../../public/images/about.jpg" style="width:100%;height:50%;" alt="" srcset="">
-    <div class="about-text">
-    <h1>About Us</h1>
-    <h5>Welcome you all to FAGO...
-
-     <span> Online Gas Ordering System.  </span></h5>
-    <p>create a platform that connect customer,gas agent and fuel manager as well as Provide faclities for customer to reserve their gas cylinder and check fuel availability befor waiting in the queue
-    </p>
-    <button type="button">let's talk</button>
+    <?php include 'home_header.php'; ?>
+    <div class="lr">
+        <div class="main">
+            <img src="../public/images/about.jpg"  alt="" srcset="">
+        </div>    
+        <div class="about-text">
+            <h1>About Us</h1>
+            <h5>Welcome you all to FAGO...<br>
+            <span> Online Gas Ordering System.  </span></h5>
+            <p>create a platform that connect customer,gas agent and fuel manager as well as Provide faclities for customer to reserve their gas cylinder and check fuel availability befor waiting in the queue
+            </p>
+            <a href="contact_us.php"><button type="button">let's talk</button></a>
+        </div> 
+    </div>       
+    <div class="right">
+        <!-- feedbacks of our users -->
+        <div class="feedback">
+            <h1>Feedbacks From Our Users</h1>
+            <!-- print reviews as 4 reviews per row -->
+            <?php
+            $count=0;
+            foreach($reviews as $review){
+                if($count==0){
+                    echo "<div class='row'>";
+                }
+                echo "<div class='column'>";
+                echo "<div class='card'>";
+                echo "<img src='../public/images/customer/profile_img/".$review['imgname']."' alt='Avatar'>";
+                echo "<div class='container'>";
+                echo "<h4><b>".$review['First_Name']." ".$review['Last_Name']."</b></h4>";
+                echo "<p>(".$review['Type'].")</p>";
+                echo "<p>".$review['description']."</p>";
+                echo "<p>".$review['date']."</p>";
+                echo "</div>";
+                echo "</div>";
+                echo "</div>";
+                $count++;
+                if($count==4){
+                    echo "</div>";
+                    $count=0;
+                }
+            }
+            ?>
     </div>
-</div>
-    </section>
     <div class="footer">
         <div class="footer-left">
             <img src="../public/images/logo.png" alt="">
@@ -34,10 +70,10 @@
             </p>
             <h2>Follow Us</h2>
             <div class="socialmedia">
-            <!-- <a href="https://www.facebook.com/"><img src="../public/images/customer/facebook.png" alt="" class="homeimg"></a>
+            <a href="https://www.facebook.com/"><img src="../public/images/customer/facebook.png" alt="" class="homeimg"></a>
             <a href="https://www.instagram.com/"><img src="../public/images/customer/insta.png" alt="" class="homeimg"></a>
             <a href="https://www.twitter.com/"><img src="../public/images/customer/twitter.png" alt="" class="homeimg"></a>
-            <a href="https://www.youtube.com/"><img src="../public/images/customer/linkd.jpg" alt="" class="homeimg"></a> -->
+            <a href="https://www.youtube.com/"><img src="../public/images/customer/linkd.jpg" alt="" class="homeimg"></a>
             </div>
         </div>
         <div class="footer-right">
