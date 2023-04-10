@@ -4,7 +4,7 @@ class shopManager{
     public function getShopManagerDetails($connection){
         $this->User_id=$_SESSION['User_id'];
         $sql="SELECT u.Username,u.Email,u.First_Name,u.Last_Name,u.City,u.Street,u.Postalcode,c.Contact_No,u.Password,s.NIC FROM user u INNER JOIN user_contact c on u.User_id=c.User_id INNER JOIN stock_manager s on u.User_id=s.id WHERE u.User_id=$this->User_id";
-       
+
         $result=mysqli_query($connection,$sql);
         if($result->num_rows===0){
             return false;
@@ -76,14 +76,18 @@ class shopManager{
             $result1=$connection->query($sql1);
             $sql2="DELETE FROM `user_contact` WHERE User_id='$User_id'";
             $result2=$connection->query($sql2);
-            $sql3="DELETE FROM `deliveryperson` WHERE DeliveryPerson_Id='$User_id'";
+
+            $sql3="DELETE FROM `stock_manager` WHERE id='$User_id'";
+            
             $result3=$connection->query($sql3);
-            // $sql5="DELETE FROM `profileimg` WHERE User_id='$User_id'";
-            // $result5=$connection->query($sql5);
+            $sql5="DELETE FROM `profileimg` WHERE User_id='$User_id'";
+            $result5=$connection->query($sql5);
             //enable foreign key checks
             $sql4="SET FOREIGN_KEY_CHECKS=1";
             $result4=$connection->query($sql4);
-            if($result1===true && $result2===true && $result3===true && $result4===true ){
+            if($result1===true && $result2===true && $result3===true && $result4===true && $result5==true){
+                
+
                 return true;
             }else{
                 return false;
@@ -92,4 +96,31 @@ class shopManager{
             return false;
         }
     }
+
+    public function updateImage($connection,$user_id,$fileNameNew){
+        //update image name and status
+        $sql="UPDATE `profileimg` SET `imgname`='$fileNameNew',`status`=1 WHERE User_id='$user_id'";
+        
+        $result=$connection->query($sql);
+        if($result){
+            $_SESSION['User_img']=$fileNameNew;
+            $_SESSION['img-status']="1";
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+    public function removeImage($connection,$User_id){
+        $sql="UPDATE `profileimg` SET `imgname`='noprofile.png',`status`=0 WHERE User_id='$User_id'";
+        $result=$connection->query($sql);
+        if($result){
+            $_SESSION['User_img']="noprofile.png";
+            $_SESSION['img-status']="0";
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }

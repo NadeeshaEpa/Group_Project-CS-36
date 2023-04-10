@@ -9,13 +9,18 @@ if(isset($_POST['btn1'])){
     
     if($result){
         $_SESSION['updateActiveSucessfully']="sucess";
-        header("Location: ../../view/deliveryperson/DelivaryDashboard.php");
+
+        
+        header("Location: ../../controller/deliveryperson/deliveryDashboardFirstController.php");
+
         $connection->close();
         exit();
     }
     else{
         $_SESSION['updateActiveSucessfully']="Failed";
-        header("Location: ../../view/deliveryperson/DelivaryDashboard.php");
+
+        header("Location: ../../controller/deliveryperson/deliveryDashboardFirstController.php");
+
         $connection->close();
         exit();
 
@@ -26,12 +31,19 @@ elseif(isset($_POST['btn2'])){
     $result=$user->update_as_a_not_active($connection);
     if($result){
         $_SESSION['updateDeactiveSucessfully']="sucess";
+
+        unset($_SESSION['DeliveryRequestDetails']);
+
         header("Location: ../../view/deliveryperson/DelivaryDashboard.php");
         $connection->close();
         exit();
     }
     else{
         $_SESSION['updateActiveSucessfully']="Failed";
+
+        unset($_SESSION['DeliveryRequestDetails']);
+
+
         header("Location: ../../view/deliveryperson/DelivaryDashboard.php");
         $connection->close();
         exit();

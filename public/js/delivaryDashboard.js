@@ -61,59 +61,6 @@ menuBar.addEventListener('click', function () {
 })
 
 
-
-
-
-
-
-const searchButton = document.querySelector('#content nav form .form-input button');
-const searchButtonIcon = document.querySelector('#content nav form .form-input button .bx');
-const searchForm = document.querySelector('#content nav form');
-
-searchButton.addEventListener('click', function (e) {
-	if(window.innerWidth < 576) {
-		e.preventDefault();
-		searchForm.classList.toggle('show');
-		if(searchForm.classList.contains('show')) {
-			searchButtonIcon.classList.replace('bx-search', 'bx-x');
-		} else {
-			searchButtonIcon.classList.replace('bx-x', 'bx-search');
-		}
-	}
-})
-
-
-
-
-
-if(window.innerWidth < 768) {
-	sidebar.classList.add('hide');
-} else if(window.innerWidth > 576) {
-	searchButtonIcon.classList.replace('bx-x', 'bx-search');
-	searchForm.classList.remove('show');
-}
-
-
-window.addEventListener('resize', function () {
-	if(this.innerWidth > 576) {
-		searchButtonIcon.classList.replace('bx-x', 'bx-search');
-		searchForm.classList.remove('show');
-	}
-})
-
-
-
-const switchMode = document.getElementById('switch-mode');
-
-switchMode.addEventListener('change', function () {
-	if(this.checked) {
-		document.body.classList.add('dark');
-	} else {
-		document.body.classList.remove('dark');
-	}
-})
-
-
 /*////////////////////////////////get a current time and date of month*/
 
 
@@ -179,16 +126,39 @@ updateClock();
 
 /*count and amount of the delivary */
 
+
+// var xhttp = new XMLHttpRequest();
+// xhttp.onreadystatechange = function() {
+    
+//     var response = JSON.parse(this.responseText);
+//     console.log(response);
+//     incomeid2.innerHTML = response.total_fee['SUM(Delivery_fee)'];
+// 	Nodeliverid2.innerHTML = response.delivery_count['COUNT(*)'];
+    
+// };
+// xhttp.open("GET", "http://localhost/Group_Project-CS-36/controller/deliveryperson/deliveryCountcontroller.php", true);
+// xhttp.send();
+
 var xhttp = new XMLHttpRequest();
+
 xhttp.onreadystatechange = function() {
-    
-    var response = JSON.parse(this.responseText);
-    console.log(response);
-    incomeid2.innerHTML = response.total_fee['SUM(Delivery_fee)'];
-	Nodeliverid2.innerHTML = response.delivery_count['COUNT(*)'];
-    
+    if (this.readyState == 4) {
+        if (this.status == 200) {
+            try {
+                var response = JSON.parse(this.responseText);
+                incomeid2.innerHTML = response.total_fee['SUM(Delivery_fee)'];
+                Nodeliverid2.innerHTML = response.delivery_count['COUNT(*)'];
+            } catch (e) {
+                console.error("Error parsing JSON:", e);
+            }
+        } else {
+            console.error("Error loading data. Status:", this.status);
+        }
+    }
 };
-xhttp.open("GET", "http://localhost/Group_36/controller/deliveryperson/deliveryCountcontroller.php", true);
+
+xhttp.open("GET", "http://localhost/Group_Project-CS-36/controller/deliveryperson/deliveryCountcontroller.php", true);
+
 xhttp.send();
 
 /* */
@@ -203,6 +173,7 @@ xhttp.send();
 		de_menu.style.display = "none";
 	}
 });
+
 
 //new password validation
 

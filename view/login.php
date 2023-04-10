@@ -22,14 +22,23 @@ if(isset($_SESSION['locked'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/customer/login.css">
+
+
+    <link rel="stylesheet" href="../../public/css/customer/login.css">
+
+
     <title>Login</title>
 </head>
     <body>
         <?php include 'header.php'; ?>
         <div class="column">
             <div class="container">
-                <form action="../controller/Users/login_controller.php" method="POST" class="form">
+
+
+
+                <form action="../../controller/Users/login_controller.php" method="POST" class="form">
+
+
                     <h2>Welcome</h2>
                     <p>Sign in using the data that you entered during your registration.</p>
                          <div class="err-msg">   
@@ -84,7 +93,11 @@ if(isset($_SESSION['locked'])){
                 </form>
             </div>   
             <div class = "side">
-                <img src="../public/images/customer/login.webp"  alt="">
+
+
+                <img src="../../public/images/customer/login.webp"  alt="">
+
+
             </div>
         </div>    
     </body>

@@ -26,7 +26,9 @@ if(!isset($_SESSION['User_id'])){
 		</a>
 		<ul class="side-menu top">
 			<li >
-				<a href="../../view/deliveryperson/DelivaryDashboard.php">
+
+				<a href="../../controller/deliveryperson/deliveryDashboardFirstController.php">
+
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -74,22 +76,24 @@ if(!isset($_SESSION['User_id'])){
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-			<!-- <a href="#" class="nav-link">Categories</a> -->
-			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
-			<a href="#" class="profile">
-				<img src="../../public/images/user.jpg">
-			</a>
+
+			
+			<li class="profile">
+			    <?php if($_SESSION['img-status'] == 0){?>
+					<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
+				<?php }else{?>
+					<img src='../../public/images/DeliveryPerson/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
+				<?php } ?>								
+			</li>
+			<li class="user_info">
+				<h6><?php if(isset($_SESSION['Firstname']) && isset($_SESSION['Lastname'])){
+					     echo $_SESSION['Firstname'] ," " ,$_SESSION['Lastname'] ;
+					}?></h6>
+				<h5><?php if(isset($_SESSION['Type'])){
+					     echo $_SESSION['Type'];
+					}?></h5>
+			</li>
+
 			
 		</nav>
 		<!-- NAVBAR -->
@@ -118,12 +122,15 @@ if(!isset($_SESSION['User_id'])){
 				<div class="order">
 				<form action="../../controller/deliveryperson/deliveryReportsController.php" method="POST">
 					<div class="dropdown_outter">
-						
+
 							<div class="dropdown">
 								<select name="customerType" id="fuelType" required>
 									<option value="">---Select Type---</option>
 									<option value="GasAgent">Gas Agent</option>
 									<option value="Customer">Customer</option>
+
+									<option value="Shop_manager">Shop manager</option>
+
 								</select>
 							</div>
 
@@ -142,6 +149,7 @@ if(!isset($_SESSION['User_id'])){
 							
 						
 					</div>
+
 					   <div class="delivary_nof_msg">
 							<h6><?php if(isset($_SESSION['No_result'])){
 									echo $_SESSION['No_result'];
@@ -184,33 +192,138 @@ if(!isset($_SESSION['User_id'])){
 										echo $_SESSION['CusAllReports'];
 										unset($_SESSION['CusAllReports']);
 									  }
+
+									  if(isset($_SESSION['ShopDayReports'])){
+										echo $_SESSION['ShopDayReports'];
+										unset($_SESSION['ShopDayReports']);
+									  }
+									  if(isset($_SESSION['ShopDay7Reports'])){
+										echo $_SESSION['ShopDay7Reports'];
+										unset($_SESSION['ShopDay7Reports']);
+									  }
+									  if(isset($_SESSION['ShopDay30Reports'])){
+										echo $_SESSION['ShopDay30Reports'];
+										unset($_SESSION['ShopDay30Reports']);
+									  }
+									  if(isset($_SESSION['ShopAllReports'])){
+										echo $_SESSION['ShopAllReports'];
+										unset($_SESSION['ShopAllReports']);
+									  }
+
 							
 							?>
 							</h5>
 					   </div>
 					
-						<?php if(isset($_SESSION['DiliverReportview'])){
-							$result=$_SESSION['DiliverReportview'];
-							foreach ($result as $row) {?>
-							<div class="report_info_outter">
-								<div class="report_info">
-									<?php echo "Reference No : " . $row['Order_id']."<br>";
-									echo "Name : " . $row['Name']."<br>";
-									echo "Address : " . $row['Address']."<br>";
-									echo "Delivery Date : " . $row['Delivery_date']."<br>";
-									echo "Delivery time : " . $row['Delivery_time']."<br>";
-									echo "Delivery fee : " . $row['Delivery_fee']."<br>";?>
-									
-								</div>
-							</div>
-							<?php
-							}
-							unset($_SESSION['DiliverReportview']);
-						}?>
 
-						
+					   <div class="tbl">
+                                    <!-- Customer report generate -->
+                                    <?php
+									
+                                    if(isset($_SESSION['cusReportview'])){?>
+									    <table class="tb">
+											<tr>
+											    <th>Reference No</th>
+												<th>Customer Name</th>
+												<th>Customer Address</th>
+												<th>Delivery Date </th>
+												<th>Delivery Time</th>
+												<th>Delivery Free</th>
+										    </tr>
+									<?php
+                                        $result=$_SESSION['cusReportview']; 
+                                        foreach ($result as $row) {
+                                            echo "<tr>";
+											echo "<td>" . $row['Order_id'] . "</td>";
+                                            echo "<td>" . $row['Name'] . "</td>";
+                                            echo "<td>" . $row['Address'] . "</td>";
+											echo "<td>" . $row['Delivery_date'] ."</td>";
+											echo "<td>" . $row['Delivery_time'] . "</td>";
+                                            echo "<td>" . $row['Delivery_fee'] . "</td>";
+											echo "</tr>";
+                                        }
+                                        unset($_SESSION['cusReportview']);
+                                    }
+                                    
+                                    ?>
+                                    </table>
+
+									<!-- Gas argent report generate -->
+									<?php
+									
+                                    if(isset($_SESSION['GasReportview'])){?>
+									    <table class="tb">
+											<tr>
+											    <th>Reference No</th>
+												<th>Gas argent Name</th>
+												<th>Gas argent Address</th>
+												<th>Delivery Date </th>
+												<th>Delivery Time</th>
+												<th>Delivery Free</th>
+												
+											</tr>
+									<?php
+                                        $result=$_SESSION['GasReportview']; 
+                                        foreach ($result as $row) {
+                                            echo "<tr>";
+											echo "<td>" . $row['Order_id'] . "</td>";
+                                            echo "<td>" . $row['Name'] . "</td>";
+                                            echo "<td>" . $row['Address'] . "</td>";
+											echo "<td>" . $row['Delivery_date'] ."</td>";
+											echo "<td>" . $row['Delivery_time'] . "</td>";
+                                            echo "<td>" . $row['Delivery_fee'] . "</td>";
+											echo "</tr>";
+                                        }
+                                        unset($_SESSION['GasReportview']);
+                                    }
+                                    
+                                    ?>
+
+									<!-- Shop Manager report generate -->
+									<?php
+									
+                                    if(isset($_SESSION['ShopReportview'])){?>
+									    <table class="tb">
+											<tr>
+											    <th>Reference No</th>
+												<th>Shop Manager Name</th>
+												<th>Shop Manager Address</th>
+												<th>Delivery Date </th>
+												<th>Delivery Time</th>
+												<th>Delivery Free</th>
+												
+											</tr>
+									<?php
+                                        $result=$_SESSION['ShopReportview']; 
+                                        foreach ($result as $row) {
+											echo "<tr>";
+											echo "<td>" . $row['Order_id'] . "</td>";
+                                            echo "<td>" . $row['Name'] . "</td>";
+                                            echo "<td>" . $row['Address'] . "</td>";
+											echo "<td>" . $row['Delivery_date'] ."</td>";
+											echo "<td>" . $row['Delivery_time'] . "</td>";
+                                            echo "<td>" . $row['Delivery_fee'] . "</td>";
+											echo "</tr>";
+                                        }
+                                        unset($_SESSION['ShopReportview']);
+                                    }
+                                    
+                                    ?>
+                                    </table>
+
+
+
+
+
+
+
+
+						    </div>
+
+                    </form> 	
 					
-				</form>
+				
+
 				</div>
 		    </div>
 		</main>

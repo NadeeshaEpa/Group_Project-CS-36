@@ -275,7 +275,25 @@ body {
 	height: 36px;
 	object-fit: cover;
 	border-radius: 50%;
+
+	margin-left: 950px;
 }
+/*add user info to header */
+#content nav .user_info h6 {
+	text-align: center;
+	font-size: 14px;
+	margin-top: 10px;
+	margin-left: 10px;
+	cursor: pointer;
+}
+#content nav .user_info h5 {
+	text-align: center;
+	font-size: 16px;
+	cursor: pointer;
+	margin-left: 10px;
+}
+/**/
+
 #content nav .switch-mode {
 	display: block;
 	min-width: 50px;
@@ -629,7 +647,9 @@ body {
   .Add_brands_form{
     margin: auto;
 	width: 60%;
-	height: 75%;
+
+	height: 90%;
+
 	background-color: white;
 	border-radius: 18px;
 	box-shadow: 10px 10px 20px 5px black;
@@ -641,8 +661,14 @@ body {
   }
   .Add_brands_form .Add_brands_info{
 	width: 100%;
-	height: 95%;
+
+	height: 55%;
   }
+  /* .Add_brands_form .Pic_part{
+	width: 100%;
+	height: 15%;
+  } */
+
 
   .Add_brands_form .Add_brands_msg h4{
 	font-size: 16px;
@@ -709,6 +735,74 @@ body {
     
   }
 
+
+  #Brand_img_id{
+    background-color: rgb(147 142 142 / 46%);
+  }
+
+  /* .Add_brands_form .Pic_part .pic_part_inner{
+	width: 100%;
+	height: 99%;
+	display: flex;
+  }
+
+  .Add_brands_form .Pic_part .pic_part_inner .pic_part_inner_left{
+	width: 50%;
+	height: 100%;
+	display: flex;
+  }
+  .Add_brands_form .Pic_part .pic_part_inner .pic_part_inner_right{
+	width: 50%;
+	height: 100%;
+	
+  }
+
+  .Add_brands_form .Pic_part label{
+	margin-left: 25px;
+    font-size: 16x;
+    margin-top: 15px;
+
+	
+  }
+  .Add_brands_form .Pic_part .pic_part_inner .pic_part_inner_left img{
+	margin-left: 25px;
+	
+  }
+  .Add_brands_form .Pic_part .pic_part_inner .pic_part_inner_right input{
+    
+	margin-top: 47px;
+	margin-bottom: 10px;
+	width: 85%;
+	height: 2%;
+	background-color:   rgb(147 142 142 / 46%);
+	padding: 10px 150px 10px 40px;
+  } */
+
+  /* .Add_brands_form .Pic_part .pic_part_inner .pic_part_inner_right button{
+    
+	
+	width: 20%;
+	height: 8%;
+	background-color:  #79d37c;
+	padding: 10px 100px 10px 40px;
+	border-radius: 10px;
+  }
+ #remove_brand_img_id{
+	background-color: #da3a3a;
+ } */
+
+ /* .Add_brands_form .Pic_part  button{
+	margin-top: 15px;
+	width: 150px;
+	margin-left: 270px;
+	height:40px ;
+	text-align: center;
+	border-radius: 15px;
+	background-color: #3C91E6;
+  } */
+
+
+
   /* */
 
 
@@ -744,6 +838,14 @@ body {
 	color: red;
 	text-align: center;
 }
+
+
+.showBrandQDataHeader .showBrandQDataHeaderErrormsg h5 {
+	font-size: 18px;
+	color: rgb(6, 70, 22);
+	text-align: center;
+}
+
 
 .brandQinfoinner{
 	margin-top: 5%;
@@ -806,11 +908,13 @@ margin-left: 80px;
 	text-align: center;
 	background-color: #815bf6;
 	border-radius: 15px;
-	margin-left: 2%;
+
+	margin-left: 4.3%;
 	padding-left: 50px;
 	color: white;
 	border:none;
-	
+	width: 220px;
+
 }
 .BrandQpricebtnid2, #BrandQuenBtnid{
 	margin-left: 20%;
@@ -826,18 +930,23 @@ margin-left: 80px;
 
 #BrandQuenBtnid{
 	background-color: #79d37c;
-	margin-left: 2%;
-	width: 20%;
+
+	margin-left: 4.3%;
+	width: 220px;
+
 	padding-left: 4px;
     /* padding: 10px 75px 10px 40px; */
 }
 
 #brandDeleteBtnid{
     margin-bottom: 2%;
+
+	width: 220px;
 	background-color: red;
 	margin-top: 1%;
-	margin-left: 70%;
-	padding: 10px 95px 10px 84px;
+	margin-left: 73%;
+	padding: 10px 95px 10px 80px;
+
 }
 
 #BrandQpricebtnid{
@@ -904,6 +1013,9 @@ margin-left: 80px;
 	height: 10%;
 	margin-top: 3%;
 	display: flex;
+
+	margin-bottom: 3%;
+
   }
   .delivary_nof_msg h6{
 	margin: auto;
@@ -923,6 +1035,8 @@ margin-left: 80px;
 	width: 100%;
 	height: 10%;
 	display: flex;
+
+    margin-bottom: 3%;
 
   }
 
@@ -1015,7 +1129,9 @@ margin-left: 80px;
 
 .d_form{
 	width: 80%;
-    height: 45%;
+
+    height: 40%;
+
     margin-top: 20px;
 	margin-left: 20%;
 
@@ -1111,7 +1227,9 @@ margin-left: 80px;
 .down2btn button {
     background-color:#79d37c;
     border-radius: 15px;
-    width: 150px;
+
+    width: 200px;
+
 	height: 40px;
 	color: white;
 	font-size: 16px;
@@ -1133,17 +1251,156 @@ margin-left: 80px;
 	margin-left: 10%;
 }
 .otherdeliveryProfilebtndown1 #deliveyDeletebtn{
-    margin-top: 21px;
-	width: 150px;
+
+    margin-top: 40px;
+	width: 200px;
+
 	border-radius: 15px;
     background-color:#da3a3a;
 	height: 40px;
 	color: white;
 	border: none;
 	font-size: 16px;
-	margin-left: 10%;
+
+	margin-left: 35%;
+}
+
+#pic_add_btn_id{
+	background-color:#79d37c;
+	width: 200px;
+	height: 40px;
+	padding: 10px 10px 10px 10px;
+	margin-top: 35px;
+	margin-left: 40px;
+	color: white;
+}
+
+#pic_remove_btn_id{
+    background-color: #da3a3a;
+	width: 200px;
+	height: 40px;
+	padding: 10px 10px 10px 10px;
+	margin-top: 35px;
+	margin-left: 10px;
+	color: white;
+}
+
+#image{
+	width: 400px;
+    height: 35px;
+    border-radius: 0%;
+    background-color:  rgb(177 175 175 / 40%);
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+	padding: 8px 50px 10px 100px;
+	margin-left: 45px;
+}
+.down1 img{
+	margin-left: 190px;
+	margin-top: 20px;
+}
+
+.down1 h6{
+	background-color: red;
+	text-align: center;
+
 }
 /*  */
+
+
+
+/* profile delete account popup section*/
+
+.modal{
+	position: absolute;
+    left: 25%;
+    top: 25%;
+    width: 50%;
+    height: 50%;
+    overflow: auto;
+    background-color: #D9D9D9;
+    padding-top: 50px;
+    border-radius: 20px;
+}
+
+.modal .container {
+    padding: 16px;
+    text-align: center;
+}
+
+.modal .container h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.modal .container p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+#profilecancelbtnid{
+    background-color: #79d37c;
+    color: black;
+    float: left;
+    margin-left: 20%;
+	height: 10%;
+	width: 20%;
+	border-radius: 15px;
+	padding: 10px 10px 10px 10px;
+}
+
+#profiledeletebtnid{
+    background-color: #da3a3a;
+    color: black;
+    float: right;
+    margin-right: 20%;
+	height: 15%;
+	width: 20%;
+	border-radius: 15px;
+	padding: 10px 10px 10px 10px;
+}
+
+.close {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    font-size: 40px;
+    font-weight: bold;
+    color:  black;
+}
+
+.close:hover, .close:focus {
+    color: #f44336;
+    cursor: pointer;
+}
+
+/**/
+
+/*Dashboard Orders View Button css*/
+#PickedPrderedId{
+   width: 200px;
+   margin-top: 15px;
+   padding: 10px 10px 10px 10px ;
+   border-radius: 15px;
+   background-color: #79d37c;
+}
+#DeliveredOrderId{
+	width: 200px;
+	margin-top: 15px;
+   padding: 10px 10px 10px 10px ;
+   border-radius: 15px;
+   background-color: #79d37c;
+}
+/**/
 
 
 

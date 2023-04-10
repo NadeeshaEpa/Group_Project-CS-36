@@ -64,52 +64,56 @@ menuBar.addEventListener('click', function () {
 
 
 
-const searchButton = document.querySelector('#content nav form .form-input button');
-const searchButtonIcon = document.querySelector('#content nav form .form-input button .bx');
-const searchForm = document.querySelector('#content nav form');
 
-searchButton.addEventListener('click', function (e) {
-	if(window.innerWidth < 576) {
-		e.preventDefault();
-		searchForm.classList.toggle('show');
-		if(searchForm.classList.contains('show')) {
-			searchButtonIcon.classList.replace('bx-search', 'bx-x');
-		} else {
-			searchButtonIcon.classList.replace('bx-x', 'bx-search');
-		}
-	}
-})
+// const searchButton = document.querySelector('#content nav form .form-input button');
+// const searchButtonIcon = document.querySelector('#content nav form .form-input button .bx');
+// const searchForm = document.querySelector('#content nav form');
 
-
-
-
-
-if(window.innerWidth < 768) {
-	sidebar.classList.add('hide');
-} else if(window.innerWidth > 576) {
-	searchButtonIcon.classList.replace('bx-x', 'bx-search');
-	searchForm.classList.remove('show');
-}
-
-
-window.addEventListener('resize', function () {
-	if(this.innerWidth > 576) {
-		searchButtonIcon.classList.replace('bx-x', 'bx-search');
-		searchForm.classList.remove('show');
-	}
-})
+// searchButton.addEventListener('click', function (e) {
+// 	if(window.innerWidth < 576) {
+// 		e.preventDefault();
+// 		searchForm.classList.toggle('show');
+// 		if(searchForm.classList.contains('show')) {
+// 			searchButtonIcon.classList.replace('bx-search', 'bx-x');
+// 		} else {
+// 			searchButtonIcon.classList.replace('bx-x', 'bx-search');
+// 		}
+// 	}
+// })
 
 
 
-const switchMode = document.getElementById('switch-mode');
 
-switchMode.addEventListener('change', function () {
-	if(this.checked) {
-		document.body.classList.add('dark');
-	} else {
-		document.body.classList.remove('dark');
-	}
-})
+
+
+
+// if(window.innerWidth < 768) {
+// 	sidebar.classList.add('hide');
+// } else if(window.innerWidth > 576) {
+// 	searchButtonIcon.classList.replace('bx-x', 'bx-search');
+// 	searchForm.classList.remove('show');
+// }
+
+
+// window.addEventListener('resize', function () {
+// 	if(this.innerWidth > 576) {
+// 		searchButtonIcon.classList.replace('bx-x', 'bx-search');
+// 		searchForm.classList.remove('show');
+// 	}
+// })
+
+
+
+// const switchMode = document.getElementById('switch-mode');
+
+// switchMode.addEventListener('change', function () {
+// 	if(this.checked) {
+// 		document.body.classList.add('dark');
+// 	} else {
+// 		document.body.classList.remove('dark');
+// 	}
+// })
+
 
 
 /*date creation function */
@@ -143,7 +147,9 @@ xhttp.onreadystatechange = function() {
 	Nodeliverid2.innerHTML = response.Order_count['COUNT(*)'];
     
 };
-xhttp.open("GET", "http://localhost/Group_36/controller/ShopManager/ShopManagerOrderCountController.php", true);
+
+xhttp.open("GET", "http://localhost/Group_Project-CS-36/controller/ShopManager/ShopManagerOrderCountController.php", true);
+
 xhttp.send();
 
 /* */
@@ -204,7 +210,6 @@ cpassword?.addEventListener("input", function () {
         // submit.disabled = false;
     }
 });
-
 
 
 

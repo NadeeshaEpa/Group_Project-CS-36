@@ -113,6 +113,61 @@ if(isset($_SESSION['unlocations'])){
                                 <th><?php echo $weight1['Weight']?>kg</th>
                             <?php } ?>
                         <th>order</th>    
+            <table>
+                <tr>
+                    <th>Vendor</th>
+                    <th>Distance</th>
+                    <?php 
+                        foreach($weight as $weight1){?>
+                            <th><?php echo $weight1['Weight']?>kg</th>
+                        <?php } ?>
+
+                    <th>order</th>    
+
+                </tr>
+                    <?php 
+                    $i=0;
+                    $j=0;
+                    foreach($shops as $shop){
+                    $j++;
+                    if($j>5){
+                        break;
+                    }
+                    ?>
+                    <tr>
+                        <?php// if($shop['distance']<10){?>
+                            <td><?php echo $shop['Shop_name']?></td>
+                            <td><?php echo $shop['distance']?>km</td>
+                            <?php 
+                            foreach($weight as $weight1){
+                                $flag=0;
+                                foreach($gasshop as $gas1){?>
+                                <?php 
+                                if($gas1['Shop_name']==$shop['Shop_name'] && $gas1['Weight']==$weight1['Weight']){?>
+                                    <td><?php echo $gas1['Quantity'];?></td>
+                                    <?php
+                                    $gasagent=$gas1['GasAgent_Id'];
+                                    $_SESSION['gasagent']=$gasagent;
+                                    $flag=1;
+                                    break;
+                                }else{
+                                    continue;
+                                }
+                                ?>
+                                <?php 
+                                }
+                                if($flag==0){?>
+                                <td><?php
+                                    $i++;
+                                    echo "Not available"; 
+                                ?></td>
+                                <?php 
+                                }
+                            } ?> 
+
+                            <td><button name="order" id="popup" onclick="popup()">Order</button></td>
+
+                        <?php } ?>
                     </tr>
                         <?php 
                         $i=0;
@@ -165,6 +220,7 @@ if(isset($_SESSION['unlocations'])){
             <?php } ?>   
         </div>
     </div>
+
     <div id="myModal" class="modal">
         <div class="modal-content">
             <div>

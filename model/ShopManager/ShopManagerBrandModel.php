@@ -2,11 +2,38 @@
 
 class brand{
 
-    public function BrandQuenBtn($connection,$Quantity,$code){
-        $sql="UPDATE product SET Quantity=$Quantity WHERE  Item_code=$code";
+
+    public function BrandQuentityUpdate($connection,$Quantity,$code){
+        $sql="UPDATE product SET Quantity=$Quantity,`Date`=CURDATE() WHERE  Item_code=$code";
         $result=$connection->query($sql);
         if($result){
             return true;
+            
+        }
+        else{
+            return false;
+        }
+    }
+
+    public function BrandPriceUpdate($connection,$price,$code){
+        $sql="UPDATE product SET Price=$price,`Date`=CURDATE() WHERE  Item_code=$code";
+        $result=$connection->query($sql);
+        if($result){
+            return true;
+            
+        }
+        else{
+            return false;
+        }
+    }
+
+    public function DeleteProduct($connection,$code){
+        $sql="DELETE FROM `product` WHERE Item_code=$code";
+        $result=$connection->query($sql);
+        if($result){
+            return true;
+            
+
         }
         else{
             return false;

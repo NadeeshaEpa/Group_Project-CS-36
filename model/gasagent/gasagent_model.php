@@ -124,15 +124,13 @@ class gasagent_model{
             $_SESSION['Lastname']=$row['Last_Name'];
             $_SESSION['Type']=$row['Type'];
             $this->Type=$row['Type'];
-
-
             $img="SELECT img_id,status,imgname FROM profileimg WHERE User_id='$this->User_id'";
             $resultimg=$connection->query($img);
             $rowimg=$resultimg->fetch_assoc();
             $_SESSION['img_id']=$rowimg['img_id'];
             $_SESSION['img-status']=$rowimg['status'];
             $_SESSION['User_img']=$rowimg['imgname'];
-            
+
 
             $r1="SELECT * FROM gasagent WHERE GasAgent_Id='$this->User_id' AND Status='1'";
             if($connection->query($r1)->num_rows > 0){

@@ -56,6 +56,12 @@
             <label for=":" id="name" >Name:</label><br>
             <input type="text" name="firstname" id="firstname" placeholder="First Name"  required>
             <input type="text" name="lastname" id="lastname" placeholder="Last Name" required><br>
+    <form action="../../controller/gasagent/register_controller.php" method="POST">
+        <h2>Gasagent Registration Form</h2>
+        <div class="font">
+        <label for=":" id="name" >Name:</label><br>
+          <input type="text" name="firstname" id="firstname" placeholder="First Name"  required>
+          <input type="text" name="lastname" id="lastname" placeholder="Last Name" required><br>
 
             <label for=":" id="username-label">Username:</label><br>
             <input type="text" name="username" id="username" placeholder="Username" required><br>
@@ -103,7 +109,20 @@
                     <option value="2">Laugh</option>
                     
                 </select>
-            </div><br><br>
+            <!-- new -->
+            </div><br> 
+                        <div class="dropdown">
+                           <label for=""> Gas Type</label>
+                            <select name="gastype" id="gastype">
+                                <option value="">---Select Type---</option>
+                                <option value="1">Litro</option>
+                                <option value="2">Laugh</option>
+                              
+                            </select>
+                        </div><br><br>
+
+
+
 
             <label for=":">Business Registration Number:</label><br>
             <input type="text" name="business_reg_num" id="business_reg_num" placeholder="Business Registraion Number" required><br>
@@ -120,7 +139,17 @@
         
         
             <label for="Shop Name:">Shop Name:</label><br>
+
             <input type="text" name="shopName" id="shopName" placeholder="Shop Name" required><br>   
+
+            <input type="text" name="shopName" id="shopName" placeholder="Shop Name" required><br> 
+        <button type="submit" id="submit-btn" name="register">Register</button> 
+        </div>   
+    </form>
+    </div>
+
+    <script src="../../public/js/newvalidation.js"></script>
+
 
             <label>Shop Opening Time:</label><br>
             <input type="time" name="openingtime" id="openingtime" required><br>

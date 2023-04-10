@@ -78,22 +78,24 @@ if(!isset($_SESSION['User_id'])){
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-			<!-- <a href="#" class="nav-link">Categories</a> -->
-			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
-			<a href="#" class="profile">
-				<img src="../../public/images/user.jpg">
-			</a>
+
+			
+			<li class="profile">
+			    <?php if($_SESSION['img-status'] == 0){?>
+					<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
+				<?php }else{?>
+					<img src='../../public/images/DeliveryPerson/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
+				<?php } ?>								
+			</li>
+			<li class="user_info">
+				<h6><?php if(isset($_SESSION['Firstname']) && isset($_SESSION['Lastname'])){
+					     echo $_SESSION['Firstname'] ," " ,$_SESSION['Lastname'] ;
+					}?></h6>
+				<h5><?php if(isset($_SESSION['Type'])){
+					     echo $_SESSION['Type'];
+					}?></h5>
+			</li>
+
 			
 		</nav>
 		<!-- NAVBAR -->
@@ -173,88 +175,47 @@ if(!isset($_SESSION['User_id'])){
 			</ul>
 
 
+            <form action="../../controller/deliveryperson/deliveryPersonAddDeliveryController.php" method="POST"><Button name="check" id="DeliveryRefreshId">Refresh</Button></form>
 			<div class="table-data">
-				<table>
-					<tr>
-						<th>Customer Name</th>
-						<th>Address</th>
-						<th>Delivery Charge</th>
-						<th>Accept</th>
-						<th>Decline</th>
-						<th>Status</th>
-					</tr>	
-					<tr>
-						<td>Avishka prabhath</td>
-						<td>No:23 nudegoda colombo 5</td>
-						<td>Rs: 500</td>
-						<td><button id="temp1">Accept</button></td>
-						<td><button id="temp2">Decline</button></td>
-						<td><button id="temp3">Pending</button></td>
-					</tr>
-					<tr>
-						<td>Dhanusha Thilakarathne</td>
-						<td>No:172, Poorwarama Road, Colombo005</td>
-						<td>Rs: 200</td>
-						<td><button id="temp1">Accept</button></td>
-						<td><button id="temp2">Decline</button></td>
-						<td><button id="temp3">Pending</button></td>
-					</tr>
-					<tr>
-						<td>Nirupana Ganaganath</td>
-						<td>No:5, Second Street, Colombo</td>
-						<td>Rs: 800</td>
-						<td><button id="temp1">Accept</button></td>
-						<td><button id="temp2">Decline</button></td>
-						<td><button id="temp3">Pending</button></td>
-					</tr>
-					<tr>
-						<td>Gayal Sanajan</td>
-						<td>No:128, High level road, Colombo 7</td>
-						<td>Rs: 256</td>
-						<td><button id="temp1">Accept</button></td>
-						<td><button id="temp2">Decline</button></td>
-						<td><button id="temp3">Pending</button></td>
-					</tr>
-					<tr>
-						<td>Rusiru Rathmina</td>
-						<td>No:12, Poorwarama Road, Colombo 005</td>
-						<td>Rs: 200</td>
-						<td><button id="temp1">Accept</button></td>
-						<td><button id="temp2">Decline</button></td>
-						<td><button id="temp3">Pending</button></td>
-					</tr>
-				<!-- <div class="order">
-					<div class="tempD">
-						<div class="Dtempl">
-							<div>
-								<label for="">Name :</label>
-								<label for=""> Avishka prabhath</label><br>
-								<label for="">Address :</label>
-								<label for=""> No 23 nudegoda colombo 5</label><br>
-                            </div>
-						</div>
-						<div class="DtempR">
-						    <button id="temp1">Accept</button><br>
-							<button id="temp2">Decline</button><br>
-							<button id="temp3">Finalized order</button>
-						</div>
-					</div>
-					<div class="tempD">
-						<div class="Dtempl">
-							<div>
-								<label for="">Name :</label>
-								<label for=""> Dhanusha Thilakarathna</label><br>
-								<label for="">Address :</label>
-								<label for=""> No 23 Delkada colombo 5</label><br>
-                            </div>
-						</div>
-						<div class="DtempR">
-							<button id="temp1">Accept</button><br>
-							<button id="temp2">Decline</button><br>
-							<button id="temp3">Finalized order</button>
-						</div>
-					</div>
-				</div> -->
+				<div class="order">
+					
+					<?php if(isset($_SESSION['DeliveryRequestDetails'])){
+						?><div class="tbl">
+                            <table class="tb">
+                                    <tr>
+										<th>Customer Name</th>
+										<th>Argent Nmae</th>
+										<th>Distance</th>
+										<th>Delivery Fee</th>
+                                    </tr><?php
+
+								$result=$_SESSION['DeliveryRequestDetails'];
+								
+								foreach ($result as $row) {?>
+									<tr <?php if ($row['Color']=='GREEN'){echo 'class="highlight"';} ?>>
+									  <td><?= $row['customer_Name'] ?></td>
+									  <td><?= $row['Argent_Name'] ?></td>
+									  <td><?= $row['Distance_Shop_customer']," ","Km" ?></td>
+									  <td><?= "Rs."," ",$row['Delivery fee'] ?></td>
+									  <form action="../../controller/deliveryperson/deliveryPersonAddDeliveryController.php" method="POST">
+										<input name="DeliveryOrder" type="hidden" value="<?= $row['Order_id'] ?>">
+										<td><button name="DeliveryReAcceptName" id="DeliveryReAcceptId">Accept</button><br></td>
+										<td><button name="DeliveryReDeclineName" id="DeliveryReDeclineId">Decline</button></td>
+									  </form>
+									</tr>
+								  <?php }?>
+							</table>
+					     </div>	
+					<?php } 
+					     else{
+							?> <h3>No delivery Request Add or You are unavalable. Please Refesh the page or chek your avelability and Location avelability.</h3><?php
+						 }
+					
+					?>
+						
+						
+				</div>
+
 			</div>
 		</main>
 		<!-- MAIN -->
@@ -262,5 +223,10 @@ if(!isset($_SESSION['User_id'])){
 	<!-- CONTENT -->
 	
     <script src="../../public/js/delivaryDashboard.js"></script>
+
+	<!-- <script src="../../public/js/deliveryAdd.js"></script> -->
+	<script src="../../public/js/liveLocation.js"></script>
+	
+
 </body>
 </html>

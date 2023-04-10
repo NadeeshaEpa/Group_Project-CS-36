@@ -76,22 +76,23 @@ if(!isset($_SESSION['User_id'])){
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-			<!-- <a href="#" class="nav-link">Categories</a> -->
-			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
-			<a href="#" class="profile">
-				<img src="../../public/images/user.jpg">
-			</a>
+
+			<li class="profile">
+			    <?php if($_SESSION['img-status'] == 0){?>
+					<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
+				<?php }else{?>
+					<img src='../../public/images/ShopManager/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
+				<?php } ?>								
+			</li>
+			<li class="user_info">
+				<h6><?php if(isset($_SESSION['Firstname']) && isset($_SESSION['Lastname'])){
+					     echo $_SESSION['Firstname'] ," " ,$_SESSION['Lastname'] ;
+					}?></h6>
+				<h5><?php if(isset($_SESSION['Type'])){
+					     echo $_SESSION['Type'];
+					}?></h5>
+			</li>
+
 			
 		</nav>
 		<!-- NAVBAR -->
@@ -115,37 +116,7 @@ if(!isset($_SESSION['User_id'])){
 				
 			</div>
 
-			<!-- <ul class="box-info">
-                <li>
-					<i class='bx bxs-calendar-check' ></i>
-					<span class="text">
-						<label for="" id="dayid" style="margin-left: 40%;"></label><br>
-                        <label for="" id="monthid"></label>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-time-five' ></i>
-					<span class="text">
-						<label for="" id="timeid" style="margin-left: 40%; font-size:32px"></label>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-group' ></i>
-					<span class="text">
-						<label for="" id="Nodeliverid1" style=" font-size:20px">Total delivary count:</label><br>
-                        <label for="" id="Nodeliverid2" style="font-size: 32px; margin-left:35%">3</label>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-dollar-circle' ></i>
-					<span class="text">
-						<label for="" id="incomeid1" style=" font-size:20px"> Total income:</label><br>
-                        <label for="" id="incomeid2">Rs: 850</label>
-					</span>
-				</li>
-               
 
-			</ul> -->
 
 
 			<div class="table-data">
@@ -170,8 +141,39 @@ if(!isset($_SESSION['User_id'])){
                             $result=$_SESSION['ShopManager_details']; 
                     }
                 ?>
-                <form action="../../controller/ShopManager/ShopManagerProfileController.php" method="POST">   
-                        <div class="prof_details">  
+
+                <form action="../../controller/ShopManager/ShopManagerProfileController.php" method="POST" enctype="multipart/form-data">   
+                        <div class="prof_details"> 
+						    <div class="down">
+                                <div class="down1">
+									<label for="">Profile image: </label><br>
+									<?php if($_SESSION['img-status'] == 0){?>
+									    <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
+									<?php }else{?>
+									    <img src='../../public/images/ShopManager/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
+									<?php } ?>
+                                </div>
+                                <div class="down1">
+								        <h6><?php if(isset($_SESSION['upload_error_1'])) {
+										      echo $_SESSION['upload_error_1'];
+											  unset($_SESSION['upload_error_1']);
+										      }
+											  if(isset($_SESSION['upload_error_2'])) {
+												echo $_SESSION['upload_error_2'];
+												unset($_SESSION['upload_error_2']);
+												}
+												if(isset($_SESSION['upload_error_3'])) {
+													echo $_SESSION['upload_error_3'];
+													unset($_SESSION['upload_error_3']);
+													}
+										?></h6>
+										<input type="file" name="image" id="image" class="image">
+										<button name="uploadimg" id="pic_add_btn_id">Upload</button>
+										<button id="pic_remove_btn_id" name="removeimg">Remove</button>
+                                    
+                                </div>    
+                            </div>  
+
                             <div class="down">
                                 <div class="down1">
                                     <label>First name:</label><br>  
@@ -220,7 +222,9 @@ if(!isset($_SESSION['User_id'])){
 							<div class="down">
 								<div class="down2btn"></div>
 								<div class="down2btn">
-								    <button name="update_dprof" style="margin-left:62%;">Update</button>   
+
+								    <button name="update_dprof" style="margin-left:42%; margin-top:40px">Update</button>   
+
 								</div>
 								  
 							</div>
@@ -232,7 +236,9 @@ if(!isset($_SESSION['User_id'])){
 				            <div class="otherdeliveryProfilebtn">
 								<div class="otherdeliveryProfilebtndown1">
 								   <label id="outerrDownDelivaryid">Update Password:</label>
-                                   <button type="submit" name="d_changepassword" id="d_changepasswordid" class="dcp" style="margin-left: opx; margin-top:0%">Change password</button><br>
+
+                                   <button type="submit" name="d_changepassword" id="d_changepasswordid" class="dcp" style="margin-left: opx; margin-top:12%">Change password</button><br>
+
 								    <div class="down_updata" >
                                     
 											<div class="err-msg">
@@ -261,7 +267,9 @@ if(!isset($_SESSION['User_id'])){
 				            <div class="d_form" id="delivary_form_id" style="display:none;">
 								<h2>Change Password</h2>
 
-								<form action="../../controller/deliveryperson/delivaryprofilecontroller.php" method="POST">
+
+								<form action="../../controller/ShopManager/ShopManagerProfileController.php" method="POST">
+
 									
 									<div class="pwdcontainer" id="pwdcontainer">
 										<label for="cpsw">Current Password</label><br>
@@ -275,29 +283,35 @@ if(!isset($_SESSION['User_id'])){
 										</div>  
 									</div>
 								</form>
-								<form action="../../controller/deliveryperson/delivaryprofilecontroller.php" method="POST">
+
+								<form action="../../controller/ShopManager/ShopManagerProfileController.php" method="POST">
+
 								    <button type="submit"  name="cancelpwd" class="cancelbtn">Cancel</button>
 								</form>         
                             </div>  
 
 							
-							<!-- <div class="down">
+
+							
 								
-                                <div id="id01" class="modal">
-                                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
-                                    <form class="modal-content" action="../../controller/deliveryperson/delivaryprofilecontroller.php" method="POST">
+                                <div id="id01" class="modal" style="display: none">
+                                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close">×</span>
+                                    <form class="modal-content" action="../../controller/ShopManager/ShopManagerProfileController.php" method="POST">
+
                                         <div class="container">
                                             <h1>Delete Account</h1>
                                             <p>Are you sure you want to delete your account?</p>
                                         
                                             <div class="clearfix">
-                                                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                                                <button type="submit" class="deletebtn" name="deleteaccount">Delete</button>
+
+                                                <button type="button" onclick="document.getElementById('id01').style.display='none'" id="profilecancelbtnid">Cancel</button>
+                                                <button type="submit" id="profiledeletebtnid" name="deleteaccount">Delete</button>
+
                                             </div>
                                         </div>
                                     </form>
                                 </div> 
-							</div> -->
+
 					
 				</div>
 			
