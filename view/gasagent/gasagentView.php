@@ -71,7 +71,7 @@
 				</a>
 			</li> -->
 			<li>
-				<a href="../../view/gasagent/gasagent_login.php" class="logout">
+				<a href="../../view/login.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -83,23 +83,23 @@
        <!-- NAVBAR -->
      <section id="content">
        <nav>
-			<i class='bx bx-menu' ></i>
-			<a href="#" class="nav-link">Categories</a>
-			<form action="#">
-				<!-- <div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div> -->
-			</form>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
-			<a href="#" class="profile">
-				<img src="../../public/images/people.JPEG">
-			</a>
+	   <i class='bx bx-menu' ></i>
+
+<li class="profile">
+	<?php if($_SESSION['img-status'] == 0){?>
+		<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
+	<?php }else{?>
+		<img src='../../public/images/gasargent/profile_image/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
+	<?php } ?>								
+</li>
+<li class="user_info">
+	<h6><?php if(isset($_SESSION['Firstname']) && isset($_SESSION['Lastname'])){
+			echo $_SESSION['Firstname'] ," " ,$_SESSION['Lastname'] ;
+		}?></h6>
+	<h5><?php if(isset($_SESSION['Type'])){
+			echo $_SESSION['Type'];
+		}?></h5>
+</li>
 		</nav>
 		<!-- NAVBAR -->
 

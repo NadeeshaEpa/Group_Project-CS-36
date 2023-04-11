@@ -74,7 +74,7 @@
 				</a>
 			</li> -->
 			<li>
-				<a href="../../view/gasagent/gasagent_login.php" class="logout">
+				<a href="../../view/login.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -89,23 +89,23 @@
 	<section id="content">
 		<!-- NAVBAR -->
 		<nav>
-			<i class='bx bx-menu' ></i>
-			<a href="#" class="nav-link">Categories</a>
-			<form action="#">
-				<!-- <div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div> -->
-			</form>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
-			<a href="#" class="profile">
-				<img src="../../public/images/people.JPEG">
-			</a>
+		<i class='bx bx-menu' ></i>
+
+		<li class="profile">
+			<?php if($_SESSION['img-status'] == 0){?>
+				<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
+			<?php }else{?>
+				<img src='../../public/images/gasargent/profile_image/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
+			<?php } ?>								
+		</li>
+		<li class="user_info">
+			<h6><?php if(isset($_SESSION['Firstname']) && isset($_SESSION['Lastname'])){
+					echo $_SESSION['Firstname'] ," " ,$_SESSION['Lastname'] ;
+				}?></h6>
+			<h5><?php if(isset($_SESSION['Type'])){
+					echo $_SESSION['Type'];
+				}?></h5>
+        </li>
 		</nav>
 		<!-- NAVBAR -->
 
@@ -133,6 +133,16 @@
                             </form>
                         </div>
 			<div>
+
+
+			<div class="btn">
+                            <form action="../../controller/gasagent/gasagentDashboardController.php" method="POST">
+                                <button class="btn1" id="btn1" name="deliverbtn">Delivered Orders</button>
+                                <button class="btn2" id="btn2" name="pickedbtn">Picked Orders</button>
+                            </form>
+                        </div>
+			<div>
+
 				<?php
 				if(isset($_SESSION['low_stack_details'])){
 					$result=$_SESSION['low_stack_details'];
@@ -192,7 +202,7 @@
 				<li>
 					<i class='bx bxs-group' ></i>
 					<span class="text">
-						<label for="" id="Nodeliverid1" style=" font-size:20px">Total orders:3</label>
+						<label for="" id="Nodeliverid1" style=" font-size:20px">Total orders:</label>
                         <label for="" id="Nodeliverid2" style="font-size: 32px; margin-left:5%;"></label>
 					</span>
 				</li>
@@ -200,7 +210,7 @@
 					<i class='bx bxs-dollar-circle' ></i>
 					<span class="text">
 						<label for="" id="incomeid1" style=" font-size:20px"> Total income:</label><br>
-                        <label for="" id="incomeid2">Rs: 20000</label>
+                        <label for="" id="incomeid2">Rs: 850</label>
 					</span>
 				</li>
                
@@ -217,7 +227,7 @@
                                     <tr>
                       					<th>Customer Name</th>
                                         <th>Customer Address</th>
-                    					<th>Customer Contact No</th>
+                    					<th>Contact No</th>
                     					<th>Quantity</th>
                                        
 										<th>weight</th>

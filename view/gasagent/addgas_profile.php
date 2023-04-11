@@ -81,7 +81,7 @@
 				</a>
 			</li> -->
 			<li>
-				<a href="../../view/gasagent/gasagent_login.php" class="logout">
+				<a href="../../view/login.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -96,23 +96,23 @@
 	<section id="content">
 		<!-- NAVBAR -->
 		<nav>
-			<i class='bx bx-menu' ></i>
-			<a href="#" class="nav-link">Categories</a>
-			<form action="#">
-				<!-- <div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div> -->
-			</form>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
-			<a href="#" class="profile">
-				<img src="../../public/images/people.png">
-			</a>
+        <i class='bx bx-menu' ></i>
+
+<li class="profile">
+    <?php if($_SESSION['img-status'] == 0){?>
+        <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
+    <?php }else{?>
+        <img src='../../public/images/gasargent/profile_image/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
+    <?php } ?>								
+</li>
+<li class="user_info">
+    <h6><?php if(isset($_SESSION['Firstname']) && isset($_SESSION['Lastname'])){
+            echo $_SESSION['Firstname'] ," " ,$_SESSION['Lastname'] ;
+        }?></h6>
+    <h5><?php if(isset($_SESSION['Type'])){
+            echo $_SESSION['Type'];
+        }?></h5>
+</li>
 		</nav>
 		<!-- NAVBAR -->
 
@@ -145,20 +145,20 @@
                     }
                     ?>
                 <div class="up">
-                    <?php //if($_SESSION['img-status'] == 0){?>
-                        <img src='../../public/images/people.JPEG' alt='logo' width='100px' height='100px' class="image"> 
-                    <?php //}else{?>
-                        <!-- <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                        -->
-                    <?php //} ?>
+                    <?php if($_SESSION['img-status'] == 0){?>
+                        <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
+                    <?php }else{?>
+                        <img src='../../public/images/gasargent/profile_image/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                        
+                    <?php } ?>
                     <div class="b3">
-                        <form action="../../controller/customer/account_controller.php" method="POST" enctype="multipart/form-data">
+                        <form action="../../controller/gasagent/account_controller.php" method="POST" enctype="multipart/form-data">
                             <input type="file" name="image" id="image" class="image">
                             <button class="b4" name="removeimg">Remove</button>
                             <button name="uploadimg" class="b2">Upload</button>
                         </form>   
                     </div>     
                 </div>      
-                <form action="../../controller/customer/account_controller.php" method="POST">   
+                <form action="../../controller/gasagent/account_controller.php" method="POST">   
                     <div class="details">  
                         <div class="down">
                             <div class="down1">
@@ -211,7 +211,7 @@
                     </div>     
                     <div id="id01" class="modal">
                         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
-                            <form class="modal-content" action="../../controller/customer/account_controller.php" method="POST">
+                            <form class="modal-content" action="../../controller/gasagent/account_controller.php" method="POST">
                                     <div class="container">
                                         <h1>Delete Account</h1>
                                         <p>Are you sure you want to delete your account?</p>

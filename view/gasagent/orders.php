@@ -8,7 +8,7 @@
 	<!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
-	<link rel="stylesheet" href="../../public/css/gasagent/gasagentDashboard2.css">
+	<link rel="stylesheet" href="../../public/css/gasagent/gasagentDashboard.css">
     <link rel="stylesheet" href="../../public/css/gasagent/order.css">
 	<link rel="stylesheet" href="../../public/css/gasagent/background2.css">
 
@@ -76,7 +76,7 @@
 				</a>
 			</li> -->
 			<li>
-				<a href="../../view/gasagent/gasagent_login.php" class="logout">
+				<a href="../../view/login.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -91,23 +91,23 @@
 	<section id="content">
 		<!-- NAVBAR -->
 		<nav>
-			<i class='bx bx-menu' ></i>
-			<a href="#" class="nav-link">Categories</a>
-			<form action="#">
-				<!-- <div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div> -->
-			</form>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
-			<a href="#" class="profile">
-				<img src="../../public/images/people.JPEG">
-			</a>
+		<i class='bx bx-menu' ></i>
+
+<li class="profile">
+	<?php if($_SESSION['img-status'] == 0){?>
+		<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
+	<?php }else{?>
+		<img src='../../public/images/gasargent/profile_image/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
+	<?php } ?>								
+</li>
+<li class="user_info">
+	<h6><?php if(isset($_SESSION['Firstname']) && isset($_SESSION['Lastname'])){
+			echo $_SESSION['Firstname'] ," " ,$_SESSION['Lastname'] ;
+		}?></h6>
+	<h5><?php if(isset($_SESSION['Type'])){
+			echo $_SESSION['Type'];
+		}?></h5>
+</li>
 		</nav>
 		<!-- NAVBAR -->
 
@@ -232,48 +232,64 @@
 							?>
 							</h5>
 					   </div>
-					
-						<?php if(isset($_SESSION['BrandcusReportview'])){
-							$result=$_SESSION['BrandcusReportview'];
-							foreach ($result as $row) {?>
-							<div class="report_info_outter">
-								<div class="report_info">
-									<?php echo "Reference No : " . $row['Order_id']."<br>";
-									echo "Name : " . $row['Name']."<br>";
-									echo "Address : " . $row['Address']."<br>";
-									echo "Contact NO : " . $row['Contact_No']."<br>";
-									echo "Quantity : " . $row['Quantity']."<br>";?>
-									
-								</div>
-							</div>
-							<?php
-							}
-							unset($_SESSION['BrandcusReportview']);
-						}
+					   <table class="tb">
+					   <?php if(isset($_SESSION['BrandcusReportview'])){
+							$result=$_SESSION['BrandcusReportview'];?>
+							
+								<tr>
+									<th>Reference No</th>
+									<th>Name</th>
+									<th>Address </th>
+									<th>Contact No </th>
+									<th>Quantity</th>
+								</tr>
 
-						if(isset($_SESSION['BranddeReportview'])){
-							$result=$_SESSION['BranddeReportview'];
-							foreach ($result as $row) {?>
-							<div class="report_info_outter">
-								<div class="report_info">
-								    <?php echo "Reference No : " . $row['Order_id']."<br>";
-									echo "Name : " . $row['Name']."<br>";
-									echo "Address : " . $row['Address']."<br>";
-									echo "Contact NO : " . $row['Contact_No']."<br>";
-									
-									echo "Quantity : " . $row['Quantity']."<br>";?>
-									
-								</div>
-							</div>
-							<?php
-							}
-							unset($_SESSION['BranddeReportview']);
-						}
-						
-						
-						?>
+								<?php
+								foreach($result as $row){
+									echo "<tr>";
+									echo "<td>" . $row['Order_id'] . "</td>";
+									echo "<td>" . $row['Name'] . "</td>";
+									echo "<td>" . $row['Address'] . "</td>";
+									echo "<td>" . $row['Contact_No'] ."</td>";
+									echo "<td>" . $row['Quantity'] . "</td>";
+								
+								}
+								unset($_SESSION['BrandcusReportview']);
+					    }	
+							   if(isset($_SESSION['BranddeReportview'])){
+							    $result=$_SESSION['BranddeReportview'];?>
+							
+								<tr>
+									<th>Reference No</th>
+									<th>Name</th>
+									<th>Address </th>
+									<th>Contact No </th>
+									<th>Quantity</th>
+								</tr>
 
+								<?php
+								foreach($result as $row){
+									echo "<tr>";
+									echo "<td>" . $row['Order_id'] . "</td>";
+									echo "<td>" . $row['Name'] . "</td>";
+									echo "<td>" . $row['Address'] . "</td>";
+									echo "<td>" . $row['Contact_No'] ."</td>";
+									echo "<td>" . $row['Quantity'] . "</td>";
+								
+								}
+								unset($_SESSION['BranddeReportview']);
+								
+
+							
+							
+							
+							
+							
 						
+						
+						 }?>
+
+						</table>
 				</form>
 				</div>
 			
