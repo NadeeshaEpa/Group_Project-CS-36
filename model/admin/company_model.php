@@ -110,6 +110,17 @@ class company_model{
         }
     }
 
+    function check_company($connection,$company_name){
+        $sql="SELECT company_id FROM `gas_company` WHERE company_name='$company_name'";
+        $result = mysqli_query($connection, $sql);
+        if($result->num_rows==0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     
     
 }

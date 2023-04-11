@@ -43,4 +43,32 @@ if(isset($_GET['oid'])){
     }
 
 }
+
+if(isset($_POST['search_delivery'])){
+    $name=$_POST['order_id'];
+    $name=$connection->real_escape_string($name);
+    $delivery=new delivery_model();
+    $result=$delivery->search_delivery($connection,$name);
+    if($result){
+        $_SESSION['deliverydetails']=$result;
+        header("Location:../../view/staff/deliveries.php");
+    }else{
+        $_SESSION['deliverydetails']=[];
+        header("Location:../../view/staff/deliveries.php");
+    }
+}
+
+if(isset($_POST['search_deliveryrequest'])){
+    $name=$_POST['order_id'];
+    $name=$connection->real_escape_string($name);
+    $delivery=new delivery_model();
+    $result=$delivery->search_deliveryrequest($connection,$name);
+    if($result){
+        $_SESSION['deliveryrequestdetails']=$result;
+        header("Location:../../view/staff/delivery_request.php");
+    }else{
+        $_SESSION['deliveryrequestdetails']=[];
+        header("Location:../../view/staff/delivery_request.php");
+    }
+}
 ?>

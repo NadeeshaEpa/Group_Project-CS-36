@@ -112,6 +112,15 @@
     <form action="../../controller/admin/addcompany_controller.php" method="POST" id="company_form" enctype="multipart/form-data">
         <h2>Add New Gas Company</h2>
 
+		<div class="err-msg">
+                <?php
+                    if(isset($_SESSION['addcompany-error'])){
+                        echo $_SESSION['addcompany-error'];
+                        unset($_SESSION['addcompany-error']);
+                    }?>
+        </div>
+
+
         Company Name:<br><br>
           <input type="text" name="name" id="name" placeholder="eg : Litro, Laugh"  required><br><br>
 
@@ -122,26 +131,10 @@
                             <input type="file" name="image" id="image" class="image">
                             <!-- <button name="uploadimg" class="b2">Upload</button> -->   
                     </div>     
-<!-- 
-            <label for="nic" id="nic-label">NIC :</label><br><br>
-            <input type="text" name="nic" id="nic" placeholder="NIC" required><br>
-            
-        <label for="password" id="password-label">Password :</label><br><br>
-            <input type="password" name="password" id="password" placeholder="Password" required><br>
-
-        <label for="cpassword" id="cpassword-label">Confirm Password :</label><br><br>
-            <input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password" required><br> 
-
-        <label for="email" id="email-label">Email :</label><br><br>
-            <input type="email" name="email" id="email" placeholder="Email" required><br>
-            
-        <label for="contactnumber" id="contactnum-label">Contact Number :</label><br><br>
-            <input type="text" name="contactnumber" id="contactnumber" placeholder="Contact Number" required><br> -->
-            
-         
 
         <button type="submit" name="register" id="submit">Register</button>  
         <a href="user_staff.php"><button style="background-color: #da3a3a;">Cancel</button></a> 
+		<br><br>
     </form>
     </div>
 

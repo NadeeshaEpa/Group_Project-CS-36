@@ -123,7 +123,7 @@ class customer_model{
             while($row=mysqli_fetch_assoc($result)){
                 $customer[]=$row;
             }
-            // print_r($customer);
+            
             return $customer;
         }else{
             return false;

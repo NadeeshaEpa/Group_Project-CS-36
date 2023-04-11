@@ -140,6 +140,13 @@
 
 						<h3>Order Payments</h3><br>
 
+						<form action="../../controller/staff/payment_controller.php" method="POST">
+									<div class="form-input">
+										<input type="search" name="user_id" placeholder="Search by User ID...">
+										<button type="submit" name="search_gasagent" class="search-btn"><i class='bx bx-search' ></i></button>
+									</div>
+						</form>
+
 						<table>
 						<tr>
 						        <th>User ID</th>
@@ -172,6 +179,8 @@
 								
 							}
 						}
+
+                     
 
 						?>
 			</div>

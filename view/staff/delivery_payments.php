@@ -141,6 +141,13 @@
 
 						<h3>Delivery Payments</h3><br>
 
+						<form action="../../controller/staff/payment_controller.php" method="POST">
+									<div class="form-input">
+										<input type="search" name="user_id" placeholder="Search by User ID...">
+										<button type="submit" name="search_deliveryperson" class="search-btn"><i class='bx bx-search' ></i></button>
+									</div>
+						</form>
+
 						<table>
 						<tr>
 						        <th>User ID</th>
@@ -168,7 +175,7 @@
 									<td>RS. '.$fee.'.00</td>
 									<td style="color:red;">Pending</td>
 									<td><a href="../../controller/staff/payment_controller.php?vid='.$User_id.'"><button class="button1" style="width:30%;" >View</button></a>
-									<a href="../../controller/staff/payment_controller.php?vid='.$User_id.'"><button class="button2" style="width:30%;">Update</button></a></td>
+									<a href="../../controller/staff/payment_controller.php?uid='.$User_id.'"><button class="button2" style="width:30%;">Update</button></a></td>
 								</tr>' ;
 								
 							}

@@ -140,6 +140,15 @@ require_once("../../config.php");?>
 
     <h3>Orders</h3>
 
+	<form action="../../controller/staff/order_controller.php" method="POST">
+				<div class="form-input">
+					<input type="search" name="order_id" placeholder="Search by order ID...">
+					<button type="submit" name="search_order" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+	</form>
+
+	<br><br>
+
     <table>
     <tr>
         <th>Order ID</th>
@@ -165,9 +174,20 @@ require_once("../../config.php");?>
                  <th>'.$order_id.'</th>
                  <td>'.$date.'</td>
                  <td>'.$fname." ". $lname.'</td>
-                 <td>'.$amount.'</td>
-                 <td>'.$status.'</td>
-        
+                 <td>'.$amount.'</td>' ;
+				
+				 if($status==1){
+					echo'<td>Delivered</td>';
+				}
+				else if($status==0){
+					echo'<td>On the way</td>';
+				}
+				else{
+					echo'<td>No delivery</td>';
+				}
+                //  <td>'.$status.'</td>
+				 
+           echo'
                  <td>
 				 <a href="../../controller/staff/order_controller.php?vid='.$order_id.'"><button class="button1" style="width:50%;">View</button></a>
                  </td>

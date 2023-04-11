@@ -139,8 +139,12 @@
 				<div class="order">
 					<div class="head">
 						<h3>Deliveries</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
+						<form action="../../controller/staff/delivery_controller.php" method="POST">
+						<div class="form-input">
+							<input type="search" name="order_id" placeholder="Search by Order ID.....">
+							<button type="submit" name="search_delivery" class="search-btn"><i class='bx bx-search' ></i></button>
+						</div>
+						</form>
 					</div>
 					<table>
 						<thead>
@@ -169,7 +173,7 @@
 								<tr class="details" id='.$order_id.'>
 								<td>
 									<img src="../../public/images/'.$imgname.'">
-									<p>'.$fname. $lname.'</p>
+									<p>'.$fname." ". $lname.'</p>
 								</td>
 								<td>'.$User_id.'</td>
                                 <td>'.$order_id.'</td>

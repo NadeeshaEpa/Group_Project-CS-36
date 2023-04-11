@@ -101,7 +101,7 @@ contact?.addEventListener("input", function () {
 });
 
 nic?.addEventListener("input",function(){
-    var pattern=/^[0-9]{9}V$/;
+    var pattern=/^([0-9]{9}[x|X|v|V]|[0-9]{12})$/;
     if (!pattern.test(nic.value)) {
         nicLabel.innerHTML = "Invalid NIC Number";  
         nicLabel.style.color = "red";

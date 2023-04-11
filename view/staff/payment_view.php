@@ -171,6 +171,44 @@
 
 						?>
 			</div>
+
+
+			<div class="list">
+
+
+						<table>
+						<tr>
+						        <th>Order ID</th>
+						       <th>Date</th>
+								<th>Amount</th>
+								<th>Payment</th>
+								
+						</tr>
+
+						<?php
+						$result=$_SESSION['view_paidpayment'];
+						if($result){
+							foreach($result as $row){
+								$Order_Id=$row['Order_Id'];
+								$Order_date=$row['Order_date'];
+								$Amount=$row['Amount'];
+								$Paid=$row['Paid'];
+
+								echo'
+								
+								<tr>
+								    <th>'.$Order_Id.'</th>
+									<td>'.$Order_date.'</td>
+									<td>RS. '.$Amount.'.00</td>
+									<td style="color:green;">Paid</td>
+									
+								</tr>' ;
+								
+							}
+						}
+
+						?>
+			</div>
 		   
 		</main>
 		<!-- MAIN -->

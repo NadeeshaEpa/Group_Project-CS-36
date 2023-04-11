@@ -11,6 +11,7 @@
 	<!-- My CSS -->
 	<link rel="stylesheet" href="../../public/css/admin_delivery/Dashboard.css">
     <link rel="stylesheet" href="../../public/css/admin_delivery/user_list.css">
+	<link rel="stylesheet" href="../../public/css/admin_delivery/delete_popup.css">	
 
 	<title>FaGo</title>
 </head>
@@ -134,7 +135,7 @@
                  <td>
                  <a href="../../controller/admin/company_controller.php?vid='.$company_id.'"><button class="button1">View</button></a>
                  <a href="../../controller/admin/company_controller.php?uid='.$company_id.'"><button class="button2">Update</button></a>
-                 <a href="../../controller/admin/company_controller.php?did='.$company_id.'"><button class="button3">Delete</button></a>
+                 <button onclick="deleterequest('.$company_id.');" class="button3">Delete</button>
                  </td>
             </tr>' ;
             
@@ -152,6 +153,32 @@
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
+	<div id="backgr">
+        <div id="cancel_popup">
+            <div class="cancel_contect">
+                <p>Are you sure you want to Delete this Gas Company?</p>
+                <div class="buttons">
+                    <button id="yes">Yes</button>
+                    <button id="no">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<script>
+		function deleterequest(id){
+            document.getElementById("backgr").style.display="block";
+            document.getElementById("cancel_popup").style.display="block";
+            document.getElementById("yes").addEventListener("click",function(){
+                window.location.href="../../controller/admin/company_controller.php?did="+id;
+            });
+            document.getElementById("no").addEventListener("click",function(){
+                document.getElementById("backgr").style.display="none";
+                document.getElementById("cancel_popup").style.display="none";
+            });
+        }  
+            
+    </script>
 	
 
 	<script src="../../public/js/script.js"></script>

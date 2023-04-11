@@ -168,6 +168,8 @@ require_once("../../config.php");?>
 
         <button type="submit" name="register" id="submit">Register</button>  
         <a href="user_staff.php"><button style="background-color: #da3a3a;">Cancel</button></a> 
+
+		<br><br>
     </form>
     </div>
 
