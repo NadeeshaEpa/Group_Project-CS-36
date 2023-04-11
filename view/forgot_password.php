@@ -31,11 +31,11 @@
                     ?>  
                 </div> 
                 <input type="hidden" name="type" value="send" />     
-                <label for="email" id="femail-label">Enter your email address:</label><br>
-                <input type="email" name="email" id="femail" placeholder="Enter Email" class="box" required><br><br>
+                <label for="email" id="email-label">Enter your email address:</label><br>
+                <input type="email" name="email" id="email" placeholder="Enter Email" class="box" required><br><br>
                 <button type="submit" name="fsubmit" id="submit">Send</button>
             </form>
     </div>
-    <!-- <script src="../../public/js/forgotpw_validation.js"></script> -->
+    <script src="../public/js/forgotpw_validation.js"></script>
 </body>
 </html>

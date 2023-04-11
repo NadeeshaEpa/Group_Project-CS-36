@@ -136,8 +136,8 @@ class user_model{
         
 
     }
-    public function review($connection){
-        $sql="select u.First_Name,u.Last_Name,u.Type,c.description,c.date,p.imgname from user u inner join profileimg p on u.User_id=p.User_id inner join company_review c on p.User_id=c.customer_id";
+    public function review($connection,$limit,$offset){
+        $sql="select c.review_id,u.First_Name,u.Last_Name,u.Type,c.description,c.date,p.imgname from user u inner join profileimg p on u.User_id=p.User_id inner join company_review c on p.User_id=c.customer_id group by c.review_id order by c.review_id desc limit $limit offset $offset";
         $result=$connection->query($sql);
         $reviews=[];
         foreach($result as $row){
@@ -145,5 +145,11 @@ class user_model{
         }
         return $reviews;
 
+    }
+    public function review_count($connection){
+        $sql="select count(review_id) as count from company_review";
+        $result=$connection->query($sql);
+        $row=$result->fetch_assoc();
+        return $row['count'];
     }
 }

@@ -60,6 +60,39 @@ if(isset($_SESSION['company_reviews'])){
                 }
             }
             ?>
+            <?php 
+            if(isset($_SESSION['about_page'])){
+                $page=$_SESSION['about_page'];
+            }else{
+                $page=1;
+            }
+            if(isset($_SESSION['about_total_pages'])){
+                $total_pages=$_SESSION['about_total_pages'];
+            }else{
+                $total_pages=1;
+            }    
+            ?>
+            <div class="pagination">
+                <?php if($page>1){?>
+                    <!-- pass value as form -->
+                    <div class="p-left">
+                        <form action="../controller/Users/about_controller.php" method="GET">
+                            <input type="hidden" name="about_page" value="<?php echo $page-1?>">
+                            <input type="submit" value="Previous">
+                        </form>
+                    </div>
+                <?php } ?>
+                <?php if($page<$total_pages){?>
+                    <!-- pass value as form -->
+                    <div class="p-right">
+                        <form action="../controller/Users/about_controller.php" method="GET">
+                            <input type="hidden" name="about_page" value="<?php echo $page+1?>">
+                            <input type="submit" value="Next">
+                        </form>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>    
     </div>
     <div class="footer">
         <div class="footer-left">

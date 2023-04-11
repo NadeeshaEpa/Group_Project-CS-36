@@ -112,7 +112,7 @@
                                 $diff=date_diff($date1,$date2);
                                 $diff=$diff->format("%a");
 
-                                if(($detail['Delivery_Status']==NULL && $diff<2)||($detail['Delivery_Status']==2 && $diff<1)){?>
+                                if(($detail['Delivery_Status']==NULL && $diff<2)||($detail['Delivery_Status']==2 && $diff<1) ||($detail['Delivery_Status']==3 && $diff<1)){?>
                                 <div class="cancelbutton">
                                     <td><button id="cancelbutton" onclick="cancelorder(<?php echo $detail['Order_id']?>);">Cancel</button></td>
                                 </div>

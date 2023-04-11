@@ -55,65 +55,60 @@
         <?php include_once 'customer_header.php'; ?>
             <div class="review-details">
                     <?php
-                        if(isset($_SESSION['updatereview'])){
-                            if($_SESSION['updatereview']=="failed"){?>
+                        if(isset($_SESSION['companyupdatereview'])){
+                            if($_SESSION['companyupdatereview']=="failed"){?>
                             <div class="error-msg">
                                 <p>You can't update a review which published more than 7 days ago.</p>
                             </div>
                         <?php }
-                            unset($_SESSION['updatereview']);
+                            unset($_SESSION['companyupdatereview']);
                         } 
                     ?>
                         <h1>All Reviews</h1>
                         <div class="type">
-                            <a href="../../controller/customer/review_controller.php?view-review='1'"><button class="selected">Delivery Person Reviews</button></a>
-                            <a href="../../controller/customer/review_controller.php?company_reviewid='1'"><button>Company Reviews</button></a>
+                            <a href="../../controller/customer/review_controller.php?view-review='1'"><button>Delivery Person Reviews</button></a>
+                            <a href="../../controller/customer/review_controller.php?company_reviewid='1'"><button class="selected">Company Reviews</button></a>
                          </div>
                 <div class="reviewtable"> 
-                    <h2>Delivery Person Reviews</h2>
+                    <h2>Company Reviews</h2>
                         <table>
                             <tr>
-                                <th>Delivery Person</th>
-                                <th>Delivery Person name</th>
                                 <th>Date</th>
                                 <th>Description</th>
                                 <th></th>
                             </tr>
                             <?php
-                                if(isset($_SESSION['viewreview'])){
-                                    if($_SESSION['viewreview']==='failed'){
-                                        unset($_SESSION['viewreview']);
+                                if(isset($_SESSION['companyreview'])){
+                                    if($_SESSION['companyreview']==='failed'){
+                                        unset($_SESSION['companyreview']);
                                         $details=[];
                                     }else{
-                                        $details=$_SESSION['viewreview'];
+                                        $details=$_SESSION['companyreview'];
                                     }
                                 }
                                 foreach($details as $detail){?>
                                     <tr>
-
-                                        <td><img src="../../public/images/DeliveryPerson/<?php echo $detail['image'] ?>" width="50px" height="50px"></td>
-                                        <td><?php echo $detail['First_Name']." ".$detail['Last_Name']; ?></td>
-                                        <td><?php echo $detail['Date']; ?></td>
+                                        <td><?php echo $detail['date']; ?></td>
                                         <td><?php echo $detail['Description']; ?></td> 
                                         <td>     
                                                 <div class="editbtn"> 
-                                                    <a href="../../controller/customer/review_controller.php?erid=<?php echo $detail['Rate_id']; ?>">Edit</a>
+                                                    <a href="../../controller/customer/review_controller.php?company_erid=<?php echo $detail['Review_id']; ?>">Edit</a>
                                                 </div>
                                                 <div class="rdeletebtn">
-                                                <button onclick="deletereview(<?php echo $detail['Rate_id']; ?>);">Delete</button>
+                                                <button onclick="deletereview(<?php echo $detail['Review_id']; ?>);">Delete</button>
                                                 </div>
                                         </td>
                                     </tr>
                                 <?php } ?>
                         </table>
                         <?php 
-                            if(isset($_SESSION['page'])){
-                            $page=$_SESSION['page'];
+                            if(isset($_SESSION['c_page'])){
+                            $page=$_SESSION['c_page'];
                             }else{
                             $page=1;
                             }
-                            if(isset($_SESSION['total_pages'])){
-                                $total_pages=$_SESSION['total_pages'];
+                            if(isset($_SESSION['c_total_pages'])){
+                                $total_pages=$_SESSION['c_total_pages'];
                             }else{
                                 $total_pages=1;
                             }    
@@ -123,7 +118,7 @@
                                 <!-- pass value as form -->
                                 <div class="p-left">
                                     <form action="../../controller/customer/review_controller.php" method="GET">
-                                        <input type="hidden" name="page" value="<?php echo $page-1?>">
+                                        <input type="hidden" name="c_page" value="<?php echo $page-1?>">
                                         <input type="submit" value="Previous">
                                     </form>
                                 </div>
@@ -132,7 +127,7 @@
                                 <!-- pass value as form -->
                                 <div class="p-right">
                                     <form action="../../controller/customer/review_controller.php" method="GET">
-                                        <input type="hidden" name="page" value="<?php echo $page+1?>">
+                                        <input type="hidden" name="c_page" value="<?php echo $page+1?>">
                                         <input type="submit" value="Next">
                                     </form>
                                 </div>
@@ -158,7 +153,7 @@
             document.getElementById("backgr").style.display="block";
             document.getElementById("cancel_popup").style.display="block";
             document.getElementById("yes").addEventListener("click",function(){
-                window.location.href="../../controller/customer/review_controller.php?drid="+id;
+                window.location.href="../../controller/customer/review_controller.php?company_drid="+id;
             });
             document.getElementById("no").addEventListener("click",function(){
                 document.getElementById("backgr").style.display="none";

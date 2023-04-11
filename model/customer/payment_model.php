@@ -345,21 +345,40 @@ class payment_model{
 
     }
     public function updateagent($connection,$agent,$quantity,$cylinderid){
-        $sql="update sell_gas set Quantity=quantity-'$quantity' where GasAgent_Id='$agent' and Cylinder_Id='$cylinderid'";
+        $sql="select quantity from sell_gas where GasAgent_Id='$agent' and Cylinder_Id='$cylinderid'";
         $result=$connection->query($sql);
-        if(!$result){
+        $row=$result->fetch_assoc();
+        $q=$row['quantity'];
+
+        if($q<$quantity){
             return false;
         }else{
-            return true;
+            $sql="update sell_gas set Quantity=Quantity-'$quantity' where GasAgent_Id='$agent' and Cylinder_Id='$cylinderid'";
+            $result=$connection->query($sql);
+            if(!$result){
+                return false;
+            }else{
+                return true;
+            }
         }
+        
     }
     public function updatestock($connection,$quantity,$item_code){
-        $sql="update product set Quantity=Quantity-'$quantity' where item_code='$item_code'";
+        $sql="select Quantity from product where item_code='$item_code'";
         $result=$connection->query($sql);
-        if(!$result){
+        $row=$result->fetch_assoc();
+        $q=$row['Quantity'];
+
+        if($q<$quantity){
             return false;
         }else{
-            return true;
+            $sql="update product set Quantity=Quantity-'$quantity' where item_code='$item_code'";
+            $result=$connection->query($sql);
+            if(!$result){
+                return false;
+            }else{
+                return true;
+            }
         }
     }
     public function getgasagentemail($connection,$agent){

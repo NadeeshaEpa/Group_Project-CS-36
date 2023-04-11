@@ -2,10 +2,8 @@
 class addtocart_model{
     public function get_cylinder_price($connection,$item_id,$cylinder){
        if($cylinder=="new"){
-        //    $sql="SELECT newcylinder_price as cprice FROM gascylinder g inner join gas_company c on g.Type=c.company_id WHERE c.company_name='$type' AND g.weight='$weight'"; 
             $sql="SELECT newcylinder_price as cprice FROM gascylinder WHERE Cylinder_Id='$item_id'";  
        }else{
-        //    $sql="SELECT price as cprice FROM gascylinder g inner join gas_company c on g.Type=c.company_id WHERE c.company_name='$type' AND g.weight='$weight'";
             $sql="SELECT price as cprice FROM gascylinder WHERE Cylinder_Id='$item_id'";
        }
        $price=$connection->query($sql);
@@ -53,15 +51,15 @@ class addtocart_model{
             return $row['Cylinder_Id'];
         }
     }
-    public function updatequantity($connection,$quantity,$gasid,$cylinderid){
-        $sql="update sell_gas set Quantity=Quantity-'$quantity' where GasAgent_id='$gasid' and Cylinder_id='$cylinderid'";
-        $result=$connection->query($sql);
-        if($result===false){
-            return false;
-        }else{
-            return true;
-        }
-    }
+    // public function updatequantity($connection,$quantity,$gasid,$cylinderid){
+    //     $sql="update sell_gas set Quantity=Quantity-'$quantity' where GasAgent_id='$gasid' and Cylinder_id='$cylinderid'";
+    //     $result=$connection->query($sql);
+    //     if($result===false){
+    //         return false;
+    //     }else{
+    //         return true;
+    //     }
+    // }
     public function stock_manager($connection){
         $sql="Select id from stock_manager";
         $result=$connection->query($sql);

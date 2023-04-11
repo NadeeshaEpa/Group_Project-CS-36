@@ -61,7 +61,7 @@ class email_model{
         $message.="<br>Total Amount:LKR ".$order['Amount']+$order['Delivery_fee'];
         $message.="<br>Thank you for shopping with us. We hope to see you again soon.";
         $message.="<br>Regards,<br>Fago Team";
-        
+
         $this->mail->setFrom('fagoorders@gmail.com', 'Fago');
         $this->mail->addAddress($useremail);
         $this->mail->isHTML(true);
@@ -76,6 +76,7 @@ class email_model{
         }
     }
     public function sendRefundEmail_agent($connection,$order_id,$gasagentemail){
+
         $sql="SELECT * FROM `order` WHERE Order_id='$order_id'";
         $result=$connection->query($sql);
         $order=$result->fetch_assoc();
@@ -87,6 +88,8 @@ class email_model{
         $message.="<br>Order Date: ".$order['Order_date'];
         $message.="<br>Regards,<br>Fago Team";
 
+
+        //send email only to gas agent
         $this->mail->setFrom('fagoorders@gmail.com', 'Fago');
         $this->mail->addAddress($gasagentemail);
         $this->mail->isHTML(true);
@@ -100,7 +103,6 @@ class email_model{
             echo "Message has been sent";
         }
     }
-    
 }
 
 
