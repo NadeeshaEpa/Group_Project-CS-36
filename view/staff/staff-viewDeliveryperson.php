@@ -11,6 +11,8 @@ require_once("../../config.php");?>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="../../public/css/admin_delivery/Dashboard.css">
     <link rel="stylesheet" href="../../public/css/admin_delivery/user_list.css">
+	<link rel="stylesheet" href="../../public/css/admin_delivery/delete_popup.css">
+
 
 	<title>FaGo</title>
 </head>
@@ -134,9 +136,9 @@ require_once("../../config.php");?>
 
     <h3>All Delivery Persons</h3>
 
-	<form action="../../controller/staff/staff_controller.php" method="POST">
+	<form action="../../controller/staff/deliverypersonacc_controller.php" method="POST">
 				<div class="form-input">
-					<input type="search" name="customer_name" placeholder="Search by name...">
+					<input type="search" name="deliveryperson_name" placeholder="Search by name...">
 					<button type="submit" name="search" class="search-btn"><i class='bx bx-search' ></i></button>
 				</div>
 	</form>
@@ -170,7 +172,7 @@ require_once("../../config.php");?>
                  <td>
                  <a href="../../controller/staff/deliverypersonacc_controller.php?vid='.$user_id.'"><button class="button1">View</button></a>
                  <a href="../../controller/staff/deliverypersonacc_controller.php?uid='.$user_id.'"><button class="button2">Update</button></a>
-                 <a href="../../controller/staff/deliverypersonacc_controller.php?did='.$user_id.'"><button class="button3">Delete</button></a>
+				 <button onclick="deleteuser('.$user_id.');" class="button3">Delete</button>
                  </td>
             </tr>' ;
             
@@ -188,6 +190,35 @@ require_once("../../config.php");?>
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
+
+	<div id="backgr">
+        <div id="cancel_popup">
+            <div class="cancel_contect">
+                <p>Are you sure you want to Delete this User?</p>
+                <div class="buttons">
+                    <button id="yes">Yes</button>
+                    <button id="no">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<script>
+		function deleteuser(id){
+            document.getElementById("backgr").style.display="block";
+            document.getElementById("cancel_popup").style.display="block";
+            document.getElementById("yes").addEventListener("click",function(){
+                window.location.href="../../controller/staff/deliverypersonacc_controller.php?did="+id;
+            });
+            document.getElementById("no").addEventListener("click",function(){
+                document.getElementById("backgr").style.display="none";
+                document.getElementById("cancel_popup").style.display="none";
+            });
+        }  
+            
+    </script>
+	
+
 	
 
 	<script src="../../public/js/script.js"></script>

@@ -8,9 +8,12 @@ require_once("../../config.php");?>
 
 	<!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 	<!-- My CSS -->
 	<link rel="stylesheet" href="../../public/css/admin_delivery/Dashboard.css">
     <link rel="stylesheet" href="../../public/css/admin_delivery/profile.css">
+	<link rel="stylesheet" href="../../public/css/admin_delivery/delete_popup.css">
+
 
 	<title>FaGo</title>
 </head>
@@ -131,7 +134,7 @@ require_once("../../config.php");?>
                     //   $names=$result[1];
                    }
                 ?>
-    <form action="../../controller/staff/deliverypersonacc_controller.php" method="POST" id="staff_form" enctype="multipart/form-data">
+    <!-- <form action="../../controller/staff/deliverypersonacc_controller.php" method="POST" id="staff_form" enctype="multipart/form-data"> -->
 	     
     <div class="data">
 	   
@@ -199,21 +202,75 @@ require_once("../../config.php");?>
 		    
 		</div>
 
-         <button type="submit" name="aid" id="submit" class="b6">Accept</button> 
-        <button type="decline" name="deid" id="decline" style="background-color: #da3a3a;" class="b4">Decline</button></a>  
+		<button onclick="acceptrequest(<?php echo $result[0]['DeliveryPerson_Id']; ?>);" class="b4">Accept</button>  
+		<button onclick="deleterequest(<?php echo $result[0]['DeliveryPerson_Id']; ?>);" class="b4">Decline</button>
+		<br><br>
 
-        
+       
 		</div>
-    </form>
+    
     </div>
 
     </main>
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
-	
 
+	<div id="backgr">
+        <div id="cancel_popup">
+            <div class="cancel_contect">
+                <p>Are you sure you want to Delete this request?</p>
+                <div class="buttons">
+                    <button id="yes">Yes</button>
+                    <button id="no">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<div id="backgr1">
+        <div id="cancel_popup1">
+            <div class="cancel_contect1">
+                <p>Are you sure you want to Accept this request?</p>
+                <div class="buttons">
+                    <button id="yes1">Yes</button>
+                    <button id="no1">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+		function deleterequest(id){
+            document.getElementById("backgr").style.display="block";
+            document.getElementById("cancel_popup").style.display="block";
+            document.getElementById("yes").addEventListener("click",function(){
+                window.location.href="../../controller/staff/deliverypersonacc_controller.php?deid="+id;
+            });
+            document.getElementById("no").addEventListener("click",function(){
+                document.getElementById("backgr").style.display="none";
+                document.getElementById("cancel_popup").style.display="none";
+            });
+        }  
+            
+    </script>
+	<script>
+		function acceptrequest(id){
+            document.getElementById("backgr1").style.display="block";
+            document.getElementById("cancel_popup1").style.display="block";
+            document.getElementById("yes1").addEventListener("click",function(){
+                window.location.href="../../controller/staff/deliverypersonacc_controller.php?aid="+id;
+            });
+            document.getElementById("no1").addEventListener("click",function(){
+                document.getElementById("backgr1").style.display="none";
+                document.getElementById("cancel_popup1").style.display="none";
+            });
+        }  
+            
+    </script>
+	
 	<script src="../../public/js/script.js"></script>
+	
     
 </body>
 </html>

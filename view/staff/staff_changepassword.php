@@ -1,36 +1,30 @@
-<!-- <?php session_start(); ?> -->
-<!DOCTYPE html>
+<?php session_start(); ?>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<!-- Boxicons -->
-	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-	<!-- My CSS -->
-	<link rel="stylesheet" href="../../public/css/admin_delivery/Dashboard.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../../public/css/admin_delivery/Dashboard.css">
     <link rel="stylesheet" href="../../public/css/admin_delivery/register.css">
-
-	<title>FaGo</title>
+    
+    <title>Document</title>
 </head>
 <body>
-
-
-	<!-- SIDEBAR -->
-	<section id="sidebar">
+<section id="sidebar">
 		<a href="#" class="brand">
 			<i class='bx bxs-select-multiple'></i>
 			<span class="text">FAGO</span>
 		</a>
 		<ul class="side-menu top">
-        <li >
+			<li>
 				<a href="../../controller/staff/dashboard_controller.php?id=profitdetails">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
 
-			<li>
+			<li class="active">
 				<a href="../../controller/staff/profile_controller.php?viewacc=1">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Account</span>
@@ -53,7 +47,7 @@
 				</a>
 			</li>
 
-			<li class="active">
+			<li>
 				<a href="../../controller/staff/cylinder_controller.php?id=viewcylinder">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Gas Cylinders</span>
@@ -87,6 +81,7 @@
 				</a>
 			</li>
 			
+			
 		</ul>
 		<ul class="side-menu">
 			<li>
@@ -97,16 +92,19 @@
 			</li>
 		</ul>
 	</section>
-	<!-- SIDEBAR -->
-
-
-
-	<!-- CONTENT -->
-	<section id="content">
+    <section id="content">
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-			
+			<!-- <a href="#" class="nav-link">Categories</a> -->
+			<!-- <form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search...">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form> -->
+			<!-- <input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label> -->
 			
 			
 			<a href="#" class="profile">
@@ -122,56 +120,47 @@
 
 		<!-- MAIN -->
 		<main>
-       
-<div class="registration-form">
-	
-    <form action="../../controller/staff/cylinder_controller.php" method="POST" id="staff_form" enctype="multipart/form-data">
-        <h2>Add New Gas Cylinder Type</h2>
 
-		<div class="err-msg">
+	<!-- SIDEBAR -->
+    <div class="registration-form">
+            <h2>Change Password</h2>
+
+            <form action="../../controller/staff/profile_controller.php" method="POST">
+                <div class="err-msg">
                 <?php
-                    if(isset($_SESSION['addcylinder-error'])){
-                        echo $_SESSION['addcylinder-error'];
-                        unset($_SESSION['addcylinder-error']);
+                    if(isset($_SESSION['updatepwd-error'])){
+                        echo $_SESSION['updatepwd-error'];
+                        unset($_SESSION['updatepwd-error']);
                     }?>
-        </div>
-
-		<div class="dropdown">
-		<label for="company" id="company-label">Company Name:</label>
-						   <select name="gascompany" id="gascompany">
-							<option value="Choose gas company" disabled selected>Select Gas Company</option>
-						   <?php 
-						        $result=$_SESSION['company_list'];
-								foreach($result as $row){?>
-							    <option value="<?php echo $row['company_id']?>"><?php echo $row['company_name']?></option>
-						   <?php } ?>
-                            </select>
-        </div><br><br>
-
-        <label for="weight" id="weight-label">Weight (KG) :</label>
-          <input type="text" name="weight" id="name"   required><br><br>
-
-        Price (RS) :
-          <input type="text" name="price" id="name"   required><br><br>
-
-        Main Poster:
-                    <div class="b3">
-                            <input type="file" name="image" id="image" class="image">   
-                    </div>     
-
-        <br>
-		<a href="gas_cylinder.php"><button style="background-color: #da3a3a;">Cancel</button></a> 
-        <button type="submit" name="register" id="submit">Register</button>  
-        <br><br>
-    </form>
-    </div>
-
+                </div>
+                <div class="success-msg">
+                <?php
+                    if(isset($_SESSION['updatepwd'])){
+                        echo $_SESSION['updatepwd'];
+                        unset($_SESSION['updatepwd']);
+                    }
+                ?>
+                </div>
+                <div class="pwdcontainer">
+                    <label for="cpsw">Current Password</label><br>
+                    <input type="password" placeholder="Enter Current Password" name="pwd" required><br>
+                    <label id="password-label" for="cpsw">New Password</label><br>
+                    <input id="password" type="password" placeholder="Enter New Password" name="npwd" required><br>
+                    <label id="cpassword-label" for="psw">Confirm Password</label><br>
+                    <input id="cpassword" type="password" placeholder="Confirm New Password" name="cnpwd" required><br><br>
+                    <div class="btn">
+                        <button type="submit" name="updatepwd" class="updatebtn">Update</button>
+                        <!-- <button type="submit"  name="cancelpwd" class="cancelbtn">Cancel</button> -->
+                    </div>  
+                </div>
+            </form>
+            <form action="../../controller/staff/profile_controller.php" method="POST">
+            <button type="submit"  name="cancelpwd" class="cancelbtn" style="background-color: red;">Cancel</button>
+            <br><br>
+            </form>         
+        </div>  
+    </div>  
     </main>
-		<!-- MAIN -->
-	</section>
-	<!-- CONTENT -->
-	
-    <script src="../../public/js/staff_validation.js"></script>
-	<!-- <script src="../../public/js/script.js"></script> -->
+    <script src="../../public/js/admin_Validation.js"></script>  
 </body>
 </html>

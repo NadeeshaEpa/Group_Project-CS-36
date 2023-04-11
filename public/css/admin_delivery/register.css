@@ -47,6 +47,21 @@
     font-weight: bold;
     font-size: 1.5rem;
 }
+
+.err-msg{
+    color: #ba3939;
+    background: #ffe0e0;
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+.success-msg{
+    color: green;
+    /* font-size: 20px; */
+    margin-bottom: 0px;
+    /* background-color: lightgreen; */
+    width: 100%;
+}
 /* .box{
     padding:12px;
     width:90%;

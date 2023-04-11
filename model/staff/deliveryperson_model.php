@@ -86,7 +86,23 @@ class deliveryperson_model{
     }
 
     public function decline($connection,$user_id){
-        $sql = "DELETE FROM `deliveryperson` WHERE DeliveryPerson_Id='$user_id'";
+        // $sql = "DELETE FROM `deliveryperson` WHERE DeliveryPerson_Id='$user_id'";
+        $sql="DELETE FROM `user` WHERE User_id='$user_id'";
+        // $sql = "UPDATE `deliveryperson` SET Status=2 WHERE DeliveryPerson_Id='$user_id'";
+        $result=$connection->query($sql);
+        if($result==TRUE){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
+    }
+
+    public function accept($connection,$user_id,$staff_id){
+        date_default_timezone_set('Asia/Colombo');
+
+    // Get current date in Y-m-d format
+    $current_date = date('Y-m-d');
+        $sql = "UPDATE `deliveryperson` SET Status=1, Staff_Id=$staff_id, Registration_date=$current_date WHERE DeliveryPerson_Id='$user_id'";
         // $sql="DELETE FROM `user` WHERE User_id='$user_id'";
         $result=$connection->query($sql);
         if($result==TRUE){
@@ -96,16 +112,36 @@ class deliveryperson_model{
         }
     }
 
-    public function accept($connection,$user_id){
-        $sql = "UPDATE `deliveryperson` SET Status=1 WHERE DeliveryPerson_Id='$user_id'";
-        // $sql="DELETE FROM `user` WHERE User_id='$user_id'";
-        $result=$connection->query($sql);
-        if($result==TRUE){
-            return TRUE;
+    public function searchdeliveryperson($connection,$name){
+        $sql="SELECT * FROM user u INNER JOIN deliveryperson d ON u.User_id=d.DeliveryPerson_Id WHERE u.Type='Delivery Person' AND d.Status=1 AND u.User_id='$name' OR u.First_Name='$name'";
+        $result=mysqli_query($connection,$sql);
+        if($result){
+            $deliveryperson=[];
+            while($row=mysqli_fetch_assoc($result)){
+                $deliveryperson[]=$row;
+            }
+            // print_r($deliveryperson);
+            return $deliveryperson;
         }else{
-            return FALSE;
+            return false;
         }
     }
+
+    public function searchdeliveryperson_request($connection,$name){
+        $sql="SELECT * FROM user u INNER JOIN deliveryperson d ON u.User_id=d.DeliveryPerson_Id WHERE u.Type='Delivery Person' AND d.Status=0 AND u.User_id='$name' OR u.First_Name='$name'";
+        $result=mysqli_query($connection,$sql);
+        if($result){
+            $deliveryperson=[];
+            while($row=mysqli_fetch_assoc($result)){
+                $deliveryperson[]=$row;
+            }
+            // print_r($deliveryperson);
+            return $deliveryperson;
+        }else{
+            return false;
+        }
+    }
+
 }
 
 

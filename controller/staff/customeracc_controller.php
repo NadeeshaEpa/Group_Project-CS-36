@@ -72,7 +72,7 @@ if(isset($_GET['aid'])){
     $user_id=$_GET['aid'];
     $user_id=$connection->real_escape_string($user_id);
     $customer=new customer_model();
-    $result=$customer->accept($connection,$user_id);
+    $result=$customer->accept($connection,$user_id,$_SESSION['User_id']);
     if($result===false){
         $_SESSION['acceptuser']="failed";
         header("Location: ../../view/staff/Customer_requestlist.php");
@@ -116,7 +116,7 @@ if(isset($_GET['uid'])){
 }
 
 if(isset($_POST['search'])){
-    $name=$_POST['name'];
+    $name=$_POST['customer_name'];
     $name=$connection->real_escape_string($name);
     $customer=new customer_model();
     $result=$customer->searchcustomer($connection,$name);
@@ -126,6 +126,20 @@ if(isset($_POST['search'])){
     }else{
         $_SESSION['customerdetails']=[];
         header("Location:../../view/staff/staff-viewCustomer.php");
+    }
+}
+
+if(isset($_POST['search_request'])){
+    $name=$_POST['customer_name'];
+    $name=$connection->real_escape_string($name);
+    $customer=new customer_model();
+    $result=$customer->searchcustomer_request($connection,$name);
+    if($result){
+        $_SESSION['customerdetails']=$result;
+        header("Location:../../view/staff/Customer_requestlist.php");
+    }else{
+        $_SESSION['customerdetails']=[];
+        header("Location:../../view/staff/Customer_requestlist.php");
     }
 }
 

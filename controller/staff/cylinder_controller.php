@@ -133,13 +133,20 @@ if(isset($_POST['register'])){
     
     $cylinder=new cylinder_model();
     $cylinder->setDetails($gascompany,$weight,$price,$photo);
-    $result=$cylinder->Registercylinder($connection);
-    if($result){
-        header("Location:../../controller/staff/cylinder_controller.php?id=viewcylinder");
-    }else{
-        header("Location: ../../view/admin/gascompany.php");
+
+    $result1=$cylinder->check_cylinder($connection,$gascompany,$weight);
+    if($result1==true){
+        $result=$cylinder->Registercylinder($connection);
+        if($result){
+            header("Location:../../controller/staff/cylinder_controller.php?id=viewcylinder");
+        }else{
+            header("Location: ../../view/admin/gascompany.php");
+        }
     }
-    
+    else{
+        $_SESSION['addcylinder-error']="Cylinder Type Already Exists";
+        header("Location: ../../view/staff/add_cylinder.php");
+    }
     $connection->close();
 
     

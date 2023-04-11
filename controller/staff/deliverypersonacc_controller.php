@@ -102,7 +102,7 @@ if(isset($_GET['aid'])){
     $user_id=$_GET['aid'];
     $user_id=$connection->real_escape_string($user_id);
     $deliveryperson=new deliveryperson_model();
-    $result=$deliveryperson->accept($connection,$user_id);
+    $result=$deliveryperson->accept($connection,$user_id,$_SESSION['User_id']);
     if($result===false){
         $_SESSION['acceptuser']="failed";
         header("Location: ../../view/staff/Deliveryperson_requestlist.php");
@@ -127,6 +127,35 @@ if(isset($_GET['deid'])){
         
     }
 }
+
+if(isset($_POST['search'])){
+    $name=$_POST['deliveryperson_name'];
+    $name=$connection->real_escape_string($name);
+    $deliveryperson=new deliveryperson_model();
+    $result=$deliveryperson->searchdeliveryperson($connection,$name);
+    if($result){
+        $_SESSION['deliverypersondetails']=$result;
+        header("Location:../../view/staff/staff-viewDeliveryperson.php");
+    }else{
+        $_SESSION['deliverypersondetails']=[];
+        header("Location:../../view/staff/staff-viewDeliveryperson.php");
+    }
+}
+
+if(isset($_POST['search_request'])){
+    $name=$_POST['deliveryperson_name'];
+    $name=$connection->real_escape_string($name);
+    $deliveryperson=new deliveryperson_model();
+    $result=$deliveryperson->searchdeliveryperson_request($connection,$name);
+    if($result){
+        $_SESSION['deliverypersondetails']=$result;
+        header("Location:../../view/staff/Deliveryperson_requestlist.php");
+    }else{
+        $_SESSION['deliverypersondetails']=[];
+        header("Location:../../view/staff/Deliveryperson_requestlist.php");
+    }
+}
+
 
 
 

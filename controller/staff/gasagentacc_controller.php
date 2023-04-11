@@ -101,7 +101,7 @@ if(isset($_GET['aid'])){
     $user_id=$_GET['aid'];
     $user_id=$connection->real_escape_string($user_id);
     $gasagent=new gasagent_model();
-    $result=$gasagent->accept($connection,$user_id);
+    $result=$gasagent->accept($connection,$user_id,$_SESSION['User_id']);
     if($result===false){
         $_SESSION['acceptuser']="failed";
         header("Location: ../../view/staff/Gasagent_requestlist.php");
@@ -126,6 +126,35 @@ if(isset($_GET['deid'])){
         
     }
 }
+
+if(isset($_POST['search'])){
+    $name=$_POST['gasagent_name'];
+    $name=$connection->real_escape_string($name);
+    $gasagent=new gasagent_model();
+    $result=$gasagent->searchgasagent($connection,$name);
+    if($result){
+        $_SESSION['gasagentdetails']=$result;
+        header("Location:../../view/staff/staff-viewGasagent.php");
+    }else{
+        $_SESSION['gasagentdetails']=[];
+        header("Location:../../view/staff/staff-viewGasagent.php");
+    }
+}
+
+if(isset($_POST['search_request'])){
+    $name=$_POST['gasagent_name'];
+    $name=$connection->real_escape_string($name);
+    $gasagent=new gasagent_model();
+    $result=$gasagent->searchgasagent_request($connection,$name);
+    if($result){
+        $_SESSION['gasagentdetails']=$result;
+        header("Location:../../view/staff/Gasagent_requestlist.php");
+    }else{
+        $_SESSION['gasagentdetails']=[];
+        header("Location:../../view/staff/Gasagent_requestlist.php");
+    }
+}
+
 
 if(isset($_POST['edituser'])){
     $user_id=$_POST['User_id'];

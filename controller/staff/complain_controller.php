@@ -35,6 +35,7 @@ if(isset($_GET['aid'])){
     $complain_id=$_GET['aid'];
     $complain_id=$connection->real_escape_string($complain_id);
     $_SESSION['aid']=$complain_id;
+
     $complain=new complain_model();
     $result=$complain->acceptcomplain($connection,$complain_id,$_SESSION['User_id']);
     if($result===false){

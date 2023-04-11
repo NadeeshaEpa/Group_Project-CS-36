@@ -114,6 +114,17 @@ class cylinder_model{
         }      
     }
 
+    function check_cylinder($connection,$gascompany,$weight){
+        $sql="SELECT Cylinder_Id FROM `gascylinder` WHERE Type='$gascompany' AND Weight='$weight'";
+        $result = mysqli_query($connection, $sql);
+        if($result->num_rows==0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
 
 
 

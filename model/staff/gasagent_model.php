@@ -23,8 +23,12 @@ class gasagent_model{
         }
     }
 
-    public function accept($connection,$user_id){
-        $sql = "UPDATE `gasagent` SET Status=1 WHERE GasAgent_Id='$user_id'";
+    public function accept($connection,$user_id,$staff_id){
+        date_default_timezone_set('Asia/Colombo');
+
+    // Get current date in Y-m-d format
+    $current_date = date('Y-m-d');
+        $sql = "UPDATE `gasagent` SET Status=1,Staff_Id=$staff_id, Registration_date=$current_date WHERE GasAgent_Id='$user_id'";
         // $sql="DELETE FROM `user` WHERE User_id='$user_id'";
         $result=$connection->query($sql);
         if($result==TRUE){
@@ -107,6 +111,37 @@ class gasagent_model{
             return $gasagent;
         }
     }
+
+    public function searchgasagent($connection,$name){
+        $sql="SELECT * FROM user u INNER JOIN gasagent g ON u.User_id=g.GasAgent_Id WHERE u.Type='Gas Agent' AND g.Status=1 AND u.User_id='$name' OR u.First_Name='$name'";
+        $result=mysqli_query($connection,$sql);
+        if($result){
+            $gasagent=[];
+            while($row=mysqli_fetch_assoc($result)){
+                $gasagent[]=$row;
+            }
+            // print_r($gasagent);
+            return $gasagent;
+        }else{
+            return false;
+        }
+    }
+
+    public function searchgasagent_request($connection,$name){
+        $sql="SELECT * FROM user u INNER JOIN gasagent g ON u.User_id=g.GasAgent_Id WHERE u.Type='Gas Agent' AND g.Status=0 AND u.User_id='$name' OR u.First_Name='$name'";
+        $result=mysqli_query($connection,$sql);
+        if($result){
+            $gasagent=[];
+            while($row=mysqli_fetch_assoc($result)){
+                $gasagent[]=$row;
+            }
+            // print_r($gasagent);
+            return $gasagent;
+        }else{
+            return false;
+        }
+    }
+
 }
 
 

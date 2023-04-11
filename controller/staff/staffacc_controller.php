@@ -70,6 +70,21 @@ if(isset($_GET['vid'])){
     }
 }
 
+if(isset($_POST['search'])){
+    $name=$_POST['staff_name'];
+    $name=$connection->real_escape_string($name);
+    $staff=new staff_model();
+    $result=$staff->searchstaff($connection,$name);
+    if($result){
+        $_SESSION['staffdetails']=$result;
+        header("Location:../../view/staff/staff-viewStaff.php");
+    }else{
+        $_SESSION['staffdetails']=[];
+        header("Location:../../view/staff/staff-viewStaff.php");
+    }
+}
+
+
 if(isset($_POST['edituser'])){
     $user_id=$_POST['User_id'];
     $First_Name=$_POST['First_Name'];

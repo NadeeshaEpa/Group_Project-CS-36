@@ -40,8 +40,12 @@ class customer_model{
         }
     }
 
-    public function accept($connection,$user_id){
-        $sql = "UPDATE `customer` SET Status=1 WHERE Customer_Id='$user_id'";
+    public function accept($connection,$user_id,$staff_id){
+        date_default_timezone_set('Asia/Colombo');
+
+        // Get current date in Y-m-d format
+        $current_date = date('Y-m-d');
+        $sql = "UPDATE `customer` SET Status=1,staff_Id=$staff_id, Registration_date=$current_date WHERE Customer_Id='$user_id'";
         // $sql="DELETE FROM `user` WHERE User_id='$user_id'";
         $result=$connection->query($sql);
         if($result==TRUE){
@@ -112,7 +116,22 @@ class customer_model{
     }
 
     public function searchcustomer($connection,$name){
-        $sql="SELECT * FROM user u INNER JOIN customer c ON u.User_id=c.Customer_Id WHERE u.Type='Customer' AND c.Status=1 AND CONCAT(u.First_Name,u.Last_Name)='$name'";
+        $sql="SELECT * FROM user u INNER JOIN customer c ON u.User_id=c.Customer_Id WHERE u.Type='Customer' AND c.Status=1 AND u.User_id='$name' OR u.First_Name='$name'";
+        $result=mysqli_query($connection,$sql);
+        if($result){
+            $customer=[];
+            while($row=mysqli_fetch_assoc($result)){
+                $customer[]=$row;
+            }
+            // print_r($customer);
+            return $customer;
+        }else{
+            return false;
+        }
+    }
+
+    public function searchcustomer_request($connection,$name){
+        $sql="SELECT * FROM user u INNER JOIN customer c ON u.User_id=c.Customer_Id WHERE u.Type='Customer' AND c.Status=0 AND u.User_id='$name' OR u.First_Name='$name'";
         $result=mysqli_query($connection,$sql);
         if($result){
             $customer=[];
