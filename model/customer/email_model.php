@@ -47,12 +47,12 @@ class email_model{
         $this->mail->Body = $message;
         $this->mail->send();
     }
-    public function sendEmail_Agent($final_orderdetails,$gasagentemail){
+    public function sendEmail_Agent($orders,$gasagentemail){
         $subject="Order Details - Agent";
         $message="Your shop has received an order. The order details are as follows: <br>";
-        $message.="<br>Order ID: ".$final_orderdetails[0]['orderid'];
-        $message.="<br>Order Date: ".$final_orderdetails[0]['orderdate'];
-        $message.="<br>Order Total: ".$final_orderdetails[0]['total'];
+        $message.="<br>Order ID: ".$orders[0]['orderid'];
+        $message.="<br>Order Date: ".$orders[0]['orderdate'];
+        $message.="<br>Order Total: ".$orders[0]['total'];
         $message.="<br>Delivery Method: ".$orders[0]['delivery_method'];
         $message.="<br>Delivery Fee: ".$orders[0]['delivery_fee'];
         $message.="<table border='1'>";

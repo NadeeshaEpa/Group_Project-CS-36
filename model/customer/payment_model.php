@@ -127,7 +127,7 @@ class payment_model{
         if($delivery_status=='NULL'){
             $sql="insert into `order` (Time,Order_date,Delivery_Method,reserve_pin,Order_Status,Amount,Charge_id,Delivery_Status,Delivery_fee,latitude,longitude) values ('$time','$date','$delivery_method','$pin','1','$amount','$charge_id',NULL,'$delivery_fee','$latitude','$longitude')";
         }else{
-            $sql="insert into `order` (Time,Order_date,Delivery_Method,reserve_pin,Order_Status,Amount,Charge_id,Delivery_Status,Delivery_fee,latitude,longitude) values ('$time','$date','$delivery_method','$pin',1','$amount','$charge_id','$delivery_status','$delivery_fee','$latitude','$longitude')";
+            $sql="insert into `order` (Time,Order_date,Delivery_Method,reserve_pin,Order_Status,Amount,Charge_id,Delivery_Status,Delivery_fee,latitude,longitude) values ('$time','$date','$delivery_method','$pin','1','$amount','$charge_id','$delivery_status','$delivery_fee','$latitude','$longitude')";
         }
         $result=$connection->query($sql);
         if($result){
