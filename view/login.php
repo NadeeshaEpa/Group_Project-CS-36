@@ -41,6 +41,10 @@ if(isset($_SESSION['locked'])){
                                         unset($_SESSION['login']);
                                     }
                                 }
+                                if($_GET['session']=="expired"){
+                                    echo "Session expired. Please log in again";
+                                    echo '<br>';
+                                }
                             ?> 
                          </div>      
                         <div class="input">
