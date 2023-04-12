@@ -31,17 +31,9 @@ class payment_model{
                     $weight=$item['weight'];
                     $type=$item['type'];
                     $quantity=$item['quantity'];
+                    $item_id=$item['item_id'];
 
-                    $weight1=explode(" ",$weight);
-                    $count=count($weight1);
-                    $Product_type=$weight1[$count-1];
-                    $category=$type;
-                    //name equals to the rest of the words
-                    $name="";
-                    for($i=0;$i<$count-1;$i++){
-                        $name=$name.$weight1[$i]." ";
-                    }
-                    $sql3="select quantity from product where Name='$name' and Product_type='$Product_type' and Category='$category'";
+                    $sql3="select quantity from product where Item_code='$item_id'";
                     $result3=$connection->query($sql3);
                     $row=$result3->fetch_assoc();
                     $quantityall=$row['quantity'];
@@ -152,21 +144,8 @@ class payment_model{
                     $type=$item['type'];
                     $quantity=$item['quantity'];
                     $price=$item['price'];
-
-                    $weight1=explode(" ",$weight);
-                    $count=count($weight1);
-                    $Product_type=$weight1[$count-1];
-                    $category=$type;
-                    //name equals to the rest of the words
-                    $name="";
-                    for($i=0;$i<$count-1;$i++){
-                        $name=$name.$weight1[$i]." ";
-                    }
-                    $sql3="select item_code from product where Name='$name' and Product_type='$Product_type' and Category='$category'";
-                    $result3=$connection->query($sql3);
-                    $row=$result3->fetch_assoc();
-                    $productid=$row['item_code'];
-
+                    $productid=$item['item_id'];
+                
                     $this->updatestock($connection,$quantity,$productid);
 
                     $sql4="select price from product where item_code='$productid'";
@@ -202,16 +181,7 @@ class payment_model{
                     $quantity=$item['quantity'];
                     $price=$item['price'];
                     $cylinder_type=$item['cylinder_type'];
-
-                    $sql3="select company_id from gas_company where company_name='$type'";
-                    $result3=$connection->query($sql3);
-                    $row=$result3->fetch_assoc();
-                    $companyid=$row['company_id'];
-                    
-                    $sql4="select Cylinder_Id from gascylinder where Type='$companyid' and Weight='$weight'";
-                    $result4=$connection->query($sql4);
-                    $row=$result4->fetch_assoc();
-                    $cylinderid=$row['Cylinder_Id'];
+                    $cylinderid=$item['item_id'];                    
 
                     $this->updateagent($connection,$agent,$quantity,$cylinderid);
 
@@ -281,25 +251,13 @@ class payment_model{
                     $type=$item['type'];
                     $quantity=$item['quantity'];
                     $price=$item['price'];
+                    $productid=$item['item_id'];
 
-                    $weight1=explode(" ",$weight);
-                    $count=count($weight1);
-                    $Product_type=$weight1[$count-1];
-                    $category=$type;
-                    //name equals to the rest of the words
-                    $name="";
-                    for($i=0;$i<$count-1;$i++){
-                        $name=$name.$weight1[$i]." ";
-                    }
-                    $sql3="select item_code from product where Name='$name' and Product_type='$Product_type' and Category='$category'";
-                    $result3=$connection->query($sql3);
-                    $row=$result3->fetch_assoc();
-                    $productid=$row['item_code'];
-
-                    $sql4="select price from product where item_code='$productid'";
+                    $sql4="select price,name from product where item_code='$productid'";
                     $result4=$connection->query($sql4);
                     $row=$result4->fetch_assoc();
                     $price=$row['price'];
+                    $name=$row['name'];
 
                     $sql5="select Order_Id,order_date from `order` order by Order_Id desc limit 1";
                     $result5=$connection->query($sql5);
@@ -387,21 +345,52 @@ class payment_model{
 
     }
     public function updateagent($connection,$agent,$quantity,$cylinderid){
-        $sql="update sell_gas set Quantity=quantity-'$quantity' where GasAgent_Id='$agent' and Cylinder_Id='$cylinderid'";
+        $sql="select quantity from sell_gas where GasAgent_Id='$agent' and Cylinder_Id='$cylinderid'";
         $result=$connection->query($sql);
-        if(!$result){
+        $row=$result->fetch_assoc();
+        $q=$row['quantity'];
+
+        if($q<$quantity){
             return false;
         }else{
-            return true;
+            $sql="update sell_gas set Quantity=Quantity-'$quantity' where GasAgent_Id='$agent' and Cylinder_Id='$cylinderid'";
+            $result=$connection->query($sql);
+            if(!$result){
+                return false;
+            }else{
+                return true;
+            }
         }
+        
     }
     public function updatestock($connection,$quantity,$item_code){
-        $sql="update product set Quantity=Quantity-'$quantity' where item_code='$item_code'";
+        $sql="select Quantity from product where item_code='$item_code'";
+        $result=$connection->query($sql);
+        $row=$result->fetch_assoc();
+        $q=$row['Quantity'];
+
+        if($q<$quantity){
+            return false;
+        }else{
+            $sql="update product set Quantity=Quantity-'$quantity' where item_code='$item_code'";
+            $result=$connection->query($sql);
+            if(!$result){
+                return false;
+            }else{
+                return true;
+            }
+        }
+    }
+    public function getgasagentemail($connection,$agent){
+        $sql="select Email from user where User_id='$agent'";
         $result=$connection->query($sql);
         if(!$result){
             return false;
         }else{
-            return true;
+            $row=$result->fetch_assoc();
+            $email=$row['Email'];
+            return $email;
         }
+
     }
 }

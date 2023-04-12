@@ -1,10 +1,10 @@
 <?php
 class addtocart_model{
-    public function get_cylinder_price($connection,$type,$weight,$cylinder){
+    public function get_cylinder_price($connection,$item_id,$cylinder){
        if($cylinder=="new"){
-           $sql="SELECT newcylinder_price as cprice FROM gascylinder g inner join gas_company c on g.Type=c.company_id WHERE c.company_name='$type' AND g.weight='$weight'";   
+            $sql="SELECT newcylinder_price as cprice FROM gascylinder WHERE Cylinder_Id='$item_id'";  
        }else{
-           $sql="SELECT price as cprice FROM gascylinder g inner join gas_company c on g.Type=c.company_id WHERE c.company_name='$type' AND g.weight='$weight'";
+            $sql="SELECT price as cprice FROM gascylinder WHERE Cylinder_Id='$item_id'";
        }
        $price=$connection->query($sql);
         if($price===false){
@@ -14,17 +14,8 @@ class addtocart_model{
             return $row['cprice'];
         }
     }
-    public function get_product_price($connection,$type,$weight){
-        $weight=explode(" ",$weight);
-        $count=count($weight);
-        $Product_type=$weight[$count-1];
-        $category=$type;
-        //name equals to the rest of the words
-        $name="";
-        for($i=0;$i<$count-1;$i++){
-            $name=$name.$weight[$i]." ";
-        }
-        $sql3="select price from product where Name='$name' and Product_type='$Product_type' and Category='$category'";
+    public function get_product_price($connection,$item_id){
+        $sql3="select price from product where Item_code='$item_id'";
         $price=$connection->query($sql3);
         if($price===false){
             return false;
@@ -34,8 +25,8 @@ class addtocart_model{
         }
 
     }
-    public function addtocart($connection,$User_id,$gasid,$weight,$quantity,$total,$type,$cylinder){
-        $sql="INSERT INTO cart(User_id,gasagent_id,type,weight,cylinder_type,quantity,price) VALUES('$User_id','$gasid','$type','$weight','$cylinder','$quantity','$total')";
+    public function addtocart($connection,$item_id,$User_id,$gasid,$weight,$quantity,$total,$type,$cylinder){
+        $sql="INSERT INTO cart(User_id,gasagent_id,item_id,type,weight,cylinder_type,quantity,price) VALUES('$User_id','$gasid','$item_id','$type','$weight','$cylinder','$quantity','$total')";
         $result=$connection->query($sql);
         if($result===false){
             return false;
@@ -60,15 +51,15 @@ class addtocart_model{
             return $row['Cylinder_Id'];
         }
     }
-    public function updatequantity($connection,$quantity,$gasid,$cylinderid){
-        $sql="update sell_gas set Quantity=Quantity-'$quantity' where GasAgent_id='$gasid' and Cylinder_id='$cylinderid'";
-        $result=$connection->query($sql);
-        if($result===false){
-            return false;
-        }else{
-            return true;
-        }
-    }
+    // public function updatequantity($connection,$quantity,$gasid,$cylinderid){
+    //     $sql="update sell_gas set Quantity=Quantity-'$quantity' where GasAgent_id='$gasid' and Cylinder_id='$cylinderid'";
+    //     $result=$connection->query($sql);
+    //     if($result===false){
+    //         return false;
+    //     }else{
+    //         return true;
+    //     }
+    // }
     public function stock_manager($connection){
         $sql="Select id from stock_manager";
         $result=$connection->query($sql);
@@ -90,6 +81,7 @@ class addtocart_model{
             return false;
         }else{
             while($row=$result->fetch_assoc()){
+                $item_id=$row['item_id'];
                 $cartid=$row['cart_id'];
                 $gasid=$row['gasagent_id'];
                 $type=$row['type'];
@@ -104,7 +96,7 @@ class addtocart_model{
 
                 if($gasid!=$stock_manager_id){
                     //get the price of the cylinder
-                    $newprice=$this->get_cylinder_price($connection,$type,$weight,$cylinder);
+                    $newprice=$this->get_cylinder_price($connection,$item_id,$cylinder);
                     if($newprice===false){
                         return false;
                     }else{
@@ -115,7 +107,7 @@ class addtocart_model{
                     }
                 }else{
                     //get the price of the item 
-                    $new_product_price=$this->get_product_price($connection,$type,$weight);
+                    $new_product_price=$this->get_product_price($connection,$item_id);
                     if($new_product_price===false){
                         return false;
                     }else{
@@ -178,8 +170,7 @@ class addtocart_model{
                 }
             }
             return $cart;
-        }
-        
+        }       
     }
     public function remove($connection,$gasid,$User_id){
         $sql="DELETE FROM cart WHERE gasagent_id='$gasid'";
@@ -232,14 +223,14 @@ class addtocart_model{
                 return $cart;
             }
         }else{
-            $sql="SELECT cart_id,type,weight,quantity,price from cart where User_id='$User_id' and gasagent_id='$gasagent'";
+            $sql="SELECT cart_id,type,weight,cylinder_type,quantity,price from cart where User_id='$User_id' and gasagent_id='$gasagent'";
             $result=$connection->query($sql);
             if($result===false){
                 return false;
             }else{
                 $cart=[];
                 while($row=$result->fetch_assoc()){
-                    array_push($cart,['cart_id'=>$row['cart_id'],'type'=>$row['type'],'weight'=>$row['weight'],'quantity'=>$row['quantity'],'price'=>$row['price'],'shop_name'=>'Fago Shop','gasagent_id'=>$gasagent]);
+                    array_push($cart,['cart_id'=>$row['cart_id'],'type'=>$row['type'],'weight'=>$row['weight'],'cylinder_type'=>$row['cylinder_type'],'quantity'=>$row['quantity'],'price'=>$row['price'],'shop_name'=>'Fago Shop','gasagent_id'=>$gasagent]);
                 }
                 //call gas delivery fee function
                 $del=$this->fagodelivery_fee($connection,$cart);
@@ -279,18 +270,17 @@ class addtocart_model{
         $sql="UPDATE cart SET quantity='$quantity' WHERE cart_id='$cartid'";
         $result=$connection->query($sql);
         //update total price
-        $sql="SELECT weight,type,cylinder_type FROM cart WHERE cart_id='$cartid';";
+        $sql="SELECT item_id,cylinder_type FROM cart WHERE cart_id='$cartid';";
         $result=$connection->query($sql);
         $row=$result->fetch_assoc();
-        $weight=$row['weight'];
-        $type=$row['type'];
-        $cylinder=$row['cylinder_type'];
-        
+        $item_id=$row['item_id'];
+        $cylinder_type=$row['cylinder_type'];
+
         if($gasagent!=$_SESSION['stock_manager']){
-            $price=$this->get_cylinder_price($connection,$type,$weight,$cylinder);
+            $price=$this->get_cylinder_price($connection,$item_id,$cylinder_type);
 
         }else{
-            $price=$this->get_product_price($connection,$type,$weight);
+            $price=$this->get_product_price($connection,$item_id);
         }
 
         $total=$price*$quantity;
@@ -302,6 +292,90 @@ class addtocart_model{
             return true;
         }
     }
+    // public function gas_delivery_fee($connection,$cart){
+    //     $count=0;
+    //     $delivery_fee=0;
+    //     $gasagent_id=$cart[0]['gasagent_id'];
+    //     $sql="select latitude,longitude from gasagent where GasAgent_Id='$gasagent_id'";
+    //     $result=$connection->query($sql);
+    //     if($result===false){
+    //         return false;
+    //     }else{
+    //         $row=$result->fetch_assoc();
+    //         $latitude=$row['latitude'];
+    //         $longitude=$row['longitude'];
+    //         $clatitude=$_SESSION['cdlatitude'];
+    //         $clongitude=$_SESSION['cdlongitude'];
+    //         $distance=$this->distance($clatitude,$clongitude,$latitude,$longitude,$connection);
+    //         if($distance>10){
+    //             $_SESSION['distance_limit']="high";
+    //         }else{
+    //             $_SESSION['distance_limit']="low";
+    //         }
+    //     }
+    //     foreach($cart as $c){
+    //         $count=$count+$c['quantity'];
+    //     }
+    //     $flag=0;
+    //     $checknew=0;
+    //     $newcylinders=0;
+    //     foreach($cart as $c){
+    //         $weight=$c['weight'];
+    //         if($weight>12.5){
+    //             $flag=1;
+    //         }
+    //         if($c['cylinder_type']=='new'){
+    //             $checknew=1;
+    //             $newcylinders=$newcylinders+$c['quantity'];
+    //         }
+    //     }
+    //     if($flag==1 || $count>=4){
+    //         $sql="SELECT price FROM delivery_fee WHERE vehicle='Lorry';";
+    //         $result=$connection->query($sql);
+    //         if($result===false){
+    //             print_r("Error1");
+    //             die();
+    //             return false;
+    //         }else{
+    //             $row=$result->fetch_assoc();
+    //             $delivery_fee=$row['price'];
+    //         }
+    //     }else if($count>=2 && $count<4){
+    //         $sql="SELECT price from delivery_fee where vehicle='Three Wheel'";
+    //         $result=$connection->query($sql);
+    //         if($result===false){
+    //             return false;
+    //         }else{
+    //             $row=$result->fetch_assoc();
+    //             $delivery_fee=$row['price'];
+    //         }
+            
+    //     }else if($count==1){
+    //         $sql="SELECT price from delivery_fee where vehicle='Bike'";
+    //         $result=$connection->query($sql);
+    //         if($result===false){
+    //             return false;
+    //         }else{
+    //             $row=$result->fetch_assoc();
+    //             $delivery_fee=$row['price'];
+    //         }
+    //     }
+    //     if($distance>1){
+    //         if($checknew==1 && $count==$newcylinders){
+    //             $delivery_fee=$delivery_fee*$distance;
+    //         }else{
+    //             $delivery_fee=$delivery_fee*$distance*2;
+    //         }
+           
+    //     }else{
+    //         if($checknew==1 && $count==$newcylinders){
+    //             $delivery_fee=$delivery_fee;
+    //         }else{
+    //             $delivery_fee=$delivery_fee*2;
+    //         }
+    //     }
+    //     return $delivery_fee;
+    // }
     public function gas_delivery_fee($connection,$cart){
         $count=0;
         $delivery_fee=0;
@@ -328,6 +402,7 @@ class addtocart_model{
         }
         $flag=0;
         $checknew=0;
+        $newcylinders=0;
         foreach($cart as $c){
             $weight=$c['weight'];
             if($weight>12.5){
@@ -335,6 +410,7 @@ class addtocart_model{
             }
             if($c['cylinder_type']=='new'){
                 $checknew=1;
+                $newcylinders=$newcylinders+$c['quantity'];
             }
         }
         if($flag==1 || $count>=4){
@@ -369,14 +445,14 @@ class addtocart_model{
             }
         }
         if($distance>1){
-            if($checknew==1 && $count==1){
+            if($checknew==1 && $count==$newcylinders){
                 $delivery_fee=$delivery_fee*$distance;
             }else{
                 $delivery_fee=$delivery_fee*$distance*2;
             }
            
         }else{
-            if($checknew==1 && $count==1){
+            if($checknew==1 && $count==$newcylinders){
                 $delivery_fee=$delivery_fee;
             }else{
                 $delivery_fee=$delivery_fee*2;
@@ -384,6 +460,7 @@ class addtocart_model{
         }
         return $delivery_fee;
     }
+
 
     public function fagodelivery_fee($connection,$cart){
         $count=0;

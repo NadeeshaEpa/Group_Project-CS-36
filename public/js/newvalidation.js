@@ -104,7 +104,7 @@ contact?.addEventListener("input", function () {
 
 shopnumber?.addEventListener("input", function () {
     //should include 9 numbers
-    var pattern=/^[0-9]{10}$/;
+    var pattern="/^(?:\+94|0)[1-9](?:\d{8}|\d{6}-\d{4})$/";
     if (!pattern.test(contact.value)) {
         shopnumberlabel.innerHTML = "Invalid Contact Number";  
         shopnumberlabel.style.color = "red";

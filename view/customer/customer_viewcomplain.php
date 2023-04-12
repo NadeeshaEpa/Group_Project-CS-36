@@ -89,7 +89,7 @@
                         <td style="color: green;"><?php echo "Checked"; ?></td>
                     <?php } ?>
                     <td><button onclick="viewaction('<?php echo $complain['message'] ?>');">View</button></td>
-                    <td><a href="../../controller/customer/complain_controller.php?deletecomplainid=<?php echo $complain['complain_id']; ?>"><button>Delete</button</a></td>
+                    <td><button onclick="deletecomplain(<?php echo $complain['complain_id']; ?>)">Delete</button></td>
                     
                 </tr>
                 <?php } ?>
@@ -140,11 +140,33 @@
             </div>
         </div>
     </div>  
+    <div id="backgr">
+        <div id="cancel_popup">
+            <div class="cancel_contect">
+                <p>Are you sure you want to Delete this complain?</p>
+                <div class="buttons">
+                    <button id="yes">Yes</button>
+                    <button id="no">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
         function viewaction(message){
             document.getElementById("message").innerHTML=message;
             document.getElementById("complain_popup").style.display="block";
         }
+        function deletecomplain(id){
+            document.getElementById("backgr").style.display="block";
+            document.getElementById("cancel_popup").style.display="block";
+            document.getElementById("yes").addEventListener("click",function(){
+                window.location.href="../../controller/customer/complain_controller.php?deletecomplainid="+id;
+            });
+            document.getElementById("no").addEventListener("click",function(){
+                document.getElementById("cancel_popup").style.display="none";
+                document.getElementById("backgr").style.display="none";
+            });
+        }  
     </script>
 </body>
 </html>

@@ -112,7 +112,7 @@
                                 $diff=date_diff($date1,$date2);
                                 $diff=$diff->format("%a");
 
-                                if(($detail['Delivery_Status']==NULL && $diff<2)||($detail['Delivery_Status']==2 && $diff<1)){?>
+                                if(($detail['Delivery_Status']==NULL && $diff<2)||($detail['Delivery_Status']==2 && $diff<1) ||($detail['Delivery_Status']==3 && $diff<1)){?>
                                 <div class="cancelbutton">
                                     <td><button id="cancelbutton" onclick="cancelorder(<?php echo $detail['Order_id']?>);">Cancel</button></td>
                                 </div>
@@ -125,7 +125,7 @@
                 </table>
                 <?php 
                     if(isset($_SESSION['shop_page'])){
-                      $shop_page=$_SESSION['page'];
+                      $shop_page=$_SESSION['shop_page'];
                     }else{
                       $shop_page=1;
                     }
@@ -157,7 +157,8 @@
                 </div>
             </div>    
         </div>
-    </div>    
+    </div>   
+    <div id="backgr"> 
     <div id="cancel_popup">
         <div class="cancel_contect">
             <p>Are you sure you want to cancel this order?</p>
@@ -167,13 +168,17 @@
             </div>
         </div>
     <div>
+    </div>    
     <script>
         function cancelorder(id){
+            document.getElementById("backgr").style.display="block";
             document.getElementById("cancel_popup").style.display="block";
             document.getElementById("yes").addEventListener("click",function(){
+                document.getElementById("cancel_popup").style.display="none";
                 window.location.href="../../controller/customer/order_controller.php?shop_cancelid="+id;
             });
             document.getElementById("no").addEventListener("click",function(){
+                document.getElementById("backgr").style.display="none";
                 document.getElementById("cancel_popup").style.display="none";
             });
         }  

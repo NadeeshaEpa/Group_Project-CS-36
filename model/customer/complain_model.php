@@ -1,16 +1,26 @@
 <?php
 class complain_model{
     public function getorderid($connection,$user){
-        $sql="Select o.order_id,o.Order_date from `order` o inner join `placeorder` p on o.Order_id=p.Order_Id where p.Customer_Id='$user'";
+        $sql="Select o.order_id,o.Order_date from `order` o inner join `placeorder` p on o.Order_id=p.Order_Id where p.Customer_Id='$user' and  o.Order_Status='1' 
+        union select o.order_id,o.Order_date from `order` o inner join `shop_placeorder` p on o.Order_id=p.Order_Id where p.Customer_Id='$user' and  o.Order_Status='1'";
         $result=$connection->query($sql);
         $orderid=[];
+        $orders=[];
         if($result->num_rows==0){
             return $orderid;
         }else{
             while($row=$result->fetch_object()){
-                $date=$this->get_date_differance($row->Order_date);
-                if($date>0 and $date<30){
-                    array_push($orderid,$row->order_id);
+                array_push($orders,$row);
+            }
+            //sort the array to show the latest orderid first
+            usort($orders,function($a,$b){
+                return $a->order_id<$b->order_id;
+            });
+            foreach($orders as $order){
+                $date=$order->Order_date;
+                $diff=$this->get_date_differance($date);
+                if($diff<=14){
+                    array_push($orderid,$order->order_id);
                 }
             }
             return $orderid;

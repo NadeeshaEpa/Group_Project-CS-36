@@ -2,6 +2,13 @@
    if(!isset($_SESSION['User_id'])){
        header("Location: ../../index.php");
    }
+   if (isset($_SESSION['login_time'])) {// Check if the user's login time has expired
+    if (time() - $_SESSION['login_time'] > 6400) { // Destroy the session and redirect to the login page
+      session_destroy();
+      header('Location: ../login.php?session=expired');
+      exit;
+    }
+  }
 ?>
 <html lang="en">
 <head>
@@ -16,7 +23,8 @@
     <div class="header"> 
         <ul>
             <div class="name">
-                <li><?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?></li>
+                <li><?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']?></li>
+                <li class="user-type"><?php echo $_SESSION['Type'] ?></li>
             </div>
             <a href="../../controller/customer/account_controller.php?viewacc='1'">
             <li><?php if($_SESSION['img-status'] == 0){?>
@@ -42,8 +50,5 @@
             <!-- <li><img src="../../public/images/logo.png" alt="logo" width="100px" height="100px"></li> -->
         </ul>    
     </div>
-    <script>
-    
-    </script>
 </body>
 </html>
