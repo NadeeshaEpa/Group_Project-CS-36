@@ -31,10 +31,9 @@ if(isset($_POST['login'])){
             }
             header("Location: ../../view/customer/customer_select.php");  //redirect to the selection page
 
-        }else if($_SESSION['Type']=="Delivery_Person"){
-
+        }else if($_SESSION['Type']=="Delivery Person"){
             header("Location: ../../controller/deliveryperson/deliveryDashboardFirstController.php");  //redirect to the dashboard page
-        }else if($_SESSION['Type']=="gasagent"){
+        }else if($_SESSION['Type']=="Gas Agent"){
             header("Location: ../../view/gasagent/gasagent_dashboard.php");  //redirect to the dashboard page
         }else if($_SESSION['Type']=="Stock Manager"){
             header("Location: ../../controller/ShopManager/ShopManagerDashboardFirstController.php");  //redirect to the dashboard page
