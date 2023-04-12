@@ -85,7 +85,7 @@ if(isset($_SESSION['deliverynames'])){
             ?>
             <div class="rcontainer">
                 <div class="dpname">
-                    <img src="../../public/images/DeliveryPerson/<?php echo $dp['image']?>" alt="dp">
+                    <img src="../../public/images/DeliveryPerson/profile_img/<?php echo $dp['image']?>" alt="dp">
                     <h2><?php echo $dp['First_Name']." ".$dp['Last_Name']?></h2>
                 </div>
                 <div class="star-widget">

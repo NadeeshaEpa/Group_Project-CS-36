@@ -26,7 +26,10 @@ if(isset($_SESSION['company_reviews'])){
             <h1>About Us</h1>
             <h5>Welcome you all to FAGO...<br>
             <span> Online Gas Ordering System.  </span></h5>
-            <p>create a platform that connect customer,gas agent and fuel manager as well as Provide faclities for customer to reserve their gas cylinder and check fuel availability befor waiting in the queue
+            <p>FAGO is an online gas ordering system which connects gas agents of a particular area and customers. 
+                It provides a platform for gas agents to manage their business online.
+                Customer can Reserve their gas cylinders as well as other gas related appliences throguth this system and get it delivered to their doorsteps.
+                So,try it and we're sure you'll love it.
             </p>
             <a href="contact_us.php"><button type="button">let's talk</button></a>
         </div> 

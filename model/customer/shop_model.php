@@ -1,7 +1,13 @@
 <?php
 class shop_model{
-    public function getGasCooker($connection){
-        $sql="SELECT * FROM product WHERE Category='Gas Cooker'";
+    public function items($connection,$item){
+        $sql="select count(*) as total from product where Category='$item'";
+        $result=$connection->query($sql);
+        $row=$result->fetch_assoc();
+        return $row['total'];
+    }
+    public function getGasCooker($connection,$limit,$offset){
+        $sql="SELECT * FROM product WHERE Category='Gas Cooker' LIMIT $limit OFFSET $offset";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;
@@ -13,8 +19,8 @@ class shop_model{
         }
         return $answer;
     }
-    public function getRegulator($connection){
-        $sql="SELECT * FROM product WHERE Category='Regulator'";
+    public function getRegulator($connection,$limit,$offset){
+        $sql="SELECT * FROM product WHERE Category='Regulator' LIMIT $limit OFFSET $offset";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;
@@ -26,8 +32,8 @@ class shop_model{
             return $answer;
         }
     }
-    public function getOther($connection){
-        $sql="SELECT * FROM product WHERE Category='Other'";
+    public function getOther($connection,$limit,$offset){
+        $sql="SELECT * FROM product WHERE Category='Other' LIMIT $limit OFFSET $offset";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;

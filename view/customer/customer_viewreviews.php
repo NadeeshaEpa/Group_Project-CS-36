@@ -91,7 +91,7 @@
                                 foreach($details as $detail){?>
                                     <tr>
 
-                                        <td><img src="../../public/images/DeliveryPerson/<?php echo $detail['image'] ?>" width="50px" height="50px"></td>
+                                        <td><img src="../../public/images/DeliveryPerson/profile_img/<?php echo $detail['image'] ?>" width="50px" height="50px"></td>
                                         <td><?php echo $detail['First_Name']." ".$detail['Last_Name']; ?></td>
                                         <td><?php echo $detail['Date']; ?></td>
                                         <td><?php echo $detail['Description']; ?></td> 
