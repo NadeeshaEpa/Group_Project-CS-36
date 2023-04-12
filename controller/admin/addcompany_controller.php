@@ -21,8 +21,8 @@ if(isset($_POST['register'])){
     if(in_array($fileActualExt,$allowed)){
         if($fileError === 0){
             if($fileSize < 10000000){
-                $photo=uniqid('',true).".".$fileActualExt;
-                $fileDestination='../../public/images/'.$photo;
+                $photo=$company_name.".".$fileActualExt;
+                $fileDestination='../../public/images/gascylinder/'.$photo;
                 move_uploaded_file($fileTmpName,$fileDestination);
                 // $acc=new company_model();
                 // $result=$acc->updateImage($connection,$_SESSION['User_id'],$fileNameNew);

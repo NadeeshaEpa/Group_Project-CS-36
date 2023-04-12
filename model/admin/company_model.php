@@ -121,6 +121,18 @@ class company_model{
         }
     }
 
+    public function updateImage($connection,$company_id,$fileNameNew){
+        //update image name and status
+        $sql="UPDATE `gas_company` SET `photo`='$fileNameNew' WHERE company_id='$company_id'";
+        $result=$connection->query($sql);
+        if($result){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
     
     
 }

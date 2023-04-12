@@ -99,7 +99,7 @@
 			<?php if($_SESSION['img-status'] == 0){?>
                     <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                 <?php }else{?>
-                    <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
+                    <img src='../../public/images/admin/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
             <?php } ?>
 			</a>
 			<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?>
@@ -140,7 +140,7 @@
                     <?php if($_SESSION['img-status'] == 0){?>
                         <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
                     <?php }else{?>
-                        <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
+                        <img src='../../public/images/admin/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
                     <?php } ?>
                     <div class="b3">
                         <form action="../../controller/admin/profile_controller.php" method="POST" enctype="multipart/form-data">

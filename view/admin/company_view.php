@@ -127,7 +127,7 @@ require_once("../../config.php");?>
 
         <div class="up">
                     
-                    <img src='../../public/images/<?php echo $result[0]['photo'];?>' style=" width:60%; height:20%;" class="image">                       
+                    <img src='../../public/images/gascylinder/<?php echo $result[0]['photo'];?>' style=" width:60%; height:20%;" class="image">                       
                </div>
         
         <div class="down">

@@ -122,7 +122,7 @@ require_once("../../config.php");?>
 			<?php if($_SESSION['img-status'] == 0){?>
                     <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                 <?php }else{?>
-                    <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
+                    <img src='../../public/images/staff/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
             <?php } ?>
 			</a>
 			<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?>
@@ -145,7 +145,7 @@ require_once("../../config.php");?>
    <div class="details">
 
    <div class="up">
-	            <img src='../../public/images/<?php echo $result[0]['imgname']?>' alt='logon' width='300px' height='200px' class="image">
+	            <img src='../../public/images/gasagent/profile_img/<?php echo $result[0]['imgname']?>' alt='logon' width='300px' height='200px' class="image">
 	</div>
         <h2><?php echo $result[0]['First_Name']?>  <?php echo $result[0]['Last_Name']?></h2>
         <div class="down">

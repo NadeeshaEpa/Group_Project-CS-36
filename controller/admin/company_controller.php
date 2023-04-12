@@ -79,11 +79,53 @@ if (isset($_POST['edituser'])) {
     if ($result1) {
 
         $_SESSION['updateuser'] = "success";
-        header("Location: ../../view/admin/gascompany.php");
+        header("Location:../../controller/admin/company_controller.php?id=viewcompany");
 
     } else {
         $_SESSION['updateuser'] = "failed";
         echo "Failed";
     }
 
+}
+
+if(isset($_POST['uploadimg'])){
+    $company_id = $_POST['com_id'];
+    $company_name = $_POST['com_name'];
+    $file=$_FILES['photo'];
+
+    $fileName=$_FILES['photo']['name'];
+    $fileTmpName=$_FILES['photo']['tmp_name'];
+    $fileSize=$_FILES['photo']['size'];
+    $fileError=$_FILES['photo']['error'];
+    $fileType=$_FILES['photo']['type'];
+
+    $fileExt=explode('.',$fileName);
+    $fileActualExt=strtolower(end($fileExt));
+
+    $allowed=array('jpg','jpeg','png');
+    if(in_array($fileActualExt,$allowed)){
+        if($fileError === 0){
+            if($fileSize < 10000000){
+                $fileNameNew=$company_name.".".$fileActualExt;
+                $fileDestination='../../public/images/gascylinder/'.$fileNameNew;
+                move_uploaded_file($fileTmpName,$fileDestination);
+                $company=new company_model();
+                $result=$company->updateImage($connection,$company_id,$fileNameNew);
+                if($result){
+                    $_SESSION['updateimg']="success";
+                    header("Location: ../../controller/admin/company_controller.php?uid=$company_id");
+                }else{
+                    $_SESSION['updateimg']="failed";
+                    header("Location: ../../view/admin/gascompany.php");
+                }
+            }else{
+                echo "Your file is too big";
+            }
+
+        }else{
+            echo "There was an error uploading your file";
+        }        
+    }else{
+        echo "You cannot upload files of this type";
+    }
 }

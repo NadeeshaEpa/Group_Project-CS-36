@@ -121,11 +121,13 @@ require_once("../../config.php");?>
     <div class="details"> 
 
     <div class="up">      
-                    <img src='../../public/images/<?php echo $result[0]['photo'];?>' alt='logon' style=" width:60%; height:20%;" class="image"> 
+                    <img src='../../public/images/gascylinder/<?php echo $result[0]['photo'];?>' alt='logon' style=" width:60%; height:20%;" class="image"> 
                 <div class="b3"> 
-                    <input type="file" name="photo" id="photo" class="image">   
-					<button class="b4" name="removeimg">Remove</button>
-                    <button name="uploadimg" class="b2">Upload</button>  
+                    <input type="file" name="photo" id="photo" class="image">   <br><br>
+					<!-- <button class="b4" name="removeimg">Remove img</button> -->
+					<input type="hidden" name="com_id" value="<?php echo $result[0]['company_id']?>"> 
+			        <input type="hidden" name="com_name" value="<?php echo $result[0]['company_name']?>"> 
+                    <button name="uploadimg" class="b2">Upload image</button>  
                 </div>               
     </div>
 	<div class="down">
