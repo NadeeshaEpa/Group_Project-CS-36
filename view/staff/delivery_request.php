@@ -178,10 +178,31 @@
 								</td>
 								<td>'.$User_id.'</td>
                                 <td>'.$order_id.'</td>
-								<td>'.$date.'</td>
-								<td><span class="status completed">'.$time.'</span></td>
-							    </tr>' ;
-								
+								<td>'.$date.'</td>';
+								date_default_timezone_set('Asia/Colombo');
+								$current_date = date('Y-m-d'); // get the current date
+								$current_time = date('H:i:s'); // get the current time
+								$current_datetime = $current_date . ' ' . $current_time; // combine date and fixed time
+								$order_datetime = $date . ' ' . $time; // combine date and fixed time
+								$current_timestamp = strtotime($current_datetime);
+								$order_timestamp=strtotime($order_datetime);
+								$final=$current_timestamp-$order_timestamp;
+								$hours=(int)($final/3600);
+								$minutes=(int)(fmod($final,3600)/60);
+
+								if($hours==1 | $hours>1){
+									echo'
+									<td><span class="status pending">'.$hours." : ".$minutes.'</span></td>
+									</tr>' ;
+								}
+								else{
+									echo'
+									<td><span class="status completed">'.$hours." : ".$minutes.'</span></td>
+									</tr>' ;
+
+								}
+					
+                               
 							}
 						}
 						?>

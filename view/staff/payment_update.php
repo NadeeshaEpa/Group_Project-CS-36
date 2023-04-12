@@ -150,48 +150,34 @@
 								<th>Operations</th>
 								
 						</tr>
-						<form action="../../controller/staff/payment_controller.php" method="POST" id="staff_form">
 
 						<?php
 						$result=$_SESSION['viewpayment'];
-						if($result){
-							foreach($result as $row){
-                                $User_Id=$row['User_Id'];
-								$Order_Id=$row['Order_Id'];
-								$Order_date=$row['Order_date'];
-								$Amount=$row['Amount'];
-								$Paid=$row['Paid'];
-						?>
-						<input type="hidden" name="Order_Id" value="<?php echo $Order_Id?>"> 
-			            <input type="hidden" name="User_Id" value="<?php echo $User_Id?>"> 
-
+						foreach($result as $row){?>
+							<tr>
+								<th><?php echo $row['Order_Id']?></th>
+								<td><?php echo $row['Order_date']?></td>
+								<td>RS. <?php echo $row['Amount']?>.00</td>
+								<td>
+								<form action="../../controller/staff/payment_controller.php" method="POST" id="staff_form">    
+									<select name="payment">
+										<option value="Pending">Pending</option>
+										<option value="Paid">Paid</option>
+									</select>
+									<input type="hidden" name="User_Id" value="<?php echo $row['User_Id']?>">
+									<input type="hidden" name="Order_Id" value="<?php echo $row['Order_Id']?>">
+								
+								</td>
+								<td>
+									<button type="submit" name="updatepayment" style="width:40%;">Update</button>
+								</td>
+								</form>
+							</tr>
 						<?php
-								
-
-								echo'
-								
-								<tr>
-								    <th>'.$Order_Id.'</th>
-									<td>'.$Order_date.'</td>
-									<td>RS. '.$Amount.'.00</td>
-									<td>
-                                    <div class="dropdown">
-                
-                                                            <select name="payment" id="payment">
-                                                                <option value="Pending">Pending</option>
-                                                                <option value="Paid">Paid</option>
-                                                            </select>
-                                            </div>
-                                    </td>
-			
-									<td><button type="submit" name="updatepayment" id="submit" class="b6" style="width:70px">Update</button></td>
-									
-								</tr>' ;
-								
-							}
 						}
-
-						?>
+						?>    
+						
+					</table>
                         
 			</div>
 			

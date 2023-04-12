@@ -75,7 +75,7 @@
 				</a>
 			</li>
 
-			<li>
+			<li class="active">
 				<a href="../../controller/staff/payment_controller.php?id=gaspaymentdetails">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Payments</span>
