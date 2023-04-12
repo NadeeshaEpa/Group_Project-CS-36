@@ -99,7 +99,10 @@ if(isset($_POST['updatepayment'])){
     $Order_Id=$_POST['Order_Id'];
     $User_Id=$_POST['User_Id'];
     $payment=$_POST['payment'];
-
+    print_r($Order_Id);
+    print_r($User_Id);
+    print_r($payment);
+    die();
     $Order_Id=$connection->real_escape_string($Order_Id);
     $User_Id=$connection->real_escape_string($User_Id);
     $payment=$connection->real_escape_string($payment);

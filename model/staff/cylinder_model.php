@@ -125,6 +125,18 @@ class cylinder_model{
         }
     }
 
+    function get_companyname($connection,$gascompany){
+        $sql="SELECT company_name FROM gas_company WHERE company_id='$gascompany'";
+        $result = mysqli_query($connection, $sql);
+        $cylinder=$result->fetch_assoc();
+        if($result->num_rows==0){
+            return false;
+        }
+        else{
+            return $cylinder;
+        }
+    }
+
 
 
 

@@ -150,7 +150,7 @@
 
 		echo'<li>
 	       <div class="card">
-		   <img src="../../public/images/'.$photo.'" alt="logon" style="width:100%; height:290px;">
+		   <img src="../../public/images/gascylinder/'.$photo.'" alt="logon" style="width:100%; height:290px;">
 			<h1>'.$company_name.'</h1>
 			<p class="title">Weight : '.$Weight.' KG</p>
 			<p>RS.'.$Price.'.00</p>

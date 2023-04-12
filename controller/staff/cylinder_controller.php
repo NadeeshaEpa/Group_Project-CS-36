@@ -100,13 +100,17 @@ if(isset($_POST['register'])){
     
         $fileExt=explode('.',$fileName);
         $fileActualExt=strtolower(end($fileExt));
-    
+
+        $cylinder=new cylinder_model();
+        $company_name=$cylinder->get_companyname($connection,$gascompany);
+
+        
         $allowed=array('jpg','jpeg','png');
         if(in_array($fileActualExt,$allowed)){
             if($fileError === 0){
                 if($fileSize < 10000000){
-                    $photo=uniqid('',true).".".$fileActualExt;
-                    $fileDestination='../../public/images/'.$photo;
+                    $photo=$company_name['company_name'].$weight.".".$fileActualExt;
+                    $fileDestination='../../public/images/gascylinder/'.$photo;
                     move_uploaded_file($fileTmpName,$fileDestination);
                     
                 }else{

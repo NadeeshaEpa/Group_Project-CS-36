@@ -70,7 +70,7 @@ class company_model{
         }else{
             $company=[];
             while($row=$result->fetch_object()){
-                array_push($company,['company_id'=>$row->$company_id,'company_name'=>$row->company_name,'photo'=>$row->photo]);
+                array_push($company,['company_id'=>$row->company_id,'company_name'=>$row->company_name,'photo'=>$row->photo]);
             }
             return $company;
         }
@@ -94,7 +94,7 @@ class company_model{
         }else{
             $company=[];
             while($row=$result->fetch_object()){
-                array_push($company,['company_id'=>$row->$company_id,'company_name'=>$row->company_name,'photo'=>$row->photo]);
+                array_push($company,['company_id'=>$row->company_id,'company_name'=>$row->company_name,'photo'=>$row->photo]);
             }
             return $company;
         }      

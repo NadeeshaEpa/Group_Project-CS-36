@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="../../public/css/admin_delivery/Dashboard.css">
     <link rel="stylesheet" href="../../public/css/admin_delivery/deliveries.css">
 	<link rel="stylesheet" href="../../public/css/admin_delivery/user_list.css">
+	<link rel="stylesheet" href="../../public/css/admin_delivery/delete_popup.css">
 
 	<title>FaGo</title>
 </head>
@@ -134,7 +135,8 @@
 					<button type="submit" class="search-btn" ><i class='bx bx-search' ></i></button>
 				</div>
 			</form> -->
-            <form action="../../controller/staff/payment_controller.php" method="POST" id="staff_form">
+        
+
 			<div class="list">
 
 						<h3>Payment Details</h3><br>
@@ -145,8 +147,10 @@
 						       <th>Date</th>
 								<th>Amount</th>
 								<th>Payment</th>
+								<th>Operations</th>
 								
 						</tr>
+						<form action="../../controller/staff/payment_controller.php" method="POST" id="staff_form">
 
 						<?php
 						$result=$_SESSION['viewpayment'];
@@ -157,6 +161,12 @@
 								$Order_date=$row['Order_date'];
 								$Amount=$row['Amount'];
 								$Paid=$row['Paid'];
+						?>
+						<input type="hidden" name="Order_Id" value="<?php echo $Order_Id?>"> 
+			            <input type="hidden" name="User_Id" value="<?php echo $User_Id?>"> 
+
+						<?php
+								
 
 								echo'
 								
@@ -168,11 +178,13 @@
                                     <div class="dropdown">
                 
                                                             <select name="payment" id="payment">
-                                                                <option value="Pending" selected>Pending</option>
+                                                                <option value="Pending">Pending</option>
                                                                 <option value="Paid">Paid</option>
                                                             </select>
                                             </div>
                                     </td>
+			
+									<td><button type="submit" name="updatepayment" id="submit" class="b6" style="width:70px">Update</button></td>
 									
 								</tr>' ;
 								
@@ -182,9 +194,9 @@
 						?>
                         
 			</div>
-
-            <a href="../../view/staff/staff-viewStaff.php"><button style="background-color: #da3a3a; color:white;" class="b4">Cancel</button></a> 
-		    <button type="submit" name="updatepayment" id="submit" class="b6">Update</button>  
+			
+            <!-- <a href="../../view/staff/staff-viewStaff.php"><button style="background-color: #da3a3a; color:white;" class="b4">Cancel</button></a>  -->
+		    <!-- <button type="submit" name="updatepayment" id="submit" class="b6">Update</button>   -->
             </form>
 
 
@@ -193,6 +205,32 @@
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
+	<!-- <div id="backgr">
+        <div id="cancel_popup">
+            <div class="cancel_contect">
+                <p>Are you sure you have paid this payment?</p>
+                <div class="buttons">
+                    <button id="yes">Yes</button>
+                    <button id="no">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<script>
+		function acceptrequest(id){
+            document.getElementById("backgr1").style.display="block";
+            document.getElementById("cancel_popup1").style.display="block";
+            document.getElementById("yes1").addEventListener("click",function(){
+                window.location.href="../../controller/staff/payment_controller.php?updatepayment="+id;
+            });
+            document.getElementById("no1").addEventListener("click",function(){
+                document.getElementById("backgr1").style.display="none";
+                document.getElementById("cancel_popup1").style.display="none";
+            });
+        }  
+            
+    </script> -->
 	
 
 	<script src="../../public/js/script.js"></script>

@@ -132,7 +132,7 @@ function usernameexit(){
             }
         }
     };
-    xhttp.open("POST", "http://localhost/GP36/controller/admin/validation_controller.php", true);
+    xhttp.open("POST", "http://localhost/Group_Project-CS-36/controller/admin/validation_controller.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("username=" + username.value);
 }
@@ -157,7 +157,7 @@ function emailValidation() {
             }
         }
     };
-    xhttp.open("POST", "http://localhost/GP36/controller/admin/validation_controller.php", true);
+    xhttp.open("POST", "http://localhost/Group_Project-CS-36/controller/admin/validation_controller.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("email=" + email.value);
 }
@@ -182,7 +182,7 @@ function nicValidation() {
             }
         }
     };
-    xhttp.open("POST", "http://localhost/GP36/controller/admin/validation_controller.php", true);
+    xhttp.open("POST", "http://localhost/Group_Project-CS-36/controller/admin/validation_controller.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("nic=" + nic.value);
 }

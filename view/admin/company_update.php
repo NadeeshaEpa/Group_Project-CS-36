@@ -121,9 +121,11 @@ require_once("../../config.php");?>
     <div class="details"> 
 
     <div class="up">      
-                    <img src='../../public/images/<?php echo $result[0]['photo'];?>' alt='logon' width='300px' height='200px' class="image"> 
+                    <img src='../../public/images/<?php echo $result[0]['photo'];?>' alt='logon' style=" width:60%; height:20%;" class="image"> 
                 <div class="b3"> 
-                    <input type="file" name="photo" id="photo" class="image">     
+                    <input type="file" name="photo" id="photo" class="image">   
+					<button class="b4" name="removeimg">Remove</button>
+                    <button name="uploadimg" class="b2">Upload</button>  
                 </div>               
     </div>
 	<div class="down">
