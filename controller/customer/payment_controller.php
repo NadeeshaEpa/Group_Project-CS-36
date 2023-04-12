@@ -64,7 +64,9 @@ if(isset($_POST['stripeToken'])){
             //email order details to customer using php mailer library
             require_once '../../model/customer/email_model.php';
             $email=new email_model();
-            $email->sendEmail($final_orderdetails,$gasagentemail);
+            $email2=new email_model();
+            $email->sendEmail($final_orderdetails);
+            $email2->sendEmail_Agent($final_orderdetails,$gasagentemail);
             header("Location: ../../view/customer/order_successfull.php");
         }
 

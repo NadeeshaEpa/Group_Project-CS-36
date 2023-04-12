@@ -19,12 +19,13 @@ class email_model{
         $this->mail->Username = 'fagoorders@gmail.com';
         $this->mail->Password = 'lfvsvbxdkoeomuya';
     }
-    public function sendEmail($orders,$gasagentemail){
+    public function sendEmail($orders){
         //email order details to customer
         $useremail=$orders[0]['email'];
         $subject="Order Details";
         $message="Your order has been placed successfully. Your order details are as follows: <br>";
         $message.="<br>Order ID: ".$orders[0]['orderid'];
+        $message.="<br>Pincode: ".$orders[0]['reserve_pin'];
         $message.="<br>Order Date: ".$orders[0]['orderdate'];
         $message.="<br>Order Total: ".$orders[0]['total'];
         $message.="<br>Delivery Method: ".$orders[0]['delivery_method'];
@@ -41,12 +42,42 @@ class email_model{
         
         $this->mail->setFrom('fagoorders@gmail.com', 'Fago');
         $this->mail->addAddress($useremail);
-        $this->mail->addCC($gasagentemail);
         $this->mail->isHTML(true);
         $this->mail->Subject = $subject;
         $this->mail->Body = $message;
         $this->mail->send();
-        
+    }
+    public function sendEmail_Agent($final_orderdetails,$gasagentemail){
+        $subject="Order Details - Agent";
+        $message="Your shop has received an order. The order details are as follows: <br>";
+        $message.="<br>Order ID: ".$final_orderdetails[0]['orderid'];
+        $message.="<br>Order Date: ".$final_orderdetails[0]['orderdate'];
+        $message.="<br>Order Total: ".$final_orderdetails[0]['total'];
+        $message.="<br>Delivery Method: ".$orders[0]['delivery_method'];
+        $message.="<br>Delivery Fee: ".$orders[0]['delivery_fee'];
+        $message.="<table border='1'>";
+        $message.="<tr><th>Product Name</th><th>Quantity</th><th>Price</th></tr>";
+        foreach($orders as $order){
+            $message.="<tr><td>".$order['itemname']."</td><td>".$order['quantity']."</td><td>".$order['price']."</td></tr>";
+        }
+        $message.="</table>";
+
+        $message.="<br>Thank you for shopping with us. We hope to see you again soon.";
+        $message.="<br>Regards,<br>Fago Team";
+
+        //send email only to gas agent
+        $this->mail->setFrom('fagoorders@gmail.com', 'Fago');
+        $this->mail->addAddress($gasagentemail);
+        $this->mail->isHTML(true);
+        $this->mail->Subject = $subject;
+        $this->mail->Body = $message;
+
+        if(!$this->mail->send()){
+            echo "Message could not be sent.";
+            echo "Mailer Error: " . $this->mail->ErrorInfo;
+        }else{
+            echo "Message has been sent";
+        }
 
     }
     public function sendRefundEmail($connection,$order_id,$useremail){
