@@ -172,7 +172,7 @@ require_once("../../config.php");?>
                  <td>
                  <a href="../../controller/staff/deliverypersonacc_controller.php?vid='.$user_id.'"><button class="button1">View</button></a>
                  <a href="../../controller/staff/deliverypersonacc_controller.php?uid='.$user_id.'"><button class="button2">Update</button></a>
-				 <button onclick="deleteuser('.$user_id.');" class="button3">Delete</button>
+				 <button onclick="deleteuser('.$user_id.');" class="button3">Disable</button>
                  </td>
             </tr>' ;
             
@@ -194,7 +194,7 @@ require_once("../../config.php");?>
 	<div id="backgr">
         <div id="cancel_popup">
             <div class="cancel_contect">
-                <p>Are you sure you want to Delete this User?</p>
+                <p>Are you sure you want to Disable this User Account?</p>
                 <div class="buttons">
                     <button id="yes">Yes</button>
                     <button id="no">No</button>

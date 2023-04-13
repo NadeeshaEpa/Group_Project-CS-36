@@ -154,6 +154,18 @@ if(isset($_POST['search_request'])){
         header("Location:../../view/staff/Gasagent_requestlist.php");
     }
 }
+if(isset($_GET['acid'])){
+    $user_id=$_GET['acid'];
+    $user_id=$connection->real_escape_string($user_id);
+    $_SESSION['acid']=$user_id;
+    $gasagent=new gasagent_model();
+    $result=$gasagent->activateuser($connection,$user_id);
+    if($result===false){
+        header("Location: ../../view/staff/staff-viewDisabledacc.php");
+    }else{
+        header("Location: ../../controller/staff/users_controller.php?uid=viewdisabledacc");
+    }
+}
 
 
 if(isset($_POST['edituser'])){

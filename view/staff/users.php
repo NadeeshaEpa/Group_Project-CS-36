@@ -196,15 +196,15 @@
                 </li>
                 </a>
 				
-                <!-- <a href="../../controller/staff/stockmanageracc_controller.php?id=viewStockmanager">
+                <a href="../../controller/staff/users_controller.php?uid=viewdisabledacc">
                 <li style="background-color:#f8ab8a">
 				<img src="../../public/images/user.png" alt="John" style="width:10vh; height:10vh">
 					<span class="text">
-						<h3>5</h3>
-						<p>STORE MANAGER</p>
+						<!-- <h3>5</h3> -->
+						<p>Disabled Accounts</p>
 					</span>
                 </li>
-                </a> -->
+                </a>
 				
 			</ul>
 

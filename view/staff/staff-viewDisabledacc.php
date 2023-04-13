@@ -26,13 +26,12 @@ require_once("../../config.php");?>
 			<span class="text">FAGO</span>
 		</a>
 		<ul class="side-menu top">
-		     <li>
+			<li >
 				<a href="../../controller/staff/dashboard_controller.php?id=profitdetails">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
-
 
 			<li>
 				<a href="../../controller/staff/profile_controller.php?viewacc=1">
@@ -134,30 +133,30 @@ require_once("../../config.php");?>
 
 		<!-- MAIN -->
 		<main>
-
     <div class="list">
 
-    <h3>All Staff Members</h3>
+    <h3>Disabled Accounts</h3>
 
-	<form action="../../controller/staff/staffacc_controller.php" method="POST">
+	<!-- <form action="../../controller/staff/gacc_controller.php" method="POST">
 				<div class="form-input">
-					<input type="search" name="staff_name" placeholder="Search by ID or name...">
+					<input type="search" name="gasagent_name" placeholder="Search by ID or name...">
 					<button type="submit" name="search" class="search-btn"><i class='bx bx-search' ></i></button>
 				</div>
-	</form>
+	</form> -->
 
     <table>
     <tr>
-        <th>Staff ID</th>
+        <th>User ID</th>
         <th>First Name</th>
         <th>Last Name</th>
         <th>Userame</th>
         <th>Email</th>
+        <th>User Type</th>
         <th>Operations</th>
     </tr>
 
     <?php
-    $result=$_SESSION['staffdetails'];
+    $result=$_SESSION['disabledaccdetails'];
     if($result){
         foreach($result as $row){
             $user_id=$row['User_id'];
@@ -165,6 +164,7 @@ require_once("../../config.php");?>
             $lname=$row['Last_Name'];
             $uname=$row['Username'];
             $email=$row['Email'];
+            $Type=$row['Type'];
 
             echo'<tr>
                  <th>'.$user_id.'</th>
@@ -172,12 +172,37 @@ require_once("../../config.php");?>
                  <td>'.$lname.'</td>
                  <td>'.$uname.'</td>
                  <td>'.$email.'</td>
+                 <td>'.$Type.'</td>';
+                 if($Type=='Staff'){
+                 echo'   
                  <td>
-                 <a href="../../controller/staff/staffacc_controller.php?vid='.$user_id.'"><button class="button1">View</button></a>
-                 <a href="../../controller/staff/staffacc_controller.php?uid='.$user_id.'"><button class="button2">Update</button></a>
-				 <button onclick="deleteuser('.$user_id.');" class="button3">Disable</button>
-                 </td>
-            </tr>' ;
+				 <a href="../../controller/staff/staffacc_controller.php?vid='.$user_id.'"><button class="button1" style="width:30%;">View</button></a>
+				 <button onclick="activatestaff('.$user_id.');" class="button2" style="width:30%;">Activate</button>
+                 </td>';
+                 }
+                 else if($Type=='Customer'){
+                    echo'   
+                    <td>
+                    <a href="../../controller/staff/customeracc_controller.php?vid='.$user_id.'"><button class="button1" style="width:30%;">View</button></a>
+                    <button onclick="activatecustomer('.$user_id.');" class="button2" style="width:30%;">Activate</button>
+                    </td>';
+                    }
+                else if($Type=='Gas Agent'){
+                 echo'   
+                 <td>
+				 <a href="../../controller/staff/gasagentacc_controller.php?vid='.$user_id.'"><button class="button1" style="width:30%;">View</button></a>
+				 <button onclick="activategasagent('.$user_id.');" class="button2" style="width:30%;">Activate</button>
+                 </td>';
+                 }
+                 else if($Type=='Delivery Person'){
+                    echo'   
+                    <td>
+                    <a href="../../controller/staff/deliverypersonacc_controller.php?vid='.$user_id.'"><button class="button1" style="width:30%;">View</button></a>
+                    <button onclick="activatedeliveryperson('.$user_id.');" class="button2" style="width:30%;">Activate</button>
+                    </td>';
+                    }
+
+           echo' </tr>' ;
             
         }
     }
@@ -197,7 +222,7 @@ require_once("../../config.php");?>
 	<div id="backgr">
         <div id="cancel_popup">
             <div class="cancel_contect">
-                <p>Are you sure you want to Disable this User Account?</p>
+                <p>Are you sure you want to Activate this User Account?</p>
                 <div class="buttons">
                     <button id="yes">Yes</button>
                     <button id="no">No</button>
@@ -207,11 +232,45 @@ require_once("../../config.php");?>
     </div>
 
 	<script>
-		function deleteuser(id){
+		function activatestaff(id){
             document.getElementById("backgr").style.display="block";
             document.getElementById("cancel_popup").style.display="block";
             document.getElementById("yes").addEventListener("click",function(){
-                window.location.href="../../controller/staff/staffacc_controller.php?did="+id;
+                window.location.href="../../controller/staff/staffacc_controller.php?acid="+id;
+            });
+            document.getElementById("no").addEventListener("click",function(){
+                document.getElementById("backgr").style.display="none";
+                document.getElementById("cancel_popup").style.display="none";
+            });
+        }  
+
+        function activategasagent(id){
+            document.getElementById("backgr").style.display="block";
+            document.getElementById("cancel_popup").style.display="block";
+            document.getElementById("yes").addEventListener("click",function(){
+                window.location.href="../../controller/staff/gasagentacc_controller.php?acid="+id;
+            });
+            document.getElementById("no").addEventListener("click",function(){
+                document.getElementById("backgr").style.display="none";
+                document.getElementById("cancel_popup").style.display="none";
+            });
+        }  
+        function activatecustomer(id){
+            document.getElementById("backgr").style.display="block";
+            document.getElementById("cancel_popup").style.display="block";
+            document.getElementById("yes").addEventListener("click",function(){
+                window.location.href="../../controller/staff/customeracc_controller.php?acid="+id;
+            });
+            document.getElementById("no").addEventListener("click",function(){
+                document.getElementById("backgr").style.display="none";
+                document.getElementById("cancel_popup").style.display="none";
+            });
+        }  
+        function activatedeliveryperson(id){
+            document.getElementById("backgr").style.display="block";
+            document.getElementById("cancel_popup").style.display="block";
+            document.getElementById("yes").addEventListener("click",function(){
+                window.location.href="../../controller/staff/deliverypersonacc_controller.php?acid="+id;
             });
             document.getElementById("no").addEventListener("click",function(){
                 document.getElementById("backgr").style.display="none";
@@ -225,6 +284,8 @@ require_once("../../config.php");?>
 	
 
 	<script src="../../public/js/script.js"></script>
+
+
 
 
   

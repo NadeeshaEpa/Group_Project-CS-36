@@ -71,6 +71,21 @@ public function count_deliverypersonrequest($connection){
     }
 }
 
+public function viewdisabledacc($connection){
+    $sql="SELECT u.User_id,u.First_Name,u.Last_Name,u.Type,u.Email,u.Username FROM user u INNER JOIN staff s ON u.User_id=s.Staff_Id WHERE s.Status=2 UNION (SELECT u.User_id,u.First_Name,u.Last_Name,u.Type,u.Email,u.Username FROM user u INNER JOIN customer c ON u.User_id=c.Customer_Id WHERE c.Status=2 UNION (SELECT u.User_id,u.First_Name,u.Last_Name,u.Type,u.Email,u.Username FROM user u INNER JOIN deliveryperson d ON u.User_id=d.DeliveryPerson_Id WHERE d.Status=2 UNION SELECT u.User_id,u.First_Name,u.Last_Name,u.Type,u.Email,u.Username FROM user u INNER JOIN gasagent g ON u.User_id=g.GasAgent_Id WHERE g.Status=2))";
+    $result=mysqli_query($connection,$sql);
+    if($result){
+        $user=[];
+        while($row=mysqli_fetch_assoc($result)){
+            $user[]=$row;
+        }
+        // print_r($user);
+        return $user;
+    }else{
+        return false;
+    }
+}
+
 
 
 }

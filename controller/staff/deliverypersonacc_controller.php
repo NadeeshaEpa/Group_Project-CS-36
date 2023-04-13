@@ -68,6 +68,19 @@ if(isset($_GET['uid'])){
     }
 }
 
+if(isset($_GET['acid'])){
+    $user_id=$_GET['acid'];
+    $user_id=$connection->real_escape_string($user_id);
+    $_SESSION['acid']=$user_id;
+    $deliveryperson=new deliveryperson_model();
+    $result=$deliveryperson->activateuser($connection,$user_id);
+    if($result===false){
+        header("Location: ../../view/staff/staff-viewDisabledacc.php");
+    }else{
+        header("Location: ../../controller/staff/users_controller.php?uid=viewdisabledacc");
+    }
+}
+
 if(isset($_GET['vid'])){
     $user_id=$_GET['vid'];
     $user_id=$connection->real_escape_string($user_id);

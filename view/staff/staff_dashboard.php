@@ -218,7 +218,7 @@
 									<tr class="details" id='.$order_id.'>
 									<td>
 										<img src="../../public/images/customer/profile_img/'.$imgname.'">
-										<p>'.$fname. $lname.'</p>
+										<p>'.$fname." ". $lname.'</p>
 									</td>
 									<td>'.$order_id.'</td>
 									<td>'.$order_date.'</td>

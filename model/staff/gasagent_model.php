@@ -12,6 +12,17 @@ class gasagent_model{
         }
     }
 
+    public function activateuser($connection,$user_id){
+        $sql = "UPDATE `gasagent` SET Status=1 WHERE GasAgent_Id='$user_id'";
+        
+        $result=$connection->query($sql);
+        if($result==TRUE){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
+    }
+
     public function decline($connection,$user_id){
         $sql = "DELETE FROM `gasagent` WHERE GasAgent_Id='$user_id'";
         // $sql="DELETE FROM `user` WHERE User_id='$user_id'";

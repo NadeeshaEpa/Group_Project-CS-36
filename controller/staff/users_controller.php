@@ -64,4 +64,16 @@ if(isset($_GET['rid'])){
 
 }
 
+if(isset($_GET['uid'])){
+    $user=new user_model();
+    $result=$user->viewdisabledacc($connection);
+    if($result){
+        $_SESSION['disabledaccdetails']=$result;
+        header("Location:../../view/staff/staff-viewdisabledacc.php");
+    }else{
+        $_SESSION['disabledaccdetails']=[];
+        header("Location:../../view/staff/staff-viewdisabledacc.php");
+    }
+
+}
 ?>
