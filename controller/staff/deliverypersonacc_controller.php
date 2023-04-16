@@ -181,9 +181,10 @@ if(isset($_POST['edituser'])){
     $Postalcode=$_POST['Postalcode'];
     $Username=$_POST['Username'];
     $Email=$_POST['Email'];
+    $NIC=$_POST['NIC'];
     $Contact_No=$_POST['Contact_No'];
-    $Vehicle_Type=$_POST['Vehicle_Type'];
-    $Vehicle_No=$_POST['Vehicle_No'];
+    $Vehicle_Type=$_POST['vehicletype'];
+    $Vehicle_No=$_POST['vehiclenum'];
     $Account_No=$_POST['Account_No'];
 
 
@@ -194,6 +195,7 @@ if(isset($_POST['edituser'])){
         $First_Name=$connection->real_escape_string($First_Name);
         $Last_Name=$connection->real_escape_string($Last_Name);
         $Email=$connection->real_escape_string($Email);
+        $NIC=$connection->real_escape_string($NIC);
         $Contact_No=$connection->real_escape_string($Contact_No);
         $Username=$connection->real_escape_string($Username);
         $Street=$connection->real_escape_string($Street);

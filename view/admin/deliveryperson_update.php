@@ -24,8 +24,8 @@ require_once("../../config.php");?>
 			<span class="text">FAGO</span>
 		</a>
 		<ul class="side-menu top">
-			<li >
-				<a href="../../view/admin/admin_dashboard.php">
+		<li >
+				<a href="../../controller/admin/dashboard_controller.php?id=profitdetails">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -41,7 +41,7 @@ require_once("../../config.php");?>
 
 			<li class="active">
 			
-			<a href="../../view/admin/users.php">
+			<a href="../../controller/admin/users_controller.php?id=userdetails">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Users</span>
 				</a>
@@ -62,14 +62,9 @@ require_once("../../config.php");?>
 			
 		</ul>
 		<ul class="side-menu">
-			<!-- <li>
-				<a href="#">
-					<i class='bx bxs-cog' ></i>
-					<span class="text">Settings</span>
-				</a>
-			</li> -->
+			
 			<li>
-				<a href="#" class="logout">
+				<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -100,7 +95,7 @@ require_once("../../config.php");?>
 			<?php if($_SESSION['img-status'] == 0){?>
                     <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                 <?php }else{?>
-                    <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
+                    <img src='../../public/images/admin/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
             <?php } ?>
 			</a>
 			<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?>
@@ -109,20 +104,20 @@ require_once("../../config.php");?>
 
 		<!-- MAIN -->
 	<main>
-    <div class="data">
+	<div class="data">
     <?php 
                    if(isset($_SESSION['edituser'])){
                       $result=$_SESSION['edituser']; 
                     //   $names=$result[1];
                    }
                 ?>
-    <form action="../../controller/admin/staffacc_controller.php" method="POST" id="staff_form">
-        <h2>Edit Staff Member Information</h2><br><br>
+    <form action="../../controller/admin/deliverypersonacc_controller.php" method="POST" id="staff_form">
+        <h2>Edit Delivery Person Information</h2><br><br>
     <div class="details"> 
 	<div class="down">
 	   <div class="down1">
 		<label>User Id:</label>
-        <input type="text" name="User_id" id="user_id" value="<?php echo $result[0]['Staff_Id']?>"   required readonly>
+        <input type="text" name="User_id" id="user_id" value="<?php echo $result[0]['DeliveryPerson_Id']?>"   required readonly>
        </div>
 	</div>
 	<div class="down"> 
@@ -145,6 +140,18 @@ require_once("../../config.php");?>
 		<div class="down1">
             <label for="nic" id="nic-label">NIC :</label>
             <input type="text" name="NIC" id="nic" value="<?php echo $result[0]['NIC']?>" placeholder="NIC" required><br>
+		</div> 
+	</div>
+
+	<div class="down">              
+	    <div class="down1">
+
+          <label for="vehicletype" id="vehicletype-label">Vehicle Type :</label>
+            <input type="text" name="vehicletype" id="vehicletype" value="<?php echo $result[0]['Vehicle_Type']?>" placeholder="Vehicle Type" required><br>
+		</div>
+		<div class="down1">
+            <label for="vehiclenum" id="vehiclenum-label">Vehicle Number :</label>
+            <input type="text" name="vehiclenum" id="vehiclenum" value="<?php echo $result[0]['Vehicle_No']?>" placeholder="Vehicle Number" required><br>
 		</div> 
 	</div>
 
@@ -173,6 +180,14 @@ require_once("../../config.php");?>
             <input type="text" name="Postalcode" id="postalcode" value="<?php echo $result[0]['Postalcode']?>"  placeholder="Postalcode" required><br>
 	    </div>
 	</div>
+    <br>
+	<div class="down"> 
+	    <div class="down1">
+        <label>Account Number :</label>
+            <input type="text" name="Account_No" id="Account_No"  value="<?php echo $result[0]['Account_No']?>" placeholder="Account Number" required><br>
+		</div> 
+		
+	</div>  
             <!-- <label for="nic" id="nic-label">NIC :</label><br><br>
             <input type="text" name="nic" id="nic" placeholder="NIC" required><br> -->
             
@@ -180,12 +195,11 @@ require_once("../../config.php");?>
          
         <br><br>
 		<div class="down"> 
-        <a href="../../view/admin/admin-viewStaff.php"><button style="background-color: #da3a3a;" class="b4">Cancel</button></a> 
+        <a href="../../view/admin/admin-viewDeliveryperson.php"><button style="background-color: #da3a3a;" class="b4">Cancel</button></a> 
 		<button type="submit" name="edituser" id="submit" class="b6">Update</button>  
 		</div>
     </form>
     </div>
-
     </main>
 		<!-- MAIN -->
 	</section>

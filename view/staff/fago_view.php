@@ -153,8 +153,18 @@ require_once("../../config.php");?>
 			</div>
 
 			<div class="down1">  
-		        <label>Order Status :</label><br>  
-                <input type="text" name="fname" value=<?php echo $result[0]['Order_Status']; ?> readonly><br>
+		        <label>Order Status :</label><br> 
+				<?php
+				if($result[0]['Order_Status']==0){
+					echo'
+					<input type="text" name="fname" value="Order Cancelled" readonly><br>';
+				}
+				else{
+					echo'
+					<input type="text" name="fname" value="Order Placed" readonly><br>';
+				}
+				?> 
+
 		     </div>
 		</div>
         <div class="down">

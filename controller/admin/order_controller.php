@@ -92,4 +92,33 @@ if(isset($_GET['fbid'])){
 
 }
 
+if(isset($_POST['search_order'])){
+    $name=$_POST['order_id'];
+    $name=$connection->real_escape_string($name);
+    $order=new order_model();
+    $result=$order->search_order($connection,$name);
+    if($result){
+        $_SESSION['orderdetails']=$result;
+        header("Location:../../view/admin/order.php");
+    }else{
+        $_SESSION['orderdetails']=[];
+        header("Location:../../view/admin/order.php");
+    }
+}
+
+if(isset($_POST['search_fagoorder'])){
+    $name=$_POST['order_id'];
+    $name=$connection->real_escape_string($name);
+    $order=new order_model();
+    $result=$order->search_fagoorder($connection,$name);
+    if($result){
+        $_SESSION['fagoorderdetails']=$result;
+        header("Location:../../view/admin/fago_order.php");
+    }else{
+        $_SESSION['fagoorderdetails']=[];
+        header("Location:../../view/admin/fago_order.php");
+    }
+}
+
+
 ?>

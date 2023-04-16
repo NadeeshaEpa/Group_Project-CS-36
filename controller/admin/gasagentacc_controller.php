@@ -54,6 +54,20 @@ if(isset($_GET['uid'])){
     }
 }
 
+if(isset($_POST['search'])){
+    $name=$_POST['gasagent_name'];
+    $name=$connection->real_escape_string($name);
+    $gasagent=new gasagent_model();
+    $result=$gasagent->searchgasagent($connection,$name);
+    if($result){
+        $_SESSION['gasagentdetails']=$result;
+        header("Location:../../view/admin/admin-viewGasagent.php");
+    }else{
+        $_SESSION['gasagentdetails']=[];
+        header("Location:../../view/admin/admin-viewGasagent.php");
+    }
+}
+
 if(isset($_GET['vid'])){
     $user_id=$_GET['vid'];
     $user_id=$connection->real_escape_string($user_id);
@@ -68,7 +82,6 @@ if(isset($_GET['vid'])){
         header("Location: ../../view/admin/gasagent_view.php");
     }
 }
-
 if(isset($_POST['edituser'])){
     $user_id=$_POST['User_id'];
     $First_Name=$_POST['First_Name'];
@@ -105,7 +118,7 @@ if(isset($_POST['edituser'])){
     
 
 
-    $staff=new gasagent_model();
+    $gasagent=new gasagent_model();
     $inputs1=array($user_id,$First_Name, $Last_Name, $City, $Street, $Postalcode, $Username, $Email);
     $inputs2=array($user_id,$Contact_No);
     $inputs3=array($user_id, $NIC,$Shop_name, $BusinessReg_No, $Account_No);

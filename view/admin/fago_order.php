@@ -25,7 +25,7 @@ require_once("../../config.php");?>
 			<span class="text">FAGO</span>
 		</a>
 		<ul class="side-menu top">
-		<li >
+		<li>
 				<a href="../../controller/admin/dashboard_controller.php?id=profitdetails">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
@@ -42,7 +42,7 @@ require_once("../../config.php");?>
 
 			<li>
 			
-			<a href="../../view/admin/users.php">
+			<a href="../../controller/admin/users_controller.php?id=userdetails">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Users</span>
 				</a>
@@ -54,12 +54,13 @@ require_once("../../config.php");?>
 					<span class="text">Gas Companies</span>
 				</a>
 			</li>
-			<li  class="active">
+			<li class="active">
 				<a href="../../controller/admin/order_controller.php?id=vieworder">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Orders</span>
 				</a>
 			</li>
+			
 		</ul>
 		<ul class="side-menu">
 			<!-- <li>
@@ -69,7 +70,7 @@ require_once("../../config.php");?>
 				</a>
 			</li> -->
 			<li>
-				<a href="#" class="logout">
+				<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -85,22 +86,13 @@ require_once("../../config.php");?>
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-			<!-- <a href="#" class="nav-link">Categories</a> -->
-			<!-- <form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form> -->
-			<!-- <input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label> -->
 			
 			
 			<a href="#" class="profile">
 			<?php if($_SESSION['img-status'] == 0){?>
                     <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                 <?php }else{?>
-                    <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
+                    <img src='../../public/images/admin/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
             <?php } ?>
 			</a>
 			<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?>
@@ -116,6 +108,12 @@ require_once("../../config.php");?>
     <div class="list">
 
     <h3>Orders</h3>
+	<form action="../../controller/admin/order_controller.php" method="POST">
+				<div class="form-input">
+					<input type="search" name="order_id" placeholder="Search by order ID...">
+					<button type="submit" name="search_fagoorder" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+	</form>
 
     <table>
     <tr>
@@ -141,10 +139,18 @@ require_once("../../config.php");?>
             echo'<tr>
                  <th>'.$order_id.'</th>
                  <td>'.$date.'</td>
-                 <td>'.$fname. $lname.'</td>
-                 <td>'.$amount.'</td>
-                 <td>'.$status.'</td>
-        
+                 <td>'.$fname." ". $lname.'</td>
+                 <td>'.$amount.'</td>';
+                 if($status==1){
+					echo'<td>Delivered</td>';
+				}
+				else if($status==0){
+					echo'<td>On the way</td>';
+				}
+				else{
+					echo'<td>No delivery</td>';
+				}
+            echo'
                  <td>
 				 <a href="../../controller/admin/order_controller.php?fvid='.$order_id.'"><button class="button1" style="width:50%;">View</button></a>
                  </td>

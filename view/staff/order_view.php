@@ -139,8 +139,7 @@ require_once("../../config.php");?>
                    
                    }
                 ?>
-    <!-- <form action="../../controller/staff/order_controller.php" method="POST" id="staff_form"> -->
-	     
+   
     <div class="data">
 	   
    <div class="details">
@@ -154,7 +153,16 @@ require_once("../../config.php");?>
 
 			<div class="down1">  
 		        <label>Order Status :</label><br>  
-                <input type="text" name="fname" value=<?php echo $result[0]['Order_Status']; ?> readonly><br>
+                <?php
+				if($result[0]['Order_Status']==0){
+					echo'
+					<input type="text" name="fname" value="Order Cancelled" readonly><br>';
+				}
+				else{
+					echo'
+					<input type="text" name="fname" value="Order Placed" readonly><br>';
+				}
+				?> 
 		     </div>
 		</div>
         <div class="down">

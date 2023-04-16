@@ -94,6 +94,36 @@ class order_model
         }
     }
 
+    public function search_order($connection,$name){
+        $sql="SELECT o.Order_id,o.Order_date,o.Amount,o.Delivery_Status,u.First_Name,u.Last_Name from `order` o INNER JOIN `placeorder` p ON o.Order_id=p.Order_Id INNER JOIN `user` u ON p.Customer_Id=u.User_id WHERE o.Order_id=p.Order_Id AND o.Order_id='$name'";
+        $result=mysqli_query($connection,$sql);
+        if($result){
+            $order=[];
+            while($row=mysqli_fetch_assoc($result)){
+                $order[]=$row;
+            }
+            
+            return $order;
+        }else{
+            return false;
+        }
+    }
+
+    public function search_fagoorder($connection,$name){
+        $sql="SELECT o.Order_id,o.Order_date,o.Amount,o.Delivery_Status,u.First_Name,u.Last_Name from `order` o INNER JOIN `shop_placeorder` p ON o.Order_id=p.Order_Id INNER JOIN `user` u ON p.Customer_Id=u.User_id WHERE o.Order_id=p.Order_id AND o.Order_id='$name'";
+        $result=mysqli_query($connection,$sql);
+        if($result){
+            $order=[];
+            while($row=mysqli_fetch_assoc($result)){
+                $order[]=$row;
+            }
+            
+            return $order;
+        }else{
+            return false;
+        }
+    }
+
 }
 ?>
 

@@ -132,7 +132,7 @@
                    if(isset($_SESSION['userdetails'])){
                       $result=$_SESSION['userdetails']; 
 					  
-                    //   $names=$result[1];
+                    
                    }
                 ?>
 			<div class="head-title">

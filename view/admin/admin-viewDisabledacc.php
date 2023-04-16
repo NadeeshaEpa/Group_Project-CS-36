@@ -13,6 +13,7 @@ require_once("../../config.php");?>
     <link rel="stylesheet" href="../../public/css/admin_delivery/user_list.css">
 	<link rel="stylesheet" href="../../public/css/admin_delivery/delete_popup.css">
 
+
 	<title>FaGo</title>
 </head>
 <body>
@@ -25,7 +26,7 @@ require_once("../../config.php");?>
 			<span class="text">FAGO</span>
 		</a>
 		<ul class="side-menu top">
-			<li >
+        <li >
 				<a href="../../controller/admin/dashboard_controller.php?id=profitdetails">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
@@ -63,12 +64,6 @@ require_once("../../config.php");?>
 			
 		</ul>
 		<ul class="side-menu">
-			<!-- <li>
-				<a href="#">
-					<i class='bx bxs-cog' ></i>
-					<span class="text">Settings</span>
-				</a>
-			</li> -->
 			<li>
 				<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
@@ -86,6 +81,16 @@ require_once("../../config.php");?>
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
+			<!-- <a href="#" class="nav-link">Categories</a> -->
+			<!-- <form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search...">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form> -->
+			<!-- <input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label> -->
+			
 			
 			<a href="#" class="profile">
 			<?php if($_SESSION['img-status'] == 0){?>
@@ -100,50 +105,30 @@ require_once("../../config.php");?>
 
 		<!-- MAIN -->
 		<main>
-        <div class="head-title">
-				<div class="left">
-					<!-- <h1>Users</h1> -->
-					<ul class="breadcrumb">
-						<li>
-							<a href="../../view/admin/admin_dashboard.php">Dashboard</a>
-						</li>
-						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a href="../../view/admin/users.php">Users</a>
-						</li>
-                        <li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a class="active" href="#">Customers</a>
-						</li>
-					</ul>
-				</div>
-				
-			</div><br>
-
-
     <div class="list">
 
-    <h3>All Customers</h3>
+    <h3>Disabled Accounts</h3>
 
-	<form action="../../controller/admin/customeracc_controller.php" method="POST">
+	<!-- <form action="../../controller/staff/gacc_controller.php" method="POST">
 				<div class="form-input">
-					<input type="search" name="customer_name" placeholder="Search by ID or name...">
+					<input type="search" name="gasagent_name" placeholder="Search by ID or name...">
 					<button type="submit" name="search" class="search-btn"><i class='bx bx-search' ></i></button>
 				</div>
-	</form>
+	</form> -->
 
     <table>
     <tr>
-        <th>Customer ID</th>
+        <th>User ID</th>
         <th>First Name</th>
         <th>Last Name</th>
         <th>Userame</th>
         <th>Email</th>
+        <th>User Type</th>
         <th>Operations</th>
     </tr>
 
     <?php
-    $result=$_SESSION['customerdetails'];
+    $result=$_SESSION['disabledaccdetails'];
     if($result){
         foreach($result as $row){
             $user_id=$row['User_id'];
@@ -151,6 +136,7 @@ require_once("../../config.php");?>
             $lname=$row['Last_Name'];
             $uname=$row['Username'];
             $email=$row['Email'];
+            $Type=$row['Type'];
 
             echo'<tr>
                  <th>'.$user_id.'</th>
@@ -158,12 +144,37 @@ require_once("../../config.php");?>
                  <td>'.$lname.'</td>
                  <td>'.$uname.'</td>
                  <td>'.$email.'</td>
+                 <td>'.$Type.'</td>';
+                 if($Type=='Staff'){
+                 echo'   
                  <td>
-                 <a href="../../controller/admin/customeracc_controller.php?vid='.$user_id.'"><button class="button1">View</button></a>
-                 <a href="../../controller/admin/customeracc_controller.php?uid='.$user_id.'"><button class="button2">Update</button></a>
-				 <button onclick="deleteuser('.$user_id.');" class="button3">Disable</button>
-                 </td>
-            </tr>' ;
+				 <a href="../../controller/admin/staffacc_controller.php?vid='.$user_id.'"><button class="button1" style="width:30%;">View</button></a>
+				 <button onclick="deleteuser('.$user_id.');" class="button3" style="width:30%;">Delete</button>
+                 </td>';
+                 }
+                 else if($Type=='Customer'){
+                    echo'   
+                    <td>
+                    <a href="../../controller/admin/customeracc_controller.php?vid='.$user_id.'"><button class="button1" style="width:30%;">View</button></a>
+                    <button onclick="deleteuser('.$user_id.');" class="button3" style="width:30%;">Delete</button>
+                    </td>';
+                    }
+                else if($Type=='Gas Agent'){
+                 echo'   
+                 <td>
+				 <a href="../../controller/admin/gasagentacc_controller.php?vid='.$user_id.'"><button class="button1" style="width:30%;">View</button></a>
+				 <button onclick="deleteuser('.$user_id.');" class="button3" style="width:30%;">Delete</button>
+                 </td>';
+                 }
+                 else if($Type=='Delivery Person'){
+                    echo'   
+                    <td>
+                    <a href="../../controller/admin/deliverypersonacc_controller.php?vid='.$user_id.'"><button class="button1" style="width:30%;">View</button></a>
+                    <button onclick="deleteuser('.$user_id.');" class="button3" style="width:30%;">Delete</button>
+                    </td>';
+                    }
+
+           echo' </tr>' ;
             
         }
     }
@@ -183,7 +194,7 @@ require_once("../../config.php");?>
 	<div id="backgr">
         <div id="cancel_popup">
             <div class="cancel_contect">
-                <p>Are you sure you want to Disable this User Account?</p>
+                <p>Are you sure you want to Delete this User Account?</p>
                 <div class="buttons">
                     <button id="yes">Yes</button>
                     <button id="no">No</button>
@@ -197,18 +208,22 @@ require_once("../../config.php");?>
             document.getElementById("backgr").style.display="block";
             document.getElementById("cancel_popup").style.display="block";
             document.getElementById("yes").addEventListener("click",function(){
-                window.location.href="../../controller/admin/customeracc_controller.php?did="+id;
+                window.location.href="../../controller/admin/users_controller.php?did="+id;
             });
             document.getElementById("no").addEventListener("click",function(){
                 document.getElementById("backgr").style.display="none";
                 document.getElementById("cancel_popup").style.display="none";
             });
         }  
+
             
     </script>
 	
 
+	
+
 	<script src="../../public/js/script.js"></script>
+
 
 
 
