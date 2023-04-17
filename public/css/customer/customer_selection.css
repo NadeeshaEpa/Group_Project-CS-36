@@ -21,13 +21,10 @@ button{
     border: green 1px solid;
     text-align: center;
 }
-<<<<<<< HEAD
-=======
 a{
     text-decoration: none;
     color: white;
 }
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 button:hover{
     background-color: lightgreen;
     color: black;
@@ -89,12 +86,8 @@ button:hover{
 }
 .gas_dropdown button{
     float: right;
-<<<<<<< HEAD
-    width: 21%;
-=======
     width: 20%;
     margin-left:15px;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }
 .fago_shop{
     float: right;
@@ -105,11 +98,7 @@ button:hover{
     padding: 0%;
     padding-top: 25px;
     font-size: 40px;
-<<<<<<< HEAD
-    
-=======
     color: black;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }
 .fago_shop img{
     width: 50%;
@@ -130,8 +119,6 @@ button:hover{
    border-radius: 20px;
    font-size: 20px;
    font-weight: bold;
-<<<<<<< HEAD
-=======
 }
 #ungas-shop button{
     width: 60%;
@@ -147,5 +134,4 @@ button:hover{
 .up-gas{
     width:100%;
     margin-top: 3%;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }

@@ -91,6 +91,8 @@ if(isset($_GET['newgasid'])){
             $_SESSION['gasavailability']=$result1;
             $result3=$gasmodel->getshopname($connection,$newgasid);
             $_SESSION['shopname']=$result3;
+            $result4=$gasmodel->getshopimage($connection,$type);
+            $_SESSION['shopimage']=$result4;
             header("Location: ../../view/customer/inside_shopnew.php");
         }
     }

@@ -88,9 +88,24 @@ if(isset($_GET['other']) || isset($_GET['other_page'])){
       header("Location: ../../view/customer/inside_fagoshop_other.php");
    }
 }
-if(isset($_GET['urgascooker'])){
+if(isset($_GET['urgascooker']) || isset($_GET['ungascooker_page'])){
    $gascooker=new shop_model();
-   $result=$gascooker->getGasCooker($connection);
+
+   $limit = 8;
+   $page = isset($_GET['ungascooker_page']) ? $_GET['ungascooker_page'] : 1;
+   $_SESSION['ungascooker_page']=$page;
+   $offset = ($page - 1) * $limit;
+   
+   //get the total number of items
+   $item="Gas Cooker";
+   $total_records=$gascooker->items($connection,$item);
+   $_SESSION['ungascooker_count']=$total_records;
+
+   //calculate the total number of pages
+   $total_pages = ceil($total_records / $limit);
+   $_SESSION['ungascooker_total_pages']=$total_pages;
+
+   $result=$gascooker->getGasCooker($connection,$limit,$offset);
    if($result==false){
       echo "No gas cooker";
    }else{
@@ -98,9 +113,25 @@ if(isset($_GET['urgascooker'])){
       header("Location: ../../view/customer/inside_unfagoshop.php");
    }
 }
-if(isset($_GET['unregulator'])){
+if(isset($_GET['unregulator'])||isset($_GET['unregulator_page'])){
    $regulator=new shop_model();
-   $result=$regulator->getRegulator($connection);
+   
+   $limit = 8;
+   $page = isset($_GET['unregulator_page']) ? $_GET['unregulator_page'] : 1;
+   $_SESSION['unregulator_page']=$page;
+   $offset = ($page - 1) * $limit;
+
+   //get the total number of items
+   $item="Regulator";
+   $total_records=$regulator->items($connection,$item);
+   $_SESSION['unregulator_count']=$total_records;
+
+   //calculate the total number of pages
+   $total_pages = ceil($total_records / $limit);
+   $_SESSION['unregulator_total_pages']=$total_pages;
+
+   $result=$regulator->getRegulator($connection,$limit,$offset);
+
    if($result==false){
       echo "No regulator";
    }else{
@@ -108,9 +139,25 @@ if(isset($_GET['unregulator'])){
       header("Location: ../../view/customer/inside_fagoshop_urregulator.php");
    }
 }
-if(isset($_GET['unother'])){
+if(isset($_GET['unother'])||isset($_GET['unother_page'])){
    $other=new shop_model();
-   $result=$other->getOther($connection);
+   
+   $limit = 8;
+   $page = isset($_GET['unother_page']) ? $_GET['unother_page'] : 1;
+   $_SESSION['unother_page']=$page;
+   $offset = ($page - 1) * $limit;
+
+   //get the total number of items
+   $item="Other";
+   $total_records=$other->items($connection,$item);
+   $_SESSION['unother_count']=$total_records;
+
+   //calculate the total number of pages
+   $total_pages = ceil($total_records / $limit);
+   $_SESSION['unother_total_pages']=$total_pages;
+
+   $result=$other->getOther($connection,$limit,$offset);
+
    if($result==false){
       echo "No other";
    }else{

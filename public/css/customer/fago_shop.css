@@ -12,8 +12,6 @@ body{
     background-color: white;
     padding-left: 5%;
     padding-right: 8%;
-    /* margin-top: 2px; */
-
 }
   
 .navbar a {
@@ -82,6 +80,7 @@ body{
     padding: 10px 20px;
     background-color: white;
     margin-top: 2px;
+    padding-bottom: 20px;
 }
 .item{
     width: 20%;
