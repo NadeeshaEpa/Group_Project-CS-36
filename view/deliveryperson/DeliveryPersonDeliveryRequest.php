@@ -99,7 +99,14 @@ if(!isset($_SESSION['User_id'])){
 			
 		</nav>
 		<!-- NAVBAR -->
-
+		        <div class="pickedmsg">
+					<h1><?php if(isset($_SESSION['picked'])){
+                         echo $_SESSION['picked'];
+						 unset($_SESSION['picked']);
+					}?></h1><h2><?php if(isset($_SESSION['pin_wrong'])){
+						echo $_SESSION['pin_wrong'];
+						unset($_SESSION['pin_wrong']);} ?></h2>
+				</div>
 		<div class="ReContainer">
 		    <div class="ReContainerInner">
 				<div class="Re_left">
@@ -117,7 +124,7 @@ if(!isset($_SESSION['User_id'])){
 					?>
 				</div>
 				<div class="Re_right">
-				        <form action="../../controller/deliveryperson/deliveryPersonAddDeliveryController.php" method="POST">
+				        <!-- <form action="../../controller/deliveryperson/deliveryPersonAddDeliveryController.php" method="POST"> -->
 							<h2>Delivery Details</h2>
 					        <?php if(isset($_SESSION['OrderDetailsOfRequest'])){
 
@@ -143,21 +150,55 @@ if(!isset($_SESSION['User_id'])){
 										<label for=""> Delivery fee :</label>
 										<input  type="text" value="<?php  echo 'Rs' , ' ' ,$row['Delivery fee'] ?>"><br>
 										<input name="DeliveryRequestDeliveryFee" type="hidden" value="<?php  echo $row['Delivery fee'] ?>"><br>
-										<button name="DeliveryRePendingName" id="DeliveryRePendingId">Pending</button><br>
-										
+										<!-- <button name="DeliveryRePendingName" id="DeliveryRePendingId">Pending</button><br> -->
+										<button id="DeliveryRePendingId" onclick="pinVertification(<?php echo $row['Order_id']?> ,<?php echo $row['Delivery fee']?>)">pending</button>
 										
 									
 								<?php }
 							} ?>
-						</form>
+						<!-- </form> -->
 				</div>
 			</div>
 		</div>
 	</section>
+	<div id="backgr">
+            <div id="cancel_popup">
+                <div class="cancel_contect">
+                    <p>Place enter your vertification pin Here..</p>
+                    <input type="textarea" name="ver_pin" id="feedback" placeholder="vertification pin">
+                    <div class="buttons">
+                        <button id="yes">Submit</button>
+                        <button id="no">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 	<!-- CONTENT -->
 	
     <script src="../../public/js/delivaryDashboard.js"></script>
 	<script src="../../public/js/delivaryDashboard.js"></script>
+	<script>
+            function pinVertification(id,amount){
+                document.getElementById("backgr").style.display="block";
+                document.getElementById("cancel_popup").style.display="block";
+                
+                submitbtn=document.getElementById("yes");
+                submitbtn.addEventListener("click",function(){
+                    pin=document.getElementById("feedback").value;
+                    if(pin==""){
+                        return;
+                    }else{
+                        document.getElementById("backgr").style.display="none";
+                        document.getElementById("cancel_popup").style.display="none";
+                        window.location.href="../../controller/deliveryperson/deliveryPersonAddDeliveryController.php?enter_pin='1'&pin="+pin + "&id="+id + "&amount="+amount;   
+                    }
+            
+                });
+                document.getElementById("no").addEventListener("click",function(){
+                    document.getElementById("backgr").style.display="none";
+                });
+            }
+    </script>
 	
 </body>
 </html>
