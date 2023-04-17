@@ -24,7 +24,7 @@ email?.addEventListener("input", function () {
     if (!reg.test(email.value)) {
         emailLabel.innerHTML = "Invalid Email";
         emailLabel.style.color = "red";
-        //submit.disabled = true;
+        submit.disabled = true;
     } else {
         emailValidation();
     }
@@ -104,7 +104,7 @@ contact?.addEventListener("input", function () {
 
 shopnumber?.addEventListener("input", function () {
     //should include 9 numbers
-    var pattern=/^[0-9]{10}$/;
+    var pattern="/^(?:\+94|0)[1-9](?:\d{8}|\d{6}-\d{4})$/";
     if (!pattern.test(contact.value)) {
         shopnumberlabel.innerHTML = "Invalid Contact Number";  
         shopnumberlabel.style.color = "red";
@@ -136,7 +136,7 @@ function usernameexit(){
             }
         }
     };
-    xhttp.open("POST", "http://localhost:8001/controller/gasagent/validation_controller.php", true);
+    xhttp.open("POST", "http://localhost/Group_36/controller/gasagent/validation_controller.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("username=" + username.value);
 }
@@ -159,7 +159,7 @@ function emailValidation() {
             }
         }
     };
-    xhttp.open("POST", "http://localhost:8001/controller/gasagent/validation_controller.php", true);
+    xhttp.open("POST", "http://localhost/Group_36/controller/gasagent/validation_controller.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("email=" + email.value);
 }

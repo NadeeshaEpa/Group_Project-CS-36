@@ -25,7 +25,11 @@ require_once("../../config.php");?>
 		</a>
 		<ul class="side-menu top">
 			<li>
+<<<<<<< HEAD
+			<a href="../../controller/staff/dashboard_controller.php?id=profitdetails">
+=======
 				<a href="staff_dashboard.php">
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -41,21 +45,33 @@ require_once("../../config.php");?>
 
 			<li>
 			
+<<<<<<< HEAD
+			<a href="../../controller/staff/users_controller.php?id=userdetails">
+=======
 			<a href="../../view/staff/users.php">
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-group' ></i>
 					<span class="text">Users</span>
 				</a>
 			</li>
 
 			<li>
+<<<<<<< HEAD
+				<a href="../../controller/staff/users_controller.php?rid=userrequestdetails">
+=======
 				<a href="../../view/staff/user_request.php">
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Registration Requests</span>
 				</a>
 			</li>
 
 			<li>
+<<<<<<< HEAD
+				<a href="../../controller/staff/cylinder_controller.php?id=viewcylinder">
+=======
 				<a href="../../view/staff/gas_cylinder.php">
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Gas Cylinders</span>
 				</a>
@@ -68,18 +84,36 @@ require_once("../../config.php");?>
 			</li>
 
 			<li>
+<<<<<<< HEAD
+				<a href="../../controller/staff/delivery_controller.php?id=viewdelivery">
+=======
 				<a href="deliveries.php">
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Deliveries</span>
 				</a>
 			</li>
 
 			<li>
+<<<<<<< HEAD
+				<a href="../../controller/staff/payment_controller.php?id=gaspaymentdetails">
+=======
 				<a href="payments.php">
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Payments</span>
 				</a>
 			</li>
+<<<<<<< HEAD
+
+			<li>
+				<a href="../../controller/staff/complain_controller.php?id=complaindetails">
+					<i class='bx bxs-doughnut-chart' ></i>
+					<span class="text">Complains</span>
+				</a>
+			</li>
+=======
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 			
 		</ul>
 		<ul class="side-menu">
@@ -115,7 +149,7 @@ require_once("../../config.php");?>
 			<?php if($_SESSION['img-status'] == 0){?>
                     <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                 <?php }else{?>
-                    <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
+                    <img src='../../public/images/staff/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
             <?php } ?>
 			</a>
 			<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?>
@@ -126,84 +160,154 @@ require_once("../../config.php");?>
 	<main>
     <div class="registration-form">
     <?php 
-                   if(isset($_SESSION['viewuser'])){
-                      $result=$_SESSION['viewuser']; 
-                    //   $names=$result[1];
+                   if(isset($_SESSION['vieworder'])){
+                      $result=$_SESSION['vieworder']; 
+					  $order_id=$result[0]['Order_id'];
+                   
                    }
                 ?>
-    <form action="../../controller/admin/order_controller.php" method="POST" id="staff_form">
-	     
+   
     <div class="data">
 	   
    <div class="details">
 
        <h2>Order Details</h2>
+	   <div class="down">
+             <div class="down1">  
+		        <label>Order ID :</label><br>  
+                <input type="text" name="fname" value=<?php echo $result[0]['Order_id']; ?> readonly><br>
+			</div>
+
+			<div class="down1">  
+		        <label>Order Status :</label><br>  
+                <?php
+				if($result[0]['Order_Status']==0){
+					echo'
+					<input type="text" name="fname" value="Order Cancelled" readonly><br>';
+				}
+				else{
+					echo'
+					<input type="text" name="fname" value="Order Placed" readonly><br>';
+				}
+				?> 
+		     </div>
+		</div>
         <div class="down">
              <div class="down1">  
 		        <label>Order Date :</label><br>  
-                <input type="text" name="fname" value="10/02/2023" readonly><br>
+                <input type="text" name="fname" value=<?php echo $result[0]['Order_date']; ?> readonly><br>
 			</div>
             <div class="down1">  
-		        <label>Customer Name :</label><br>  
-                <input type="text" name="fname" value="Tharindi Senadeera" readonly > <br>
+		        <label>Time :</label><br>  
+                <input type="text" name="fname" value=<?php echo $result[0]['Time']; ?> readonly > <br>
 		     </div>
 		</div>
 
 		<div class="down">
-		     <div class="down1">  
-		        <label>Shop name :</label><br>  
-                <input type="text" name="fname" value="ABC shop" readonly><br>
-		    </div>
-
 			<div class="down1">  
-		        <label>Amount :</label><br>  
-                <input type="text" name="fname" value="RS.6500.00" readonly><br> 
+		        <label>Order Amount :</label><br>  
+                <input type="text" name="fname" value=<?php echo $result[0]['Amount']; ?> readonly><br>
 		     </div>
+			 <div class="down1">  
+			
+			<?php
+			echo' 
+			 <a href="../../controller/staff/order_controller.php?bid='.$order_id.'"><button style="background-color:#05be17;color:white;border:white">Bill Details</button></a>';
+	        ?>
+			</div>
 		</div>
 
+		<h2>Customer Details</h2>
+
 		<div class="down">
-             <div class="down1">  
-		        <label>Delivery Person :</label><br>  
-                <input type="text" name="fname" value="Namal Perera" readonly><br>
+		    <div class="down1">  
+		        <label>Customer Id :</label><br>  
+                <input type="text" name="fname" value=<?php echo $result[0]['Customer_Id']; ?> readonly><br> 
 		     </div>
 		     <div class="down1">  
-		        <label>Delivery Fee :</label><br>  
-                <input type="text" name="fname" value="RS.600.00" readonly><br> 
+		        <label>Customer Name:</label><br>  
+                <input type="text" name="fname" value=<?php echo $result[0]['First_Name']; ?><?php echo $result[0]['Last_Name']; ?> readonly><br>
 		    </div>
 		</div>
 
 		<div class="down"> 
                                 <div class="down2">     
                                         <label>Address:</label><br> 
-                                        <input type="text" name="street" value="Homagama" readonly> <br>  
+                                        <input type="text" name="street" value=<?php echo $result[0]['Street']; ?> readonly> <br>  
                                 </div> 
                                 <div class="down2">   
                                         <label></label><br> 
-                                        <input type="text" name="city" value="Colombo" readonly> <br>  
+                                        <input type="text" name="city" value=<?php echo $result[0]['City']; ?> readonly> <br>  
                                 </div>  
                                 <div class="down2"> 
                                         <label></label><br>      
-                                        <input type="text" name="postalcode" value="2210" readonly> <br>  
+                                        <input type="text" name="postalcode" value=<?php echo $result[0]['Postalcode']; ?> readonly> <br>  
                                 </div>
         </div></br></br>
-        
-        <div class="down">
-         <div class="down1">  
-		        <label>Delivery Date :</label><br>  
-                <input type="text" name="fname" value="11/02/2023" readonly><br>
+
+		<h2>Merchant Details</h2>
+
+		<div class="down">
+		    <div class="down1">  
+		        <label>Gas Agent Id :</label><br>  
+                <input type="text" name="fname" value=<?php echo $result[0]['GasAgent_Id']; ?> readonly><br> 
 		     </div>
 		     <div class="down1">  
-		        <label>Delivery Status :</label><br>  
-                <input type="text" name="fname" value="Driver Accepted" readonly><br> 
+		        <label>Shop name :</label><br>  
+                <input type="text" name="fname" value=<?php echo $result[0]['Shop_name']; ?> readonly><br>
 		    </div>
 		</div>
+
+		<h2>Delivery Details</h2>
+
+		<div class="down">
+		<div class="down1">  
+		        <label>Delivery Method :</label><br>  
+                <input type="text" name="fname" value=<?php echo $result[0]['Delivery_Method']; ?> readonly > <br>
+		     </div>
+			 <div class="down1">  
+		        <label>Delivery Status :</label><br>  
+                <input type="text" name="fname" value=
+				<?php 
+				if($result[0]['Delivery_Status']==1){
+					echo("Delivered");
+				}
+				else if($result[0]['Delivery_Status']==0){
+					echo("On the way");
+				}
+				else{
+					echo("No delivery");
+				}
+				 ?> readonly><br> 
+		    </div>
+		</div>
+
+		<div class="down">
+		<div class="down1">  
+		        <label>Delivery Person ID :</label><br>  
+                <input type="text" name="fname" value=<?php echo $result[0]['DeliveryPerson_Id']; ?> readonly><br>
+		     </div>
+		     <div class="down1">  
+		        <label>Delivery Fee :</label><br>  
+                <input type="text" name="fname" value=<?php echo $result[0]['Delivery_fee']; ?> readonly><br> 
+		    </div>
+		</div>
+
+		
+
+		
+
+       
+		</br></br>
+        
+
 
          
 
         
 		</div>
 
-    </form>
+    <!-- </form> -->
     </div>
 
     </main>

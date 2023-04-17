@@ -69,7 +69,11 @@ require_once("../../config.php");?>
 				</a>
 			</li> -->
 			<li>
+<<<<<<< HEAD
+				<a href="#" class="logout">
+=======
 				<a href="../../controller/Users/logout_controller.php" class="logout">
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -121,9 +125,19 @@ require_once("../../config.php");?>
     <div class="details"> 
 
     <div class="up">      
+<<<<<<< HEAD
+                    <img src='../../public/images/gascylinder/<?php echo $result[0]['photo'];?>' alt='logon' style=" width:60%; height:20%;" class="image"> 
+                <div class="b3"> 
+                    <input type="file" name="photo" id="photo" class="image">   <br><br>
+					<!-- <button class="b4" name="removeimg">Remove img</button> -->
+					<input type="hidden" name="com_id" value="<?php echo $result[0]['company_id']?>"> 
+			        <input type="hidden" name="com_name" value="<?php echo $result[0]['company_name']?>"> 
+                    <button name="uploadimg" class="b2">Upload image</button>  
+=======
                     <img src='../../public/images/<?php echo $result[0]['photo'];?>' alt='logon' width='300px' height='200px' class="image"> 
                 <div class="b3"> 
                     <input type="file" name="photo" id="photo" class="image">     
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
                 </div>               
     </div>
 	<div class="down">

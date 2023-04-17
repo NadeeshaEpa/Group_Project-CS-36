@@ -4,7 +4,11 @@
 body{
 <<<<<<< HEAD
     background-color: #FFFDF0;
+<<<<<<< HEAD
     height: 80vh;
+=======
+    height: 83%;
+>>>>>>> 19c981f1a04c4b946bd34f02ece0643a2cde213a
 =======
     background-color: white;
 >>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
@@ -36,9 +40,12 @@ body{
     justify-content: center;
     align-items: center;
 }
+<<<<<<< HEAD
+=======
 .down{
     margin-bottom: 5%;
 }
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 p{
     font-size: 25px;
     font-weight: 600;

@@ -73,6 +73,21 @@ class customer_model{
         }
     }
 
+    public function searchcustomer($connection,$name){
+        $sql="SELECT * FROM user u INNER JOIN customer c ON u.User_id=c.Customer_Id WHERE u.Type='Customer' AND c.Status=1 AND u.User_id='$name' OR u.First_Name='$name'";
+        $result=mysqli_query($connection,$sql);
+        if($result){
+            $customer=[];
+            while($row=mysqli_fetch_assoc($result)){
+                $customer[]=$row;
+            }
+            
+            return $customer;
+        }else{
+            return false;
+        }
+    }
+
     
 }
 
