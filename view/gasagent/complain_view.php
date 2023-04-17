@@ -110,26 +110,39 @@
 	</li>
 		</nav>
 		<!-- NAVBAR -->
-  
 
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>View Complains </h1>
+					<ul class="breadcrumb">
+						<li>
+							<a href="#">View Complains </a>
+						</li>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<li>
+							<a class="active" href="../../index.php">Home</a>
+						</li>
+					</ul>
+				</div>
+                
+				
+			</div>
 
-  
-		
-
-  
-
-<main>
-                    <div class="tbl">
+			<div class="table-data">
+				<div class="order">
+				        <div class="tbl">
                             <table class="tb">
                                     <tr>
-									    <th>Ref_No</th>
+									    <th>Order_No</th>
 									    <th>Date</th>
                                         <th>Description</th>
 										
                                     </tr>
                                     <?php
-                                    if(isset($_SESSION['Complain_view'])){
-                                        $result=$_SESSION['Complain_view']; 
+                                    if(isset($_SESSION['userComplainDetails'])){
+                                        $result=$_SESSION['userComplainDetails']; 
                                         foreach ($result as $row) {
                                             echo "<tr>";
 											echo "<td>" . $row['order_id'] . "</td>";
@@ -137,7 +150,7 @@
                                             echo "<td>" . $row['Description'] . "</td>";
 											?>
 											<td>
-												<form action="../../controller/gasagent/complain.php" method="post">
+												<form action="../../controller/gasagent/DeliveryPersonComplane&ReviewsViewController.php" method="post">
 													<Button name="ComplainDeleteBtn" id="ComplainDeleteBtn_Id">Delete</Button>
 													<input name="Complain_Id_Name" type="hidden" value="<?php echo $row['Complain_id']?>">
 												</form>
@@ -151,10 +164,17 @@
                                     ?>
                                     
 							</table>
-						</div>
-        </main>      
-        </section>
-    <script src="../../public/js/script.js"></script>
- 
+						</div>       
+					
+				</div>
+			
+			</div>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	
+
+	<script src="../../public/js/delivaryDashboard.js"></script>
 </body>
 </html>

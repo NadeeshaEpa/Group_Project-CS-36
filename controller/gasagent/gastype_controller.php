@@ -34,7 +34,8 @@ $user=new add_gasType();
     }
     else
     {
-        echo "error";
+        // echo "error";
+        header("Location: ../../view/gasagent/addGaserror.php");
     }
 }
 

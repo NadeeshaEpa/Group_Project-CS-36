@@ -139,14 +139,14 @@
               <div class="complane_info">
                 <form action="../../controller/gasagent/complain.php" method="Post">
                   <h5>Add Complains</h5>
-                  <label for="">Reference No :</label><br>
+                  <label for="">Order No :</label><br>
                   <input type="text" name="complaneRef" id="complaneRef_id"><br>
                                     <label for="">Description :</label><br>
                   <input type="text-area" name="complaneDes" id="complaneDes_id"><br>
                   <button type="submit" name="complane_btn">submit</button>
 				  
                 </form>
-				<form action="../../controller/gasagent/complain.php" method="POST">
+				<form action="../../controller/gasagent/deliveryPersonComplainViewFirstController.php" method="POST">
                   <button type="submit" name="complane_view">Complane View</button>
 				</form>
             </div>

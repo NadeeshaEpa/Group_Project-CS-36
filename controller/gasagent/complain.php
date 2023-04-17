@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once("../../config.php");
-require_once("../../model/gasagent/compalin.model.php");
+require_once("../../model/gasagent/compalin_model.php");
 
 if(isset($_POST['complane_btn'])){
     $refNo=$_POST['complaneRef'];

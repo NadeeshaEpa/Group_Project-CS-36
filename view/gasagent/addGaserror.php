@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+   
     <link rel="stylesheet" href="../../public/css/gasagent/addGasTypeSuccsess.css">
-	<link rel="stylesheet" href="../../public/css/gasagent/gasagentDashboard.css">
-
+   
+    <link rel="stylesheet" href="../../public/css/gasagent/gasagentDashboard.css">
     <title>fago</title>
 </head>
 <body>
@@ -28,7 +28,7 @@
 <div id="success-message" class="modal">
   <div class="modal-content">
     <span class="close-button">&times;</span>
-    <p> Success!</p><br>
+    <p> Gas Type already added!</p><br>
     <i class="fa fa-check-circle"></i>
   </div>
 </div>
