@@ -14,21 +14,34 @@ if(isset($_POST['login'])){
     $result=$user->loginUser($connection,$username,$password);  //call the loginCustomer function of the customer model
     $result2=$user->gastype($connection);
     $_SESSION['gastype']=$result2;
-    
+
     if($result){
         $_SESSION['login']="success";  //if the login is successful, set the session variable
-        if($_SESSION['Type']=="Customer")
+
+        //set time zone to Sri Lanka
+        date_default_timezone_set('Asia/Colombo');
+        $_SESSION['login_time']=time();  //set the login time
+
+        if($_SESSION['Type']=="Customer"){
+            $last_order=$user->limit_order($connection,$_SESSION['User_id']);
+            if($last_order){
+                $_SESSION['last_order']=1;
+            }else{
+                $_SESSION['last_order']=0;
+            }
             header("Location: ../../view/customer/customer_select.php");  //redirect to the selection page
-        else if($_SESSION['Type']=="Delivery_Person")
-            header("Location: ../../view/deliveryperson/delivery_dashboard.php");  //redirect to the dashboard page
-        else if($_SESSION['Type']=="gasagent")
-            header("Location: ../../controller/gasagent/gasagent_order_controller.php");  //redirect to the dashboard page
-        else if($_SESSION['Type']=="FuelManager")
-            header("Location: ../../view/fuelmanager/fuelManager_Dashboard.php");  //redirect to the dashboard page
-        else if($_SESSION['Type']=="Admin")
+
+        }else if($_SESSION['Type']=="Delivery Person"){
+            header("Location: ../../controller/deliveryperson/deliveryDashboardFirstController.php");  //redirect to the dashboard page
+        }else if($_SESSION['Type']=="Gas Agent"){
+            header("Location: ../../view/gasagent/gasagent_dashboard.php");  //redirect to the dashboard page
+        }else if($_SESSION['Type']=="Stock Manager"){
+            header("Location: ../../controller/ShopManager/ShopManagerDashboardFirstController.php");  //redirect to the dashboard page
+         }else if($_SESSION['Type']=="Admin"){
             header("Location: ../../view/admin/admin_dashboard.php"); //redirect to the dashboard page
-        else if($_SESSION['Type']=="Staff")
-            header("Location: ../../view/staff/StaffDashboard.php");
+        }else if($_SESSION['Type']=="Staff"){
+            header("Location: ../../view/staff/staff_dashboard.php");
+        }
         $connection->close();
         exit();
     }else{
@@ -37,8 +50,11 @@ if(isset($_POST['login'])){
         $connection->close();
         exit();
     }
-}else{
-   echo "Invalid request";
-   exit();
+}
+if(isset($_GET['unregview'])){
+    $user=new user_model();
+    $result2=$user->gastype($connection);
+    $_SESSION['gastype']=$result2;
+    header("Location: ../../view/customer/unregcustomer_select.php");
 }
 

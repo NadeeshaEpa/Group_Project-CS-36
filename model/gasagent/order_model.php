@@ -206,8 +206,6 @@ class Brand_reports{
 
 
 
-                                                                                                                                                                                                                                   /*shop open and close */
-      
 
 
 }

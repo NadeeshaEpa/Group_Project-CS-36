@@ -8,8 +8,11 @@
     <title>Document</title>
 </head>
 <body>
-    <?php include_once 'customer_header.php'; ?>
-    <h2>Sorry, your request cannot be satisfied. Please try again later.</h2>
-    <button><a href="customer_select.php">OK</a></button>
-</body>
+    <div class="container">
+      <h1>404</h1>
+      <h2>Page Not Found</h2>
+      <p>The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+      <a href="customer_select.php">Go back to homepage</a>
+    </div>
+  </body>
 </html>

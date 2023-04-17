@@ -1,18 +1,83 @@
 <?php
 class gas_model{
-    public function getshopnames($connection,$type){
-        $sql="SELECT g.Shop_name FROM `gasagent`g inner join `gas_company` c on g.Gas_Type=c.company_id WHERE c.company_name='$type'";
+
+    public function getshopnames($connection,$type,$userid,$limit,$offset){
+        $sql="SELECT g.Shop_name,g.latitude,g.longitude FROM `gasagent`g inner join `gas_company` c on g.Gas_Type=c.company_id WHERE c.company_name='$type' limit $limit offset $offset";
+
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;
         }else{
             $shopnames=[];
+            $shop_distance=[];
+            $locations=[];
+
+            //get all the shop names and the latitude and longitude
             while($row=$result->fetch_object()){
-                array_push($shopnames,['Shop_name'=>$row->Shop_name]);
+                array_push($shopnames,['Shop_name'=>$row->Shop_name,'latitude'=>$row->latitude,'longitude'=>$row->longitude]);
+            }           
+
+            //get the distance between the user and the shop
+            foreach($shopnames as $shop){
+                //call the distance function and get the value
+                $distance=$this->distance($userid,$shop['latitude'],$shop['longitude'],$connection);
+                
+                //store the shop name and the distance into the shop_distance array
+                if($distance<=10){
+                  array_push($shop_distance,['Shop_name'=>$shop['Shop_name'],'distance'=>$distance]);
+                  //change the array structure as the 0th index should be the shop name and the 1st index should be the latitude and the 2nd index should be the longitude
+                 //this is the format that the google map api accepts
+                  array_push($locations,[$shop['Shop_name'],$shop['latitude'],$shop['longitude']]);
+                }
             }
-            // print_r($shopnames);
-            // die();
-            return $shopnames;
+            //store the locations array into the session 
+            $_SESSION['locations']=$locations;
+            
+            //sort the array according to the distance in ascending order get the lowest distance into the 0 th index
+            for($i=0;$i<count($shop_distance);$i++){
+                for($j=$i+1;$j<count($shop_distance);$j++){
+                    if($shop_distance[$i]['distance']>$shop_distance[$j]['distance']){
+                        $temp=$shop_distance[$i];
+                        $shop_distance[$i]=$shop_distance[$j];
+                        $shop_distance[$j]=$temp;
+                    }
+                }
+            }
+            return $shop_distance;
+        }
+    }
+    public function ungetshopnames($connection,$type,$latitude,$longitude){
+        $sql="SELECT g.Shop_name,g.latitude,g.longitude FROM `gasagent`g inner join `gas_company` c on g.Gas_Type=c.company_id WHERE c.company_name='$type'";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $shopnames=[];
+            $shop_distance=[];
+            $locations=[];
+            while($row=$result->fetch_object()){
+                array_push($shopnames,['Shop_name'=>$row->Shop_name,'latitude'=>$row->latitude,'longitude'=>$row->longitude]);
+            }
+            foreach($shopnames as $shop){
+                array_push($locations,[$shop['Shop_name'],$shop['latitude'],$shop['longitude']]);
+            }
+            $_SESSION['unlocations']=$locations;
+            foreach($shopnames as $shop){
+                //call the distance function and get the value
+                $distance=$this->undistance($latitude,$longitude,$shop['latitude'],$shop['longitude'],$connection);
+                array_push($shop_distance,['Shop_name'=>$shop['Shop_name'],'distance'=>$distance]);
+            }
+            //sort the array according to the distance in ascending order get the lowest distance into the 0 th index
+            for($i=0;$i<count($shop_distance);$i++){
+                for($j=$i+1;$j<count($shop_distance);$j++){
+                    if($shop_distance[$i]['distance']>$shop_distance[$j]['distance']){
+                        $temp=$shop_distance[$i];
+                        $shop_distance[$i]=$shop_distance[$j];
+                        $shop_distance[$j]=$temp;
+                    }
+                }
+            }
+            return $shop_distance;
         }
     }
     public function getweight($connection,$type){
@@ -102,23 +167,23 @@ class gas_model{
             $sql="Select Quantity from sell_gas WHERE Cylinder_Id='$cylinder' AND GasAgent_Id='$gasid'";
             $result=$connection->query($sql);
             if($result->num_rows===0){
-                $sql2="Select photo,price,Weight from gascylinder WHERE Cylinder_Id='$cylinder'";
+                $sql2="Select photo,price,Weight,newcylinder_price from gascylinder WHERE Cylinder_Id='$cylinder'";
                 $result2=$connection->query($sql2);
                 if($result2->num_rows===0){
-                    array_push($availability,['Quantity'=>0,'photo'=>0,'price'=>0]);
+                    array_push($availability,['item_id'=>$cylinder,'Quantity'=>0,'photo'=>0,'price'=>0,'newcylinder_price'=>0]);
                 }else{
                     while($row=$result2->fetch_object()){
-                        array_push($availability,['Quantity'=>0,'photo'=>$row->photo,'price'=>$row->price,'Weight'=>$row->Weight]);
+                        array_push($availability,['item_id'=>$cylinder,'Quantity'=>0,'photo'=>$row->photo,'price'=>$row->price,'newcylinder_price'=>$row->newcylinder_price,'Weight'=>$row->Weight]);
                     }
                 }
             }else{
-                $sql="SELECT g.Quantity,c.photo,c.price,c.Weight from sell_gas g inner join gascylinder c on g.Cylinder_Id=c.Cylinder_Id inner join gas_company co on c.Type=co.company_id WHERE g.Cylinder_Id='$cylinder' AND co.company_name='$type' AND g.GasAgent_Id='$gasid'";
+                $sql="SELECT g.Quantity,c.photo,c.price,c.Weight,c.newcylinder_price from sell_gas g inner join gascylinder c on g.Cylinder_Id=c.Cylinder_Id inner join gas_company co on c.Type=co.company_id WHERE g.Cylinder_Id='$cylinder' AND co.company_name='$type' AND g.GasAgent_Id='$gasid'";
                 $result=$connection->query($sql);
                 if($result->num_rows==0){
                     print_r("Error");
                 }else{
                     while($row=$result->fetch_object()){
-                        array_push($availability,['Quantity'=>$row->Quantity,'photo'=>$row->photo,'price'=>$row->price,'Weight'=>$row->Weight]);
+                        array_push($availability,['item_id'=>$cylinder,'Quantity'=>$row->Quantity,'photo'=>$row->photo,'price'=>$row->price,'newcylinder_price'=>$row->newcylinder_price,'Weight'=>$row->Weight]);
                     }
                 }
             }
@@ -126,14 +191,85 @@ class gas_model{
         return $availability;
     }
     public function getshopname($connection,$gasid){
-        $sql="Select Shop_name from gasagent WHERE GasAgent_Id='$gasid'";
+        $sql="Select g.GasAgent_Id,g.Shop_name,g.LastUpdatedTime,g.LastUpdatedDate,u.Contact_No from gasagent g inner join user_contact u on g.GasAgent_id=u.User_id WHERE GasAgent_Id='$gasid'";
         $result=$connection->query($sql);
+        $data=[];
         if($result->num_rows===0){
             return false;
         }else{
             while($row=$result->fetch_object()){
-                return $row->Shop_name;
+                array_push($data,['Gas_id'=>$row->GasAgent_Id,'Shop_name'=>$row->Shop_name,'Contact_No'=>$row->Contact_No,'LastUpdatedTime'=>$row->LastUpdatedTime,'LastUpdatedDate'=>$row->LastUpdatedDate]);
             }
+            return $data;
         }
+    }
+    public function undistance($clatitude,$clongitude,$glatitude,$glongitude,$connection){
+        $lat1=$clatitude;
+        $lng1=$clongitude;
+        $lat2=$glatitude;
+        $lng2=$glongitude;
+
+        $R = 6371;
+            $dLat = ($lat2 - $lat1) * (M_PI / 180);
+            $dLng = ($lng2 - $lng1) * (M_PI / 180);
+            $a = 
+              sin($dLat / 2) * sin($dLat / 2) +
+              cos($lat1 * (M_PI / 180)) * cos($lat2 * (M_PI / 180)) * 
+              sin($dLng / 2) * sin($dLng / 2)
+            ;
+            $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+            $d = $R * $c;
+        //round the value into 2 decimal places
+        $d=round($d,1);
+        return $d;   
+    }
+    public function distance($userid,$latitude,$longitude,$connection){
+        $sql="Select latitude,longitude from `customer` where Customer_Id='$userid'";
+        $id=$connection->query($sql);
+        $row=$id->fetch_object();
+        $lat1=$row->latitude;
+        $lng1=$row->longitude;
+        $lat2=$latitude;
+        $lng2=$longitude;
+
+        $R = 6371;
+            $dLat = ($lat2 - $lat1) * (M_PI / 180);
+            $dLng = ($lng2 - $lng1) * (M_PI / 180);
+            $a = 
+              sin($dLat / 2) * sin($dLat / 2) +
+              cos($lat1 * (M_PI / 180)) * cos($lat2 * (M_PI / 180)) * 
+              sin($dLng / 2) * sin($dLng / 2)
+            ;
+            $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+            $d = $R * $c;
+        //round the value into 2 decimal places
+        $d=round($d,1);
+        return $d;    
+    }
+    public function shop_count($userid,$connection,$type){
+        $count=0;
+        $sql="SELECT g.Shop_name,g.latitude,g.longitude FROM `gasagent`g inner join `gas_company` c on g.Gas_Type=c.company_id WHERE c.company_name='$type'";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return 0;
+        }else{
+            while($row=$result->fetch_object()){
+                $distance=$this->distance($userid,$row->latitude,$row->longitude,$connection);
+                if($distance<10){
+                    $count++;
+                }
+            }
+            return $count;
+        }
+    }
+    public function getshopimage($connection,$type){
+        $sql="select photo from gas_company where company_name='$type'";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $row=$result->fetch_object();
+            return $row->photo;
+        }  
     }
 }

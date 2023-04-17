@@ -104,7 +104,6 @@
                     
                 </select>
             </div><br><br>
-
             <label for=":">Business Registration Number:</label><br>
             <input type="text" name="business_reg_num" id="business_reg_num" placeholder="Business Registraion Number" required><br>
 

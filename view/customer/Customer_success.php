@@ -4,57 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../public/css/customer/reg_request.css">
     <title>Document</title>
 
-    <style>
-       body{
-        background-color:#FFFDF0;
-       } 
-       .container{
-        height:62%;
-       }
-       .para{
-          width:60%;
-          height:50%;
-          background-color:white;
-          margin-left:25%;
-          margin-top:10%;
-          border-radius:20px;
-       }
-       .para h2{
-        padding:30px;
-       }
-       .para button{
-         width: 120px;
-         height: 50px;
-         background-color:green;
-         color:white;
-         margin-left:45%;
-         border-radius:20px;
-         border:lightgreen;
-       }
-       .para button:hover{
-         background-color:lightgreen;
-         color:black;
-       }
-       .para a{
-         text-decoration:none;
-         color:white;
-       }
-       
-    </style>
 </head>
 <body>
-    <?php require_once '../header.php'; ?> 
+    <?php require_once '../unreguser_header.php'; ?> 
     <div class="container">
-        <div class="para">    
+        <div class="para" id="bg-changer">    
             <h2>
-                Registration request send successfully. You will receive an email within 48 hours
+               Regitration request sent successfully. Please wait for the approval.
+               You will be notified via email within 48 hours.<br>
+               Thank you for your patience.
             </h2>
             <a href="../../index.php"><button>OK</button></a>
         </div>    
     </div>    
-    <?php require_once 'customer_footer.php'; ?>
-    <!-- <button><a href="customer_dashboard.php">Go to Dashboard</a></button> -->
 </body>
 </html>

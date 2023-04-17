@@ -3,6 +3,7 @@
 }
 body{
     margin:0%;
+<<<<<<< HEAD
     background-color: #fffdf0;
 }
 .form{
@@ -17,6 +18,23 @@ body{
 }
 .pwdcontainer input{
     width: 100%;
+=======
+    background-color: white;
+}
+.form{
+    background-color: rgb(232, 227, 227);
+    width: 60%;
+    height: 70%;
+    justify-content: center;
+    margin-top: 5%;
+    padding: 20px;
+    border-radius: 20px;
+    float: right;
+    margin-right: 10%;
+}
+.pwdcontainer input{
+    width: 90%;
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     height: 40px;
     margin-bottom: 20px;
     border-radius: 10px;

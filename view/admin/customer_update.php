@@ -1,67 +1,198 @@
-<?php
-   session_start();
-   require_once("../../config.php");
-   $id=$_GET['updateid'];
-
-   if(isset($_POST['submit'])){        //check whether the register button is clicked
-    $firstname = $_POST['firstname'];   //assign the user entered details to variables
-    $lastname = $_POST['lastname'];
-    $username = $_POST['username'];
-    $street = $_POST['street'];
-    $city = $_POST['city'];
-    $postalcode = $_POST['postalcode'];
-    $email = $_POST['email'];
-    $contactnumber = $_POST['contactnumber'];
-    $billnum = $_POST['billnum'];
-
-    $sql="UPDATE user SET User_id=$id, First_Name= '$firstname',Last_Name='$lastname',City='$city',Street='$street',Postalcode='$postalcode',Username='$username',Email='$email' WHERE User_id=$id";
-    $result=mysqli_query($connection,$sql);
-    if($result){
-        // header('location:admin-viewCustomer.php');
-        echo "updated succesfully";
-    }else{
-        die(mysqli_error($connection));
-    }
-   }
-?>
+<?php session_start();
+require_once("../../config.php");?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../public/css/fago_register.css">
-    <title>Customer Details</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="../../public/css/admin_delivery/Dashboard.css">
+	<link rel="stylesheet" href="../../public/css/admin_delivery/profile.css">
+
+	<title>FaGo</title>
 </head>
 <body>
-    <?php include '../../public/user_header.php'; ?>
-    <div class="registration-form">
-    <form action="../../controller/customer/register_controller.php" method="POST">
-        <h2>Customer Details</h2><br>
-        Name:
-          <input type="text" name="firstname" id="firstname" placeholder="First Name"  required>
-          <input type="text" name="lastname" id="lastname" placeholder="First Name" required><br>
 
-        Username:
-            <input type="text" name="username" id="username" placeholder="Username" required><br>
-            
-        Address:
-            <input type="text" name="street" id="street" placeholder="Street" required><br>  
-            <input type="text" name="city" id="city" placeholder="City" required>    
-            <input type="text" name="postalcode" id="postalcode" placeholder="Postalcode" required><br>
-             
 
-        Email:
-            <input type="email" name="email" id="email" placeholder="Email" required><br>
-            
-        Contact Number:
-            <input type="text" name="contactnumber" id="contactnumber" placeholder="Contact Number" required><br>
-            
-        Electricity Bill Number:
-            <input type="text" name="billnum" id="billnum" placeholder="Electricity Bill Number"  pattern="[0-9]{10}" title="should include 10 numbers" required><br>    
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bxs-select-multiple'></i>
+			<span class="text">FAGO</span>
+		</a>
+		<ul class="side-menu top">
+			<li >
+				<a href="../../view/admin/admin_dashboard.php">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
 
-            <button type="submit" name="submit">Update</button>  
-            <button type="submit" name="cancel" style="background-color: #da3a3a;"><a href="admin_viewCustomer.php">Cancel</a></button>      
+			<li>
+				<a href="../../controller/admin/profile_controller.php?viewacc=1">
+					<i class='bx bxs-group' ></i>
+					<span class="text">Account</span>
+				</a>
+			</li>
+
+
+			<li class="active">
+			
+			<a href="../../view/admin/users.php">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Users</span>
+				</a>
+			</li>
+
+			<li>
+				<a href="../../controller/admin/company_controller.php?id=viewcompany">
+					<i class='bx bxs-doughnut-chart' ></i>
+					<span class="text">Gas Companies</span>
+				</a>
+			</li>
+			<li>
+				<a href="../../controller/admin/order_controller.php?id=vieworder">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Orders</span>
+				</a>
+			</li>
+			
+		</ul>
+		<ul class="side-menu">
+			<!-- <li>
+				<a href="#">
+					<i class='bx bxs-cog' ></i>
+					<span class="text">Settings</span>
+				</a>
+			</li> -->
+			<li>
+				<a href="../../controller/Users/logout_controller.php" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu' ></i>
+			<!-- <a href="#" class="nav-link">Categories</a> -->
+			<!-- <form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search...">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form> -->
+			<!-- <input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label> -->
+			
+			
+			<a href="#" class="profile">
+			<?php if($_SESSION['img-status'] == 0){?>
+                    <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
+                <?php }else{?>
+                    <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
+            <?php } ?>
+			</a>
+			<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+	<main>
+    <div class="data">
+    <?php 
+                   if(isset($_SESSION['edituser'])){
+                      $result=$_SESSION['edituser']; 
+                    //   $names=$result[1];
+                   }
+                ?>
+    <form action="../../controller/admin/customeracc_controller.php" method="POST" id="staff_form">
+        <h2>Edit Customer Information</h2><br><br>
+    <div class="details"> 
+	<div class="down">
+	   <div class="down1">
+		<label>User Id:</label>
+        <input type="text" name="User_id" id="user_id" value="<?php echo $result[0]['Customer_Id']?>"   required readonly>
+       </div>
+	</div>
+	<div class="down"> 
+	    <div class="down1">
+	    <label>First name:</label>
+          <input type="text" name="First_Name" id="firstname" value="<?php echo $result[0]['First_Name']?>" placeholder="First Name"  required>
+		</div>
+		<div class="down1">
+	    <label>Last name:</label>
+          <input type="text" name="Last_Name" id="lastname" value="<?php echo $result[0]['Last_Name']?>" placeholder="Last Name" required>
+		</div>
+	</div>
+
+	<div class="down">              
+	    <div class="down1">
+
+          <label for="username" id="username-label">Username :</label>
+            <input type="text" name="Username" id="username" value="<?php echo $result[0]['Username']?>" placeholder="Username" required readonly><br>
+		</div>
+		<div class="down1">
+            <label for="nic" id="nic-label">Electricity Bill Number :</label>
+            <input type="text" name="ElectricityBill_No" id="ElectricityBill_No" value="<?php echo $result[0]['ElectricityBill_No']?>" placeholder="Electricity Bill Number" required readonly><br>
+		</div> 
+	</div>
+
+	<div class="down"> 
+	    <div class="down1">
+        <label for="email" id="email-label">Email :</label>
+            <input type="email" name="Email" id="email"  value="<?php echo $result[0]['Email']?>" placeholder="Email" required><br>
+		</div> 
+		<div class="down1">  
+        <label for="contactnumber" id="contactnum-label">Contact Number :</label>
+            <input type="text" name="Contact_No" id="contactnumber"  value="<?php echo $result[0]['Contact_No']?>" placeholder="Contact Number" required><br>
+		</div>
+	</div>   
+
+	<div class="down"> 
+        <div class="down2">  
+		<label>Address:</label><br> 
+            <input type="text" name="Street" id="street"  value="<?php echo $result[0]['Street']?>" placeholder="Street" required><br>
+		</div>
+		<div class="down2"> 
+		    <label></label><br>
+            <input type="text" name="City" id="city"  value="<?php echo $result[0]['City']?>" placeholder="City" required>   <br>
+			</div>
+		<div class="down2"> 
+		    <label></label><br> 
+            <input type="text" name="Postalcode" id="postalcode" value="<?php echo $result[0]['Postalcode']?>"  placeholder="Postalcode" required><br>
+	    </div>
+	</div>
+            <!-- <label for="nic" id="nic-label">NIC :</label><br><br>
+            <input type="text" name="nic" id="nic" placeholder="NIC" required><br> -->
+            
+	
+         
+        <br><br>
+		<div class="down"> 
+        <a href="../../view/admin/admin-viewCustomer.php"><button style="background-color: #da3a3a;" class="b4">Cancel</button></a> 
+		<button type="submit" name="edituser" id="submit" class="b6">Update</button>  
+		</div>
     </form>
-</div>
+    </div>
+
+    </main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	
+
+	<script src="../../public/js/script.js"></script>
+    <!-- <script src="../../public/js/admin_validation.js"></script> -->
 </body>
 </html>
