@@ -76,3 +76,25 @@ if(isset($_POST['brandDeleteBtn'])){
 
 
 }
+
+/*Search the brands */
+if(isset($_POST['item_search'])){
+    $item=($_POST['item']);
+    $user=new brand;
+    $result=$user->GetProduct($connection,$item);
+    if($result==true){
+        $_SESSION['product_details']=$result;
+        header("Location: ../../controller/ShopManager/ShopManagerBrandFirstController.php");
+        $connection->close();
+        exit();
+    }
+    else{
+        header("Location: ../../controller/ShopManager/ShopManagerBrandFirstController.php");
+       $connection->close();
+        exit();
+
+
+    }
+
+
+}

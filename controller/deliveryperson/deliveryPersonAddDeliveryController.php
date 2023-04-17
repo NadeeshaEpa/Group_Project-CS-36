@@ -2,6 +2,7 @@
 session_start();
 require_once("../../config.php");
 require_once("../../model/deliveryperson/deliveryPersonLocationModel.php");
+require_once('../../model/deliveryperson/dashboardModel.php');
 
 if(isset($_POST['check'])){
     $user=new location();
@@ -47,9 +48,14 @@ if(isset($_POST['DeliveryReDeclineName'])){
 if(isset($_POST['DeliveryReAcceptName'])){
     $orderId=$_POST['DeliveryOrder'];
     $orderId=$connection->real_escape_string($orderId);
+
     $user=new location();
     $result=$user->AcceptDeliveryRequest($connection,$orderId);
-    if($result==true){
+
+    $user1=new Dashboard;
+    $result1=$user1->update_as_a_not_active($connection);
+
+    if($result==true && $result1){
         $_SESSION['OrderDetailsOfRequest']=$result;
         header("Location: ../../view/deliveryperson/DeliveryPersonDeliveryRequest.php");
         $connection->close();
@@ -74,7 +80,11 @@ if(isset($_POST['DeliveryRePendingName'])){
     $DeliveryFee=$connection->real_escape_string($DeliveryFee);
     $user=new location();
     $result=$user->PendingDeliveryRequest($connection,$orderId,$DeliveryFee);
-    if($result==true){
+
+    $user1=new Dashboard;
+    $result1=$user1->update_as_a_active($connection);
+
+    if($result==true && $result1){
        
         header("Location: ../../controller/deliveryperson/deliveryDashboardFirstController.php");
         $connection->close();

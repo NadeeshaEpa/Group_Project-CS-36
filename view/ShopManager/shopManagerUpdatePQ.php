@@ -120,6 +120,24 @@ if(!isset($_SESSION['User_id'])){
 				<div class="order">
 				    <div class="showBrandQData">
 						<div class="showBrandQDataHeader">
+						    <div class="showBrandQDataHeaderTitle">
+							    <form action="../../controller/ShopManager/ShopManagerBrandController.php" method="POST">
+									<?php if(isset($_SESSION['Product_details_itemCode'])){
+										$result=$_SESSION['Product_details_itemCode']?>
+										<select name="item" id="item_id" required>
+											<option value="">---Select Type---</option>
+											<?php foreach($result as $row){
+												?><option value="<?php echo $row['Item_code']; ?>"><?php echo $row['Item_code']; ?></option><?php
+											}
+											
+											?>
+										</select>
+
+									<?php } ?>
+									<button name="item_search" id="item_search_id">Search</button>
+								</form>
+
+							</div>
 							<div class="showBrandQDataHeaderErrormsg">
 
 								<h4><?php 
@@ -161,42 +179,66 @@ if(!isset($_SESSION['User_id'])){
 								 ?></h5>
 								
 							</div>
-							<div class="showBrandQDataHeaderTitle">
-								<h4>All brands</h4>
-								
-
-							</div>
+							
 						</div>
 
 						<div class="showBrandQDataInner">
-							<?php if(isset($_SESSION['Product_details'])){
-								$result=$_SESSION['Product_details'];
-								foreach ($result as $row) { ?>
-									<div class="brandQinfoinner">
-
-										<form action="../../controller/ShopManager/ShopManagerBrandController.php" method="POST">
-											<label for="">Reference No:</label>
-											<input type="hidden" name="BrandQref" value="<?php echo $row['Item_code']; ?>">
-
-											<input type="text"  id="BrandQrefid" name="BrandQref" value="<?php echo $row['Item_code']; ?>" disabled><br>
-											<label for="">Name:</label>
-											<input type="text"  id="BrandNameid" value="<?php echo $row['Name']; ?>" disabled><br>
-											<label for="">Category:</label>
-											<input type="text" id="Brandcatefid" value="<?php echo $row['Category']; ?>" disabled><br>
-											<label for="">Quantity:</label>
-
-											<input type="text" id="BrandQquentyid" name="BrandQquenty" value="<?php echo $row['Quantity']; ?>" >
-											<button name="BrandQuenBtn" id="BrandQuenBtnid">Update Quantity</button><br>
-											<label for="">Price:</label>
-											<input type="text" id="BrandQpriceid" name="BrandQprice" value="<?php echo $row['Price']; ?>">
-
-											<button id="BrandQpricebtnid" name="BrandQpricebtn">Update Price</button><br>
+						    <?php if(isset($_SESSION['product_details'])){
+								$row=$_SESSION['product_details'];?>
+								<div class="branddown">
+										<div class="branddown1">
+											<img src="../../public/images/ShopManager/Brands/<?php echo $row[0]['Profile_img']?>" width="400px" height="300px" alt="">
+										</div>
+										<div class="branddown1">
+												
+												
+													<label for="">Reference No:</label>
+													<input type="text"  id="BrandQrefid" name="BrandQref" value="<?php echo $row[0]['Item_code']; ?>" disabled><br>
+													<label for="">Name:</label>
+													<input type="text"  id="BrandNameid" value="<?php echo $row[0]['Name']; ?>" disabled><br>
+													<label for="">Category:</label>
+													<input type="text" id="Brandcatefid" value="<?php echo $row[0]['Category']; ?>" disabled><br>
+													<label for="">Quantity:</label>
+													<input type="text" id="BrandQquentyid" name="BrandQquenty" value="<?php echo $row[0]['Quantity']; ?>" ><br>
+													<label for="">Price:</label>
+													<input type="text" id="BrandQpriceid" name="BrandQprice" value="<?php echo $row[0]['Price']; ?>">
+													
+												
 											
-											<button name="brandDeleteBtn" id="brandDeleteBtnid">Delete</button>
+										</div>
+								</div>
+								<div class="branddown2">
+										<form action="../../controller/ShopManager/ShopManagerBrandController.php" method="POST">
+											<input type="hidden" name="BrandQref" value="<?php echo $row[0]['Item_code']; ?>">
+											<input type="text" id="BrandQpriceid" name="BrandQprice" value="<?php echo $row[0]['Price']; ?>">
+											<input type="text" id="BrandQquentyid" name="BrandQquenty" value="<?php echo $row[0]['Quantity']; ?>" ><br>
+											<button id="BrandQpricebtnid" name="BrandQpricebtn">Update Price</button>
+											<button name="BrandQuenBtn" id="BrandQuenBtnid">Update Quantity</button>
+										    <button onclick="document.getElementById('id01').style.display='block'" class="b5" id="brandDeleteBtnid" type="button">Delete</button>
+											
 										</form>
-									</div>
-								<?php }
-							} ?>
+										
+								</div>
+						   
+						        <div id="id01" class="modal" style="display: none">
+                                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close">×</span>
+                                    <form class="modal-content" action="../../controller/ShopManager/ShopManagerBrandController.php" method="POST">
+
+                                        <div class="container">
+                                            <h1>Delete product</h1>
+                                            <p>Are you sure you want to delete this product?</p>
+                                        
+                                            <div class="clearfix">
+											    <input type="hidden" name="BrandQref" value="<?php echo $row[0]['Item_code']; ?>">
+                                                <button type="button" onclick="document.getElementById('id01').style.display='none'" id="profilecancelbtnid">Cancel</button>
+                                                <button type="submit" id="profiledeletebtnid" name="brandDeleteBtn">Delete</button>
+
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div> 
+
+								<?php unset($_SESSION['product_details']); }?>
 						</div>
                     </div>
 

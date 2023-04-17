@@ -146,8 +146,17 @@ xhttp.onreadystatechange = function() {
         if (this.status == 200) {
             try {
                 var response = JSON.parse(this.responseText);
-                incomeid2.innerHTML = response.total_fee['SUM(Delivery_fee)'];
-                Nodeliverid2.innerHTML = response.delivery_count['COUNT(*)'];
+                var totalFee = response.total_fee['SUM(Delivery_fee)'];
+                var deliveryCount = response.delivery_count['COUNT(*)'];
+                
+                if (totalFee !== null) {
+                    totalFee = totalFee * 0.8;
+                } else {
+                    totalFee = 0;
+                }
+                
+                incomeid2.innerHTML = totalFee;
+                Nodeliverid2.innerHTML = deliveryCount;
             } catch (e) {
                 console.error("Error parsing JSON:", e);
             }

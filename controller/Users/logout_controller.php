@@ -5,10 +5,10 @@ if(isset($_SESSION['User_id'])){
     session_destroy();
 
 
-    header("Location: http://localhost:8001/view/login.php");
+    header("Location: ../../view/login.php");
 }else if(isset($_GET['home'])){
     session_destroy();
-    header("Location: http://localhost:8001/index.php");
+    header("Location: ../../index.php");
 
 
 }else{

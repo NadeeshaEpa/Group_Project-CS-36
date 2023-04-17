@@ -24,7 +24,7 @@ if(isset($_SESSION['locked'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <link rel="stylesheet" href="../../public/css/customer/login.css">
+    <link rel="stylesheet" href="../public/css/customer/login.css">
 
 
     <title>Login</title>
@@ -36,7 +36,7 @@ if(isset($_SESSION['locked'])){
 
 
 
-                <form action="../../controller/Users/login_controller.php" method="POST" class="form">
+                <form action="../controller/Users/login_controller.php" method="POST" class="form">
 
 
                     <h2>Welcome</h2>
@@ -88,7 +88,7 @@ if(isset($_SESSION['locked'])){
             <div class = "side">
 
 
-                <img src="../../public/images/customer/login.webp"  alt="">
+                <img src="../public/images/customer/login.webp"  alt="">
 
 
             </div>
