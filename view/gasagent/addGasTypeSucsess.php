@@ -1,45 +1,40 @@
-<?php session_start(); 
-if(!isset($_SESSION['User_id'])){
-    header("Location: ../../index.php");
-}
-?>
-<!DOCTYPE html>
+<?php session_start();?>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
 
-	<!-- Boxicons -->
-	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-	<!-- My CSS -->
+    <link rel="stylesheet" href="../../public/css/gasagent/addGasTypeSuccsess.css">
 	<link rel="stylesheet" href="../../public/css/gasagent/gasagentDashboard.css">
-	<title>FaGo</title>
-	<style>
-		main{
-			background-color:white;
-			width: 100%;
-			height: 100%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			margin-top:20%;
-			border-radius: 10px;
-		}
-		main h2{
-			font-size: 30px;
-			color: #000;
-			font-weight: 500;
-			text-align: center;
-			margin: 0 auto;
-			margin-left:20%;
-		}
-	</style>		
+
+    <title>fago</title>
 </head>
 <body>
 
 
-	<!-- SIDEBAR -->
-	<section id="sidebar">
+<h2>
+    <?php
+        if(isset($_SESSION['RegsuccessMsg'])){
+            echo $_SESSION['RegsuccessMsg'];
+            echo '<br>';
+            unset($_SESSION['RegsuccessMsg']);
+        }
+    ?>
+    </h2>
+   
+<div id="success-message" class="modal">
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <p> Success!</p><br>
+    <i class="fa fa-check-circle"></i>
+  </div>
+</div>
+
+	
+	 <section id="sidebar">
 		<a href="../../view/gasagent/View.php" class="brand">
 			<i class='bx bxs-select-multiple'></i>
 			<span class="text">FaGo</span>
@@ -70,7 +65,7 @@ if(!isset($_SESSION['User_id'])){
 				</a>
 			</li>
 			<li>
-				<a href="../../view/gasagent/gasagentUpdate.php">
+				<a href="../../controller/gasagent/gasagentUpdateFirst.php">
 					<i class='bx bxs-message-dots' ></i>
 					<span class="text">Update/Delete</span>
 				</a>
@@ -81,12 +76,13 @@ if(!isset($_SESSION['User_id'])){
 					<span class="text">profile details</span>
 				</a>
 			</li>
+
 			<li>
-				<a href="#">
-					<i class='bx bxs-badge-check' ></i>
-					<span class="text">Complains</span>
+				<a href="../../view/gasagent/compalin.php">
+					<i class='bx bxs-group' ></i>
+					<span class="text">Complaine</span>
 				</a>
-            </li>
+			</li>
 		</ul>
 		<ul class="side-menu">
 			<!-- <li>
@@ -96,7 +92,7 @@ if(!isset($_SESSION['User_id'])){
 				</a>
 			</li> -->
 			<li>
-				<a href="../../controller/Users/logout_controller.php" class="logout">
+				<a href="..view/login.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -114,10 +110,10 @@ if(!isset($_SESSION['User_id'])){
 			<i class='bx bx-menu' ></i>
 			<a href="#" class="nav-link">Categories</a>
 			<form action="#">
-				<div class="form-input">
+				<!-- <div class="form-input">
 					<input type="search" placeholder="Search...">
 					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
+				</div> -->
 			</form>
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
@@ -131,13 +127,22 @@ if(!isset($_SESSION['User_id'])){
 		</nav>
 		<!-- NAVBAR -->
 
-		<main style="width:60%;margin-left:20%;">
-			<h2>Gas Type Added Successfully</h2>
-		</main>	
-	</section>
-	<!-- CONTENT -->
-	
 
-	<script src="../../public/js/script.js"></script>
+   
+
+
+
+     
+ 
+        
+
+
+
+
+
+
+<script src="../../public/js/succsess_script.js"></script>
+
+
 </body>
 </html>

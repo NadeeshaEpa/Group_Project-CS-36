@@ -11,6 +11,10 @@
 	<link rel="stylesheet" href="../../public/css/admin_delivery/Dashboard.css">
     <link rel="stylesheet" href="../../public/css/admin_delivery/deliveries.css">
 	<link rel="stylesheet" href="../../public/css/admin_delivery/user_list.css">
+<<<<<<< HEAD
+=======
+	<link rel="stylesheet" href="../../public/css/admin_delivery/delete_popup.css">
+>>>>>>> 39892497ba09a67dd7133a9ec633cf58a21b843a
 
 	<title>FaGo</title>
 </head>
@@ -109,11 +113,22 @@
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
+<<<<<<< HEAD
+=======
+			<!-- <input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label> -->
+			
+			
+>>>>>>> 39892497ba09a67dd7133a9ec633cf58a21b843a
 			<a href="#" class="profile">
 			<?php if($_SESSION['img-status'] == 0){?>
                     <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                 <?php }else{?>
+<<<<<<< HEAD
                     <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
+=======
+                    <img src='../../public/images/staff/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
+>>>>>>> 39892497ba09a67dd7133a9ec633cf58a21b843a
             <?php } ?>
 			</a>
 			<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?>
@@ -122,6 +137,7 @@
 
 		<!-- MAIN -->
 		<main>
+<<<<<<< HEAD
     <div class="list">
         <h3>Payment Details</h3><br>
         <table>
@@ -166,12 +182,101 @@
 
              <!-- <a href="../../view/staff/staff-viewStaff.php"><button style="background-color: #da3a3a; color:white;" class="b4">Cancel</button></a>  -->
 		    <!-- <button type="submit" name="updatepayment" id="submit" class="b6">Update</button>   -->
+=======
+		
+			
+			<!-- <form action="#" style="float:right;">
+				<div class="form-input">
+					<input type="search" placeholder="Search..." >
+					<button type="submit" class="search-btn" ><i class='bx bx-search' ></i></button>
+				</div>
+			</form> -->
+        
+
+			<div class="list">
+
+						<h3>Payment Details</h3><br>
+
+						<table>
+						<tr>
+						        <th>Order ID</th>
+						       <th>Date</th>
+								<th>Amount</th>
+								<th>Payment</th>
+								<th>Operations</th>
+								
+						</tr>
+
+						<?php
+						$result=$_SESSION['viewpayment'];
+						foreach($result as $row){?>
+							<tr>
+								<th><?php echo $row['Order_Id']?></th>
+								<td><?php echo $row['Order_date']?></td>
+								<td>RS. <?php echo $row['Amount']?>.00</td>
+								<td>
+								<form action="../../controller/staff/payment_controller.php" method="POST" id="staff_form">    
+									<select name="payment">
+										<option value="Pending">Pending</option>
+										<option value="Paid">Paid</option>
+									</select>
+									<input type="hidden" name="User_Id" value="<?php echo $row['User_Id']?>">
+									<input type="hidden" name="Order_Id" value="<?php echo $row['Order_Id']?>">
+								
+								</td>
+								<td>
+									<button type="submit" name="updatepayment" style="width:40%;">Update</button>
+								</td>
+								</form>
+							</tr>
+						<?php
+						}
+						?>    
+						
+					</table>
+                        
+			</div>
+			
+            <!-- <a href="../../view/staff/staff-viewStaff.php"><button style="background-color: #da3a3a; color:white;" class="b4">Cancel</button></a>  -->
+		    <!-- <button type="submit" name="updatepayment" id="submit" class="b6">Update</button>   -->
+            </form>
+
+>>>>>>> 39892497ba09a67dd7133a9ec633cf58a21b843a
 
 		   
 		</main>
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
+<<<<<<< HEAD
+=======
+	<!-- <div id="backgr">
+        <div id="cancel_popup">
+            <div class="cancel_contect">
+                <p>Are you sure you have paid this payment?</p>
+                <div class="buttons">
+                    <button id="yes">Yes</button>
+                    <button id="no">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<script>
+		function acceptrequest(id){
+            document.getElementById("backgr1").style.display="block";
+            document.getElementById("cancel_popup1").style.display="block";
+            document.getElementById("yes1").addEventListener("click",function(){
+                window.location.href="../../controller/staff/payment_controller.php?updatepayment="+id;
+            });
+            document.getElementById("no1").addEventListener("click",function(){
+                document.getElementById("backgr1").style.display="none";
+                document.getElementById("cancel_popup1").style.display="none";
+            });
+        }  
+            
+    </script> -->
+>>>>>>> 39892497ba09a67dd7133a9ec633cf58a21b843a
 	
 
 	<script src="../../public/js/script.js"></script>

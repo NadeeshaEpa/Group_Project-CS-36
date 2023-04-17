@@ -7,6 +7,8 @@ h1{
     margin-top: 2%;
     margin-bottom: 2%;
 }
+<<<<<<< HEAD
+=======
 .upcontainer{
     background-size: cover;
     background-repeat: no-repeat;
@@ -17,10 +19,42 @@ h1{
     margin-bottom: 0%;
     opacity: 0.9;
 }
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 .ava{
     display: flex;
     margin: 2%;
     margin-left:15%;
+<<<<<<< HEAD
+
+}
+.gas{
+    float: left;
+    margin-right: 5%;
+    margin-top:0%;
+}
+.gasdetails{
+    float:right;
+}
+.gasdetails p{
+    margin-left: 5%;
+    margin-top: 22%;
+    font-size: 18px;
+}
+.order{
+    margin-left: 45%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    height: 50px;
+    width: 200px;
+    border-radius: 20px;
+    background-color: green;
+    font-size: 25px;
+    border:none;
+}
+.order:hover{
+    background-color:lightgreen;
+}
+=======
 }
 .gas{
     float: left;
@@ -146,3 +180,4 @@ h1{
 }
 
   
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458

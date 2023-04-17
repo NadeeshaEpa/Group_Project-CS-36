@@ -50,12 +50,12 @@
 <body>
 <?php include_once '../unreguser_header.php'; ?>
     <div class="registration-form">  
-    <form action="../../controller/gasagent/register_controller.php" method="POST">
-        <h2>Gasagent Registration Form</h2>
-        <div class="font">
-        <label for=":" id="name" >Name:</label><br>
-          <input type="text" name="firstname" id="firstname" placeholder="First Name"  required>
-          <input type="text" name="lastname" id="lastname" placeholder="Last Name" required><br>
+        <form action="../../controller/gasagent/register_controller.php" method="POST">
+            <h2>Gasagent Registration Form</h2>
+            <div class="font">
+            <label for=":" id="name" >Name:</label><br>
+            <input type="text" name="firstname" id="firstname" placeholder="First Name"  required>
+            <input type="text" name="lastname" id="lastname" placeholder="Last Name" required><br>
 
             <label for=":" id="username-label">Username:</label><br>
             <input type="text" name="username" id="username" placeholder="Username" required><br>
@@ -93,6 +93,8 @@
             <label for=":" id="shopnumberlabel">Shop Number:</label><br>
             <input type="text" name="shopnumber" id="shopnumber" placeholder="Shop Number" required><br>
             
+            <!-- new -->
+            </div><br> 
             <div class="dropdown">
                 <label for=""> Gas Type</label>
                 <select name="gastype" id="gastype">

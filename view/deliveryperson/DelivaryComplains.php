@@ -143,7 +143,25 @@ if(!isset($_SESSION['User_id'])){
 								<form action="../../controller/deliveryperson/deliverypersonComplaneController.php" method="Post">
 									<h5>Add Complains</h5>
 									<label for="">Reference No :</label><br>
-									<input type="text" name="complaneRef" id="complaneRef_id"><br>
+									<?php if(isset($_SESSION['ComplaneIdDetails'])){
+										$result=$_SESSION['ComplaneIdDetails']?>
+										<select name="complaneRef" id="complaneRef_id" required>
+											<option value="">---Select Type---</option>
+											<?php foreach($result as $row){
+												?><option value="<?php echo $row['Order_id']; ?>"><?php echo $row['Order_id']; ?></option><?php
+											}
+											
+											?>
+										</select><br>
+
+									<?php unset($_SESSION['ComplaneIdDetails']);} 
+									else{
+										?><select name="complaneRef" id="complaneRef_id" required>
+											<option value="">---Select Type---</option> <?php
+									}
+									?>
+									
+
                                     <label for="">Description :</label><br>
 									<input type="text-area" name="complaneDes" id="complaneDes_id"><br>
 									<button type="submit" name="complane_btn">submit</button>

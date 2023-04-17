@@ -47,7 +47,7 @@ class account_model{
     }
 
     public function viewDeliveryperson($connection){
-        $sql="SELECT * FROM user u INNER JOIN deliveryperson d ON u.User_id=d.DeliveryPerson_Id WHERE u.Type='Delivery_Person' AND d.Status=1";
+        $sql="SELECT * FROM user u INNER JOIN deliveryperson d ON u.User_id=d.DeliveryPerson_Id WHERE u.Type='Delivery Person' AND d.Status=1";
         $result=mysqli_query($connection,$sql);
         if($result){
             $deliveryperson=[];

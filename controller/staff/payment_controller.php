@@ -96,10 +96,17 @@ if(isset($_POST['search_deliveryperson'])){
 
 
 if(isset($_POST['updatepayment'])){
+<<<<<<< HEAD
     $User_Id = $_POST['User_Id'];
     $Order_Id = $_POST['Order_Id'];
     $Payment = $_POST['payment'];    
 
+=======
+    $Order_Id=$_POST['Order_Id'];
+    $User_Id=$_POST['User_Id'];
+    $payment=$_POST['payment'];
+    
+>>>>>>> 39892497ba09a67dd7133a9ec633cf58a21b843a
     $Order_Id=$connection->real_escape_string($Order_Id);
     $User_Id=$connection->real_escape_string($User_Id);
     $payment=$connection->real_escape_string($payment);

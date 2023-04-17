@@ -17,19 +17,8 @@ class add_gasType{
             return false;
         }
    }
-   public function getgasType($connection,$userid){
-      $sql="Select Gas_Type from gasagent where GasAgent_Id='$userid'";
-      $result=$connection->query($sql);
-      $row=$result->fetch_assoc();
-      $gasType=$row['Gas_Type'];
-      return $gasType;
-   }
-   public function getgasWeight($connection,$gettype){
-      $sql="Select Weight from gascylinder where Type='$gettype'";
-      $result=$connection->query($sql);
-      while($row=$result->fetch_assoc()){
-         $gasweights[]=$row['Weight'];
-      }
-      return $gasweights;
+
+   public function deleteGasType($connection,$typeId){
+      
    }
 }

@@ -136,7 +136,7 @@ if(getMonthLable){
 /*  */
 
 
-/*count and amount of the delivary */
+/*count and amount of the customers */
 
 var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {

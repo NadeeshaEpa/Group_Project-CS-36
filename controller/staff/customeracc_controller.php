@@ -31,6 +31,19 @@ if(isset($_GET['rid'])){
 
 }
 
+if(isset($_GET['acid'])){
+    $user_id=$_GET['acid'];
+    $user_id=$connection->real_escape_string($user_id);
+    $_SESSION['acid']=$user_id;
+    $customer=new customer_model();
+    $result=$customer->activateuser($connection,$user_id);
+    if($result===false){
+        header("Location: ../../view/staff/staff-viewDisabledacc.php");
+    }else{
+        header("Location: ../../controller/staff/users_controller.php?uid=viewdisabledacc");
+    }
+}
+
 
 if(isset($_GET['did'])){
     $user_id=$_GET['did'];
@@ -52,6 +65,54 @@ if(isset($_GET['did'])){
         }
     }
 }
+
+if(isset($_GET['rvid'])){
+    $user_id=$_GET['rvid'];
+    $user_id=$connection->real_escape_string($user_id);
+    $_SESSION['rvid']=$user_id;
+    $customer=new customer_model();
+    $result=$customer->viewuser($connection,$user_id);
+    if($result===false){
+        $_SESSION['viewrequest']="failed";
+        header("Location: ../../view/staff/Customer_requestlist.php");
+    }else{
+        $_SESSION['viewrequest']=$result;
+        header("Location: ../../view/staff/customer_request.php");
+    }
+}
+
+if(isset($_GET['aid'])){
+    $user_id=$_GET['aid'];
+    $user_id=$connection->real_escape_string($user_id);
+    $customer=new customer_model();
+    $result=$customer->accept($connection,$user_id,$_SESSION['User_id']);
+    if($result===false){
+        $_SESSION['acceptuser']="failed";
+        header("Location: ../../view/staff/Customer_requestlist.php");
+    }else{
+        $_SESSION['acceptuser']="success";
+        header("Location: ../../controller/staff/customeracc_controller.php?rid=viewCustomerRequests");
+        
+    }
+}
+
+if(isset($_GET['deid'])){
+    $user_id=$_GET['deid'];
+    $user_id=$connection->real_escape_string($user_id);
+    $customer=new customer_model();
+    $result=$customer->decline($connection,$user_id);
+    if($result===false){
+        $_SESSION['declineuser']="failed";
+        header("Location: ../../view/staff/Customer_requestlist.php");
+    }else{
+        $_SESSION['declineuser']="success";
+        header("Location: ../../controller/staff/customeracc_controller.php?rid=viewCustomerRequests");
+        
+    }
+}
+
+
+   
 if(isset($_GET['uid'])){
     $user_id=$_GET['uid'];
     $user_id=$connection->real_escape_string($user_id);
@@ -64,6 +125,34 @@ if(isset($_GET['uid'])){
     }else{
         $_SESSION['edituser']=$result;
         header("Location: ../../view/staff/customer_update.php");
+    }
+}
+
+if(isset($_POST['search'])){
+    $name=$_POST['customer_name'];
+    $name=$connection->real_escape_string($name);
+    $customer=new customer_model();
+    $result=$customer->searchcustomer($connection,$name);
+    if($result){
+        $_SESSION['customerdetails']=$result;
+        header("Location:../../view/staff/staff-viewCustomer.php");
+    }else{
+        $_SESSION['customerdetails']=[];
+        header("Location:../../view/staff/staff-viewCustomer.php");
+    }
+}
+
+if(isset($_POST['search_request'])){
+    $name=$_POST['customer_name'];
+    $name=$connection->real_escape_string($name);
+    $customer=new customer_model();
+    $result=$customer->searchcustomer_request($connection,$name);
+    if($result){
+        $_SESSION['customerdetails']=$result;
+        header("Location:../../view/staff/Customer_requestlist.php");
+    }else{
+        $_SESSION['customerdetails']=[];
+        header("Location:../../view/staff/Customer_requestlist.php");
     }
 }
 
@@ -133,3 +222,6 @@ if(isset($_POST['edituser'])){
     }
 
 }
+
+
+?>

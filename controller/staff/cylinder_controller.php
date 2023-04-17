@@ -12,40 +12,152 @@ if(isset($_GET['id'])){
         $_SESSION['cylinderdetails']=$result;
         header("Location:../../view/staff/gas_cylinder.php");
     }else{
-        // echo "Error";
+        $_SESSION['cylinderdetails']=[];
+        header("Location:../../view/staff/gas_cylinder.php");
     }
 
 }
 
-// if(isset($_GET['did'])){
-//     $company_id=$_GET['did'];
-//     $company_id=$connection->real_escape_string($company_id);
-//     $company=new company_model();
-//     $result=$company->deleteuser($connection,$company_id);
-//     if($result===false){
-//         $_SESSION['deleteuser']="failed";
-//         header("Location: ../../view/staff/gascompany.php");
-//     }else{
-//         $_SESSION['deleteuser']="success";
-//         header("Location:../../controller/staff/company_controller.php?id=viewcompany");
-//     }
-// }
+if(isset($_GET['did'])){
+    $cylinder_id=$_GET['did'];
+    $cylinder_id=$connection->real_escape_string($cylinder_id);
+    $cylinder=new cylinder_model();
+    $result=$cylinder->deleteuser($connection,$cylinder_id);
+    if($result===false){
+        $_SESSION['deleteuser']="failed";
+        header("Location: ../../view/staff/gas_cylinder.php");
+    }else{
+        $_SESSION['deleteuser']="success";
+        header("Location:../../controller/staff/cylinder_controller.php?id=viewcylinder");
+    }
+}
+
+if(isset($_GET['uid'])){
+    $cylinder_id=$_GET['uid'];
+    $cylinder_id=$connection->real_escape_string($cylinder_id);
+    $_SESSION['uid']=$cylinder_id;
+    $cylinder=new cylinder_model();
+    $result=$cylinder->edituser($connection,$cylinder_id);
+    if($result===false){
+        $_SESSION['edituser']="failed";
+        header("Location: ../../view/staff/gas_cylinder.php");
+    }else{
+        $_SESSION['edituser']=$result;
+        header("Location: ../../view/staff/cylinder_update.php");
+    }
+}
+
+if (isset($_POST['edituser'])) {
+    $cylinder_id=$_POST['Cylinder_Id'];
+    $Price = $_POST['Price'];
+    // $photo = $_POST['photo'];
+
+    $cylinder_id=$connection->real_escape_string($cylinder_id);
+    $Price = $connection->real_escape_string($Price);
+    // $photo = $connection->real_escape_string($photo);
+
+    $cylinder = new cylinder_model();
+    $inputs1 = array($cylinder_id, $Price);
 
 
-// if(isset($_GET['uid'])){
-//     $company_id=$_GET['uid'];
-//     $company_id=$connection->real_escape_string($company_id);
-//     $_SESSION['uid']=$company_id;
-//     $company=new company_model();
-//     $result=$company->edituser($connection,$company_id);
-//     if($result===false){
-//         $_SESSION['edituser']="failed";
-//         header("Location: ../../view/staff/gascompany.php");
-//     }else{
-//         $_SESSION['edituser']=$result;
-//         header("Location: ../../view/staff/company_update.php");
-//     }
-// }
+    $result1 = $cylinder->updateUser($connection, $inputs1);
+    if ($result1) {
+
+        $_SESSION['updateuser'] = "success";
+        header("Location: ../../controller/staff/cylinder_controller.php?id=viewcylinder");
+
+    } else {
+        $_SESSION['updateuser'] = "failed";
+        echo "Failed";
+    }
+
+}
+
+if(isset($_GET['cid'])){
+        $company=new cylinder_model();
+        $result=$company->company_list($connection);
+        if($result===false){
+            $_SESSION['company_list']="failed";
+            header("Location: ../../view/staff/add_cylinder.php");
+        }else{
+            $_SESSION['company_list']=$result;
+            header("Location: ../../view/staff/add_cylinder.php");
+        }
+    }
+
+if(isset($_POST['register'])){
+        $gascompany = $_POST['gascompany'];
+        $weight = $_POST['weight'];
+        $price = $_POST['price'];
+        $file=$_FILES['image'];
+
+        $fileName=$_FILES['image']['name'];
+        $fileTmpName=$_FILES['image']['tmp_name'];
+        $fileSize=$_FILES['image']['size'];
+        $fileError=$_FILES['image']['error'];
+        $fileType=$_FILES['image']['type'];
+    
+        $fileExt=explode('.',$fileName);
+        $fileActualExt=strtolower(end($fileExt));
+
+        $cylinder=new cylinder_model();
+        $company_name=$cylinder->get_companyname($connection,$gascompany);
+
+        
+        $allowed=array('jpg','jpeg','png');
+        if(in_array($fileActualExt,$allowed)){
+            if($fileError === 0){
+                if($fileSize < 10000000){
+                    $photo=$company_name['company_name'].$weight.".".$fileActualExt;
+                    $fileDestination='../../public/images/gascylinder/'.$photo;
+                    move_uploaded_file($fileTmpName,$fileDestination);
+                    
+                }else{
+                    echo "Your file is too big";
+                }
+    
+            }else{
+                echo "There was an error uploading your file";
+            }        
+        }else{
+            echo "You cannot upload files of this type";
+        }
+    }else{
+       echo "Invalid request";
+       exit();
+    }
+    
+    $gascompany=$connection->real_escape_string($gascompany);
+    $weight=$connection->real_escape_string($weight);
+    $price=$connection->real_escape_string($price);
+    $photo=$connection->real_escape_string($photo);
+    
+    
+    
+    $cylinder=new cylinder_model();
+    $cylinder->setDetails($gascompany,$weight,$price,$photo);
+
+    $result1=$cylinder->check_cylinder($connection,$gascompany,$weight);
+    if($result1==true){
+        $result=$cylinder->Registercylinder($connection);
+        if($result){
+            header("Location:../../controller/staff/cylinder_controller.php?id=viewcylinder");
+        }else{
+            header("Location: ../../view/admin/gascompany.php");
+        }
+    }
+    else{
+        $_SESSION['addcylinder-error']="Cylinder Type Already Exists";
+        header("Location: ../../view/staff/add_cylinder.php");
+    }
+    $connection->close();
+
+    
+
+
+
+
+
 
 // if(isset($_GET['vid'])){
 //     $company_id=$_GET['vid'];
@@ -62,28 +174,37 @@ if(isset($_GET['id'])){
 //     }
 // }
 
-// if (isset($_POST['edituser'])) {
-//     $company_id=$_POST['company_id'];
-//     $company_name = $_POST['company_name'];
-//     // $photo = $_POST['photo'];
-
-//     $company_id=$connection->real_escape_string($company_id);
-//     $company_name = $connection->real_escape_string($company_name);
-//     // $photo = $connection->real_escape_string($photo);
-
-//     $company = new company_model();
-//     $inputs1 = array($company_id, $company_name);
 
 
-//     $result1 = $company->updateUser($connection, $inputs1);
-//     if ($result1) {
 
-//         $_SESSION['updateuser'] = "success";
-//         header("Location: ../../view/staff/gascompany.php");
+// if(isset($_GET['gasid'])){
+//     $userid=$_SESSION['User_id'];
+//     $user=new add_gasType();
+//     $gettype=$user->getgasType($connection,$userid);
+//     $gasweights=$user->getgasWeight($connection,$gettype);
+//     $_SESSION['gasweights']=$gasweights;
+//     header("Location: ../../view/gasagent/add_gastype.php");
+// }
 
-//     } else {
-//         $_SESSION['updateuser'] = "failed";
-//         echo "Failed";
+// if(isset($_POST['AddgasType'])){   
+//     $weight=$_POST['gasWeight'];
+//     $quantity=$_POST['gasQuantity'];
+//     $gasagentId= $_SESSION['User_id'];
+
+//     $weight=$connection->real_escape_string($weight);
+//     $quantity=$connection->real_escape_string($quantity);
+
+//     $user=new add_gasType();
+//     $cylinderId=$user->getcylinderId($connection,$weight,$gasagentId);
+
+//     $result=$user -> addgas($connection,$cylinderId,$quantity,$gasagentId);
+//     if($result==true)
+//     {
+//         header("Location: ../../view/gasagent/addGasTypeSucsess.php");
 //     }
-
+//     else
+//     {
+//         $_SESSION['Already exist Gas type']="Already exist Gas type";
+//         header("Location: ../../view/gasagent/add_gastype.php");
+//     }
 // }

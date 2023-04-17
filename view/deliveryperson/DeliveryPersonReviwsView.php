@@ -50,7 +50,7 @@ if(!isset($_SESSION['User_id'])){
 				</a>
 			</li>
 			<li>
-				<a href="../../view/deliveryperson/DelivaryComplains.php">
+				<a href="../../controller/deliveryperson/deliveryPersonAddComplaneFirst.php">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Complains</span>
 				</a>
@@ -132,21 +132,30 @@ if(!isset($_SESSION['User_id'])){
                                             echo "<td>" . $row['Description'] . "</td>";
 											?>
 											<td>
-												<form action="../../controller/deliveryperson/DeliveryPersonComplane&ReviewsViewController.php" method="post">
-													<Button name="reviewDeleteBtn" id="reviewDeleteBtn_id">Delete</Button>
-													<input name="Review_Id_Name" type="hidden" value="<?php echo $row['Rate_Id']?>">
-												</form>
+												
+												<button id="reviewDeleteBtn_id" onclick="deletecomplain(<?php echo $row['Rate_Id']; ?>)">Delete</button>
 											</td>
 					                        <?php
 											echo "</tr>";
                                         }
-                                        
+                                        unset($_SESSION['userReviewsDetails']);
                                     }
                                     
                                     ?>
                                     
 							</table>
 						</div>
+						<div id="backgr">
+							<div id="cancel_popup">
+								<div class="cancel_contect">
+									<p>Are you sure you want to Delete this Review?</p>
+									<div class="buttons">
+										<button id="yes">Yes</button>
+										<button id="no">No</button>
+									</div>
+								</div>
+							</div>
+                        </div>
 					
 				</div>
 			
@@ -158,5 +167,18 @@ if(!isset($_SESSION['User_id'])){
 	
 
 	<script src="../../public/js/delivaryDashboard.js"></script>
+	<script>
+		function deletecomplain(id){
+            document.getElementById("backgr").style.display="block";
+            document.getElementById("cancel_popup").style.display="block";
+            document.getElementById("yes").addEventListener("click",function(){
+                window.location.href="../../controller/deliveryperson/DeliveryPersonComplane&ReviewsViewController.php?reviewDeleteBtn="+id;
+            });
+            document.getElementById("no").addEventListener("click",function(){
+                document.getElementById("cancel_popup").style.display="none";
+                document.getElementById("backgr").style.display="none";
+            });
+        } 
+	</script>
 </body>
 </html>

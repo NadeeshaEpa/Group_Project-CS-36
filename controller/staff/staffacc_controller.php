@@ -55,6 +55,19 @@ if(isset($_GET['uid'])){
     }
 }
 
+if(isset($_GET['acid'])){
+    $user_id=$_GET['acid'];
+    $user_id=$connection->real_escape_string($user_id);
+    $_SESSION['acid']=$user_id;
+    $staff=new staff_model();
+    $result=$staff->activateuser($connection,$user_id);
+    if($result===false){
+        header("Location: ../../view/staff/staff-viewDisabledacc.php");
+    }else{
+        header("Location: ../../controller/staff/users_controller.php?uid=viewdisabledacc");
+    }
+}
+
 if(isset($_GET['vid'])){
     $user_id=$_GET['vid'];
     $user_id=$connection->real_escape_string($user_id);
@@ -69,6 +82,21 @@ if(isset($_GET['vid'])){
         header("Location: ../../view/staff/staff_view.php");
     }
 }
+
+if(isset($_POST['search'])){
+    $name=$_POST['staff_name'];
+    $name=$connection->real_escape_string($name);
+    $staff=new staff_model();
+    $result=$staff->searchstaff($connection,$name);
+    if($result){
+        $_SESSION['staffdetails']=$result;
+        header("Location:../../view/staff/staff-viewStaff.php");
+    }else{
+        $_SESSION['staffdetails']=[];
+        header("Location:../../view/staff/staff-viewStaff.php");
+    }
+}
+
 
 if(isset($_POST['edituser'])){
     $user_id=$_POST['User_id'];

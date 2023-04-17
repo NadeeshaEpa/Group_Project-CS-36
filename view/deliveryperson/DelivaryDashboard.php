@@ -54,7 +54,7 @@ if(!isset($_SESSION['User_id'])){
 				</a>
 			</li>
 			<li>
-				<a href="../../view/deliveryperson/DelivaryComplains.php">
+				<a href="../../controller/deliveryperson/deliveryPersonAddComplaneFirst.php">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Complains</span>
 				</a>
@@ -207,8 +207,20 @@ if(!isset($_SESSION['User_id'])){
 							</table>
 					     </div>	
 					<?php } 
-					     else{
-							?> <h3>No delivery Request Add or You are unavalable. Please Refesh the page or chek your avelability and Location avelability.</h3><?php
+					     elseif(isset($_SESSION['NoRequest'])){
+							?> <h3><?php echo $_SESSION['NoRequest']; ?></h3><?php
+							unset($_SESSION['NoRequest']);
+						 }
+						 elseif(isset($_SESSION['connection_problem'])){
+							?> <h3><?php echo $_SESSION['connection_problem']; ?></h3><?php
+							unset($_SESSION['connection_problem']);
+						 }
+						 elseif(isset( $_SESSION['unavailable'])){
+							?> <h3><?php echo $_SESSION['unavailable']; ?></h3><?php
+							unset($_SESSION['unavailable']);
+						 }
+						 else{
+							?><h3>Some error occurred Please Check your location and internet connection and refresh the page.</h3> <?php
 						 }
 					
 					?>

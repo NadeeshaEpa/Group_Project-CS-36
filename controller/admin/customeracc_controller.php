@@ -2,16 +2,26 @@
 session_start();
 include_once '../../config.php';
 include_once '../../model/admin/account_model.php';
+<<<<<<< HEAD
+
+
+if(isset($_GET['id'])){
+    echo "hello";
+=======
 include_once '../../model/admin/customer_model.php';
 
 
 if(isset($_GET['id'])){
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     $customer=new account_model();
     $result=$customer->viewcustomer($connection);
     if($result){
         $_SESSION['customerdetails']=$result;
         header("Location:../../view/admin/admin-viewCustomer.php");
     }else{
+<<<<<<< HEAD
+        echo "Error";
+=======
         $_SESSION['customerdetails']=[];
         header("Location:../../view/admin/admin-viewCustomer.php");
     }
@@ -69,6 +79,20 @@ if(isset($_GET['vid'])){
     }
 }
 
+if(isset($_POST['search'])){
+    $name=$_POST['customer_name'];
+    $name=$connection->real_escape_string($name);
+    $customer=new customer_model();
+    $result=$customer->searchcustomer($connection,$name);
+    if($result){
+        $_SESSION['customerdetails']=$result;
+        header("Location:../../view/admin/admin-viewCustomer.php");
+    }else{
+        $_SESSION['customerdetails']=[];
+        header("Location:../../view/admin/admin-viewCustomer.php");
+    }
+}
+
 
 if(isset($_POST['edituser'])){
     $user_id=$_POST['User_id'];
@@ -117,6 +141,7 @@ if(isset($_POST['edituser'])){
     }else{
         $_SESSION['updateuser']="failed";
         echo "Failed";
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     }
 
 }

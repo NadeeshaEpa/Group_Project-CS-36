@@ -2,17 +2,29 @@
 session_start();
 include_once '../../config.php';
 include_once '../../model/admin/account_model.php';
+<<<<<<< HEAD
+
+
+if(isset($_GET['id'])){
+    echo "hello";
+=======
 include_once '../../model/admin/staff_model.php';
 
 
 
 if(isset($_GET['id'])){
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     $staff=new account_model();
     $result=$staff->viewstaff($connection);
     if($result){
         $_SESSION['staffdetails']=$result;
         header("Location:../../view/admin/admin-viewStaff.php");
     }else{
+<<<<<<< HEAD
+        echo "Error";
+    }
+
+=======
         $_SESSION['staffdetails']=[];
         header("Location:../../view/admin/admin-viewStaff.php");
     }
@@ -70,6 +82,20 @@ if(isset($_GET['vid'])){
     }
 }
 
+if(isset($_POST['search'])){
+    $name=$_POST['staff_name'];
+    $name=$connection->real_escape_string($name);
+    $staff=new staff_model();
+    $result=$staff->searchstaff($connection,$name);
+    if($result){
+        $_SESSION['staffdetails']=$result;
+        header("Location:../../view/admin/admin-viewStaff.php");
+    }else{
+        $_SESSION['staffdetails']=[];
+        header("Location:../../view/admin/admin-viewStaff.php");
+    }
+}
+
 if(isset($_POST['edituser'])){
     $user_id=$_POST['User_id'];
     $First_Name=$_POST['First_Name'];
@@ -120,4 +146,5 @@ if(isset($_POST['edituser'])){
     }
 
 
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }

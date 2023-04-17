@@ -82,6 +82,92 @@ if(isset($_GET['vid'])){
     }
 }
 
+if(isset($_GET['rvid'])){
+    $user_id=$_GET['rvid'];
+    $user_id=$connection->real_escape_string($user_id);
+    $_SESSION['rvid']=$user_id;
+    $gasagent=new gasagent_model();
+    $result=$gasagent->viewuser($connection,$user_id);
+    if($result===false){
+        $_SESSION['viewrequest']="failed";
+        header("Location: ../../view/staff/Gasagent_requestlist.php");
+    }else{
+        $_SESSION['viewrequest']=$result;
+        header("Location: ../../view/staff/gasagent_request.php");
+    }
+}
+
+if(isset($_GET['aid'])){
+    $user_id=$_GET['aid'];
+    $user_id=$connection->real_escape_string($user_id);
+    $gasagent=new gasagent_model();
+    $result=$gasagent->accept($connection,$user_id,$_SESSION['User_id']);
+    if($result===false){
+        $_SESSION['acceptuser']="failed";
+        header("Location: ../../view/staff/Gasagent_requestlist.php");
+    }else{
+        $_SESSION['acceptuser']="success";
+        header("Location: ../../controller/staff/gasagentacc_controller.php?rid=viewGasagentRequests");
+        
+    }
+}
+
+if(isset($_GET['deid'])){
+    $user_id=$_GET['deid'];
+    $user_id=$connection->real_escape_string($user_id);
+    $gasagent=new gasagent_model();
+    $result=$gasagent->decline($connection,$user_id);
+    if($result===false){
+        $_SESSION['declineuser']="failed";
+        header("Location: ../../view/staff/Gasagent_requestlist.php");
+    }else{
+        $_SESSION['declineuser']="success";
+        header("Location: ../../view/staff/Gasagent_requestlist.php");
+        
+    }
+}
+
+if(isset($_POST['search'])){
+    $name=$_POST['gasagent_name'];
+    $name=$connection->real_escape_string($name);
+    $gasagent=new gasagent_model();
+    $result=$gasagent->searchgasagent($connection,$name);
+    if($result){
+        $_SESSION['gasagentdetails']=$result;
+        header("Location:../../view/staff/staff-viewGasagent.php");
+    }else{
+        $_SESSION['gasagentdetails']=[];
+        header("Location:../../view/staff/staff-viewGasagent.php");
+    }
+}
+
+if(isset($_POST['search_request'])){
+    $name=$_POST['gasagent_name'];
+    $name=$connection->real_escape_string($name);
+    $gasagent=new gasagent_model();
+    $result=$gasagent->searchgasagent_request($connection,$name);
+    if($result){
+        $_SESSION['gasagentdetails']=$result;
+        header("Location:../../view/staff/Gasagent_requestlist.php");
+    }else{
+        $_SESSION['gasagentdetails']=[];
+        header("Location:../../view/staff/Gasagent_requestlist.php");
+    }
+}
+if(isset($_GET['acid'])){
+    $user_id=$_GET['acid'];
+    $user_id=$connection->real_escape_string($user_id);
+    $_SESSION['acid']=$user_id;
+    $gasagent=new gasagent_model();
+    $result=$gasagent->activateuser($connection,$user_id);
+    if($result===false){
+        header("Location: ../../view/staff/staff-viewDisabledacc.php");
+    }else{
+        header("Location: ../../controller/staff/users_controller.php?uid=viewdisabledacc");
+    }
+}
+
+
 if(isset($_POST['edituser'])){
     $user_id=$_POST['User_id'];
     $First_Name=$_POST['First_Name'];
@@ -118,7 +204,7 @@ if(isset($_POST['edituser'])){
     
 
 
-    $staff=new gasagent_model();
+    $gasagent=new gasagent_model();
     $inputs1=array($user_id,$First_Name, $Last_Name, $City, $Street, $Postalcode, $Username, $Email);
     $inputs2=array($user_id,$Contact_No);
     $inputs3=array($user_id, $NIC,$Shop_name, $BusinessReg_No, $Account_No);

@@ -22,8 +22,8 @@ if(isset($_POST['register'])){
     if(in_array($fileActualExt,$allowed)){
         if($fileError === 0){
             if($fileSize < 10000000){
-                $photo=uniqid('',true).".".$fileActualExt;
-                $fileDestination='../../public/images/'.$photo;
+                $photo=$company_name.".".$fileActualExt;
+                $fileDestination='../../public/images/gascylinder/'.$photo;
                 move_uploaded_file($fileTmpName,$fileDestination);
                 // $acc=new company_model();
                 // $result=$acc->updateImage($connection,$_SESSION['User_id'],$fileNameNew);
@@ -54,14 +54,22 @@ $photo=$connection->real_escape_string($photo);
 
 
 
-$user=new company_model();
-$user->setDetails($company_name,$photo);
-$result=$user->Registercompany($connection);
-if($result){
-    $_SESSION['RegsuccessMsg'] = 'company Registered Successfully';
-    header("Location:../../controller/admin/company_controller.php?id=viewcompany");
-}else{
-    header("Location: ../../view/admin/gascompany.php");
+$company=new company_model();
+$company->setDetails($company_name,$photo);
+
+$result1=$company->check_company($connection,$company_name);
+if($result1==true){
+    $result=$company->Registercompany($connection);
+    if($result){
+        $_SESSION['RegsuccessMsg'] = 'company Registered Successfully';
+        header("Location:../../controller/admin/company_controller.php?id=viewcompany");
+    }else{
+        header("Location: ../../view/admin/gascompany.php");
+    }
+}
+else{
+    $_SESSION['addcompany-error']="Company Already Exists";
+    header("Location: ../../view/admin/add_company.php");
 }
 
 $connection->close();

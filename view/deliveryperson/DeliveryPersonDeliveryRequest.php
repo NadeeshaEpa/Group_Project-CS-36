@@ -56,7 +56,7 @@ if(!isset($_SESSION['User_id'])){
 				</a>
 			</li>
 			<li>
-				<a href="../../view/deliveryperson/DelivaryComplains.php">
+				<a href="../../controller/deliveryperson/deliveryPersonAddComplaneFirst.php">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Complains</span>
 				</a>
