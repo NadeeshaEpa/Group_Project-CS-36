@@ -6,21 +6,6 @@ body{
     background-color:white;
 
 }
-<<<<<<< HEAD
-
-
-
-.right{
-    width:100%;
-}
-.right .welcome{
-    text-align: left;
-    padding-left: 15px;
-    font-size: 28px;
-    font-weight: bold;
-    padding-top: 5px;
-    color: black;
-=======
 /* .dcontainer{
     display: flex;
     height: 90%;
@@ -91,23 +76,10 @@ body{
     padding-top: 5px;
     color: black;
     height: 70px;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }
 .right .welcome p{
     padding: 0%;
     margin: 0%;
-<<<<<<< HEAD
-    margin-top: 2px;
-}
-.right .data{
-    background-color: rgb(255, 255, 255);
-    padding: 20px;
-    min-height: 600px;
-    /* padding-left: 30px; */
-    border-radius: 20px;
-    margin-inline: 8%;
-    margin-bottom: 10px;
-=======
     margin-top: 10px;
 }
 .data{
@@ -129,7 +101,6 @@ body{
     margin-right: 5%;
     margin-bottom: 10px;
     padding-bottom: 10%;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }
 .right .data form{
     padding-left: 10px;
@@ -137,42 +108,13 @@ body{
 .right .data img{
     border-radius: 20px;
     height: 100px;
-<<<<<<< HEAD
-    width: 110px;
-=======
     width: 100px;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }
 .b2, .b4{
     width: 100px;
     float: right;
     height:30px;
     margin-right: 20px;
-<<<<<<< HEAD
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: bold;
-    color: white;
-}
-.b2{
-    background-color:#10338e;
-    border:blue 2px solid;
-}
-.b4{
-    background-color:#62a261;
-    border:green 2px solid;
-}
-    
-.b4:hover, .cu:hover{
-    background-color: green;
-}
-.b2:hover, .cp:hover{
-    background-color: #4E60FF;
-}
-.details label{
-    padding-left: 5px;
-    font-size: 14px;
-=======
     border-radius: 20px;
     font-size: 16px;
     font-weight: bold;
@@ -195,7 +137,6 @@ body{
 .details label{
     padding-left: 5px;
     font-size: 16px;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }
 .up{
     display: flex;
@@ -211,14 +152,8 @@ body{
 }
 .b3 .image{
     width: 200px;
-<<<<<<< HEAD
-    border-radius:10px;
-    height: 40px;
-    background-color:#10338e;
-=======
     height: 40px;
     background-color: gray;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     color: cornsilk;
     margin: 5px;
     padding: 10px;
@@ -232,19 +167,6 @@ body{
     flex:50%;
 }
 .down1 button{
-<<<<<<< HEAD
-    font-size: 14px;
-    font-weight: bold;
-    border-radius: 10px;
-    width: 230px;
-    height: 40px;
-    color: white;
-}
-.cp{
-    background-color:#10338e;
-    border: blue 2px solid;
-    font-size: 18px;
-=======
     font-size: 16px;
     font-weight: bold;
     border-radius: 20px;
@@ -255,23 +177,14 @@ body{
     background-color:#815bf6;
     border:none;
     font-size: 16px;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     font-weight: bold;
 }
 
 .down1 input{
-<<<<<<< HEAD
-    width:90%;
-    font-size: 14px;
-    border: black 1px solid;
-    border-radius: 10px;
-    /* width: 450px; */
-=======
     font-size: 16px;
     border: black 1px solid;
     border-radius: 20px;
     width: 450px;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     height: 35px;
     text-align: center;
     margin-top: 0%;
@@ -281,37 +194,16 @@ body{
 .down2{
    margin-right: 15px;
 }
-<<<<<<< HEAD
-.down2 input{
-    font-size: 14px;
-    border: black 1px solid;
-    border-radius: 10px;
-    /* width: 319px; */
-=======
 .down2 input, .down3 input{
     font-size: 16px;
     border: black 1px solid;
     border-radius: 20px;
     width: 319px;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     height: 35px;
     text-align: center;
     margin-top: 0%;
     padding-top: 10px;
 }
-<<<<<<< HEAD
-.b5{
-    width: 200px;
-    color: white;
-    height: 40px;
-    float: right;
-    margin-right: 35px;
-    background-color: red;
-    border-radius: 10px;
-    margin-top: 45px;
-    font-size: 14px;
-    font-weight: bold;
-=======
 .down3 input{
     width:98%;
 }
@@ -326,28 +218,10 @@ body{
     font-size: 16px;
     font-weight: bold;
     border: none;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 
 }
 .b6{
     width: 200px;
-<<<<<<< HEAD
-    color: white;
-    height: 40px;
-    float: right;
-    margin-right: 35px;
-    background-color:#62a261;
-    border-radius: 10px;
-    margin-top: 45px;
-    font-size: 14px;
-    font-weight: bold;
-}
-.b5:hover, .b6:hover{
-    background-color: green;
-}
-.b5:hover{
-    background-color: pink;
-=======
     height: 40px;
     float: right;
     margin-right: 35px;
@@ -363,7 +237,6 @@ body{
 }
 .b5:hover{
     font-size: 19px;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }
 .heading{
     text-align: center;
@@ -372,12 +245,8 @@ body{
     
 }
 .heading h1{
-<<<<<<< HEAD
-    margin-top: 5px;
-=======
     margin-top: 10px;
     margin-bottom: 10px;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }
 .review-con{
     display: flex;
@@ -386,31 +255,6 @@ body{
 .sidebar{
     float: left;
 }
-<<<<<<< HEAD
-.review-form{
-    
-    float:right;
-    padding: 5px;
-    margin-top: 0%;
-    margin-left: 2%;
-    border-radius: 20px;
-    width: 60%;
-    margin-right: 5%;
-    height: 80%;
-}
-.review-form form{
-    background-color: rgb(226, 226, 226);
-    border-radius: 20px;
-    height: 100%;
-    width: 100%;
-    padding: 10px;
-    margin-left: 6%;
-}
-.view-reviews button{
-    background-color: green;
-    float:right;
-    margin-top: 10%;
-=======
 .review-form{  
     float:right;
     padding: 5px;
@@ -433,7 +277,6 @@ body{
 .view-reviews button{
     background-color: #79d37c;
     margin-top: 1%;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     border-radius: 20px;
     height:45px;
     width: 150px;
@@ -442,24 +285,14 @@ body{
     font-weight: bold;
 }
 .view-reviews button:hover{
-<<<<<<< HEAD
-    background-color: #9AE298;
-}
-.cusname, .dpname, .date, .desc{
-=======
     font-size: 19px;
 }
 .cusname, .dpname, .desc{
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     font-size: 18px;
     margin-bottom: 0px;
     transform: translate(18%, 25%);
 }
-<<<<<<< HEAD
-.cusname input, .dpname select , .date input, .desc textarea{
-=======
 .cusname input, .dpname select , .desc textarea{
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     width: 65%;
     height: 35px;
     border-radius: 10px;
@@ -468,54 +301,32 @@ body{
     padding-left: 10px;
 }
 .desc textarea{
-<<<<<<< HEAD
-    height: 100px;
-=======
     height: 150px;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }
 .submitreview button{
     width: 200px;
     height: 40px;
-<<<<<<< HEAD
-    background-color: #4E60FF;
-    border-radius: 20px;
-    border: blue 2px solid;
-    transform: translate(150%, 50%);
-    margin-top: 20px;
-=======
     background-color: #79d37c;
     border-radius: 20px;
     border: none;
     transform: translate(150%, 50%);
     margin-top: 40px;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     margin-left: 10%;
     font-size: 18px;
     font-weight: bold;
 }
 .submitreview button:hover{
-<<<<<<< HEAD
-    background-color: green;
-=======
     font-size: 19px;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }
 .order-form{
     float:left;
     height: 83%;
     width: 75%;
-<<<<<<< HEAD
-}
-.ordertable{
-    background-color: rgb(226, 226, 226);
-=======
     margin-left: 21%;
 }
 .ordertable{
     background-color: white;
     /* background-color: rgb(226, 226, 226); */
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     padding: 20px;
     padding-top: 30px;
     margin: 20px;
@@ -544,23 +355,12 @@ body{
 }
 .ordertable table td a{
     text-decoration: none;
-<<<<<<< HEAD
-    color: black;
-    border: green 1px solid;
-=======
     border: none;
     color: black;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     border-radius: 10px;
     padding: 5px;
     padding-left: 20px;
     padding-right: 20px;
-<<<<<<< HEAD
-    background-color: #9AE298;
-    font-size: 18px;
-    font-weight: bold;
-}
-=======
     background-color: #79d37c;
     font-size: 17px;
     font-weight: bold;
@@ -568,7 +368,6 @@ body{
 .ordertable table td a:hover{
     font-size: 18px;
 }
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 .active button{
     background-color: #babff7;
 }
@@ -591,36 +390,20 @@ body{
   
   /* Add a color to the cancel button */
   .cancelbtn {
-<<<<<<< HEAD
-    background-color: green;
-    color: black;
-    float: left;
-    margin-left: 20%;
-    
-=======
     background-color: #79d37c;
     color: black;
     float: left;
     margin-left: 20%;
     border: none;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
   }
   
   /* Add a color to the delete button */
   .deletebtn {
-<<<<<<< HEAD
-    background-color: #f44336;
-    color: black;
-    float: right;
-    margin-right: 20%;
-
-=======
     background-color: #da3a3a;
     color: black;
     float: right;
     margin-right: 20%;
     border: none;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
   }
   
   /* Add padding and center-align text to the container */
@@ -633,11 +416,7 @@ body{
   .modal {
     display: none; /* Hidden by default */
     position: absolute; /* Stay in place */
-<<<<<<< HEAD
-    left: 25%;
-=======
     left: 35%;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     top: 25%;
     width: 50%; /* Full width */
     height: 50%; /* Full height */
@@ -650,11 +429,7 @@ body{
   /* Modal Content/Box */
   .modal-content {
     background-color: #fefefe;
-<<<<<<< HEAD
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-=======
     margin: 5% auto 8% auto; /* 5% from the top, 15% from the bottom and centered */
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
     border-radius: 20px;
@@ -693,13 +468,6 @@ body{
     float: right;
     width: 80%;
 }  
-<<<<<<< HEAD
-.reviewtable{
-    background-color: white;
-    width: 83%; 
-    margin-top: 3%;
-    margin-left: 5%;
-=======
 .review-details h1{
     text-align: center;
     margin-top: 1%;
@@ -710,22 +478,16 @@ body{
     width: 90%; 
     margin-top: 0%;
     margin-left: 0%;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     padding-left: 50px;
     padding-right: 50px;
     padding-top: 10px;
     border-radius: 20px;
     float: right;
-<<<<<<< HEAD
-    margin-right: 20px;
-    height: 90%;
-=======
     margin-right: 5%;
     height: 68%;
 }
 .reviewtable h2{
     margin-bottom: 1%;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }
 .reviewtable table{
     width:100%;
@@ -746,14 +508,6 @@ body{
     padding: 10px;
     text-align: left;
 }
-<<<<<<< HEAD
-.editbtn a{
-    background-color:green;
-    color:black;
-    border-radius: 10px;
-    height: 30px;
-    width: 60px;
-=======
 .reviewtable img{
     margin-left: 40px;
 }
@@ -763,38 +517,22 @@ body{
     border-radius: 10px;
     height: 30px;
     width: 90px;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     float: left;
     border:none;
     text-decoration: none;
     text-align: center;
-<<<<<<< HEAD
-    padding-top: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-left: 30px;
-=======
     padding-top: 5px;
     padding-left: 20px;
     padding-right: 20px;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     font-size: 18px;
     font-weight: bold;
 }
 .editbtn a:hover{
-<<<<<<< HEAD
-    background-color: #9AE298;
-}
-.rdeletebtn a{
-    color:black;
-    background-color: red;
-=======
     font-size: 19px;
 }
 .rdeletebtn button{
     color:black;
     background-color: #da3a3a;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     border-radius: 10px;
     height: 30px;
     width: 90px;
@@ -802,22 +540,11 @@ body{
     text-decoration: none;
     border:none;
     float: right;
-<<<<<<< HEAD
-    padding-top: 10px;
-=======
     padding-top: 5px;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     font-size: 16px;
     font-size: 18px;
     font-weight: bold;
 }
-<<<<<<< HEAD
-.rdeletebtn a:hover{
-    background-color: lightcoral;
-}
-.editreview-form{
-    width: 90%;
-=======
 .rdeletebtn button:hover{
    font-size: 19px;
 }
@@ -836,19 +563,13 @@ body{
 }
 .editreview-form{
     width: 80%;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     height: 80%;
     background-color: white;
     padding: 20px;
     border-radius: 20px;
     margin-top: 3%;
-<<<<<<< HEAD
-    padding-left: 80px;
-    margin-left:10%;
-=======
     padding-left:10%;
     margin-left:7%;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }
 .editreview-form h2{
     text-align:left;
@@ -861,10 +582,7 @@ body{
     font-size: 20px;
     color: black;
     padding-bottom: 10px;
-<<<<<<< HEAD
-=======
     padding-left: 2%;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }
 .editreview-form input, .editreview-form textarea, .editreview-form select{
     width: 80%;
@@ -874,11 +592,7 @@ body{
     margin-bottom: 10px;
     padding-left: 10px;
     font-size: 18px;
-<<<<<<< HEAD
-    margin-left: 20px;
-=======
     margin-left: 5%;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }
 .editreview-form button{
     width: 20%;
@@ -887,17 +601,11 @@ body{
     font-size: 20px;
     margin-top: 10px;
     margin-left: 35%;
-<<<<<<< HEAD
-    background-color: green;
-=======
     background-color: #79d37c;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     color: black;
     border: none;
     font-size: 18px;
     font-weight: bold;
-<<<<<<< HEAD
-=======
 }
 .error-msg{
     color: red;
@@ -906,5 +614,4 @@ body{
     background-color: rgb(243, 173, 173);
     padding: 0.5%;
     text-align: center;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }

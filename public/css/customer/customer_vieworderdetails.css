@@ -4,85 +4,10 @@
 h1{
     text-align: center;
 }
-<<<<<<< HEAD
-.back button{
-    margin-top: 10%;
-    width: 150px;
-    margin-left: 20px;
-    height: 50px;
-    background-color:green;
-    border-radius: 10px;
-    float: left;
-}
-.back a{
-    text-decoration: none;
-    text-align: left;
-    color: white;
-}
-.back button:hover{
-    background-color: lightgreen;
-}
-=======
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 .orderdetails{
     height: 90%;
     display: flex;
 }
-<<<<<<< HEAD
-.data{
-    float: right;
-    margin-left: 10%;
-    background-color: white;
-    padding-left: 40px;
-    margin-top: 1.5%;
-    border-radius: 20px;
-}
-.data h2{
-    text-align: left;
-    font-size: 30px;
-}
-body{
-    background-color:#FFFDF0;
-    margin: 0%;
-}
-.half{
-    font-size: 20px;
-    margin-bottom: 0px;
-}
-.halfleft{
-    width: 50%;
-    float: left;
-}
-.halfright{
-    width: 50%;
-    float: right;
-}
-.customer{
-    font-size: 20px;
-    margin-bottom: 0px;
-    width: 100%;
-}
-.third{
-    width: 100%;
-    font-size: 20px;
-}
-.orderdetails input{
-    width: 70%;
-    height: 30px;
-    border-radius: 20px;
-    padding-left: 10px;
-    border: 1px solid black;
-    margin-left: 30px;
-    font-size: 18px;
-    margin-bottom: 5px;
-}
-.third input{
-    width: 85%;
-    
-}
-.customer input{
-    width: 85%;
-=======
 .odata{
     float: right;
     background-color: white;
@@ -116,5 +41,4 @@ table, th, td{
 }
 .table2 tr{
     text-align: left;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }

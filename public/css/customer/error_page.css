@@ -1,32 +1,3 @@
-<<<<<<< HEAD
-h2{
-    text-align: center;
-    align-items: center;
-    margin-top: 15%;
-    font-size: 30px;
-}
-button{
-    border-radius: 10px;
-    background-color: green;
-    width: 10%;
-    height: 5%;
-    margin-left: 45%;
-    border: none;
-}
-button a{
-    text-decoration: none;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    color:black;
-    font-size: 20px;
-    font-weight: bold;
-}
-button:hover{
-    background-color: lightgreen;
-    color: black;
-}
-=======
 body {
     background-color: #f6f8fa;
     width: 100%;
@@ -77,4 +48,3 @@ body {
   }
   
   
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458

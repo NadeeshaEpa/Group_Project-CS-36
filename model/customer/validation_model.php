@@ -20,8 +20,6 @@ class validation_model{
             return false;
         }
     }
-<<<<<<< HEAD
-=======
     public function check_update_email($email,$connection,$user_id){
         $sql="SELECT * FROM user WHERE Email='$email' AND User_id!='$user_id'";
         $result=$connection->query($sql);
@@ -42,5 +40,4 @@ class validation_model{
             return false;
         }
     }
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }
