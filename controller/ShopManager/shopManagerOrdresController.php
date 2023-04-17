@@ -67,7 +67,7 @@ if(isset($_POST['sbtn1'])){
 
     }
 }
-elseif(isset($_POST['sbtn2'])){
+if(isset($_POST['sbtn2'])){
     $user=new Brand_reports;
     $result=$user->update_as_a_close($connection);
     if($result){
@@ -84,7 +84,29 @@ elseif(isset($_POST['sbtn2'])){
     }
 }
 
-else{
-    echo"invalid request";
-    exit();
+
+
+if(isset($_GET['enter_pin'])){
+    $order_id=$_GET['id'];
+    $pin=$_GET['pin'];
+    
+    $order_id=$connection->real_escape_string($order_id);
+    $pin=$connection->real_escape_string($pin);
+
+    $user=new Brand_reports;
+    $result=$user->Check_the_pin($connection,$order_id,$pin);
+    
+    
+    if($result==true){
+       
+        header("Location: ../../controller/ShopManager/ShopManagerPickedFirstController.php");
+        $connection->close();
+        exit();
+    
+    }
+    else{
+        header("Location: ../../controller/ShopManager/ShopManagerPickedFirstController.php");
+        $connection->close();
+        exit();
+    }
 }
