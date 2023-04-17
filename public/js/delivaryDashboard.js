@@ -60,63 +60,7 @@ menuBar.addEventListener('click', function () {
 	sidebar.classList.toggle('hide');
 })
 
-<<<<<<< HEAD
-=======
 
-
-
-
-
-
-const searchButton = document.querySelector('#content nav form .form-input button');
-const searchButtonIcon = document.querySelector('#content nav form .form-input button .bx');
-const searchForm = document.querySelector('#content nav form');
-
-searchButton.addEventListener('click', function (e) {
-	if(window.innerWidth < 576) {
-		e.preventDefault();
-		searchForm.classList.toggle('show');
-		if(searchForm.classList.contains('show')) {
-			searchButtonIcon.classList.replace('bx-search', 'bx-x');
-		} else {
-			searchButtonIcon.classList.replace('bx-x', 'bx-search');
-		}
-	}
-})
-
-
-
-
-
-if(window.innerWidth < 768) {
-	sidebar.classList.add('hide');
-} else if(window.innerWidth > 576) {
-	searchButtonIcon.classList.replace('bx-x', 'bx-search');
-	searchForm.classList.remove('show');
-}
-
-
-window.addEventListener('resize', function () {
-	if(this.innerWidth > 576) {
-		searchButtonIcon.classList.replace('bx-x', 'bx-search');
-		searchForm.classList.remove('show');
-	}
-})
-
-
-
-const switchMode = document.getElementById('switch-mode');
-
-switchMode.addEventListener('change', function () {
-	if(this.checked) {
-		document.body.classList.add('dark');
-	} else {
-		document.body.classList.remove('dark');
-	}
-})
-
-
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 /*////////////////////////////////get a current time and date of month*/
 
 
@@ -182,7 +126,7 @@ updateClock();
 
 /*count and amount of the delivary */
 
-<<<<<<< HEAD
+
 // var xhttp = new XMLHttpRequest();
 // xhttp.onreadystatechange = function() {
     
@@ -202,8 +146,17 @@ xhttp.onreadystatechange = function() {
         if (this.status == 200) {
             try {
                 var response = JSON.parse(this.responseText);
-                incomeid2.innerHTML = response.total_fee['SUM(Delivery_fee)'];
-                Nodeliverid2.innerHTML = response.delivery_count['COUNT(*)'];
+                var totalFee = response.total_fee['SUM(Delivery_fee)'];
+                var deliveryCount = response.delivery_count['COUNT(*)'];
+                
+                if (totalFee !== null) {
+                    totalFee = totalFee * 0.8;
+                } else {
+                    totalFee = 0;
+                }
+                
+                incomeid2.innerHTML = totalFee;
+                Nodeliverid2.innerHTML = deliveryCount;
             } catch (e) {
                 console.error("Error parsing JSON:", e);
             }
@@ -214,18 +167,7 @@ xhttp.onreadystatechange = function() {
 };
 
 xhttp.open("GET", "http://localhost/Group_Project-CS-36/controller/deliveryperson/deliveryCountcontroller.php", true);
-=======
-var xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function() {
-    
-    var response = JSON.parse(this.responseText);
-    console.log(response);
-    incomeid2.innerHTML = response.total_fee['SUM(Delivery_fee)'];
-	Nodeliverid2.innerHTML = response.delivery_count['COUNT(*)'];
-    
-};
-xhttp.open("GET", "http://localhost/Group_36/controller/deliveryperson/deliveryCountcontroller.php", true);
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
 xhttp.send();
 
 /* */
@@ -241,11 +183,7 @@ xhttp.send();
 	}
 });
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 //new password validation
 
 password?.addEventListener("input", function () {

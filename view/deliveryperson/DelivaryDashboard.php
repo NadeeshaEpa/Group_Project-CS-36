@@ -54,7 +54,7 @@ if(!isset($_SESSION['User_id'])){
 				</a>
 			</li>
 			<li>
-				<a href="../../view/deliveryperson/DelivaryComplains.php">
+				<a href="../../controller/deliveryperson/deliveryPersonAddComplaneFirst.php">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Complains</span>
 				</a>
@@ -78,7 +78,7 @@ if(!isset($_SESSION['User_id'])){
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-<<<<<<< HEAD
+
 			
 			<li class="profile">
 			    <?php if($_SESSION['img-status'] == 0){?>
@@ -95,24 +95,7 @@ if(!isset($_SESSION['User_id'])){
 					     echo $_SESSION['Type'];
 					}?></h5>
 			</li>
-=======
-			<!-- <a href="#" class="nav-link">Categories</a> -->
-			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
-			<a href="#" class="profile">
-				<img src="../../public/images/user.jpg">
-			</a>
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
 			
 		</nav>
 		<!-- NAVBAR -->
@@ -191,7 +174,7 @@ if(!isset($_SESSION['User_id'])){
 
 			</ul>
 
-<<<<<<< HEAD
+
             <form action="../../controller/deliveryperson/deliveryPersonAddDeliveryController.php" method="POST"><Button name="check" id="DeliveryRefreshId">Refresh</Button></form>
 			<div class="table-data">
 				<div class="order">
@@ -224,99 +207,27 @@ if(!isset($_SESSION['User_id'])){
 							</table>
 					     </div>	
 					<?php } 
-					     else{
-							?> <h3>No delivery Request Add or You are unavalable. Please Refesh the page or chek your avelability and Location avelability.</h3><?php
+					     elseif(isset($_SESSION['NoRequest'])){
+							?> <h3><?php echo $_SESSION['NoRequest']; ?></h3><?php
+							unset($_SESSION['NoRequest']);
+						 }
+						 elseif(isset($_SESSION['connection_problem'])){
+							?> <h3><?php echo $_SESSION['connection_problem']; ?></h3><?php
+							unset($_SESSION['connection_problem']);
+						 }
+						 elseif(isset( $_SESSION['unavailable'])){
+							?> <h3><?php echo $_SESSION['unavailable']; ?></h3><?php
+							unset($_SESSION['unavailable']);
+						 }
+						 else{
+							?><h3>Some error occurred Please Check your location and internet connection and refresh the page.</h3> <?php
 						 }
 					
 					?>
 						
 						
 				</div>
-=======
 
-			<div class="table-data">
-				<table>
-					<tr>
-						<th>Customer Name</th>
-						<th>Address</th>
-						<th>Delivery Charge</th>
-						<th>Accept</th>
-						<th>Decline</th>
-						<th>Status</th>
-					</tr>	
-					<tr>
-						<td>Avishka prabhath</td>
-						<td>No:23 nudegoda colombo 5</td>
-						<td>Rs: 500</td>
-						<td><button id="temp1">Accept</button></td>
-						<td><button id="temp2">Decline</button></td>
-						<td><button id="temp3">Pending</button></td>
-					</tr>
-					<tr>
-						<td>Dhanusha Thilakarathne</td>
-						<td>No:172, Poorwarama Road, Colombo005</td>
-						<td>Rs: 200</td>
-						<td><button id="temp1">Accept</button></td>
-						<td><button id="temp2">Decline</button></td>
-						<td><button id="temp3">Pending</button></td>
-					</tr>
-					<tr>
-						<td>Nirupana Ganaganath</td>
-						<td>No:5, Second Street, Colombo</td>
-						<td>Rs: 800</td>
-						<td><button id="temp1">Accept</button></td>
-						<td><button id="temp2">Decline</button></td>
-						<td><button id="temp3">Pending</button></td>
-					</tr>
-					<tr>
-						<td>Gayal Sanajan</td>
-						<td>No:128, High level road, Colombo 7</td>
-						<td>Rs: 256</td>
-						<td><button id="temp1">Accept</button></td>
-						<td><button id="temp2">Decline</button></td>
-						<td><button id="temp3">Pending</button></td>
-					</tr>
-					<tr>
-						<td>Rusiru Rathmina</td>
-						<td>No:12, Poorwarama Road, Colombo 005</td>
-						<td>Rs: 200</td>
-						<td><button id="temp1">Accept</button></td>
-						<td><button id="temp2">Decline</button></td>
-						<td><button id="temp3">Pending</button></td>
-					</tr>
-				<!-- <div class="order">
-					<div class="tempD">
-						<div class="Dtempl">
-							<div>
-								<label for="">Name :</label>
-								<label for=""> Avishka prabhath</label><br>
-								<label for="">Address :</label>
-								<label for=""> No 23 nudegoda colombo 5</label><br>
-                            </div>
-						</div>
-						<div class="DtempR">
-						    <button id="temp1">Accept</button><br>
-							<button id="temp2">Decline</button><br>
-							<button id="temp3">Finalized order</button>
-						</div>
-					</div>
-					<div class="tempD">
-						<div class="Dtempl">
-							<div>
-								<label for="">Name :</label>
-								<label for=""> Dhanusha Thilakarathna</label><br>
-								<label for="">Address :</label>
-								<label for=""> No 23 Delkada colombo 5</label><br>
-                            </div>
-						</div>
-						<div class="DtempR">
-							<button id="temp1">Accept</button><br>
-							<button id="temp2">Decline</button><br>
-							<button id="temp3">Finalized order</button>
-						</div>
-					</div>
-				</div> -->
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 			</div>
 		</main>
 		<!-- MAIN -->
@@ -324,11 +235,10 @@ if(!isset($_SESSION['User_id'])){
 	<!-- CONTENT -->
 	
     <script src="../../public/js/delivaryDashboard.js"></script>
-<<<<<<< HEAD
+
 	<!-- <script src="../../public/js/deliveryAdd.js"></script> -->
 	<script src="../../public/js/liveLocation.js"></script>
 	
-=======
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
 </body>
 </html>

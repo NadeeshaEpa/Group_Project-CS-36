@@ -26,11 +26,9 @@ if(!isset($_SESSION['User_id'])){
 		</a>
 		<ul class="side-menu top">
 			<li >
-<<<<<<< HEAD
+
 				<a href="../../controller/deliveryperson/deliveryDashboardFirstController.php">
-=======
-				<a href="../../view/deliveryperson/DelivaryDashboard.php">
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -54,7 +52,7 @@ if(!isset($_SESSION['User_id'])){
 				</a>
 			</li>
 			<li>
-				<a href="../../view/deliveryperson/DelivaryComplains.php">
+				<a href="../../controller/deliveryperson/deliveryPersonAddComplaneFirst.php">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Complains</span>
 				</a>
@@ -78,7 +76,7 @@ if(!isset($_SESSION['User_id'])){
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-<<<<<<< HEAD
+
 			
 			<li class="profile">
 			    <?php if($_SESSION['img-status'] == 0){?>
@@ -95,24 +93,7 @@ if(!isset($_SESSION['User_id'])){
 					     echo $_SESSION['Type'];
 					}?></h5>
 			</li>
-=======
-			<!-- <a href="#" class="nav-link">Categories</a> -->
-			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
-			<a href="#" class="profile">
-				<img src="../../public/images/user.jpg">
-			</a>
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
 			
 		</nav>
 		<!-- NAVBAR -->
@@ -132,13 +113,12 @@ if(!isset($_SESSION['User_id'])){
 						</li>
 					</ul>
 				</div>
-<<<<<<< HEAD
+
 				<div class="right-button">
 					<a href="../../controller/deliveryperson/deliveryPersonReviewsViewFirstController.php">View Reviews</a>
 				</div>
-=======
 
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
 				
 			</div>
 

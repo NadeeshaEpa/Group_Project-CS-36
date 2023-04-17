@@ -1,15 +1,12 @@
-<<<<<<< HEAD
+
 <?php 
 session_start();
-=======
-<?php
-$session_start();
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
 
 require_once("../../config.php");
 require_once("../../model/ShopManager/ShopManagerBrandModel.php");
 
-<<<<<<< HEAD
+
 /*update the quantity of the brand */
 if(isset($_POST['BrandQuenBtn'])){
     $Quantity=($_POST['BrandQquenty']);
@@ -19,20 +16,12 @@ if(isset($_POST['BrandQuenBtn'])){
     if($result==true){
         header("Location: ../../controller/ShopManager/ShopManagerBrandFirstController.php");
         $_SESSION['Brand_Quentity_updated']='Quentity is updated Successfully';
-=======
-if(isset($_POST['quan_update'])){
-    $Quantity=($_POST['BrandQquenty']);
-    $code=($_POST['BrandQrefid']);
-    $user=new brand;
-    $result=$user->BrandQuenBtn($connection,$Quantity,$code);
-    if($result==true){
-        header("Location: ../../view/ShopManager/shopManagerAddNewBrands.php");
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
         $connection->close();
         exit();
     }
     else{
-<<<<<<< HEAD
+
         header("Location: ../../controller/ShopManager/ShopManagerBrandFirstController.php");
         $_SESSION['Q_Updated_error']='Error Occurred';
         $connection->close();
@@ -82,11 +71,29 @@ if(isset($_POST['brandDeleteBtn'])){
         $connection->close();
         exit();
 
-=======
-        header("Location: ../../view/ShopManager/shopManagerAddNewBrands.php");
+
+    }
+
+
+}
+
+/*Search the brands */
+if(isset($_POST['item_search'])){
+    $item=($_POST['item']);
+    $user=new brand;
+    $result=$user->GetProduct($connection,$item);
+    if($result==true){
+        $_SESSION['product_details']=$result;
+        header("Location: ../../controller/ShopManager/ShopManagerBrandFirstController.php");
         $connection->close();
         exit();
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+    }
+    else{
+        header("Location: ../../controller/ShopManager/ShopManagerBrandFirstController.php");
+       $connection->close();
+        exit();
+
+
     }
 
 

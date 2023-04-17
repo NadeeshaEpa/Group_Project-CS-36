@@ -3,8 +3,8 @@ require_once("../../config.php");
 require_once("../../model/deliveryperson/complaneModel.php");
 require_once("../../model/deliveryperson/ReviewsModel.php");
 
-if(isset($_POST['ComplainDeleteBtn'])){
-    $Complane_id=$_POST['Complain_Id_Name'];
+if(isset($_GET['ComplainDeleteBtn'])){
+    $Complane_id=$_GET['ComplainDeleteBtn'];
     $Complane_id=$connection->real_escape_string($Complane_id);
 
     $user=new Complain(); 
@@ -26,8 +26,10 @@ if(isset($_POST['ComplainDeleteBtn'])){
 
 }
 
-if(isset($_POST['reviewDeleteBtn'])){
-    $review_id=$_POST['Review_Id_Name'];
+
+
+if(isset($_GET['reviewDeleteBtn'])){
+    $review_id=$_GET['reviewDeleteBtn'];
     $review_id=$connection->real_escape_string($review_id);
 
     $user=new reviews(); 

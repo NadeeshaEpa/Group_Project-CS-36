@@ -50,7 +50,7 @@ if(!isset($_SESSION['User_id'])){
 				</a>
 			</li>
 			<li class="active">
-				<a href="../../view/deliveryperson/DelivaryComplains.php">
+				<a href="../../controller/deliveryperson/deliveryPersonAddComplaneFirst.php">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Complains</span>
 				</a>
@@ -117,9 +117,12 @@ if(!isset($_SESSION['User_id'])){
 				        <div class="tbl">
                             <table class="tb">
                                     <tr>
-									    <th>Ref_No</th>
-									    <th>Date</th>
-                                        <th>Description</th>
+									    <th>Complain ID</th>
+                                        <th>Order ID</th>
+										<th>Complain</th>
+                                        <th>Complain Date</th>
+										<th>Status</th>
+                                        <th>Action</th>
 										
                                     </tr>
                                     <?php
@@ -127,27 +130,48 @@ if(!isset($_SESSION['User_id'])){
                                         $result=$_SESSION['userComplainDetails']; 
                                         foreach ($result as $row) {
                                             echo "<tr>";
+											echo "<td>" . $row['Complain_id'] . "</td>";
 											echo "<td>" . $row['order_id'] . "</td>";
-                                            echo "<td>" . $row['date'] . "</td>";
-                                            echo "<td>" . $row['Description'] . "</td>";
+											echo "<td>" . $row['Description'] . "</td>";
+											echo "<td>" . $row['date'] . "</td>";
+                                            if($row['Status']==0){?>
+                                               <td style="color: red;"><?php echo "Unchecked"; ?></td>
+											<?php }else{?>
+											   <td style="color: green;"><?php echo "Checked"; ?></td>
+											<?php }
+                                           
+											if($row['message']=='NULL'){
+												echo "<td>" . "No message" . "</td>";
+											}else{
+												echo "<td>" . $row['message'] . "</td>";
+											}
+
 											?>
 											<td>
-												<form action="../../controller/deliveryperson/DeliveryPersonComplane&ReviewsViewController.php" method="post">
-													<Button name="ComplainDeleteBtn" id="ComplainDeleteBtn_Id">Delete</Button>
-													<input name="Complain_Id_Name" type="hidden" value="<?php echo $row['Complain_id']?>">
-												</form>
+												
+												<button id="ComplainDeleteBtn_Id" onclick="deletecomplain(<?php echo $row['Complain_id']; ?>)">Delete</button>
 											</td>
 					                        <?php
 											echo "</tr>";
                                         }
-                                        
+                                        unset($_SESSION['userComplainDetails']);
                                     }
                                     
                                     ?>
                                     
 							</table>
 						</div>       
-					
+					    <div id="backgr">
+							<div id="cancel_popup">
+								<div class="cancel_contect">
+									<p>Are you sure you want to Delete this Complain?</p>
+									<div class="buttons">
+										<button id="yes">Yes</button>
+										<button id="no">No</button>
+									</div>
+								</div>
+							</div>
+                        </div>
 				</div>
 			
 			</div>
@@ -158,5 +182,18 @@ if(!isset($_SESSION['User_id'])){
 	
 
 	<script src="../../public/js/delivaryDashboard.js"></script>
+	<script>
+		function deletecomplain(id){
+            document.getElementById("backgr").style.display="block";
+            document.getElementById("cancel_popup").style.display="block";
+            document.getElementById("yes").addEventListener("click",function(){
+                window.location.href="../../controller/deliveryperson/DeliveryPersonComplane&ReviewsViewController.php?ComplainDeleteBtn="+id;
+            });
+            document.getElementById("no").addEventListener("click",function(){
+                document.getElementById("cancel_popup").style.display="none";
+                document.getElementById("backgr").style.display="none";
+            });
+        } 
+	</script>
 </body>
 </html>

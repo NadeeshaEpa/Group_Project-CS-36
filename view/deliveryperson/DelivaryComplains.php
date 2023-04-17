@@ -26,11 +26,9 @@ if(!isset($_SESSION['User_id'])){
 		</a>
 		<ul class="side-menu top">
 			<li >
-<<<<<<< HEAD
+
 				<a href="../../controller/deliveryperson/deliveryDashboardFirstController.php">
-=======
-				<a href="../../view/deliveryperson/DelivaryDashboard.php">
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -78,7 +76,7 @@ if(!isset($_SESSION['User_id'])){
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-<<<<<<< HEAD
+
 			<li class="profile">
 			    <?php if($_SESSION['img-status'] == 0){?>
 					<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
@@ -94,23 +92,7 @@ if(!isset($_SESSION['User_id'])){
 					     echo $_SESSION['Type'];
 					}?></h5>
 			</li>
-=======
-			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
-			<a href="#" class="profile">
-				<img src="../../public/images/user.jpg">
-			</a>
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
 			
 		</nav>
 		<!-- NAVBAR -->
@@ -130,13 +112,11 @@ if(!isset($_SESSION['User_id'])){
 						</li>
 					</ul>
 				</div>
-<<<<<<< HEAD
+
                 <div class="right-button">
 					<a href="../../controller/deliveryperson/deliveryPersonComplainViewFirstController.php">View Complains</a>
 				</div>
-=======
 
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 				
 			</div>
 
@@ -163,7 +143,25 @@ if(!isset($_SESSION['User_id'])){
 								<form action="../../controller/deliveryperson/deliverypersonComplaneController.php" method="Post">
 									<h5>Add Complains</h5>
 									<label for="">Reference No :</label><br>
-									<input type="text" name="complaneRef" id="complaneRef_id"><br>
+									<?php if(isset($_SESSION['ComplaneIdDetails'])){
+										$result=$_SESSION['ComplaneIdDetails']?>
+										<select name="complaneRef" id="complaneRef_id" required>
+											<option value="">---Select Type---</option>
+											<?php foreach($result as $row){
+												?><option value="<?php echo $row['Order_id']; ?>"><?php echo $row['Order_id']; ?></option><?php
+											}
+											
+											?>
+										</select><br>
+
+									<?php unset($_SESSION['ComplaneIdDetails']);} 
+									else{
+										?><select name="complaneRef" id="complaneRef_id" required>
+											<option value="">---Select Type---</option> <?php
+									}
+									?>
+									
+
                                     <label for="">Description :</label><br>
 									<input type="text-area" name="complaneDes" id="complaneDes_id"><br>
 									<button type="submit" name="complane_btn">submit</button>

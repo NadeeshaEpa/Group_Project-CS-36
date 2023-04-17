@@ -64,7 +64,7 @@ menuBar.addEventListener('click', function () {
 
 
 
-<<<<<<< HEAD
+
 // const searchButton = document.querySelector('#content nav form .form-input button');
 // const searchButtonIcon = document.querySelector('#content nav form .form-input button .bx');
 // const searchForm = document.querySelector('#content nav form');
@@ -80,29 +80,13 @@ menuBar.addEventListener('click', function () {
 // 		}
 // 	}
 // })
-=======
-const searchButton = document.querySelector('#content nav form .form-input button');
-const searchButtonIcon = document.querySelector('#content nav form .form-input button .bx');
-const searchForm = document.querySelector('#content nav form');
-
-searchButton.addEventListener('click', function (e) {
-	if(window.innerWidth < 576) {
-		e.preventDefault();
-		searchForm.classList.toggle('show');
-		if(searchForm.classList.contains('show')) {
-			searchButtonIcon.classList.replace('bx-search', 'bx-x');
-		} else {
-			searchButtonIcon.classList.replace('bx-x', 'bx-search');
-		}
-	}
-})
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 
 
 
 
 
-<<<<<<< HEAD
+
+
 // if(window.innerWidth < 768) {
 // 	sidebar.classList.add('hide');
 // } else if(window.innerWidth > 576) {
@@ -129,34 +113,7 @@ searchButton.addEventListener('click', function (e) {
 // 		document.body.classList.remove('dark');
 // 	}
 // })
-=======
-if(window.innerWidth < 768) {
-	sidebar.classList.add('hide');
-} else if(window.innerWidth > 576) {
-	searchButtonIcon.classList.replace('bx-x', 'bx-search');
-	searchForm.classList.remove('show');
-}
 
-
-window.addEventListener('resize', function () {
-	if(this.innerWidth > 576) {
-		searchButtonIcon.classList.replace('bx-x', 'bx-search');
-		searchForm.classList.remove('show');
-	}
-})
-
-
-
-const switchMode = document.getElementById('switch-mode');
-
-switchMode.addEventListener('change', function () {
-	if(this.checked) {
-		document.body.classList.add('dark');
-	} else {
-		document.body.classList.remove('dark');
-	}
-})
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 
 
 /*date creation function */
@@ -179,7 +136,7 @@ if(getMonthLable){
 /*  */
 
 
-/*count and amount of the delivary */
+/*count and amount of the customers */
 
 var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
@@ -190,11 +147,9 @@ xhttp.onreadystatechange = function() {
 	Nodeliverid2.innerHTML = response.Order_count['COUNT(*)'];
     
 };
-<<<<<<< HEAD
+
 xhttp.open("GET", "http://localhost/Group_Project-CS-36/controller/ShopManager/ShopManagerOrderCountController.php", true);
-=======
-xhttp.open("GET", "http://localhost/Group_36/controller/ShopManager/ShopManagerOrderCountController.php", true);
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
 xhttp.send();
 
 /* */
@@ -256,23 +211,7 @@ cpassword?.addEventListener("input", function () {
     }
 });
 
-<<<<<<< HEAD
-// // delete account popup message
-//     window.onclick = function(event) {
-//     if (event.target == modal) {
-//         modal.style.display = "none";
-//     }
-//     }
 
-
-/*shop manager brand add succes msg */
-
-
-/* */
-=======
-
-
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 
   
 

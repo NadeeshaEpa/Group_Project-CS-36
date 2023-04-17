@@ -4,11 +4,7 @@ class reviews{
     public function addReviws($connection,$discription){
         $this->User_id=$_SESSION['User_id'];
         $sql="INSERT INTO rateservice(Rate_Id, Date, Description, Customer_Id, DeliveryPerson_Id) VALUES ('',CURDATE(),'$discription',NUll,$this->User_id)";
-<<<<<<< HEAD
-       
-=======
-        
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
         $result=$connection->query($sql);
         if($result){
             return true;
@@ -17,7 +13,7 @@ class reviews{
             return false;
         }
     }
-<<<<<<< HEAD
+
 
     public function getUserReviewsDetails($connection){
         $this->User_id=$_SESSION['User_id'];
@@ -25,8 +21,9 @@ class reviews{
        
         $result=mysqli_query($connection,$sql);
         if($result->num_rows===0){
-            return false;
             $_SESSION['ReviewsError']="No Reviews Added";
+            return false;
+            
         }else{
             $answer=array();
             while($row=$result->fetch_assoc()){
@@ -47,6 +44,5 @@ class reviews{
             return false;
         }
     }
-=======
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
 }

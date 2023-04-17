@@ -20,10 +20,9 @@ if(isset($_POST['register'])){
     $contactnumber = $_POST['contactnumber'];
     $accountnum= $_POST['accountnum'];
     $shopename= $_POST['shopName'];
-<<<<<<< HEAD
 
-=======
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
+    
     $gastype= $_POST['gastype'];
 
 }else{
@@ -68,13 +67,9 @@ $shopnumber=$connection->real_escape_string($shopnumber);
 $nic=$connection->real_escape_string($nic);
 $accountnum=$connection->real_escape_string($accountnum);
 $shopename=$connection->real_escape_string($shopename);
-<<<<<<< HEAD
-
 $gastype=$connection->real_escape_string($gastype);
 
-=======
-$gastype=$connection->real_escape_string($gastype);
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
+
 
 $user=new gasagent_model();
 $user->setDetails($firstname,$lastname,$username,$street,$city,$postalcode,$password,$email,$contactnumber,$business_reg_num,$shopnumber,$nic,$accountnum,$shopename);
