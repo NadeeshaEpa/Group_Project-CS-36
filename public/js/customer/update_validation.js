@@ -55,7 +55,7 @@ function usernameexit(){
             }
         }
     };
-    xhttp.open("POST", "http://localhost:8001/controller/customer/validation_controller.php", true);
+    xhttp.open("POST", "http://localhost/Group_36/controller/customer/validation_controller.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("update_username=" + username.value);
 }
@@ -83,7 +83,7 @@ function emailValidation() {
             }
         }
     };
-    xhttp.open("POST", "http://localhost:8001/controller/customer/validation_controller.php", true);
+    xhttp.open("POST", "http://localhost/Group_36/controller/customer/validation_controller.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("updateemail=" + email.value);
 }

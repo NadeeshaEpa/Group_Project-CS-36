@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <?php include 'header.php'; ?>
+    <?php include 'home_header.php'; ?>
     <img src="../public//images/ServicePage.jpg" alt="contact-us" width="100%" height="75%">
     <div class="content">
         <h1>What are the services FAGO provides to you?</h1><br>

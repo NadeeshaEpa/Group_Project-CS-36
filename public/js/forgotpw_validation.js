@@ -1,7 +1,6 @@
 const email = document.getElementById("email");
 const emailLabel = document.getElementById("email-label");
-
-const deliveryperson_form = document.getElementById("deliveryperson_form");
+const forgotpw_form = document.getElementById("fpw_form");
 
 var emailflag=0;
 
@@ -17,27 +16,34 @@ email?.addEventListener("input", function () {
     }
 });
 
-function usernameexit(){
+function emailValidation() {
     var xhttp = new XMLHttpRequest();   
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var response = this.responseText;
 
-            if (response == "true") {
-                usernameLabel.innerHTML = "Username already exists";
-                usernameLabel.style.color = "red";
-                usernameflag=1;
+            if (response == "false") {
+                emailLabel.innerHTML = "Email does not exist";
+                emailLabel.style.color = "red";
+                emailLabel.style.fontSize = "15px";
+                emailflag=1;
             } else {
-                usernameLabel.innerHTML = "Username";
-                usernameLabel.style.color = "black";
-                username.style.borderColor = "green";
-                username.style.borderWidth = "2px";
+                emailLabel.innerHTML = "Email";
+                emailLabel.style.color = "black";
+                emailLabel.style.fontSize = "18px";
+                email.style.borderColor = "green";
+                email.style.borderWidth = "2px";
                 // submit.disabled = false;
-                usernameflag=0;
+                emailflag=0;
             }
         }
     };
-    xhttp.open("POST", "http://localhost/Group_36/controller/deliveryperson/validation_controller.php", true);
+    xhttp.open("POST", "http://localhost/Group_36/controller/customer/validation_controller.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("username=" + username.value);
+    xhttp.send("email=" + email.value);
 }
+forgotpw_form?.addEventListener("submit", function (e) {
+    if (!(emailflag==0)) {
+        e.preventDefault();
+    }
+});

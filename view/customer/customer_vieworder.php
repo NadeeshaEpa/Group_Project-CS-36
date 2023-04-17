@@ -161,22 +161,27 @@
         </div>
     </div>  
     <!-- pop up message -->
-    <div id="cancel_popup">
-        <div class="cancel_contect">
-            <p>Are you sure you want to cancel this order?</p>
-            <div class="buttons">
-                <button id="yes">Yes</button>
-                <button id="no">No</button>
+    <div id="backgr">
+        <div id="cancel_popup">
+            <div class="cancel_contect">
+                <p>Are you sure you want to cancel this order?</p>
+                <div class="buttons">
+                    <button id="yes">Yes</button>
+                    <button id="no">No</button>
+                </div>
             </div>
         </div>
     </div>
     <script>
         function cancelorder(id){
+            document.getElementById("backgr").style.display="block";
             document.getElementById("cancel_popup").style.display="block";
             document.getElementById("yes").addEventListener("click",function(){
+                document.getElementById("backgr").style.display="none";
                 window.location.href="../../controller/customer/order_controller.php?cancelid="+id;
             });
             document.getElementById("no").addEventListener("click",function(){
+                document.getElementById("backgr").style.display="none";
                 document.getElementById("cancel_popup").style.display="none";
             });
         }  

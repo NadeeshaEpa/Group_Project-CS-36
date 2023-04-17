@@ -100,8 +100,8 @@
                         <td><?php echo $order_time;?></td>
                     </tr>
                     <tr>
-                        <td>Total Amount</td>
-                        <td><?php echo $total_amount;?></td>
+                        <td>Amount</td>
+                        <td><?php echo "Rs.".$total_amount;?></td>
                     </tr>
                     <tr>
                         <td>Delivery Person</td>
@@ -138,14 +138,22 @@
                                 <tr>
                                     <td><?php echo $item['Cylinder_details']." Cylinder";?></td>
                                     <td><?php echo $item['Quantity'];?></td>
-                                    <td><?php echo "Rs.".$item['Price'];?></td>
-                                    
+                                    <td><?php echo "Rs.".$item['Price'];?></td>                          
                                 </tr>
                                 <?php }?>
                             </table>
                         </td>
                     </tr>
-                    
+                    <tr>
+                        <td>Total Amount</td>
+                        <?php 
+                           //get the value from delivery fee by omit the Rs. part
+                            $delivery_fee=substr($delivery_fee,3);
+                            $total=$total_amount+$delivery_fee;
+
+                        ?>
+                        <td><?php echo "Rs.".$total;?></td>
+                    </tr>    
                     
                </table>     
             </form>       

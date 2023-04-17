@@ -113,7 +113,7 @@ class order_model{
         }
     }
     public function order_count($connection,$userid){
-        $sql="Select distinct order_id from `placeorder` WHERE Customer_Id='$userid'";
+        $sql="Select distinct p.order_id from `placeorder` p inner join `order` o ON o.Order_id=p.Order_Id WHERE p.Customer_Id='$userid' and o.order_status=1";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return 0;
@@ -122,7 +122,7 @@ class order_model{
         }
     }
     public function fago_order_count($connection,$userid){
-        $sql="Select distinct order_id from `shop_placeorder` where Customer_Id='$userid'";
+        $sql="Select distinct p.order_id from `shop_placeorder` p inner join `order` o ON o.Order_id=p.Order_Id where p.Customer_Id='$userid' and o.order_status=1";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return 0;
@@ -333,6 +333,40 @@ class order_model{
         }else{
             $user_id=$result->fetch_object()->Customer_Id;
             $sql="select Email from user WHERE User_id='$user_id'";
+            $result=$connection->query($sql);
+            if($result->num_rows===0){
+                return false;
+            }else{
+                $email=$result->fetch_object()->Email;
+                return $email;
+            }
+        }
+    }
+    public function getGasAgentEmail($connection,$order_id){
+        $sql="select GasAgent_Id from `placeorder` WHERE Order_Id='$order_id'";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $gasagent_id=$result->fetch_object()->GasAgent_Id;
+            $sql="select Email from user WHERE User_id='$gasagent_id'";
+            $result=$connection->query($sql);
+            if($result->num_rows===0){
+                return false;
+            }else{
+                $email=$result->fetch_object()->Email;
+                return $email;
+            }
+        }
+    }
+    public function getstockmanagerEmail($connection,$order_id){
+        $sql="select StockManager_Id from `shop_placeorder` WHERE Order_Id='$order_id'";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $stockmanager_id=$result->fetch_object()->StockManager_Id;
+            $sql="select Email from user WHERE User_id='$stockmanager_id'";
             $result=$connection->query($sql);
             if($result->num_rows===0){
                 return false;

@@ -118,7 +118,10 @@ class user_model{
                 $row=$result->fetch_assoc();
                 $last_order_date=$row['order_date'];
                 $last_order_date=date_create($last_order_date);
+
+                date_default_timezone_set('Asia/Colombo');
                 $current_date=date_create(date("Y-m-d"));
+                
                 $diff=date_diff($last_order_date,$current_date);
                 $diff=$diff->format("%a");
                 if($diff > $time_period){
@@ -132,5 +135,21 @@ class user_model{
         }
         
 
+    }
+    public function review($connection,$limit,$offset){
+        $sql="select c.review_id,u.First_Name,u.Last_Name,u.Type,c.description,c.date,p.imgname from user u inner join profileimg p on u.User_id=p.User_id inner join company_review c on p.User_id=c.customer_id group by c.review_id order by c.review_id desc limit $limit offset $offset";
+        $result=$connection->query($sql);
+        $reviews=[];
+        foreach($result as $row){
+            array_push($reviews,['First_Name'=>$row['First_Name'],'Last_Name'=>$row['Last_Name'],'Type'=>$row['Type'],'description'=>$row['description'],'date'=>$row['date'],'imgname'=>$row['imgname']]);
+        }
+        return $reviews;
+
+    }
+    public function review_count($connection){
+        $sql="select count(review_id) as count from company_review";
+        $result=$connection->query($sql);
+        $row=$result->fetch_assoc();
+        return $row['count'];
     }
 }

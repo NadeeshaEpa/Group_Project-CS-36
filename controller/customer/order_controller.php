@@ -41,8 +41,8 @@ if(isset($_GET['shoporderid'])||isset($_GET['shop_page'])){
 
         //pagination for view orders
         $limit = 7;
-        $page = isset($_GET['page']) ? $_GET['page'] : 1;
-        $_SESSION['page']=$page;
+        $page = isset($_GET['shop_page']) ? $_GET['shop_page'] : 1;
+        $_SESSION['shop_page']=$page;
         $offset = ($page - 1) * $limit;
         
         //get the total number of orders
@@ -51,9 +51,8 @@ if(isset($_GET['shoporderid'])||isset($_GET['shop_page'])){
 
         //calculate the total number of pages
         $total_pages = ceil($total_records / $limit);
-        $_SESSION['total_pages']=$total_pages;
+        $_SESSION['shop_total_pages']=$total_pages;
 
-        
         $result=$order->view_fagoOrders($connection,$_SESSION['User_id'],$limit,$offset);
         if($result===false){
             $_SESSION['vieworders']="failed";
@@ -113,7 +112,9 @@ if(isset($_GET['cancelid'])){
             $email=new email_model();
             $shop="gas";
             $useremail=$order->getUserEmail($connection,$order_id,$shop);
+            $gasagentemail=$order->getGasAgentEmail($connection,$order_id);
             $email->sendRefundEmail($connection,$order_id,$useremail);
+            $email->sendRefundEmail_agent($connection,$order_id,$gasagentemail);
             header("Location: ../../view/customer/customer_cancelorder.php");
         }
     }else{
@@ -139,9 +140,12 @@ if(isset($_GET['shop_cancelid'])){
         }else{
             require_once '../../model/customer/email_model.php';
             $email=new email_model();
+            $email_agent=new email_model();
             $shop="fago_shop";
             $useremail=$order->getUserEmail($connection,$order_id,$shop);
+            $stockmanager=$order->getstockmanagerEmail($connection,$order_id);
             $email->sendRefundEmail($connection,$order_id,$useremail);
+            $email_agent->sendRefundEmail_agent($connection,$order_id,$stockmanager);
             header("Location: ../../view/customer/customer_cancelorder.php");
         }
     } else {

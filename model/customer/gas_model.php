@@ -170,10 +170,10 @@ class gas_model{
                 $sql2="Select photo,price,Weight,newcylinder_price from gascylinder WHERE Cylinder_Id='$cylinder'";
                 $result2=$connection->query($sql2);
                 if($result2->num_rows===0){
-                    array_push($availability,['Quantity'=>0,'photo'=>0,'price'=>0,'newcylinder_price'=>0]);
+                    array_push($availability,['item_id'=>$cylinder,'Quantity'=>0,'photo'=>0,'price'=>0,'newcylinder_price'=>0]);
                 }else{
                     while($row=$result2->fetch_object()){
-                        array_push($availability,['Quantity'=>0,'photo'=>$row->photo,'price'=>$row->price,'newcylinder_price'=>$row->newcylinder_price,'Weight'=>$row->Weight]);
+                        array_push($availability,['item_id'=>$cylinder,'Quantity'=>0,'photo'=>$row->photo,'price'=>$row->price,'newcylinder_price'=>$row->newcylinder_price,'Weight'=>$row->Weight]);
                     }
                 }
             }else{
@@ -183,7 +183,7 @@ class gas_model{
                     print_r("Error");
                 }else{
                     while($row=$result->fetch_object()){
-                        array_push($availability,['Quantity'=>$row->Quantity,'photo'=>$row->photo,'price'=>$row->price,'newcylinder_price'=>$row->newcylinder_price,'Weight'=>$row->Weight]);
+                        array_push($availability,['item_id'=>$cylinder,'Quantity'=>$row->Quantity,'photo'=>$row->photo,'price'=>$row->price,'newcylinder_price'=>$row->newcylinder_price,'Weight'=>$row->Weight]);
                     }
                 }
             }

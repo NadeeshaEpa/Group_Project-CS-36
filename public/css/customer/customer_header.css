@@ -76,3 +76,8 @@ body{
 #cart_count{
     font-size: 12px;
 }
+.user-type{
+    font-size: 18px;
+    color: navy;
+    font-style: italic;
+}
