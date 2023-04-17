@@ -419,17 +419,13 @@ class location{
         }
     }
 
-    public function PendingDeliveryRequest($connection,$orderId,$DeliveryFee){
+    public function PendingDeliveryRequest($connection,$order_id,$DeliveryFee){
        
         $this->User_id=$_SESSION['User_id'];
-        $sql1="UPDATE `order` SET Delivery_Status=1,Delivery_date=CURRENT_DATE,Delivery_time=CURRENT_TIME WHERE Order_id=$orderId";
-        $result1=$connection->query($sql1);
-        
-       
-        $sql2="INSERT INTO `payment`(`Order_Id`, `User_Id`, `Staff_Id`, `Amount`, `Date`, `Paid`) VALUES ($orderId, $this->User_id,NULL,$DeliveryFee,NULL,0)";
-        
+        $sql2="INSERT INTO `payment`(`Order_Id`, `User_Id`, `Staff_Id`, `Amount`, `Date`, `Paid`) VALUES ($order_id, $this->User_id,NULL,$DeliveryFee,NULL,0)";
         $result2=$connection->query($sql2);
-        if($result1 && $result2){
+       
+        if($result2){
             return true;
         }
         else{
