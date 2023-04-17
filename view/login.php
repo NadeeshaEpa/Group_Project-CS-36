@@ -30,7 +30,7 @@ if(isset($_SESSION['locked'])){
         <div class="column">
             <div class="container">
                 <form action="../controller/Users/login_controller.php" method="POST" class="form">
-                    <h2>Welcome</h2>
+                    <h2>Welocome</h2>
                     <p>Sign in using the data that you entered during your registration.</p>
                          <div class="err-msg">   
                             <?php
@@ -41,12 +41,6 @@ if(isset($_SESSION['locked'])){
                                         unset($_SESSION['login']);
                                     }
                                 }
-                            //     if($_GET['session']=="expired"){
-                            //         echo "Session expired. Please log in again";
-                            //         echo '<br>';
-                            //     }else{
-                                    
-                            //     }
                             ?> 
                          </div>      
                         <div class="input">

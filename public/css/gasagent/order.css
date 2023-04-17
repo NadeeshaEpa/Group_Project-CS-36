@@ -14,7 +14,11 @@
     background: rgb(255, 255, 255);;
     border: 3px solid rgb(84, 73, 116);
 	border-radius: 15px;
+<<<<<<< HEAD
+	margin-left: 80px;
+=======
 	margin-left: 13px;
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     width:375px;
     height: 85px;
     font-size: large;
@@ -28,8 +32,13 @@
 	margin-left: -84px;
 	height:40px ;
 	text-align: center;
+<<<<<<< HEAD
+	border-radius: 8px;
+	background-color:#44925e;
+=======
 	border-radius: 15px;
 	background-color:#10338e;
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 	color: white;
   }
 

@@ -1,8 +1,3 @@
-<?php session_start(); 
-if(!isset($_SESSION['User_id'])){
-    header("Location: ../../index.php");
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,13 +57,6 @@ if(!isset($_SESSION['User_id'])){
 					<span class="text">profile details</span>
 				</a>
 			</li>
-			
-			<li>
-				<a href="../../controller/customer/complain_controller.php?complainid='1'">
-					<i class='bx bxs-badge-check' ></i>
-					<span class="text">Complains</span>
-				</a>
-            </li>
 		</ul>
 		<ul class="side-menu">
 			<!-- <li>
@@ -96,10 +84,10 @@ if(!isset($_SESSION['User_id'])){
 			<i class='bx bx-menu' ></i>
 			<a href="#" class="nav-link">Categories</a>
 			<form action="#">
-				<div class="form-input">
+				<!-- <div class="form-input">
 					<input type="search" placeholder="Search...">
 					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
+				</div> -->
 			</form>
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>

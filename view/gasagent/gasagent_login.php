@@ -1,8 +1,4 @@
-<?php session_start(); 
-if(!isset($_SESSION['User_id'])){
-    header("Location: ../../index.php");
-}
-?>
+<?php session_start(); ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">

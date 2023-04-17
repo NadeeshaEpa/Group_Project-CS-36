@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+*{
+    font-family: 'Poppins', sans-serif;
+}
+ul {
+=======
 body{
     margin:0%;
 }
@@ -5,35 +11,61 @@ body{
     font-family: 'Poppins', sans-serif;
 }
 .header ul {
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
+<<<<<<< HEAD
+    background-color:#0B0251;
+ }
+li a {
+     display: block;
+    color:white;
+=======
     background-color:lightgray;
  }
 .header li a {
      display: block;
     color:black;
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     float: right;
+<<<<<<< HEAD
+    font-size: 20px;
+=======
     font-size: 18px;
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     font-weight: bold;
     margin: 10px;
 }
 
+<<<<<<< HEAD
+li a:hover:not(.active) {
+   background-color:rgb(82, 82, 173);
+   
+ }
+
+li img{
+=======
 .header li a:hover:not(.active) {
    font-size: 19px;  
  }
 
 .header li img{
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     width: 60px;
     height: 60px;
     border-radius: 50%;
     margin-top: 5px;
     margin-right: 10px;
+<<<<<<< HEAD
+    float: left;
+=======
     float: right;
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     margin-left: 10px;
     margin-bottom: 5px;
 }
@@ -61,13 +93,45 @@ body{
     float: right;
     margin-right: 10px;
     margin-top: 10px;
+<<<<<<< HEAD
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+=======
     font-size: 18px;
     font-weight: bold;
     color: black;
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }
 body{
     margin:0%;
 }
+<<<<<<< HEAD
+.footer, .footerc{
+    background-color: #0B0251;
+    color: white;
+    padding: 10px;
+    margin-top: 0px;
+    font-size: 15px;
+    display: flex;
+    height: 50px;
+    margin-bottom: 0%;
+}
+.fleft{
+    float: left;
+}
+.fright{
+    float: right;
+    margin-left: 80%;
+}
+.fright p{
+    color: white;
+    padding: 10px;
+    font-size: 15px;
+}
+.footerc{
+    margin-top: 158px;
+=======
 .bell li img{
     width: 25px;
     height:25px;
@@ -80,4 +144,5 @@ body{
     font-size: 18px;
     color: navy;
     font-style: italic;
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }
