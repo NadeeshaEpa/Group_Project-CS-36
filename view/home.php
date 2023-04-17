@@ -54,7 +54,7 @@
         <div class="regtext">
             <p>We are just a fingertip away from you!
             <b>Register</b> to the system and place your order..</p>
-            <a href="registeras.php"><button class="btnr">Register</button></a>
+            <a href="http://localhost/Group_36/view/registeras.php"><button class="btnr">Register</button></a>
             <p>View our <b>Services</b> and <b>Products</b>...</p>
             <a href="http://localhost/Group_36/controller/Users/login_controller.php?unregview='1'"><button class="btnr">View</button></a>
         </div>

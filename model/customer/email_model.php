@@ -27,9 +27,9 @@ class email_model{
         $message.="<br>Order ID: ".$orders[0]['orderid'];
         $message.="<br>Pincode: ".$orders[0]['reserve_pin'];
         $message.="<br>Order Date: ".$orders[0]['orderdate'];
-        $message.="<br>Order Total:Rs. ".$orders[0]['total'];
+        $message.="<br>Order Total:LKR ".$orders[0]['total'];
         $message.="<br>Delivery Method: ".$orders[0]['delivery_method'];
-        $message.="<br>Delivery Fee:Rs. ".$orders[0]['delivery_fee'];
+        $message.="<br>Delivery Fee:LKR ".$orders[0]['delivery_fee'];
         $message.="<table border='1'>";
         $message.="<tr><th>Product Name</th><th>Quantity</th><th>Price</th></tr>";
         foreach($orders as $order){
@@ -52,9 +52,9 @@ class email_model{
         $message="Your shop has received an order. The order details are as follows: <br>";
         $message.="<br>Order ID: ".$orders[0]['orderid'];
         $message.="<br>Order Date: ".$orders[0]['orderdate'];
-        $message.="<br>Order Total:Rs. ".$orders[0]['total'];
+        $message.="<br>Order Total:LKR ".$orders[0]['total'];
         $message.="<br>Delivery Method: ".$orders[0]['delivery_method'];
-        $message.="<br>Delivery Fee:Rs. ".$orders[0]['delivery_fee'];
+        $message.="<br>Delivery Fee:LKR ".$orders[0]['delivery_fee'];
         $message.="<table border='1'>";
         $message.="<tr><th>Product Name</th><th>Quantity</th><th>Price</th></tr>";
         foreach($orders as $order){
