@@ -161,6 +161,21 @@ class staff_model{
             return $staff;
         }
     }
+
+    public function searchstaff($connection,$name){
+        $sql="SELECT * FROM user u INNER JOIN staff s ON u.User_id=s.Staff_Id WHERE u.Type='Staff' AND s.Status=1 AND u.User_id='$name' OR u.First_Name='$name'";
+        $result=mysqli_query($connection,$sql);
+        if($result){
+            $staff=[];
+            while($row=mysqli_fetch_assoc($result)){
+                $staff[]=$row;
+            }
+            // print_r($staff);
+            return $staff;
+        }else{
+            return false;
+        }
+    }
 }
 
 

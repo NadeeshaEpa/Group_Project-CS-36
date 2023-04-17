@@ -15,7 +15,10 @@ allSideMenu.forEach(item=> {
 
 
 // TOGGLE SIDEBAR
+<<<<<<< HEAD
+=======
 
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 const menuBar = document.querySelector('#content nav .bx.bx-menu');
 const sidebar = document.getElementById('sidebar');
 
@@ -23,6 +26,8 @@ menuBar.addEventListener('click', function () {
 	sidebar.classList.toggle('hide');
 })
 
+<<<<<<< HEAD
+=======
 let date = new Date();
 let month_index=date.getMonth();
 let day=date.getDate();
@@ -63,6 +68,7 @@ function updateClock() {
 }
 updateClock();
 
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 
 
 
@@ -89,8 +95,11 @@ searchButton.addEventListener('click', function (e) {
 
 
 
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 if(window.innerWidth < 768) {
 	sidebar.classList.add('hide');
 } else if(window.innerWidth > 576) {

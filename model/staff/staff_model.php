@@ -142,6 +142,18 @@ class staff_model{
         }
     }
 
+    public function activateuser($connection,$user_id){
+        $sql = "UPDATE `staff` SET Status=1 WHERE Staff_Id='$user_id'";
+        
+        $result=$connection->query($sql);
+        if($result==TRUE){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
+    }
+
+
 
     public function edituser($connection,$user_id){
         $sql="SELECT s.Staff_Id,u.First_Name, u.Last_Name, u.City, u.Street, u.Postalcode, u.Username, u.Email, uc.Contact_No, s.NIC, S.Registration_date from `user_contact` uc INNER JOIN `user` u ON uc.User_id=u.User_id INNER JOIN `staff` s ON u.User_id=s.Staff_Id WHERE u.User_id='$user_id'";
@@ -192,6 +204,22 @@ class staff_model{
             return $staff;
         }
     }
+
+    public function searchstaff($connection,$name){
+        $sql="SELECT * FROM user u INNER JOIN staff s ON u.User_id=s.Staff_Id WHERE u.Type='Staff' AND s.Status=1 AND u.User_id='$name' OR u.First_Name='$name'";
+        $result=mysqli_query($connection,$sql);
+        if($result){
+            $staff=[];
+            while($row=mysqli_fetch_assoc($result)){
+                $staff[]=$row;
+            }
+            // print_r($staff);
+            return $staff;
+        }else{
+            return false;
+        }
+    }
+
 }
 
 

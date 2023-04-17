@@ -1,5 +1,8 @@
 body{
+<<<<<<< HEAD
+=======
 
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     font-family: 'Poppins', sans-serif;
     margin:0%;
     /* border-bottom: 2px solid rgb(174, 169, 169);
@@ -15,14 +18,20 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
+<<<<<<< HEAD
+=======
 
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     background-color:white;
     
     
  }
 li a {
     display: block;
+<<<<<<< HEAD
+=======
 
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -76,7 +85,10 @@ li img{
 .name{
     float: right;
     margin-right: 10px;
+<<<<<<< HEAD
+=======
 
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     margin-top: 15px;
     font-family: 'Poppins', sans-serif;
     font-size: 20px;

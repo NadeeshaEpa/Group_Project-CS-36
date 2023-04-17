@@ -1,6 +1,11 @@
 const email = document.getElementById("email");
 const emailLabel = document.getElementById("email-label");
+<<<<<<< HEAD
+
+const deliveryperson_form = document.getElementById("deliveryperson_form");
+=======
 const forgotpw_form = document.getElementById("fpw_form");
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 
 var emailflag=0;
 
@@ -16,12 +21,36 @@ email?.addEventListener("input", function () {
     }
 });
 
+<<<<<<< HEAD
+function usernameexit(){
+=======
 function emailValidation() {
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     var xhttp = new XMLHttpRequest();   
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var response = this.responseText;
 
+<<<<<<< HEAD
+            if (response == "true") {
+                usernameLabel.innerHTML = "Username already exists";
+                usernameLabel.style.color = "red";
+                usernameflag=1;
+            } else {
+                usernameLabel.innerHTML = "Username";
+                usernameLabel.style.color = "black";
+                username.style.borderColor = "green";
+                username.style.borderWidth = "2px";
+                // submit.disabled = false;
+                usernameflag=0;
+            }
+        }
+    };
+    xhttp.open("POST", "http://localhost/GP36/controller/deliveryperson/validation_controller.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("username=" + username.value);
+}
+=======
             if (response == "false") {
                 emailLabel.innerHTML = "Email does not exist";
                 emailLabel.style.color = "red";
@@ -47,3 +76,4 @@ forgotpw_form?.addEventListener("submit", function (e) {
         e.preventDefault();
     }
 });
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458

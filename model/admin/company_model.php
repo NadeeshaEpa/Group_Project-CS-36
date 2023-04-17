@@ -70,7 +70,7 @@ class company_model{
         }else{
             $company=[];
             while($row=$result->fetch_object()){
-                array_push($company,['company_id'=>$row->$company_id,'company_name'=>$row->company_name,'photo'=>$row->photo]);
+                array_push($company,['company_id'=>$row->company_id,'company_name'=>$row->company_name,'photo'=>$row->photo]);
             }
             return $company;
         }
@@ -94,7 +94,7 @@ class company_model{
         }else{
             $company=[];
             while($row=$result->fetch_object()){
-                array_push($company,['company_id'=>$row->$company_id,'company_name'=>$row->company_name,'photo'=>$row->photo]);
+                array_push($company,['company_id'=>$row->company_id,'company_name'=>$row->company_name,'photo'=>$row->photo]);
             }
             return $company;
         }      
@@ -108,6 +108,29 @@ class company_model{
         }else{
             return FALSE;
         }
+    }
+
+    function check_company($connection,$company_name){
+        $sql="SELECT company_id FROM `gas_company` WHERE company_name='$company_name'";
+        $result = mysqli_query($connection, $sql);
+        if($result->num_rows==0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public function updateImage($connection,$company_id,$fileNameNew){
+        //update image name and status
+        $sql="UPDATE `gas_company` SET `photo`='$fileNameNew' WHERE company_id='$company_id'";
+        $result=$connection->query($sql);
+        if($result){
+            return true;
+        }else{
+            return false;
+        }
+
     }
 
     

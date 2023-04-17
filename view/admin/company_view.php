@@ -69,7 +69,11 @@ require_once("../../config.php");?>
 				</a>
 			</li> -->
 			<li>
+<<<<<<< HEAD
+				<a href="#" class="logout">
+=======
 				<a href="../../controller/Users/logout_controller.php" class="logout">
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -127,7 +131,11 @@ require_once("../../config.php");?>
 
         <div class="up">
                     
+<<<<<<< HEAD
+                    <img src='../../public/images/gascylinder/<?php echo $result[0]['photo'];?>' style=" width:60%; height:20%;" class="image">                       
+=======
                     <img src='../../public/images/<?php echo $result[0]['photo'];?>' alt='logon' width='300px' height='200px' class="image">                       
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
                </div>
         
         <div class="down">
