@@ -13,6 +13,10 @@ body{
     background-color: white;
 >>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }
+.customer{
+    margin: 5%;
+    margin-left: 9%;
+}
 .customer img{
     width:150px;
     height:150px;
@@ -21,10 +25,14 @@ body{
 =======
 >>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     padding: 60px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-
+    background-color: navy;
+    border-radius: 10%;
 }
+<<<<<<< HEAD
+.up{
+    width: 100%;
+    display: flex;
+=======
 .customer img:hover{
 <<<<<<< HEAD
     width: 155px;
@@ -44,6 +52,7 @@ body{
 =======
 .down{
     margin-bottom: 5%;
+>>>>>>> 39892497ba09a67dd7133a9ec633cf58a21b843a
 }
 >>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 p{
@@ -52,6 +61,7 @@ p{
     color: #000;
     padding-left:61px;
     margin: 0%;
+    margin-top: 8%;
 
 }
 h1{

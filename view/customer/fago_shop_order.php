@@ -68,16 +68,15 @@
             <div class="heading">
             <h1>My orders</h1>
             </div>   
-            <!-- print order details as a table -->
             <div class="type">
-                <a href="../../controller/customer/order_controller.php?orderid='1'"><button class="selected">Gas Orders</button></a>
-                <a href="../../controller/customer/order_controller.php?shoporderid='2'"><button>Fago Shop Orders</button></a>
+                <a href="../../controller/customer/order_controller.php?orderid='1'"><button>Gas Orders</button></a>
+                <a href="../../controller/customer/order_controller.php?shoporderid='2'"><button class="selected">Fago Shop Orders</button></a>
             </div>
+            <!-- print order details as a table -->
             <div class="ordertable">
                 <h2>All Orders</h2>
                 <table>
                     <tr>
-                        <th>Gas Agent Name</th>
                         <th>Order No</th>
                         <th>Amount</th>
                         <th>Delivery Method</th>
@@ -88,72 +87,71 @@
                     <?php
                         foreach($details as $detail){?>
                             <tr>
-                                    <td><?php echo $detail['First_Name']." ".$detail['Last_Name']?></td>
-                                    <td><?php echo $detail['Order_id']?></td>
-                                    <td><?php echo $detail['Amount']?></td>
-                                    <td><?php echo $detail['Delivery_Method']?></td>
-                                    <div class="status">
-                                        <?php if($detail['Delivery_Status']==NULL){?>
-                                            <td style="color:lightgreen"><b>Not Assigned</b></td>
-                                        <?php }else if($detail['Delivery_Status']==4){?>
-                                            <td style="color:purple"><b>Picked</b></td>    
-                                        <?php }else if($detail['Delivery_Status']==3){?>
-                                            <td style="color:blue"><b>Courier Service</b></td>
-                                        <?php }else if($detail['Delivery_Status']==2){?>
-                                            <td style="color:red"><b>No delivery</b></td>
-                                        <?php }else if($detail['Delivery_Status']==0){?>
-                                            <td style="color:#FDC801"><b>On the way</b></td>
-                                        <?php }else if($detail['Delivery_Status']==1){?>
-                                            <td style="color:green"><b>Delivered</b></td>     
-                                        <?php } ?>
-                                    </div>
-                                    <td><a href="../../controller/customer/order_controller.php?id=<?php echo $detail['Order_id']?>">View</a></td>    
-                                    <?php
-                                    //get the difference between current date and order date 
-                                    date_default_timezone_set('Asia/Colombo');
-                                    $date1=date_create(date("Y-m-d"));
-                                    $date2=date_create($detail['Order_date']);
-                                    $diff=date_diff($date1,$date2);
-                                    $diff=$diff->format("%a");
-                                    
-                                    if(($detail['Delivery_Status']==NULL && $diff<2)||($detail['Delivery_Status']==2 && $diff<1)){?>
-                                    <div class="cancelbutton">
-                                        <td><button id="cancelbutton" onclick="cancelorder(<?php echo $detail['Order_id']?>);">Cancel</button></td>
-                                    </div>
-                                    <?php }else{?>
-                                        <td><button id="dcancelbutton">Cancel</button></td>
-                                    <?php }
-                                    ?>
+                                <td><?php echo $detail['Order_id']?></td>
+                                <td><?php echo $detail['Amount']?></td>
+                                <td><?php echo $detail['Delivery_Method']?></td>
+                                <div class="status">
+                                    <?php if($detail['Delivery_Status']==NULL){?>
+                                        <td style="color:lightgreen"><b>Not Assigned</b></td>
+                                    <?php }else if($detail['Delivery_Status']==4){?>
+                                        <td style="color:purple"><b>Picked</b></td>    
+                                    <?php }else if($detail['Delivery_Status']==3){?>
+                                        <td style="color:blue"><b>Courier Service</b></td>
+                                    <?php }else if($detail['Delivery_Status']==2){?>
+                                        <td style="color:red"><b>No delivery</b></td>
+                                    <?php }else if($detail['Delivery_Status']==0){?>
+                                        <td style="color:#FDC801"><b>On the way</b></td>
+                                    <?php }else if($detail['Delivery_Status']==1){?>
+                                        <td style="color:green"><b>Delivered</b></td>     
+                                    <?php } ?>
+                                </div>
+                                <td><a href="../../controller/customer/order_controller.php?shopid=<?php echo $detail['Order_id']?>">View</a></td>
+                                <?php
+                                //get the difference between current date and order date 
+                                date_default_timezone_set('Asia/Colombo');
+                                $date1=date_create(date("Y-m-d"));
+                                $date2=date_create($detail['Order_date']);
+                                $diff=date_diff($date1,$date2);
+                                $diff=$diff->format("%a");
+
+                                if(($detail['Delivery_Status']==NULL && $diff<2)||($detail['Delivery_Status']==2 && $diff<1) ||($detail['Delivery_Status']==3 && $diff<1)){?>
+                                <div class="cancelbutton">
+                                    <td><button id="cancelbutton" onclick="cancelorder(<?php echo $detail['Order_id']?>);">Cancel</button></td>
+                                </div>
+                                <?php }else{?>
+                                    <td><button id="dcancelbutton">Cancel</button></td>
+                                <?php }
+                                ?>
                             </tr>
                         <?php }?>
                 </table>
                 <?php 
-                    if(isset($_SESSION['gas_page'])){
-                      $page=$_SESSION['gas_page'];
+                    if(isset($_SESSION['shop_page'])){
+                      $shop_page=$_SESSION['shop_page'];
                     }else{
-                      $page=1;
+                      $shop_page=1;
                     }
-                    if(isset($_SESSION['gas_total_pages'])){
-                        $total_pages=$_SESSION['gas_total_pages'];
+                    if(isset($_SESSION['shop_total_pages'])){
+                        $shop_total_pages=$_SESSION['shop_total_pages'];
                     }else{
-                        $total_pages=1;
+                        $shop_total_pages=1;
                     }    
                 ?>
                 <div class="pagination">
-                    <?php if($page>1){?>
+                    <?php if($shop_page>1){?>
                         <!-- pass value as form -->
                         <div class="p-left">
                             <form action="../../controller/customer/order_controller.php" method="GET">
-                                <input type="hidden" name="page" value="<?php echo $page-1?>">
+                                <input type="hidden" name="shop_page" value="<?php echo $shop_page-1?>">
                                 <input type="submit" value="Previous">
                             </form>
                         </div>
                     <?php } ?>
-                    <?php if($page<$total_pages){?>
+                    <?php if($shop_page<$shop_total_pages){?>
                         <!-- pass value as form -->
                         <div class="p-right">
                             <form action="../../controller/customer/order_controller.php" method="GET">
-                                <input type="hidden" name="page" value="<?php echo $page+1?>">
+                                <input type="hidden" name="shop_page" value="<?php echo $shop_page+1?>">
                                 <input type="submit" value="Next">
                             </form>
                         </div>
@@ -161,26 +159,25 @@
                 </div>
             </div>    
         </div>
-    </div>  
-    <!-- pop up message -->
-    <div id="backgr">
-        <div id="cancel_popup">
-            <div class="cancel_contect">
-                <p>Are you sure you want to cancel this order?</p>
-                <div class="buttons">
-                    <button id="yes">Yes</button>
-                    <button id="no">No</button>
-                </div>
+    </div>   
+    <div id="backgr"> 
+    <div id="cancel_popup">
+        <div class="cancel_contect">
+            <p>Are you sure you want to cancel this order?</p>
+            <div class="buttons">
+                <button id="yes">Yes</button>
+                <button id="no">No</button>
             </div>
         </div>
-    </div>
+    <div>
+    </div>    
     <script>
         function cancelorder(id){
             document.getElementById("backgr").style.display="block";
             document.getElementById("cancel_popup").style.display="block";
             document.getElementById("yes").addEventListener("click",function(){
-                document.getElementById("backgr").style.display="none";
-                window.location.href="../../controller/customer/order_controller.php?cancelid="+id;
+                document.getElementById("cancel_popup").style.display="none";
+                window.location.href="../../controller/customer/order_controller.php?shop_cancelid="+id;
             });
             document.getElementById("no").addEventListener("click",function(){
                 document.getElementById("backgr").style.display="none";

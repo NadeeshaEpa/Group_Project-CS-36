@@ -19,13 +19,7 @@
             <div class="customer">
                 <a href="gasagent/gasagent_register.php"><img src="../public/images/gasagent.jpg">
                 <p>Gas Agent</p></a>
-            </div>    
-            <div class="customer">
-                <a href="fuelmanager/fuelManager_register.php"><img src="../public/images/fuelmanager.jpg">
-                <p>Fuel Manager</p>
-            </div>    
-        </div>
-        <div class="down">      
+            </div>          
             <div class="customer">
                 <a href="deliveryperson/delivery_register.php"><img src="../public/images/deliveryperson.jpg">
                 <p>Delivery Person</p></a>
