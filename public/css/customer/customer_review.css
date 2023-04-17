@@ -135,3 +135,43 @@ form .btn button:hover{
   font-size: 20px;
   font-weight: bold;
 }
+.reviewall{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 1%;
+}
+.company_review{
+  width: 50%;
+  margin-left: -10%;
+}
+.company_review button{
+  background-color: #79d37c;
+  margin-top: 1%;
+  border-radius: 20px;
+  height:45px;
+  width: 250px;
+  border: #9AE298;
+  font-size: 18px;
+  font-weight: bold;
+}
+.view-reviews{
+  width: 50%;
+  margin-left: 85%;
+  float: right;
+}
+.view-reviews button{
+  float:right;
+}
+.cancel_contect input{
+  width: 100%;
+  height: 100px;
+  border: 1px solid #333;
+  background: white;
+  padding: 10px;
+  resize: none;
+}
+#cancel_popup{
+  width:40%;
+  margin-left: 40%;
+}

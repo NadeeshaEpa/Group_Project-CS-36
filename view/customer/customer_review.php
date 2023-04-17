@@ -4,6 +4,7 @@ if(isset($_SESSION['deliverynames'])){
         $names=[];
     }else{
         $names=$_SESSION['deliverynames'];
+
     }
 }
 ?>
@@ -64,11 +65,18 @@ if(isset($_SESSION['deliverynames'])){
 	<!-- SIDEBAR -->
         <?php include_once 'customer_header.php'; ?>
         <div class="review-form">
-        <div class="view-reviews">
-            <a href="../../controller/customer/review_controller.php?view-review='1'">
-                <button name="view-review">View Reviews</button>
-            </a>    
-        </div>
+        <div class="reviewall">    
+            <div class="company_review">
+                <!-- <a href="../../controller/customer/review_controller.php?company_review='1'"> -->
+                    <button name="company-review" onclick="company_review()";> Add Company Review</button>
+                <!-- </a> -->
+            </div>    
+            <div class="view-reviews">
+                <a href="../../controller/customer/review_controller.php?view-review='1'">
+                    <button name="view-review">View Reviews</button>
+                </a>    
+            </div>
+        </div>    
         <div class="heading">    
             <h1>Share Your Feedback</h1>
         </div> 
@@ -111,5 +119,39 @@ if(isset($_SESSION['deliverynames'])){
                 </div>
             <?php } ?>
         </div>
+        <div id="backgr">
+            <div id="cancel_popup">
+                <div class="cancel_contect">
+                    <p>Place Your Feedback Here..</p>
+                    <input type="textarea" name="feedback" id="feedback" placeholder="Place your feedback about the system">
+                    <div class="buttons">
+                        <button id="yes">Submit</button>
+                        <button id="no">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function company_review(){
+                document.getElementById("backgr").style.display="block";
+                document.getElementById("cancel_popup").style.display="block";
+                
+                submitbtn=document.getElementById("yes");
+                submitbtn.addEventListener("click",function(){
+                    review=document.getElementById("feedback").value;
+                    if(review==""){
+                        return;
+                    }else{
+                        document.getElementById("backgr").style.display="none";
+                        document.getElementById("cancel_popup").style.display="none";
+                        window.location.href="../../controller/customer/review_controller.php?add_company_review='1'&review="+review;   
+                    }
+            
+                });
+                document.getElementById("no").addEventListener("click",function(){
+                    document.getElementById("backgr").style.display="none";
+                });
+            }
+        </script>
 </body>
 </html>

@@ -58,8 +58,8 @@ class shop_model{
         $stock_manager_id=$stock_manager[0]['id'];
         $_SESSION['stock_manager_id']=$stock_manager_id;
         //combine 2 variables and create a new string variable
-        $nameandmodel=$name." ".$product_type;
-        $sql="INSERT INTO cart(User_id,gasagent_id,type,weight,quantity,price) VALUES('$User_id','$stock_manager_id','$category','$nameandmodel','$quantity','$price')";
+        // $nameandmodel=$name." ".$product_type;
+        $sql="INSERT INTO cart(User_id,gasagent_id,item_id,type,weight,cylinder_type,quantity,price) VALUES('$User_id','$stock_manager_id',$item_code,'$category','$name','$product_type','$quantity','$price')";
         $result=$connection->query($sql);
         if($result===false){
             print_r("Error");

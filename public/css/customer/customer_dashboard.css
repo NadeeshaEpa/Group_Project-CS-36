@@ -283,7 +283,6 @@ body{
     border: #9AE298;
     font-size: 18px;
     font-weight: bold;
-    margin-left: 105%;
 }
 .view-reviews button:hover{
     font-size: 19px;
@@ -293,9 +292,6 @@ body{
     margin-bottom: 0px;
     transform: translate(18%, 25%);
 }
-/* .dpname{
-    margin-top: 20px;
-} */
 .cusname input, .dpname select , .desc textarea{
     width: 65%;
     height: 35px;
@@ -472,10 +468,15 @@ body{
     float: right;
     width: 80%;
 }  
+.review-details h1{
+    text-align: center;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
 .reviewtable{
     background-color: white;
     width: 90%; 
-    margin-top: 3%;
+    margin-top: 0%;
     margin-left: 0%;
     padding-left: 50px;
     padding-right: 50px;
@@ -483,7 +484,10 @@ body{
     border-radius: 20px;
     float: right;
     margin-right: 5%;
-    height: 75%;
+    height: 68%;
+}
+.reviewtable h2{
+    margin-bottom: 1%;
 }
 .reviewtable table{
     width:100%;
@@ -526,7 +530,7 @@ body{
 .editbtn a:hover{
     font-size: 19px;
 }
-.rdeletebtn a{
+.rdeletebtn button{
     color:black;
     background-color: #da3a3a;
     border-radius: 10px;
@@ -541,8 +545,21 @@ body{
     font-size: 18px;
     font-weight: bold;
 }
-.rdeletebtn a:hover{
+.rdeletebtn button:hover{
    font-size: 19px;
+}
+.deletepopup{
+    display: none;
+    position: absolute;
+    left: 60%;
+    top: 25%;
+    width: 50%; /* Full width */
+    height: 50%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color:#D9D9D9;
+    padding-top: 50px;
+    border-radius: 20px;
+    color: black;
 }
 .editreview-form{
     width: 80%;

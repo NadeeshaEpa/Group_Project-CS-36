@@ -68,7 +68,7 @@ function updatecart(cartid,agentid,quantity){
 
         }
     };
-    xhttp.open("POST","http://localhost:8001/controller/customer/addtocart_controller.php", true);
+    xhttp.open("POST","http://localhost/Group_36/controller/customer/addtocart_controller.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("cart_id=" + cartid + "&quantity=" + quantity + "&agent_id=" + agentid+"&updatecartquantity=update");
     
@@ -81,7 +81,7 @@ function deleteitem(cartid,agentid){
               setTimeout(function(){ location.reload(); }, 500);
         }
     };
-    xhttp.open("POST","http://localhost:8001/controller/customer/addtocart_controller.php", true);
+    xhttp.open("POST","http://localhost/Group_36/controller/customer/addtocart_controller.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("id="+cartid+"&agent="+agentid+"&dcartitem=delete");
     

@@ -99,22 +99,21 @@ if(isset($_SESSION['unlocations'])){
             <?php } else{ ?>
                 <h1>Available Shops</h1>
             <?php } ?>
-            <table>
-                <tr>
-                    <th>Vendor</th>
-                    <th>Distance</th>
-                    <?php 
-                        foreach($weight as $weight1){?>
-                            <th><?php echo $weight1['Weight']?>kg</th>
-                        <?php } ?>
-<<<<<<< HEAD
-
-                    <th>order</th>    
-
-=======
-                    <th>order</th>    
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
-                </tr>
+            <?php if($count1==0){?>
+                <div class="noshops">
+                    <h2>No shops available.Try again by changing the gas type and the location.</h2>
+                </div>    
+            <?php }else{?>
+                <table>
+                    <tr>
+                        <th>Vendor</th>
+                        <th>Distance</th>
+                        <?php 
+                            foreach($weight as $weight1){?>
+                                <th><?php echo $weight1['Weight']?>kg</th>
+                            <?php } ?>
+                        <th>order</th>    
+                    </tr>
                     <?php 
                     $i=0;
                     $j=0;
@@ -154,39 +153,29 @@ if(isset($_SESSION['unlocations'])){
                                 <?php 
                                 }
                             } ?> 
-<<<<<<< HEAD
 
                             <td><button name="order" id="popup" onclick="popup()">Order</button></td>
 
-=======
-                            <td><button name="order" id="popup" onclick="popup()">Order</button></td>
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
                         <?php } ?>
                     </tr>
-            </table>
-            <?php if(isset($_SESSION['unshopnames'])){?>
-                <div class="seemore">
-                    <button onclick="popup()">See more</button> 
-                </div> 
+                </table>
+                <?php if(isset($_SESSION['unshopnames'])){?>
+                    <div class="seemore">
+                        <button onclick="popup()">See more</button> 
+                    </div> 
+                <?php } ?>
             <?php } ?>   
         </div>
     </div>
-<<<<<<< HEAD
 
-=======
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
     <div id="myModal" class="modal">
         <div class="modal-content">
             <div>
                 <p id="waitingMessage">
                     You have to first register to the system.
                     <button class="register" onclick="register()";>Register</button>      
-<<<<<<< HEAD
-                    <button class="close" onclick="closemsg()";>Close</button>         
-=======
                     <button class="close" onclick="closemsg()";>Close</button><br>
                     <button class="login" onclick="login()";>Login</button>         
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
                 </p>
             </div>            
         </div>
@@ -202,14 +191,9 @@ if(isset($_SESSION['unlocations'])){
         function register(){
             window.location.href = "customer_register.php";
         }
-<<<<<<< HEAD
-    </script>
-
-=======
         function login(){
             window.location.href = "../../view/login.php";
         }
     </script>
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 </body>
 </html>

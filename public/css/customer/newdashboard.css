@@ -320,6 +320,18 @@ CONTENT
 	margin-top: 5%;
 	color: white;
 }
+#backgr{
+	background-color: rgba(0,0,0,0.5);
+	width: 100%;
+	height: 100%;
+	display: none;
+	/* take this to front */
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1;
+
+}
 #cancel_popup, #cancel_popup{
 	position: fixed;
 	/* background-color: rgba(0,0,0,0.5); */
@@ -330,7 +342,7 @@ CONTENT
 	float: left;
 	margin-left: 45%;
 	margin-top: 20%;
-	background-color: rgb(208, 206, 206);
+	background-color:white;
 	padding: 3%;
 }
 #cancel_popup p, #cancel_popup p{
@@ -340,7 +352,7 @@ CONTENT
 	width: 20%;
 	height: 30px;
 	margin-left: 20%;
-	margin-top: 5%;
+	margin-top: 2%;
 	color: white;
 	background-color: navy;
 	border:none;
@@ -454,5 +466,5 @@ CONTENT
 .complain_body{
 	margin-top: 5%;
 	text-align: center;
-	font-size: 16px;
+	font-size: 18px;
 }
