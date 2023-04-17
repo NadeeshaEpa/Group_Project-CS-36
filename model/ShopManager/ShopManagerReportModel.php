@@ -252,7 +252,33 @@ class Brand_reports{
 
     /* */
 
-
+    /*vertyfy the pin */
+    public function Check_the_pin($connection,$order_id,$pin){
+        $sql="SELECT reserve_pin FROM `order` WHERE Order_id=$order_id";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $pin_data=mysqli_fetch_assoc($result);
+           
+            if($pin_data['reserve_pin']==$pin){
+                $sql2="UPDATE `order` SET Delivery_Status=4 WHERE Order_id=$order_id";
+                $result2=$connection->query($sql2);
+                if($result2){
+                    $_SESSION['picked']='Customer picked vertify';
+                    return true;
+                }
+                else{
+                    return false;
+                }
+               
+            }
+            else{
+                $_SESSION['pin_wrong']='Pin is wrong';
+                return false;
+            }
+        }
+    }
 
 
 
