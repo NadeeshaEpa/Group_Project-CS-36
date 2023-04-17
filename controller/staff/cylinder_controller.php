@@ -6,7 +6,6 @@ include_once '../../model/staff/cylinder_model.php';
 
 
 if(isset($_GET['id'])){
-
     $cylinder=new cylinder_model();
     $result=$cylinder->viewcylinder($connection);
     if($result){

@@ -41,21 +41,35 @@ require_once("../../config.php");?>
 
 			<li class="active">
 			
+<<<<<<< HEAD
 			<a href="../../controller/staff/users_controller.php?id=userdetails">
+=======
+			<a href="../../view/staff/users.php">
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Users</span>
 				</a>
 			</li>
 
 			<li>
+<<<<<<< HEAD
 				<a href="../../controller/staff/users_controller.php?rid=userrequestdetails">
+=======
+				<a href="../../view/staff/user_request.php">
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Registration Requests</span>
 				</a>
 			</li>
 
+<<<<<<< HEAD
 			<li>
 				<a href="../../controller/staff/cylinder_controller.php?id=viewcylinder">
+=======
+
+			<li>
+				<a href="gas_cylinder.php">
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Gas Cylinders</span>
 				</a>
@@ -68,18 +82,27 @@ require_once("../../config.php");?>
 			</li>
 
 			<li>
+<<<<<<< HEAD
 				<a href="../../controller/staff/delivery_controller.php?id=viewdelivery">
+=======
+				<a href="deliveries.php">
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Deliveries</span>
 				</a>
 			</li>
 
 			<li>
+<<<<<<< HEAD
 				<a href="../../controller/staff/payment_controller.php?id=gaspaymentdetails">
+=======
+				<a href="payments.php">
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Payments</span>
 				</a>
 			</li>
+<<<<<<< HEAD
 
 			<li>
 				<a href="../../controller/staff/complain_controller.php?id=complaindetails">
@@ -87,6 +110,8 @@ require_once("../../config.php");?>
 					<span class="text">Complains</span>
 				</a>
 			</li>
+=======
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 			
 		</ul>
 		<ul class="side-menu">
@@ -128,7 +153,11 @@ require_once("../../config.php");?>
 			<?php if($_SESSION['img-status'] == 0){?>
                     <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                 <?php }else{?>
+<<<<<<< HEAD
                     <img src='../../public/images/staff/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
+=======
+                    <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
             <?php } ?>
 			</a>
 			<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?>
@@ -208,9 +237,14 @@ require_once("../../config.php");?>
          
         <br><br>
 		<div class="down"> 
+<<<<<<< HEAD
         
 		<button type="submit" name="edituser" id="submit" class="b6">Update</button>  
 		<a href="../../view/staff/staff-viewCustomer.php"><button style="background-color: #da3a3a;" class="b4">Cancel</button></a> 
+=======
+        <a href="../../view/staff/staff-viewCustomer.php"><button style="background-color: #da3a3a;" class="b4">Cancel</button></a> 
+		<button type="submit" name="edituser" id="submit" class="b6">Update</button>  
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 		</div>
     </form>
     </div>

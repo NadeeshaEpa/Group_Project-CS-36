@@ -39,6 +39,7 @@
 
 
 button{
+<<<<<<< HEAD
     /* border-radius: 5px; */
     border: 1px solid #e3e3e3;
     padding: 10px;
@@ -51,6 +52,19 @@ button{
     /* border-radius: 12px; */
     align-items: center;
     cursor: pointer;
+=======
+  border: 1px solid #e3e3e3;
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  width: 9%;
+  background-color: #0958a7;
+  color: white;
+  border-radius: 12px;
+  align-items: center;
+  cursor: pointer;
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 } 
 
 table {
@@ -111,6 +125,7 @@ h3{
     width:20%;
     cursor: pointer;
     
+<<<<<<< HEAD
 }
 .form-input {
 	display: flex;
@@ -145,4 +160,6 @@ h3{
 	border-radius: 0 36px 36px 0;
 	cursor: pointer;
   
+=======
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }

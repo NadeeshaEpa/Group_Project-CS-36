@@ -4,6 +4,7 @@
     $password = "";
     $db = "fago";
 
+
     
     $connection = new mysqli($serverName, $username, $password, $db);    //establish the connection with the database
 

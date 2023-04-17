@@ -1,11 +1,21 @@
+<<<<<<< HEAD
 
+=======
+*{
+    font-family: 'Poppins', sans-serif;
+}
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 body{
     margin:0%;
     background-color: #fffdf0;
 }
 .form{
     background-color: white;
+<<<<<<< HEAD
     width: 70%;
+=======
+    width: 50%;
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     height: 70%;
     justify-content: center;
     margin-left: 10%;
@@ -14,7 +24,11 @@ body{
     border-radius: 20px;
 }
 .pwdcontainer input{
+<<<<<<< HEAD
     width: 70%;
+=======
+    width: 100%;
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     height: 40px;
     margin-bottom: 20px;
     border-radius: 10px;
@@ -41,7 +55,11 @@ body{
     border-radius: 10px;
     border: 1px solid green;
     color: white;
+<<<<<<< HEAD
     /* font-size: 15px; */
+=======
+    font-size: 20px;
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     margin-top: 20px;
     margin-left: 20%;
 }
@@ -53,7 +71,11 @@ body{
     border-radius: 10px;
     border: 1px solid red;
     color: white;
+<<<<<<< HEAD
     /* font-size: 20px; */
+=======
+    font-size: 20px;
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     margin-top: -40px;
     margin-right: 20%;
 }

@@ -6,6 +6,7 @@ require_once '../../model/admin/company_model.php';
 
 if(isset($_POST['register'])){
     $company_name = $_POST['name'];
+    // $poster = $_POST['poster'];
     $file=$_FILES['image'];
 
     $fileName=$_FILES['image']['name'];

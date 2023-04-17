@@ -69,7 +69,11 @@ require_once("../../config.php");?>
 				</a>
 			</li> -->
 			<li>
+<<<<<<< HEAD
 				<a href="#" class="logout">
+=======
+				<a href="../../controller/Users/logout_controller.php" class="logout">
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -100,7 +104,11 @@ require_once("../../config.php");?>
 			<?php if($_SESSION['img-status'] == 0){?>
                     <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                 <?php }else{?>
+<<<<<<< HEAD
                     <img src='../../public/images/admin/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
+=======
+                    <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
             <?php } ?>
 			</a>
 			<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?>
@@ -168,8 +176,11 @@ require_once("../../config.php");?>
 
         <button type="submit" name="register" id="submit">Register</button>  
         <a href="user_staff.php"><button style="background-color: #da3a3a;">Cancel</button></a> 
+<<<<<<< HEAD
 
 		<br><br>
+=======
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     </form>
     </div>
 

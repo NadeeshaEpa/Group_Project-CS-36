@@ -1,0 +1,85 @@
+*{
+    font-family: 'Poppins', sans-serif;
+<<<<<<<< HEAD:public/css/gasagent/gasagentfago_register.css
+}
+========
+ }
+>>>>>>>> main:public/css/fuel_staff/fago_register.css
+body{
+    
+    margin: 0%;
+    background-color: #fffdf0;
+}
+.registration-form{
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    margin-top: 30px;
+    width: 40%;
+    margin: 0 auto;
+    padding-left: 60px;
+    margin-top: 30px;
+}
+.registration-form input{
+    border-radius: 5px;
+    border: -10px solid #e3e3e3;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.registration-form button{
+    border-radius: 5px;
+    border: 1px solid #e3e3e3;
+    padding: 10px;
+    margin-bottom: 20px;
+    width:90%;
+    background: #4E60FF;
+    border-radius: 20px;
+    align-items: center;
+}
+.registration-form button:hover{
+    background: #6EDC79;
+    color:black;
+}
+.registration-form h2{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+}
+.box{
+    padding:12px;
+    width:90%;
+    border:1px solid black;
+    outline: none;
+    border-radius: 20PX;
+}
+
+.font{
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+.box1{
+    padding:12px;
+    width:45%;
+    border:1px solid black;
+    outline: none;
+    border-radius: 20PX;
+}
+.box2{
+    padding:12px;
+    width:30%;
+    border:1px solid black;
+    outline: none;
+    border-radius: 20PX;
+}
+
+.font input{
+    width: 49%;
+}
+
+.font label{
+    margin-top: 10%;
+}

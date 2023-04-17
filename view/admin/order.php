@@ -11,7 +11,10 @@ require_once("../../config.php");?>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="../../public/css/admin_delivery/Dashboard.css">
     <link rel="stylesheet" href="../../public/css/admin_delivery/user_list.css">
+<<<<<<< HEAD
 	<link rel="stylesheet" href="../../public/css/admin_delivery/deliveries.css">
+=======
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 
 	<title>FaGo</title>
 </head>
@@ -25,8 +28,13 @@ require_once("../../config.php");?>
 			<span class="text">FAGO</span>
 		</a>
 		<ul class="side-menu top">
+<<<<<<< HEAD
 		<li>
 				<a href="../../controller/admin/dashboard_controller.php?id=profitdetails">
+=======
+			<li >
+				<a href="../../view/admin/admin_dashboard.php">
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -42,7 +50,11 @@ require_once("../../config.php");?>
 
 			<li>
 			
+<<<<<<< HEAD
 			<a href="../../controller/admin/users_controller.php?id=userdetails">
+=======
+			<a href="../../view/admin/users.php">
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Users</span>
 				</a>
@@ -54,7 +66,11 @@ require_once("../../config.php");?>
 					<span class="text">Gas Companies</span>
 				</a>
 			</li>
+<<<<<<< HEAD
 			<li class="active">
+=======
+			<li  class="active">
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 				<a href="../../controller/admin/order_controller.php?id=vieworder">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Orders</span>
@@ -86,14 +102,30 @@ require_once("../../config.php");?>
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
+<<<<<<< HEAD
 	
+=======
+			<!-- <a href="#" class="nav-link">Categories</a> -->
+			<!-- <form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search...">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form> -->
+			<!-- <input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label> -->
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 			
 			
 			<a href="#" class="profile">
 			<?php if($_SESSION['img-status'] == 0){?>
                     <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                 <?php }else{?>
+<<<<<<< HEAD
                     <img src='../../public/images/admin/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
+=======
+                    <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
             <?php } ?>
 			</a>
 			<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?>
@@ -102,13 +134,17 @@ require_once("../../config.php");?>
 
 		<!-- MAIN -->
 		<main>
+<<<<<<< HEAD
 		<a href="../../controller/admin/order_controller.php?id=vieworder"><button style="background-color: #05be17;color:white;">Gas Orders</button></a>
             <a href="../../controller/admin/order_controller.php?fid=viewfagoorder"><button style="background-color:transparent;color:black;">Fago Shop Orders</button></a>
             <br>
+=======
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     <div class="list">
 
     <h3>Orders</h3>
 
+<<<<<<< HEAD
 	<form action="../../controller/admin/order_controller.php" method="POST">
 				<div class="form-input">
 					<input type="search" name="order_id" placeholder="Search by order ID...">
@@ -117,6 +153,8 @@ require_once("../../config.php");?>
 	</form>
 
 
+=======
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     <table>
     <tr>
         <th>Order ID</th>
@@ -141,6 +179,7 @@ require_once("../../config.php");?>
             echo'<tr>
                  <th>'.$order_id.'</th>
                  <td>'.$date.'</td>
+<<<<<<< HEAD
                  <td>'.$fname." ". $lname.'</td>
                  <td>'.$amount.'</td>' ;
 				
@@ -167,6 +206,14 @@ require_once("../../config.php");?>
            echo'
                  <td>
 				 <a href="../../controller/admin/order_controller.php?vid='.$order_id.'"><button class="button1" style="width:50%;">View</button></a>
+=======
+                 <td>'.$fname. $lname.'</td>
+                 <td>'.$amount.'</td>
+                 <td>'.$status.'</td>
+        
+                 <td>
+                 <a href="order_view.php"><button class="button1" style="width:50%;">View</button></a>
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
                  </td>
             </tr>' ;
             

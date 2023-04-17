@@ -31,7 +31,10 @@ li {
 	--light-orange: #FFE0D3;
 	--light-green:hsl(120, 100%, 90%);
 	--green:#87dc87;
+<<<<<<< HEAD
 	--mgreen:#eac3fc;
+=======
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }
 
 html {
@@ -307,6 +310,14 @@ body {
 
 
 /* MAIN */   
+<<<<<<< HEAD
+=======
+.head text-box{
+	width:30%;
+
+}
+
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 #content main {
 	width: 100%;
 	padding: 36px 24px;
@@ -425,11 +436,18 @@ body {
 	margin-top: 24px;
 	width: 100%;
 	color: var(--dark);
+<<<<<<< HEAD
 	
 }
 #content main .table-data > div {
 	border-radius: 20px;
 	background: #f3f3f3;
+=======
+}
+#content main .table-data > div {
+	border-radius: 20px;
+	background: var(--light);
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 	padding: 24px;
 	overflow-x: auto;
 }
@@ -451,7 +469,10 @@ body {
 #content main .table-data .order {
 	flex-grow: 1;
 	flex-basis: 500px;
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }
 #content main .table-data .order table {
 	width: 100%;
@@ -479,7 +500,11 @@ body {
 	object-fit: cover;
 }
 #content main .table-data .order table tbody tr:hover {
+<<<<<<< HEAD
 	background-color: var(--grey);
+=======
+	background: var(--grey);
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }
 #content main .table-data .order table tr td .status {
 	font-size: 10px;
@@ -488,14 +513,30 @@ body {
 	border-radius: 20px;
 	font-weight: 700;
 }
+<<<<<<< HEAD
+=======
+#content main .table-data .order table tr td{
+	width: 20%;
+}
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 #content main .table-data .order table tr td .status.completed {
 	background: var(--blue);
 }
 #content main .table-data .order table tr td .status.process {
 	background: var(--yellow);
+<<<<<<< HEAD
 }
 #content main .table-data .order table tr td .status.pending {
 	background: var(--orange);
+=======
+	padding-left: 25px;
+    padding-right: 23px;
+}
+#content main .table-data .order table tr td .status.pending {
+	background: var(--orange);
+    padding-left: 25px;
+    padding-right: 23px;
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }
 
 
@@ -600,4 +641,8 @@ body {
 		min-width: 420px;
 	}
 	
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458

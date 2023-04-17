@@ -107,7 +107,11 @@ contact?.addEventListener("input", function () {
 });
 
 nic?.addEventListener("input",function(){
+<<<<<<< HEAD
     var pattern=/^[0-9]{9}V$/;
+=======
+    var pattern=/^([0-9]{9}[x|X|v|V]|[0-9]{12})$/;
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     if (!pattern.test(nic.value)) {
         nicLabel.innerHTML = "Invalid NIC Number";  
         nicLabel.style.color = "red";
@@ -138,7 +142,11 @@ function usernameexit(){
             }
         }
     };
+<<<<<<< HEAD
     xhttp.open("POST", "http://localhost/GP36/controller/deliveryperson/validation_controller.php", true);
+=======
+    xhttp.open("POST", "http://localhost/Group_36/controller/deliveryperson/validation_controller.php", true);
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("username=" + username.value);
 }
@@ -163,7 +171,11 @@ function emailValidation() {
             }
         }
     };
+<<<<<<< HEAD
     xhttp.open("POST", "http://localhost/GP36/controller/deliveryperson/validation_controller.php", true);
+=======
+    xhttp.open("POST", "http://localhost/Group_36/controller/deliveryperson/validation_controller.php", true);
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("email=" + email.value);
 }
@@ -188,7 +200,11 @@ function nicValidation() {
             }
         }
     };
+<<<<<<< HEAD
     xhttp.open("POST", "http://localhost/GP36/controller/deliveryperson/validation_controller.php", true);
+=======
+    xhttp.open("POST", "http://localhost/Group_36/controller/admin/validation_controller.php", true);
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("nic=" + nic.value);
 }

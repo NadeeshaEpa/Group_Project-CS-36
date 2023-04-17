@@ -1,0 +1,158 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    margin: 0%;
+    background-color: #fffdf0;
+}
+.registration-form{
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    border:black 2px solid;
+    margin-top: 30px;
+    width: 40%;
+    margin: 0 auto;
+    padding-left: 60px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.registration-form input{
+    border-radius: 10px;
+    border: 1px solid #e3e3e3;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: rgb(219, 215, 215);
+}
+.btn{
+    display: flex;
+}
+.sbtn{
+    float: left;
+    margin-right: 40px;
+    margin-left: 10%;
+    margin-top: 20px;
+}
+.cbtn{
+    float: right;
+    margin-right: 10%;
+    margin-top: 20px;
+}
+.sbtn button, .cbtn button{
+    border-radius: 5px;
+    border: 1px solid #e3e3e3;
+    padding: 10px;
+    margin-bottom: 20px;
+    background: blue;
+    height: 40px;
+    color: white;
+    font-size: 15px;
+    margin-right: 40px;
+    width: 100%;
+    margin-left: 40px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.cbtn button{
+    background: red;
+}
+.cbtn button:hover{
+    background: pink;
+    color:black;
+}
+.sbtn button:hover{
+    background: green;
+    color:black;
+}
+.registration-form h2{
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+}
+.box{
+    padding:12px;
+    width:90%;
+    border:1px solid black;
+    outline: none;
+    border-radius: 20PX;
+    background-color:  rgb(219, 215, 215);
+}
+.box1{
+    padding:12px;
+    width:45%;
+    border:1px solid black;
+    outline: none;
+    border-radius: 20PX;
+}
+.box2,.box4,.box5{
+    padding:12px;
+    width:30%;
+    border:1px solid black;
+    outline: none;
+    border-radius: 20PX;
+}
+.box4{
+    width:20%;
+}
+.box5{
+    width: 69%;
+    margin-left: 4px;
+}
+h2{
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+#errmsg{
+  color: #ba3939;
+  background: #ffe0e0;
+  width: 90%;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+title{
+    font-size: 30px;
+    font-weight: bold;
+    color: pink;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.otp{
+    display: flex;
+}
+.otp input{
+    width: 70%;
+}
+.otp button{
+    background-color: green;
+    color: white;
+    border-radius: 10px;
+    width:20%;
+    display: flex;
+    text-align: center;
+    margin-left: 3px;
+    padding-left: 30px;
+}
+.otpr{
+    display: flex;
+}
+.otpr button{
+    width:20%;
+    margin-left: 2px;
+    border-radius: 10px;
+    color: white;
+}
+.otpr button:hover{
+    background-color: lightblue;
+}
+.otp button:hover{
+    background-color: lightgreen;
+}
+label{
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
+}

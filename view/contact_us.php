@@ -3,13 +3,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/admin_delivery/contact.css">
+    <link rel="stylesheet" href="../public/css/admin_delivery/contact_us.css">
     
     <title>Document</title>
 </head>
 <body>
-    <?php include 'header.php'; ?>
-    <img src="../public/images/contact-us.jpg" alt="contact-us" width="100%" height="75%">
+    <?php include 'home_header.php'; ?>
+    <img src="../public/images/contact.jpeg" alt="contact-us" width="100%" height="75%">
     <h1>Contact us for any clarification</h1>
     <div class="box-info">
        
@@ -37,24 +37,19 @@
        
     </div>
 
-
-
-
-
-
     <div class="footer">
         <div class="footer-left">
-            <img src="public/images/logo.png" alt="" class="homeimg">
+            <img src="../public/images/logo.png" alt="">
             <p>Visit our website and place your orders. This section provides you some information about FAGO and some links for imporatant pages.
             Customers can order gas cylinders and accessories
             in same platform. So, this is a one stop solution for all your gas needs. Just try it and you will love it.
             </p>
             <h2>Follow Us</h2>
             <div class="socialmedia">
-            <a href="https://www.facebook.com/"><img src="public/images/customer/facebook.png" alt="" class="homeimg"></a>
-            <a href="https://www.instagram.com/"><img src="public/images/customer/insta.png" alt="" class="homeimg"></a>
-            <a href="https://www.twitter.com/"><img src="public/images/customer/twitter.png" alt="" class="homeimg"></a>
-            <a href="https://www.youtube.com/"><img src="public/images/customer/linkd.jpg" alt="" class="homeimg"></a>
+            <a href="https://www.facebook.com/"><img src="../public/images/customer/facebook.png" alt="" class="homeimg"></a>
+            <a href="https://www.instagram.com/"><img src="../public/images/customer/insta.png" alt="" class="homeimg"></a>
+            <a href="https://www.twitter.com/"><img src="../public/images/customer/twitter.png" alt="" class="homeimg"></a>
+            <a href="https://www.youtube.com/"><img src="../public/images/customer/linkd.jpg" alt="" class="homeimg"></a>
             </div>
         </div>
         <div class="footer-right">

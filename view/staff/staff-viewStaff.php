@@ -11,8 +11,11 @@ require_once("../../config.php");?>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="../../public/css/admin_delivery/Dashboard.css">
     <link rel="stylesheet" href="../../public/css/admin_delivery/user_list.css">
+<<<<<<< HEAD
 	<link rel="stylesheet" href="../../public/css/admin_delivery/delete_popup.css">
 
+=======
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 
 	<title>FaGo</title>
 </head>
@@ -26,14 +29,22 @@ require_once("../../config.php");?>
 			<span class="text">FAGO</span>
 		</a>
 		<ul class="side-menu top">
+<<<<<<< HEAD
 		     <li>
 				<a href="../../controller/staff/dashboard_controller.php?id=profitdetails">
+=======
+			<li >
+				<a href="../../view/staff/staff_dashboard.php">
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 			<li>
 				<a href="../../controller/staff/profile_controller.php?viewacc=1">
 					<i class='bx bxs-group' ></i>
@@ -44,21 +55,33 @@ require_once("../../config.php");?>
 
 			<li class="active">
 			
+<<<<<<< HEAD
 			<a href="../../controller/staff/users_controller.php?id=userdetails">
+=======
+			<a href="../../view/staff/users.php">
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-group' ></i>
 					<span class="text">Users</span>
 				</a>
 			</li>
 
 			<li>
+<<<<<<< HEAD
 				<a href="../../controller/staff/users_controller.php?rid=userrequestdetails">
+=======
+				<a href="../../view/staff/user_request.php">
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Registration Requests</span>
 				</a>
 			</li>
 
 			<li>
+<<<<<<< HEAD
 				<a href="../../controller/staff/cylinder_controller.php?id=viewcylinder">
+=======
+				<a href="../../view/staff/gas_cylinder.php">
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Gas Cylinders</span>
 				</a>
@@ -71,18 +94,27 @@ require_once("../../config.php");?>
 			</li>
 
 			<li>
+<<<<<<< HEAD
 				<a href="../../controller/staff/delivery_controller.php?id=viewdelivery">
+=======
+				<a href="deliveries.php">
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Deliveries</span>
 				</a>
 			</li>
 
 			<li>
+<<<<<<< HEAD
 				<a href="../../controller/staff/payment_controller.php?id=gaspaymentdetails">
+=======
+				<a href="payments.php">
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Payments</span>
 				</a>
 			</li>
+<<<<<<< HEAD
 
 			<li>
 				<a href="../../controller/staff/complain_controller.php?id=complaindetails">
@@ -90,6 +122,8 @@ require_once("../../config.php");?>
 					<span class="text">Complains</span>
 				</a>
 			</li>
+=======
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 			
 		</ul>
 		<ul class="side-menu">
@@ -125,7 +159,11 @@ require_once("../../config.php");?>
 			<?php if($_SESSION['img-status'] == 0){?>
                     <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                 <?php }else{?>
+<<<<<<< HEAD
                     <img src='../../public/images/staff/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
+=======
+                    <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
             <?php } ?>
 			</a>
 			<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?>
@@ -133,12 +171,17 @@ require_once("../../config.php");?>
 		<!-- NAVBAR -->
 
 		<!-- MAIN -->
+<<<<<<< HEAD
 		<main>
+=======
+	<main>
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 
     <div class="list">
 
     <h3>All Staff Members</h3>
 
+<<<<<<< HEAD
 	<form action="../../controller/staff/staffacc_controller.php" method="POST">
 				<div class="form-input">
 					<input type="search" name="staff_name" placeholder="Search by ID or name...">
@@ -146,6 +189,8 @@ require_once("../../config.php");?>
 				</div>
 	</form>
 
+=======
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     <table>
     <tr>
         <th>Staff ID</th>
@@ -175,7 +220,11 @@ require_once("../../config.php");?>
                  <td>
                  <a href="../../controller/staff/staffacc_controller.php?vid='.$user_id.'"><button class="button1">View</button></a>
                  <a href="../../controller/staff/staffacc_controller.php?uid='.$user_id.'"><button class="button2">Update</button></a>
+<<<<<<< HEAD
 				 <button onclick="deleteuser('.$user_id.');" class="button3">Disable</button>
+=======
+                 <a href="../../controller/staff/staffacc_controller.php?did='.$user_id.'"><button class="button3">Delete</button></a>
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
                  </td>
             </tr>' ;
             
@@ -193,6 +242,7 @@ require_once("../../config.php");?>
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
+<<<<<<< HEAD
 
 	<div id="backgr">
         <div id="cancel_popup">
@@ -222,6 +272,8 @@ require_once("../../config.php");?>
     </script>
 	
 
+=======
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 	
 
 	<script src="../../public/js/script.js"></script>
