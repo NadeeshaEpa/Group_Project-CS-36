@@ -34,7 +34,7 @@ elseif(isset($_POST['btn2'])){
 
         unset($_SESSION['DeliveryRequestDetails']);
 
-        header("Location: ../../view/deliveryperson/DelivaryDashboard.php");
+        header("Location: ../../controller/deliveryperson/deliveryDashboardFirstController.php");
         $connection->close();
         exit();
     }
@@ -44,7 +44,7 @@ elseif(isset($_POST['btn2'])){
         unset($_SESSION['DeliveryRequestDetails']);
 
 
-        header("Location: ../../view/deliveryperson/DelivaryDashboard.php");
+        header("Location: ../../controller/deliveryperson/deliveryDashboardFirstController.php");
         $connection->close();
         exit();
     }

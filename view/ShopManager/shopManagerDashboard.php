@@ -115,11 +115,38 @@ if(!isset($_SESSION['User_id'])){
 
                 
 				<div class="SeperateView">
-					<form action="../../controller/ShopManager/shopManagerOrdresController.php" method="POST">
-						<Button id="DeliveredOrderId" name="DeliveredOrder">Delivered Orders</Button><br>
-						<button id="PickedPrderedId" name="PickedOrder">Picked Orders</button>
-					</form>
+					
 				</div>
+
+				<div class="partInner1">
+                        <div class="ADmsg">
+                                <h6>
+                                <?php 
+                                    if(isset($_SESSION['updateOpenSucessfully'])){
+                                        echo"Shop is opened.";
+                                        unset($_SESSION['updateOpenSucessfully']);
+                                    }
+                                    if(isset($_SESSION['updateClosedSucessfully'])){
+                                        echo"Shop is closed.";
+                                        unset($_SESSION['updateClosedSucessfully']);
+                                    }
+                                
+                                ?>
+                                </h6>
+                        </div>
+                        <div class="ADbtn">
+							
+                            <form action="../../controller/ShopManager/shopManagerOrdresController.php" method="post">
+                                <button class="cbtn1" id="btn1" name="sbtn1">opened</button><br>
+                                <button class="cbtn2" id="btn2" name="sbtn2">closed</button>
+                            </form>
+							<form action="../../controller/ShopManager/shopManagerOrdresController.php" method="POST">
+								<Button id="DeliveredOrderId" name="DeliveredOrder">Delivered Orders</Button><br>
+								<button id="PickedPrderedId" name="PickedOrder">Picked Orders</button>
+					       </form>
+                        </div>
+                </div>
+				
 
 				
 			</div>
@@ -158,7 +185,7 @@ if(!isset($_SESSION['User_id'])){
                                     <table class="tb">
                                     <tr>
 									    <th>Customer Name</th>
-                                        <th>Customer Address</th>
+                                        <!-- <th>Customer Address</th> -->
 
 										<th>Customer Contact No</th>
 										<th>Quantity</th>
@@ -166,6 +193,8 @@ if(!isset($_SESSION['User_id'])){
 										<th>Order date</th>
                                         <th>Delivery Method</th>
                                         <th>Price</th>
+										<th>Payment</th>
+										<th>Order State</th>
 
                                     </tr>
                                     <?php
@@ -174,7 +203,7 @@ if(!isset($_SESSION['User_id'])){
                                         foreach ($result as $row) {
                                             echo "<tr>";
                                             echo "<td>" . $row['Name'] . "</td>";
-                                            echo "<td>" . $row['Address'] . "</td>";
+                                            // echo "<td>" . $row['Address'] . "</td>";
 
 											echo "<td>" . $row['Contact_No'] ."</td>";
 											echo "<td>" . $row['Quantity'] . "</td>";
@@ -182,6 +211,35 @@ if(!isset($_SESSION['User_id'])){
 											echo "<td>" . $row['Order_date'] . "</td>";
 											echo "<td>" . $row['Delivery_Method'] . "</td>";
                                             echo "<td>" . $row['Amount'] . "</td>";
+											if($row['Paid']==0){ ?>
+												<!-- change the color of text to red -->
+												<td style="color: red;"><?php echo "Pending"; ?></td>
+											<?php }else if($row['Paid']==1){ ?>
+												<!-- change the color of text to green -->
+												<td style="color: green;"><?php echo "Paid"; ?></td>
+											<?php } 
+
+											if($row['Delivery_Status']==NULL){ ?>
+												<!-- change the color of text to red -->
+												<td style="color: lightgreen;"><?php echo "Not Assigned"; ?></td>
+											<?php }else if($row['Delivery_Status']==0){ ?>
+												<!-- change the color of text to green -->
+												<td style="color: #FDC801;"><?php echo "On the Way"; ?></td>
+											<?php }else if($row['Delivery_Status']==1){ ?>
+												<!-- change the color of text to green -->
+												<td style="color: green;"><?php echo "Delivered"; ?></td>
+											<?php }else if($row['Delivery_Status']==2){ ?>
+												<!-- change the color of text to green -->
+												<td style="color: red;"><?php echo "NO Delivery"; ?></td>
+											<?php }else if($row['Delivery_Status']==3){ ?>
+												<!-- change the color of text to green -->
+												<td style="color: blue;"><?php echo "Courier Service"; ?></td>
+											<?php }else if($row['Delivery_Status']==4){ ?>
+												<!-- change the color of text to green -->
+												<td style="color: purple;"><?php echo "Picked"; ?></td>
+											<?php }
+
+
 											echo "</tr>";
                                         }
                                         

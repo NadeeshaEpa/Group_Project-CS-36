@@ -21,8 +21,9 @@ class reviews{
        
         $result=mysqli_query($connection,$sql);
         if($result->num_rows===0){
-            return false;
             $_SESSION['ReviewsError']="No Reviews Added";
+            return false;
+            
         }else{
             $answer=array();
             while($row=$result->fetch_assoc()){
