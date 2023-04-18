@@ -1,29 +1,15 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 /* body{
     margin: 0%;
     background-color: #fffdf0;
     font-family: 'Poppins', sans-serif;
 } */
-<<<<<<< HEAD
-=======
-
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 .registration-form{
     background: #fff;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     margin-top: 30px;
-<<<<<<< HEAD
     width: 70%;
-=======
-
-    width: 70%;
-
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     margin: 0 auto;
     padding-left: 60px;
     margin-top: 30px;
@@ -40,31 +26,19 @@
     border: 1px solid #e3e3e3;
     padding: 10px;
     margin-bottom: 20px;
-<<<<<<< HEAD
     float:right;
     width:20%;
     background: #41cb4f;
     /* border-radius: 20px; */
-=======
-    width:90%;
-    background: #4E60FF;
-    border-radius: 20px;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     align-items: center;
     color: white;
     text-decoration: none;
 }
 
-<<<<<<< HEAD
 
 .registration-form button:hover{
     background: #2eae3b;
     /* color:black; */
-=======
-.registration-form button:hover{
-    background: #6EDC79;
-    color:black;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }
 .registration-form h2{
     margin-bottom: 20px;
@@ -73,7 +47,6 @@
     font-weight: bold;
     font-size: 1.5rem;
 }
-<<<<<<< HEAD
 
 .err-msg{
     color: #ba3939;
@@ -89,8 +62,6 @@
     /* background-color: lightgreen; */
     width: 100%;
 }
-=======
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 /* .box{
     padding:12px;
     width:90%;
