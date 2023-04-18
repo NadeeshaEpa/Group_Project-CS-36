@@ -11,10 +11,7 @@ require_once("../../config.php");?>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="../../public/css/admin_delivery/Dashboard.css">
     <link rel="stylesheet" href="../../public/css/admin_delivery/user_list.css">
-<<<<<<< HEAD
 	<link rel="stylesheet" href="../../public/css/admin_delivery/delete_popup.css">
-=======
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 
 	<title>FaGo</title>
 </head>
@@ -29,11 +26,7 @@ require_once("../../config.php");?>
 		</a>
 		<ul class="side-menu top">
 			<li >
-<<<<<<< HEAD
 				<a href="../../controller/admin/dashboard_controller.php?id=profitdetails">
-=======
-				<a href="../../view/admin/admin_dashboard.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -49,11 +42,7 @@ require_once("../../config.php");?>
 
 			<li class="active">
 			
-<<<<<<< HEAD
 			<a href="../../controller/admin/users_controller.php?id=userdetails">
-=======
-			<a href="../../view/admin/users.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Users</span>
 				</a>
@@ -66,11 +55,7 @@ require_once("../../config.php");?>
 				</a>
 			</li>
 			<li>
-<<<<<<< HEAD
 				<a href="../../controller/Users/logout_controller.php">
-=======
-				<a href="#">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Orders</span>
 				</a>
@@ -85,11 +70,7 @@ require_once("../../config.php");?>
 				</a>
 			</li> -->
 			<li>
-<<<<<<< HEAD
 				<a href="#" class="logout">
-=======
-				<a href="../../controller/Users/logout_controller.php" class="logout">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -105,29 +86,13 @@ require_once("../../config.php");?>
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-<<<<<<< HEAD
-=======
-			<!-- <a href="#" class="nav-link">Categories</a> -->
-			<!-- <form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form> -->
-			<!-- <input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label> -->
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 			
 			
 			<a href="#" class="profile">
 			<?php if($_SESSION['img-status'] == 0){?>
                     <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                 <?php }else{?>
-<<<<<<< HEAD
                     <img src='../../public/images/admin/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
-=======
-                    <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
             <?php } ?>
 			</a>
 			<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?>
@@ -140,7 +105,6 @@ require_once("../../config.php");?>
 
     <h3>All Gas Agents</h3>
 
-<<<<<<< HEAD
 	<form action="../../controller/admin/gasagentacc_controller.php" method="POST">
 				<div class="form-input">
 					<input type="search" name="gasagent_name" placeholder="Search by ID or name...">
@@ -148,8 +112,6 @@ require_once("../../config.php");?>
 				</div>
 	</form>
 
-=======
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     <table>
     <tr>
         <th>Gas Agent ID</th>
@@ -179,11 +141,7 @@ require_once("../../config.php");?>
                  <td>
 				 <a href="../../controller/admin/gasagentacc_controller.php?vid='.$user_id.'"><button class="button1">View</button></a>
                  <a href="../../controller/admin/gasagentacc_controller.php?uid='.$user_id.'"><button class="button2">Update</button></a>
-<<<<<<< HEAD
 				 <button onclick="deleteuser('.$user_id.');" class="button3">Disable</button>
-=======
-                 <a href="../../controller/admin/gasagentacc_controller.php?did='.$user_id.'"><button class="button3">Delete</button></a>
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
                  </td>
             </tr>' ;
             
@@ -201,7 +159,6 @@ require_once("../../config.php");?>
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
-<<<<<<< HEAD
 
 	<div id="backgr">
         <div id="cancel_popup">
@@ -229,8 +186,6 @@ require_once("../../config.php");?>
         }  
             
     </script>
-=======
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 	
 
 	<script src="../../public/js/script.js"></script>
