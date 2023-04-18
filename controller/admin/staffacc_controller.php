@@ -2,29 +2,17 @@
 session_start();
 include_once '../../config.php';
 include_once '../../model/admin/account_model.php';
-<<<<<<< HEAD
-
-
-if(isset($_GET['id'])){
-    echo "hello";
-=======
 include_once '../../model/admin/staff_model.php';
 
 
 
 if(isset($_GET['id'])){
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     $staff=new account_model();
     $result=$staff->viewstaff($connection);
     if($result){
         $_SESSION['staffdetails']=$result;
         header("Location:../../view/admin/admin-viewStaff.php");
     }else{
-<<<<<<< HEAD
-        echo "Error";
-    }
-
-=======
         $_SESSION['staffdetails']=[];
         header("Location:../../view/admin/admin-viewStaff.php");
     }
@@ -146,5 +134,4 @@ if(isset($_POST['edituser'])){
     }
 
 
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }
