@@ -110,11 +110,12 @@ if(isset($_GET['cancelid'])){
         }else{
             require_once '../../model/customer/email_model.php';
             $email=new email_model();
+            $email_agent=new email_model();
             $shop="gas";
             $useremail=$order->getUserEmail($connection,$order_id,$shop);
             $gasagentemail=$order->getGasAgentEmail($connection,$order_id);
             $email->sendRefundEmail($connection,$order_id,$useremail);
-            $email->sendRefundEmail_agent($connection,$order_id,$gasagentemail);
+            $email_agent->sendRefundEmail_agent($connection,$order_id,$gasagentemail);
             header("Location: ../../view/customer/customer_cancelorder.php");
         }
     }else{

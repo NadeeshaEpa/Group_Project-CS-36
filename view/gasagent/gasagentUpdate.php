@@ -1,8 +1,4 @@
-<?php session_start(); 
-if(!isset($_SESSION['User_id'])){
-    header("Location: ../../index.php");
-}
-?>
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +13,31 @@ if(!isset($_SESSION['User_id'])){
 	<title>FaGo</title>
 </head>
 <body>
+	
+<dialog id="popupModal">
+	<div class="popupModal">
+		<i class='bx bx-x-circle'></i>
+		<h1>Are you sure ?</h1>
+		<p>Do you realy wants to delete this record. This process can not be undone.</p>
+		<form method="post" action="../../controller/gasagent/gastype_controller.php">
+			<button type="submit" id="deleteBtn" name="deleteBtn">Delete</button>
+			<button type="button" onclick="closeModal()">Cancel</button>
+		</form>
+	</div>
+</dialog>
 
+<dialog id="updatePopupModal">
+	<div class="popupModal">
+		<i class='bx bx-x-circle'></i>
+		<p>Update Quantitiy</p>
+		<form method="post" action="../../controller/gasagent/gastype_controller.php">
+			<label for="updateQuantity">Quantity :</label>
+			<input type="text" id="updateQuantity" name="updateQuantity"/>
+			<button type="submit" id="quantityUpdateBtn" name="quantityUpdateBtn">save</button>
+			<button type="button" onclick="closeUpdatePopupModal()">Cancel</button>
+		</form>
+	</div>
+</dialog>
 
 	<!-- SIDEBAR -->
 	<section id="sidebar">
@@ -27,7 +47,7 @@ if(!isset($_SESSION['User_id'])){
 		</a>
 		<ul class="side-menu top">
 			<li >
-				<a href="../../view/gasagent/gasagent_dashboard.php">
+				<a href="../../controller/gasagent/gasagent_order_controller.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -52,7 +72,7 @@ if(!isset($_SESSION['User_id'])){
 				</a>
 			</li>
 			<li class="active">
-				<a href="#">
+				<a href="../../controller/gasagent/gasagentUpdateFirst.php">
 					<i class='bx bxs-message-dots' ></i>
 					<span class="text">Update/Delete</span>
 				</a>
@@ -64,11 +84,12 @@ if(!isset($_SESSION['User_id'])){
 				</a>
 			</li>
 			<li>
-				<a href="#">
-					<i class='bx bxs-badge-check' ></i>
-					<span class="text">Complains</span>
+				<a href="../../view/gasagent/compalin.php">
+					<i class='bx bxs-group' ></i>
+					<span class="text">Complaine</span>
 				</a>
-            </li>
+			</li>
+			
 		</ul>
 		<ul class="side-menu">
 			<!-- <li>
@@ -78,7 +99,7 @@ if(!isset($_SESSION['User_id'])){
 				</a>
 			</li> -->
 			<li>
-				<a href="../../controller/Users/logout_controller.php" class="logout">
+				<a href="../../view/login.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -93,23 +114,23 @@ if(!isset($_SESSION['User_id'])){
 	<section id="content">
 		<!-- NAVBAR -->
 		<nav>
-			<i class='bx bx-menu' ></i>
-			<a href="#" class="nav-link">Categories</a>
-			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
-			<a href="#" class="profile">
-				<img src="../../public/images/people.png">
-			</a>
+		<i class='bx bx-menu' ></i>
+
+		<li class="profile">
+			<?php if($_SESSION['img-status'] == 0){?>
+				<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
+			<?php }else{?>
+				<img src='../../public/images/gasargent/profile_image/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
+			<?php } ?>								
+		</li>
+		<li class="user_info">
+			<h6><?php if(isset($_SESSION['Firstname']) && isset($_SESSION['Lastname'])){
+					echo $_SESSION['Firstname'] ," " ,$_SESSION['Lastname'] ;
+				}?></h6>
+			<h5><?php if(isset($_SESSION['Type'])){
+					echo $_SESSION['Type'];
+				}?></h5>
+        </li>
 		</nav>
 		<!-- NAVBAR -->
 
@@ -136,65 +157,31 @@ if(!isset($_SESSION['User_id'])){
 
 			<div class="table-data">
 				<div class="order">
-					<div class="head">
-						<h3>Gas types</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
-					<table>
-						<thead>
-							<tr>
-								<th>Gas Type /KG</th>
-								<th>Quantity</th>
-								<th>Delete</th>
-								<th>Update</th>
-							</tr>
-						</thead>
-						<tbody>
-							<!-- <tr>
-								<td>
-									
-									<p>12.5</p>
-								</td>
-								<td>10</td>
-								<td><span class="status pending">Completed</span></td>
-								<td><span class="status completed">Update</span></td>
-
-							</tr> -->
-							<tr>
-								<td>
-									
-									<p>2.3</p>
-								</td>
-								<td>1</td>
-								<td><span class="status pending">Completed</span></td>
-								<td><span class="status completed">Update</span></td>							</tr>
-							<tr>
-								<td>
-									
-									<p>37.5</p>
-								</td>
-								<td>8</td>
-								<td><span class="status pending">Completed</span></td>
-								<td><span class="status completed">Update</span></td>							</tr>
-							<tr>
-								<td>
-									
-									<p>7.5</p>
-								</td>
-								<td>56</td>
-								<td><span class="status pending">Completed</span></td>
-								<td><span class="status completed">Update</span></td>							</tr>
-							<tr>
-								<td>
-									
-									<p>12.5</p>
-								</td>
-								<td>45</td>
-								<td><span class="status pending">Completed</span></td>
-								<td><span class="status completed">Update</span></td>							</tr>
-						</tbody>
-					</table>
+				    <div class="tbl">
+                        <table class="tb">
+                                    <tr>
+									    <th>weight</th>
+                    					<th>Quantity</th>
+                                    </tr>
+                                    <?php
+                                    if(isset($_SESSION['Gas_UP_details'])){
+										$result=$_SESSION['Gas_UP_details'];
+                                        foreach ($result as $row) {
+											
+                                            echo "<tr>";
+                                            echo "<td>" . $row['Weight'] . "</td>";
+											echo "<td>" . $row['Quantity'] . "</td>";?>
+											<td> <button id="btnU" onclick="openUpdatePopupModal(<?php echo $row['Cylinder_Id'];?>, <?php echo $row['Quantity'];?>)">Update</button></td>
+										<td> <button id="btnD"  onclick="openModal(<?php echo $row['Cylinder_Id'];?>)">Delete</button></td>
+                      						<?php echo "</tr>";
+                                        }
+                                      
+                                    }
+                                    
+                                    ?>
+                         </table>
+                    </div>
+					
 				</div>
 			
 			</div>
@@ -202,7 +189,41 @@ if(!isset($_SESSION['User_id'])){
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
-	
+	<script>
+		popupModal.close()
+		
+		function openModal(id){
+			const popupModal = document.getElementById('popupModal')
+			const deleteBtn = document.getElementById('deleteBtn')
+			deleteBtn.value = id
+			popupModal.showModal()	
+		}
+
+		function closeModal(){
+			const popupModal = document.getElementById('popupModal')
+			popupModal.close()
+		}
+
+		//update modal
+		function openUpdatePopupModal(id, q){
+			const updatePopupModal = document.getElementById('updatePopupModal')
+			const quantityUpdateBtn = document.getElementById('quantityUpdateBtn')
+			const updateQuantity = document.getElementById('updateQuantity')
+
+			quantityUpdateBtn.value = id
+			updateQuantity.value = q
+
+			updatePopupModal.showModal()	
+		}
+
+		function closeUpdatePopupModal(){
+			const updatePopupModal = document.getElementById('updatePopupModal')
+			updatePopupModal.close()
+		}
+
+
+
+	</script>
 
 	<script src="../../public/js/script.js"></script>
 </body>

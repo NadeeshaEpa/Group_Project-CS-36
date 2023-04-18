@@ -4,9 +4,26 @@ require_once("../../config.php");
 require_once("../../model/customer/shop_model.php");
 require_once("../../model/customer/addtocart_model.php");
 
-if(isset($_GET['gascooker'])){
+if(isset($_GET['gascooker']) || isset($_GET['gascooker_page'])){
    $gascooker=new shop_model();
-   $result=$gascooker->getGasCooker($connection);
+
+   $limit = 8;
+   $_SESSION['gascooker_limit']=$limit;
+   $page = isset($_GET['gascooker_page']) ? $_GET['gascooker_page'] : 1;
+   $_SESSION['gascooker_page']=$page;
+   $offset = ($page - 1) * $limit;
+   $_SESSION['gascooker_offset']=$offset;
+   
+   //get the total number of items
+   $item="Gas Cooker";
+   $total_records=$gascooker->items($connection,$item);
+   $_SESSION['gascooker_count']=$total_records;
+
+   //calculate the total number of pages
+   $total_pages = ceil($total_records / $limit);
+   $_SESSION['gascooker_total_pages']=$total_pages;
+
+   $result=$gascooker->getGasCooker($connection,$limit,$offset);
    if($result==false){
       $_SESSION['gascooker']=[];
       header("Location: ../../view/customer/inside_fagoshop.php");
@@ -15,9 +32,26 @@ if(isset($_GET['gascooker'])){
       header("Location: ../../view/customer/inside_fagoshop.php");
    }
 }
-if(isset($_GET['regulator'])){
+if(isset($_GET['regulator'])||isset($_GET['regulator_page'])){
    $regulator=new shop_model();
-   $result=$regulator->getRegulator($connection);
+
+   $limit = 8;
+   $_SESSION['regulator_limit']=$limit;
+   $page = isset($_GET['regulator_page']) ? $_GET['regulator_page'] : 1;
+   $_SESSION['regulator_page']=$page;
+   $offset = ($page - 1) * $limit;
+   $_SESSION['regulator_offset']=$offset;
+
+   //get the total number of items
+   $item="Regulator";
+   $total_records=$regulator->items($connection,$item);
+   $_SESSION['regulator_count']=$total_records;
+
+   //calculate the total number of pages
+   $total_pages = ceil($total_records / $limit);
+   $_SESSION['regulator_total_pages']=$total_pages;
+
+   $result=$regulator->getRegulator($connection,$limit,$offset);
    if($result==false){
       $_SESSION['regulator']=[];
       header("Location: ../../view/customer/inside_fagoshop_regulator.php");
@@ -26,9 +60,26 @@ if(isset($_GET['regulator'])){
       header("Location: ../../view/customer/inside_fagoshop_regulator.php");
    }
 }
-if(isset($_GET['other'])){
+if(isset($_GET['other']) || isset($_GET['other_page'])){
    $other=new shop_model();
-   $result=$other->getOther($connection);
+
+   $limit = 8;
+   $_SESSION['other_limit']=$limit;
+   $page = isset($_GET['other_page']) ? $_GET['other_page'] : 1;
+   $_SESSION['other_page']=$page;
+   $offset = ($page - 1) * $limit;
+   $_SESSION['other_offset']=$offset;
+
+   //get the total number of items
+   $item="Other";
+   $total_records=$other->items($connection,$item);
+   $_SESSION['other_count']=$total_records;
+
+   //calculate the total number of pages
+   $total_pages = ceil($total_records / $limit);
+   $_SESSION['other_total_pages']=$total_pages;
+
+   $result=$other->getOther($connection,$limit,$offset);
    if($result==false){
       $_SESSION['other']=[];
       header("Location: ../../view/customer/inside_fagoshop_other.php");
@@ -37,9 +88,24 @@ if(isset($_GET['other'])){
       header("Location: ../../view/customer/inside_fagoshop_other.php");
    }
 }
-if(isset($_GET['urgascooker'])){
+if(isset($_GET['urgascooker']) || isset($_GET['ungascooker_page'])){
    $gascooker=new shop_model();
-   $result=$gascooker->getGasCooker($connection);
+
+   $limit = 8;
+   $page = isset($_GET['ungascooker_page']) ? $_GET['ungascooker_page'] : 1;
+   $_SESSION['ungascooker_page']=$page;
+   $offset = ($page - 1) * $limit;
+   
+   //get the total number of items
+   $item="Gas Cooker";
+   $total_records=$gascooker->items($connection,$item);
+   $_SESSION['ungascooker_count']=$total_records;
+
+   //calculate the total number of pages
+   $total_pages = ceil($total_records / $limit);
+   $_SESSION['ungascooker_total_pages']=$total_pages;
+
+   $result=$gascooker->getGasCooker($connection,$limit,$offset);
    if($result==false){
       echo "No gas cooker";
    }else{
@@ -47,9 +113,25 @@ if(isset($_GET['urgascooker'])){
       header("Location: ../../view/customer/inside_unfagoshop.php");
    }
 }
-if(isset($_GET['unregulator'])){
+if(isset($_GET['unregulator'])||isset($_GET['unregulator_page'])){
    $regulator=new shop_model();
-   $result=$regulator->getRegulator($connection);
+   
+   $limit = 8;
+   $page = isset($_GET['unregulator_page']) ? $_GET['unregulator_page'] : 1;
+   $_SESSION['unregulator_page']=$page;
+   $offset = ($page - 1) * $limit;
+
+   //get the total number of items
+   $item="Regulator";
+   $total_records=$regulator->items($connection,$item);
+   $_SESSION['unregulator_count']=$total_records;
+
+   //calculate the total number of pages
+   $total_pages = ceil($total_records / $limit);
+   $_SESSION['unregulator_total_pages']=$total_pages;
+
+   $result=$regulator->getRegulator($connection,$limit,$offset);
+
    if($result==false){
       echo "No regulator";
    }else{
@@ -57,9 +139,25 @@ if(isset($_GET['unregulator'])){
       header("Location: ../../view/customer/inside_fagoshop_urregulator.php");
    }
 }
-if(isset($_GET['unother'])){
+if(isset($_GET['unother'])||isset($_GET['unother_page'])){
    $other=new shop_model();
-   $result=$other->getOther($connection);
+   
+   $limit = 8;
+   $page = isset($_GET['unother_page']) ? $_GET['unother_page'] : 1;
+   $_SESSION['unother_page']=$page;
+   $offset = ($page - 1) * $limit;
+
+   //get the total number of items
+   $item="Other";
+   $total_records=$other->items($connection,$item);
+   $_SESSION['unother_count']=$total_records;
+
+   //calculate the total number of pages
+   $total_pages = ceil($total_records / $limit);
+   $_SESSION['unother_total_pages']=$total_pages;
+
+   $result=$other->getOther($connection,$limit,$offset);
+
    if($result==false){
       echo "No other";
    }else{
@@ -122,7 +220,7 @@ if(isset($_POST['shop_add'])){
    }else{
       $_SESSION['addtocart']="success";
       if($category=="Gas Cooker"){
-         $result=$gascooker->getGasCooker($connection);
+         $result=$gascooker->getGasCooker($connection,$_SESSION['gascooker_limit'],$_SESSION['gascooker_offset']);
          if($result==false){
             $_SESSION['gascooker']=[];
             header("Location: ../../view/customer/inside_fagoshop.php");
@@ -131,7 +229,7 @@ if(isset($_POST['shop_add'])){
             header("Location: ../../view/customer/inside_fagoshop.php");
          } 
       }else if($category=="Regulator"){
-         $result=$gascooker->getRegulator($connection);
+         $result=$gascooker->getRegulator($connection,$_SESSION['regulator_limit'],$_SESSION['regulator_offset']);
          if($result==false){
             $_SESSION['regulator']=[];
             header("Location: ../../view/customer/inside_fagoshop_regulator.php");
@@ -140,7 +238,7 @@ if(isset($_POST['shop_add'])){
             header("Location: ../../view/customer/inside_fagoshop_regulator.php");
          }
       }else{
-         $result=$gascooker->getOther($connection);
+         $result=$gascooker->getOther($connection,$_SESSION['other_limit'],$_SESSION['other_offset']);
          if($result==false){
             $_SESSION['other']=[];
             header("Location: ../../view/customer/inside_fagoshop_other.php");

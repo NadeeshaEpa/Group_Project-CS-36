@@ -11,7 +11,10 @@
 	<link rel="stylesheet" href="../../public/css/admin_delivery/Dashboard.css">
     <link rel="stylesheet" href="../../public/css/admin_delivery/deliveries.css">
 	<link rel="stylesheet" href="../../public/css/admin_delivery/user_list.css">
+<<<<<<< HEAD
+=======
 	<link rel="stylesheet" href="../../public/css/admin_delivery/delete_popup.css">
+>>>>>>> 39892497ba09a67dd7133a9ec633cf58a21b843a
 
 	<title>FaGo</title>
 </head>
@@ -110,15 +113,22 @@
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
+<<<<<<< HEAD
+=======
 			<!-- <input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label> -->
 			
 			
+>>>>>>> 39892497ba09a67dd7133a9ec633cf58a21b843a
 			<a href="#" class="profile">
 			<?php if($_SESSION['img-status'] == 0){?>
                     <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                 <?php }else{?>
+<<<<<<< HEAD
+                    <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
+=======
                     <img src='../../public/images/staff/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
+>>>>>>> 39892497ba09a67dd7133a9ec633cf58a21b843a
             <?php } ?>
 			</a>
 			<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?>
@@ -127,6 +137,52 @@
 
 		<!-- MAIN -->
 		<main>
+<<<<<<< HEAD
+    <div class="list">
+        <h3>Payment Details</h3><br>
+        <table>
+            <tr>
+                <th>Order ID</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Payment</th>         
+            </tr>
+
+            <?php
+            $result=array();
+            array_push($result,[ 'User_Id' => '1', 'Order_Id' => '1', 'Order_date' => '2021-05-01', 'Amount' => '1000', 'Paid' => 'Pending' ]);
+            array_push($result,[ 'User_Id' => '1', 'Order_Id' => '2', 'Order_date' => '2021-05-02', 'Amount' => '2000', 'Paid' => 'Pending' ]);
+            array_push($result,[ 'User_Id' => '1', 'Order_Id' => '3', 'Order_date' => '2021-05-03', 'Amount' => '3000', 'Paid' => 'Pending' ]);
+            ?>
+                <?php foreach($result as $row){?>
+                    <tr>
+                        <td><?php echo $row['Order_Id']?></td>
+                        <td><?php echo $row['Order_date']?></td>
+                        <td><?php echo $row['Amount']?></td>
+                        <td>
+                        <form action="../../controller/staff/payment_controller.php" method="POST" id="staff_form">    
+                            <select name="payment">
+                                <option value="Pending">Pending</option>
+                                <option value="Paid">Paid</option>
+                            </select>
+                            <input type="hidden" name="User_Id" value="<?php echo $row['User_Id']?>">
+                            <input type="hidden" name="Order_Id" value="<?php echo $row['Order_Id']?>">
+                        
+                        </td>
+                        <td>
+                            <button type="submit" name="updatepayment">Update</button>
+                        </td>
+                        </form>
+                    </tr>
+                <?php
+                }
+                ?>          
+        </table>
+    </div>
+
+             <!-- <a href="../../view/staff/staff-viewStaff.php"><button style="background-color: #da3a3a; color:white;" class="b4">Cancel</button></a>  -->
+		    <!-- <button type="submit" name="updatepayment" id="submit" class="b6">Update</button>   -->
+=======
 		
 			
 			<!-- <form action="#" style="float:right;">
@@ -185,12 +241,15 @@
 		    <!-- <button type="submit" name="updatepayment" id="submit" class="b6">Update</button>   -->
             </form>
 
+>>>>>>> 39892497ba09a67dd7133a9ec633cf58a21b843a
 
 		   
 		</main>
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
+<<<<<<< HEAD
+=======
 	<!-- <div id="backgr">
         <div id="cancel_popup">
             <div class="cancel_contect">
@@ -217,6 +276,7 @@
         }  
             
     </script> -->
+>>>>>>> 39892497ba09a67dd7133a9ec633cf58a21b843a
 	
 
 	<script src="../../public/js/script.js"></script>

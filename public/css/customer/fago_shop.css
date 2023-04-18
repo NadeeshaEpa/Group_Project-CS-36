@@ -12,8 +12,6 @@ body{
     background-color: white;
     padding-left: 5%;
     padding-right: 8%;
-    /* margin-top: 2px; */
-
 }
   
 .navbar a {
@@ -82,6 +80,7 @@ body{
     padding: 10px 20px;
     background-color: white;
     margin-top: 2px;
+    padding-bottom: 20px;
 }
 .item{
     width: 20%;
@@ -213,4 +212,22 @@ body{
     background-color: lightcoral;
     padding-top: 1%;
     padding-bottom: 1%;
+}
+.pagination{
+    display: flex;
+    flex-direction: row;
+    float: right;
+    margin-top: 20px;
+}
+.pagination input{
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 18px;
+    margin-left: 10px;
+    margin-right: 20px;
+    color: blueviolet;
+    background-color: white;
 }
