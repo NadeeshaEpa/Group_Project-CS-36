@@ -24,13 +24,8 @@ require_once("../../config.php");?>
 			<span class="text">FAGO</span>
 		</a>
 		<ul class="side-menu top">
-<<<<<<< HEAD
 		<li >
 				<a href="../../controller/admin/dashboard_controller.php?id=profitdetails">
-=======
-			<li >
-				<a href="../../view/admin/admin_dashboard.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -46,11 +41,7 @@ require_once("../../config.php");?>
 
 			<li class="active">
 			
-<<<<<<< HEAD
 			<a href="../../controller/admin/users_controller.php?id=userdetails">
-=======
-			<a href="../../view/admin/users.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Users</span>
 				</a>
@@ -71,16 +62,7 @@ require_once("../../config.php");?>
 			
 		</ul>
 		<ul class="side-menu">
-<<<<<<< HEAD
 			
-=======
-			<!-- <li>
-				<a href="#">
-					<i class='bx bxs-cog' ></i>
-					<span class="text">Settings</span>
-				</a>
-			</li> -->
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 			<li>
 				<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
@@ -113,11 +95,7 @@ require_once("../../config.php");?>
 			<?php if($_SESSION['img-status'] == 0){?>
                     <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                 <?php }else{?>
-<<<<<<< HEAD
                     <img src='../../public/images/admin/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
-=======
-                    <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
             <?php } ?>
 			</a>
 			<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?>
@@ -126,33 +104,20 @@ require_once("../../config.php");?>
 
 		<!-- MAIN -->
 	<main>
-<<<<<<< HEAD
 	<div class="data">
-=======
-    <div class="data">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     <?php 
                    if(isset($_SESSION['edituser'])){
                       $result=$_SESSION['edituser']; 
                     //   $names=$result[1];
                    }
                 ?>
-<<<<<<< HEAD
     <form action="../../controller/admin/deliverypersonacc_controller.php" method="POST" id="staff_form">
         <h2>Edit Delivery Person Information</h2><br><br>
-=======
-    <form action="../../controller/admin/staffacc_controller.php" method="POST" id="staff_form">
-        <h2>Edit Staff Member Information</h2><br><br>
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     <div class="details"> 
 	<div class="down">
 	   <div class="down1">
 		<label>User Id:</label>
-<<<<<<< HEAD
         <input type="text" name="User_id" id="user_id" value="<?php echo $result[0]['DeliveryPerson_Id']?>"   required readonly>
-=======
-        <input type="text" name="User_id" id="user_id" value="<?php echo $result[0]['Staff_Id']?>"   required readonly>
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
        </div>
 	</div>
 	<div class="down"> 
@@ -178,7 +143,6 @@ require_once("../../config.php");?>
 		</div> 
 	</div>
 
-<<<<<<< HEAD
 	<div class="down">              
 	    <div class="down1">
 
@@ -191,8 +155,6 @@ require_once("../../config.php");?>
 		</div> 
 	</div>
 
-=======
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 	<div class="down"> 
 	    <div class="down1">
         <label for="email" id="email-label">Email :</label>
@@ -218,7 +180,6 @@ require_once("../../config.php");?>
             <input type="text" name="Postalcode" id="postalcode" value="<?php echo $result[0]['Postalcode']?>"  placeholder="Postalcode" required><br>
 	    </div>
 	</div>
-<<<<<<< HEAD
     <br>
 	<div class="down"> 
 	    <div class="down1">
@@ -227,8 +188,6 @@ require_once("../../config.php");?>
 		</div> 
 		
 	</div>  
-=======
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
             <!-- <label for="nic" id="nic-label">NIC :</label><br><br>
             <input type="text" name="nic" id="nic" placeholder="NIC" required><br> -->
             
@@ -236,19 +195,11 @@ require_once("../../config.php");?>
          
         <br><br>
 		<div class="down"> 
-<<<<<<< HEAD
         <a href="../../view/admin/admin-viewDeliveryperson.php"><button style="background-color: #da3a3a;" class="b4">Cancel</button></a> 
-=======
-        <a href="../../view/admin/admin-viewStaff.php"><button style="background-color: #da3a3a;" class="b4">Cancel</button></a> 
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 		<button type="submit" name="edituser" id="submit" class="b6">Update</button>  
 		</div>
     </form>
     </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     </main>
 		<!-- MAIN -->
 	</section>
