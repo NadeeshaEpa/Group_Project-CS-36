@@ -109,9 +109,10 @@
         <div class="contaner">
                <?php 
 			   		if(isset($_SESSION['gas'])){
-                	$result=$_SESSION['gas']; 
-					// print_r($result);
-					// die();
+                		$result=$_SESSION['gas']; 
+					}
+					if($result==null){
+						$result=[];
 					}
 				?>
                

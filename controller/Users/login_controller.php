@@ -38,9 +38,9 @@ if(isset($_POST['login'])){
         }else if($_SESSION['Type']=="Stock Manager"){
             header("Location: ../../controller/ShopManager/ShopManagerDashboardFirstController.php");  //redirect to the dashboard page
          }else if($_SESSION['Type']=="Admin"){
-            header("Location: ../../view/admin/admin_dashboard.php"); //redirect to the dashboard page
+            header("Location: ../../controller/admin/dashboard_controller.php?id=profitdetails"); //redirect to the dashboard page
         }else if($_SESSION['Type']=="Staff"){
-            header("Location: ../../view/staff/staff_dashboard.php");
+            header("Location: ../../controller/staff/dashboard_controller.php?id=profitdetails");
         }
         $connection->close();
         exit();
