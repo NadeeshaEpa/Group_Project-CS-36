@@ -95,7 +95,7 @@
 			<?php if($_SESSION['img-status'] == 0){?>
 				<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
 			<?php }else{?>
-				<img src='../../public/images/gasargent/profile_image/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
+				<img src='../../public/images/gasagent/profile_image/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
 			<?php } ?>								
 		</li>
 		<li class="user_info">
@@ -113,10 +113,10 @@
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Delivered gas Details</h1>
+					<h1>Dashboard</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="#">Delivered gas Details</a>
+							<a href="#">Dashboard</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
@@ -124,59 +124,44 @@
 						</li>
 					</ul>
 				</div>
+				
 			</div>
+        <div class="form">
+            <h2>Change Password</h2>
 
-			
-
-
-
-			<div class="table-data">
-				<div class="order">
-					
-					<div class="tbl">
-                            <table class="tb">
-                                <tr>
-                      					<th>Customer Name</th>
-                                        <th>Customer Address</th>
-                    					<th>Contact No</th>
-                    					<th>Quantity</th>
-                                       
-										<th>weight</th>
-                    					<th>Order date</th>
-                                        <th>company Name</th>
-                                        <th>Price</th>
-                                </tr>
-                                    <?php
-                                    if(isset($_SESSION['GDeliveredOrder'])){
-                                        $result=$_SESSION['GDeliveredOrder']; 
-                                        foreach ($result as $row) {
-                                            echo "<tr>";
-                                            echo "<td>" . $row['Name'] . "</td>";
-                                            echo "<td>" . $row['Address'] . "</td>";
-                      						echo "<td>" . $row['Contact_No'] ."</td>";
-                      						echo "<td>" . $row['Quantity'] . "</td>";
-                                           
-											echo "<td>" . $row['Weight'] . "</td>";
-                      						echo "<td>" . $row['Order_date'] . "</td>";
-                      						echo "<td>" . $row['company_name'] . "</td>";
-                                            echo "<td>" . $row['Amount'] . "</td>";
-                      						echo "</tr>";
-                                        }
-                                      
-                                    }
-                                    
-                                    ?>
-                            </table>
-                    </div>
-						
-				</div>
-			
-			</div>
-		</main>
-		<!-- MAIN -->
-	</section>
-	<!-- CONTENT -->
-	
+            <form action="../../controller/gasagent/account_controller.php" method="POST">
+                <div class="err-msg">
+                <?php
+                    if(isset($_SESSION['updatepwd-error'])){
+                        echo $_SESSION['updatepwd-error'];
+                        unset($_SESSION['updatepwd-error']);
+                    }?>
+                </div>
+                <div class="success-msg">
+                <?php
+                    if(isset($_SESSION['updatepwd'])){
+                        echo $_SESSION['updatepwd'];
+                        unset($_SESSION['updatepwd']);
+                    }
+                ?>
+                </div>
+                <div class="pwdcontainer">
+                    <label for="cpsw">Current Password</label><br>
+                    <input type="password" placeholder="Enter Current Password" name="pwd" required><br>
+                    <label id="password-label" for="cpsw">New Password</label><br>
+                    <input id="password" type="password" placeholder="Enter New Password" name="npwd" required><br>
+                    <label id="cpassword-label" for="psw">Confirm Password</label><br>
+                    <input id="cpassword" type="password" placeholder="Confirm New Password" name="cnpwd" required><br><br>
+                    <div class="btn">
+                        <button type="submit" name="updatepwd" class="updatebtn">Update</button>
+                        <!-- <button type="submit"  name="cancelpwd" class="cancelbtn">Cancel</button> -->
+                    </div>  
+                </div>
+            </form>
+            <form action="../../controller/gasagent/account_controller.php" method="POST">
+            <button type="submit"  name="cancelpwd" class="cancelbtn">Cancel</button>
+            </form>         
+        </div>
 
 	<script src="../../public/js/script.js"></script>
 </body>

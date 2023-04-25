@@ -7,8 +7,8 @@
     <!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
-    <link rel="stylesheet" href="../../public/css/customer/customer_dashboard.css">
     <link rel="stylesheet" href="../../public/css/gasagent/gasagentDashboard.css">
+    <link rel="stylesheet" href="../../public/css/gasagent/gasagent_profile.css">
     <script>
         var color=blue;
         document.getqueryselector("button").addEventlistener("click",function(){
@@ -18,8 +18,6 @@
     <title>gasagent Dashboard</title>
 </head>
 <body>
-    <!-- <?php include 'customer_header.php'; ?>   -->
-    <!-- <h2>Customer Dashboard</h2> -->
     <!-- SIDEBAR -->
 	<section id="sidebar">
 		<a href="#" class="brand">
@@ -67,9 +65,9 @@
 				</a>
 			</li>
             <li>
-				<a href="../../view/gasagent/compalin.php">
+                <a href="../../view/gasagent/compalin.php">
 					<i class='bx bxs-group' ></i>
-					<span class="text">Complaine</span>
+					<span class="text">Complains</span>
 				</a>
 			</li>
 		</ul>
@@ -187,7 +185,7 @@
                             </div>
                             <div class="down1">
                                 <label>Update Password:</label><br>
-                                <form action='customer_changepassword.php' method="POST">
+                                <form action='gasagent_changepassword.php' method="POST">
                                     <button type="submit" name="changepassword" class="cp">Change password</button>
                                 </form>   
                             </div>    
@@ -227,7 +225,6 @@
             </div>
         </div>
     </div>    
-    <?php //include 'customer_footer.php'; ?>
 </div>
     <script>
     var modal = document.getElementById('id01');

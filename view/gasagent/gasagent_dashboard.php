@@ -62,7 +62,7 @@
 			<li>
 				<a href="../../view/gasagent/compalin.php">
 					<i class='bx bxs-group' ></i>
-					<span class="text">Complaine</span>
+					<span class="text">Complains</span>
 				</a>
 			</li>
 		</ul>
@@ -126,24 +126,56 @@
 				</div>
 				
 			</div>
-			<div class="btn">
-                            <form action="../../controller/gasagent/dashboardController.php" method="post">
-                                <button class="btn1" id="btn1" name="btn1">Shop Open</button>
-                                <button class="btn2" id="btn2" name="btn2">Shop Closed</button>
-                            </form>
-                        </div>
+				<div class="btn">
+                    <form action="../../controller/gasagent/gasagentDashboardController.php" method="post">
+						<button class="btn1" id="btn1" name="sbtn1">Shop Open</button>
+						<button class="btn2" id="btn2" name="sbtn2">Shop Closed</button>
+                    </form>
+                </div>
 			<div>
 
 
 			<div class="btn">
-                            <form action="../../controller/gasagent/gasagentDashboardController.php" method="POST">
-                                <button class="btn1" id="btn1" name="deliverbtn">Delivered Orders</button>
-                                <button class="btn2" id="btn2" name="pickedbtn">Picked Orders</button>
-                            </form>
-                        </div>
+				<form action="../../controller/gasagent/gasagentDashboardController.php" method="POST">
+					<button class="btn1" id="btn1" name="deliverbtn">Delivered Orders</button>
+					<button class="btn2" id="btn2" name="pickedbtn">Picked Orders</button>
+				</form>
+			</div>
 			<div>
 
 				<?php
+				if(isset($_SESSION['updateOpenSucessfully'])){
+				    if($_SESSION['updateOpenSucessfully']=='sucess'){
+						?>
+						<div class="shop_status">
+						<p>Shop opened Successfully</p>
+						</div>	
+						<?php
+					}else{
+						?>
+						<div class="shop_status">
+						<p>Can't update status</p>
+						</div>	
+						<?php
+					}
+					unset($_SESSION['updateOpenSucessfully']);	
+				}
+				if(isset($_SESSION['updateClosedSucessfully'])){
+					if($_SESSION['updateClosedSucessfully']=='sucess'){
+						?>
+						<div class="shop_status">
+						<p>Shop closed Successfully</p>
+						</div>	
+						<?php
+					}else{
+						?>
+						<div class="shop_status">
+						<p>Can't update status</p>
+						</div>	
+						<?php
+					}
+					unset($_SESSION['updateClosedSucessfully']);
+				}
 				if(isset($_SESSION['low_stack_details'])){
 					$result=$_SESSION['low_stack_details'];
 					unset($_SESSION['low_stack_details']);
@@ -160,31 +192,6 @@
 				
 				?>
 			</div>
-
-			<!-- <ul class="box-info">
-				<li>
-					<i class='bx bxs-calendar-check' ></i>
-					<span class="text">
-						<h3>52</h3>
-						<p>New Order</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-dashboard' ></i>
-					<span class="text">
-					<p id="dayid"></p>
-						<h3>283</h3>
-						<p>Total orders</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-dollar-circle' ></i>
-					<span class="text">
-						<h3>rs 5543</h3>
-						<p>Total Sales</p>
-					</span>
-				</li>
-			</ul> -->
 			<ul class="box-info">
                 <li>
 					<i class='bx bxs-calendar-check' ></i>
