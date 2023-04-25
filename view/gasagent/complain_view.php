@@ -120,9 +120,7 @@
 							<a href="#">View Complains </a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a class="active" href="../../index.php">Home</a>
-						</li>
+						
 					</ul>
 				</div>
                 
