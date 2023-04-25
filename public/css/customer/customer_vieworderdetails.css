@@ -4,7 +4,6 @@
 h1{
     text-align: center;
 }
-<<<<<<< HEAD
 .back button{
     margin-top: 10%;
     width: 150px;
@@ -22,13 +21,10 @@ h1{
 .back button:hover{
     background-color: lightgreen;
 }
-=======
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 .orderdetails{
     height: 90%;
     display: flex;
 }
-<<<<<<< HEAD
 .data{
     float: right;
     margin-left: 10%;
@@ -82,39 +78,4 @@ body{
 }
 .customer input{
     width: 85%;
-=======
-.odata{
-    float: right;
-    background-color: white;
-    padding-left: 40px;
-    margin-top: 3.6%;
-    border-radius: 20px;
-    width: 60%;
-    margin-right: 12%;
-    padding: 20px;
-    /* padding-left: 40px; */
-    padding-bottom: 30px;
-}
-.odata h2{
-    text-align: center;
-    font-size: 30px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    margin-left: 15%;
-    margin-right: 14%;
-    color: #10338e;
-}
-table{
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-table, th, td{
-    /* border: 2px solid #79d37c; */
-    border: 2px solid #10338e;
-    padding: 10px;
-}
-.table2 tr{
-    text-align: left;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 }

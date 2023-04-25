@@ -1,20 +1,12 @@
 *{
     font-family: 'Poppins', sans-serif;
 }
-<<<<<<< HEAD
 ul {
-=======
-.header ul {
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-<<<<<<< HEAD
     background-color:white;
-=======
-    background-color:rgb(254, 253, 251);
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 
 }
 body{
@@ -33,11 +25,7 @@ body{
 }
 
 .header li a:hover:not(.active) {
-<<<<<<< HEAD
    background-color:rgb(131, 131, 206);
-=======
-   font-size: 21px;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
  }
 
 .header li img{

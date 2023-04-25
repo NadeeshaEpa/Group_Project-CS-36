@@ -1,25 +1,17 @@
-<<<<<<<< HEAD:public/css/fuel_staff/fago_register.css
 *{
     font-family: 'Poppins', sans-serif;
  }
 body{
-========
-/* body{
->>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458:public/css/admin_delivery/admin_adduser.css
     margin: 0%;
     background-color: #fffdf0;
-    font-family: 'Poppins', sans-serif;
-} */
-.left{
-    color: black;
 }
 .registration-form{
     background: #fff;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    border:black 2px solid;
     margin-top: 30px;
-    width: 50%;
+    width: 40%;
     margin: 0 auto;
     padding-left: 60px;
     margin-top: 30px;
@@ -29,7 +21,6 @@ body{
     border: 1px solid #e3e3e3;
     padding: 10px;
     margin-bottom: 20px;
-    width: 250px;
 }
 .registration-form button{
     border-radius: 5px;
@@ -37,15 +28,12 @@ body{
     padding: 10px;
     margin-bottom: 20px;
     width:90%;
-    background: #4E60FF;
+    background: blue;
     border-radius: 20px;
     align-items: center;
-    color: white;
-    text-decoration: none;
 }
-
 .registration-form button:hover{
-    background: #6EDC79;
+    background: green;
     color:black;
 }
 .registration-form h2{
@@ -53,13 +41,8 @@ body{
     text-align: center;
     color: #333;
     font-weight: bold;
-    font-size: 1.5rem;
 }
-
-.errmsg{
-    color: red;
-}
-/* .box{
+.box{
     padding:12px;
     width:90%;
     border:1px solid black;
@@ -68,15 +51,35 @@ body{
 }
 .box1{
     padding:12px;
-    width:60%;
+    width:45%;
     border:1px solid black;
     outline: none;
     border-radius: 20PX;
 }
 .box2{
     padding:12px;
-    width:80%;
+    width:30%;
     border:1px solid black;
     outline: none;
     border-radius: 20PX;
-} */
+}
+h2{
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+p{
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+#errmsg{
+  color: #ba3939;
+  background: #ffe0e0;
+  width: 90%;
+  margin-bottom: 20px;
+  font-size: 20px;
+}

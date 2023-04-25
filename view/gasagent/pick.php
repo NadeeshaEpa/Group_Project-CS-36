@@ -15,14 +15,14 @@
 <body>
 
 
-	<!-- SIDEBAR -->
-	<section id="sidebar">
+	 	<!-- SIDEBAR -->
+		 <section id="sidebar">
 		<a href="../../view/gasagent/View.php" class="brand">
 			<i class='bx bxs-select-multiple'></i>
 			<span class="text">FaGo</span>
 		</a>
 		<ul class="side-menu top">
-			<li class="active">
+			<li >
 				<a href="../../view/gasagent/gasagent_dashboard.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
@@ -40,7 +40,7 @@
 					<span class="text">View details</span>
 				</a>
 			</li>
-			<li>
+			<li class="active">
 				<a href="../../view/gasagent/add_gastype.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Add gas </span>

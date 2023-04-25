@@ -7,7 +7,7 @@
     <!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
-    <link rel="stylesheet" href="../../public/css/customer/customer_dashboard.css">
+    <link rel="stylesheet" href="../../public/css/gasagent/gasagent_profile.css">
     <link rel="stylesheet" href="../../public/css/gasagent/gasagentDashboard.css">
     <script>
         var color=blue;
@@ -20,35 +20,32 @@
 <body>
     <!-- <?php include 'customer_header.php'; ?>   -->
     <!-- <h2>Customer Dashboard</h2> -->
-    <!-- SIDEBAR -->
+   	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="#" class="brand">
+		<a href="../../view/gasagent/View.php" class="brand">
 			<i class='bx bxs-select-multiple'></i>
 			<span class="text">FaGo</span>
 		</a>
 		<ul class="side-menu top">
-			<li>
+			<li >
 				<a href="../../view/gasagent/gasagent_dashboard.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
 			<li>
-				<a href="../../controller/gasagent/gasagent_viewController.php?viewgas='1'">
+				<a href="../../view/gasagent/orders.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
-					<span class="text">Order details </span>
+					<span class="text">Order details</span>
 				</a>
 			</li>
-
-            <li>
+			<li>
 				<a href="../../controller/gasagent/gasagent_viewController.php?viewgas='1'">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">View details</span>
 				</a>
 			</li>
-
-
-			<li>
+			<li >
 				<a href="../../view/gasagent/add_gastype.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Add gas </span>
@@ -57,16 +54,17 @@
 			<li>
 				<a href="../../controller/gasagent/gasagentUpdateFirst.php">
 					<i class='bx bxs-message-dots' ></i>
-					<span class="text">Update or Delete</span>
+					<span class="text">Update/Delete</span>
 				</a>
 			</li>
 			<li class="active">
-				<a href="../../view/gasagent/addgas_profile.php">
+				<a href="../../controller/gasagent/account_controller.php?viewacc='1'">
 					<i class='bx bxs-group' ></i>
 					<span class="text">profile details</span>
 				</a>
 			</li>
-            <li>
+
+			<li>
 				<a href="../../view/gasagent/compalin.php">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Complaine</span>
@@ -77,7 +75,7 @@
 			<!-- <li>
 				<a href="#">
 					<i class='bx bxs-cog' ></i>
-					<span class="text">Compliance</span>
+					<span class="text">Settings</span>
 				</a>
 			</li> -->
 			<li>
@@ -89,6 +87,7 @@
 		</ul>
 	</section>
 	<!-- SIDEBAR -->
+
 
 
 
