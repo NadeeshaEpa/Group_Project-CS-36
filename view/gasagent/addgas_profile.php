@@ -18,8 +18,6 @@
     <title>gasagent Dashboard</title>
 </head>
 <body>
-    <!-- <?php include 'customer_header.php'; ?>   -->
-    <!-- <h2>Customer Dashboard</h2> -->
     <!-- SIDEBAR -->
 	<section id="sidebar">
 		<a href="#" class="brand">
@@ -187,7 +185,7 @@
                             </div>
                             <div class="down1">
                                 <label>Update Password:</label><br>
-                                <form action='customer_changepassword.php' method="POST">
+                                <form action='gasagent_changepassword.php' method="POST">
                                     <button type="submit" name="changepassword" class="cp">Change password</button>
                                 </form>   
                             </div>    
@@ -227,7 +225,6 @@
             </div>
         </div>
     </div>    
-    <?php //include 'customer_footer.php'; ?>
 </div>
     <script>
     var modal = document.getElementById('id01');
