@@ -29,7 +29,7 @@
                 </div>
                 <input type="hidden" name="type" value="send" />     
                 <label for="email" id="email-label">Email:</label>
-                <input type="email" name="email" id="email" placeholder="Enter Email" value=<?php echo $email?> class="box"><br><br>
+                <input type="email" name="email" id="email" placeholder="Enter Email" value=<?php echo $email?> readonly class="box"><br><br>
                 <label for="otp" id="otp-label">OTP:</label>
                 <input type="text" name="otp" id="otp" placeholder="Enter OTP" class="box" required><br><br>
                 <button type="submit" name="otp_submit" id="submit">Send</button>
