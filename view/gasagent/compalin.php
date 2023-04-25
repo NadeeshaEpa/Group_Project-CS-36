@@ -127,7 +127,7 @@
                   echo " Complain Added Successfully";
                   unset($_SESSION['Complain_add']);
                 } ?>
-                </h4><br>
+                </h4>
                 <h5>
                   <?php if(isset($_SESSION['Complain_err'])){
                     echo "Error Occurred";
@@ -147,7 +147,7 @@
 				  
                 </form>
 				<form action="../../controller/gasagent/deliveryPersonComplainViewFirstController.php" method="POST">
-                  <button type="submit" name="complane_view">Complane View</button>
+                  <button type="submit" name="complane_view">View Complains</button>
 				</form>
             </div>
 
