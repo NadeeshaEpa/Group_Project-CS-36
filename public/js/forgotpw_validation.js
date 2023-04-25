@@ -2,6 +2,9 @@ const email = document.getElementById("email");
 const emailLabel = document.getElementById("email-label");
 const forgotpw_form = document.getElementById("fpw_form");
 
+console.log(email.value);
+console.log(emailLabel.value);
+
 var emailflag=0;
 
 email?.addEventListener("input", function () {

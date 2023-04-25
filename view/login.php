@@ -63,7 +63,7 @@ if(isset($_SESSION['locked'])){
                             <a href="forgot_password.php" >Forgot password?</a>
                         </div> 
                         <div class="reg">   
-                            <P>Don't have an account?<a href="registeras.php">Register</a></P>
+                            <P>Don't have an account?<a href="email_validation.php">Register</a></P>
                         </div>    
                         <div class="err-msg">
                             <?php
