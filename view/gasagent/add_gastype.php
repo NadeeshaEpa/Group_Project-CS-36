@@ -63,10 +63,9 @@
 			<li>
 				<a href="../../view/gasagent/compalin.php">
 					<i class='bx bxs-group' ></i>
-					<span class="text">Complaine</span>
+					<span class="text">Complains</span>
 				</a>
 			</li>
-
 			
 		</ul>
 		<ul class="side-menu">

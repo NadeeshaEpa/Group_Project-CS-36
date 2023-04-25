@@ -7,8 +7,8 @@
     <!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
-    <link rel="stylesheet" href="../../public/css/customer/customer_dashboard.css">
     <link rel="stylesheet" href="../../public/css/gasagent/gasagentDashboard.css">
+    <link rel="stylesheet" href="../../public/css/gasagent/gasagent_profile.css">
     <script>
         var color=blue;
         document.getqueryselector("button").addEventlistener("click",function(){
@@ -67,9 +67,9 @@
 				</a>
 			</li>
             <li>
-				<a href="../../view/gasagent/compalin.php">
+                <a href="../../view/gasagent/compalin.php">
 					<i class='bx bxs-group' ></i>
-					<span class="text">Complaine</span>
+					<span class="text">Complains</span>
 				</a>
 			</li>
 		</ul>
