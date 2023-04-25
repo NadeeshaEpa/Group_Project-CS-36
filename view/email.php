@@ -10,7 +10,7 @@
 <body>
     <?php include 'header.php'; ?>
     <div class="container">
-            <form action="../controller/Users/forgotpassword_controller.php" method="POST" class="form" id="fpw_form">
+            <form action="../controller/Users/email_controller.php" method="POST" class="form" id="fpw_form">
                 <h1>Email Validation</h1>  
                 <input type="hidden" name="type" value="send" />     
                 <label for="email" id="email-label">Enter your email address:</label><br>
