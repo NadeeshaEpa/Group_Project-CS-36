@@ -30,10 +30,7 @@ email?.addEventListener("input", function () {
     if (!reg.test(email.value)) {
         emailLabel.innerHTML = "Invalid Email";
         emailLabel.style.color = "red";
-<<<<<<< HEAD
-=======
         emailLabel.style.fontSize = "15px";
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
         //submit.disabled = true;
         emailflag=1;
     } else {
@@ -43,34 +40,16 @@ email?.addEventListener("input", function () {
 
 password?.addEventListener("input", function () {
     //password must be 8 characters long and contain at least one number and one lowercase letter and one uppercase letter
-<<<<<<< HEAD
-    if(password.value.length < 8){
-        passwordLabel.innerHTML = "Password must be 8 characters long";
-        passwordLabel.style.color = "red";
-        //submit.disabled = true;
-    }else if(!password.value.match(/[a-z]/) || !password.value.match(/[A-Z]/)){
-        passwordLabel.innerHTML = "Password must contain at least one lowercase letter and one uppercase letter";
-        passwordLabel.style.color = "red";
-        //submit.disabled = true;
-    }else if(!password.value.match(/[0-9]/)){
-        passwordLabel.innerHTML = "Password must contain at least one number";
-        passwordLabel.style.color = "red";
-        //submit.disabled = true;
-=======
     if(password.value.length < 8 || !password.value.match(/[a-z]/) ||!password.value.match(/[A-Z]/)||!password.value.match(/[0-9]/)){
         passwordLabel.innerHTML = "*Password must be 8 characters long and contain at least one number and one lowercase letter and one uppercase letter*";
         passwordLabel.style.color = "red";
         passwordLabel.style.fontSize = "15px";
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
         passwordflag=1;
     }else{
         passwordLabel.innerHTML = "Password:";
         passwordLabel.style.color = "black";
         password.style.borderColor = "green";
-<<<<<<< HEAD
-=======
         passwordLabel.style.fontSize = "18px";
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
         password.style.borderWidth = "2px";
         passwordflag=0;
         // submit.disabled = false;
@@ -81,20 +60,14 @@ cpassword?.addEventListener("input", function () {
         cpasswordLabel.innerHTML = "Passwords do not match";
         cpasswordLabel.style.color = "red";
         cpassword.style.borderColor = "red";
-<<<<<<< HEAD
-=======
         cpasswordLabel.style.fontSize = "15px";
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
         cpassword.style.borderWidth = "2px";
         //submit.disabled = true;
         cpasswordflag=1;
     } else {
         cpasswordLabel.innerHTML = "Confirm Password:";
         cpasswordLabel.style.color = "black";
-<<<<<<< HEAD
-=======
         cpasswordLabel.style.fontSize = "18px";
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
         cpassword.style.borderColor = "green";
         cpassword.style.borderWidth = "2px";
         cpasswordflag=0;
@@ -107,19 +80,13 @@ billnum?.addEventListener("input", function () {
     if (!pattern.test(billnum.value)) {
         billnoLabel.innerHTML = "Invalid Bill Number";
         billnoLabel.style.color = "red";
-<<<<<<< HEAD
-=======
         billnoLabel.style.fontSize = "15px";
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
         //submit.disabled = true;
         billnoflag=1;
     } else {
         billnoLabel.innerHTML = "Electricity Bill Number:";
         billnoLabel.style.color = "black";
-<<<<<<< HEAD
-=======
         billnoLabel.style.fontSize = "18px";
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
         billno.style.borderColor = "green";
         billno.style.borderWidth = "2px";
         billnoflag=0;
@@ -141,18 +108,12 @@ function usernameexit(){
             if (response == "true") {
                 usernameLabel.innerHTML = "Username already exists";
                 usernameLabel.style.color = "red";
-<<<<<<< HEAD
-=======
                 usernameLabel.style.fontSize = "15px";
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
                 usernameflag=1;
             } else {
                 usernameLabel.innerHTML = "Username";
                 usernameLabel.style.color = "black";
-<<<<<<< HEAD
-=======
                 usernameLabel.style.fontSize = "18px";
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
                 username.style.borderColor = "green";
                 username.style.borderWidth = "2px";
                 usernameflag=0;
@@ -160,11 +121,7 @@ function usernameexit(){
             }
         }
     };
-<<<<<<< HEAD
-    xhttp.open("POST", "http://localhost:8001/controller/customer/validation_controller.php", true);
-=======
     xhttp.open("POST", "http://localhost/Group_36/controller/customer/validation_controller.php", true);
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("username=" + username.value);
 }
@@ -178,18 +135,12 @@ function emailValidation() {
             if (response == "true") {
                 emailLabel.innerHTML = "Email already exists";
                 emailLabel.style.color = "red";
-<<<<<<< HEAD
-=======
                 emailLabel.style.fontSize = "15px";
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
                 emailflag=1;
             } else {
                 emailLabel.innerHTML = "Email";
                 emailLabel.style.color = "black";
-<<<<<<< HEAD
-=======
                 emailLabel.style.fontSize = "18px";
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
                 email.style.borderColor = "green";
                 email.style.borderWidth = "2px";
                 // submit.disabled = false;
@@ -197,11 +148,7 @@ function emailValidation() {
             }
         }
     };
-<<<<<<< HEAD
-    xhttp.open("POST", "http://localhost:8001/controller/customer/validation_controller.php", true);
-=======
     xhttp.open("POST", "http://localhost/Group_36/controller/customer/validation_controller.php", true);
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("email=" + email.value);
 }
@@ -211,19 +158,13 @@ contact?.addEventListener("input", function () {
     if (!pattern.test(contact.value)) {
         contactLabel.innerHTML = "Invalid Contact Number";  
         contactLabel.style.color = "red";
-<<<<<<< HEAD
-=======
         contactLabel.style.fontSize = "15px";
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
         // submit.disabled = true;
         contactflag=1;
     } else {
         contactLabel.innerHTML = "Contact Number:";
         contactLabel.style.color = "black";
-<<<<<<< HEAD
-=======
         contactLabel.style.fontSize = "18px";
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
         contact.style.borderColor = "green";
         contact.style.borderWidth = "2px";
         contactflag=0;

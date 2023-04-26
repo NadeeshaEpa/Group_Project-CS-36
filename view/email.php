@@ -10,13 +10,14 @@
 <body>
     <?php include 'header.php'; ?>
     <div class="container">
-            <form action="../controller/Users/email_controller.php" method="POST" class="form" id="fpw_form">
+            <form action="../controller/Users/email_controller.php" method="POST" class="form" id="email_form">
                 <h1>Email Validation</h1>  
                 <input type="hidden" name="type" value="send" />     
                 <label for="email" id="email-label">Enter your email address:</label><br>
                 <input type="email" name="email" id="email" placeholder="Enter Email" class="box" required><br><br>
-                <button type="submit" name="v_submit" id="submit">Send</button>
+                <button type="submit" name="v_submit" id="submit-btn">Send</button>
             </form>
     </div>
+    <script src="../public/js/email_validation.js"></script>   
 </body>
 </html>
