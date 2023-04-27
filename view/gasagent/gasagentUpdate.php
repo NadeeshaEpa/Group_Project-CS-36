@@ -39,26 +39,25 @@
 	</div>
 </dialog>
 
-	<!-- SIDEBAR -->
-	<section id="sidebar">
-		<a href="#" class="brand">
+ 	<!-- SIDEBAR -->
+	 <section id="sidebar">
+		<a href="../../view/gasagent/View.php" class="brand">
 			<i class='bx bxs-select-multiple'></i>
 			<span class="text">FaGo</span>
 		</a>
 		<ul class="side-menu top">
 			<li >
-				<a href="../../controller/gasagent/gasagent_order_controller.php">
+				<a href="../../view/gasagent/gasagent_dashboard.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
 			<li>
-				<a href="../../controller/gasagent/gasagent_viewController.php?viewgas='1'">
+				<a href="../../view/gasagent/orders.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Order details</span>
 				</a>
 			</li>
-
 			<li>
 				<a href="../../controller/gasagent/gasagent_viewController.php?viewgas='1'">
 					<i class='bx bxs-shopping-bag-alt' ></i>
@@ -71,7 +70,7 @@
 					<span class="text">Add gas </span>
 				</a>
 			</li>
-			<li class="active">
+			<li  class="active">
 				<a href="../../controller/gasagent/gasagentUpdateFirst.php">
 					<i class='bx bxs-message-dots' ></i>
 					<span class="text">Update/Delete</span>
@@ -83,19 +82,19 @@
 					<span class="text">profile details</span>
 				</a>
 			</li>
+
 			<li>
 				<a href="../../view/gasagent/compalin.php">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Complains</span>
 				</a>
 			</li>
-			
 		</ul>
 		<ul class="side-menu">
 			<!-- <li>
 				<a href="#">
 					<i class='bx bxs-cog' ></i>
-					<span class="text">Compliance</span>
+					<span class="text">Settings</span>
 				</a>
 			</li> -->
 			<li>
@@ -107,7 +106,6 @@
 		</ul>
 	</section>
 	<!-- SIDEBAR -->
-
 
 
 	<!-- CONTENT -->
@@ -144,9 +142,7 @@
 							<a href="#">Update</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a class="active" href="#">Home</a>
-						</li>
+						
 					</ul>
 				</div>
 				

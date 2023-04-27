@@ -29,26 +29,32 @@
     <title>view</title>
 </head>
     <body>
- <!-- SIDEBAR -->
-<section id="sidebar">
-		<a href="#" class="brand">
+ 	<!-- SIDEBAR -->
+	 <section id="sidebar">
+		<a href="../../view/gasagent/View.php" class="brand">
 			<i class='bx bxs-select-multiple'></i>
 			<span class="text">FaGo</span>
 		</a>
 		<ul class="side-menu top">
-			<li>
-				<a href="../../controller/gasagent/gasagent_order_controller.php">
+			<li >
+				<a href="../../view/gasagent/gasagent_dashboard.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
-			<li class="active">
-				<a href="../../view/gasagent/gasagentView.php">
+			<li>
+				<a href="../../view/gasagent/orders.php">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Order details</span>
+				</a>
+			</li>
+			<li>
+				<a href="../../controller/gasagent/gasagent_viewController.php?viewgas='1'">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">View details</span>
 				</a>
 			</li>
-			<li>
+			<li class="active">
 				<a href="../../view/gasagent/add_gastype.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Add gas </span>
@@ -57,23 +63,30 @@
 			<li>
 				<a href="../../controller/gasagent/gasagentUpdateFirst.php">
 					<i class='bx bxs-message-dots' ></i>
-					<span class="text">Update or Delete</span>
+					<span class="text">Update/Delete</span>
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="../../controller/gasagent/account_controller.php?viewacc='1'">
 					<i class='bx bxs-group' ></i>
 					<span class="text">profile details</span>
 				</a>
 			</li>
+
+			<li>
+				<a href="../../view/gasagent/compalin.php">
+					<i class='bx bxs-group' ></i>
+					<span class="text">Complaine</span>
+				</a>
+			</li>
 		</ul>
 		<ul class="side-menu">
-			<li>
+			<!-- <li>
 				<a href="#">
 					<i class='bx bxs-cog' ></i>
 					<span class="text">Settings</span>
 				</a>
-			</li>
+			</li> -->
 			<li>
 				<a href="../../view/login.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
@@ -83,7 +96,6 @@
 		</ul>
 	</section>
 	<!-- SIDEBAR -->
-
        <!-- NAVBAR -->
      <section id="content">
        <nav>

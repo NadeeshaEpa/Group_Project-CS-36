@@ -37,14 +37,14 @@
   </div>
 </div>
 
-	
-	 <section id="sidebar">
+	   	<!-- SIDEBAR -->
+		   <section id="sidebar">
 		<a href="../../view/gasagent/View.php" class="brand">
 			<i class='bx bxs-select-multiple'></i>
 			<span class="text">FaGo</span>
 		</a>
 		<ul class="side-menu top">
-			<li class="active">
+			<li >
 				<a href="../../view/gasagent/gasagent_dashboard.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
@@ -96,7 +96,7 @@
 				</a>
 			</li> -->
 			<li>
-				<a href="..view/login.php" class="logout">
+				<a href="../../view/login.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -106,9 +106,8 @@
 	<!-- SIDEBAR -->
 
 
-
-		<!-- CONTENT -->
-		<section id="content">
+	<!-- CONTENT -->
+	<section id="content">
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>

@@ -17,21 +17,21 @@
 	 <div class="img"></div>
 
     
-<!-- SIDEBAR -->
-<section id="sidebar">
-		<a href="#" class="brand">
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="../../view/gasagent/View.php" class="brand">
 			<i class='bx bxs-select-multiple'></i>
 			<span class="text">FaGo</span>
 		</a>
 		<ul class="side-menu top">
-			<li>
+			<li >
 				<a href="../../view/gasagent/gasagent_dashboard.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
 			<li>
-				<a href="../../view/gasagent/gasagentView.php">
+				<a href="../../view/gasagent/orders.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Order details</span>
 				</a>
@@ -51,7 +51,7 @@
 			<li>
 				<a href="../../controller/gasagent/gasagentUpdateFirst.php">
 					<i class='bx bxs-message-dots' ></i>
-					<span class="text">Update or Delete</span>
+					<span class="text">Update/Delete</span>
 				</a>
 			</li>
 			<li>
@@ -60,13 +60,13 @@
 					<span class="text">profile details</span>
 				</a>
 			</li>
+
 			<li>
 				<a href="../../view/gasagent/compalin.php">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Complains</span>
 				</a>
 			</li>
-			
 		</ul>
 		<ul class="side-menu">
 			<!-- <li>
@@ -76,7 +76,7 @@
 				</a>
 			</li> -->
 			<li>
-				<a href="../../view/login.php class="logout">
+				<a href="../../view/login.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
