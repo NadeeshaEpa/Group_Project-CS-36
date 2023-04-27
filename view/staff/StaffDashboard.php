@@ -12,7 +12,7 @@ if(!isset($_SESSION['User_id'])){
 </head>
 <body>
     <div class="outter">
-        <?php include '../../view/fuelmanager/fuelManagerHeader.php'; ?>
+        <?php //include '../../view/fuelmanager/fuelManagerHeader.php'; ?>
         <div class="container">
             <div class="sidebar">
             <div class="btn">

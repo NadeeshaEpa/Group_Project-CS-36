@@ -747,7 +747,7 @@ display: flex;
 }
 
 .stock{
-	margin-left: 40%;
+	text-align: center;
 	font-size: 30px;
 	color: #4adb6d;
 	font-family: fantasy;
@@ -846,3 +846,9 @@ display: flex;
 	color: #cb1919;
   }
   /**/
+.shop_status{
+	text-align: center;
+	font-size: 30px;
+	color: white;
+	font-family: fantasy;
+}

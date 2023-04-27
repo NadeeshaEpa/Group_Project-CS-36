@@ -1,15 +1,10 @@
-body{
-    margin: 0%;
-    background-color: #fffdf0;
-    font-family: 'Poppins', sans-serif;
-}
 .registration-form{
     background: #fff;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     margin-top: 30px;
-    width: 50%;
+    width: 70%;
     margin: 0 auto;
     padding-left: 60px;
     margin-top: 30px;
@@ -26,17 +21,19 @@ body{
     border: 1px solid #e3e3e3;
     padding: 10px;
     margin-bottom: 20px;
-    width:90%;
-    background: #4E60FF;
-    border-radius: 20px;
+    float:right;
+    width:20%;
+    background: #41cb4f;
+    /* border-radius: 20px; */
     align-items: center;
     color: white;
     text-decoration: none;
 }
 
+
 .registration-form button:hover{
-    background: #6EDC79;
-    color:black;
+    background: #2eae3b;
+    /* color:black; */
 }
 .registration-form h2{
     margin-bottom: 20px;
@@ -45,24 +42,18 @@ body{
     font-weight: bold;
     font-size: 1.5rem;
 }
-/* .box{
-    padding:12px;
-    width:90%;
-    border:1px solid black;
-    outline: none;
-    border-radius: 20PX;
+
+.err-msg{
+    color: #ba3939;
+    background: #ffe0e0;
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 20px;
 }
-.box1{
-    padding:12px;
-    width:60%;
-    border:1px solid black;
-    outline: none;
-    border-radius: 20PX;
+.success-msg{
+    color: green;
+    /* font-size: 20px; */
+    margin-bottom: 0px;
+    /* background-color: lightgreen; */
+    width: 100%;
 }
-.box2{
-    padding:12px;
-    width:80%;
-    border:1px solid black;
-    outline: none;
-    border-radius: 20PX;
-} */

@@ -95,6 +95,8 @@
                                     <div class="status">
                                         <?php if($detail['Delivery_Status']==NULL){?>
                                             <td style="color:lightgreen"><b>Not Assigned</b></td>
+                                        <?php }else if($detail['Delivery_Status']==4){?>
+                                            <td style="color:purple"><b>Picked</b></td>    
                                         <?php }else if($detail['Delivery_Status']==3){?>
                                             <td style="color:blue"><b>Courier Service</b></td>
                                         <?php }else if($detail['Delivery_Status']==2){?>

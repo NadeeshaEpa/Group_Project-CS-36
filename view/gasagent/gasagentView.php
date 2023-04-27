@@ -60,7 +60,7 @@
 			<li>
 				<a href="../../view/gasagent/compalin.php">
 					<i class='bx bxs-group' ></i>
-					<span class="text">Complaine</span>
+					<span class="text">Complains</span>
 				</a>
 			</li>
 		</ul>
@@ -110,9 +110,10 @@
         <div class="contaner">
                <?php 
 			   		if(isset($_SESSION['gas'])){
-                	$result=$_SESSION['gas']; 
-					// print_r($result);
-					// die();
+                		$result=$_SESSION['gas']; 
+					}
+					if($result==null){
+						$result=[];
 					}
 				?>
                

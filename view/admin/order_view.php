@@ -24,13 +24,8 @@ require_once("../../config.php");?>
 			<span class="text">FAGO</span>
 		</a>
 		<ul class="side-menu top">
-<<<<<<< HEAD
 		<li>
 				<a href="../../controller/admin/dashboard_controller.php?id=profitdetails">
-=======
-			<li >
-				<a href="../../view/admin/admin_dashboard.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -46,11 +41,7 @@ require_once("../../config.php");?>
 
 			<li>
 			
-<<<<<<< HEAD
 			<a href="../../controller/admin/users_controller.php?id=userdetails">
-=======
-			<a href="../../view/admin/users.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Users</span>
 				</a>

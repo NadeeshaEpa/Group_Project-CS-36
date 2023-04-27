@@ -1,12 +1,4 @@
-<<<<<<< HEAD
 <!-- <?php session_start(); ?> -->
-=======
-<?php session_start(); 
-if(!isset($_SESSION['User_id'])){
-    header("Location: ../../index.php");
-}
-?>
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,11 +23,7 @@ if(!isset($_SESSION['User_id'])){
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
-<<<<<<< HEAD
 				<a href="../../controller/staff/dashboard_controller.php?id=profitdetails">
-=======
-				<a href="staff_dashboard.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -51,33 +39,21 @@ if(!isset($_SESSION['User_id'])){
 
 			<li>
 			
-<<<<<<< HEAD
 			<a href="../../controller/staff/users_controller.php?id=userdetails">
-=======
-			<a href="../../view/staff/users.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-group' ></i>
 					<span class="text">Users</span>
 				</a>
 			</li>
 
 			<li>
-<<<<<<< HEAD
 				<a href="../../controller/staff/users_controller.php?rid=userrequestdetails">
-=======
-				<a href="../../view/staff/user_request.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Registration Requests</span>
 				</a>
 			</li>
 
 			<li>
-<<<<<<< HEAD
 				<a href="../../controller/staff/cylinder_controller.php?id=viewcylinder">
-=======
-				<a href="../../view/staff/gas_cylinder.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Gas Cylinders</span>
 				</a>
@@ -90,35 +66,22 @@ if(!isset($_SESSION['User_id'])){
 			</li>
 
 			<li>
-<<<<<<< HEAD
 				<a href="../../controller/staff/delivery_controller.php?id=viewdelivery">
-=======
-				<a href="deliveries.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Deliveries</span>
 				</a>
 			</li>
 
 			<li>
-<<<<<<< HEAD
 				<a href="../../controller/staff/payment_controller.php?id=gaspaymentdetails">
-=======
-				<a href="payments.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Payments</span>
 				</a>
 			</li>
 
 			<li>
-<<<<<<< HEAD
 				<a href="../../controller/staff/complain_controller.php?id=complaindetails">
 					<i class='bx bxs-doughnut-chart' ></i>
-=======
-				<a href="#">
-					<i class='bx bxs-badge-check' ></i>
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<span class="text">Complains</span>
 				</a>
 			</li>
@@ -157,11 +120,7 @@ if(!isset($_SESSION['User_id'])){
 			<?php if($_SESSION['img-status'] == 0){?>
                     <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                 <?php }else{?>
-<<<<<<< HEAD
                     <img src='../../public/images/staff/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
-=======
-                    <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
             <?php } ?>
 			</a>
 			<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?>
@@ -170,7 +129,6 @@ if(!isset($_SESSION['User_id'])){
 
 		<!-- MAIN -->
 		<main>
-<<<<<<< HEAD
 		<?php 
                    if(isset($_SESSION['dashboard'])){
                       $result=$_SESSION['dashboard']; 
@@ -178,8 +136,6 @@ if(!isset($_SESSION['User_id'])){
                    
                    }
                 ?>
-=======
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 			<div class="head-title">
 				<div class="left">
 					<h1>Dashboard</h1>
@@ -190,68 +146,46 @@ if(!isset($_SESSION['User_id'])){
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
 							<a class="active" href="#">Home</a>
-<<<<<<< HEAD
 							
-=======
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 						</li>
 					</ul>
 				</div>
 				
 			</div>
 
-<<<<<<< HEAD
             
-=======
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 			<ul class="box-info">
 				<li>
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
-<<<<<<< HEAD
 						<h3><?php echo $result[0]['orders']?></h3>
-=======
-						<h3>15</h3>
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 						<p>New Orders</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-group' ></i>
 					<span class="text">
-<<<<<<< HEAD
 						<h3><?php echo $result[0]['customers']?></h3>
-=======
-						<h3>20</h3>
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 						<p>New Customers</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-dollar-circle' ></i>
 					<span class="text">
-<<<<<<< HEAD
 						<h3>RS. <?php echo $result[0]['amount']?></h3>
-=======
-						<h3>RS.50,000</h3>
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 						<p>Total Sales</p>
 					</span>
 				</li>
 
 
 			</ul>
-<<<<<<< HEAD
 		     
 			
-=======
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 
 
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-<<<<<<< HEAD
 						<h3>FAGO Profit</h3>
                         
 						<form action="../../controller/staff/dashboard_controller.php" method="POST">
@@ -259,16 +193,10 @@ if(!isset($_SESSION['User_id'])){
 			            <input type="date" class="form-control" placeholder="Start" name="date">
 						<button type="submit" name="filterdate"><i class='bx bx-search' ></i></button>
 				        </form>
-=======
-						<h3>Recent Orders</h3>
-						<!-- <i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i> -->
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					</div>
 					<table>
 						<thead>
 							<tr>
-<<<<<<< HEAD
 							    <th>Customer</th>
 								<th>Order ID</th>
 								<th>Order Date</th>
@@ -303,54 +231,6 @@ if(!isset($_SESSION['User_id'])){
 						}
 						?>
 
-=======
-								<th>User</th>
-								<th>Date Order</th>
-								<th>Status</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									<img src="../../public/images/noprofile.png">
-									<p>Nisali Senadeera</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/noprofile.png">
-									<p>Promod Madawala</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/noprofile.png">
-									<p>Anoma Suraweera</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status process">Process</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/noprofile.png">
-									<p>Nihal Priyantha</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/noprofile.png">
-									<p>Lakindu Wickramasingha</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 						</tbody>
 					</table>
 				</div>
@@ -360,7 +240,6 @@ if(!isset($_SESSION['User_id'])){
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
-<<<<<<< HEAD
 	<script>
 		elementsArray=document.querySelectorAll(".details");
 		elementsArray.forEach(function(elem){
@@ -370,9 +249,6 @@ if(!isset($_SESSION['User_id'])){
 		});
 
 	</script>
-=======
-	
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 
 	<script src="../../public/js/script.js"></script>
 </body>

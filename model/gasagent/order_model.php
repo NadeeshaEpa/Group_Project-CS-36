@@ -178,8 +178,7 @@ class Brand_reports{
                                                                                                                                                                                                                                    /*shop open and close */
     public function update_as_a_open($connection){
         $this->User_id=$_SESSION['User_id'];
-        $sql="UPDATE stock_manager SET Shop_status=1 WHERE id=$this->User_id";
-        
+        $sql="UPDATE gasagent SET Shop_status=1 WHERE GasAgent_Id=$this->User_id";     
         if($connection->query($sql)){
             return true;
         }
@@ -191,7 +190,7 @@ class Brand_reports{
 
     public function update_as_a_close($connection){
         $this->User_id=$_SESSION['User_id'];
-        $sql="UPDATE stock_manager SET Shop_status=0 WHERE id=$this->User_id";
+        $sql="UPDATE gasagent SET Shop_status=0 WHERE GasAgent_Id=$this->User_id";
         if($connection->query($sql)){
             return true;
         }

@@ -12,11 +12,17 @@
     /* height: 89%; */
     /* position: relative; */
     font-family: sans-serif;
+<<<<<<< HEAD
     background-color:#7b7a77;
    
    
     color: black;
     position: fixed;
+=======
+    background-color:#39066b;
+    color: black;
+    /* position: absolute; */
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     padding-left: 10px;
   }
   
@@ -33,10 +39,16 @@
     font-family: sans-serif;
     /* width: 80%; */
     /* height: 95%; */
+<<<<<<< HEAD
     /* position: relative; */
     /* margin-left: 20px; */
     /* background-color:#f2efef; */
     background-color:#FFFDF0;
+=======
+     /* position: relative; */
+    /* margin-left: 20px; */
+    background-color:#FFFFFF;
+>>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     min-height: 100%;
   
   }

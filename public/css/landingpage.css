@@ -2,30 +2,22 @@
     font-family: 'Poppins', sans-serif;
 }
 body{
-    background-color: #FFFDF0;
-    height: 80vh;
+    background-color: white;
+}
+.customer{
+    margin: 5%;
+    margin-left: 9%;
 }
 .customer img{
     width:150px;
     height:150px;
-    border-radius: 150px;
     padding: 60px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-
+    background-color: navy;
+    border-radius: 10%;
 }
-.customer img:hover{
-    width: 155px;
-    height: 155px; 
-}
-.up , .down{
+.up{
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.down{
-    margin-bottom: 5%;
 }
 p{
     font-size: 25px;
@@ -33,6 +25,7 @@ p{
     color: #000;
     padding-left:61px;
     margin: 0%;
+    margin-top: 8%;
 
 }
 h1{

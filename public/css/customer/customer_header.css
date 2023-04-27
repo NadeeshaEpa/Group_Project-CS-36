@@ -1,37 +1,39 @@
+body{
+    margin:0%;
+}
 *{
     font-family: 'Poppins', sans-serif;
 }
-ul {
+.header ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color:#0B0251;
+    background-color:lightgray;
  }
-li a {
+.header li a {
      display: block;
-    color:white;
+    color:black;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     float: right;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     margin: 10px;
 }
 
-li a:hover:not(.active) {
-   background-color:rgb(82, 82, 173);
-   
+.header li a:hover:not(.active) {
+   font-size: 19px;  
  }
 
-li img{
+.header li img{
     width: 60px;
     height: 60px;
     border-radius: 50%;
     margin-top: 5px;
     margin-right: 10px;
-    float: left;
+    float: right;
     margin-left: 10px;
     margin-bottom: 5px;
 }
@@ -59,35 +61,23 @@ li img{
     float: right;
     margin-right: 10px;
     margin-top: 10px;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
-    color: white;
+    color: black;
 }
 body{
     margin:0%;
 }
-.footer, .footerc{
-    background-color: #0B0251;
-    color: white;
-    padding: 10px;
-    margin-top: 0px;
-    font-size: 15px;
-    display: flex;
-    height: 50px;
-    margin-bottom: 0%;
+.bell li img{
+    width: 25px;
+    height:25px;
+    margin-top: 1.5%;
 }
-.fleft{
-    float: left;
+#cart_count{
+    font-size: 12px;
 }
-.fright{
-    float: right;
-    margin-left: 80%;
-}
-.fright p{
-    color: white;
-    padding: 10px;
-    font-size: 15px;
-}
-.footerc{
-    margin-top: 158px;
+.user-type{
+    font-size: 18px;
+    color: navy;
+    font-style: italic;
 }

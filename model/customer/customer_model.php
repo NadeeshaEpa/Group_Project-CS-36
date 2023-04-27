@@ -84,16 +84,6 @@ class customer_model{
             return false;
         }
     }
-    public function setprofilepic($connection){
-        $sql="INSERT INTO `profileimg`(User_id,status,imgname) VALUES ('$this->User_id',0,'noprofile.png')";
-        if($connection->query($sql)){
-            $_SESSION['registerMsg']="User Registered Successfully";
-            return true;
-        }else{
-            $_SESSION['regerror']="User Registration Failed";
-            return false;
-        }
-    }
 
     public function RegisterCustomer($connection){  //call all the functions to register the customer
         $result1=$this->CreateUserEntry($connection);
