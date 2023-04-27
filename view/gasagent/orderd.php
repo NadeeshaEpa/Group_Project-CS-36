@@ -118,9 +118,7 @@
 							<a href="#">Delivered gas Details</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a class="active" href="#">Home</a>
-						</li>
+						
 					</ul>
 				</div>
 			</div>

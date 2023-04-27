@@ -34,7 +34,7 @@ if(isset($_POST['login'])){
         }else if($_SESSION['Type']=="Delivery Person"){
             header("Location: ../../controller/deliveryperson/deliveryDashboardFirstController.php");  //redirect to the dashboard page
         }else if($_SESSION['Type']=="Gas Agent"){
-            header("Location: ../../view/gasagent/gasagent_dashboard.php");  //redirect to the dashboard page
+            header("Location: ../../controller/gasagent/gasagent_order_controller.php");  //redirect to the dashboard page
         }else if($_SESSION['Type']=="Stock Manager"){
             header("Location: ../../controller/ShopManager/ShopManagerDashboardFirstController.php");  //redirect to the dashboard page
          }else if($_SESSION['Type']=="Admin"){

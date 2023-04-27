@@ -13,7 +13,7 @@
     <title>Document</title>
 </head>
 <body>
-    <?php require_once 'customer_header.php'; ?>
+    <!-- <?php require_once 'customer_header.php'; ?> -->
     <div class="dcontainer">
     <section id="sidebar">
             <a href="#" class="brand">
