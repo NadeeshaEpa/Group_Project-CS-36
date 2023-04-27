@@ -159,30 +159,7 @@
 				?>
 			</div>
 
-			<!-- <ul class="box-info">
-				<li>
-					<i class='bx bxs-calendar-check' ></i>
-					<span class="text">
-						<h3>52</h3>
-						<p>New Order</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-dashboard' ></i>
-					<span class="text">
-					<p id="dayid"></p>
-						<h3>283</h3>
-						<p>Total orders</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-dollar-circle' ></i>
-					<span class="text">
-						<h3>rs 5543</h3>
-						<p>Total Sales</p>
-					</span>
-				</li>
-			</ul> -->
+		
 			<ul class="box-info">
                 <li>
 					<i class='bx bxs-calendar-check' ></i>
@@ -255,61 +232,7 @@
                                     ?>
                                     </table>
                     </div>
-						<!-- <h3>Recent Orders</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
-					<table>
-						<thead>
-							<tr>
-								<th>User</th>
-								<th>Date Order</th>
-								<th>Status</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									<img src="../../public/images/people2.JPEG">
-									<p>Nadeesha</p>
-								</td>
-								<td>21-10-2022</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/people3.JPG">
-									<p>Gayal</p>
-								</td>
-								<td>11-02-2022</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/people4.JPEG">
-									<p>Shehan</p>
-								</td>
-								<td>03-02-2022</td>
-								<td><span class="status process">Process</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/people5.PNG">
-									<p>kamal</p>
-								</td>
-								<td>01-02-2022</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/people4.JPEG">
-									<p>Avishka</p>
-								</td>
-								<td>01-01-2022</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-						</tbody>
-					</table> -->
+				
 				</div>
 			
 			</div>
