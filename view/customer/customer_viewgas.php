@@ -20,7 +20,7 @@
             $count=count($gas);
         
         }else{
-            $gasshop=[];
+            $gas=[];
             $count=0;
         }
         if(isset($_SESSION['shopnames'])){
@@ -76,6 +76,14 @@
                     </div>
                     <?php }
                 }?>
+            <?php 
+            // print_r($weight);
+            // print_r("<br>");
+            // print_r($shops);
+            // print_r("<br>");
+            // print_r($gas);
+            // die();
+            ?>    
             <table>
                 <tr>
                     <th>Vendor</th>
@@ -87,9 +95,10 @@
                     <th>Refilling</th>
                     <th>New Cylinder</th>
                 </tr>
-                    <?php 
+                    <?php                
+                    foreach($shops as $shop){
                     $i=0;
-                    foreach($shops as $shop){?>
+                    ?>
                     <tr>
                             <td><?php echo $shop['Shop_name']?></td>
                             <td><?php echo $shop['distance']?>km</td>

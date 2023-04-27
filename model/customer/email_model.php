@@ -24,12 +24,12 @@ class email_model{
         $useremail=$orders[0]['email'];
         $subject="Order Details";
         $message="Your order has been placed successfully. Your order details are as follows: <br>";
-        $message.="<br>Order ID: ".$orders[0]['orderid'];
-        $message.="<br>Pincode: ".$orders[0]['reserve_pin'];
-        $message.="<br>Order Date: ".$orders[0]['orderdate'];
-        $message.="<br>Order Total:LKR ".$orders[0]['total'];
-        $message.="<br>Delivery Method: ".$orders[0]['delivery_method'];
-        $message.="<br>Delivery Fee:LKR ".$orders[0]['delivery_fee'];
+        $message.="<br><b>Order ID: </b>".$orders[0]['orderid'];
+        $message.="<br><b>Pincode: </b>".$orders[0]['reserve_pin'];
+        $message.="<br><b>Order Date: </b>".$orders[0]['orderdate'];
+        $message.="<br><b>Order Total:LKR </b>".$orders[0]['total'];
+        $message.="<br><b>Delivery Method: </b>".$orders[0]['delivery_method'];
+        $message.="<br><b>Delivery Fee:LKR </b>".$orders[0]['delivery_fee'];
         $message.="<table border='1'>";
         $message.="<tr><th>Product Name</th><th>Quantity</th><th>Price</th></tr>";
         foreach($orders as $order){
@@ -50,11 +50,11 @@ class email_model{
     public function sendEmail_Agent($orders,$gasagentemail){
         $subject="Order Details - Agent";
         $message="Your shop has received an order. The order details are as follows: <br>";
-        $message.="<br>Order ID: ".$orders[0]['orderid'];
-        $message.="<br>Order Date: ".$orders[0]['orderdate'];
-        $message.="<br>Order Total:LKR ".$orders[0]['total'];
-        $message.="<br>Delivery Method: ".$orders[0]['delivery_method'];
-        $message.="<br>Delivery Fee:LKR ".$orders[0]['delivery_fee'];
+        $message.="<br><b>Order ID: </b>".$orders[0]['orderid'];
+        $message.="<br><b>Order Date: </b>".$orders[0]['orderdate'];
+        $message.="<br><b>Order Total:LKR </b>".$orders[0]['total'];
+        $message.="<br><b>Delivery Method: </b>".$orders[0]['delivery_method'];
+        $message.="<br><b>Delivery Fee:LKR </b>".$orders[0]['delivery_fee'];
         $message.="<table border='1'>";
         $message.="<tr><th>Product Name</th><th>Quantity</th><th>Price</th></tr>";
         foreach($orders as $order){
@@ -87,9 +87,9 @@ class email_model{
 
         $subject="Refund Details";
         $message="Your order has been refunded successfully. Your refund details are as follows: <br>";
-        $message.="<br>Order ID: ".$order['Order_id'];
-        $message.="<br>Order Date: ".$order['Order_date'];
-        $message.="<br>Total Amount:LKR ".$order['Amount']+$order['Delivery_fee'];
+        $message.="<br><b>Order ID: </b>".$order['Order_id'];
+        $message.="<br><b>Order Date: </b>".$order['Order_date'];
+        $message.="<br><b>Total Amount:LKR </b>".$order['Amount']+$order['Delivery_fee'];
         $message.="<br>Thank you for shopping with us. We hope to see you again soon.";
         $message.="<br>Regards,<br>Fago Team";
 
@@ -115,8 +115,8 @@ class email_model{
         $subject="Order Canceled- Agent";
         $message="The customer has canceled the order for your shop under the order ID ".$order['Order_id']." <br>
         The Order details are as follows: <br>";
-        $message.="<br>Order ID: ".$order['Order_id'];
-        $message.="<br>Order Date: ".$order['Order_date'];
+        $message.="<br><b>Order ID: </br>".$order['Order_id'];
+        $message.="<br><b>Order Date: </b>".$order['Order_date'];
         $message.="<br>Regards,<br>Fago Team";
 
 

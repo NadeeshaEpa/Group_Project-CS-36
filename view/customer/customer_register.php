@@ -89,7 +89,7 @@
         </div>
         <div>
             <label id="email-label" for="email">Email:</label><br>
-            <input type="email" name="email" id="email" placeholder="Email" class="box" required>
+            <input type="email" name="email" id="email" placeholder="Email" value=<?php echo $_SESSION['v_email'] ?> class="box" readonly>
         </div>
         <div>
             <label id="billnum-label" for="billnum">Electricity Bill Number:</label><br>

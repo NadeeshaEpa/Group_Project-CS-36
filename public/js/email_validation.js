@@ -1,10 +1,7 @@
 const email = document.getElementById("email");
 const emailLabel = document.getElementById("email-label");
-const forgotpw_form = document.getElementById("fpw_form");
-
-console.log(email.value);
-console.log(emailLabel.value);
-
+const submit = document.getElementById("submit-btn");
+const customer_form = document.getElementById("email_form");
 var emailflag=0;
 
 email?.addEventListener("input", function () {
@@ -12,7 +9,8 @@ email?.addEventListener("input", function () {
     if (!reg.test(email.value)) {
         emailLabel.innerHTML = "Invalid Email";
         emailLabel.style.color = "red";
-        // 
+        emailLabel.style.fontSize = "15px";
+        //submit.disabled = true;
         emailflag=1;
     } else {
         emailValidation();
@@ -25,8 +23,8 @@ function emailValidation() {
         if (this.readyState == 4 && this.status == 200) {
             var response = this.responseText;
 
-            if (response == "false") {
-                emailLabel.innerHTML = "Email does not exist";
+            if (response == "true") {
+                emailLabel.innerHTML = "Email already exists";
                 emailLabel.style.color = "red";
                 emailLabel.style.fontSize = "15px";
                 emailflag=1;
@@ -45,8 +43,9 @@ function emailValidation() {
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("email=" + email.value);
 }
-forgotpw_form?.addEventListener("submit", function (e) {
-    if (!(emailflag==0)) {
+
+email_form?.addEventListener("submit", function (e) {
+    if(!(emailflag==0)){
         e.preventDefault();
     }
 });
