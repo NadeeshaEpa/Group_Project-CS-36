@@ -25,7 +25,7 @@ require_once("../../config.php");?>
 		</a>
 		<ul class="side-menu top">
 			<li >
-				<a href="../../view/admin/admin_dashboard.php">
+				<a href="../../controller/admin/dashboard_controller.php?id=profitdetails">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -41,7 +41,7 @@ require_once("../../config.php");?>
 
 			<li class="active">
 			
-			<a href="../../view/admin/users.php">
+			<a href="../../controller/admin/users_controller.php?id=userdetails">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Users</span>
 				</a>
@@ -54,9 +54,15 @@ require_once("../../config.php");?>
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="../../controller/admin/order_controller.php?id=vieworder">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Orders</span>
+				</a>
+			</li>
+			<li>
+				<a href="../../controller/admin/review_controller.php?id=viewreviews">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Company Reviews</span>
 				</a>
 			</li>
 			

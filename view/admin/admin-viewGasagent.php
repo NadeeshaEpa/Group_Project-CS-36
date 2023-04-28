@@ -55,9 +55,15 @@ require_once("../../config.php");?>
 				</a>
 			</li>
 			<li>
-				<a href="../../controller/Users/logout_controller.php">
+				<a href="../../controller/admin/order_controller.php?id=vieworder">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Orders</span>
+				</a>
+			</li>
+			<li>
+				<a href="../../controller/admin/review_controller.php?id=viewreviews">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Company Reviews</span>
 				</a>
 			</li>
 			
@@ -70,7 +76,7 @@ require_once("../../config.php");?>
 				</a>
 			</li> -->
 			<li>
-				<a href="#" class="logout">
+				<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>

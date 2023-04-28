@@ -24,7 +24,7 @@
 		</a>
 		<ul class="side-menu top">
 			<li>
-				<a href="../../view/admin/admin_dashboard.php">
+				<a href="../../controller/admin/dashboard_controller.php?id=profitdetails">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -40,7 +40,7 @@
 
 			<li>
 			
-			<a href="../../view/admin/users.php">
+			<a href="../../controller/admin/users_controller.php?id=userdetails">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Users</span>
 				</a>
@@ -58,6 +58,12 @@
 					<span class="text">Orders</span>
 				</a>
 			</li>
+            <li>
+				<a href="../../controller/admin/review_controller.php?id=viewreviews">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Company Reviews</span>
+				</a>
+			</li>
 			
 		</ul>
 		<ul class="side-menu">
@@ -68,7 +74,7 @@
 				</a>
 			</li> -->
 			<li>
-				<a href="#" class="logout">
+				<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -84,15 +90,6 @@
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-			<!-- <a href="#" class="nav-link">Categories</a> -->
-			<!-- <form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form> -->
-			<!-- <input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label> -->
 			
 			
 			<a href="#" class="profile">

@@ -54,7 +54,7 @@ require_once("../../config.php");?>
 				</a>
 			</li>
 
-			<li class="active">
+			<li>
 				<a href="../../controller/staff/cylinder_controller.php?id=viewcylinder">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Gas Cylinders</span>
