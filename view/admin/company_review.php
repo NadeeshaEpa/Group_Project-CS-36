@@ -12,6 +12,7 @@ require_once("../../config.php");?>
 	<link rel="stylesheet" href="../../public/css/admin_delivery/Dashboard.css">
     <link rel="stylesheet" href="../../public/css/admin_delivery/user_list.css">
 	<link rel="stylesheet" href="../../public/css/admin_delivery/deliveries.css">
+	<link rel="stylesheet" href="../../public/css/admin_delivery/delete_popup.css">
 
 	<title>FaGo</title>
 </head>
@@ -54,18 +55,19 @@ require_once("../../config.php");?>
 					<span class="text">Gas Companies</span>
 				</a>
 			</li>
-			<li class="active">
+			<li>
 				<a href="../../controller/admin/order_controller.php?id=vieworder">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Orders</span>
 				</a>
 			</li>
-			<li>
+            <li class="active">
 				<a href="../../controller/admin/review_controller.php?id=viewreviews">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Company Reviews</span>
 				</a>
 			</li>
+			
 		</ul>
 		<ul class="side-menu">
 			<!-- <li>
@@ -91,6 +93,7 @@ require_once("../../config.php");?>
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
+	
 			
 			
 			<a href="#" class="profile">
@@ -106,58 +109,44 @@ require_once("../../config.php");?>
 
 		<!-- MAIN -->
 		<main>
-
-		<a href="../../controller/admin/order_controller.php?id=vieworder"><button style="background-color:transparent;color:black;">Gas Orders</button></a>
-            <a href="../../controller/admin/order_controller.php?fid=viewfagoorder"><button style="background-color: #05be17;color:white;">Fago Shop Orders</button></a>
-            <br>
     <div class="list">
 
-    <h3>Orders</h3>
-	<form action="../../controller/admin/order_controller.php" method="POST">
+    <h3>Company Reviews</h3>
+
+	<form action="../../controller/admin/review_controller.php" method="POST">
 				<div class="form-input">
-					<input type="search" name="order_id" placeholder="Search by order ID...">
-					<button type="submit" name="search_fagoorder" class="search-btn"><i class='bx bx-search' ></i></button>
+					<input type="search" name="review_id" placeholder="Search by review ID...">
+					<button type="submit" name="search" class="search-btn"><i class='bx bx-search' ></i></button>
 				</div>
 	</form>
 
+
     <table>
     <tr>
-        <th>Order ID</th>
+        <th>Review ID</th>
+        <th>Customer ID</th>
+        <th>Review</th>
         <th>Date</th>
-        <th>Customer Name</th>
-        <th>Amount</th>
-        <th>Delivery Status</th>
         <th>Operations</th>
     </tr>
 
     <?php
-    $result=$_SESSION['fagoorderdetails'];
+    $result=$_SESSION['reviewdetails'];
     if($result){
         foreach($result as $row){
-            $order_id=$row['Order_id'];
-            $fname=$row['First_Name'];
-            $lname=$row['Last_Name'];
-            $amount=$row['Amount'];
-            $status=$row['Delivery_Status'];
-            $date=$row['Order_date'];
+            $review_id=$row['review_id'];
+            $customer_id=$row['customer_id'];
+            $Description=$row['Description'];
+            $date=$row['date'];
 
             echo'<tr>
-                 <th>'.$order_id.'</th>
+                 <th>'.$review_id.'</th>
+                 <td>'.$customer_id.'</td>
+                 <td>'.$Description.'</td>
                  <td>'.$date.'</td>
-                 <td>'.$fname." ". $lname.'</td>
-                 <td>'.$amount.'</td>';
-                 if($status==1){
-					echo'<td>Delivered</td>';
-				}
-				else if($status==0){
-					echo'<td>On the way</td>';
-				}
-				else{
-					echo'<td>No delivery</td>';
-				}
-            echo'
                  <td>
-				 <a href="../../controller/admin/order_controller.php?fvid='.$order_id.'"><button class="button1" style="width:50%;">View</button></a>
+				 <button onclick="deletereview('.$review_id.');" class="button3" style="width:50%;">Delete</button>
+				
                  </td>
             </tr>' ;
             
@@ -175,7 +164,32 @@ require_once("../../config.php");?>
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
-	
+	<div id="backgr">
+        <div id="cancel_popup">
+            <div class="cancel_contect">
+                <p>Are you sure you want to Delete this Review?</p>
+                <div class="buttons">
+                    <button id="yes">Yes</button>
+                    <button id="no">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<script>
+		function deletereview(id){
+            document.getElementById("backgr").style.display="block";
+            document.getElementById("cancel_popup").style.display="block";
+            document.getElementById("yes").addEventListener("click",function(){
+                window.location.href="../../controller/admin/review_controller.php?did="+id;
+            });
+            document.getElementById("no").addEventListener("click",function(){
+                document.getElementById("backgr").style.display="none";
+                document.getElementById("cancel_popup").style.display="none";
+            });
+        }  
+            
+    </script>
 
 	<script src="../../public/js/script.js"></script>
 

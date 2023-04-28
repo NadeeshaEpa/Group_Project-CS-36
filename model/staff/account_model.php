@@ -1,7 +1,7 @@
 <?php
 class account_model{
     public function viewstaff($connection){
-        $sql="SELECT * FROM user u INNER JOIN staff s ON u.User_id=s.Staff_Id WHERE Type='Staff' AND s.Status=1";
+        $sql="SELECT * FROM user u INNER JOIN staff s ON u.User_id=s.Staff_Id WHERE Type='Staff' AND s.Status=1 ORDER BY u.User_id DESC";
         $result=mysqli_query($connection,$sql);
         if($result){
             $staff=[];
@@ -16,7 +16,7 @@ class account_model{
     }
 
     public function viewcustomer($connection){
-        $sql="SELECT * FROM user u INNER JOIN customer c ON u.User_id=c.Customer_Id WHERE u.Type='Customer' AND c.Status=1";
+        $sql="SELECT * FROM user u INNER JOIN customer c ON u.User_id=c.Customer_Id WHERE u.Type='Customer' AND c.Status=1 ORDER BY u.User_id DESC";
         $result=mysqli_query($connection,$sql);
         if($result){
             $customer=[];
@@ -32,7 +32,7 @@ class account_model{
 
 
     public function viewGasagent($connection){
-        $sql="SELECT * FROM user u INNER JOIN gasagent g ON u.User_id=g.GasAgent_Id WHERE u.Type='Gas Agent' AND g.Status=1";
+        $sql="SELECT * FROM user u INNER JOIN gasagent g ON u.User_id=g.GasAgent_Id WHERE u.Type='Gas Agent' AND g.Status=1 ORDER BY u.User_id DESC";
         $result=mysqli_query($connection,$sql);
         if($result){
             $gasagent=[];
@@ -47,7 +47,7 @@ class account_model{
     }
 
     public function viewDeliveryperson($connection){
-        $sql="SELECT * FROM user u INNER JOIN deliveryperson d ON u.User_id=d.DeliveryPerson_Id WHERE u.Type='Delivery Person' AND d.Status=1";
+        $sql="SELECT * FROM user u INNER JOIN deliveryperson d ON u.User_id=d.DeliveryPerson_Id WHERE u.Type='Delivery Person' AND d.Status=1 ORDER BY u.User_id DESC";
         $result=mysqli_query($connection,$sql);
         if($result){
             $deliveryperson=[];
@@ -77,7 +77,7 @@ class account_model{
     }
 
     public function viewcustomerRequests($connection){
-        $sql="SELECT * FROM user u INNER JOIN customer c ON u.User_id=c.Customer_Id WHERE u.Type='Customer' AND c.Status=0";
+        $sql="SELECT * FROM user u INNER JOIN customer c ON u.User_id=c.Customer_Id WHERE u.Type='Customer' AND c.Status=0 ORDER BY u.User_id DESC";
         $result=mysqli_query($connection,$sql);
         if($result){
             $customer=[];
@@ -93,7 +93,7 @@ class account_model{
 
 
     public function viewGasagentRequests($connection){
-        $sql="SELECT * FROM user u INNER JOIN gasagent g ON u.User_id=g.GasAgent_Id WHERE u.Type='Gas Agent' AND g.Status=0";
+        $sql="SELECT * FROM user u INNER JOIN gasagent g ON u.User_id=g.GasAgent_Id WHERE u.Type='Gas Agent' AND g.Status=0 ORDER BY u.User_id DESC";
         $result=mysqli_query($connection,$sql);
         if($result){
             $gasagent=[];
@@ -108,7 +108,7 @@ class account_model{
     }
 
     public function viewDeliverypersonRequests($connection){
-        $sql="SELECT * FROM user u INNER JOIN deliveryperson d ON u.User_id=d.DeliveryPerson_Id WHERE u.Type='Delivery Person' AND d.Status=0";
+        $sql="SELECT * FROM user u INNER JOIN deliveryperson d ON u.User_id=d.DeliveryPerson_Id WHERE u.Type='Delivery Person' AND d.Status=0 ORDER BY u.User_id DESC";
         $result=mysqli_query($connection,$sql);
         if($result){
             $deliveryperson=[];

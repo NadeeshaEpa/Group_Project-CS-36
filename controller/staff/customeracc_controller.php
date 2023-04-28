@@ -3,6 +3,7 @@ session_start();
 include_once '../../config.php';
 include_once '../../model/staff/account_model.php';
 include_once '../../model/staff/customer_model.php';
+include_once '../../model/staff/email_model.php';
 
 
 if(isset($_GET['id'])){
@@ -91,6 +92,8 @@ if(isset($_GET['aid'])){
         header("Location: ../../view/staff/Customer_requestlist.php");
     }else{
         $_SESSION['acceptuser']="success";
+        $email=new email_model();
+        $result=$email->send_CustomerEmail($user_id,$connection);
         header("Location: ../../controller/staff/customeracc_controller.php?rid=viewCustomerRequests");
         
     }
@@ -99,6 +102,8 @@ if(isset($_GET['aid'])){
 if(isset($_GET['deid'])){
     $user_id=$_GET['deid'];
     $user_id=$connection->real_escape_string($user_id);
+    $email=new email_model();
+    $result=$email->send_CancelEmail($user_id,$connection);
     $customer=new customer_model();
     $result=$customer->decline($connection,$user_id);
     if($result===false){

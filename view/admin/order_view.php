@@ -59,6 +59,12 @@ require_once("../../config.php");?>
 					<span class="text">Orders</span>
 				</a>
 			</li>
+			<li>
+				<a href="../../controller/admin/review_controller.php?id=viewreviews">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Company Reviews</span>
+				</a>
+			</li>
 			
 		</ul>
 		<ul class="side-menu">
@@ -206,8 +212,8 @@ require_once("../../config.php");?>
 
 		<div class="down">
 		<div class="down1">  
-		        <label>Delivery Method :</label><br>  
-                <input type="text" name="fname" value=<?php echo $result[0]['Delivery_Method']; ?> readonly > <br>
+		        <label>Delivery Method :</label><br> 
+                <input type="text" name="fname" value="<?php echo $result[0]['Delivery_Method']; ?>" readonly > <br>
 		     </div>
 			 <div class="down1">  
 		        <label>Delivery Status :</label><br>  
