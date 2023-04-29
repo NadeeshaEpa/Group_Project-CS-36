@@ -35,7 +35,7 @@
         <div class="login">
             Hello,<br>
             Log into your account for the best experience with<br> FAGO<br>
-            <a href="http://localhost/Group_36/view/registeras.php"><button class="btnr">Register</button></a>
+            <a href="http://localhost/Group_36/view/email.php"><button class="btnr">Register</button></a>
             <a href="http://localhost/Group_36/view/login.php"><button class="btnl">Login</button></a>
             
         </div>
@@ -101,8 +101,8 @@
             <h2>Menu</h2>
             <a href="http://localhost/Group_36/view/home.php">Home</a><br><br>
             <a href="http://localhost/Group_36/controller/Users/about_controller.php?about='1'">About Us</a><br><br>
-            <a href="http://localhost/Group_36/view/ourservices.php">Our Services</a><br><br>
-            <a href="http://localhost/Group_36/view/contact.php">Contact Us</a><br>
+            <a href="http://localhost/Group_36/view/services.php">Our Services</a><br><br>
+            <a href="http://localhost/Group_36/view/contact_us.php">Contact Us</a><br>
         </div>
         <div class="fagolink">
             <p>© 2022 FAGO. All Rights Reserved.</p>
