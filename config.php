@@ -2,7 +2,7 @@
     $serverName = "localhost";
     $username = "root";
     $password = "";
-    $db = "fago";
+    $db = "fagonew";
 
 
     
