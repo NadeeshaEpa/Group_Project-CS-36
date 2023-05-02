@@ -62,7 +62,7 @@
 			</li>
 
 			<li  class="active">
-				<a href="../../view/gasagent/compalin.php">
+			    <a href="../../controller/gasagent/complain.php?complain='1'">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Complains</span>
 				</a>
@@ -85,7 +85,13 @@
 	</section>
 	<!-- SIDEBAR -->
 
-
+	<?php
+	if(isset($_SESSION['Complain_orders'])){
+		$order=$_SESSION['Complain_orders'];
+	}else{
+		$order=[];
+	}
+	?>
 
 	<!-- CONTENT -->
 	<section id="content">
@@ -112,12 +118,6 @@
 		<!-- NAVBAR -->
   
 
-
-  
-		
-
-  
-
 <main>
 <div class="complane_outter" id="complaneoutterid">
             <div class="complane_form">
@@ -140,8 +140,14 @@
                 <form action="../../controller/gasagent/complain.php" method="Post">
                   <h5>Add Complains</h5>
                   <label for="">Order No :</label><br>
-                  <input type="text" name="complaneRef" id="complaneRef_id"><br>
-                                    <label for="">Description :</label><br>
+                  <!-- add a drop down -->
+				  <select name="orderid">
+				    <option selected disabled>Select Order Id</option>
+				    <?php foreach($order as $ord){?>	
+						<option><?php echo $ord?></option>
+					<?php }?>
+			      </select><br><br>
+                  <label for="">Description :</label><br>
                   <input type="text-area" name="complaneDes" id="complaneDes_id"><br>
                   <button type="submit" name="complane_btn">submit</button>
 				  
