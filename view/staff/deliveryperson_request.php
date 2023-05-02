@@ -208,7 +208,7 @@ require_once("../../config.php");?>
 		    
 		</div>
 
-		<button onclick="acceptrequest(<?php echo $result[0]['DeliveryPerson_Id']; ?>);" class="b4">Accept</button>  
+		<button onclick="acceptrequest(<?php echo $result[0]['DeliveryPerson_Id']; ?>);" class="b2">Accept</button>  
 		<button onclick="deleterequest(<?php echo $result[0]['DeliveryPerson_Id']; ?>);" class="b4">Decline</button>
 		<br><br>
 
