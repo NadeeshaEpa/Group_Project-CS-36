@@ -11,6 +11,7 @@ $result=$user->gasDashDetails($connection);
 $getGasType = new ViewGasType();
 $gasTypeResults = $getGasType->fetchGasType($connection, $agentId);
 
+
 if(!$gasTypeResults){
     header("Location: ../../view/gasagent/gasagent_dashboard.php");
     $connection->close();
