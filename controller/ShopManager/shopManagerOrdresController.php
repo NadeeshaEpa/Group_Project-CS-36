@@ -15,6 +15,7 @@ if(isset($_POST['DeliveredOrder'])){
         exit();
     }
     else{
+        $_SESSION['No_orders']='No Delivered orders';
         header("Location: ../../controller/ShopManager/ShopManagerDashboardFirstController.php");
         $connection->close();
         exit();
@@ -34,6 +35,7 @@ if(isset($_POST['PickedOrder'])){
         exit();
     }
     else{
+        $_SESSION['No_orders']='No reserve orders';
         header("Location: ../../controller/ShopManager/ShopManagerDashboardFirstController.php");
         $connection->close();
         exit();

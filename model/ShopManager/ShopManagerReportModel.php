@@ -192,7 +192,7 @@ class Brand_reports{
      /*Delivered details */
     public function DeliveredOrderDetails($connection){
         $this->User_id=$_SESSION['User_id'];
-        $sql="SELECT concat(u.First_Name,' ',u.Last_Name)AS cus_Name,concat(u.Postalcode,' , ',u.Street,' , ' ,u.City)As Address, c.Contact_No, p.Quantity,po.Category,po.Name,o.Amount,o.Delivery_Method,o.Order_date,o.Delivery_Status FROM `order`o INNER JOIN shop_placeorder p on o.Order_id=p.Order_Id INNER JOIN user u ON u.User_id=p.Customer_Id INNER JOIN user_contact c ON u.User_id=c.User_id  INNER JOIN product po ON po.Item_code=p.Product_id  WHERE (o.Order_Status=1 && p.StockManager_id=$this->User_id  && o.Delivery_Method='By delivery person' ) ORDER BY o.Time ASC";
+        $sql="SELECT concat(u.First_Name,' ',u.Last_Name)AS cus_Name,concat(u.Postalcode,' , ',u.Street,' , ' ,u.City)As Address, c.Contact_No, p.Quantity,po.Category,po.Name,o.Amount,o.Delivery_Method,o.Order_date,o.Delivery_Status FROM `order`o INNER JOIN shop_placeorder p on o.Order_id=p.Order_Id INNER JOIN user u ON u.User_id=p.Customer_Id INNER JOIN user_contact c ON u.User_id=c.User_id  INNER JOIN product po ON po.Item_code=p.Product_id  WHERE (o.Order_Status=1 && p.StockManager_id=$this->User_id  && o.Delivery_Method='Delivered by agent' ) ORDER BY o.Time ASC";
        
         $result=$connection->query($sql);
         if($result->num_rows===0){
@@ -210,7 +210,7 @@ class Brand_reports{
     /*Picked Details */
     public function PickedOrderDetails($connection){
         $this->User_id=$_SESSION['User_id'];
-        $sql="SELECT o.Order_id,concat(u.First_Name,' ',u.Last_Name)AS cus_Name,concat(u.Postalcode,' , ',u.Street,' , ' ,u.City)As Address, c.Contact_No, p.Quantity,po.Category,po.Name,o.Amount,o.Delivery_Method,o.Order_date,o.Delivery_Status FROM `order`o INNER JOIN shop_placeorder p on o.Order_id=p.Order_Id INNER JOIN user u ON u.User_id=p.Customer_Id INNER JOIN user_contact c ON u.User_id=c.User_id  INNER JOIN product po ON po.Item_code=p.Product_id  WHERE (o.Order_Status=1 && p.StockManager_id=$this->User_id  && o.Delivery_Method='Delivered by agent' ) ORDER BY o.Time ASC";
+        $sql="SELECT o.Order_id,concat(u.First_Name,' ',u.Last_Name)AS cus_Name,concat(u.Postalcode,' , ',u.Street,' , ' ,u.City)As Address, c.Contact_No, p.Quantity,po.Category,po.Name,o.Amount,o.Delivery_Method,o.Order_date,o.Delivery_Status FROM `order`o INNER JOIN shop_placeorder p on o.Order_id=p.Order_Id INNER JOIN user u ON u.User_id=p.Customer_Id INNER JOIN user_contact c ON u.User_id=c.User_id  INNER JOIN product po ON po.Item_code=p.Product_id  WHERE (o.Order_Status=1 && p.StockManager_id=$this->User_id  && o.Delivery_Method='Reserve' ) ORDER BY o.Time ASC";
        
         $result=$connection->query($sql);
         if($result->num_rows===0){

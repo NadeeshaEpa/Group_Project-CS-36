@@ -108,7 +108,7 @@ class location{
             LEFT JOIN user ucspo ON cspo.Customer_Id=ucspo.User_id
             LEFT JOIN gascylinder gc ON po.Cylinder_Id=gc.Cylinder_Id
             
-            WHERE (o.Delivery_Method='By delivery Person' && o.Order_Status=1 && o.Delivery_Status IS NULL)
+            WHERE (o.Delivery_Method='Delivered by agent' && o.Order_Status=1 && o.Delivery_Status IS NULL)
             ORDER BY o.Order_date ASC, o.Time ASC";
             $result1=mysqli_query($connection,$sql1);
             
@@ -363,7 +363,7 @@ class location{
     LEFT JOIN user_contact ucponum ON ucpo.User_id=ucponum.User_id
     LEFT JOIN user_contact ucsponum ON ucspo.User_id=ucsponum.User_id
                 
-    WHERE (o.Delivery_Method='By delivery Person' && o.Order_Status=1 && o.Order_id=$orderId)
+    WHERE (o.Delivery_Method='Delivered by agent' && o.Order_Status=1 && o.Order_id=$orderId)
     GROUP BY o.Order_id
     ORDER BY o.Order_date ASC, o.Time ASC";
         $result2=mysqli_query($connection,$sql2);
