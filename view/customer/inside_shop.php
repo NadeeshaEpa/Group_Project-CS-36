@@ -23,6 +23,7 @@
             $contactno=$data[0]['Contact_No'];
             $lastupdatedtime=$data[0]['LastUpdatedTime'];
             $lastupdateddate=$data[0]['LastUpdatedDate'];
+            $NextArrival_Date=$data[0]['NextArrival_Date'];
             $Gas_id=$data[0]['Gas_id'];
         }
         if(isset($_SESSION['shopimage'])){
@@ -39,7 +40,8 @@
             <div class="details">
                 <div class="details-left">
                     <b >Contact No:</b><?php echo $contactno?><br><br>
-                    <b >Last Updated:</b><?php echo $lastupdateddate?> <?php echo $lastupdatedtime?>
+                    <b >Last Updated:</b><?php echo $lastupdateddate?> <?php echo $lastupdatedtime?><br>
+                    <b >Next Arrival Date:</b><?php echo $NextArrival_Date?><br>
                 </div>
                 <div class="details-right">
                     <!-- pass the button value as a post variable -->

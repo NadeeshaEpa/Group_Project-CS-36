@@ -147,7 +147,7 @@ function getLocation(callback) {
 function saveLocation(location) {
   // Send an AJAX POST request to the PHP file
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", "http://localhost/Group_Project-CS-36/controller/deliveryperson/deliveryLiveLocationcontroller.php", true);
+  xhr.open("POST", "http://localhost/Group_36/controller/deliveryperson/deliveryLiveLocationcontroller.php", true);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhr.onreadystatechange = function() {
     if (xhr.readyState === 4 && xhr.status === 200) {

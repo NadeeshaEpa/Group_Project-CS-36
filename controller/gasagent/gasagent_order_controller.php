@@ -6,7 +6,7 @@ require_once '../../model/gasagent/ViewGasType_model.php';
 $agentId = $_SESSION['User_id'];
 
 $user=new orders(); 
-$result=$user->gasDashDetails($connection);
+$result_order=$user->gasDashDetails($connection);
 
 $getGasType = new ViewGasType();
 $gasTypeResults = $getGasType->fetchGasType($connection, $agentId);
@@ -21,7 +21,7 @@ if(!$gasTypeResults){
 }
 
 if($result==true){
-    $_SESSION['Gas_Dashboard_details']=$result;
+    $_SESSION['Gas_Dashboard_details']=$result_order;
     header("Location: ../../view/gasagent/gasagent_dashboard.php");
     $connection->close();
     exit();

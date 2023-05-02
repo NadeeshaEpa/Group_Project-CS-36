@@ -19,8 +19,6 @@ if(isset($_POST['deliverbtn'])){
         exit();
 
     }
-
-
 }
 
 if(isset($_POST['pickedbtn'])){

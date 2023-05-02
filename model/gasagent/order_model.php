@@ -144,6 +144,7 @@ class Brand_reports{
     public function DeliveredOrderDetails($connection){
         $this->User_id=$_SESSION['User_id'];
         $sql="SELECT o.Order_id,concat(u.First_Name,' ',u.Last_Name)AS Name,concat(u.Postalcode,' , ',u.Street,' , ' ,u.City)As Address, c.Contact_No, p.Quantity,o.Order_date, se.Quantity, o.Amount,gc.Weight,gm.company_name,pay.Paid,o.Delivery_Status FROM `order`o INNER JOIN placeorder p on o.Order_id=p.Order_Id INNER JOIN user u ON u.User_id=p.Customer_Id INNER JOIN user_contact c ON u.User_id=c.User_id  INNER JOIN sell_gas se ON se.Cylinder_Id=p.Cylinder_Id INNER JOIN gascylinder gc ON p.Cylinder_Id=gc.Cylinder_Id INNER JOIN gas_company gm ON gc.Type=gm.company_id INNER JOIN payment pay ON pay.Order_Id=o.Order_id WHERE (o.Order_Status=1 && p.GasAgent_Id=$this->User_id) && (o.Delivery_Method='Delivered by agent') GROUP BY  o.Order_id ORDER BY o.Time ASC";
+      
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;
@@ -161,7 +162,7 @@ class Brand_reports{
     /*Picked Details */
     public function PickedOrderDetails($connection){
         $this->User_id=$_SESSION['User_id'];
-        $sql="SELECT o.Order_id,concat(u.First_Name,' ',u.Last_Name)AS Name,concat(u.Postalcode,' , ',u.Street,' , ' ,u.City)As Address,o.Order_id, c.Contact_No, p.Quantity,o.Order_date, se.Quantity, o.Amount,gc.Weight,gm.company_name ,pay.Paid,o.Delivery_Status FROM `order`o INNER JOIN placeorder p on o.Order_id=p.Order_Id INNER JOIN user u ON u.User_id=p.Customer_Id INNER JOIN user_contact c ON u.User_id=c.User_id  INNER JOIN sell_gas se ON se.Cylinder_Id=p.Cylinder_Id INNER JOIN gascylinder gc ON p.Cylinder_Id=gc.Cylinder_Id INNER JOIN gas_company gm ON gc.Type=gm.company_id INNER JOIN payment pay ON o.Order_id=pay.Order_Id WHERE (o.Order_Status=1 && p.GasAgent_Id=$this->User_id && pay.User_Id=$this->User_id) && (o.Delivery_Method='Delivered by agent') GROUP BY  o.Order_id ORDER BY o.Time ASC";
+        $sql="SELECT o.Order_id,concat(u.First_Name,' ',u.Last_Name)AS Name,concat(u.Postalcode,' , ',u.Street,' , ' ,u.City)As Address,o.Order_id, c.Contact_No, p.Quantity,o.Order_date, se.Quantity, o.Amount,gc.Weight,gm.company_name ,pay.Paid,o.Delivery_Status FROM `order`o INNER JOIN placeorder p on o.Order_id=p.Order_Id INNER JOIN user u ON u.User_id=p.Customer_Id INNER JOIN user_contact c ON u.User_id=c.User_id  INNER JOIN sell_gas se ON se.Cylinder_Id=p.Cylinder_Id INNER JOIN gascylinder gc ON p.Cylinder_Id=gc.Cylinder_Id INNER JOIN gas_company gm ON gc.Type=gm.company_id INNER JOIN payment pay ON o.Order_id=pay.Order_Id WHERE (o.Order_Status=1 && p.GasAgent_Id=$this->User_id && pay.User_Id=$this->User_id) && (o.Delivery_Method='Reserve') GROUP BY  o.Order_id ORDER BY o.Time ASC";
         // var_dump($sql);
         // die();
         $result=$connection->query($sql);

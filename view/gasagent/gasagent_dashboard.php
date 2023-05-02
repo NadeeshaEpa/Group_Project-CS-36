@@ -240,8 +240,13 @@
                                         <th>Price</th>
                                     </tr>
                                     <?php
-                                    if(isset($_SESSION['Gas_Dashboard_details'])){
+                                    if(isset($_SESSION['Gas_Dashboard_details']) && !empty($_SESSION['Gas_Dashboard_details'])){
                                         $result=$_SESSION['Gas_Dashboard_details']; 
+										// print_r($result);
+										// die();
+									}else{
+										$result=array();
+									}
                                         foreach ($result as $row) {
                                             echo "<tr>";
                                             echo "<td>" . $row['Name'] . "</td>";
@@ -256,7 +261,6 @@
                       						echo "</tr>";
                                         }
                                       
-                                    }
                                     
                                     ?>
                                     </table>
