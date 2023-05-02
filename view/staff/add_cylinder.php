@@ -160,10 +160,11 @@
                     </div>     
 
         <br>
-		<a href="gas_cylinder.php"><button style="background-color: #da3a3a;">Cancel</button></a> 
-        <button type="submit" name="register" id="submit">Register</button>  
-        <br><br>
+        <button type="submit" name="register" id="submit" style="float:left; margin-left: 60%;">Register</button>  
+        
     </form>
+	    <a href="gas_cylinder.php"><button style="background-color: #da3a3a; float:left;">Cancel</button></a> 
+		<br><br>
     </div>
 
     </main>

@@ -139,10 +139,11 @@
                             <!-- <button name="uploadimg" class="b2">Upload</button> -->   
                     </div>     
 
-        <button type="submit" name="register" id="submit">Register</button>  
-        <a href="user_staff.php"><button style="background-color: #da3a3a;">Cancel</button></a> 
-		<br><br>
+        <button type="submit" name="register" id="submit" style="float:left; margin-left: 60%;">Register</button>  
+        
     </form>
+	    <a href="gascompany.php"><button style="background-color: #da3a3a;">Cancel</button></a> 
+		<br><br>
     </div>
 
     </main>
