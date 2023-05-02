@@ -134,7 +134,9 @@
                                     <tr>
 									    <th>Order_No</th>
 									    <th>Date</th>
-                                        <th>Description</th>
+										<th>massege</th>
+										<th>status</th>
+									    <th>Description</th>
 										
                                     </tr>
                                     <?php
@@ -144,7 +146,18 @@
                                             echo "<tr>";
 											echo "<td>" . $row['order_id'] . "</td>";
                                             echo "<td>" . $row['date'] . "</td>";
+											echo "<td>" .  $row['message'].  "</td>";
+											// echo "<td>" .  $row['status'] ."</td>";
+											if($row['status']==0){ ?>
+												<!-- change the color of text to red -->
+												<td style="color: red;"><?php echo "uncheck"; ?></td>
+											  <?php }else if($row['status']==2){ ?>
+												<!-- change the color of text to green -->
+												<td style="color: green;"><?php echo "check"; ?></td>
+											  <?php } 
                                             echo "<td>" . $row['Description'] . "</td>";
+											
+											
 											?>
 											<td>
 												<form action="../../controller/gasagent/DeliveryPersonComplane&ReviewsViewController.php" method="post">

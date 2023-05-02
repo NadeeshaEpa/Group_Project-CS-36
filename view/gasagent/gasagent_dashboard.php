@@ -60,7 +60,7 @@
 			</li>
 
 			<li>
-				<a href="../../view/gasagent/compalin.php">
+				<a href="../../controller/gasagent/complain.php">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Complains</span>
 				</a>
@@ -140,6 +140,8 @@
 				</form>
 			</div>
 			<div>
+
+		
 
 				<?php
 				if(isset($_SESSION['updateOpenSucessfully'])){
@@ -233,7 +235,8 @@
                                     <table class="tb">
                                     <tr>
                       					<th>Customer Name</th>
-                                        <th>Customer Address</th>
+                                        <!-- <th>Customer Address</th> -->
+										<th>Order_id</th>
                     					<th>Contact No</th>
                     					<th>Quantity</th>
                                        
@@ -248,7 +251,7 @@
                                         foreach ($result as $row) {
                                             echo "<tr>";
                                             echo "<td>" . $row['Name'] . "</td>";
-                                            echo "<td>" . $row['Address'] . "</td>";
+                                            echo "<td>" . $row['Order_id'] . "</td>";
                       						echo "<td>" . $row['Contact_No'] ."</td>";
                       						echo "<td>" . $row['Quantity'] . "</td>";
                                            

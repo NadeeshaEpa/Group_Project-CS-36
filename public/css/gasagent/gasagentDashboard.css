@@ -460,6 +460,7 @@ body {
 	align-items: center;
 	grid-gap: 12px;
 	padding-left: 6px;
+	color: #10338e;
 }
 #content main .table-data .order table td img {
 	width: 36px;

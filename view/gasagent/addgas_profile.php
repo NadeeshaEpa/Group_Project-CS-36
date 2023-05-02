@@ -183,7 +183,7 @@
                             </div>
                             <div class="down1">
                                 <label>Update Password:</label><br>
-                                <a href="change_password.php">
+                                <a href="add_gastype.php">
                                     <button type="submit" name="changepassword" class="cp">Change password</button>
                                 </a>  
                             </div>    

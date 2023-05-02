@@ -4,12 +4,13 @@ class user_model{
     private $Type;
     public function loginUser($connection,$username,$password){   //check whether the user entered correct username and password and the status is 1.
         $sql = "SELECT * FROM user WHERE username='$username' AND password='$password'";
-
         $result = $connection->query($sql);
-
+        
+    
 
         if($result->num_rows == 1){
             $row = $result->fetch_assoc();
+          
 
             $this->User_id=$row['User_id'];
             $_SESSION['User_id']=$this->User_id;

@@ -22,7 +22,7 @@
 			<span class="text">FaGo</span>
 		</a>
 		<ul class="side-menu top">
-			<li >
+			<li class="active">
 				<a href="../../view/gasagent/gasagent_dashboard.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
@@ -40,7 +40,7 @@
 					<span class="text">View details</span>
 				</a>
 			</li>
-			<li class="active">
+			<li >
 				<a href="../../view/gasagent/add_gastype.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Add gas </span>
@@ -119,9 +119,9 @@
 							<a href="#">Picked gas details</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
+						<!-- <li>
 							<a class="active" href="#">Home</a>
-						</li>
+						</li> -->
 					</ul>
 				</div>
 				
@@ -149,7 +149,8 @@
                                     <table class="tb">
                                     <tr>
                       					<th>Customer Name</th>
-                                        <th>Customer Address</th>
+                                        <!-- <th>Customer Address</th> -->
+										<th>Order_id</th>
                     					<th>Contact No</th>
                     					<th>Quantity</th>
                                        
@@ -166,7 +167,7 @@
                                         foreach ($result as $row) {
                                             echo "<tr>";
                                             echo "<td>" . $row['Name'] . "</td>";
-                                            echo "<td>" . $row['Address'] . "</td>";
+                                            echo "<td>" . $row['Order_id'] . "</td>";
                       						echo "<td>" . $row['Contact_No'] ."</td>";
                       						echo "<td>" . $row['Quantity'] . "</td>";
                                            
@@ -203,7 +204,7 @@
 											  <?php } if($row['Delivery_Status']==NULL){?>
 												 <td><button id="vertify_pin" onclick="pinVertification(<?php echo $row['Order_id'] ?>)">pin</button></td> 
 											  <?php }else{?>
-												<td style="color: blue;">Disable</td>
+												<!-- <td style="color: blue;">Disable</td> -->
 											  <?php }
 											  echo "</tr>";
                       						echo "</tr>";

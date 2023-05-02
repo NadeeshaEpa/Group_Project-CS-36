@@ -30,6 +30,25 @@ class Complain{
         }
     }
 
+    public function GetComplaneId($connection){
+        $this->User_id=$_SESSION['User_id'];
+        $sql="SELECT Order_id FROM `order` WHERE DeliveryPerson_Id= $this->User_id && (Delivery_Status=0 || Delivery_Status=1)";
+       
+        $result=mysqli_query($connection,$sql);
+        if($result->num_rows===0){
+            return false;
+            
+        }else{
+            $answer=array();
+            while($row=$result->fetch_assoc()){
+                array_push($answer,['Order_id'=>$row['Order_id']]);
+            }
+        }
+        return $answer;
+     }
+
+     
+
     public function Delete_Complanes($connection,$Complane_id){
         $sql="DELETE FROM `complains` WHERE Complain_id=$Complane_id";
         $result=$connection->query($sql);
