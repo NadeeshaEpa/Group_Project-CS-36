@@ -26,7 +26,7 @@ if(isset($_POST['btn1'])){
 
     }
 }
-elseif(isset($_POST['btn2'])){
+if(isset($_POST['btn2'])){
     $user=new Dashboard;
     $result=$user->update_as_a_not_active($connection);
     if($result){
@@ -50,7 +50,21 @@ elseif(isset($_POST['btn2'])){
     }
 }
 
-else{
-    echo"invalid request";
-    exit();
+if(isset($_POST['payment'])){
+    $user=new Dashboard;
+    $result=$user->Get_payment_detalis($connection);
+    if($result){
+        
+        $_SESSION['Payment_details']=$result;
+        header("Location: ../../view/deliveryperson/deliveryperson_payment.php");
+        $connection->close();
+        exit();
+    }
+    else{
+        
+        header("Location: ../../view/deliveryperson/deliveryperson_payment.php");
+        $connection->close();
+        exit();
+    }
 }
+

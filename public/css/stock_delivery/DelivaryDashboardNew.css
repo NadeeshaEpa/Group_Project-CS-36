@@ -1269,6 +1269,19 @@ body {
 
  }
  /**/
+ .btn3{
+	border-radius: 15px;
+	text-align: center;
+	font-size: 16px;
+	margin-top: 15px;
+	margin-left: 25px;
+    background-color: #195835;
+	border: none;
+	width: 90%;
+	height: 30px;
+	color: white;
+	margin-right:10px ;
+ }
 
 
 
@@ -1654,6 +1667,7 @@ body {
 }
 
 /**/
+
 
   
   
