@@ -45,7 +45,7 @@ class customer_model{
 
         // Get current date in Y-m-d format
         $current_date = date('Y-m-d');
-        $sql = "UPDATE `customer` SET Status=1,staff_Id=$staff_id, Registration_date=$current_date WHERE Customer_Id='$user_id'";
+        $sql = "UPDATE `customer` SET Status=1,staff_Id=$staff_id, Registration_date='$current_date' WHERE Customer_Id='$user_id'";
         // $sql="DELETE FROM `user` WHERE User_id='$user_id'";
         $result=$connection->query($sql);
         if($result==TRUE){
