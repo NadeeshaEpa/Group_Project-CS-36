@@ -148,7 +148,7 @@ xhttp.onreadystatechange = function() {
     
 };
 
-xhttp.open("GET", "http://localhost/Group_Project-CS-36/controller/ShopManager/ShopManagerOrderCountController.php", true);
+xhttp.open("GET", "http://localhost/Group_36/controller/ShopManager/ShopManagerOrderCountController.php", true);
 
 xhttp.send();
 

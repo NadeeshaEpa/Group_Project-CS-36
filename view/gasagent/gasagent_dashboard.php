@@ -67,12 +67,6 @@
 			</li>
 		</ul>
 		<ul class="side-menu">
-			<!-- <li>
-				<a href="#">
-					<i class='bx bxs-cog' ></i>
-					<span class="text">Settings</span>
-				</a>
-			</li> -->
 			<li>
 				<a href="../../view/login.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
@@ -246,8 +240,13 @@
                                         <th>Price</th>
                                     </tr>
                                     <?php
-                                    if(isset($_SESSION['Gas_Dashboard_details'])){
+                                    if(isset($_SESSION['Gas_Dashboard_details']) && !empty($_SESSION['Gas_Dashboard_details'])){
                                         $result=$_SESSION['Gas_Dashboard_details']; 
+										// print_r($result);
+										// die();
+									}else{
+										$result=array();
+									}
                                         foreach ($result as $row) {
                                             echo "<tr>";
                                             echo "<td>" . $row['Name'] . "</td>";
@@ -262,7 +261,6 @@
                       						echo "</tr>";
                                         }
                                       
-                                    }
                                     
                                     ?>
                                     </table>
