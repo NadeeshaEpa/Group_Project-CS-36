@@ -153,7 +153,11 @@
 						</tr>
 
 						<?php
-						$result=$_SESSION['mycomplaindetails'];
+						if(isset($_SESSION['mycomplaindetails'])){
+							$result=$_SESSION['mycomplaindetails'];
+						}else{
+							$result=[];
+						}
 						if($result){
 							foreach($result as $row){
 								$complain_id=$row['Complain_id'];

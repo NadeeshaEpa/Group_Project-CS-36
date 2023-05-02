@@ -25,11 +25,7 @@ require_once("../../config.php");?>
 		</a>
 		<ul class="side-menu top">
 			<li >
-<<<<<<< HEAD
 				<a href="../../controller/staff/dashboard_controller.php?id=profitdetails">
-=======
-				<a href="../../view/staff/staff_dashboard.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -45,11 +41,7 @@ require_once("../../config.php");?>
 
 			<li class="active">
 			
-<<<<<<< HEAD
 			<a href="../../controller/staff/users_controller.php?id=userdetails">
-=======
-			<a href="../../view/staff/users.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-group' ></i>
 					<span class="text">Users</span>
 				</a>
@@ -57,24 +49,14 @@ require_once("../../config.php");?>
 
 
 			<li>
-<<<<<<< HEAD
 				<a href="../../controller/staff/users_controller.php?rid=userrequestdetails">
-=======
-				<a href="../../view/staff/user_request.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Registration Requests</span>
 				</a>
 			</li>
 
-<<<<<<< HEAD
 			<li>
 				<a href="../../controller/staff/cylinder_controller.php?id=viewcylinder">
-=======
-
-			<li>
-				<a href="../../view/staff/gas_cylinder.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Gas Cylinders</span>
 				</a>
@@ -87,27 +69,18 @@ require_once("../../config.php");?>
 			</li>
 
 			<li>
-<<<<<<< HEAD
 				<a href="../../controller/staff/delivery_controller.php?id=viewdelivery">
-=======
-				<a href="deliveries.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Deliveries</span>
 				</a>
 			</li>
 
 			<li>
-<<<<<<< HEAD
 				<a href="../../controller/staff/payment_controller.php?id=gaspaymentdetails">
-=======
-				<a href="payments.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Payments</span>
 				</a>
 			</li>
-<<<<<<< HEAD
 
 			<li>
 				<a href="../../controller/staff/complain_controller.php?id=complaindetails">
@@ -115,8 +88,6 @@ require_once("../../config.php");?>
 					<span class="text">Complains</span>
 				</a>
 			</li>
-=======
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 			
 		</ul>
 		<ul class="side-menu">
@@ -152,11 +123,7 @@ require_once("../../config.php");?>
 			<?php if($_SESSION['img-status'] == 0){?>
                     <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                 <?php }else{?>
-<<<<<<< HEAD
                     <img src='../../public/images/staff/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
-=======
-                    <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
             <?php } ?>
 			</a>
 			<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?>
@@ -172,21 +139,13 @@ require_once("../../config.php");?>
                     //   $names=$result[1];
                    }
                 ?>
-<<<<<<< HEAD
     <form action="../../controller/staff/deliverypersonacc_controller.php" method="POST" id="staff_form">
-=======
-    <form action="../../controller/staff/staffacc_controller.php" method="POST" id="staff_form">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
         <h2>Edit Staff Member Information</h2><br><br>
     <div class="details"> 
 	<div class="down">
 	   <div class="down1">
 		<label>User Id:</label>
-<<<<<<< HEAD
         <input type="text" name="User_id" id="user_id" value="<?php echo $result[0]['DeliveryPerson_Id']?>"   required readonly>
-=======
-        <input type="text" name="User_id" id="user_id" value="<?php echo $result[0]['Staff_Id']?>"   required readonly>
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
        </div>
 	</div>
 	<div class="down"> 
@@ -212,7 +171,6 @@ require_once("../../config.php");?>
 		</div> 
 	</div>
 
-<<<<<<< HEAD
 	<div class="down">              
 	    <div class="down1">
 
@@ -225,8 +183,6 @@ require_once("../../config.php");?>
 		</div> 
 	</div>
 
-=======
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 	<div class="down"> 
 	    <div class="down1">
         <label for="email" id="email-label">Email :</label>
@@ -252,7 +208,6 @@ require_once("../../config.php");?>
             <input type="text" name="Postalcode" id="postalcode" value="<?php echo $result[0]['Postalcode']?>"  placeholder="Postalcode" required><br>
 	    </div>
 	</div>
-<<<<<<< HEAD
     <br>
 	<div class="down"> 
 	    <div class="down1">
@@ -261,8 +216,6 @@ require_once("../../config.php");?>
 		</div> 
 		
 	</div>  
-=======
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
             <!-- <label for="nic" id="nic-label">NIC :</label><br><br>
             <input type="text" name="nic" id="nic" placeholder="NIC" required><br> -->
             
@@ -270,11 +223,7 @@ require_once("../../config.php");?>
          
         <br><br>
 		<div class="down"> 
-<<<<<<< HEAD
         <a href="../../view/staff/staff-viewDeliveryperson.php"><button style="background-color: #da3a3a;" class="b4">Cancel</button></a> 
-=======
-        <a href="../../view/staff/staff-viewStaff.php"><button style="background-color: #da3a3a;" class="b4">Cancel</button></a> 
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 		<button type="submit" name="edituser" id="submit" class="b6">Update</button>  
 		</div>
     </form>

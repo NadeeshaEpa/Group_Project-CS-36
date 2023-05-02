@@ -19,65 +19,137 @@ class email_model{
         $this->mail->Username = 'fagoorders@gmail.com';
         $this->mail->Password = 'lfvsvbxdkoeomuya';
     }
-    // public function sendEmail($orders,$gasagentemail){
-    //     //email order details to customer
-    //     $useremail=$orders[0]['email'];
-    //     $subject="FAGO Registration Request";
-    //     $message="Your order has been placed successfully. Your order details are as follows: <br>";
-    //     $message.="<br>Order ID: ".$orders[0]['orderid'];
-    //     $message.="<br>Order Date: ".$orders[0]['orderdate'];
-    //     $message.="<br>Order Total: ".$orders[0]['total'];
-    //     $message.="<br>Delivery Method: ".$orders[0]['delivery_method'];
-    //     $message.="<br>Delivery Fee: ".$orders[0]['delivery_fee'];
-    //     $message.="<table border='1'>";
-    //     $message.="<tr><th>Product Name</th><th>Quantity</th><th>Price</th></tr>";
-    //     foreach($orders as $order){
-    //         $message.="<tr><td>".$order['itemname']."</td><td>".$order['quantity']."</td><td>".$order['price']."</td></tr>";
-    //     }
-    //     $message.="</table>";
+    public function send_DeliverypersonEmail($userid,$connection){
+        //email order details to Users
+        $sql="select Email,First_Name,Last_Name from user where User_id=$userid";
+        $result=$connection->query($sql);
+        $row=$result->fetch_object();
+        $email=$row->Email;
+        $fname=$row->First_Name;
+        $lname=$row->Last_Name;
 
-    //     $message.="<br>Thank you for shopping with us. We hope to see you again soon.";
-    //     $message.="<br>Regards,<br>Fago Team";
-        
-    //     $this->mail->setFrom('fagoorders@gmail.com', 'Fago');
-    //     $this->mail->addAddress($useremail);
-    //     $this->mail->addCC($gasagentemail);
-    //     $this->mail->isHTML(true);
-    //     $this->mail->Subject = $subject;
-    //     $this->mail->Body = $message;
-    //     $this->mail->send();
-        
+        $subject="Accept Registration Requests";
+        $message="<h2>Hi ".$fname." ".$lname.",<h2>";
+        $message.="<br>We are pleased to inform you that you have been officially registered to the fago family as a Delivery Person.<br>";
+        $message.="Congratulations!<br>";
+        $message.="Now you Can Login to the website and start DAY 1.";
 
-    // }
-    // public function sendRefundEmail($connection,$order_id,$useremail){
-    //     $sql="SELECT * FROM `order` WHERE Order_id='$order_id'";
-    //     $result=$connection->query($sql);
-    //     $order=$result->fetch_assoc();
+        $message.="<br>Thank you for joining with us.";
+        $message.="<br>Regards,<br>Fago Team";
 
-    //     $subject="Refund Details";
-    //     $message="Your order has been refunded successfully. Your refund details are as follows: <br>";
-    //     $message.="<br>Order ID: ".$order['Order_id'];
-    //     $message.="<br>Order Date: ".$order['Order_date'];
-    //     $message.="<br>Total Amount:LKR ".$order['Amount']+$order['Delivery_fee'];
-    //     $message.="<br>Thank you for shopping with us. We hope to see you again soon.";
-    //     $message.="<br>Regards,<br>Fago Team";
+        //send email only to gas agent
+        $this->mail->setFrom('fagoorders@gmail.com', 'Fago');
+        $this->mail->addAddress($email);
+        $this->mail->isHTML(true);
+        $this->mail->Subject = $subject;
+        $this->mail->Body = $message;
 
-        // $this->mail->setFrom('fagoorders@gmail.com', 'Fago');
-        // $this->mail->addAddress($useremail);
-        // $this->mail->isHTML(true);
-        // $this->mail->Subject = $subject;
-        // $this->mail->Body = $message;
+        if(!$this->mail->send()){
+            echo "Message could not be sent.";
+            echo "Mailer Error: " . $this->mail->ErrorInfo;
+        }else{
+            echo "Message has been sent";
+        }
+    }
 
-        // if(!$this->mail->send()){
-        //     echo "Message could not be sent.";
-        //     echo "Mailer Error: " . $this->mail->ErrorInfo;
-        // }else{
-        //     echo "Message has been sent";
-        // }
-    // }
-    
-}
+    public function send_CustomerEmail($userid,$connection){
+        //email order details to Users
+        $sql="select Email,First_Name,Last_Name from user where User_id=$userid";
+        $result=$connection->query($sql);
+        $row=$result->fetch_object();
+        $email=$row->Email;
+        $fname=$row->First_Name;
+        $lname=$row->Last_Name;
+       
 
+        $subject="Accept Registration Requests";
+        $message="<h2>Hi ".$fname." ".$lname.",<h2>";
+        $message.="<br>Your Registration request has been confirmed successfully.<br>";
+        $message.="Congratulations!<br>";
+        $message.="Now you Can Login to the website and place your order.";
 
+        $message.="<br>Thank you for joining with us.";
+        $message.="<br>Regards,<br>Fago Team";
 
+        //send email only to gas agent
+        $this->mail->setFrom('fagoorders@gmail.com', 'Fago');
+        $this->mail->addAddress($email);
+        $this->mail->isHTML(true);
+        $this->mail->Subject = $subject;
+        $this->mail->Body = $message;
+
+        if(!$this->mail->send()){
+            echo "Message could not be sent.";
+            echo "Mailer Error: " . $this->mail->ErrorInfo;
+        }else{
+            echo "Message has been sent";
+        }
+    }
+
+    public function send_GasagentEmail($userid,$connection){
+        //email order details to Users
+        $sql="select Email,First_Name,Last_Name from user where User_id=$userid";
+        $result=$connection->query($sql);
+        $row=$result->fetch_object();
+        $email=$row->Email;
+        $fname=$row->First_Name;
+        $lname=$row->Last_Name;
+
+        $subject="Accept Registration Requests";
+        $message="<h2>Hi ".$fname." ".$lname.",</h2>";
+        $message.="<br>Your Registration request has been confirmed successfully.<br>";
+        $message.="We are happy to have you as one of our merchants.<br>";
+        $message.="Now you Can Login to the website and sell your products.";
+
+        $message.="<br>Thank you for joining with us.";
+        $message.="<br>Regards,<br>Fago Team";
+
+        //send email only to gas agent
+        $this->mail->setFrom('fagoorders@gmail.com', 'Fago');
+        $this->mail->addAddress($email);
+        $this->mail->isHTML(true);
+        $this->mail->Subject = $subject;
+        $this->mail->Body = $message;
+
+        if(!$this->mail->send()){
+            echo "Message could not be sent.";
+            echo "Mailer Error: " . $this->mail->ErrorInfo;
+        }else{
+            echo "Message has been sent";
+        }
+    }
+
+    public function send_CancelEmail($userid,$connection){
+        //email order details to Users
+        $sql="select Email,First_Name,Last_Name from user where User_id=$userid";
+        $result=$connection->query($sql);
+        $row=$result->fetch_object();
+        $email=$row->Email;
+        $fname=$row->First_Name;
+        $lname=$row->Last_Name;
+
+        $subject="Registration Request Cancelled";
+        $message="<h2>Hi ".$fname." ".$lname.",<h2>";
+        $message.="<br>Your Registration request has been declined by our staff.<br>";
+        $message.="To know further details you can contact us through,";
+        $message.="Email : fagoorders@gmail.com";
+        $message.="Contact-number : 011-2834322";
+        $message.="<br>Thank you for joining with us.";
+        $message.="<br>Regards,<br>Fago Team";
+
+        //send email only to gas agent
+        $this->mail->setFrom('fagoorders@gmail.com', 'Fago');
+        $this->mail->addAddress($email);
+        $this->mail->isHTML(true);
+        $this->mail->Subject = $subject;
+        $this->mail->Body = $message;
+
+        if(!$this->mail->send()){
+            echo "Message could not be sent.";
+            echo "Mailer Error: " . $this->mail->ErrorInfo;
+        }else{
+            echo "Message has been sent";
+        }
+    }
+    }
 ?>

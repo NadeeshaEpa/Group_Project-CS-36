@@ -119,9 +119,7 @@
 							<a href="#">Dashboard</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a class="active" href="#">Home</a>
-						</li>
+						
 					</ul>
 				</div>
 				
@@ -142,6 +140,8 @@
 				</form>
 			</div>
 			<div>
+
+		
 
 				<?php
 				if(isset($_SESSION['updateOpenSucessfully'])){
@@ -192,6 +192,8 @@
 				
 				?>
 			</div>
+
+		
 			<ul class="box-info">
                 <li>
 					<i class='bx bxs-calendar-check' ></i>
@@ -233,7 +235,8 @@
                                     <table class="tb">
                                     <tr>
                       					<th>Customer Name</th>
-                                        <th>Customer Address</th>
+                                        <!-- <th>Customer Address</th> -->
+										<th>Order_id</th>
                     					<th>Contact No</th>
                     					<th>Quantity</th>
                                        
@@ -248,7 +251,7 @@
                                         foreach ($result as $row) {
                                             echo "<tr>";
                                             echo "<td>" . $row['Name'] . "</td>";
-                                            echo "<td>" . $row['Address'] . "</td>";
+                                            echo "<td>" . $row['Order_id'] . "</td>";
                       						echo "<td>" . $row['Contact_No'] ."</td>";
                       						echo "<td>" . $row['Quantity'] . "</td>";
                                            
@@ -264,61 +267,7 @@
                                     ?>
                                     </table>
                     </div>
-						<!-- <h3>Recent Orders</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
-					<table>
-						<thead>
-							<tr>
-								<th>User</th>
-								<th>Date Order</th>
-								<th>Status</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									<img src="../../public/images/people2.JPEG">
-									<p>Nadeesha</p>
-								</td>
-								<td>21-10-2022</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/people3.JPG">
-									<p>Gayal</p>
-								</td>
-								<td>11-02-2022</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/people4.JPEG">
-									<p>Shehan</p>
-								</td>
-								<td>03-02-2022</td>
-								<td><span class="status process">Process</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/people5.PNG">
-									<p>kamal</p>
-								</td>
-								<td>01-02-2022</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/people4.JPEG">
-									<p>Avishka</p>
-								</td>
-								<td>01-01-2022</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-						</tbody>
-					</table> -->
+				
 				</div>
 			
 			</div>

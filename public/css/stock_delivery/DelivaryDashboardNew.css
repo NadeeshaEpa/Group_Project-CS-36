@@ -1631,6 +1631,30 @@ body {
 
 /**/
 
+/*popuu erroe msg css*/
+.pickedmsg h1{
+	text-align: center;
+	font-size: 15px;
+	color: #046f34;
+}
+.pickedmsg h2{
+   text-align: center;
+   font-size: 15px;
+   color: #cb1919;
+}
+
+#feedback{
+	width: 80%;
+	height: 10%;
+	border-radius: 15px;
+	margin-left: 10%;
+	text-align: center;
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+
+/**/
+
   
   
   

@@ -103,8 +103,4 @@ class payment_model
     }
 
 }
-<<<<<<< HEAD
 ?>
-=======
-?>
->>>>>>> 39892497ba09a67dd7133a9ec633cf58a21b843a

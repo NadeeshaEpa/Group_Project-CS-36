@@ -17,14 +17,14 @@
     <body>
 
     
-				<!-- SIDEBAR -->
-	<section id="sidebar">
+	 	<!-- SIDEBAR -->
+		 <section id="sidebar">
 		<a href="../../view/gasagent/View.php" class="brand">
 			<i class='bx bxs-select-multiple'></i>
 			<span class="text">FaGo</span>
 		</a>
 		<ul class="side-menu top">
-			<li>
+			<li >
 				<a href="../../view/gasagent/gasagent_dashboard.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
@@ -36,7 +36,7 @@
 					<span class="text">Order details</span>
 				</a>
 			</li>
-			<li>
+			<li >
 				<a href="../../controller/gasagent/gasagent_viewController.php?viewgas='1'">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">View details</span>
@@ -80,7 +80,6 @@
 	<!-- SIDEBAR -->
 
 
-
 	<!-- CONTENT -->
 	<section id="content">
 		<!-- NAVBAR -->
@@ -115,9 +114,7 @@
 							<a href="#">View Complains </a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a class="active" href="../../index.php">Home</a>
-						</li>
+						
 					</ul>
 				</div>
                 
@@ -131,7 +128,9 @@
                                     <tr>
 									    <th>Order_No</th>
 									    <th>Date</th>
-                                        <th>Description</th>
+										<th>massege</th>
+										<th>status</th>
+									    <th>Description</th>
 										
                                     </tr>
                                     <?php

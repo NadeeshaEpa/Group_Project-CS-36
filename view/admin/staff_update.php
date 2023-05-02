@@ -24,13 +24,8 @@ require_once("../../config.php");?>
 			<span class="text">FAGO</span>
 		</a>
 		<ul class="side-menu top">
-<<<<<<< HEAD
 		<li >
 				<a href="../../controller/admin/dashboard_controller.php?id=profitdetails">
-=======
-			<li >
-				<a href="../../view/admin/admin_dashboard.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -46,11 +41,7 @@ require_once("../../config.php");?>
 
 			<li class="active">
 			
-<<<<<<< HEAD
 			<a href="../../controller/admin/users_controller.php?id=userdetails">
-=======
-			<a href="../../view/admin/users.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Users</span>
 				</a>
@@ -68,19 +59,16 @@ require_once("../../config.php");?>
 					<span class="text">Orders</span>
 				</a>
 			</li>
+			<li>
+				<a href="../../controller/admin/review_controller.php?id=viewreviews">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Company Reviews</span>
+				</a>
+			</li>
 			
 		</ul>
 		<ul class="side-menu">
-<<<<<<< HEAD
 			
-=======
-			<!-- <li>
-				<a href="#">
-					<i class='bx bxs-cog' ></i>
-					<span class="text">Settings</span>
-				</a>
-			</li> -->
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 			<li>
 				<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
@@ -98,29 +86,12 @@ require_once("../../config.php");?>
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-<<<<<<< HEAD
-=======
-			<!-- <a href="#" class="nav-link">Categories</a> -->
-			<!-- <form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form> -->
-			<!-- <input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label> -->
-			
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 			
 			<a href="#" class="profile">
 			<?php if($_SESSION['img-status'] == 0){?>
                     <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                 <?php }else{?>
-<<<<<<< HEAD
                     <img src='../../public/images/admin/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
-=======
-                    <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
             <?php } ?>
 			</a>
 			<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?>

@@ -54,11 +54,7 @@
             }
         }
         ?>
-<<<<<<< HEAD
     
-=======
-    <!-- <?php// include '../../view/customer/customer_footer.php'; ?> -->
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     <script src="../../public/js/Validation.js"></script>    
 </body>
 </html>

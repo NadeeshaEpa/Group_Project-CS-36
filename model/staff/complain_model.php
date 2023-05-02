@@ -19,7 +19,7 @@ class complain_model
 
     public function viewmycomplains($connection,$User_id)
     {      
-        $sql="SELECT c.Complain_id,c.date,c.Description,c.user_id,c.order_id,c.status,u.Type from `complains` c INNER JOIN `user` u ON c.user_id=u.User_id WHERE c.staff_id='$User_id'";
+        $sql="SELECT c.Complain_id,c.date,c.Description,c.user_id,c.order_id,c.status,u.Type from `complains` c INNER JOIN `user` u ON c.user_id=u.User_id WHERE c.staff_id='$User_id' AND (c.status=1 OR c.status=2)";
         $result = mysqli_query($connection, $sql);
         $complain = [];
         if ($result) {    

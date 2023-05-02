@@ -73,18 +73,54 @@ if(isset($_POST['DeliveryReAcceptName'])){
 
 
 
-if(isset($_POST['DeliveryRePendingName'])){
-    $orderId=$_POST['DeliveryOrder'];
-    $DeliveryFee=$_POST['DeliveryRequestDeliveryFee'];
-    $orderId=$connection->real_escape_string($orderId);
+// if(isset($_POST['DeliveryRePendingName'])){
+//     $orderId=$_POST['DeliveryOrder'];
+//     $DeliveryFee=$_POST['DeliveryRequestDeliveryFee'];
+//     $orderId=$connection->real_escape_string($orderId);
+//     $DeliveryFee=$connection->real_escape_string($DeliveryFee);
+//     $user=new location();
+//     $result=$user->PendingDeliveryRequest($connection,$orderId,$DeliveryFee);
+
+//     $user1=new Dashboard;
+//     $result1=$user1->update_as_a_active($connection);
+
+//     if($result==true && $result1){
+       
+//         header("Location: ../../controller/deliveryperson/deliveryDashboardFirstController.php");
+//         $connection->close();
+//         exit();
+    
+//     }
+//     else{
+//         header("Location: ../../view/deliveryperson/DeliveryPersonDeliveryRequest.php");
+//         $connection->close();
+//         exit();
+    
+//     }
+    
+// }
+
+
+if(isset($_GET['enter_pin'])){
+    $order_id=$_GET['id'];
+    $pin=$_GET['pin'];
+    $DeliveryFee=$_GET['amount'];
+    $order_id=$connection->real_escape_string($order_id);
+    $pin=$connection->real_escape_string($pin);
     $DeliveryFee=$connection->real_escape_string($DeliveryFee);
+
+    $user2=new Dashboard;
+    $result2=$user2->Check_the_pin($connection,$order_id,$pin);
+
+   
     $user=new location();
-    $result=$user->PendingDeliveryRequest($connection,$orderId,$DeliveryFee);
+    $result=$user->PendingDeliveryRequest($connection,$order_id,$DeliveryFee);
 
     $user1=new Dashboard;
     $result1=$user1->update_as_a_active($connection);
-
-    if($result==true && $result1){
+    
+   
+    if($result2==true && $result==true && $result1){
        
         header("Location: ../../controller/deliveryperson/deliveryDashboardFirstController.php");
         $connection->close();
@@ -95,8 +131,6 @@ if(isset($_POST['DeliveryRePendingName'])){
         header("Location: ../../view/deliveryperson/DeliveryPersonDeliveryRequest.php");
         $connection->close();
         exit();
-    
     }
-    
 }
 

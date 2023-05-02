@@ -11,10 +11,7 @@
 	<!-- My CSS -->
 	<link rel="stylesheet" href="../../public/css/admin_delivery/Dashboard.css">
     <link rel="stylesheet" href="../../public/css/admin_delivery/user_list.css">
-<<<<<<< HEAD
 	<link rel="stylesheet" href="../../public/css/admin_delivery/delete_popup.css">	
-=======
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 
 	<title>FaGo</title>
 </head>
@@ -29,7 +26,7 @@
 		</a>
 		<ul class="side-menu top">
 			<li>
-				<a href="../../view/admin/admin_dashboard.php">
+				<a href="../../controller/admin/dashboard_controller.php?id=profitdetails">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -45,7 +42,7 @@
 
 			<li>
 			
-			<a href="../../view/admin/users.php">
+			<a href="../../controller/admin/users_controller.php?id=userdetails">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Users</span>
 				</a>
@@ -63,6 +60,12 @@
 					<span class="text">Orders</span>
 				</a>
 			</li>
+			<li>
+				<a href="../../controller/admin/review_controller.php?id=viewreviews">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Company Reviews</span>
+				</a>
+			</li>
 			
 		</ul>
 		<ul class="side-menu">
@@ -73,11 +76,7 @@
 				</a>
 			</li> -->
 			<li>
-<<<<<<< HEAD
 				<a href="#" class="logout">
-=======
-				<a href="../../controller/Users/logout_controller.php" class="logout">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -108,7 +107,7 @@
 			<?php if($_SESSION['img-status'] == 0){?>
                     <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                 <?php }else{?>
-                    <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
+                    <img src='../../public/images/admin/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
             <?php } ?>
 			</a>
 			<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?>
@@ -117,11 +116,7 @@
 
 		<!-- MAIN -->
 		<main>
-<<<<<<< HEAD
    <a href="add_company.php"> <button style="width:20%; background-color:#CFE8FF;">Add Gas Company</button></a>
-=======
-   <a href="add_company.php"> <button>Add Gas Company</button></a>
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     <div class="list">
 
     <h3>All Gas Companies</h3>
@@ -146,11 +141,7 @@
                  <td>
                  <a href="../../controller/admin/company_controller.php?vid='.$company_id.'"><button class="button1">View</button></a>
                  <a href="../../controller/admin/company_controller.php?uid='.$company_id.'"><button class="button2">Update</button></a>
-<<<<<<< HEAD
                  <button onclick="deleterequest('.$company_id.');" class="button3">Delete</button>
-=======
-                 <a href="../../controller/admin/company_controller.php?did='.$company_id.'"><button class="button3">Delete</button></a>
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
                  </td>
             </tr>' ;
             
@@ -168,7 +159,6 @@
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
-<<<<<<< HEAD
 	<div id="backgr">
         <div id="cancel_popup">
             <div class="cancel_contect">
@@ -195,8 +185,6 @@
         }  
             
     </script>
-=======
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 	
 
 	<script src="../../public/js/script.js"></script>

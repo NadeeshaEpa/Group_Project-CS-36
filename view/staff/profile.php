@@ -24,11 +24,7 @@
 		</a>
 		<ul class="side-menu top">
 			<li>
-<<<<<<< HEAD
 				<a href="../../controller/staff/dashboard_controller.php?id=profitdetails">
-=======
-				<a href="../../view/staff/staff_dashboard.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -44,33 +40,21 @@
 
 			<li>
 			
-<<<<<<< HEAD
 			<a href="../../controller/staff/users_controller.php?id=userdetails">
-=======
-			<a href="../../view/staff/users.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-group' ></i>
 					<span class="text">Users</span>
 				</a>
 			</li>
 
 			<li>
-<<<<<<< HEAD
 				<a href="../../controller/staff/users_controller.php?rid=userrequestdetails">
-=======
-				<a href="../../view/staff/user_request.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Registration Requests</span>
 				</a>
 			</li>
 
 			<li>
-<<<<<<< HEAD
 				<a href="../../controller/staff/cylinder_controller.php?id=viewcylinder">
-=======
-				<a href="../../view/staff/gas_cylinder.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Gas Cylinders</span>
 				</a>
@@ -83,27 +67,18 @@
 			</li>
 
 			<li>
-<<<<<<< HEAD
 				<a href="../../controller/staff/delivery_controller.php?id=viewdelivery">
-=======
-				<a href="deliveries.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Deliveries</span>
 				</a>
 			</li>
 
 			<li>
-<<<<<<< HEAD
 				<a href="../../controller/staff/payment_controller.php?id=gaspaymentdetails">
-=======
-				<a href="payments.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Payments</span>
 				</a>
 			</li>
-<<<<<<< HEAD
 
 			<li>
 				<a href="../../controller/staff/complain_controller.php?id=complaindetails">
@@ -112,8 +87,6 @@
 				</a>
 			</li>
 			
-=======
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 			
 		</ul>
 		<ul class="side-menu">
@@ -149,11 +122,7 @@
 			<?php if($_SESSION['img-status'] == 0){?>
                     <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                 <?php }else{?>
-<<<<<<< HEAD
                     <img src='../../public/images/staff/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
-=======
-                    <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
             <?php } ?>
 			</a>
 			<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?>
@@ -164,7 +133,6 @@
 		<main>
 
                 <!-- <div class="welcome"> -->
-<<<<<<< HEAD
                 <?php
                     if(isset($_SESSION['login'])){
                         if($_SESSION['login']=="success"){
@@ -174,19 +142,6 @@
                         }
                     }
                 ?>
-=======
-                <div class="welcome">    
-                    <?php
-                        if(isset($_SESSION['login'])){
-                            if($_SESSION['login']=="success"){
-                                echo "<p>"."Welcome ".$_SESSION['Firstname']." ".$_SESSION['Lastname']."</p>";
-                                echo '<br>';                              
-                                //unset($_SESSION['login']);
-                            }
-                        }
-                    ?>
-                </div>
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
             <!-- </div> -->
             <div class="data">
                     <?php
@@ -208,11 +163,7 @@
                     <?php if($_SESSION['img-status'] == 0){?>
                         <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
                     <?php }else{?>
-<<<<<<< HEAD
                         <img src='../../public/images/staff/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
-=======
-                        <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
                     <?php } ?>
                     <div class="b3">
                         <form action="../../controller/staff/profile_controller.php" method="POST" enctype="multipart/form-data">

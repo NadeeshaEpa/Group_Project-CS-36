@@ -10,7 +10,6 @@ class order_model
             while ($row = mysqli_fetch_assoc($result)) {
                 $order[] = $row;
             }
-            // print_r($order);
             return $order;
         } else {
             return $order;

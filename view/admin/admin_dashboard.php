@@ -1,12 +1,4 @@
-<<<<<<< HEAD
 <!-- <?php session_start(); ?> -->
-=======
-<?php session_start(); 
-if(!isset($_SESSION['User_id'])){
-    header("Location: ../../index.php");
-}
-?>
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,11 +23,7 @@ if(!isset($_SESSION['User_id'])){
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
-<<<<<<< HEAD
 				<a href="../../controller/admin/dashboard_controller.php?id=profitdetails">
-=======
-				<a href="#">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -51,11 +39,7 @@ if(!isset($_SESSION['User_id'])){
 
 			<li>
 			
-<<<<<<< HEAD
 			<a href="../../controller/admin/users_controller.php?id=userdetails">
-=======
-			<a href="../../view/admin/users.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Users</span>
 				</a>
@@ -71,6 +55,12 @@ if(!isset($_SESSION['User_id'])){
 				<a href="../../controller/admin/order_controller.php?id=vieworder">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Orders</span>
+				</a>
+			</li>
+			<li>
+				<a href="../../controller/admin/review_controller.php?id=viewreviews">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Company Reviews</span>
 				</a>
 			</li>
 			
@@ -99,29 +89,13 @@ if(!isset($_SESSION['User_id'])){
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-<<<<<<< HEAD
-=======
-			<!-- <a href="#" class="nav-link">Categories</a> -->
-			<!-- <form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form> -->
-			<!-- <input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label> -->
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 			
 			
 			<a href="#" class="profile">
 			<?php if($_SESSION['img-status'] == 0){?>
                     <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                 <?php }else{?>
-<<<<<<< HEAD
                     <img src='../../public/images/admin/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
-=======
-                    <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
             <?php } ?>
 			</a>
 			<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?>
@@ -130,7 +104,6 @@ if(!isset($_SESSION['User_id'])){
 
 		<!-- MAIN -->
 		<main>
-<<<<<<< HEAD
 		<?php 
                    if(isset($_SESSION['dashboard'])){
                       $result=$_SESSION['dashboard']; 
@@ -138,8 +111,6 @@ if(!isset($_SESSION['User_id'])){
                    
                    }
                 ?>
-=======
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 			<div class="head-title">
 				<div class="left">
 					<h1>Dashboard</h1>
@@ -160,30 +131,20 @@ if(!isset($_SESSION['User_id'])){
 				<li>
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
-<<<<<<< HEAD
 						<h3><?php echo $result[0]['orders']?></h3>
 						<p>New Orders</p>
-=======
-						<h3>15</h3>
-						<p>New Order</p>
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-group' ></i>
 					<span class="text">
-<<<<<<< HEAD
 						<h3><?php echo $result[0]['customers']?></h3>
-=======
-						<h3>20</h3>
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 						<p>New Customers</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-dollar-circle' ></i>
 					<span class="text">
-<<<<<<< HEAD
 						<h3>RS. <?php echo $result[0]['amount']?></h3>
 						<p>Total Sales</p>
 					</span>
@@ -202,27 +163,10 @@ if(!isset($_SESSION['User_id'])){
 			            <input type="date" class="form-control" placeholder="Start" name="date">
 						<button type="submit" name="filterdate"><i class='bx bx-search' ></i></button>
 				        </form>
-=======
-						<h3>RS 50,000</h3>
-						<p>Total Sales</p>
-					</span>
-				</li>
-			</ul>
-
-
-			<div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3>Recent Orders</h3>
-						<input type="text-box" placeholder="Search">
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					</div>
 					<table>
 						<thead>
 							<tr>
-<<<<<<< HEAD
 							    <th>Customer</th>
 								<th>Order ID</th>
 								<th>Order Date</th>
@@ -257,54 +201,6 @@ if(!isset($_SESSION['User_id'])){
 						}
 						?>
 
-=======
-								<th>User</th>
-								<th>Date Order</th>
-								<th>Status</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									<img src="../../public/images/noprofile.png">
-									<p>Nisali Senadeera</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/noprofile.png">
-									<p>Promod Madawala</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/noprofile.png">
-									<p>Anoma Suraweera</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status process">Process</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/noprofile.png">
-									<p>Nihal Priyantha</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/noprofile.png">
-									<p>Lakindu Wickramasingha</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 						</tbody>
 					</table>
 				</div>
@@ -314,7 +210,6 @@ if(!isset($_SESSION['User_id'])){
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
-<<<<<<< HEAD
 	<script>
 		elementsArray=document.querySelectorAll(".details");
 		elementsArray.forEach(function(elem){
@@ -324,9 +219,6 @@ if(!isset($_SESSION['User_id'])){
 		});
 
 	</script>
-=======
-	
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 
 	<script src="../../public/js/script.js"></script>
 </body>

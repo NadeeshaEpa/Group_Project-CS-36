@@ -24,13 +24,8 @@ require_once("../../config.php");?>
 			<span class="text">FAGO</span>
 		</a>
 		<ul class="side-menu top">
-<<<<<<< HEAD
 		<li>
 				<a href="../../controller/admin/dashboard_controller.php?id=profitdetails">
-=======
-			<li >
-				<a href="../../view/admin/admin_dashboard.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -46,11 +41,7 @@ require_once("../../config.php");?>
 
 			<li>
 			
-<<<<<<< HEAD
 			<a href="../../controller/admin/users_controller.php?id=userdetails">
-=======
-			<a href="../../view/admin/users.php">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Users</span>
 				</a>
@@ -66,6 +57,12 @@ require_once("../../config.php");?>
 				<a href="../../controller/admin/order_controller.php?id=vieworder">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Orders</span>
+				</a>
+			</li>
+			<li>
+				<a href="../../controller/admin/review_controller.php?id=viewreviews">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Company Reviews</span>
 				</a>
 			</li>
 			
@@ -215,8 +212,8 @@ require_once("../../config.php");?>
 
 		<div class="down">
 		<div class="down1">  
-		        <label>Delivery Method :</label><br>  
-                <input type="text" name="fname" value=<?php echo $result[0]['Delivery_Method']; ?> readonly > <br>
+		        <label>Delivery Method :</label><br> 
+                <input type="text" name="fname" value="<?php echo $result[0]['Delivery_Method']; ?>" readonly > <br>
 		     </div>
 			 <div class="down1">  
 		        <label>Delivery Status :</label><br>  

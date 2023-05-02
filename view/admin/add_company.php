@@ -24,7 +24,7 @@
 		</a>
 		<ul class="side-menu top">
 			<li>
-				<a href="#">
+				<a href="../../controller/admin/dashboard_controller.php?id=profitdetails">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -40,7 +40,7 @@
 
 			<li>
 			
-			<a href="../../view/admin/users.php">
+			<a href="../../controller/admin/users_controller.php?id=userdetails">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Users</span>
 				</a>
@@ -58,6 +58,13 @@
 					<span class="text">Orders</span>
 				</a>
 			</li>
+
+			<li>
+				<a href="../../controller/admin/review_controller.php?id=viewreviews">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Company Reviews</span>
+				</a>
+			</li>
 			
 		</ul>
 		<ul class="side-menu">
@@ -68,11 +75,7 @@
 				</a>
 			</li> -->
 			<li>
-<<<<<<< HEAD
 				<a href="#" class="logout">
-=======
-				<a href="../../controller/Users/logout_controller.php" class="logout">
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -103,11 +106,7 @@
 			<?php if($_SESSION['img-status'] == 0){?>
                     <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                 <?php }else{?>
-<<<<<<< HEAD
                     <img src='../../public/images/admin/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
-=======
-                    <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
             <?php } ?>
 			</a>
 			<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?>
@@ -120,7 +119,6 @@
     <form action="../../controller/admin/addcompany_controller.php" method="POST" id="company_form" enctype="multipart/form-data">
         <h2>Add New Gas Company</h2>
 
-<<<<<<< HEAD
 		<div class="err-msg">
                 <?php
                     if(isset($_SESSION['addcompany-error'])){
@@ -130,8 +128,6 @@
         </div>
 
 
-=======
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
         Company Name:<br><br>
           <input type="text" name="name" id="name" placeholder="eg : Litro, Laugh"  required><br><br>
 
@@ -142,34 +138,12 @@
                             <input type="file" name="image" id="image" class="image">
                             <!-- <button name="uploadimg" class="b2">Upload</button> -->   
                     </div>     
-<<<<<<< HEAD
 
-        <button type="submit" name="register" id="submit">Register</button>  
-        <a href="user_staff.php"><button style="background-color: #da3a3a;">Cancel</button></a> 
-		<br><br>
-=======
-<!-- 
-            <label for="nic" id="nic-label">NIC :</label><br><br>
-            <input type="text" name="nic" id="nic" placeholder="NIC" required><br>
-            
-        <label for="password" id="password-label">Password :</label><br><br>
-            <input type="password" name="password" id="password" placeholder="Password" required><br>
-
-        <label for="cpassword" id="cpassword-label">Confirm Password :</label><br><br>
-            <input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password" required><br> 
-
-        <label for="email" id="email-label">Email :</label><br><br>
-            <input type="email" name="email" id="email" placeholder="Email" required><br>
-            
-        <label for="contactnumber" id="contactnum-label">Contact Number :</label><br><br>
-            <input type="text" name="contactnumber" id="contactnumber" placeholder="Contact Number" required><br> -->
-            
-         
-
-        <button type="submit" name="register" id="submit">Register</button>  
-        <a href="user_staff.php"><button style="background-color: #da3a3a;">Cancel</button></a> 
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
+        <button type="submit" name="register" id="submit" style="float:left; margin-left: 60%;">Register</button>  
+        
     </form>
+	    <a href="gascompany.php"><button style="background-color: #da3a3a;">Cancel</button></a> 
+		<br><br>
     </div>
 
     </main>
