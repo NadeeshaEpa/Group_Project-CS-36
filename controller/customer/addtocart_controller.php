@@ -60,9 +60,9 @@ if(isset($_POST['viewcart'])|| isset($_GET['viewcart'])){
         header("Location: ../../view/customer/view_cart.php");
     }
 }
-if(isset($_POST['remove'])){
+if(isset($_GET['remove'])){
     $User_id=$_SESSION['User_id'];
-    $gasid=$_POST['agent_id'];
+    $gasid=$_GET['remove'];
     $cartid=$connection->real_escape_string($gasid);
     $cart=new addtocart_model();
     $result=$cart->remove($connection,$gasid,$User_id);

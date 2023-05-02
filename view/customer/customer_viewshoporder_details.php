@@ -118,7 +118,7 @@
                         <td><?php echo $delivery_fee;?></td>
                     </tr>
                     <tr>
-                        <td>Gas Agent</td>
+                        <td>Agent</td>
                         <td><?php echo $sm_name;?></td>
                     </tr>
                     <tr>

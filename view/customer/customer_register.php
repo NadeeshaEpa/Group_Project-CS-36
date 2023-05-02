@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../../public/css/customer/fago_register.css">
 
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2eSy5egkITKWg1EMsa1i1WcpPi29dgK0&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_E5eoUp72AGiXd8EUgscWhrM-kd2scbY&callback=initMap">
     </script>
     <script>
       function initMap() {
@@ -89,7 +89,7 @@
         </div>
         <div>
             <label id="email-label" for="email">Email:</label><br>
-            <input type="email" name="email" id="email" placeholder="Email" class="box" required>
+            <input type="email" name="email" id="email" placeholder="Email" value=<?php echo $_SESSION['v_email'] ?> class="box" readonly>
         </div>
         <div>
             <label id="billnum-label" for="billnum">Electricity Bill Number:</label><br>
@@ -114,6 +114,6 @@
             </div>
         </div> 
     </div>
-    <script src="../../public/js/Customer_Validation.js"></script>
+    <!-- <script src="../../public/js/Customer_Validation.js"></script> -->
 </body>
 </html>

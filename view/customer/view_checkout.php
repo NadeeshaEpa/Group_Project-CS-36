@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="../../public/css/customer/cart.css">
     <title>Document</title>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2eSy5egkITKWg1EMsa1i1WcpPi29dgK0"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_E5eoUp72AGiXd8EUgscWhrM-kd2scbY"></script>
     <script>
       function initMap() {
         //get the value of the $_SESSION['latitude'] and $_SESSION['longitude'] and set it to the variable  lat and lng
-        var latitude= <?php echo $_SESSION['latitude']; ?>;
-        var longitude= <?php echo $_SESSION['longitude']; ?>;
+        var latitude= <?php echo $_SESSION['cdlatitude']; ?>;
+        var longitude= <?php echo $_SESSION['cdlongitude']; ?>;
         var colombo = {lat: latitude, lng: longitude};
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 12,
@@ -23,9 +23,23 @@
           map: map,
           draggable: true
         });
+
+        geocoder = new google.maps.Geocoder();
         google.maps.event.addListener(marker, 'dragend', function(event) {
           document.getElementById("latitude").value = event.latLng.lat();
           document.getElementById("longitude").value = event.latLng.lng();
+
+          geocoder.geocode({'location': event.latLng}, function(results, status) {
+            if (status === 'OK') {
+            if (results[0]) {
+                document.getElementById('address').value = results[0].formatted_address;
+            } else {
+                window.alert('No results found');
+            }
+            } else {
+            window.alert('Geocoder failed due to: ' + status);
+            }
+          });
         });
       }
     </script>
@@ -127,7 +141,7 @@
                 //create a hidden checkbox
                 $flag3=1;
                 echo "<input type='hidden' name='delivery' id='delivery' value='pickup'>";
-                echo "<p style='color:red'>**Sorry, the shop is closed now. If you want you can reserve the gas cylinder by choosing the pick up option.**</p>";
+                echo "<p style='color:red'>**Sorry, the shop is closed now. If you want you can reserve the item by choosing the pick up option.**</p>";
               }else{
               ?>
                 <?php $flag1=1; ?>
@@ -168,18 +182,26 @@
               If you want to change your delivery locaion please drag the marker to the your new location.<br>
               <b>If you don't want to change your delivery location you can leave it as it is.</b>
             </p>
+            <label id="address-label">Address:</label><br>
+            <div class="down3">
+                <div>
+                    <input type="text" id="address" name="address" placeholder="Address"><br>
+                    <!-- break the address value into 3 parts -->
+                </div> 
+            </div>
             <div id="map" style="height: 400px; width: 100%; border-radius:20px;"></div><br>
             <div>
                 <input type="hidden" id="latitude" name="latitude"><br>
                 <input type="hidden" id="longitude" name="longitude"><br>
             </div>
-            </div>
-            <div class="delivery-right">
-                <input type="checkbox" name="nodelivery" id="nodelivery" value="nodelivery">
-                <label for="nodelivery">Pick up</label><br>
-                <p>Please notice that if you request for a pickup you have to pickup the cylinder within 48hrs from the shop.<br>
-                <b>If you are not ordering a new cylinder then it's compulsory to bring your old cylinder.<b></p>
-            </div>
+          </div>
+          <div class="delivery-right">
+              <input type="checkbox" name="nodelivery" id="nodelivery" value="nodelivery">
+              <label for="nodelivery">Pick up</label><br>
+              <p>Please notice that if you request for a pickup you have to pickup the cylinder within 48hrs from the shop.<br>
+              <b>If you are not ordering a new cylinder then it's compulsory to bring your old cylinder.<b></p>
+              <p>If you are a FAGO shop customer then you can pickup your product from the FAGO shop.</p>
+          </div>
       </div>
     <hr>
     <button type="submit" name="dmbutton" class="dmbutton">Checkout</button>

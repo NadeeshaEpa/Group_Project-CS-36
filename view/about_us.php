@@ -26,7 +26,10 @@ if(isset($_SESSION['company_reviews'])){
             <h1>About Us</h1>
             <h5>Welcome you all to FAGO...<br>
             <span> Online Gas Ordering System.  </span></h5>
-            <p>create a platform that connect customer,gas agent and fuel manager as well as Provide faclities for customer to reserve their gas cylinder and check fuel availability befor waiting in the queue
+            <p>FAGO is an online gas ordering system which connects gas agents of a particular area and customers. 
+                It provides a platform for gas agents to manage their business online.
+                Customer can Reserve their gas cylinders as well as other gas related appliences throguth this system and get it delivered to their doorsteps.
+                So,try it and we're sure you'll love it.
             </p>
             <a href="contact_us.php"><button type="button">let's talk</button></a>
         </div> 
@@ -35,7 +38,7 @@ if(isset($_SESSION['company_reviews'])){
         <!-- feedbacks of our users -->
         <div class="feedback">
             <h1>Feedbacks From Our Users</h1>
-            <!-- print reviews as 4 reviews per row -->
+            <!-- print reviews as 8 reviews per row -->
             <?php
             $count=0;
             foreach($reviews as $review){
@@ -54,7 +57,7 @@ if(isset($_SESSION['company_reviews'])){
                 echo "</div>";
                 echo "</div>";
                 $count++;
-                if($count==4){
+                if($count==5){
                     echo "</div>";
                     $count=0;
                 }
@@ -111,10 +114,10 @@ if(isset($_SESSION['company_reviews'])){
         </div>
         <div class="footer-right">
             <h2>Menu</h2>
-            <a href="index.php">Home</a><br><br>
-            <a href="view/aboutus.php">About Us</a><br><br>
-            <a href="view/ourservices.php">Our Services</a><br><br>
-            <a href="view/contact.php">Contact Us</a><br>
+            <a href="http://localhost/Group_36/view/home.php">Home</a><br><br>
+            <a href="http://localhost/Group_36/controller/Users/about_controller.php?about='1'">About Us</a><br><br>
+            <a href="http://localhost/Group_36/view/services.php">Our Services</a><br><br>
+            <a href="http://localhost/Group_36/view/contact_us.php">Contact Us</a><br>
         </div>
         <div class="fagolink">
             <p>© 2022 FAGO. All Rights Reserved.</p>

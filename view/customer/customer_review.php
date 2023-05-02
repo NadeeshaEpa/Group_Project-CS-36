@@ -85,7 +85,7 @@ if(isset($_SESSION['deliverynames'])){
             ?>
             <div class="rcontainer">
                 <div class="dpname">
-                    <img src="../../public/images/DeliveryPerson/<?php echo $dp['image']?>" alt="dp">
+                    <img src="../../public/images/DeliveryPerson/profile_img/<?php echo $dp['image']?>" alt="dp">
                     <h2><?php echo $dp['First_Name']." ".$dp['Last_Name']?></h2>
                 </div>
                 <div class="star-widget">
@@ -145,10 +145,11 @@ if(isset($_SESSION['deliverynames'])){
                         document.getElementById("backgr").style.display="none";
                         document.getElementById("cancel_popup").style.display="none";
                         window.location.href="../../controller/customer/review_controller.php?add_company_review='1'&review="+review;   
-                    }
-            
+                    }      
                 });
                 document.getElementById("no").addEventListener("click",function(){
+                    //refresh the page when cancel button is clicked 
+                    location.reload();
                     document.getElementById("backgr").style.display="none";
                 });
             }

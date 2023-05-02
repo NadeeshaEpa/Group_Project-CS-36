@@ -1,8 +1,4 @@
-<?php session_start(); 
-if(!isset($_SESSION['User_id'])){
-    header("Location: ../../index.php");
-}
-?>
+<!-- <?php session_start(); ?> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +23,7 @@ if(!isset($_SESSION['User_id'])){
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
-				<a href="#">
+				<a href="../../controller/admin/dashboard_controller.php?id=profitdetails">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -43,7 +39,7 @@ if(!isset($_SESSION['User_id'])){
 
 			<li>
 			
-			<a href="../../view/admin/users.php">
+			<a href="../../controller/admin/users_controller.php?id=userdetails">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Users</span>
 				</a>
@@ -59,6 +55,12 @@ if(!isset($_SESSION['User_id'])){
 				<a href="../../controller/admin/order_controller.php?id=vieworder">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Orders</span>
+				</a>
+			</li>
+			<li>
+				<a href="../../controller/admin/review_controller.php?id=viewreviews">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Company Reviews</span>
 				</a>
 			</li>
 			
@@ -87,22 +89,13 @@ if(!isset($_SESSION['User_id'])){
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-			<!-- <a href="#" class="nav-link">Categories</a> -->
-			<!-- <form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form> -->
-			<!-- <input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label> -->
 			
 			
 			<a href="#" class="profile">
 			<?php if($_SESSION['img-status'] == 0){?>
                     <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                 <?php }else{?>
-                    <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
+                    <img src='../../public/images/admin/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
             <?php } ?>
 			</a>
 			<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?>
@@ -111,6 +104,13 @@ if(!isset($_SESSION['User_id'])){
 
 		<!-- MAIN -->
 		<main>
+		<?php 
+                   if(isset($_SESSION['dashboard'])){
+                      $result=$_SESSION['dashboard']; 
+					  
+                   
+                   }
+                ?>
 			<div class="head-title">
 				<div class="left">
 					<h1>Dashboard</h1>
@@ -131,84 +131,76 @@ if(!isset($_SESSION['User_id'])){
 				<li>
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
-						<h3>15</h3>
-						<p>New Order</p>
+						<h3><?php echo $result[0]['orders']?></h3>
+						<p>New Orders</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-group' ></i>
 					<span class="text">
-						<h3>20</h3>
+						<h3><?php echo $result[0]['customers']?></h3>
 						<p>New Customers</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-dollar-circle' ></i>
 					<span class="text">
-						<h3>RS 50,000</h3>
+						<h3>RS. <?php echo $result[0]['amount']?></h3>
 						<p>Total Sales</p>
 					</span>
 				</li>
-			</ul>
 
+
+			</ul>
 
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3>Recent Orders</h3>
-						<input type="text-box" placeholder="Search">
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
+						<h3>FAGO Profit</h3>
+                        
+						<form action="../../controller/staff/dashboard_controller.php" method="POST">
+						<label>Date:</label>
+			            <input type="date" class="form-control" placeholder="Start" name="date">
+						<button type="submit" name="filterdate"><i class='bx bx-search' ></i></button>
+				        </form>
 					</div>
 					<table>
 						<thead>
 							<tr>
-								<th>User</th>
-								<th>Date Order</th>
-								<th>Status</th>
+							    <th>Customer</th>
+								<th>Order ID</th>
+								<th>Order Date</th>
+								<th>Profit</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>
-									<img src="../../public/images/noprofile.png">
-									<p>Nisali Senadeera</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/noprofile.png">
-									<p>Promod Madawala</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/noprofile.png">
-									<p>Anoma Suraweera</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status process">Process</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/noprofile.png">
-									<p>Nihal Priyantha</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/noprofile.png">
-									<p>Lakindu Wickramasingha</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
+						<?php
+						$result=$_SESSION['profitdetails'];
+						if($result){
+							foreach($result as $row){
+								$imgname=$row['imgname'];
+								$fname=$row['First_Name'];
+								$lname=$row['Last_Name'];
+								$order_id=$row['Order_id'];
+								$order_date=$row['Order_date'];
+								$profit=$row['profit'];
+							echo'
+									<tr class="details" id='.$order_id.'>
+									<td>
+										<img src="../../public/images/'.$imgname.'">
+										<p>'.$fname. $lname.'</p>
+									</td>
+									<td>'.$order_id.'</td>
+									<td>'.$order_date.'</td>
+									<td>RS. '.$profit.'</td>
+								    </tr>
+
+
+							' ;
+							}
+						}
+						?>
+
 						</tbody>
 					</table>
 				</div>
@@ -218,7 +210,15 @@ if(!isset($_SESSION['User_id'])){
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
-	
+	<script>
+		elementsArray=document.querySelectorAll(".details");
+		elementsArray.forEach(function(elem){
+			elem.addEventListener("click",function(){
+				location.href='../../controller/admin/delivery_controller.php?oid='+elem.id;
+			});
+		});
+
+	</script>
 
 	<script src="../../public/js/script.js"></script>
 </body>

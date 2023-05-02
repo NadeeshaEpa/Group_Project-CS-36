@@ -28,9 +28,62 @@ class customer_model{
             return $customer;
         }
     }
+
+    public function decline($connection,$user_id){
+        $sql = "DELETE FROM `customer` WHERE Customer_Id='$user_id'";
+        // $sql="DELETE FROM `user` WHERE User_id='$user_id'";
+        $result=$connection->query($sql);
+        if($result==TRUE){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
+    }
+
+    public function accept($connection,$user_id,$staff_id){
+        date_default_timezone_set('Asia/Colombo');
+
+        // Get current date in Y-m-d format
+        $current_date = date('Y-m-d');
+        $sql = "UPDATE `customer` SET Status=1,staff_Id=$staff_id, Registration_date='$current_date' WHERE Customer_Id='$user_id'";
+        // $sql="DELETE FROM `user` WHERE User_id='$user_id'";
+        $result=$connection->query($sql);
+        if($result==TRUE){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
+    }
+
+
+    public function viewrequest($connection,$user_id){
+        $sql = "SELECT c.Customer_Id,u.First_Name, u.Last_Name, u.City, u.Street, u.Postalcode, u.Username, u.Email, uc.Contact_No, c.ElectricityBill_No, i.imgname from `user_contact` uc INNER JOIN `user` u ON uc.User_id=u.User_id INNER JOIN `customer` c ON u.User_id=c.Customer_Id INNER JOIN `profileimg` i ON c.Customer_Id=i.User_id WHERE u.User_id='$user_id'";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $customer=[];
+            while($row=$result->fetch_object()){
+                array_push($customer,['Customer_Id'=>$row->Customer_Id,'First_Name'=>$row->First_Name,'Last_Name'=>$row->Last_Name,'City'=>$row->City,'Street'=>$row->Street,'Postalcode'=>$row->Postalcode,'Username'=>$row->Username,'Email'=>$row->Email,'Contact_No'=>$row->Contact_No, 'ElectricityBill_No'=>$row->ElectricityBill_No,'imgname'=>$row->imgname]);
+            }
+            return $customer;
+        }
+    }
+
     public function deleteuser($connection,$user_id){
         $sql = "UPDATE `customer` SET Status=2 WHERE Customer_Id='$user_id'";
         // $sql="DELETE FROM `user` WHERE User_id='$user_id'";
+        $result=$connection->query($sql);
+        if($result==TRUE){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
+    }
+
+    public function activateuser($connection,$user_id){
+        $sql = "UPDATE `customer` SET Status=1 WHERE Customer_Id='$user_id'";
+        
         $result=$connection->query($sql);
         if($result==TRUE){
             return TRUE;
@@ -68,6 +121,36 @@ class customer_model{
         $result=$connection->query($sql);
         if($result){
             return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function searchcustomer($connection,$name){
+        $sql="SELECT * FROM user u INNER JOIN customer c ON u.User_id=c.Customer_Id WHERE u.Type='Customer' AND c.Status=1 AND u.User_id='$name' OR u.First_Name='$name'";
+        $result=mysqli_query($connection,$sql);
+        if($result){
+            $customer=[];
+            while($row=mysqli_fetch_assoc($result)){
+                $customer[]=$row;
+            }
+            
+            return $customer;
+        }else{
+            return false;
+        }
+    }
+
+    public function searchcustomer_request($connection,$name){
+        $sql="SELECT * FROM user u INNER JOIN customer c ON u.User_id=c.Customer_Id WHERE u.Type='Customer' AND c.Status=0 AND u.User_id='$name' OR u.First_Name='$name'";
+        $result=mysqli_query($connection,$sql);
+        if($result){
+            $customer=[];
+            while($row=mysqli_fetch_assoc($result)){
+                $customer[]=$row;
+            }
+            // print_r($customer);
+            return $customer;
         }else{
             return false;
         }

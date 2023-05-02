@@ -1,13 +1,11 @@
-*{
-    font-family: 'Poppins', sans-serif;
-}
+
 body{
     margin:0%;
     background-color: #fffdf0;
 }
 .form{
     background-color: white;
-    width: 50%;
+    width: 70%;
     height: 70%;
     justify-content: center;
     margin-left: 10%;
@@ -16,7 +14,7 @@ body{
     border-radius: 20px;
 }
 .pwdcontainer input{
-    width: 100%;
+    width: 70%;
     height: 40px;
     margin-bottom: 20px;
     border-radius: 10px;
@@ -43,7 +41,7 @@ body{
     border-radius: 10px;
     border: 1px solid green;
     color: white;
-    font-size: 20px;
+    /* font-size: 15px; */
     margin-top: 20px;
     margin-left: 20%;
 }
@@ -55,7 +53,7 @@ body{
     border-radius: 10px;
     border: 1px solid red;
     color: white;
-    font-size: 20px;
+    /* font-size: 20px; */
     margin-top: -40px;
     margin-right: 20%;
 }

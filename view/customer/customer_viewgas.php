@@ -1,7 +1,7 @@
 <?php session_start(); ?>
 <?php 
     if($_SESSION['available']=="failed" || $_SESSION['viewgas']=="failed"){
-            header("location:error.php");
+        header("location:error.php");
     }else{
         if(isset($_SESSION['weight'])){
             $weight=$_SESSION['weight'];
@@ -20,7 +20,7 @@
             $count=count($gas);
         
         }else{
-            $gasshop=[];
+            $gas=[];
             $count=0;
         }
         if(isset($_SESSION['shopnames'])){
@@ -53,7 +53,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../public/css/customer/customer_gas.css">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2eSy5egkITKWg1EMsa1i1WcpPi29dgK0"></script>  
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_E5eoUp72AGiXd8EUgscWhrM-kd2scbY"></script>  
     <title>Document</title>
 </head>
 <body onload="initMap()">
@@ -76,6 +76,8 @@
                     </div>
                     <?php }
                 }?>
+            <?php 
+            ?>    
             <table>
                 <tr>
                     <th>Vendor</th>
@@ -87,9 +89,10 @@
                     <th>Refilling</th>
                     <th>New Cylinder</th>
                 </tr>
-                    <?php 
+                    <?php                
+                    foreach($shops as $shop){
                     $i=0;
-                    foreach($shops as $shop){?>
+                    ?>
                     <tr>
                             <td><?php echo $shop['Shop_name']?></td>
                             <td><?php echo $shop['distance']?>km</td>

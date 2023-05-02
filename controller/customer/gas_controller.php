@@ -3,12 +3,17 @@ session_start();
 require_once("../../config.php");
 require_once("../../model/customer/gas_model.php");
 
-if(isset($_GET['gas_type'])||isset($_GET['page'])){
+if(isset($_GET['gas_button'])||isset($_GET['page'])){
     $userid=$_SESSION['User_id'];
     $type=$_GET['gas_type'];
     $type=$connection->real_escape_string($type);
+
+    //if $_GET['gas_type'] is not set, then set redirect to customer_select page 
+    if(!isset($_GET['gas_type'])){
+        header("Location: ../../view/customer/customer_select.php");
+    }
+
     $_SESSION['gas_type']=$type;
-    //create new gas model
     $gasmodel=new gas_model();
 
     //pagination
@@ -91,6 +96,8 @@ if(isset($_GET['newgasid'])){
             $_SESSION['gasavailability']=$result1;
             $result3=$gasmodel->getshopname($connection,$newgasid);
             $_SESSION['shopname']=$result3;
+            $result4=$gasmodel->getshopimage($connection,$type);
+            $_SESSION['shopimage']=$result4;
             header("Location: ../../view/customer/inside_shopnew.php");
         }
     }
@@ -103,22 +110,6 @@ if(isset($_POST['ungas_button'])||isset($_GET['unpage'])){
 
     //create new gas model
     $gasmodel=new gas_model();
-
-    //pagination
-    //print 5 records per page
-    // $limit = 1;
-    // $page = isset($_GET['unpage']) ? $_GET['unpage'] : 1;
-    // $_SESSION['page']=$page;
-    // $offset = ($page - 1) * $limit;
-    
-    // //get the total number of records
-    // $total_records=$gasmodel->shop_count($connection,$type);
-    // $_SESSION['shop_count']=$total_records;
-
-    // //calculate the total number of pages
-    // $total_pages = ceil($total_records / $limit);
-    // $_SESSION['total_pages']=$total_pages;
-
     if($latitude==NULL){
         $latitude=6.9271;
     }

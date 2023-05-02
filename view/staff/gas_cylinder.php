@@ -10,6 +10,7 @@
 	<!-- My CSS -->
 	<link rel="stylesheet" href="../../public/css/admin_delivery/Dashboard.css">
 	<link rel="stylesheet" href="../../public/css/admin_delivery/card.css">
+	<link rel="stylesheet" href="../../public/css/admin_delivery/delete_popup.css">
 
 	<title>FaGo</title>
 </head>
@@ -23,8 +24,8 @@
 			<span class="text">FAGO</span>
 		</a>
 		<ul class="side-menu top">
-			<li>
-				<a href="staff_dashboard.php">
+		    <li>
+				<a href="../../controller/staff/dashboard_controller.php?id=profitdetails">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -40,21 +41,21 @@
 
 			<li>
 			
-			<a href="../../view/staff/users.php">
+			<a href="../../controller/staff/users_controller.php?id=userdetails">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Users</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="../../view/staff/user_request.php">
+				<a href="../../controller/staff/users_controller.php?rid=userrequestdetails">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Registration Requests</span>
 				</a>
 			</li>
 
 			<li class="active">
-				<a href="../../view/staff/gas_cylinder.php">
+				<a href="../../controller/staff/cylinder_controller.php?id=viewcylinder">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Gas Cylinders</span>
 				</a>
@@ -67,16 +68,23 @@
 			</li>
 
 			<li>
-				<a href="deliveries.php">
+				<a href="../../controller/staff/delivery_controller.php?id=viewdelivery">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Deliveries</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="payments.php">
+				<a href="../../controller/staff/payment_controller.php?id=gaspaymentdetails">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Payments</span>
+				</a>
+			</li>
+
+			<li>
+				<a href="../../controller/staff/complain_controller.php?id=complaindetails">
+					<i class='bx bxs-doughnut-chart' ></i>
+					<span class="text">Complains</span>
 				</a>
 			</li>
 			
@@ -112,7 +120,7 @@
 			<?php if($_SESSION['img-status'] == 0){?>
                     <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                 <?php }else{?>
-                    <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
+                    <img src='../../public/images/staff/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
             <?php } ?>
 			</a>
 			<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?>
@@ -121,54 +129,43 @@
 
 		<!-- MAIN -->
 		<main>
-   <a href="add_cylinder.php"> <button style="width:200px;">Add Gas Cylinders</button></a><br><br>
+   <a href="../../controller/staff/cylinder_controller.php?cid=company_list"> <button class="button1">Add Gas Cylinders</button></a><br><br>
     <div class="list">
 
     <h3>All Gas Cylinder Types</h3>
 
-	<ul class="box-info">
-		<li>
-			<div class="card">
-				<img src="../../public/images/litro12.5.jfif" alt="John">
-				<h1>LITRO</h1>
-				<p class="title">Weight : 12.4 KG</p>
-				<p>RS.6500.00</p>
-				<p><button>Update</button></p>
-				<p><button style="background-color:#da3a3a">Delete</button></p>
+
+<ul class="box-info">
+
+<?php
+    $result=$_SESSION['cylinderdetails'];
+    if($result){
+        foreach($result as $row){
+            $company_name=$row['company_name'];
+            $Weight=$row['Weight'];
+            $Price=$row['Price'];
+            $Cylinder_Id=$row['Cylinder_Id'];
+			$photo=$row['photo'];
+
+
+		echo'<li>
+	       <div class="card">
+		   <img src="../../public/images/gascylinder/'.$photo.'" alt="logon" style="width:100%; height:290px;">
+			<h1>'.$company_name.'</h1>
+			<p class="title">Weight : '.$Weight.' KG</p>
+			<p>RS.'.$Price.'.00</p>
+			<p><a href="../../controller/staff/cylinder_controller.php?uid='.$Cylinder_Id.'"><button class="button2">Update</button></a></p>
+			<p><button onclick="deleteuser('.$Cylinder_Id.');" class="button3">Delete</button></p>
 			</div>
-		</li>
-		<li>
-			<div class="card">
-				<img src="../../public/images/litro5.png" alt="John">
-				<h1>LITRO</h1>
-				<p class="title">Weight : 5.0 KG</p>
-				<p>RS.3000.00</p>
-				<p><button>Update</button></p>
-				<p><button style="background-color:#da3a3a">Delete</button></p>
-			</div>
-		</li>
-		<li>
-			<div class="card">
-				<img src="../../public/images/laughs12.5.png" alt="John">
-				<h1>LAUGHS</h1>
-				<p class="title">Weight : 12.4 KG</p>
-				<p>RS.6500.00</p>
-				<p><button>Update</button></p>
-				<p><button style="background-color:#da3a3a">Delete</button></p>
-			</div>
-		</li>
-		<li>
-			<div class="card">
-				<img src="../../public/images/laughs5.jpg" alt="John" >
-				<h1>LAUGHS</h1>
-				<p class="title">Weight : 5.0 KG</p>
-				<p>RS.3000.00</p>
-				<p><button>Update</button></p>
-				<p><button style="background-color:#da3a3a">Delete</button></p>
-			</div>
-		</li>
-	</ul>
-</div>
+			</li>' ;
+        }
+    }
+
+    ?>
+	<li>
+	
+</ul>
+
 
         
     
@@ -176,11 +173,38 @@
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
+
+	<div id="backgr">
+        <div id="cancel_popup">
+            <div class="cancel_contect">
+                <p>Are you sure you want to Delete this Cylinder type?</p>
+                <div class="buttons">
+                    <button id="yes">Yes</button>
+                    <button id="no">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<script>
+		function deleteuser(id){
+            document.getElementById("backgr").style.display="block";
+            document.getElementById("cancel_popup").style.display="block";
+            document.getElementById("yes").addEventListener("click",function(){
+                window.location.href="../../controller/staff/cylinder_controller.php?did="+id;
+            });
+            document.getElementById("no").addEventListener("click",function(){
+                document.getElementById("backgr").style.display="none";
+                document.getElementById("cancel_popup").style.display="none";
+            });
+        }  
+            
+    </script>
 	
 
 	<script src="../../public/js/script.js"></script>
-
-
+	
+	
 
   
 </body>

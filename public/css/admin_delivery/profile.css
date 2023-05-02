@@ -158,25 +158,23 @@
 
 .welcome{
     text-align: center;
-    font-size: 30px;
-    font-weight: bold;
-    padding-top: 0px;
+    /* font-size: 35px;
+    font-weight: bold; */
+    padding-top: 5px;
     color: black;
 }
-.welcome p{
+welcome p{
     padding: 0%;
     margin: 0%;
-    height: 10px;
-    /* margin-left: 10%; */
+    margin-top: 2px;
 }
 .data{
     background-color: white;
     padding: 20px;
     padding-left: 30px;
     border-radius: 20px;
-    margin-left: 4%;
+    margin-left: 8%;
     margin-bottom: 10px;
-    margin-right: 4%;
 }
 .data form{
     padding-left: 10px;
@@ -196,19 +194,20 @@
     font-weight: bold; */
 }
 .b2, .b6{
-    background-color: #79d37c; /* Green */
+    background-color: #CFE8FF; /* Green */
     border: none;
 }
 .b4,.b5{
-    background-color: #da3a3a; /* Green */
+    background-color:#DB504A; /* Green */
     border: none;
 }
     
 .b4:hover, .cu:hover{
-    background-color: green;
+    background-color: #b94a4a;
+    color: white;
 }
-.b2:hover, .cp:hover{
-    background-color: #4eff60;
+.b2:hover, .cp:hover, .b6:hover{
+    background-color: #6c4eff;
     color: white;
 }
 .details label{
@@ -237,4 +236,25 @@
     padding: 10px;
     margin-right: 15px;
     margin-top: 0%;
+}
+
+textarea {
+    resize: none;
+    border: black 1px solid;
+    border-radius: 20px;
+    width: 450px;
+    height: 35px;
+    text-align: center;
+    margin-top: 0%;
+    padding-top: 10px;
+    margin-bottom: 20px;
+    display: flex;
+  }
+
+  .sectors:hover{
+    background-color:rgb(247, 247, 247);
+}
+
+.users:hover{
+    background-color:rgb(247, 247, 247);
 }

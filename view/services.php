@@ -49,10 +49,10 @@
         </div>
         <div class="footer-right">
             <h2>Menu</h2>
-            <a href="index.php">Home</a><br><br>
-            <a href="view/aboutus.php">About Us</a><br><br>
-            <a href="view/ourservices.php">Our Services</a><br><br>
-            <a href="view/contact.php">Contact Us</a><br>
+            <a href="http://localhost/Group_36/view/home.php">Home</a><br><br>
+            <a href="http://localhost/Group_36/controller/Users/about_controller.php?about='1'">About Us</a><br><br>
+            <a href="http://localhost/Group_36/view/services.php">Our Services</a><br><br>
+            <a href="http://localhost/Group_36/view/contact_us.php">Contact Us</a><br>
         </div>
         <div class="fagolink">
             <p>© 2022 FAGO. All Rights Reserved.</p>

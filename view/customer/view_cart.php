@@ -69,13 +69,39 @@
                             echo "<button type='submit' name='remove' class='remove' disabled>Remove</button>";
                         }else{?>
                             <button type="checkout" name="checkout" class="checkout">View Items</button>
-                            <button type="submit" name="remove" class="remove">Remove</button>
+                            </form>
+                            <!-- <button type="submit" name="remove" class="remove">Remove</button> -->
+                            <button type="submit" name="remove" class="remove" onclick="removepopup(<?php echo $d['gasagent_id']?>);">Remove</button>
                         <?php }?>
-                    </form>
                 </div>
             </div>
             <!-- <hr> -->
         <?php }?>
-    </div>    
+    </div>  
+    <div id="backgr">
+        <div id="cancel_popup">
+            <div class="cancel_contect">
+                <p>Are you sure you want to delete this item from cart?</p>
+                <div class="buttons">
+                    <button id="yes">Yes</button>
+                    <button id="no">No</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <script>
+        function removepopup(id){
+            document.getElementById("backgr").style.display="block";
+            document.getElementById("cancel_popup").style.display="block";
+            document.getElementById("yes").addEventListener("click",function(){
+                window.location.href="../../controller/customer/addtocart_controller.php?remove="+id;
+            });
+            document.getElementById('no').addEventListener('click',function(){
+                document.getElementById('backgr').style.display="none";
+                docummet.getElementById('cancel_popup').style.display="none";
+            });
+
+        }
+    </script> 
 </body>
 </html>

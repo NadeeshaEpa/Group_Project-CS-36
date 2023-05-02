@@ -1,8 +1,4 @@
-<?php session_start(); 
-if(!isset($_SESSION['User_id'])){
-    header("Location: ../../index.php");
-}
-?>
+<?php session_start(); ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,8 +7,8 @@ if(!isset($_SESSION['User_id'])){
     <!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
-    <link rel="stylesheet" href="../../public/css/gasagent/gasagent_profile.css">
     <link rel="stylesheet" href="../../public/css/gasagent/gasagentDashboard.css">
+    <link rel="stylesheet" href="../../public/css/gasagent/gasagent_profile.css">
     <script>
         var color=blue;
         document.getqueryselector("button").addEventlistener("click",function(){
@@ -22,8 +18,6 @@ if(!isset($_SESSION['User_id'])){
     <title>gasagent Dashboard</title>
 </head>
 <body>
-    <!-- <?php include 'customer_header.php'; ?>   -->
-    <!-- <h2>Customer Dashboard</h2> -->
     <!-- SIDEBAR -->
 	<section id="sidebar">
 		<a href="../../view/gasagent/View.php" class="brand">
@@ -31,7 +25,7 @@ if(!isset($_SESSION['User_id'])){
 			<span class="text">FaGo</span>
 		</a>
 		<ul class="side-menu top">
-			<li>
+			<li >
 				<a href="../../view/gasagent/gasagent_dashboard.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
@@ -49,14 +43,14 @@ if(!isset($_SESSION['User_id'])){
 					<span class="text">View details</span>
 				</a>
 			</li>
-			<li>
+			<li >
 				<a href="../../view/gasagent/add_gastype.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Add gas </span>
 				</a>
 			</li>
 			<li>
-				<a href="../../view/gasagent/gasagentUpdate.php">
+				<a href="../../controller/gasagent/gasagentUpdateFirst.php">
 					<i class='bx bxs-message-dots' ></i>
 					<span class="text">Update/Delete</span>
 				</a>
@@ -68,11 +62,11 @@ if(!isset($_SESSION['User_id'])){
 				</a>
 			</li>
             <li>
-				<a href="#">
-					<i class='bx bxs-badge-check' ></i>
+                <a href="../../controller/gasagent/complain.php?complain='1'">
+					<i class='bx bxs-group' ></i>
 					<span class="text">Complains</span>
 				</a>
-            </li>
+			</li>
 		</ul>
 		<ul class="side-menu">
 			<!-- <li>
@@ -82,15 +76,15 @@ if(!isset($_SESSION['User_id'])){
 				</a>
 			</li> -->
 			<li>
-				<a href="../../controller/Users/logout_controller.php" class="logout">
+				<a href="../../view/login.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
 			</li>
 		</ul>
 	</section>
-	
 	<!-- SIDEBAR -->
+
 
 
 
@@ -98,23 +92,23 @@ if(!isset($_SESSION['User_id'])){
 	<section id="content">
 		<!-- NAVBAR -->
 		<nav>
-			<i class='bx bx-menu' ></i>
-			<a href="#" class="nav-link">Categories</a>
-			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
-			<a href="#" class="profile">
-				<img src="../../public/images/people.png">
-			</a>
+        <i class='bx bx-menu' ></i>
+
+<li class="profile">
+    <?php if($_SESSION['img-status'] == 0){?>
+        <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
+    <?php }else{?>
+        <img src='../../public/images/gasargent/profile_image/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
+    <?php } ?>								
+</li>
+<li class="user_info">
+    <h6><?php if(isset($_SESSION['Firstname']) && isset($_SESSION['Lastname'])){
+            echo $_SESSION['Firstname'] ," " ,$_SESSION['Lastname'] ;
+        }?></h6>
+    <h5><?php if(isset($_SESSION['Type'])){
+            echo $_SESSION['Type'];
+        }?></h5>
+</li>
 		</nav>
 		<!-- NAVBAR -->
 
@@ -147,20 +141,20 @@ if(!isset($_SESSION['User_id'])){
                     }
                     ?>
                 <div class="up">
-                    <?php //if($_SESSION['img-status'] == 0){?>
-                        <img src='../../public/images/people.JPEG' alt='logo' width='100px' height='100px' class="image"> 
-                    <?php //}else{?>
-                        <!-- <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                        -->
-                    <?php //} ?>
+                    <?php if($_SESSION['img-status'] == 0){?>
+                        <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
+                    <?php }else{?>
+                        <img src='../../public/images/gasargent/profile_image/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                        
+                    <?php } ?>
                     <div class="b3">
-                        <form action="../../controller/customer/account_controller.php" method="POST" enctype="multipart/form-data">
+                        <form action="../../controller/gasagent/account_controller.php" method="POST" enctype="multipart/form-data">
                             <input type="file" name="image" id="image" class="image">
                             <button class="b4" name="removeimg">Remove</button>
                             <button name="uploadimg" class="b2">Upload</button>
                         </form>   
                     </div>     
                 </div>      
-                <form action="../../controller/customer/account_controller.php" method="POST">   
+                <form action="../../controller/gasagent/account_controller.php" method="POST">   
                     <div class="details">  
                         <div class="down">
                             <div class="down1">
@@ -189,9 +183,9 @@ if(!isset($_SESSION['User_id'])){
                             </div>
                             <div class="down1">
                                 <label>Update Password:</label><br>
-                                <form action='customer_changepassword.php' method="POST">
+                                <a href="add_gastype.php">
                                     <button type="submit" name="changepassword" class="cp">Change password</button>
-                                </form>   
+                                </a>  
                             </div>    
                         </div> 
                         <div class="down"> 
@@ -213,7 +207,7 @@ if(!isset($_SESSION['User_id'])){
                     </div>     
                     <div id="id01" class="modal">
                         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
-                            <form class="modal-content" action="../../controller/customer/account_controller.php" method="POST">
+                            <form class="modal-content" action="../../controller/gasagent/account_controller.php" method="POST">
                                     <div class="container">
                                         <h1>Delete Account</h1>
                                         <p>Are you sure you want to delete your account?</p>
@@ -229,7 +223,6 @@ if(!isset($_SESSION['User_id'])){
             </div>
         </div>
     </div>    
-    <?php //include 'customer_footer.php'; ?>
 </div>
     <script>
     var modal = document.getElementById('id01');

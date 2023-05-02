@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../../public/css/customer/customer_dashboard.css">
     <link rel="stylesheet" href="../../public/css/customer/newdashboard.css">
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2eSy5egkITKWg1EMsa1i1WcpPi29dgK0&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_E5eoUp72AGiXd8EUgscWhrM-kd2scbY&callback=initMap">
     </script>
     <script>
       function initMap() {
@@ -183,20 +183,6 @@
                                     <!-- break the address value into 3 parts -->
                                 </div> 
                             </div>
-                            <!-- <div class="down"> 
-                                <div class="down2">     
-                                        <label>Address:</label><br> 
-                                        <input type="text" name="street" value="<?php echo $result[0]['Street']; ?>"> <br>  
-                                </div> 
-                                <div class="down2">   
-                                        <label></label><br> 
-                                        <input type="text" name="city" value=<?php echo $result[0]['City']; ?>> <br>  
-                                </div>  
-                                <div class="down2"> 
-                                        <label></label><br>      
-                                        <input type="text" name="postalcode" value=<?php echo $result[0]['Postalcode']; ?>> <br>  
-                                </div>
-                            </div> -->
                             <button type="submit" class="b6" name="updateaccount" id="update-btn">Update</button>   
                             
                     </div>     

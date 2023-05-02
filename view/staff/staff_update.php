@@ -25,7 +25,7 @@ require_once("../../config.php");?>
 		</a>
 		<ul class="side-menu top">
 			<li >
-				<a href="../../view/staff/staff_dashboard.php">
+				<a href="../../controller/staff/dashboard_controller.php?id=profitdetails">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -41,21 +41,21 @@ require_once("../../config.php");?>
 
 			<li class="active">
 			
-			<a href="../../view/staff/users.php">
+			<a href="../../controller/staff/users_controller.php?id=userdetails">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Users</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="../../view/staff/user_request.php">
+				<a href="../../controller/staff/users_controller.php?rid=userrequestdetails">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Registration Requests</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="../../view/staff/gas_cylinder.php">
+				<a href="../../controller/staff/cylinder_controller.php?id=viewcylinder">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Gas Cylinders</span>
 				</a>
@@ -68,19 +68,25 @@ require_once("../../config.php");?>
 			</li>
 
 			<li>
-				<a href="deliveries.php">
+				<a href="../../controller/staff/delivery_controller.php?id=viewdelivery">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Deliveries</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="payments.php">
+				<a href="../../controller/staff/payment_controller.php?id=gaspaymentdetails">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Payments</span>
 				</a>
 			</li>
-			
+
+			<li>
+				<a href="../../controller/staff/complain_controller.php?id=complaindetails">
+					<i class='bx bxs-doughnut-chart' ></i>
+					<span class="text">Complains</span>
+				</a>
+			</li>
 		</ul>
 		<ul class="side-menu">
 			<li>
@@ -115,7 +121,7 @@ require_once("../../config.php");?>
 			<?php if($_SESSION['img-status'] == 0){?>
                     <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                 <?php }else{?>
-                    <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
+                    <img src='../../public/images/staff/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
             <?php } ?>
 			</a>
 			<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?>

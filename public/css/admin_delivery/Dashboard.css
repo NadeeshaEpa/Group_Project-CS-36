@@ -31,6 +31,7 @@ li {
 	--light-orange: #FFE0D3;
 	--light-green:hsl(120, 100%, 90%);
 	--green:#87dc87;
+	--mgreen:#eac3fc;
 }
 
 html {
@@ -306,11 +307,6 @@ body {
 
 
 /* MAIN */   
-.head text-box{
-	width:30%;
-
-}
-
 #content main {
 	width: 100%;
 	padding: 36px 24px;
@@ -429,10 +425,11 @@ body {
 	margin-top: 24px;
 	width: 100%;
 	color: var(--dark);
+	
 }
 #content main .table-data > div {
 	border-radius: 20px;
-	background: var(--light);
+	background: #f3f3f3;
 	padding: 24px;
 	overflow-x: auto;
 }
@@ -454,6 +451,7 @@ body {
 #content main .table-data .order {
 	flex-grow: 1;
 	flex-basis: 500px;
+	
 }
 #content main .table-data .order table {
 	width: 100%;
@@ -481,7 +479,7 @@ body {
 	object-fit: cover;
 }
 #content main .table-data .order table tbody tr:hover {
-	background: var(--grey);
+	background-color: var(--grey);
 }
 #content main .table-data .order table tr td .status {
 	font-size: 10px;
@@ -490,21 +488,14 @@ body {
 	border-radius: 20px;
 	font-weight: 700;
 }
-#content main .table-data .order table tr td{
-	width: 20%;
-}
 #content main .table-data .order table tr td .status.completed {
 	background: var(--blue);
 }
 #content main .table-data .order table tr td .status.process {
 	background: var(--yellow);
-	padding-left: 25px;
-    padding-right: 23px;
 }
 #content main .table-data .order table tr td .status.pending {
 	background: var(--orange);
-    padding-left: 25px;
-    padding-right: 23px;
 }
 
 

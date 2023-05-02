@@ -11,6 +11,8 @@ require_once("../../config.php");?>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="../../public/css/admin_delivery/Dashboard.css">
     <link rel="stylesheet" href="../../public/css/admin_delivery/user_list.css">
+	<link rel="stylesheet" href="../../public/css/admin_delivery/delete_popup.css">
+
 
 	<title>FaGo</title>
 </head>
@@ -24,12 +26,13 @@ require_once("../../config.php");?>
 			<span class="text">FAGO</span>
 		</a>
 		<ul class="side-menu top">
-			<li >
-				<a href="../../view/staff/staff_dashboard.php">
+		     <li>
+				<a href="../../controller/staff/dashboard_controller.php?id=profitdetails">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
+
 
 			<li>
 				<a href="../../controller/staff/profile_controller.php?viewacc=1">
@@ -41,21 +44,21 @@ require_once("../../config.php");?>
 
 			<li class="active">
 			
-			<a href="../../view/staff/users.php">
+			<a href="../../controller/staff/users_controller.php?id=userdetails">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Users</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="../../view/staff/user_request.php">
+				<a href="../../controller/staff/users_controller.php?rid=userrequestdetails">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Registration Requests</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="../../view/staff/gas_cylinder.php">
+				<a href="../../controller/staff/cylinder_controller.php?id=viewcylinder">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Gas Cylinders</span>
 				</a>
@@ -68,16 +71,23 @@ require_once("../../config.php");?>
 			</li>
 
 			<li>
-				<a href="deliveries.php">
+				<a href="../../controller/staff/delivery_controller.php?id=viewdelivery">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Deliveries</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="payments.php">
+				<a href="../../controller/staff/payment_controller.php?id=gaspaymentdetails">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Payments</span>
+				</a>
+			</li>
+
+			<li>
+				<a href="../../controller/staff/complain_controller.php?id=complaindetails">
+					<i class='bx bxs-doughnut-chart' ></i>
+					<span class="text">Complains</span>
 				</a>
 			</li>
 			
@@ -115,7 +125,7 @@ require_once("../../config.php");?>
 			<?php if($_SESSION['img-status'] == 0){?>
                     <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                 <?php }else{?>
-                    <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
+                    <img src='../../public/images/staff/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
             <?php } ?>
 			</a>
 			<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?>
@@ -123,11 +133,18 @@ require_once("../../config.php");?>
 		<!-- NAVBAR -->
 
 		<!-- MAIN -->
-	<main>
+		<main>
 
     <div class="list">
 
     <h3>All Staff Members</h3>
+
+	<form action="../../controller/staff/staffacc_controller.php" method="POST">
+				<div class="form-input">
+					<input type="search" name="staff_name" placeholder="Search by ID or name...">
+					<button type="submit" name="search" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+	</form>
 
     <table>
     <tr>
@@ -158,7 +175,7 @@ require_once("../../config.php");?>
                  <td>
                  <a href="../../controller/staff/staffacc_controller.php?vid='.$user_id.'"><button class="button1">View</button></a>
                  <a href="../../controller/staff/staffacc_controller.php?uid='.$user_id.'"><button class="button2">Update</button></a>
-                 <a href="../../controller/staff/staffacc_controller.php?did='.$user_id.'"><button class="button3">Delete</button></a>
+				 <button onclick="deleteuser('.$user_id.');" class="button3">Disable</button>
                  </td>
             </tr>' ;
             
@@ -176,6 +193,35 @@ require_once("../../config.php");?>
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
+
+	<div id="backgr">
+        <div id="cancel_popup">
+            <div class="cancel_contect">
+                <p>Are you sure you want to Disable this User Account?</p>
+                <div class="buttons">
+                    <button id="yes">Yes</button>
+                    <button id="no">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<script>
+		function deleteuser(id){
+            document.getElementById("backgr").style.display="block";
+            document.getElementById("cancel_popup").style.display="block";
+            document.getElementById("yes").addEventListener("click",function(){
+                window.location.href="../../controller/staff/staffacc_controller.php?did="+id;
+            });
+            document.getElementById("no").addEventListener("click",function(){
+                document.getElementById("backgr").style.display="none";
+                document.getElementById("cancel_popup").style.display="none";
+            });
+        }  
+            
+    </script>
+	
+
 	
 
 	<script src="../../public/js/script.js"></script>

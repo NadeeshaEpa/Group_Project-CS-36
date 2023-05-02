@@ -42,7 +42,7 @@ class gasagent_model{
         $this->longitude=$longitude;
         $this->opentime=$opentime;
         $this->closetime=$closetime;
-        $this->Type="Gas Agent";
+        $this->Type="Gas_Agent";
     }
 
     private function CreateUserEntry($connection){

@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/customer/home.css">
+    <link rel="stylesheet" href="http://localhost/Group_36/public/css/customer/home.css">
     <title>FAGO</title>
     <link rel="icon" type="image/png" href="http://localhost/Group_36/public/images/logo.png">  
     
@@ -16,12 +16,12 @@
         </div>
         <div class="right">
             <div class="right-l">
-                <img src="../public/images/customer/clock.png" alt="" class="homeimg">
+                <img src="http://localhost/Group_36/public/images/customer/clock.png" alt="" class="homeimg">
                 Open Time:<br>
                 Monday-Friday: 8:00am-5:00pm
             </div>
             <div class="right-r">
-                <img src="../public/images/customer/location.jpg" alt="" class="homeimg">
+                <img src="http://localhost/Group_36/public/images/customer/location.jpg" alt="" class="homeimg">
                 Location:<br>
                 No:25,<br> 
                 Galle road,Colombo<br>
@@ -30,13 +30,13 @@
     </div>    
     <div class="first">
         <div class="photo">
-            <img src="../public/images/customer/gas.jpg" alt="" class="homeimg">
+            <img src="http://localhost/Group_36/public/images/customer/gas.jpg" alt="" class="homeimg">
         </div>
         <div class="login">
             Hello,<br>
             Log into your account for the best experience with<br> FAGO<br>
-            <a href="../view/registeras.php"><button class="btnr">Register</button></a>
-            <a href="../view/login.php"><button class="btnl">Login</button></a>
+            <a href="http://localhost/Group_36/view/email.php"><button class="btnr">Register</button></a>
+            <a href="http://localhost/Group_36/view/login.php"><button class="btnl">Login</button></a>
             
         </div>
     </div>
@@ -48,13 +48,13 @@
             to their door step by just few clicks. FAGO Shop has a wide range of gas cylinders and accessories. So customers can order gas cylinders and accessories
             in same platform. So, this is a one stop solution for all your gas needs. Just try it and you will love it.
         </p>
-        <a href="http://localhost/Group_36/view/aboutus.php">more information</a>
+        <a href="http://localhost/Group_36/controller/Users/about_controller.php?about='1'">more information</a>
     </div>
     <div class="second">
         <div class="regtext">
             <p>We are just a fingertip away from you!
             <b>Register</b> to the system and place your order..</p>
-            <a href="registeras.php"><button class="btnr">Register</button></a>
+            <a href="http://localhost/Group_36/view/email.php"><button class="btnr">Register</button></a>
             <p>View our <b>Services</b> and <b>Products</b>...</p>
             <a href="http://localhost/Group_36/controller/Users/login_controller.php?unregview='1'"><button class="btnr">View</button></a>
         </div>
@@ -100,9 +100,9 @@
         <div class="footer-right">
             <h2>Menu</h2>
             <a href="http://localhost/Group_36/view/home.php">Home</a><br><br>
-            <a href="http://localhost/Group_36/view/aboutus.php">About Us</a><br><br>
-            <a href="http://localhost/Group_36/view/ourservices.php">Our Services</a><br><br>
-            <a href="http://localhost/Group_36/view/contact.php">Contact Us</a><br>
+            <a href="http://localhost/Group_36/controller/Users/about_controller.php?about='1'">About Us</a><br><br>
+            <a href="http://localhost/Group_36/view/services.php">Our Services</a><br><br>
+            <a href="http://localhost/Group_36/view/contact_us.php">Contact Us</a><br>
         </div>
         <div class="fagolink">
             <p>© 2022 FAGO. All Rights Reserved.</p>

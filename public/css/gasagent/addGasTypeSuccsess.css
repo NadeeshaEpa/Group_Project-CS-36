@@ -320,11 +320,12 @@ body {
   }
   
   .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
+	background-color: #fefefe;
+    margin: 18% auto;
+    padding: 33px;
     border: 1px solid #888;
-    width: 80%;
+    width: 53%;
+    margin-left: 429px;
     font-size: 45px;
     text-align: center;
   }

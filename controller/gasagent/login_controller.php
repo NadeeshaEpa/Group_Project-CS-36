@@ -18,7 +18,7 @@ $result=$user->logingasagent($connection,$username,$password);
 
 if($result){
     $_SESSION['login']="success";
-    header("Location: ../../view/gasagent/gasagent_dashboard.php");
+    header("Location: ../../controller/gasagent/gasagent_order_controller.php");
     $connection->close();
     exit();
 }else{

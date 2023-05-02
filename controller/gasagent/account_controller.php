@@ -18,7 +18,7 @@ if(isset($_GET['viewacc'])){
             }
     }else{
             echo "Please login first";
-            header("Location: ../../view/customer/customer_login.php");
+            header("Location: ../../view/login.php");
     }
 }
 if(isset($_POST['updateaccount'])){
@@ -53,7 +53,7 @@ if(isset($_POST['updateaccount'])){
             if($result2){
                 $_SESSION['updateuser']="success";
                 $_SESSION['viewacc_result']=$result3;
-                header("Location: ../../view/customer/customer_dashboard.php");
+                header("Location: ../../view/gasagent/addgas_profile.php");
             }else{
                 $_SESSION['updateuser']="failed";
                 echo "Failed";
@@ -67,7 +67,7 @@ if(isset($_POST['updateaccount'])){
 }
 if(isset($_POST['changepassword'])){
     if(isset($_SESSION['User_id'])){ 
-        header("Location: ../../view/customer/customer_changepassword.php");
+        header("Location: ../../view/gasagent/change_password.php");
     }
 }
 if(isset($_POST['updatepwd'])){
@@ -85,22 +85,22 @@ if(isset($_POST['updatepwd'])){
         $result1=checkpassword($confirmpwd,$newpwd);
         if(!$result1){
             $_SESSION['updatepwd-error']="New password and confirm password are not same";
-            header("Location: ../../view/customer/customer_changepassword.php");
+            header("Location: ../../view/gasagent/change_password.php");
         }else{
             $result2=$acc->updatePassword($connection,$_SESSION['User_id'],$oldpwd,$newpwd,$confirmpwd);
             if(!$result2){
                 $_SESSION['updatepwd-error']="Current password is incorrect";
-                header("Location: ../../view/customer/customer_changepassword.php");
+                header("Location: ../../view/gasagent/change_password.php");
             }else{
                 $_SESSION['updatepwd']="Password Updated Successfully";
-                header("Location: ../../view/customer/customer_changepassword.php");
+                header("Location: ../../view/gasagent/change_password.php");
             }
         }
     }
 }
 if(isset($_POST['cancelpwd'])){
     if(isset($_SESSION['User_id'])){
-        header("Location: ../../view/customer/customer_dashboard.php");
+        header("Location: ../../view/gasagent/addgas_profile.php");
     }
 }
 if(isset($_POST['deleteaccount'])){
@@ -109,10 +109,10 @@ if(isset($_POST['deleteaccount'])){
         $result=$acc->deleteAccount($connection,$_SESSION['User_id']);
         if($result){
             $_SESSION['deleteacc']="success";
-            header("Location: ../../view/customer/customer_login.php");
+            header("Location: ../../view/login.php");
         }else{
             $_SESSION['deleteacc']="failed";
-            header("Location: ../../view/customer/customer_dashboard.php");
+            header("Location: ../../view/gasagent/addgas_profile.php");
         }
     }
 }
@@ -133,16 +133,16 @@ if(isset($_POST['uploadimg'])){
         if($fileError === 0){
             if($fileSize < 10000000){
                 $fileNameNew=uniqid('',true).".".$fileActualExt;
-                $fileDestination='../../public/images/'.$fileNameNew;
+                $fileDestination='../../public/images/gasargent/profile_image/'.$fileNameNew;
                 move_uploaded_file($fileTmpName,$fileDestination);
                 $acc=new account_model();
                 $result=$acc->updateImage($connection,$_SESSION['User_id'],$fileNameNew);
                 if($result){
                     $_SESSION['updateimg']="success";
-                    header("Location: ../../view/customer/customer_dashboard.php");
+                    header("Location: ../../view/gasagent/addgas_profile.php");
                 }else{
                     $_SESSION['updateimg']="failed";
-                    header("Location: ../../view/customer/customer_dashboard.php");
+                    header("Location: ../../view/gasagent/addgas_profile.php");
                 }
             }else{
                 echo "Your file is too big";
@@ -160,9 +160,9 @@ if(isset($_POST['removeimg'])){
     $result=$acc->removeImage($connection,$_SESSION['User_id']);
     if($result){
         $_SESSION['removeimg']="success";
-        header("Location: ../../view/customer/customer_dashboard.php");
+        header("Location: ../../view/login.php");
     }else{
         $_SESSION['removeimg']="failed";
-        header("Location: ../../view/customer/customer_dashboard.php");
+        header("Location: ../../view/gasagent/addgas_profile.php");
     }
 }

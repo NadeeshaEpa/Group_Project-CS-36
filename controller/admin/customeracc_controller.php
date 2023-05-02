@@ -69,6 +69,20 @@ if(isset($_GET['vid'])){
     }
 }
 
+if(isset($_POST['search'])){
+    $name=$_POST['customer_name'];
+    $name=$connection->real_escape_string($name);
+    $customer=new customer_model();
+    $result=$customer->searchcustomer($connection,$name);
+    if($result){
+        $_SESSION['customerdetails']=$result;
+        header("Location:../../view/admin/admin-viewCustomer.php");
+    }else{
+        $_SESSION['customerdetails']=[];
+        header("Location:../../view/admin/admin-viewCustomer.php");
+    }
+}
+
 
 if(isset($_POST['edituser'])){
     $user_id=$_POST['User_id'];

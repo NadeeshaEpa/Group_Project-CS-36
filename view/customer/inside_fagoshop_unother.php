@@ -65,6 +65,38 @@
             }
         ?>
     </div>
+        <?php 
+            if(isset($_SESSION['unother_page'])){
+                $page=$_SESSION['unother_page'];
+            }else{
+                $page=1;
+            }
+            if(isset($_SESSION['unother_total_pages'])){
+                $total_pages=$_SESSION['unother_total_pages'];
+            }else{
+                $total_pages=1;
+            }    
+        ?>
+        <div class="pagination">
+            <?php if($page>1){?>
+                <!-- pass value as form -->
+                <div class="p-left">
+                    <form action="../../controller/customer/shop_controller.php" method="GET">
+                        <input type="hidden" name="unother_page" value="<?php echo $page-1?>">
+                        <input type="submit" value="Previous Page">
+                    </form>
+                </div>
+            <?php } ?>
+            <?php if($page<$total_pages){?>
+                <!-- pass value as form -->
+                <div class="p-right">
+                    <form action="../../controller/customer/shop_controller.php" method="GET">
+                        <input type="hidden" name="unother_page" value="<?php echo $page+1?>">
+                        <input type="submit" value="Next Page">
+                    </form>
+                </div>
+            <?php } ?>
+        </div>
     <div id="myModal" class="modal">
         <div class="modal-content">
                 <div>

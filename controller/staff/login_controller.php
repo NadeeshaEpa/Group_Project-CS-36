@@ -18,7 +18,7 @@ $result=$user->loginStaff($connection,$username,$password);
 
 if($result){
     $_SESSION['login']="success";
-    header("Location: ../../view/staff/staff_dashboard.php");
+    header("Location: ../../controller/staff/dashboard_controller.php?id=profitdetails");
     $connection->close();
     exit();
 }else{
