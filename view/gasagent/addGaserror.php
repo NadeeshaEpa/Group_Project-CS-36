@@ -82,7 +82,7 @@
 			</li>
 
 			<li>
-				<a href="../../view/gasagent/compalin.php">
+			    <a href="../../controller/gasagent/complain.php?complain='1'">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Complains</span>
 				</a>

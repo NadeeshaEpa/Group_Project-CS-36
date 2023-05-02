@@ -62,19 +62,13 @@
 			</li>
 
 			<li  class="active">
-				<a href="../../view/gasagent/compalin.php">
+				<a href="../../controller/gasagent/complain.php?complain='1'">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Complains</span>
 				</a>
 			</li>
 		</ul>
 		<ul class="side-menu">
-			<!-- <li>
-				<a href="#">
-					<i class='bx bxs-cog' ></i>
-					<span class="text">Settings</span>
-				</a>
-			</li> -->
 			<li>
 				<a href="../../view/login.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
@@ -140,36 +134,26 @@
 										
                                     </tr>
                                     <?php
-                                    if(isset($_SESSION['userComplainDetails'])){
+                                    if(isset($_SESSION['userComplainDetails']) && !empty($_SESSION['userComplainDetails'])){
                                         $result=$_SESSION['userComplainDetails']; 
-                                        foreach ($result as $row) {
-                                            echo "<tr>";
-											echo "<td>" . $row['order_id'] . "</td>";
-                                            echo "<td>" . $row['date'] . "</td>";
-											echo "<td>" .  $row['message'].  "</td>";
-											// echo "<td>" .  $row['status'] ."</td>";
-											if($row['status']==0){ ?>
-												<!-- change the color of text to red -->
-												<td style="color: red;"><?php echo "uncheck"; ?></td>
-											  <?php }else if($row['status']==2){ ?>
-												<!-- change the color of text to green -->
-												<td style="color: green;"><?php echo "check"; ?></td>
-											  <?php } 
-                                            echo "<td>" . $row['Description'] . "</td>";
-											
-											
-											?>
-											<td>
-												<form action="../../controller/gasagent/DeliveryPersonComplane&ReviewsViewController.php" method="post">
-													<Button name="ComplainDeleteBtn" id="ComplainDeleteBtn_Id">Delete</Button>
-													<input name="Complain_Id_Name" type="hidden" value="<?php echo $row['Complain_id']?>">
-												</form>
-											</td>
-					                        <?php
-											echo "</tr>";
-                                        }
-                                        
-                                    }
+									}else{
+										$result=[];
+									}
+									foreach ($result as $row) {
+										echo "<tr>";
+										echo "<td>" . $row['order_id'] . "</td>";
+										echo "<td>" . $row['date'] . "</td>";
+										echo "<td>" . $row['Description'] . "</td>";
+										?>
+										<td>
+											<form action="../../controller/gasagent/DeliveryPersonComplane&ReviewsViewController.php" method="post">
+												<Button name="ComplainDeleteBtn" id="ComplainDeleteBtn_Id">Delete</Button>
+												<input name="Complain_Id_Name" type="hidden" value="<?php echo $row['Complain_id']?>">
+											</form>
+										</td>
+										<?php
+										echo "</tr>";
+									}
                                     
                                     ?>
                                     
