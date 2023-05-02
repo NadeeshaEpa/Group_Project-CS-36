@@ -115,9 +115,17 @@ if(!isset($_SESSION['User_id'])){
 			</div>
 
 			
-
+			<div class="pickedmsg">
+					<h1><?php if(isset($_SESSION['picked'])){
+                         echo $_SESSION['picked'];
+						 unset($_SESSION['picked']);
+					}?></h1><h2><?php if(isset($_SESSION['pin_wrong'])){
+						echo $_SESSION['pin_wrong'];
+						unset($_SESSION['pin_wrong']);} ?></h2>
+				</div>
 
 			<div class="table-data">
+				
 				<div class="order">
 					        <div class="tbl">
                                     <table class="tb">
@@ -137,7 +145,7 @@ if(!isset($_SESSION['User_id'])){
                                         $result=$_SESSION['PickedOrder']; 
                                         foreach ($result as $row) {
                                             echo "<tr>";
-											echo "<td>" . $row['Order_id'] . "</td>";
+											
                                             echo "<td>" . $row['Name'] . "</td>";
                                             echo "<td>" . $row['Address'] . "</td>";
 											echo "<td>" . $row['Contact_No'] ."</td>";
@@ -171,9 +179,12 @@ if(!isset($_SESSION['User_id'])){
 											<?php }else if($row['Delivery_Status']==4){ ?>
 												<!-- change the color of text to green -->
 												<td style="color: purple;"><?php echo "Picked"; ?></td>
-											<?php }?>
-											    <button onclick=""></button>
-											<?php echo "</tr>";
+											<?php } if($row['Delivery_Status']==NULL){?>
+											   <td><button id="vertify_pin" onclick="pinVertification(<?php echo $row['Order_id'] ?>)">pin</button></td> 
+											<?php }else{?>
+												<td style="color: blue;">Disable</td>
+											<?php }
+											echo "</tr>";
                                         }
                                         
                                     }
@@ -186,10 +197,44 @@ if(!isset($_SESSION['User_id'])){
 			
 			</div>
 		</main>
+		<div id="backgr">
+            <div id="cancel_popup">
+                <div class="cancel_contect">
+                    <p>Place enter your vertification pin Here..</p>
+                    <input type="textarea" name="ver_pin" id="feedback" placeholder="vertification pin">
+                    <div class="buttons">
+                        <button id="yes">Submit</button>
+                        <button id="no">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
 	
     <script src="../../public/js/shopmanagerDashboard.js"></script>
+	<script>
+            function pinVertification(id){
+                document.getElementById("backgr").style.display="block";
+                document.getElementById("cancel_popup").style.display="block";
+                
+                submitbtn=document.getElementById("yes");
+                submitbtn.addEventListener("click",function(){
+                    pin=document.getElementById("feedback").value;
+                    if(pin==""){
+                        return;
+                    }else{
+                        document.getElementById("backgr").style.display="none";
+                        document.getElementById("cancel_popup").style.display="none";
+                        window.location.href="../../controller/ShopManager/shopManagerOrdresController.php?enter_pin='1'&pin="+pin + "&id="+id;   
+                    }
+            
+                });
+                document.getElementById("no").addEventListener("click",function(){
+                    document.getElementById("backgr").style.display="none";
+                });
+            }
+        </script>
 </body>
 </html>

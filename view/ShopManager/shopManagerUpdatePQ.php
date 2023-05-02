@@ -187,7 +187,8 @@ if(!isset($_SESSION['User_id'])){
 								$row=$_SESSION['product_details'];?>
 								<div class="branddown">
 										<div class="branddown1">
-											<img src="../../public/images/ShopManager/Brands/<?php echo $row[0]['Profile_img']?>" width="400px" height="300px" alt="">
+											
+											<img src="../../public/images/product/<?php echo $row[0]['Profile_img']?>" width="400px" height="300px" alt="">
 										</div>
 										<div class="branddown1">
 												
