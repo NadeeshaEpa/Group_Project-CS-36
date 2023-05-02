@@ -191,14 +191,14 @@ class gas_model{
         return $availability;
     }
     public function getshopname($connection,$gasid){
-        $sql="Select g.GasAgent_Id,g.Shop_name,g.LastUpdatedTime,g.LastUpdatedDate,u.Contact_No from gasagent g inner join user_contact u on g.GasAgent_id=u.User_id WHERE GasAgent_Id='$gasid'";
+        $sql="Select g.GasAgent_Id,g.Shop_name,g.NextArrival_Date,g.LastUpdatedTime,g.LastUpdatedDate,u.Contact_No from gasagent g inner join user_contact u on g.GasAgent_id=u.User_id WHERE GasAgent_Id='$gasid'";
         $result=$connection->query($sql);
         $data=[];
         if($result->num_rows===0){
             return false;
         }else{
             while($row=$result->fetch_object()){
-                array_push($data,['Gas_id'=>$row->GasAgent_Id,'Shop_name'=>$row->Shop_name,'Contact_No'=>$row->Contact_No,'LastUpdatedTime'=>$row->LastUpdatedTime,'LastUpdatedDate'=>$row->LastUpdatedDate]);
+                array_push($data,['Gas_id'=>$row->GasAgent_Id,'Shop_name'=>$row->Shop_name,'Contact_No'=>$row->Contact_No,'LastUpdatedTime'=>$row->LastUpdatedTime,'LastUpdatedDate'=>$row->LastUpdatedDate,'NextArrival_Date'=>$row->NextArrival_Date]);
             }
             return $data;
         }

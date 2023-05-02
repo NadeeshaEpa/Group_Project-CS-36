@@ -31,7 +31,7 @@ function cylinderexit(){
             }
         }
     };
-    xhttp.open("POST", "http://localhost/GP36/controller/staff/validation_controller.php", true);
+    xhttp.open("POST", "http://localhost/Group_36/controller/staff/validation_controller.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("Weight=" + Weight.value);
 }
