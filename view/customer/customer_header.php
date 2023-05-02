@@ -44,33 +44,33 @@
                     }
                 }
             ?>
-            <li><a href="#" onclick="cancel_popup()";>Logout</a></li>
+            <li><a href="#" onclick="logout_popup()";>Logout</a></li>
             <li><a href="../../controller/customer/shop_controller.php?gascooker='1'">Fago Shop</a></li>
             <li><a href="customer_select.php">Gas</a></li>
             <!-- <li><img src="../../public/images/logo.png" alt="logo" width="100px" height="100px"></li> -->
         </ul>    
     </div>
-    <div id="backgr">
-        <div id="cancel_popup">
-            <div class="cancel_contect">
+    <div id="logout_backgr">
+        <div id="logout_cancel_popup">
+            <div class="logout_cancel_contect">
                 <p>Are you sure you want to logout from the system?</p>
                 <div class="buttons">
-                    <button id="yes">Yes</button>
-                    <button id="no">No</button>
+                    <button id="logout_yes">Yes</button>
+                    <button id="logout_no">No</button>
                 </div>
             </div>
         </div>
     </div>
     <script>
-        function cancel_popup(){
-            document.getElementById("backgr").style.display="block";
-            document.getElementById("cancel_popup").style.display="block";
-            document.getElementById("yes").addEventListener("click",function(){
+        function logout_popup(){
+            document.getElementById("logout_backgr").style.display="block";
+            document.getElementById("logout_cancel_popup").style.display="block";
+            document.getElementById("logout_yes").addEventListener("click",function(){
                 window.location.href="../../controller/Users/logout_controller.php";
             });
-            document.getElementById("no").addEventListener("click",function(){
-                document.getElementById("cancel_popup").style.display="none";
-                document.getElementById("backgr").style.display="none";
+            document.getElementById("logout_no").addEventListener("click",function(){
+                document.getElementById("logout_cancel_popup").style.display="none";
+                document.getElementById("logout_backgr").style.display="none";
             });
         }
     </script>    

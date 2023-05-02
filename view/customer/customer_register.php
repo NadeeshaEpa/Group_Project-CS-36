@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../../public/css/customer/fago_register.css">
 
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2eSy5egkITKWg1EMsa1i1WcpPi29dgK0&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_E5eoUp72AGiXd8EUgscWhrM-kd2scbY&callback=initMap">
     </script>
     <script>
       function initMap() {
@@ -114,6 +114,6 @@
             </div>
         </div> 
     </div>
-    <script src="../../public/js/Customer_Validation.js"></script>
+    <!-- <script src="../../public/js/Customer_Validation.js"></script> -->
 </body>
 </html>

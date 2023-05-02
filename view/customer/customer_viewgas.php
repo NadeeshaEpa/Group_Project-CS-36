@@ -1,7 +1,7 @@
 <?php session_start(); ?>
 <?php 
     if($_SESSION['available']=="failed" || $_SESSION['viewgas']=="failed"){
-            header("location:error.php");
+        header("location:error.php");
     }else{
         if(isset($_SESSION['weight'])){
             $weight=$_SESSION['weight'];
@@ -53,7 +53,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../public/css/customer/customer_gas.css">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2eSy5egkITKWg1EMsa1i1WcpPi29dgK0"></script>  
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_E5eoUp72AGiXd8EUgscWhrM-kd2scbY"></script>  
     <title>Document</title>
 </head>
 <body onload="initMap()">
@@ -77,12 +77,6 @@
                     <?php }
                 }?>
             <?php 
-            // print_r($weight);
-            // print_r("<br>");
-            // print_r($shops);
-            // print_r("<br>");
-            // print_r($gas);
-            // die();
             ?>    
             <table>
                 <tr>
