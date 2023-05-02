@@ -40,8 +40,6 @@ if(isset($_POST['pickedbtn'])){
 
 }
        
-
-
 /*shop opened and closed */
 if(isset($_POST['sbtn1'])){
     $user=new Brand_reports;

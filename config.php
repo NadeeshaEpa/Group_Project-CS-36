@@ -2,8 +2,7 @@
     $serverName = "localhost";
     $username = "root";
     $password = "";
-    $db = "fagonew2";
-
+    $db = "fagonew";
 
     
     $connection = new mysqli($serverName, $username, $password, $db);    //establish the connection with the database
