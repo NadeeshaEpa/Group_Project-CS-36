@@ -54,6 +54,29 @@ class Dashboard{
                 return false;
             }
         }
+
+
     }
+
+    /*get payment details*/
+    public function Get_payment_detalis($connection){
+    $this->UserId=$_SESSION['User_id'];
+        $sql="SELECT o.Order_id, o.Delivery_date, o.Delivery_time, o.Delivery_fee,pay.Paid  FROM `order` o INNER JOIN payment pay ON o.Order_id=pay.Order_Id WHERE o.Order_Status=1 && o.Delivery_Status=1 && pay.User_Id=$this->UserId && o.DeliveryPerson_Id=$this->UserId && o.Delivery_Method='By delivery person' order by o.Delivery_date DESC";
+       
+        $result=mysqli_query($connection,$sql);
+        if($result->num_rows===0){
+            
+            return false;
+            
+        }else{
+            $answer=array();
+            while($row=$result->fetch_assoc()){
+                $delivery_fee=($row['Delivery_fee'])*80/100;
+                array_push($answer,['Order_id'=>$row['Order_id'],'Delivery_date'=>$row['Delivery_date'],'Delivery_time'=>$row['Delivery_time'],'Delivery_fee'=>$delivery_fee,'Paid'=>$row['Paid']]);
+            }
+        }
+        return $answer;
+
+}
 
 }

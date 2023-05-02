@@ -85,7 +85,7 @@ class brand{
 
     //get avelabel product
     public function GetProduct($connection,$item){
-        $sql="SELECT `Item_code`, `Name`, `Quantity`, `Price`, `Profile_img`, `Category`, `Product_type`, `Description` FROM `product` WHERE Item_code=$item";
+        $sql="SELECT `Item_code`, `Name`, `Quantity`, `Price`, `Product_img`, `Category`, `Product_type`, `Description` FROM `product` WHERE Item_code=$item";
         
         $result=mysqli_query($connection,$sql);
         if($result->num_rows===0){
@@ -94,7 +94,7 @@ class brand{
         }else{
             $answer=array();
             while($row=$result->fetch_assoc()){
-                array_push($answer,['Item_code'=>$row['Item_code'],'Name'=>$row['Name'],'Quantity'=>$row['Quantity'],'Price'=>$row['Price'],'Profile_img'=>$row['Profile_img'],'Category'=>$row['Category'],'Product_type'=>$row['Product_type']]);
+                array_push($answer,['Item_code'=>$row['Item_code'],'Name'=>$row['Name'],'Quantity'=>$row['Quantity'],'Price'=>$row['Price'],'Product_img'=>$row['Product_img'],'Category'=>$row['Category'],'Product_type'=>$row['Product_type']]);
             }
         }
         return $answer;
