@@ -130,6 +130,10 @@ if(!isset($_SESSION['User_id'])){
                                         echo"Shop is closed.";
                                         unset($_SESSION['updateClosedSucessfully']);
                                     }
+									if(isset($_SESSION['No_orders'])){
+                                        echo $_SESSION['No_orders'];
+                                        unset($_SESSION['No_orders']);
+                                    }
                                 
                                 ?>
                                 </h6>
