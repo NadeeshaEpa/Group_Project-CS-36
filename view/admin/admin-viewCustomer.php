@@ -116,17 +116,19 @@ require_once("../../config.php");?>
 				<div class="left">
 					<!-- <h1>Users</h1> -->
 					<ul class="breadcrumb">
-						<li>
-							<a href="../../view/admin/admin_dashboard.php">Dashboard</a>
-						</li>
+					     <a href="../../controller/admin/dashboard_controller.php?id=profitdetails">
+						<li style="color:grey;">Dashboard</li>
+						</a>
 						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a href="../../view/admin/users.php">Users</a>
-						</li>
+						<a href="../../controller/admin/users_controller.php?id=userdetails">
+						<li style="color:grey;">Users</li>
+						</a>
                         <li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a class="active" href="#">Customers</a>
+						<a  href="../../controller/admin/customeracc_controller.php?id=viewCustomer">
+						<li style="color:blue;">
+							Customers
 						</li>
+				        </a>
 					</ul>
 				</div>
 				

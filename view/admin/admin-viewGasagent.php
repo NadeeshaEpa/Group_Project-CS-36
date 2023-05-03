@@ -113,6 +113,27 @@ require_once("../../config.php");?>
 
 		<!-- MAIN -->
 		<main>
+		<div class="head-title">
+				<div class="left">
+					<!-- <h1>Users</h1> -->
+					<ul class="breadcrumb">
+					     <a href="../../controller/admin/dashboard_controller.php?id=profitdetails">
+						<li style="color:grey;">Dashboard</li>
+						</a>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<a href="../../controller/admin/users_controller.php?id=userdetails">
+						<li style="color:grey;">Users</li>
+						</a>
+                        <li><i class='bx bx-chevron-right' ></i></li>
+						<a  href="../../controller/admin/gasagentacc_controller.php?id=viewGasagent">
+						<li style="color:blue;">
+							Gas Agents
+						</li>
+				        </a>
+					</ul>
+				</div>
+				
+			</div><br>
     <div class="list">
 
     <h3>All Gas Agents</h3>

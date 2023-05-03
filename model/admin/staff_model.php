@@ -63,6 +63,7 @@ class staff_model{
         }
     }
 
+
     public function setStaff($connection){
         $sql="INSERT INTO staff(Staff_Id,NIC,Admin_Id,Registration_date,Status) VALUES ('$this->User_id','$this->nic',NULL,NULL,'1')";
         if($connection->query($sql)){
@@ -137,6 +138,16 @@ class staff_model{
 
     public function updateContacts($connection,$array){
         $sql="UPDATE `user_contact` SET `Contact_No`='$array[1]' WHERE User_id='$array[0]'";
+        $result=$connection->query($sql);
+        if($result){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function updateStaff($connection,$array){
+        $sql="UPDATE `staff` SET `NIC`='$array[1]' WHERE Staff_Id='$array[0]'";
         $result=$connection->query($sql);
         if($result){
             return true;
