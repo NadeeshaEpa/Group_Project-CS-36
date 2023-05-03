@@ -1,3 +1,5 @@
+
+
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +27,7 @@
 		</a>
 		<ul class="side-menu top">
 			<li >
-				<a href="../../view/gasagent/gasagent_dashboard.php">
+			<a href="../../controller/gasagent/gasagent_order_controller.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
