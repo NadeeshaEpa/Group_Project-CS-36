@@ -107,7 +107,7 @@ require_once("../../config.php");?>
 			<?php if($_SESSION['img-status'] == 0){?>
                     <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                 <?php }else{?>
-                    <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
+                    <img src='../../public/images/admin/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
             <?php } ?>
 			</a>
 			<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?>
@@ -186,11 +186,12 @@ require_once("../../config.php");?>
 	
          
         <br><br>
-		<div class="down"> 
-        <a href="../../view/admin/admin-viewCustomer.php"><button style="background-color: #da3a3a;" class="b4">Cancel</button></a> 
-		<button type="submit" name="edituser" id="submit" class="b6">Update</button>  
-		</div>
+		
+         
+		<button type="submit" name="edituser" id="submit" class="b6" style="float:left; margin-left: 77%;">Update</button>  
     </form>
+	<a href="admin-viewCustomer.php"><button style="background-color: #da3a3a;" class="b4">Cancel</button></a>
+	<br><br>
     </div>
 
     </main>
