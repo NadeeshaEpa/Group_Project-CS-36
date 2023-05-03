@@ -175,7 +175,7 @@ if(!isset($_SESSION['User_id'])){
 											<?php }else if($row['Delivery_Status']==4){ ?>
 												<!-- change the color of text to green -->
 												<td style="color: purple;"><?php echo "Picked"; ?></td>
-											<?php } if($row['Delivery_Status']==NULL){?>
+											<?php } if($row['Delivery_Status']==2){?>
 											   <td><button id="vertify_pin" onclick="pinVertification(<?php echo $row['Order_id'] ?>)">pin</button></td> 
 											<?php }else{?>
 												<!-- <td style="color: blue;">Disable</td> -->
