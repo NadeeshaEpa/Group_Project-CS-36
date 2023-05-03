@@ -31,7 +31,7 @@ if(isset($_POST['login'])){
             }
             header("Location: ../../view/customer/customer_select.php");  //redirect to the selection page
 
-        }else if($_SESSION['Type']=="Delivery_Person"){
+        }else if($_SESSION['Type']=="Delivery Person"){
             header("Location: ../../controller/deliveryperson/deliveryDashboardFirstController.php");  //redirect to the dashboard page
         }else if($_SESSION['Type']=="Gas Agent"){
             header("Location: ../../controller/gasagent/gasagent_order_controller.php");  //redirect to the dashboard page
