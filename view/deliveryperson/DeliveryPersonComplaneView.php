@@ -128,6 +128,10 @@ if(!isset($_SESSION['User_id'])){
                                     <?php
                                     if(isset($_SESSION['userComplainDetails'])){
                                         $result=$_SESSION['userComplainDetails']; 
+									}
+									else{
+										$result=[];
+									}
                                         foreach ($result as $row) {
                                             echo "<tr>";
 											echo "<td>" . $row['Complain_id'] . "</td>";
@@ -155,8 +159,6 @@ if(!isset($_SESSION['User_id'])){
 											echo "</tr>";
                                         }
                                         unset($_SESSION['userComplainDetails']);
-                                    }
-                                    
                                     ?>
                                     
 							</table>
