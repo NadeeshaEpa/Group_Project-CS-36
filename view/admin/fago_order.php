@@ -54,6 +54,12 @@ require_once("../../config.php");?>
 					<span class="text">Gas Companies</span>
 				</a>
 			</li>
+			<li>
+				<a href="../../controller/admin/limitation_controller.php?id=limitations">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Limitations</span>
+				</a>
+			</li>
 			<li class="active">
 				<a href="../../controller/admin/order_controller.php?id=vieworder">
 					<i class='bx bxs-shopping-bag-alt' ></i>
@@ -114,8 +120,8 @@ require_once("../../config.php");?>
 
     <h3>Orders</h3>
 	<form action="../../controller/admin/order_controller.php" method="POST">
-				<div class="form-input">
-					<input type="search" name="order_id" placeholder="Search by order ID...">
+				<div class="form-input" style="width:30%;">
+					<input type="search" name="order_id" placeholder="Search by order ID or Customer name..">
 					<button type="submit" name="search_fagoorder" class="search-btn"><i class='bx bx-search' ></i></button>
 				</div>
 	</form>

@@ -141,8 +141,8 @@ require_once("../../config.php");?>
     <h3>Orders</h3>
 
 	<form action="../../controller/staff/order_controller.php" method="POST">
-				<div class="form-input">
-					<input type="search" name="order_id" placeholder="Search by order ID...">
+				<div class="form-input" style="width:30%;">
+					<input type="search" name="order_id" placeholder="Search by order ID or Customer name....">
 					<button type="submit" name="search_order" class="search-btn"><i class='bx bx-search' ></i></button>
 				</div>
 	</form>

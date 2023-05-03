@@ -1,5 +1,4 @@
-<?php session_start();
-require_once("../../config.php");?>
+<!-- <?php session_start(); ?> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,9 +9,7 @@ require_once("../../config.php");?>
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="../../public/css/admin_delivery/Dashboard.css">
-    <link rel="stylesheet" href="../../public/css/admin_delivery/user_list.css">
-	<link rel="stylesheet" href="../../public/css/admin_delivery/deliveries.css">
-	<link rel="stylesheet" href="../../public/css/admin_delivery/delete_popup.css">
+    <link rel="stylesheet" href="../../public/css/admin_delivery/profile.css">
 
 	<title>FaGo</title>
 </head>
@@ -26,7 +23,7 @@ require_once("../../config.php");?>
 			<span class="text">FAGO</span>
 		</a>
 		<ul class="side-menu top">
-		<li>
+			<li>
 				<a href="../../controller/admin/dashboard_controller.php?id=profitdetails">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
@@ -55,7 +52,7 @@ require_once("../../config.php");?>
 					<span class="text">Gas Companies</span>
 				</a>
 			</li>
-			<li>
+			<li class="active">
 				<a href="../../controller/admin/limitation_controller.php?id=limitations">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Limitations</span>
@@ -67,7 +64,7 @@ require_once("../../config.php");?>
 					<span class="text">Orders</span>
 				</a>
 			</li>
-            <li class="active">
+			<li>
 				<a href="../../controller/admin/review_controller.php?id=viewreviews">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Company Reviews</span>
@@ -99,7 +96,6 @@ require_once("../../config.php");?>
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-	
 			
 			
 			<a href="#" class="profile">
@@ -115,93 +111,60 @@ require_once("../../config.php");?>
 
 		<!-- MAIN -->
 		<main>
-    <div class="list">
 
-    <h3>Company Reviews</h3>
+        <?php 
+                   if(isset($_SESSION['editlimit'])){
+                      $result=$_SESSION['editlimit']; 
+					  
+                   
+                   }
+        ?>
+		
+ 
+               <center> <div class="data" style="width:50%; margin-top:10%; margin-left:1%; background-color:#CFE8FF">
+						<h2>Gas Order Limitations</h2>
+                        <br><br>
 
-	<form action="../../controller/admin/review_controller.php" method="POST">
-				<div class="form-input">
-					<input type="search" name="review_id" placeholder="Search by review ID...">
-					<button type="submit" name="search" class="search-btn"><i class='bx bx-search' ></i></button>
+                        <form action="../../controller/admin/limitation_controller.php" method="POST" id="staff_form">
+
+                        <div class="dropdown">
+		                <label for="limit_status" id="limit_status">Limitations  :</label>
+						   <select name="limit_status" id="limit_status" style="width:40%; padding:1%; ">
+							<option value="0" selected>No limitation applied</option>
+                            <option value="1">Limitations applied</option>
+
+                            </select>
+                        </div><br><br>
+
+                        <label>Time Period      :</label>
+                                    <input type="text" name="time_period" value=<?php echo $result[0]['time_period']?> style="width:40%; padding:1%; "> 
+                        
+                        <br><br>
+                        <div class="down1">
+                        
+                        <button type="submit" name="updatelimit" class="cp">Update</button>
+                    </form>
+                </div></center>
+						
+
+						
 				</div>
-	</form>
-
-
-    <table>
-    <tr>
-        <th>Review ID</th>
-        <th>Customer ID</th>
-        <th>Review</th>
-        <th>Date</th>
-        <th>Operations</th>
-    </tr>
-
-    <?php
-    $result=$_SESSION['reviewdetails'];
-    if($result){
-        foreach($result as $row){
-            $review_id=$row['review_id'];
-            $customer_id=$row['customer_id'];
-            $Description=$row['Description'];
-			$Description=wordwrap($Description, 50, "<br>\n");
-            $date=$row['date'];
-
-            echo'<tr>
-                 <th>'.$review_id.'</th>
-                 <td>'.$customer_id.'</td>
-                 <td>'.$Description.'</td>
-                 <td>'.$date.'</td>
-                 <td>
-				 <button onclick="deletereview('.$review_id.');" class="button3" style="width:50%;">Delete</button>
-				
-                 </td>
-            </tr>' ;
-            
-        }
-    }
-
-    ?>
-    
-    </table>
-    </div>
-
-        
-    
-    </main>
+			
+			
+		</main>
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
-	<div id="backgr">
-        <div id="cancel_popup">
-            <div class="cancel_contect">
-                <p>Are you sure you want to Delete this Review?</p>
-                <div class="buttons">
-                    <button id="yes">Yes</button>
-                    <button id="no">No</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
 	<script>
-		function deletereview(id){
-            document.getElementById("backgr").style.display="block";
-            document.getElementById("cancel_popup").style.display="block";
-            document.getElementById("yes").addEventListener("click",function(){
-                window.location.href="../../controller/admin/review_controller.php?did="+id;
-            });
-            document.getElementById("no").addEventListener("click",function(){
-                document.getElementById("backgr").style.display="none";
-                document.getElementById("cancel_popup").style.display="none";
-            });
-        }  
-            
-    </script>
+		elementsArray=document.querySelectorAll(".details");
+		elementsArray.forEach(function(elem){
+			elem.addEventListener("click",function(){
+				location.href='../../controller/admin/delivery_controller.php?oid='+elem.id;
+			});
+		});
+
+	</script>
 
 	<script src="../../public/js/script.js"></script>
-
-
-
-
-  
 </body>
+</html>

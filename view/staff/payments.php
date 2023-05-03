@@ -170,7 +170,7 @@
 								
 								<tr>
 								    <th>'.$User_id.'</th>
-									<td>'.$fname. $lname.'</td>
+									<td>'.$fname." ". $lname.'</td>
 									<td>RS. '.$sales.'.00</td>
 									<td style="color:red;">Pending</td>
 									<td><a href="../../controller/staff/payment_controller.php?vid='.$User_id.'"><button class="button1" style="width:30%;">View</button></a>

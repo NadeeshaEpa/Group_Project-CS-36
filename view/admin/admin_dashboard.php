@@ -52,6 +52,12 @@
 				</a>
 			</li>
 			<li>
+				<a href="limitations.php">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Limitations</span>
+				</a>
+			</li>
+			<li>
 				<a href="../../controller/admin/order_controller.php?id=vieworder">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Orders</span>
@@ -187,8 +193,8 @@
 							echo'
 									<tr class="details" id='.$order_id.'>
 									<td>
-										<img src="../../public/images/'.$imgname.'">
-										<p>'.$fname. $lname.'</p>
+										<img src="../../public/images/customer/profile_img/'.$imgname.'">
+										<p>'.$fname." ". $lname.'</p>
 									</td>
 									<td>'.$order_id.'</td>
 									<td>'.$order_date.'</td>
@@ -214,7 +220,7 @@
 		elementsArray=document.querySelectorAll(".details");
 		elementsArray.forEach(function(elem){
 			elem.addEventListener("click",function(){
-				location.href='../../controller/admin/delivery_controller.php?oid='+elem.id;
+				location.href='../../controller/admin/order_controller.php?oid='+elem.id;
 			});
 		});
 
