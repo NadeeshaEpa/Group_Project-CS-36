@@ -55,7 +55,7 @@
               $checkout=$_SESSION['checkout'];
               $count=count($checkout);
               if($count==0){
-                  header("location:../../controller/customer/addtocart_controller.php?viewcart='1'");
+                  header("Location:../../controller/customer/addtocart_controller.php?viewcart='1'");
               }
           }
       }
