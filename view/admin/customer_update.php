@@ -145,7 +145,7 @@ require_once("../../config.php");?>
 		</div>
 		<div class="down1">
             <label for="nic" id="nic-label">Electricity Bill Number :</label>
-            <input type="text" name="ElectricityBill_No" id="ElectricityBill_No" value="<?php echo $result[0]['ElectricityBill_No']?>" placeholder="Electricity Bill Number" required readonly><br>
+            <input type="text" name="ElectricityBill_No" id="ElectricityBill_No" value="<?php echo $result[0]['ElectricityBill_No']?>" placeholder="Electricity Bill Number" required><br>
 		</div> 
 	</div>
 
