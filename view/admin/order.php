@@ -60,6 +60,12 @@ require_once("../../config.php");?>
 					<span class="text">Orders</span>
 				</a>
 			</li>
+			<li>
+				<a href="../../controller/admin/review_controller.php?id=viewreviews">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Company Reviews</span>
+				</a>
+			</li>
 			
 		</ul>
 		<ul class="side-menu">
@@ -145,19 +151,19 @@ require_once("../../config.php");?>
                  <td>'.$amount.'</td>' ;
 				
 				if($status==1){
-					echo'<td>Delivered</td>';
+					echo'<td style="color:green;">Delivered</td>';
 				}
 				else if($status==0){
-					echo'<td>On the way</td>';
+					echo'<td style="color:purple;">On the way</td>';
 				}
 				else if($status==NULL){
-					echo'<td>Not assigned</td>';
+					echo'<td style="color:red;">Not assigned</td>';
 				}
 				else if($status==3){
-					echo'<td>Courier service</td>';
+					echo'<td style="color:orange;">Courier service</td>';
 				}
 				else if($status==4){
-					echo'<td>Picked</td>';
+					echo'<td style="color:blue;">Picked</td>';
 				}
 				else{
 					echo'<td>No delivery</td>';

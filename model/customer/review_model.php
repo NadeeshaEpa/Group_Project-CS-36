@@ -43,16 +43,19 @@ class review_model{
             //get the top most delivery person
             $top_delivery=$delivery[0];
             $days=$this->get_date_differance($top_delivery->Delivery_date);
-            $status=$this->get_review_status($connection,$top_delivery->DeliveryPerson_Id);
+            $status=$this->get_review_status($connection,$top_delivery->DeliveryPerson_Id,$top_delivery->Delivery_date);
             if($days<7 && $status===true){
                 array_push($final_delivery,$top_delivery);
                 return $final_delivery;
             }
+            print_r($delivery);
+            print_r($final_delivery);
+            die();
             return $final_delivery;
         }
     }
-    public function get_review_status($connection,$DeliveryPerson_Id){
-        $sql="SELECT * FROM `rateservice` WHERE DeliveryPerson_Id='$DeliveryPerson_Id'";
+    public function get_review_status($connection,$DeliveryPerson_Id,$Delivery_date){
+        $sql="SELECT * FROM `rateservice` WHERE DeliveryPerson_Id='$DeliveryPerson_Id' and Date='$Delivery_date'";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return true;

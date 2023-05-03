@@ -4,7 +4,6 @@ require_once '../../config.php';
 require_once '../../model/customer/validation_model.php';
 
 if(isset($_POST['email'])){
-
     $email = $_POST['email'];
     $validation = new validation_model();
     $result=$validation->checkemail($email,$connection);

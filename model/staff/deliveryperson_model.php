@@ -113,7 +113,7 @@ class deliveryperson_model{
 
     // Get current date in Y-m-d format
     $current_date = date('Y-m-d');
-        $sql = "UPDATE `deliveryperson` SET Status=1, Staff_Id=$staff_id, Registration_date=$current_date WHERE DeliveryPerson_Id='$user_id'";
+        $sql = "UPDATE `deliveryperson` SET Status=1, Staff_Id=$staff_id, Registration_date='$current_date' WHERE DeliveryPerson_Id='$user_id'";
         // $sql="DELETE FROM `user` WHERE User_id='$user_id'";
         $result=$connection->query($sql);
         if($result==TRUE){

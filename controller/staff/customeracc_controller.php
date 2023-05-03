@@ -3,6 +3,7 @@ session_start();
 include_once '../../config.php';
 include_once '../../model/staff/account_model.php';
 include_once '../../model/staff/customer_model.php';
+include_once '../../model/staff/email_model.php';
 
 
 if(isset($_GET['id'])){
@@ -91,6 +92,8 @@ if(isset($_GET['aid'])){
         header("Location: ../../view/staff/Customer_requestlist.php");
     }else{
         $_SESSION['acceptuser']="success";
+        $email=new email_model();
+        $result=$email->send_CustomerEmail($user_id,$connection);
         header("Location: ../../controller/staff/customeracc_controller.php?rid=viewCustomerRequests");
         
     }
@@ -99,6 +102,8 @@ if(isset($_GET['aid'])){
 if(isset($_GET['deid'])){
     $user_id=$_GET['deid'];
     $user_id=$connection->real_escape_string($user_id);
+    $email=new email_model();
+    $result=$email->send_CancelEmail($user_id,$connection);
     $customer=new customer_model();
     $result=$customer->decline($connection,$user_id);
     if($result===false){
@@ -183,7 +188,7 @@ if(isset($_POST['edituser'])){
     $Email=$_POST['Email'];
     $Contact_No=$_POST['Contact_No'];
     $ElectricityBill_No=$_POST['ElectricityBill_No'];
-
+    
 
     
     // $ElectricityBill_No=$_POST['ElectricityBill_No'];
@@ -199,27 +204,35 @@ if(isset($_POST['edituser'])){
         $Postalcode=$connection->real_escape_string($Postalcode);
         $ElectricityBill_No=$connection->real_escape_string($ElectricityBill_No);
 
-    
 
 
-    $customer=new customer_model();
     $inputs1=array($user_id,$First_Name, $Last_Name, $City, $Street, $Postalcode, $Username, $Email);
-    $inputs2=array($user_id,$Contact_No);
-
+    $inputs2=array($user_id,$ElectricityBill_No);
+    $inputs3=array($user_id,$Contact_No);
+    
+    
+    $customer=new customer_model();
     $result1=$customer->updateUser($connection,$inputs1);
     if($result1){
-        $result2=$customer->updateContacts($connection,$inputs2);
+        $result2=$customer->updateCustomer($connection,$inputs2);
         if($result2){
+            $result3=$customer->updateContacts($connection,$inputs3);
+            if($result3){
             $_SESSION['updateuser']="success";
             header("Location: ../../controller/staff/customeracc_controller.php?id=viewCustomer");
+            }else{
+                $_SESSION['updateuser']="failed";
+                echo "Failed";
+            }
         }else{
             $_SESSION['updateuser']="failed";
-            // // echo "Failed";
+            echo "Failed";
         }
     }else{
         $_SESSION['updateuser']="failed";
-        // echo "Failed";
+        echo "Failed";
     }
+
 
 }
 

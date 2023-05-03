@@ -362,3 +362,14 @@ hr{
     font-size: 17px;
     font-weight: bold;
 }
+.down3 input{
+    font-size: 16px;
+    border: black 1px solid;
+    border-radius: 20px;
+    width:98%;
+    height: 35px;
+    text-align: center;
+    margin-top: 0%;
+    padding-top: 10px;
+    margin-bottom: 2%;
+}

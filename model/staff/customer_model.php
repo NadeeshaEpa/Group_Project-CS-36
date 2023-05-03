@@ -45,7 +45,7 @@ class customer_model{
 
         // Get current date in Y-m-d format
         $current_date = date('Y-m-d');
-        $sql = "UPDATE `customer` SET Status=1,staff_Id=$staff_id, Registration_date=$current_date WHERE Customer_Id='$user_id'";
+        $sql = "UPDATE `customer` SET Status=1,staff_Id=$staff_id, Registration_date='$current_date' WHERE Customer_Id='$user_id'";
         // $sql="DELETE FROM `user` WHERE User_id='$user_id'";
         $result=$connection->query($sql);
         if($result==TRUE){
@@ -108,6 +108,16 @@ class customer_model{
     
     public function updateUser($connection,$array){
         $sql="UPDATE `user` SET `First_Name`='$array[1]',`Last_Name`='$array[2]',`City`='$array[3]',`Street`='$array[4]',`Postalcode`='$array[5]',`Username`='$array[6]',`Email`='$array[7]' WHERE User_id='$array[0]'";
+        $result=$connection->query($sql);
+        if($result){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function updateCustomer($connection,$array){
+        $sql="UPDATE `customer` SET `ElectricityBill_No`='$array[1]'  WHERE Customer_Id='$array[0]'";
         $result=$connection->query($sql);
         if($result){
             return true;

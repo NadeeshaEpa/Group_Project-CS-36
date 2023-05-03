@@ -49,8 +49,6 @@ if(isset($_POST['complane_btn'])){
 //     }
 
 // }
-
-
 if(isset($_POST['ComplainDeleteBtn'])){
     $Complane_id=$_POST['Complain_Id_Name'];
     $Complane_id=$connection->real_escape_string($Complane_id);

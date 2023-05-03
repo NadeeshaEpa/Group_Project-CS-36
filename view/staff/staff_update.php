@@ -165,7 +165,7 @@ require_once("../../config.php");?>
 		</div>
 		<div class="down1">
             <label for="nic" id="nic-label">NIC :</label>
-            <input type="text" name="NIC" id="nic" value="<?php echo $result[0]['NIC']?>" placeholder="NIC" required><br>
+            <input type="text" name="NIC" id="nic" value="<?php echo $result[0]['NIC']?>" placeholder="NIC" required readonly><br>
 		</div> 
 	</div>
 
@@ -198,14 +198,15 @@ require_once("../../config.php");?>
             <input type="text" name="nic" id="nic" placeholder="NIC" required><br> -->
             
 	
-         
-        <br><br>
-		<div class="down"> 
-        <a href="../../view/staff/staff-viewStaff.php"><button style="background-color: #da3a3a;" class="b4">Cancel</button></a> 
-		<button type="submit" name="edituser" id="submit" class="b6">Update</button>  
-		</div>
+			<br><br>  
+        
+		<button type="submit" name="edituser" id="submit" class="b6" style="float:left; margin-left: 75%;">Update</button>  
+	
     </form>
+	<a href="../../view/staff/staff-viewStaff.php"><button style="background-color: #da3a3a;" class="b4">Cancel</button></a> 
+	<br><br>
     </div>
+	
 
     </main>
 		<!-- MAIN -->

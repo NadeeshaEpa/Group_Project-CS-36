@@ -171,8 +171,8 @@ require_once("../../config.php");?>
             <input type="text" name="Username" id="username" value="<?php echo $result[0]['Username']?>" placeholder="Username" required readonly><br>
 		</div>
 		<div class="down1">
-            <label for="nic" id="nic-label">Electricity Bill Number :</label>
-            <input type="text" name="ElectricityBill_No" id="ElectricityBill_No" value="<?php echo $result[0]['ElectricityBill_No']?>" placeholder="Electricity Bill Number" required readonly><br>
+            <label>Electricity Bill Number :</label>
+            <input type="text" name="ElectricityBill_No" id="ElectricityBill_No" value="<?php echo $result[0]['ElectricityBill_No']?>" placeholder="Electricity Bill Number" required><br>
 		</div> 
 	</div>
 
@@ -207,12 +207,14 @@ require_once("../../config.php");?>
 	
          
         <br><br>
-		<div class="down"> 
+		
         
-		<button type="submit" name="edituser" id="submit" class="b6">Update</button>  
-		<a href="../../view/staff/staff-viewCustomer.php"><button style="background-color: #da3a3a;" class="b4">Cancel</button></a> 
-		</div>
+		<button type="submit" name="edituser" id="submit" class="b6" style="float:left; margin-left: 75%;">Update</button>  
+		
+		
     </form>
+	<a href="staff-viewCustomer.php"><button style="background-color: #da3a3a;" class="b4">Cancel</button></a> 
+	<br><br>
     </div>
 
     </main>

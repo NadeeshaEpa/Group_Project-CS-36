@@ -3,12 +3,17 @@ session_start();
 require_once("../../config.php");
 require_once("../../model/customer/gas_model.php");
 
-if(isset($_GET['gas_type'])||isset($_GET['page'])){
+if(isset($_GET['gas_button'])||isset($_GET['page'])){
     $userid=$_SESSION['User_id'];
     $type=$_GET['gas_type'];
     $type=$connection->real_escape_string($type);
+
+    //if $_GET['gas_type'] is not set, then set redirect to customer_select page 
+    if(!isset($_GET['gas_type'])){
+        header("Location: ../../view/customer/customer_select.php");
+    }
+
     $_SESSION['gas_type']=$type;
-    //create new gas model
     $gasmodel=new gas_model();
 
     //pagination

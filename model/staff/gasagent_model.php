@@ -38,8 +38,8 @@ class gasagent_model{
         date_default_timezone_set('Asia/Colombo');
 
     // Get current date in Y-m-d format
-    $current_date = date('Y-m-d');
-        $sql = "UPDATE `gasagent` SET Status=1,Staff_Id=$staff_id, Registration_date=$current_date WHERE GasAgent_Id='$user_id'";
+        $current_date = date('Y-m-d');
+        $sql = "UPDATE `gasagent` SET Status=1,Staff_Id=$staff_id, Registration_date='$current_date' WHERE GasAgent_Id='$user_id'";
         // $sql="DELETE FROM `user` WHERE User_id='$user_id'";
         $result=$connection->query($sql);
         if($result==TRUE){

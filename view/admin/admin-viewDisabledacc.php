@@ -61,6 +61,12 @@ require_once("../../config.php");?>
 					<span class="text">Orders</span>
 				</a>
 			</li>
+			<li>
+				<a href="../../controller/admin/review_controller.php?id=viewreviews">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Company Reviews</span>
+				</a>
+			</li>
 			
 		</ul>
 		<ul class="side-menu">

@@ -12,7 +12,7 @@ if(isset($_POST['ComplainDeleteBtn'])){
     
     
     if($result==true){
-       
+        $_SESSION['userComplainDetails']=$user->getUserComplainsDetails($connection);
         header("Location: ../../controller/gasagent/deliveryPersonComplainViewFirstController.php");
         $connection->close();
         exit();

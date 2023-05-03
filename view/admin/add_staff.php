@@ -25,7 +25,7 @@ require_once("../../config.php");?>
 		</a>
 		<ul class="side-menu top">
 			<li >
-				<a href="../../view/admin/admin_dashboard.php">
+				<a href="../../controller/admin/dashboard_controller.php?id=profitdetails">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -41,7 +41,7 @@ require_once("../../config.php");?>
 
 			<li class="active">
 			
-			<a href="../../view/admin/users.php">
+			<a href="../../controller/admin/users_controller.php?id=userdetails">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Users</span>
 				</a>
@@ -57,6 +57,12 @@ require_once("../../config.php");?>
 				<a href="../../controller/admin/order_controller.php?id=vieworder">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Orders</span>
+				</a>
+			</li>
+            <li>
+				<a href="../../controller/admin/review_controller.php?id=viewreviews">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Company Reviews</span>
 				</a>
 			</li>
 			
@@ -166,11 +172,11 @@ require_once("../../config.php");?>
             
          
 
-        <button type="submit" name="register" id="submit">Register</button>  
-        <a href="user_staff.php"><button style="background-color: #da3a3a;">Cancel</button></a> 
-
-		<br><br>
+        <button type="submit" name="register" id="submit" style="float:left; margin-left: 60%;">Register</button>  
+       
     </form>
+	<a href="admin-viewStaff.php"><button style="background-color: #da3a3a;">Cancel</button></a> 
+    <br><br>
     </div>
 
     </main>

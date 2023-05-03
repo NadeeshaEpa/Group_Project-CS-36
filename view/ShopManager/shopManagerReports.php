@@ -245,7 +245,6 @@ if(!isset($_SESSION['User_id'])){
 												<th>person Address</th>
 												<th>person Contact No</th>
 												<th>Quantity</th>
-												<th>picked date</th>
 												<th>picked time</th>
 												<th>Category</th>
 												<th>Price</th>
@@ -260,7 +259,7 @@ if(!isset($_SESSION['User_id'])){
                                             echo "<td>" . $row['Address'] . "</td>";
 											echo "<td>" . $row['Contact_No'] ."</td>";
 											echo "<td>" . $row['Quantity'] . "</td>";
-                                            echo "<td>" . $row['Picked_date'] . "</td>";
+                                            
 											echo "<td>" . $row['Picked_time'] . "</td>";
 											echo "<td>" . $row['Category'] . "</td>";
                                             echo "<td>" . $row['Amount'] . "</td>";
