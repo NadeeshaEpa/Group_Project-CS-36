@@ -26,7 +26,7 @@
 		</a>
 		<ul class="side-menu top">
 			<li>
-				<a href="staff_dashboard.php">
+				<a href="../../controller/staff/dashboard_controller.php?id=profitdetails">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -42,21 +42,21 @@
 
 			<li>
 			
-			<a href="../../view/staff/users.php">
+			<a href="../../controller/staff/users_controller.php?id=userdetails">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Users</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="../../view/staff/user_request.php">
+				<a href="../../controller/staff/users_controller.php?rid=userrequestdetails">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Registration Requests</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="../../view/staff/gas_cylinder.php">
+				<a href="../../controller/staff/cylinder_controller.php?id=viewcylinder">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Gas Cylinders</span>
 				</a>
@@ -69,14 +69,14 @@
 			</li>
 
 			<li>
-				<a href="deliveries.php">
+				<a href="../../controller/staff/delivery_controller.php?id=viewdelivery">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Deliveries</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="payments.php">
+				<a href="../../controller/staff/payment_controller.php?id=gaspaymentdetails">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Payments</span>
 				</a>
@@ -128,7 +128,7 @@
 		<!-- MAIN -->
 		<main>
 		<a href="../../controller/staff/complain_controller.php?id=complaindetails"><button style="background-color:#05be17; color:white; width:47%;">Complains</button></a>
-        <a href="../../controller/staff/complain_controller.php?mid=mycomplaindetails"><button style="background-color:transparent;color:black; width:47%;">My Complains</button></a>
+        <a href="../../controller/staff/complain_controller.php?mid=mycomplaindetails"><button style="background-color:transparent;color:black; width:47%;">Complains Incharge</button></a>
             <br><br>
 			
 			<!-- <form action="#" style="float:right;">

@@ -1,5 +1,4 @@
-<?php session_start();
-require_once("../../config.php");?>
+<!-- <?php session_start(); ?> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,9 +9,7 @@ require_once("../../config.php");?>
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="../../public/css/admin_delivery/Dashboard.css">
-    <link rel="stylesheet" href="../../public/css/admin_delivery/user_list.css">
-	<link rel="stylesheet" href="../../public/css/admin_delivery/deliveries.css">
-	<link rel="stylesheet" href="../../public/css/admin_delivery/delete_popup.css">
+    <link rel="stylesheet" href="../../public/css/admin_delivery/profile.css">
 
 	<title>FaGo</title>
 </head>
@@ -26,7 +23,7 @@ require_once("../../config.php");?>
 			<span class="text">FAGO</span>
 		</a>
 		<ul class="side-menu top">
-		<li>
+			<li>
 				<a href="../../controller/admin/dashboard_controller.php?id=profitdetails">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
@@ -55,7 +52,7 @@ require_once("../../config.php");?>
 					<span class="text">Gas Companies</span>
 				</a>
 			</li>
-			<li>
+			<li class="active">
 				<a href="../../controller/admin/limitation_controller.php?id=limitations">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Limitations</span>
@@ -67,7 +64,7 @@ require_once("../../config.php");?>
 					<span class="text">Orders</span>
 				</a>
 			</li>
-            <li class="active">
+			<li>
 				<a href="../../controller/admin/review_controller.php?id=viewreviews">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Company Reviews</span>
@@ -99,7 +96,6 @@ require_once("../../config.php");?>
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-	
 			
 			
 			<a href="#" class="profile">
@@ -115,93 +111,49 @@ require_once("../../config.php");?>
 
 		<!-- MAIN -->
 		<main>
-    <div class="list">
 
-    <h3>Company Reviews</h3>
+        <?php 
+                   if(isset($_SESSION['limitations'])){
+                      $result=$_SESSION['limitations']; 
+					  
+                   
+                   }
+        ?>
+		
+ 
+               <center> <div class="data" style="width:50%; margin-top:10%; margin-left:1%; background-color:#CFE8FF">
+						<h2>Gas Order Limitations</h2>
+                        <br><br>
+                        <h3>Limitations      :  
+                       <?php if($result[0]['limit_status']==1){
+                            echo'Limitations applied';
+                        }
+                        else if($result[0]['limit_status']==0){
+                            echo'No limitations applied';
+                        }?>
+                
+                        
+                        <br><br>
+                        <h3>Time Period      :  <?php echo $result[0]['time_period']?> days</h3>
+                        
+                        <br><br>
+                        <div class="down1">
+                        
+                        <a href="../../controller/admin/limitation_controller.php?uid=editlimit"><button class="cp">Update</button></a>
 
-	<form action="../../controller/admin/review_controller.php" method="POST">
-				<div class="form-input">
-					<input type="search" name="review_id" placeholder="Search by review ID...">
-					<button type="submit" name="search" class="search-btn"><i class='bx bx-search' ></i></button>
+                </div></center>
+						
+
+						
 				</div>
-	</form>
-
-
-    <table>
-    <tr>
-        <th>Review ID</th>
-        <th>Customer ID</th>
-        <th>Review</th>
-        <th>Date</th>
-        <th>Operations</th>
-    </tr>
-
-    <?php
-    $result=$_SESSION['reviewdetails'];
-    if($result){
-        foreach($result as $row){
-            $review_id=$row['review_id'];
-            $customer_id=$row['customer_id'];
-            $Description=$row['Description'];
-			$Description=wordwrap($Description, 50, "<br>\n");
-            $date=$row['date'];
-
-            echo'<tr>
-                 <th>'.$review_id.'</th>
-                 <td>'.$customer_id.'</td>
-                 <td>'.$Description.'</td>
-                 <td>'.$date.'</td>
-                 <td>
-				 <button onclick="deletereview('.$review_id.');" class="button3" style="width:50%;">Delete</button>
-				
-                 </td>
-            </tr>' ;
-            
-        }
-    }
-
-    ?>
-    
-    </table>
-    </div>
-
-        
-    
-    </main>
+			
+			
+		</main>
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
-	<div id="backgr">
-        <div id="cancel_popup">
-            <div class="cancel_contect">
-                <p>Are you sure you want to Delete this Review?</p>
-                <div class="buttons">
-                    <button id="yes">Yes</button>
-                    <button id="no">No</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
-	<script>
-		function deletereview(id){
-            document.getElementById("backgr").style.display="block";
-            document.getElementById("cancel_popup").style.display="block";
-            document.getElementById("yes").addEventListener("click",function(){
-                window.location.href="../../controller/admin/review_controller.php?did="+id;
-            });
-            document.getElementById("no").addEventListener("click",function(){
-                document.getElementById("backgr").style.display="none";
-                document.getElementById("cancel_popup").style.display="none";
-            });
-        }  
-            
-    </script>
 
 	<script src="../../public/js/script.js"></script>
-
-
-
-
-  
 </body>
+</html>

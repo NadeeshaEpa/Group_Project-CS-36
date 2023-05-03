@@ -144,12 +144,12 @@
         Price (RS) :
           <input type="text" name="Price" id="name"  value="<?php echo $result[0]['Price']?>" required><br><br>
 
-        Main Poster:
+        <!-- Main Poster:
                     <div class="b3">
-                            <input type="file" name="photo" id="image" class="image">   
+                            <input type="file" name="photo" id="image" value="<?php echo $result[0]['photo']?>" class="image" >   
                     </div>     
 
-        <br>
+        <br> -->
 		<a href="gas_cylinder.php"><button style="background-color: #da3a3a;">Cancel</button></a> 
         <button type="submit" name="edituser" id="submit">Update</button>  
         <br><br>

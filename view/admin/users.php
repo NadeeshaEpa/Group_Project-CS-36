@@ -45,10 +45,17 @@
 				</a>
 			</li>
 
+
 			<li>
 				<a href="../../controller/admin/company_controller.php?id=viewcompany">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Gas Companies</span>
+				</a>
+			</li>
+			<li>
+				<a href="../../controller/admin/limitation_controller.php?id=limitations">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Limitations</span>
 				</a>
 			</li>
 			<li>
