@@ -203,10 +203,9 @@ require_once("../../config.php");?>
 		<button type="submit" name="edituser" id="submit" class="b6" style="float:left; margin-left: 75%;">Update</button>  
 	
     </form>
-	<a href="../../view/staff/staff-viewStaff.php"><button style="background-color: #da3a3a;" class="b4">Cancel</button></a> 
-	<br><br>
     </div>
-	
+	<a href="staff-viewStaff.php"><button style="background-color: #da3a3a;" class="b4">Cancel</button></a> 
+	<br><br>
 
     </main>
 		<!-- MAIN -->

@@ -132,6 +132,28 @@ require_once("../../config.php");?>
 
 		<!-- MAIN -->
 		<main>
+
+		<div class="head-title">
+				<div class="left">
+					<!-- <h1>Users</h1> -->
+					<ul class="breadcrumb">
+					     <a href="../../controller/staff/dashboard_controller.php?id=profitdetails">
+						<li style="color:grey;">Dashboard</li>
+						</a>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<a href="../../controller/staff/users_controller.php?id=userdetails">
+						<li style="color:grey;">Users</li>
+						</a>
+                        <li><i class='bx bx-chevron-right' ></i></li>
+						<a  href="../../controller/staff/deliverypersonacc_controller.php?id=viewDeliveryperson">
+						<li style="color:blue;">
+							Delivery Person
+						</li>
+				        </a>
+					</ul>
+				</div>
+				
+			</div><br>
     <div class="list">
 
     <h3>All Delivery Persons</h3>

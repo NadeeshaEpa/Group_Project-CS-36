@@ -41,67 +41,37 @@ email?.addEventListener("input", function () {
         emailValidation();
     }
 });
-<<<<<<< HEAD
+
 password?.addEventListener("input", function () {
     //password must be 8 characters long and contain at least one number and one lowercase letter and one uppercase letter
     if(password.value.length < 8 || !password.value.match(/[a-z]/) ||!password.value.match(/[A-Z]/)||!password.value.match(/[0-9]/)){
         passwordLabel.innerHTML = "*Password must be 8 characters long and contain at least one number and one lowercase letter and one uppercase letter*";
         passwordLabel.style.color = "red";
         passwordLabel.style.fontSize = "15px";
-=======
-
-password?.addEventListener("input", function () {
-    //password must be 8 characters long and contain at least one number and one lowercase letter and one uppercase letter
-    if(password.value.length < 8){
-        passwordLabel.innerHTML = "Password must be 8 characters long";
-        passwordLabel.style.color = "red";
-        //submit.disabled = true;
-    }else if(!password.value.match(/[a-z]/) || !password.value.match(/[A-Z]/)){
-        passwordLabel.innerHTML = "Password must contain at least one lowercase letter and one uppercase letter";
-        passwordLabel.style.color = "red";
-        //submit.disabled = true;
-    }else if(!password.value.match(/[0-9]/)){
-        passwordLabel.innerHTML = "Password must contain at least one number";
-        passwordLabel.style.color = "red";
-        //submit.disabled = true;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
         passwordflag=1;
     }else{
         passwordLabel.innerHTML = "Password:";
         passwordLabel.style.color = "black";
         password.style.borderColor = "green";
-<<<<<<< HEAD
         passwordLabel.style.fontSize = "18px";
-=======
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
         password.style.borderWidth = "2px";
         passwordflag=0;
         // submit.disabled = false;
     }
 });
-<<<<<<< HEAD
-=======
-
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
 cpassword?.addEventListener("input", function () {
     if (cpassword.value != password.value) {
         cpasswordLabel.innerHTML = "Passwords do not match";
         cpasswordLabel.style.color = "red";
         cpassword.style.borderColor = "red";
-<<<<<<< HEAD
         cpasswordLabel.style.fontSize = "15px";
-=======
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
         cpassword.style.borderWidth = "2px";
         //submit.disabled = true;
         cpasswordflag=1;
     } else {
         cpasswordLabel.innerHTML = "Confirm Password:";
         cpasswordLabel.style.color = "black";
-<<<<<<< HEAD
         cpasswordLabel.style.fontSize = "18px";
-=======
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
         cpassword.style.borderColor = "green";
         cpassword.style.borderWidth = "2px";
         cpasswordflag=0;
@@ -132,11 +102,7 @@ contact?.addEventListener("input", function () {
 });
 
 nic?.addEventListener("input",function(){
-<<<<<<< HEAD
     var pattern=/^([0-9]{9}[x|X|v|V]|[0-9]{12})$/;
-=======
-    var pattern=/^([0-9]{9}[x|X|v|V]|[0-9]{12})$/;;
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     if (!pattern.test(nic.value)) {
         nicLabel.innerHTML = "Invalid NIC Number";  
         nicLabel.style.color = "red";
@@ -167,11 +133,7 @@ function usernameexit(){
             }
         }
     };
-<<<<<<< HEAD
     xhttp.open("POST", "http://localhost/Group_Project-CS-36/controller/admin/validation_controller.php", true);
-=======
-    xhttp.open("POST", "http://localhost/Group_36/controller/admin/validation_controller.php", true);
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("username=" + username.value);
 }
@@ -196,11 +158,7 @@ function emailValidation() {
             }
         }
     };
-<<<<<<< HEAD
     xhttp.open("POST", "http://localhost/Group_Project-CS-36/controller/admin/validation_controller.php", true);
-=======
-    xhttp.open("POST", "http://localhost/Group_36/controller/admin/validation_controller.php", true);
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("email=" + email.value);
 }
@@ -225,11 +183,7 @@ function nicValidation() {
             }
         }
     };
-<<<<<<< HEAD
     xhttp.open("POST", "http://localhost/Group_Project-CS-36/controller/admin/validation_controller.php", true);
-=======
-    xhttp.open("POST", "http://localhost/Group_36/controller/admin/validation_controller.php", true);
->>>>>>> 4ebb61c105054ab64a2024b5559971ff371e8458
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("nic=" + nic.value);
 }

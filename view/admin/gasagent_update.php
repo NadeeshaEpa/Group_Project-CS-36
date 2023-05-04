@@ -190,18 +190,15 @@ require_once("../../config.php");?>
 		</div> 
 		
 	</div>   
-            
-
-         
-        <br><br>
 		
       
-		<button type="submit" name="edituser" id="submit" class="b6" style="float:left; margin-left: 77%;">Update</button>  
+		<button type="submit" name="edituser" id="submit" class="b6" style="float:left; margin-left: 74%;">Update</button>  
 		
     </form>
+	
+    </div>
 	<a href="admin-viewGasagent.php"><button style="background-color: #da3a3a;" class="b4">Cancel</button></a> 
 	<br><br>
-    </div>
 
     </main>
 		<!-- MAIN -->

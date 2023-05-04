@@ -188,12 +188,11 @@ require_once("../../config.php");?>
         <br><br>
 		
          
-		<button type="submit" name="edituser" id="submit" class="b6" style="float:left; margin-left: 77%;">Update</button>  
+		<button type="submit" name="edituser" id="submit" class="b6" style="float:left; margin-left: 74%;">Update</button>  
     </form>
-	<a href="admin-viewCustomer.php"><button style="background-color: #da3a3a;" class="b4">Cancel</button></a>
-	<br><br>
     </div>
-
+    <a href="admin-viewCustomer.php"><button style="background-color: #da3a3a;" class="b4">Cancel</button></a>
+	<br><br>
     </main>
 		<!-- MAIN -->
 	</section>

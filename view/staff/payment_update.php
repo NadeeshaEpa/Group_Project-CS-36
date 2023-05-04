@@ -156,7 +156,7 @@
 								<td>RS. <?php echo $row['Amount']?>.00</td>
 								<td>
 								<form action="../../controller/staff/payment_controller.php" method="POST" id="staff_form">    
-									<select name="payment">
+									<select name="payment" style="width:5rem; padding:0.2rem;">
 										<option value="Pending">Pending</option>
 										<option value="Paid">Paid</option>
 									</select>

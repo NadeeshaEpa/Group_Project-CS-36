@@ -136,17 +136,19 @@
                     //   $names=$result[1];
                    }
          ?>
+
+		 
 			<div class="head-title">
 				<div class="left">
 					<h1>Users</h1>
 					<ul class="breadcrumb">
-						<li>
-							<a href="#">Dashboard</a>
-						</li>
+					<a href="../../controller/staff/dashboard_controller.php?id=profitdetails">
+						<li style="color:grey;">Dashboard</li>
+						</a>
 						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a class="active" href="#">Users</a>
-						</li>
+						<a href="../../controller/staff/users_controller.php?rid=userrequestdetails">
+						<li style="color:blue;">Registration Requests</li>
+						</a>
 					</ul>
 				</div>
 				
