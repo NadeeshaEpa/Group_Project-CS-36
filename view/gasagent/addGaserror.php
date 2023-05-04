@@ -29,13 +29,13 @@
     ?>
     </h2>
    
-<div id="success-message" class="modal">
-  <div class="modal-content">
-    <span class="close-button">&times;</span>
-    <p> Gas Type already added!</p><br>
-    <i class="fa fa-check-circle"></i>
-  </div>
-</div>
+	<div id="success-message" class="modal">
+	<div class="modal-content">
+		<span class="close-button">&times;</span>
+		<p> Gas Type already added!</p><br>
+		<i class="fa fa-check-circle"></i>
+	</div>
+	</div>
 
 	   	<!-- SIDEBAR -->
 		   <section id="sidebar">

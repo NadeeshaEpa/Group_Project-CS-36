@@ -69,8 +69,12 @@
           $errorWeight = $error[0]['weight'];
           $errorQuantity = $error[0]['quantity'];
 
-          $msg = "Quantity is not enough for the item - $errorType $errorWeight <br>" .
-                " The available quantity is $errorQuantity.";
+          if($error[0]['quantity']==NULL){
+            $msg="Sorry! The item - $errorType $errorWeight is not available at the moment.";
+          }else{         
+            $msg = "Quantity is not enough for the item - $errorType $errorWeight <br>" .
+                 " The available quantity is $errorQuantity.";
+          }
           ?>
           <div class="qmsg">
             <p><?php echo $msg ?></p>

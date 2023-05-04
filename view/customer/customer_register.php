@@ -63,22 +63,14 @@
             <input type="text" name="username" id="username" placeholder="Username" class="box" required>
         </div>
         <label>Drag the marker to your location:</label><br>
-        <div id="map" style="height: 400px; width: 98%; border-radius:20px;"></div><br>
+        <div id="map" style="height: 400px; width: 90%; border-radius:20px;"></div><br>
             <label id="address-label">Address:</label><br>
-            <div class="down3">
                 <div>
                     <input type="hidden" id="latitude" name="latitude">
                     <input type="hidden" id="longitude" name="longitude">
-                    <input type="text" id="address" name="address" placeholder="Address"><br>
+                    <input type="text" id="address" name="address" placeholder="Address" class="box"><br>
                     <!-- break the address value into 3 parts -->
-                </div> 
-            </div>  
-        <div>
-            <label for="Address">Address:</label><br>
-            <input type="text" name="street" id="street" placeholder="Street" class="box2" required>
-            <input type="text" name="city" id="city" placeholder="City" class="box2" required>   
-            <input type="text" name="postalcode" id="postalcode" placeholder="Postalcode" class="box2" required>
-        </div>  
+                </div>    
         <div>    
             <label id="password-label" for="password">Password:</label><br>
             <input type="password" name="password" id="password" placeholder="Password" class="box" required>
