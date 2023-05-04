@@ -12,13 +12,13 @@ body{
 button{
     margin: 30px;
     margin-top: 0%;
-    width: 60%;
+    width: 48%;
     height: 50px;
     font-size: 20px;
-    background-color: green;
+    background-color: #1ac54c;
     color: white;
     border-radius: 10px;
-    border: green 1px solid;
+    border: rgb(255, 255, 255) 1px solid;
     text-align: center;
 }
 a{
@@ -116,20 +116,14 @@ button:hover{
    width: 65%;
    margin-left: 30px;
    padding: 10px;
-   border-radius: 20px;
+   border-radius: 8px;
    font-size: 20px;
    font-weight: bold;
 }
 #ungas-shop button{
     width: 60%;
     margin-right: 20%;
-<<<<<<< HEAD
-
     margin-top: 8px;
-
-=======
-    margin-top: 8px;
->>>>>>> c5c6626c48a8e48c3a750e17655c7c2a43665be2
 }
 .up-gas{
     width:100%;
