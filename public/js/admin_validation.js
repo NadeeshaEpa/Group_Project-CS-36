@@ -41,7 +41,6 @@ email?.addEventListener("input", function () {
         emailValidation();
     }
 });
-
 password?.addEventListener("input", function () {
     //password must be 8 characters long and contain at least one number and one lowercase letter and one uppercase letter
     if(password.value.length < 8 || !password.value.match(/[a-z]/) ||!password.value.match(/[A-Z]/)||!password.value.match(/[0-9]/)){
@@ -133,7 +132,7 @@ function usernameexit(){
             }
         }
     };
-    xhttp.open("POST", "http://localhost/Group_Project-CS-36/controller/admin/validation_controller.php", true);
+    xhttp.open("POST", "http://localhost/Group_36/controller/admin/validation_controller.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("username=" + username.value);
 }
@@ -158,7 +157,7 @@ function emailValidation() {
             }
         }
     };
-    xhttp.open("POST", "http://localhost/Group_Project-CS-36/controller/admin/validation_controller.php", true);
+    xhttp.open("POST", "http://localhost/Group_36/controller/admin/validation_controller.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("email=" + email.value);
 }
@@ -183,7 +182,7 @@ function nicValidation() {
             }
         }
     };
-    xhttp.open("POST", "http://localhost/Group_Project-CS-36/controller/admin/validation_controller.php", true);
+    xhttp.open("POST", "http://localhost/Group_36/controller/admin/validation_controller.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("nic=" + nic.value);
 }

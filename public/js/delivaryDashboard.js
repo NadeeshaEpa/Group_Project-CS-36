@@ -166,7 +166,7 @@ xhttp.onreadystatechange = function() {
     }
 };
 
-xhttp.open("GET", "http://localhost/Group_Project-CS-36/controller/deliveryperson/deliveryCountcontroller.php", true);
+xhttp.open("GET", "http://localhost/Group_36/controller/deliveryperson/deliveryCountcontroller.php", true);
 
 xhttp.send();
 

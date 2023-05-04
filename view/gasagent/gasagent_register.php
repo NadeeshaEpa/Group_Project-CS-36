@@ -9,7 +9,7 @@
     <title>Gasagent Registration</title>
     <link rel="stylesheet" href="../../public/css/gasagent/gasagentfago_register.css">
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2eSy5egkITKWg1EMsa1i1WcpPi29dgK0&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_E5eoUp72AGiXd8EUgscWhrM-kd2scbY&callback=initMap">
     </script>
     <script>
       function initMap() {
@@ -78,9 +78,8 @@
             <input type="text" name="city" id="city" placeholder="City" required>    
             <input type="text" name="postalcode" id="postalcode" placeholder="Postalcode" required><br>
 
-            <label for=":" id="email-label">Email:</label><br>
-            <input type="email" name="email" id="email" placeholder="Email" required><br> 
-            
+            <label id="email-label" for="email">Email:</label><br>
+            <input type="email" name="email" id="email" placeholder="Email" value=<?php echo $_SESSION['v_email'] ?> class="box" readonly><br>         
             
             <label for=":" id="password-label">Password:</label><br>
             <input type="password" name="password" id="password" placeholder="Password" required><br>

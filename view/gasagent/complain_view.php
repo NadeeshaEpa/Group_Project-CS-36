@@ -17,15 +17,15 @@
     <body>
 
     
-				<!-- SIDEBAR -->
-	<section id="sidebar">
+	 	<!-- SIDEBAR -->
+		 <section id="sidebar">
 		<a href="../../view/gasagent/View.php" class="brand">
 			<i class='bx bxs-select-multiple'></i>
 			<span class="text">FaGo</span>
 		</a>
 		<ul class="side-menu top">
-			<li>
-				<a href="../../view/gasagent/gasagent_dashboard.php">
+			<li >
+			<a href="../../controller/gasagent/gasagent_order_controller.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -36,7 +36,7 @@
 					<span class="text">Order details</span>
 				</a>
 			</li>
-			<li>
+			<li >
 				<a href="../../controller/gasagent/gasagent_viewController.php?viewgas='1'">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">View details</span>
@@ -62,29 +62,22 @@
 			</li>
 
 			<li  class="active">
-				<a href="../../view/gasagent/compalin.php">
+			<a href="../../controller/gasagent/complain.php?complain='1'">
 					<i class='bx bxs-group' ></i>
-					<span class="text">Complaine</span>
+					<span class="text">Complains</span>
 				</a>
 			</li>
 		</ul>
 		<ul class="side-menu">
-			<!-- <li>
-				<a href="#">
-					<i class='bx bxs-cog' ></i>
-					<span class="text">Settings</span>
-				</a>
-			</li> -->
 			<li>
-				<a href="../../view/login.php" class="logout">
-					<i class='bx bxs-log-out-circle' ></i>
+			<a href="../../controller/Users/logout_controller.php" class="logout">
+			<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
 			</li>
 		</ul>
 	</section>
 	<!-- SIDEBAR -->
-
 
 
 	<!-- CONTENT -->
@@ -121,9 +114,7 @@
 							<a href="#">View Complains </a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a class="active" href="../../index.php">Home</a>
-						</li>
+						
 					</ul>
 				</div>
                 
@@ -137,29 +128,32 @@
                                     <tr>
 									    <th>Order_No</th>
 									    <th>Date</th>
-                                        <th>Description</th>
+										<th>massege</th>
+										<th>status</th>
+									    <th>Description</th>
 										
                                     </tr>
                                     <?php
-                                    if(isset($_SESSION['userComplainDetails'])){
+                                    if(isset($_SESSION['userComplainDetails']) && !empty($_SESSION['userComplainDetails'])){
                                         $result=$_SESSION['userComplainDetails']; 
-                                        foreach ($result as $row) {
-                                            echo "<tr>";
-											echo "<td>" . $row['order_id'] . "</td>";
-                                            echo "<td>" . $row['date'] . "</td>";
-                                            echo "<td>" . $row['Description'] . "</td>";
-											?>
-											<td>
-												<form action="../../controller/gasagent/DeliveryPersonComplane&ReviewsViewController.php" method="post">
-													<Button name="ComplainDeleteBtn" id="ComplainDeleteBtn_Id">Delete</Button>
-													<input name="Complain_Id_Name" type="hidden" value="<?php echo $row['Complain_id']?>">
-												</form>
-											</td>
-					                        <?php
-											echo "</tr>";
-                                        }
-                                        
-                                    }
+									}else{
+										$result=[];
+									}
+									foreach ($result as $row) {
+										echo "<tr>";
+										echo "<td>" . $row['order_id'] . "</td>";
+										echo "<td>" . $row['date'] . "</td>";
+										echo "<td>" . $row['Description'] . "</td>";
+										?>
+										<td>
+											<form action="../../controller/gasagent/DeliveryPersonComplane&ReviewsViewController.php" method="post">
+												<Button name="ComplainDeleteBtn" id="ComplainDeleteBtn_Id">Delete</Button>
+												<input name="Complain_Id_Name" type="hidden" value="<?php echo $row['Complain_id']?>">
+											</form>
+										</td>
+										<?php
+										echo "</tr>";
+									}
                                     
                                     ?>
                                     

@@ -26,8 +26,8 @@ if(isset($_SESSION['gastype'])){
             <h2>Gas Shop</h2>
             <img src="../../public/images/customer/gas.jpg" alt="" class="gas_img">
             <div id="gas-shop" class="gas_dropdown">
-                <form action="../../controller/customer/gas_controller.php" method="GET">
-                    <select id="gas-type-selector" name="gas_type">
+                <form action="../../controller/customer/gas_controller.php" method="GET" id="gasform">
+                    <select id="gas-type-selector" name="gas_type" required>
                         <!-- create a disable option  and show it as the first value-->
                         <option selected disabled>Choose Gas Type</option>
                         <?php 
@@ -36,7 +36,7 @@ if(isset($_SESSION['gastype'])){
                             <option value="<?php echo $gas; ?>"><?php echo $gas; ?></option>
                         <?php } ?>
                     </select>
-                    <button name="gas_button">Shop Now</button>
+                    <button name="gas_button" id="gasbtn">Shop Now</button>
                 </form>   
             </div>
        </div> 
@@ -46,6 +46,24 @@ if(isset($_SESSION['gastype'])){
             <a href="../../controller/customer/shop_controller.php?gascooker='1'"><button>Shop Now</button></a>
        </div>
     </div>
-    <?php //include_once 'customer_footer.php'; ?>
+    <script>
+        var gasTypeSelector = document.getElementById("gas-type-selector");
+        var gas = document.getElementById("gasbtn");
+        var form = document.getElementById("gasform");
+
+        gasTypeSelector.addEventListener("change", function() {
+            if (gasTypeSelector.value && gasTypeSelector.value !== "Choose Gas Type") {
+                gas.disabled = false;
+            } else {
+                gas.disabled = true;
+            }
+        });
+        form.addEventListener("submit", function(event) {
+            if (gas.disabled) {
+                event.preventDefault();
+            }
+        });
+
+    </script>    
 </body>
 </html>        

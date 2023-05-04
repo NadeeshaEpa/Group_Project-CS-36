@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../../public/css/customer/fago_register.css">
 
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2eSy5egkITKWg1EMsa1i1WcpPi29dgK0&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_E5eoUp72AGiXd8EUgscWhrM-kd2scbY&callback=initMap">
     </script>
     <script>
       function initMap() {
@@ -63,22 +63,14 @@
             <input type="text" name="username" id="username" placeholder="Username" class="box" required>
         </div>
         <label>Drag the marker to your location:</label><br>
-        <div id="map" style="height: 400px; width: 98%; border-radius:20px;"></div><br>
+        <div id="map" style="height: 400px; width: 90%; border-radius:20px;"></div><br>
             <label id="address-label">Address:</label><br>
-            <div class="down3">
                 <div>
                     <input type="hidden" id="latitude" name="latitude">
                     <input type="hidden" id="longitude" name="longitude">
-                    <input type="text" id="address" name="address" placeholder="Address"><br>
+                    <input type="text" id="address" name="address" placeholder="Address" class="box"><br>
                     <!-- break the address value into 3 parts -->
-                </div> 
-            </div>  
-        <div>
-            <label for="Address">Address:</label><br>
-            <input type="text" name="street" id="street" placeholder="Street" class="box2" required>
-            <input type="text" name="city" id="city" placeholder="City" class="box2" required>   
-            <input type="text" name="postalcode" id="postalcode" placeholder="Postalcode" class="box2" required>
-        </div>  
+                </div>    
         <div>    
             <label id="password-label" for="password">Password:</label><br>
             <input type="password" name="password" id="password" placeholder="Password" class="box" required>
@@ -89,7 +81,7 @@
         </div>
         <div>
             <label id="email-label" for="email">Email:</label><br>
-            <input type="email" name="email" id="email" placeholder="Email" class="box" required>
+            <input type="email" name="email" id="email" placeholder="Email" value=<?php echo $_SESSION['v_email'] ?> class="box" readonly>
         </div>
         <div>
             <label id="billnum-label" for="billnum">Electricity Bill Number:</label><br>
@@ -114,6 +106,6 @@
             </div>
         </div> 
     </div>
-    <script src="../../public/js/Customer_Validation.js"></script>
+    <!-- <script src="../../public/js/Customer_Validation.js"></script> -->
 </body>
 </html>

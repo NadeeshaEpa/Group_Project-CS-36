@@ -7,8 +7,8 @@
     <!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
-    <link rel="stylesheet" href="../../public/css/customer/customer_dashboard.css">
     <link rel="stylesheet" href="../../public/css/gasagent/gasagentDashboard.css">
+    <link rel="stylesheet" href="../../public/css/gasagent/gasagent_profile.css">
     <script>
         var color=blue;
         document.getqueryselector("button").addEventlistener("click",function(){
@@ -18,37 +18,32 @@
     <title>gasagent Dashboard</title>
 </head>
 <body>
-    <!-- <?php include 'customer_header.php'; ?>   -->
-    <!-- <h2>Customer Dashboard</h2> -->
     <!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="#" class="brand">
+		<a href="../../view/gasagent/View.php" class="brand">
 			<i class='bx bxs-select-multiple'></i>
 			<span class="text">FaGo</span>
 		</a>
 		<ul class="side-menu top">
-			<li>
-				<a href="../../view/gasagent/gasagent_dashboard.php">
+			<li >
+            <a href="../../controller/gasagent/gasagent_order_controller.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
 			<li>
-				<a href="../../controller/gasagent/gasagent_viewController.php?viewgas='1'">
+				<a href="../../view/gasagent/orders.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
-					<span class="text">Order details </span>
+					<span class="text">Order details</span>
 				</a>
 			</li>
-
-            <li>
+			<li>
 				<a href="../../controller/gasagent/gasagent_viewController.php?viewgas='1'">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">View details</span>
 				</a>
 			</li>
-
-
-			<li>
+			<li >
 				<a href="../../view/gasagent/add_gastype.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Add gas </span>
@@ -57,19 +52,19 @@
 			<li>
 				<a href="../../controller/gasagent/gasagentUpdateFirst.php">
 					<i class='bx bxs-message-dots' ></i>
-					<span class="text">Update or Delete</span>
+					<span class="text">Update/Delete</span>
 				</a>
 			</li>
 			<li class="active">
-				<a href="../../view/gasagent/addgas_profile.php">
+				<a href="../../controller/gasagent/account_controller.php?viewacc='1'">
 					<i class='bx bxs-group' ></i>
 					<span class="text">profile details</span>
 				</a>
 			</li>
             <li>
-				<a href="../../view/gasagent/compalin.php">
+            <a href="../../controller/gasagent/complain.php?complain='1'">
 					<i class='bx bxs-group' ></i>
-					<span class="text">Complaine</span>
+					<span class="text">Complains</span>
 				</a>
 			</li>
 		</ul>
@@ -77,18 +72,18 @@
 			<!-- <li>
 				<a href="#">
 					<i class='bx bxs-cog' ></i>
-					<span class="text">Compliance</span>
+					<span class="text">Settings</span>
 				</a>
 			</li> -->
 			<li>
-				<a href="../../view/login.php" class="logout">
-					<i class='bx bxs-log-out-circle' ></i>
+            <a href="../../controller/Users/logout_controller.php" class="logout">					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
 			</li>
 		</ul>
 	</section>
 	<!-- SIDEBAR -->
+
 
 
 
@@ -187,9 +182,9 @@
                             </div>
                             <div class="down1">
                                 <label>Update Password:</label><br>
-                                <form action='customer_changepassword.php' method="POST">
+                                <a href="add_gastype.php">
                                     <button type="submit" name="changepassword" class="cp">Change password</button>
-                                </form>   
+                                </a>  
                             </div>    
                         </div> 
                         <div class="down"> 
@@ -227,7 +222,6 @@
             </div>
         </div>
     </div>    
-    <?php //include 'customer_footer.php'; ?>
 </div>
     <script>
     var modal = document.getElementById('id01');

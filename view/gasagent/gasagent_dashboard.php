@@ -23,7 +23,7 @@
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
-				<a href="../../view/gasagent/gasagent_dashboard.php">
+			<a href="../../controller/gasagent/gasagent_order_controller.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -60,21 +60,15 @@
 			</li>
 
 			<li>
-				<a href="../../view/gasagent/compalin.php">
+			<a href="../../controller/gasagent/complain.php?complain='1'">
 					<i class='bx bxs-group' ></i>
-					<span class="text">Complaine</span>
+					<span class="text">Complains</span>
 				</a>
 			</li>
 		</ul>
 		<ul class="side-menu">
-			<!-- <li>
-				<a href="#">
-					<i class='bx bxs-cog' ></i>
-					<span class="text">Settings</span>
-				</a>
-			</li> -->
 			<li>
-				<a href="../../view/login.php" class="logout">
+			<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -119,34 +113,88 @@
 							<a href="#">Dashboard</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a class="active" href="#">Home</a>
-						</li>
+						
 					</ul>
 				</div>
 				
 			</div>
-			<div class="btn">
-                            <form action="../../controller/gasagent/dashboardController.php" method="post">
-                                <button class="btn1" id="btn1" name="btn1">Shop Open</button>
-                                <button class="btn2" id="btn2" name="btn2">Shop Closed</button>
-                            </form>
-                        </div>
+				<div class="btn">
+                    <form action="../../controller/gasagent/gasagentDashboardController.php" method="post">
+						<button class="btn1" id="btn1" name="sbtn1">Shop Open</button>
+						<button class="btn2" id="btn2" name="sbtn2">Shop Closed</button>
+                    </form>
+                </div>
 			<div>
 
 
 			<div class="btn">
-                            <form action="../../controller/gasagent/gasagentDashboardController.php" method="POST">
-                                <button class="btn1" id="btn1" name="deliverbtn">Delivered Orders</button>
-                                <button class="btn2" id="btn2" name="pickedbtn">Picked Orders</button>
-                            </form>
-                        </div>
+				<form action="../../controller/gasagent/gasagentDashboardController.php" method="POST">
+					<button class="btn1" id="btn1" name="deliverbtn">Delivered Orders</button>
+					<button class="btn2" id="btn2" name="pickedbtn">Picked Orders</button>
+				</form>
+			</div>
 			<div>
+			
+		<form action="../../controller/gasagent/gasagentDashboardController.php" method="POST">
+		    <label for="date" id="ad" >Gas Cylindet Arrivel date</label>
+			<input type="date" name="arrivel_date" id="arrivel_date" class="add" placeholder="Date">
+			<button class="date" name="btn_date" id="btn_date">click</button>
+		</form>
+		<div class="stock">
+		<h5><?php if(isset($_SESSION['date_correct'])){
+					echo $_SESSION['date_correct'];
+					unset($_SESSION['date_correct']);
+				}
+				if(isset($_SESSION['date_wrong']))
+				{
+					echo $_SESSION['date_wrong'];
+					unset($_SESSION['date_wrong']);
+				}
+					
+
+				 
+				
+				?></h5>
+		</div>
+			
+		
 
 				<?php
+				if(isset($_SESSION['updateOpenSucessfully'])){
+				    if($_SESSION['updateOpenSucessfully']=='sucess'){
+						?>
+						<div class="shop_status">
+						<p>Shop opened Successfully</p>
+						</div>	
+						<?php
+					}else{
+						?>
+						<div class="shop_status">
+						<p>Can't update status</p>
+						</div>	
+						<?php
+					}
+					unset($_SESSION['updateOpenSucessfully']);	
+				}
+				if(isset($_SESSION['updateClosedSucessfully'])){
+					if($_SESSION['updateClosedSucessfully']=='sucess'){
+						?>
+						<div class="shop_status">
+						<p>Shop closed Successfully</p>
+						</div>	
+						<?php
+					}else{
+						?>
+						<div class="shop_status">
+						<p>Can't update status</p>
+						</div>	
+						<?php
+					}
+					unset($_SESSION['updateClosedSucessfully']);
+				}
 				if(isset($_SESSION['low_stack_details'])){
 					$result=$_SESSION['low_stack_details'];
-					unset($_SESSION['low_stack_details']);
+					// unset($_SESSION['low_stack_details']);
 					foreach($result as $re){
 						?>
 						<div class="stock">
@@ -161,30 +209,7 @@
 				?>
 			</div>
 
-			<!-- <ul class="box-info">
-				<li>
-					<i class='bx bxs-calendar-check' ></i>
-					<span class="text">
-						<h3>52</h3>
-						<p>New Order</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-dashboard' ></i>
-					<span class="text">
-					<p id="dayid"></p>
-						<h3>283</h3>
-						<p>Total orders</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-dollar-circle' ></i>
-					<span class="text">
-						<h3>rs 5543</h3>
-						<p>Total Sales</p>
-					</span>
-				</li>
-			</ul> -->
+		
 			<ul class="box-info">
                 <li>
 					<i class='bx bxs-calendar-check' ></i>
@@ -226,7 +251,8 @@
                                     <table class="tb">
                                     <tr>
                       					<th>Customer Name</th>
-                                        <th>Customer Address</th>
+                                        <!-- <th>Customer Address</th> -->
+										<th>Order_id</th>
                     					<th>Contact No</th>
                     					<th>Quantity</th>
                                        
@@ -236,12 +262,17 @@
                                         <th>Price</th>
                                     </tr>
                                     <?php
-                                    if(isset($_SESSION['Gas_Dashboard_details'])){
+                                    if(isset($_SESSION['Gas_Dashboard_details']) && !empty($_SESSION['Gas_Dashboard_details'])){
                                         $result=$_SESSION['Gas_Dashboard_details']; 
+										// print_r($result);
+										// die();
+									}else{
+										$result=array();
+									}
                                         foreach ($result as $row) {
                                             echo "<tr>";
                                             echo "<td>" . $row['Name'] . "</td>";
-                                            echo "<td>" . $row['Address'] . "</td>";
+                                            echo "<td>" . $row['Order_id'] . "</td>";
                       						echo "<td>" . $row['Contact_No'] ."</td>";
                       						echo "<td>" . $row['Quantity'] . "</td>";
                                            
@@ -252,66 +283,11 @@
                       						echo "</tr>";
                                         }
                                       
-                                    }
                                     
                                     ?>
                                     </table>
                     </div>
-						<!-- <h3>Recent Orders</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
-					<table>
-						<thead>
-							<tr>
-								<th>User</th>
-								<th>Date Order</th>
-								<th>Status</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									<img src="../../public/images/people2.JPEG">
-									<p>Nadeesha</p>
-								</td>
-								<td>21-10-2022</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/people3.JPG">
-									<p>Gayal</p>
-								</td>
-								<td>11-02-2022</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/people4.JPEG">
-									<p>Shehan</p>
-								</td>
-								<td>03-02-2022</td>
-								<td><span class="status process">Process</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/people5.PNG">
-									<p>kamal</p>
-								</td>
-								<td>01-02-2022</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="../../public/images/people4.JPEG">
-									<p>Avishka</p>
-								</td>
-								<td>01-01-2022</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-						</tbody>
-					</table> -->
+				
 				</div>
 			
 			</div>

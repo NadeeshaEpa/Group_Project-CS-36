@@ -4,7 +4,7 @@ require_once("../../config.php");
 require_once("../../model/gasagent/compalin_model.php");
 
 if(isset($_POST['complane_btn'])){
-    $refNo=$_POST['complaneRef'];
+    $refNo=$_POST['orderid'];
     $discription=$_POST['complaneDes'];
     $discription=$connection->real_escape_string($discription);
     $refNo=$connection->real_escape_string($refNo);
@@ -27,40 +27,28 @@ if(isset($_POST['complane_btn'])){
     }
 
 }
-else{
-    header("Location: ../../view/gasagent/compalin.php");
-    $connection->close();
-    exit();
-}
 
-
-if(isset($_POST['complane_view'])){
+// if(isset($_POST['complane_view'])){
     
     
-    $user=new Complain;
-    $result=$user->viewComplain($connection);
+//     $user=new Complain;
+//     $result=$user->viewComplain($connection);
     
-    if($result==true){
-        $_SESSION['Complain_view']=$result;
-        header("Location: ../../view/gasagent/compalin_view.php");
-        $connection->close();
-        exit();
+//     if($result==true){
+//         $_SESSION['Complain_view']=$result;
+//         header("Location: ../../view/gasagent/compalin_view.php");
+//         $connection->close();
+//         exit();
 
-    }
-    else{
-        $_SESSION['Complain_err']="NO complane Added";
-        header("Location: ../../view/gasagent/compalin_view.php");
-        $connection->close();
-        exit();
-    }
+//     }
+//     else{
+//         $_SESSION['Complain_err']="NO complane Added";
+//         header("Location: ../../view/gasagent/compalin_view.php");
+//         $connection->close();
+//         exit();
+//     }
 
-}
-else{
-    header("Location: ../../view/gasagent/compalin.php");
-    $connection->close();
-    exit();
-}
-
+// }
 if(isset($_POST['ComplainDeleteBtn'])){
     $Complane_id=$_POST['Complain_Id_Name'];
     $Complane_id=$connection->real_escape_string($Complane_id);
@@ -71,7 +59,7 @@ if(isset($_POST['ComplainDeleteBtn'])){
     
     if($result==true){
        
-        header("Location: ../../controller/gasagent/complain.php");
+        header("Location: ../../controller/gasagent/compalin.php");
         $connection->close();
         exit();
     
@@ -81,4 +69,21 @@ if(isset($_POST['ComplainDeleteBtn'])){
         $connection->close();
         exit();}
 
+}
+if(isset($_GET['complain'])){
+    $user=new Complain;
+    $result=$user->getorderid($connection,$_SESSION['User_id']);
+    if($result==true){
+        $_SESSION['Complain_orders']=$result;
+        header("Location: ../../view/gasagent/compalin.php");
+        $connection->close();
+        exit();
+
+    }
+    else{
+        $_SESSION['Complain_err']="NO complane Added";
+        header("Location: ../../view/gasagent/compalin.php");
+        $connection->close();
+        exit();
+    }
 }

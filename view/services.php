@@ -12,25 +12,25 @@
     <img src="../public//images/ServicePage.jpg" alt="contact-us" width="100%" height="75%">
     <div class="content">
         <h1>What are the services FAGO provides to you?</h1><br>
-        <p>WE  are mainly considering about two types of services.</p>
-        <li>provide ability for users to place their gas orders online.</li>
-        <li>provide ability for users to place their gas component orders online.</li>
+        <p>Join the FAGO family today and experience a new level of convenience and safety when it comes to purchasing gas cylinders and appliances.
+         At FAGO, we don't just sell gas cylinders and appliances - we provide a complete gas solution that includes delivery as well.</p>
         </p><br>
-        <h4>Other Services</h4>
+        <p>Mainly we provide 3 services to our customers. They are,</p>
+        <li>Order gas cylinders and accessories online and get them delivered to your doorstep.</li>
+        <li>Order gas appliances online and get them delivered to your doorstep.</li>
+        <h2>Our Services</h2>
     </div>
     <div class="box-info">
             <div class="boxOutter">
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
+            <div class="box"><img src="../public/images/Services_dp.jfif"></div>
+            <div class="box"><img src="../public/images/gas.jpg"></div>
+            <div class="box"><img src="../public/images/Services_app.webp"></div>
             </div>
-            <div class="boxOutter">
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            </div>
-            
-       
+    </div>
+    <div class="content">
+    <p>With our online ordering system, you can easily browse our selection of gas cylinders and appliances, compare prices and features, and place your <br>
+    order with just a few clicks.
+    Let us help you save time, money, and hassle with our comprehensive range of products and services.</p>
     </div>
     <div class="footer">
         <div class="footer-left">
@@ -49,10 +49,10 @@
         </div>
         <div class="footer-right">
             <h2>Menu</h2>
-            <a href="index.php">Home</a><br><br>
-            <a href="view/aboutus.php">About Us</a><br><br>
-            <a href="view/ourservices.php">Our Services</a><br><br>
-            <a href="view/contact.php">Contact Us</a><br>
+            <a href="http://localhost/Group_36/view/home.php">Home</a><br><br>
+            <a href="http://localhost/Group_36/controller/Users/about_controller.php?about='1'">About Us</a><br><br>
+            <a href="http://localhost/Group_36/view/services.php">Our Services</a><br><br>
+            <a href="http://localhost/Group_36/view/contact_us.php">Contact Us</a><br>
         </div>
         <div class="fagolink">
             <p>© 2022 FAGO. All Rights Reserved.</p>

@@ -34,11 +34,7 @@ if(!isset($_SESSION['User_id'])){
 			<li >
 				<a href="../../controller/deliveryperson/deliveryPersonProfileFirstController.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
-					<span class="text">Profile
-						<!-- <form action="../../controller/deliveryperson/delivaryprofilecontroller.php" method="Post">
-						    <input type="hidden" name="prof_btn">
-						</form> -->
-					</span>
+					<span class="text">Profile</span>
 				</a>
 			</li>
 			<li>
@@ -135,7 +131,8 @@ if(!isset($_SESSION['User_id'])){
                         <div class="ADbtn">
                             <form action="../../controller/deliveryperson/dashboardController.php" method="post">
                                 <button class="cbtn1" id="btn1" name="btn1">Enable active</button><br>
-                                <button class="cbtn2" id="btn2" name="btn2">Disable active</button>
+                                <button class="cbtn2" id="btn2" name="btn2">Disable active</button><br>
+								<button class="btn3"  id="btn3" name="payment">payment details</button>
                             </form>
                         </div>
                 </div>

@@ -67,7 +67,7 @@ if(isset($_POST['updateaccount'])){
 }
 if(isset($_POST['changepassword'])){
     if(isset($_SESSION['User_id'])){ 
-        header("Location: ../../view/customer/customer_changepassword.php");
+        header("Location: ../../view/gasagent/change_password.php");
     }
 }
 if(isset($_POST['updatepwd'])){
@@ -85,15 +85,15 @@ if(isset($_POST['updatepwd'])){
         $result1=checkpassword($confirmpwd,$newpwd);
         if(!$result1){
             $_SESSION['updatepwd-error']="New password and confirm password are not same";
-            header("Location: ../../view/customer/customer_changepassword.php");
+            header("Location: ../../view/gasagent/change_password.php");
         }else{
             $result2=$acc->updatePassword($connection,$_SESSION['User_id'],$oldpwd,$newpwd,$confirmpwd);
             if(!$result2){
                 $_SESSION['updatepwd-error']="Current password is incorrect";
-                header("Location: ../../view/customer/customer_changepassword.php");
+                header("Location: ../../view/gasagent/change_password.php");
             }else{
                 $_SESSION['updatepwd']="Password Updated Successfully";
-                header("Location: ../../view/customer/customer_changepassword.php");
+                header("Location: ../../view/gasagent/change_password.php");
             }
         }
     }

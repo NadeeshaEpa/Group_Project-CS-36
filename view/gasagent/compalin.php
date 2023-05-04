@@ -1,3 +1,5 @@
+
+
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,15 +19,15 @@
     <body>
 
     
-				<!-- SIDEBAR -->
-	<section id="sidebar">
+	 	<!-- SIDEBAR -->
+		 <section id="sidebar">
 		<a href="../../view/gasagent/View.php" class="brand">
 			<i class='bx bxs-select-multiple'></i>
 			<span class="text">FaGo</span>
 		</a>
 		<ul class="side-menu top">
-			<li>
-				<a href="../../view/gasagent/gasagent_dashboard.php">
+			<li >
+			<a href="../../controller/gasagent/gasagent_order_controller.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -62,9 +64,9 @@
 			</li>
 
 			<li  class="active">
-				<a href="../../view/gasagent/compalin.php">
+			    <a href="../../controller/gasagent/complain.php?complain='1'">
 					<i class='bx bxs-group' ></i>
-					<span class="text">Complaine</span>
+					<span class="text">Complains</span>
 				</a>
 			</li>
 		</ul>
@@ -85,7 +87,13 @@
 	</section>
 	<!-- SIDEBAR -->
 
-
+	<?php
+	if(isset($_SESSION['Complain_orders'])){
+		$order=$_SESSION['Complain_orders'];
+	}else{
+		$order=[];
+	}
+	?>
 
 	<!-- CONTENT -->
 	<section id="content">
@@ -112,12 +120,6 @@
 		<!-- NAVBAR -->
   
 
-
-  
-		
-
-  
-
 <main>
 <div class="complane_outter" id="complaneoutterid">
             <div class="complane_form">
@@ -127,7 +129,7 @@
                   echo " Complain Added Successfully";
                   unset($_SESSION['Complain_add']);
                 } ?>
-                </h4><br>
+                </h4>
                 <h5>
                   <?php if(isset($_SESSION['Complain_err'])){
                     echo "Error Occurred";
@@ -140,14 +142,20 @@
                 <form action="../../controller/gasagent/complain.php" method="Post">
                   <h5>Add Complains</h5>
                   <label for="">Order No :</label><br>
-                  <input type="text" name="complaneRef" id="complaneRef_id"><br>
-                                    <label for="">Description :</label><br>
+                  <!-- add a drop down -->
+				  <select name="orderid">
+				    <option selected disabled>Select Order Id</option>
+				    <?php foreach($order as $ord){?>	
+						<option><?php echo $ord?></option>
+					<?php }?>
+			      </select><br><br>
+                  <label for="">Description :</label><br>
                   <input type="text-area" name="complaneDes" id="complaneDes_id"><br>
                   <button type="submit" name="complane_btn">submit</button>
 				  
                 </form>
 				<form action="../../controller/gasagent/deliveryPersonComplainViewFirstController.php" method="POST">
-                  <button type="submit" name="complane_view">Complane View</button>
+                  <button type="submit" name="complane_view">View Complains</button>
 				</form>
             </div>
 

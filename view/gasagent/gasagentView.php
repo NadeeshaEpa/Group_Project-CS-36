@@ -13,15 +13,15 @@
     <title>view</title>
 </head>
     <body>
- <!-- SIDEBAR -->
-<section id="sidebar">
-		<a href="#" class="brand">
+ 	<!-- SIDEBAR -->
+	 <section id="sidebar">
+		<a href="../../view/gasagent/View.php" class="brand">
 			<i class='bx bxs-select-multiple'></i>
 			<span class="text">FaGo</span>
 		</a>
 		<ul class="side-menu top">
-			<li>
-				<a href="../../controller/gasagent/gasagent_order_controller.php">
+			<li >
+			<a href="../../controller/gasagent/gasagent_order_controller.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -33,7 +33,7 @@
 				</a>
 			</li>
 			<li class="active">
-				<a href="../../view/gasagent/gasagentView.php">
+				<a href="../../controller/gasagent/gasagent_viewController.php?viewgas='1'">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">View details</span>
 				</a>
@@ -47,19 +47,20 @@
 			<li>
 				<a href="../../controller/gasagent/gasagentUpdateFirst.php">
 					<i class='bx bxs-message-dots' ></i>
-					<span class="text">Update or Delete</span>
+					<span class="text">Update/Delete</span>
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="../../controller/gasagent/account_controller.php?viewacc='1'">
 					<i class='bx bxs-group' ></i>
 					<span class="text">profile details</span>
 				</a>
 			</li>
+
 			<li>
-				<a href="../../view/gasagent/compalin.php">
+			<a href="../../controller/gasagent/complain.php?complain='1'">
 					<i class='bx bxs-group' ></i>
-					<span class="text">Complaine</span>
+					<span class="text">Complains</span>
 				</a>
 			</li>
 		</ul>
@@ -67,11 +68,11 @@
 			<!-- <li>
 				<a href="#">
 					<i class='bx bxs-cog' ></i>
-					<span class="text">Compliance</span>
+					<span class="text">Settings</span>
 				</a>
 			</li> -->
 			<li>
-				<a href="../../view/login.php" class="logout">
+			<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -109,9 +110,10 @@
         <div class="contaner">
                <?php 
 			   		if(isset($_SESSION['gas'])){
-                	$result=$_SESSION['gas']; 
-					// print_r($result);
-					// die();
+                		$result=$_SESSION['gas']; 
+					}
+					if($result==null){
+						$result=[];
 					}
 				?>
                
@@ -121,14 +123,14 @@
                                             
                             <div class="head">
 						            <h3>Gas types</h3>
-						            <i class='bx bx-search' ></i>
-						            <i class='bx bx-filter' ></i>
+						           
 					        </div>
                                <table class="order">
                                 <thead>
                                 <tr><br>
                                     <th>SubType</th>
                                     <th>Quantity</th>
+									<th>New cylinder Price</th>
                                 </thead>   
                                 </tr>
 
@@ -139,6 +141,7 @@
                                         echo "<tr>";
                                         echo "<td>" . $row['weight'] ." kg". "</td>";
                                         echo "<td>" . $row['quantity'] . "</td>";
+										echo "<td>" . $row['newcylinder_price']    . "</td>";
                                        
                                         echo "</tr>";
 									}

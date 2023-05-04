@@ -7,9 +7,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
    
-    <link rel="stylesheet" href="../../public/css/gasagent/addGasTypeSuccsess.css">
-   
+     <!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
+	<!-- css -->
+	<link rel="stylesheet" href="../../public/css/gasagent/addGasTypeSuccsess.css">  
     <link rel="stylesheet" href="../../public/css/gasagent/gasagentDashboard.css">
+	
     <title>fago</title>
 </head>
 <body>
@@ -25,23 +29,23 @@
     ?>
     </h2>
    
-<div id="success-message" class="modal">
-  <div class="modal-content">
-    <span class="close-button">&times;</span>
-    <p> Gas Type already added!</p><br>
-    <i class="fa fa-check-circle"></i>
-  </div>
-</div>
+	<div id="success-message" class="modal">
+	<div class="modal-content">
+		<span class="close-button">&times;</span>
+		<p> Gas Type already added!</p><br>
+		<i class="fa fa-check-circle"></i>
+	</div>
+	</div>
 
-	
-	 <section id="sidebar">
+	   	<!-- SIDEBAR -->
+		   <section id="sidebar">
 		<a href="../../view/gasagent/View.php" class="brand">
 			<i class='bx bxs-select-multiple'></i>
 			<span class="text">FaGo</span>
 		</a>
 		<ul class="side-menu top">
-			<li class="active">
-				<a href="../../view/gasagent/gasagent_dashboard.php">
+			<li >
+			<a href="../../controller/gasagent/gasagent_order_controller.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -78,9 +82,9 @@
 			</li>
 
 			<li>
-				<a href="../../view/gasagent/compalin.php">
+			<a href="../../controller/gasagent/complain.php?complain='1'">
 					<i class='bx bxs-group' ></i>
-					<span class="text">Complaine</span>
+					<span class="text">Complains</span>
 				</a>
 			</li>
 		</ul>
@@ -92,7 +96,7 @@
 				</a>
 			</li> -->
 			<li>
-				<a href="..view/login.php" class="logout">
+				<a href="../../view/login.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -102,30 +106,29 @@
 	<!-- SIDEBAR -->
 
 
-
 	<!-- CONTENT -->
 	<section id="content">
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-			<a href="#" class="nav-link">Categories</a>
-			<form action="#">
-				<!-- <div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div> -->
-			</form>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
-			<a href="#" class="profile">
-				<img src="../../public/images/people.JPEG">
-			</a>
+			<li class="profile">
+				<?php if($_SESSION['img-status'] == 0){?>
+					<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
+				<?php }else{?>
+					<img src='../../public/images/gasargent/profile_image/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
+				<?php } ?>								
+			</li>
+			<li class="user_info">
+				<h6><?php if(isset($_SESSION['Firstname']) && isset($_SESSION['Lastname'])){
+						echo $_SESSION['Firstname'] ," " ,$_SESSION['Lastname'] ;
+					}?></h6>
+				<h5><?php if(isset($_SESSION['Type'])){
+						echo $_SESSION['Type'];
+					}?></h5>
+			</li>
 		</nav>
 		<!-- NAVBAR -->
+
 
 
    

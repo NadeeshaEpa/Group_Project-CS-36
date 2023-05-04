@@ -14,21 +14,20 @@
 </head>
 <body>
 
-
-	<!-- SIDEBAR -->
-	<section id="sidebar">
+ 	<!-- SIDEBAR -->
+	 <section id="sidebar">
 		<a href="../../view/gasagent/View.php" class="brand">
 			<i class='bx bxs-select-multiple'></i>
 			<span class="text">FaGo</span>
 		</a>
 		<ul class="side-menu top">
-			<li class="active">
-				<a href="../../view/gasagent/gasagent_dashboard.php">
+			<li >
+			<a href="../../controller/gasagent/gasagent_order_controller.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
-			<li>
+			<li class="active">
 				<a href="../../view/gasagent/orders.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Order details</span>
@@ -40,7 +39,7 @@
 					<span class="text">View details</span>
 				</a>
 			</li>
-			<li>
+			<li >
 				<a href="../../view/gasagent/add_gastype.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Add gas </span>
@@ -60,9 +59,9 @@
 			</li>
 
 			<li>
-				<a href="../../view/gasagent/compalin.php">
+			<a href="../../controller/gasagent/complain.php?complain='1'">
 					<i class='bx bxs-group' ></i>
-					<span class="text">Complaine</span>
+					<span class="text">Complains</span>
 				</a>
 			</li>
 		</ul>
@@ -74,7 +73,7 @@
 				</a>
 			</li> -->
 			<li>
-				<a href="../../view/login.php" class="logout">
+			<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -119,9 +118,7 @@
 							<a href="#">Delivered gas Details</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a class="active" href="#">Home</a>
-						</li>
+						
 					</ul>
 				</div>
 			</div>
@@ -137,7 +134,7 @@
                             <table class="tb">
                                 <tr>
                       					<th>Customer Name</th>
-                                        <th>Customer Address</th>
+                                        <th>Order_id</th>
                     					<th>Contact No</th>
                     					<th>Quantity</th>
                                        
@@ -145,14 +142,18 @@
                     					<th>Order date</th>
                                         <th>company Name</th>
                                         <th>Price</th>
+										<th>Payment</th>
+										<th>Order State</th>
                                 </tr>
                                     <?php
                                     if(isset($_SESSION['GDeliveredOrder'])){
                                         $result=$_SESSION['GDeliveredOrder']; 
+										
+
                                         foreach ($result as $row) {
                                             echo "<tr>";
                                             echo "<td>" . $row['Name'] . "</td>";
-                                            echo "<td>" . $row['Address'] . "</td>";
+                                            echo "<td>" . $row['Order_id'] . "</td>";
                       						echo "<td>" . $row['Contact_No'] ."</td>";
                       						echo "<td>" . $row['Quantity'] . "</td>";
                                            
@@ -160,10 +161,39 @@
                       						echo "<td>" . $row['Order_date'] . "</td>";
                       						echo "<td>" . $row['company_name'] . "</td>";
                                             echo "<td>" . $row['Amount'] . "</td>";
-                      						echo "</tr>";
-                                        }
-                                      
-                                    }
+											
+											if($row['Payment']==0){ ?>
+												<!-- change the color of text to red -->
+												<td style="color: red;"><?php echo "Pending"; ?></td>
+											  <?php }else if($row['Payment']==1){ ?>
+												<!-- change the color of text to green -->
+												<td style="color: green;"><?php echo "Paid"; ?></td>
+											  <?php } 
+						
+
+											if($row['Delivery_Status']==NULL){ ?>
+												<!-- change the color of text to red -->
+												<td style="color: lightgreen;"><?php echo "Not Assigned"; ?></td>
+											<?php }else if($row['Delivery_Status']==0){ ?>
+												<!-- change the color of text to green -->
+												<td style="color: #FDC801;"><?php echo "On the Way"; ?></td>
+											<?php }else if($row['Delivery_Status']==1){ ?>
+												<!-- change the color of text to green -->
+												<td style="color: green;"><?php echo "Delivered"; ?></td>
+											<?php }else if($row['Delivery_Status']==2){ ?>
+												<!-- change the color of text to green -->
+												<td style="color: red;"><?php echo "NO Delivery"; ?></td>
+											<?php }else if($row['Delivery_Status']==3){ ?>
+												<!-- change the color of text to green -->
+												<td style="color: blue;"><?php echo "Courier Service"; ?></td>
+											<?php }else if($row['Delivery_Status']==4){ ?>
+												<!-- change the color of text to green -->
+												<td style="color: purple;"><?php echo "Picked"; ?></td>
+											<?php } 
+																echo "</tr>";
+															}
+														
+														}
                                     
                                     ?>
                             </table>

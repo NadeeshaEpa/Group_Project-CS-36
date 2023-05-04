@@ -130,6 +130,10 @@ if(!isset($_SESSION['User_id'])){
                                         echo"Shop is closed.";
                                         unset($_SESSION['updateClosedSucessfully']);
                                     }
+									if(isset($_SESSION['No_orders'])){
+                                        echo $_SESSION['No_orders'];
+                                        unset($_SESSION['No_orders']);
+                                    }
                                 
                                 ?>
                                 </h6>
@@ -190,10 +194,11 @@ if(!isset($_SESSION['User_id'])){
 										<th>Customer Contact No</th>
 										<th>Quantity</th>
                                         <th>Category</th>
+										<th>Name</th>
 										<th>Order date</th>
                                         <th>Delivery Method</th>
                                         <th>Price</th>
-										<th>Payment</th>
+										
 										<th>Order State</th>
 
                                     </tr>
@@ -202,22 +207,17 @@ if(!isset($_SESSION['User_id'])){
                                         $result=$_SESSION['Cus_Dashboard_details']; 
                                         foreach ($result as $row) {
                                             echo "<tr>";
-                                            echo "<td>" . $row['Name'] . "</td>";
+                                            echo "<td>" . $row['cus_Name'] . "</td>";
                                             // echo "<td>" . $row['Address'] . "</td>";
 
 											echo "<td>" . $row['Contact_No'] ."</td>";
 											echo "<td>" . $row['Quantity'] . "</td>";
                                             echo "<td>" . $row['Category'] . "</td>";
+											echo "<td>" . $row['Name'] . "</td>";
 											echo "<td>" . $row['Order_date'] . "</td>";
 											echo "<td>" . $row['Delivery_Method'] . "</td>";
                                             echo "<td>" . $row['Amount'] . "</td>";
-											if($row['Paid']==0){ ?>
-												<!-- change the color of text to red -->
-												<td style="color: red;"><?php echo "Pending"; ?></td>
-											<?php }else if($row['Paid']==1){ ?>
-												<!-- change the color of text to green -->
-												<td style="color: green;"><?php echo "Paid"; ?></td>
-											<?php } 
+											
 
 											if($row['Delivery_Status']==NULL){ ?>
 												<!-- change the color of text to red -->

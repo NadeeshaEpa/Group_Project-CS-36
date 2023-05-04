@@ -1,4 +1,4 @@
-
+<?php session_start(); ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +12,7 @@
     <title>Delivery Person Registration</title>
 </head>
 <body>
-    <?php include '../../public/header.php'; ?>
+<?php include_once '../unreguser_header.php'; ?>
     <div class="registration-form"> 
     <form action="../../controller/deliveryperson/register_controller.php" method="POST" id="deliveryperson_form">
         <h2>Delivery Person Registration Form</h2><br><br>
@@ -65,24 +65,20 @@
         <label for="cpassword" id="cpassword-label">Confirm Password :</label><br><br>
             <input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password" required><br> 
 
-       <label for="email" id="email-label">Email :</label><br><br>
-            <input type="email" name="email" id="email" placeholder="Email" required><br>
+        <label id="email-label" for="email">Email:</label><br><br>
+        <input type="email" name="email" id="email" placeholder="Email" value=<?php echo $_SESSION['v_email'] ?> class="box" readonly><br>
             
         <label for="contactnumber" id="contactnum-label">Contact Number :</label><br><br>
             <input type="text" name="contactnumber" id="contactnumber" placeholder="Contact Number" required><br>
 
-        Vehicle Type:<br><br>
-            <input type="text" name="vehicletype" id="vehicletype" placeholder="Vehicle Type" required><br>
-
-        <!-- <label for="cars">Vehicle Type:</label><br>
+        <label for="vehicle">Vehicle Type:</label><br>
             <select name="vehicletype">
-                <option value="ike">Motor Bike</option>
+                <option value="ike">Bike</option>
                 <option value="threeWheel">Three Wheel</option>
                 <option value="lorry">Lorry</option>
-                <option value="van">Van</option>
-                <option value="car">Car</option>
             </select>
-        <br> -->
+        <br>
+
         Vehicle Number:<br><br>
             <input type="text" name="vehiclenumber" id="vehiclenumber" placeholder="Vehicle Number" required><br>
             

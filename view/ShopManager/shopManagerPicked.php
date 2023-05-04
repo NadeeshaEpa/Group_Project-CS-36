@@ -135,9 +135,10 @@ if(!isset($_SESSION['User_id'])){
 										<th>Customer Contact No</th>
 										<th>Quantity</th>
                                         <th>Category</th>
+										<th>Name</th>
 										<th>Order date</th>
                                         <th>Price</th>
-										<th>Payment</th>
+										
 										<th>Order State</th>
                                     </tr>
                                     <?php
@@ -146,20 +147,15 @@ if(!isset($_SESSION['User_id'])){
                                         foreach ($result as $row) {
                                             echo "<tr>";
 											
-                                            echo "<td>" . $row['Name'] . "</td>";
+                                            echo "<td>" . $row['cus_Name'] . "</td>";
                                             echo "<td>" . $row['Address'] . "</td>";
 											echo "<td>" . $row['Contact_No'] ."</td>";
 											echo "<td>" . $row['Quantity'] . "</td>";
                                             echo "<td>" . $row['Category'] . "</td>";
+											echo "<td>" . $row['Name'] . "</td>";
 											echo "<td>" . $row['Order_date'] . "</td>";
 											echo "<td>" . $row['Amount'] . "</td>";
-											if($row['Paid']==0){ ?>
-												<!-- change the color of text to red -->
-												<td style="color: red;"><?php echo "Pending"; ?></td>
-											<?php }else if($row['Paid']==1){ ?>
-												<!-- change the color of text to green -->
-												<td style="color: green;"><?php echo "Paid"; ?></td>
-											<?php } 
+											 
 
 											if($row['Delivery_Status']==NULL){ ?>
 												<!-- change the color of text to red -->
@@ -179,10 +175,10 @@ if(!isset($_SESSION['User_id'])){
 											<?php }else if($row['Delivery_Status']==4){ ?>
 												<!-- change the color of text to green -->
 												<td style="color: purple;"><?php echo "Picked"; ?></td>
-											<?php } if($row['Delivery_Status']==NULL){?>
+											<?php } if($row['Delivery_Status']==2){?>
 											   <td><button id="vertify_pin" onclick="pinVertification(<?php echo $row['Order_id'] ?>)">pin</button></td> 
 											<?php }else{?>
-												<td style="color: blue;">Disable</td>
+												<!-- <td style="color: blue;">Disable</td> -->
 											<?php }
 											echo "</tr>";
                                         }

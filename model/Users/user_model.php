@@ -4,12 +4,13 @@ class user_model{
     private $Type;
     public function loginUser($connection,$username,$password){   //check whether the user entered correct username and password and the status is 1.
         $sql = "SELECT * FROM user WHERE username='$username' AND password='$password'";
-
         $result = $connection->query($sql);
-
+        
+    
 
         if($result->num_rows == 1){
             $row = $result->fetch_assoc();
+          
 
             $this->User_id=$row['User_id'];
             $_SESSION['User_id']=$this->User_id;
@@ -51,7 +52,7 @@ class user_model{
                 }
             }
 
-            else if($this->Type=="Delivery_Person"){
+            else if($this->Type=="Delivery Person"){
                 $r1="SELECT * FROM deliveryperson WHERE DeliveryPerson_Id='$this->User_id' AND Status='1'";
 
                 if($connection->query($r1)->num_rows > 0){
@@ -61,7 +62,7 @@ class user_model{
                     return false;   //login will be unsuccessful
                 }
             }
-            else if($this->Type=="gasagent"){
+            else if($this->Type=="Gas Agent"){
                 $r1="SELECT * FROM gasagent WHERE GasAgent_Id='$this->User_id' AND Status='1'";
                 if($connection->query($r1)->num_rows > 0){
                     return true;   //login will be successful
