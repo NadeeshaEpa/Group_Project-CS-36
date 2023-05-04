@@ -153,13 +153,22 @@ require_once("../../config.php");?>
                  <td>'.$fname." ". $lname.'</td>
                  <td>'.$amount.'</td>';
                  if($status==1){
-					echo'<td>Delivered</td>';
+					echo'<td style="color:green;"><b>Delivered</b></td>';
 				}
 				else if($status==0){
-					echo'<td>On the way</td>';
+					echo'<td style="color:purple;"><b>On the way</b></td>';
+				}
+				else if($status==NULL){
+					echo'<td style="color:red;"><b>Not assigned</b></td>';
+				}
+				else if($status==3){
+					echo'<td style="color:orange;"><b>Courier service</b></td>';
+				}
+				else if($status==4){
+					echo'<td style="color:blue;"><b>Picked</b></td>';
 				}
 				else{
-					echo'<td>No delivery</td>';
+					echo'<td><b>No delivery</b></td>';
 				}
             echo'
                  <td>

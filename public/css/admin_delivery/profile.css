@@ -194,12 +194,16 @@ welcome p{
     font-weight: bold; */
 }
 .b2, .b6{
-    background-color: #CFE8FF; /* Green */
+    background-color: #3906d6; /* Green */
     border: none;
+    color:white;
+    width:7rem;
 }
 .b4,.b5{
     background-color:#DB504A; /* Green */
     border: none;
+    color:white;
+    width:7rem;
 }
     
 .b4:hover, .cu:hover{

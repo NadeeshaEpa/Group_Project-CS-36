@@ -19,12 +19,12 @@
 .registration-form button{
     border-radius: 5px;
     border: 1px solid #e3e3e3;
-    padding: 10px;
+    padding: 0.7rem;
     margin-bottom: 20px;
     float:right;
     width:20%;
-    background: #41cb4f;
-    /* border-radius: 20px; */
+    background: #29ba29;
+    border-radius: 1.5rem;
     align-items: center;
     color: white;
     text-decoration: none;
@@ -32,7 +32,7 @@
 
 
 .registration-form button:hover{
-    background: #2eae3b;
+    background: #1fb02e;
     /* color:black; */
 }
 .registration-form h2{

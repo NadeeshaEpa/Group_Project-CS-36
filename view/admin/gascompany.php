@@ -122,12 +122,14 @@
 
 		<!-- MAIN -->
 		<main>
-   <a href="add_company.php"> <button style="width:20%; background-color:#CFE8FF;">Add Gas Company</button></a>
-    <div class="list">
+   <a href="add_company.php"> <button style="width:20%; border-top-right-radius: 1.875rem; border-bottom-left-radius: 1.875rem;">Add Gas Company</button></a>
+   <div class="gas">
+    <div class="list" style="width:88%;">
+		
+     <br>
+    <h3 style="margin-left:5%;">All Gas Companies</h3><br>
 
-    <h3>All Gas Companies</h3>
-
-    <table>
+    <table style="margin-left:10%;">
     <tr>
         <th>Company ID</th>
         <th>Company Name</th>
@@ -155,8 +157,9 @@
     }
 
     ?>
-    
     </table>
+	<br><br>
+    </div>
     </div>
 
         
