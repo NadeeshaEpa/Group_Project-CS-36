@@ -10,6 +10,33 @@
 <body>
     <?php include 'home_header.php'; ?>
     <img src="../public/images/contact.jpeg" alt="contact-us" width="100%" height="75%">
+    <h1>Our Location</h1>
+    <div id="map"></div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_E5eoUp72AGiXd8EUgscWhrM-kd2scbY"></script>
+    <script>
+        function initMap() {
+            var myLatLng = {lat: 6.9271, lng: 79.8612}; // Set the coordinates of the location you want to show
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 14, // Set the zoom level
+                center: myLatLng // Set the center of the map to the selected location
+            });
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                title: 'Fago Shop',
+                label: {
+                    color: '#000000',
+                    fontWeight: 'bold',
+                    fontSize: '16px',
+                    text: 'Fago Shop',
+                }
+
+            });
+        }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_E5eoUp72AGiXd8EUgscWhrM-kd2scbY&callback=initMap"></script>
     <h1>Contact us for any clarification</h1>
     <div class="box-info">
        
@@ -36,7 +63,6 @@
             </div>
        
     </div>
-
     <div class="footer">
         <div class="footer-left">
             <img src="../public/images/logo.png" alt="">

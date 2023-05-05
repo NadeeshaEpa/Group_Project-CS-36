@@ -38,6 +38,7 @@ table, th, td{
     /* border: 2px solid #79d37c; */
     border: 2px solid #10338e;
     padding: 10px;
+    font-size: 13px;
 }
 .table2 tr{
     text-align: left;
