@@ -44,11 +44,12 @@ if(isset($_POST['DeliveryReDeclineName'])){
     }
     
 }
+/*new orders view */
 
-if(isset($_POST['DeliveryReAcceptName'])){
+if(isset($_POST['DeliveryReAcceptName']) && ($_POST['Order_type'])==2){
     $orderId=$_POST['DeliveryOrder'];
     $orderId=$connection->real_escape_string($orderId);
-
+    
     $user=new location();
     $result=$user->AcceptDeliveryRequest($connection,$orderId);
 
@@ -70,7 +71,37 @@ if(isset($_POST['DeliveryReAcceptName'])){
     }
     
 }
+/* */
 
+
+/*old orders view */
+
+if(isset($_POST['DeliveryReAcceptName']) && ($_POST['Order_type'])==1){
+    $orderId=$_POST['DeliveryOrder'];
+    $orderId=$connection->real_escape_string($orderId);
+    
+    $user=new location();
+    $result=$user->AcceptDeliveryRequest($connection,$orderId);
+
+    $user1=new Dashboard;
+    $result1=$user1->update_as_a_not_active($connection);
+
+    if($result==true && $result1){
+        $_SESSION['OrderDetailsOfRequest']=$result;
+        header("Location: ../../view/deliveryperson/DeliveryPersonDeliveryRequest_oldcylinder.php");
+        $connection->close();
+        exit();
+    
+    }
+    else{
+        header("Location: ../../controller/deliveryperson/deliveryDashboardFirstController.php");
+        $connection->close();
+        exit();
+    
+    }
+    
+}
+/* */
 
 
 // if(isset($_POST['DeliveryRePendingName'])){
@@ -129,6 +160,67 @@ if(isset($_GET['enter_pin'])){
     }
     else{
         header("Location: ../../view/deliveryperson/DeliveryPersonDeliveryRequest.php");
+        $connection->close();
+        exit();
+    }
+}
+/*check gas is delivered to the customer */
+if(isset($_GET['Cus_enter_pin'])){
+    $order_id=$_GET['id'];
+    $pin=$_GET['pin'];
+   
+    $order_id=$connection->real_escape_string($order_id);
+    $pin=$connection->real_escape_string($pin);
+    $user=new Dashboard;
+    $result=$user->Check_the_pin($connection,$order_id,$pin);
+
+    
+   
+    if($result==true){
+        $_SESSION['enable_button']='enable';
+        header("Location: ../../view/deliveryperson/DeliveryPersonDeliveryRequest_oldcylinder.php");
+        $connection->close();
+        exit();
+    
+    }
+    else{
+        header("Location: ../../view/deliveryperson/DeliveryPersonDeliveryRequest_oldcylinder.php");
+        $connection->close();
+        exit();
+    }
+}
+/* */
+
+/*check old cylinder delivered to the gas argent */
+if(isset($_GET['Gas_enter_pin'])){
+    $order_id=$_GET['id'];
+    $pin=$_GET['pin'];
+    
+    $DeliveryFee=$_GET['amount'];
+    $order_id=$connection->real_escape_string($order_id);
+    $pin=$connection->real_escape_string($pin);
+    $DeliveryFee=$connection->real_escape_string($DeliveryFee);
+
+    $user2=new Dashboard;
+    $result2=$user2->Check_the__gas_pin($connection,$order_id,$pin);
+
+   
+    $user=new location();
+    $result=$user->PendingDeliveryRequest($connection,$order_id,$DeliveryFee);
+
+    $user1=new Dashboard;
+    $result1=$user1->update_as_a_active($connection);
+    
+   
+    if($result2==true && $result==true && $result1){
+        unset($_SESSION['enable_button']);
+        header("Location: ../../controller/deliveryperson/deliveryDashboardFirstController.php");
+        $connection->close();
+        exit();
+    
+    }
+    else{
+        header("Location: ../../view/deliveryperson/DeliveryPersonDeliveryRequest_oldcylinder.php");
         $connection->close();
         exit();
     }

@@ -58,6 +58,36 @@ class Dashboard{
 
     }
 
+    public function Check_the__gas_pin($connection,$order_id,$pin){
+        $sql="SELECT GasAgent_pin FROM `order` WHERE Order_id=$order_id";
+        $result=$connection->query($sql);
+        if($result->num_rows===0){
+            return false;
+        }else{
+            $pin_data=mysqli_fetch_assoc($result);
+           
+            if($pin_data['GasAgent_pin']==$pin){
+                $sql2="UPDATE `order` SET Delivery_Status=1,Delivery_date=CURRENT_DATE,Delivery_time=CURRENT_TIME WHERE Order_id=$order_id";
+                $result2=$connection->query($sql2);
+
+                if($result2){
+                    $_SESSION['picked']='Gas agent picked vertify';
+                    return true;
+                }
+                else{
+                    return false;
+                }
+               
+            }
+            else{
+                $_SESSION['pin_wrong']='Pin is wrong';
+                return false;
+            }
+        }
+
+
+    }
+
     /*get payment details*/
     public function Get_payment_detalis($connection){
     $this->UserId=$_SESSION['User_id'];

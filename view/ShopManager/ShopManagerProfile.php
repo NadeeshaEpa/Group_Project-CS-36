@@ -258,10 +258,10 @@ if(!isset($_SESSION['User_id'])){
 											</div>
 							        </div> 
 								</div>
-								<div class="otherdeliveryProfilebtndown1">
+								<!-- <div class="otherdeliveryProfilebtndown1">
 									<br>
 									<button onclick="document.getElementById('id01').style.display='block'" class="b5" id="deliveyDeletebtn">Delete Account</button>
-								</div>
+								</div> -->
 							</div>
 				         
 				            <div class="d_form" id="delivary_form_id" style="display:none;">
@@ -294,7 +294,7 @@ if(!isset($_SESSION['User_id'])){
 
 							
 								
-                                <div id="id01" class="modal" style="display: none">
+                                <!-- <div id="id01" class="modal" style="display: none">
                                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close">×</span>
                                     <form class="modal-content" action="../../controller/ShopManager/ShopManagerProfileController.php" method="POST">
 
@@ -310,7 +310,7 @@ if(!isset($_SESSION['User_id'])){
                                             </div>
                                         </div>
                                     </form>
-                                </div> 
+                                </div>  -->
 
 					
 				</div>

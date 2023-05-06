@@ -119,9 +119,9 @@ if(!isset($_SESSION['User_id'])){
 
 				
 			</div>
-
-			<div class="table-data">
-				<div class="order">
+		</main>
+			<!-- <div class="table-data">
+				<div class="order"> -->
 					<div class="complane_outter" id="complaneoutterid">
 						<div class="complane_form">
 						    <div class="complane_msg">
@@ -172,10 +172,10 @@ if(!isset($_SESSION['User_id'])){
 
 					</div>
 					
-				</div>
+				<!-- </div>
 			
 			</div>
-		</main>
+		 -->
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->

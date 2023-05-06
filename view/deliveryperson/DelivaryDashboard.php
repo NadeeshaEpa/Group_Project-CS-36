@@ -190,12 +190,14 @@ if(!isset($_SESSION['User_id'])){
 								
 								foreach ($result as $row) {?>
 									<tr <?php if ($row['Color']=='GREEN'){echo 'class="highlight"';} ?>>
+									  
 									  <td><?= $row['customer_Name'] ?></td>
 									  <td><?= $row['Argent_Name'] ?></td>
 									  <td><?= $row['Distance_Shop_customer']," ","Km" ?></td>
 									  <td><?= "Rs."," ",$row['Delivery fee'] ?></td>
 									  <form action="../../controller/deliveryperson/deliveryPersonAddDeliveryController.php" method="POST">
 										<input name="DeliveryOrder" type="hidden" value="<?= $row['Order_id'] ?>">
+										<input name="Order_type" type="hidden" value="<?= $row['order_type'] ?>">
 										<td><button name="DeliveryReAcceptName" id="DeliveryReAcceptId">Accept</button><br></td>
 										<td><button name="DeliveryReDeclineName" id="DeliveryReDeclineId">Decline</button></td>
 									  </form>

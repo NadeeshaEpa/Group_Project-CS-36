@@ -110,16 +110,36 @@ if(!isset($_SESSION['User_id'])){
 						</li>
 					</ul>
 				</div>
+
+				<div class="ADbtn">
+					<form action="../../controller/ShopManager/shopManagerOrdresController.php" method="POST">
+						<Button id="DeliveredOrderId" name="DeliveredOrder">Delivered Orders</Button><br>
+						<button id="PickedPrderedId" name="PickedOrder">Picked Orders</button>
+					</form>
+                </div>
+				
+				
                 
 				
 			</div>
 
-			
+			<div class="form-input" style="width:30%;">
+					<form action="../../controller/ShopManager/shopManagerOrdresController.php" method="POST">
+						<input type="search" name="order_id" placeholder="Search by order ID">
+						<button type="submit" name="search_order" class="search-btn"><i class='bx bx-search' ></i></button>
+					</form>
+			</div>
 			<div class="pickedmsg">
 					<h1><?php if(isset($_SESSION['picked'])){
                          echo $_SESSION['picked'];
 						 unset($_SESSION['picked']);
-					}?></h1><h2><?php if(isset($_SESSION['pin_wrong'])){
+					}
+					if(isset($_SESSION['No_Search'])){
+						echo $_SESSION['No_Search'];
+						unset($_SESSION['No_Search']);
+					}
+					?>
+				    </h1><h2><?php if(isset($_SESSION['pin_wrong'])){
 						echo $_SESSION['pin_wrong'];
 						unset($_SESSION['pin_wrong']);} ?></h2>
 				</div>
@@ -130,6 +150,7 @@ if(!isset($_SESSION['User_id'])){
 					        <div class="tbl">
                                     <table class="tb">
                                     <tr>
+									    <th>Order id</th>
 									    <th>Customer Name</th>
                                         <th>Customer Address</th>
 										<th>Customer Contact No</th>
@@ -146,7 +167,7 @@ if(!isset($_SESSION['User_id'])){
                                         $result=$_SESSION['PickedOrder']; 
                                         foreach ($result as $row) {
                                             echo "<tr>";
-											
+											echo "<td>" . $row['Order_id'] . "</td>";
                                             echo "<td>" . $row['cus_Name'] . "</td>";
                                             echo "<td>" . $row['Address'] . "</td>";
 											echo "<td>" . $row['Contact_No'] ."</td>";

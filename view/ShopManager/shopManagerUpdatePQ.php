@@ -134,6 +134,7 @@ if(!isset($_SESSION['User_id'])){
 										</select>
 
 									<?php } ?>
+									<br>
 									<button name="item_search" id="item_search_id">Search</button>
 								</form>
 
