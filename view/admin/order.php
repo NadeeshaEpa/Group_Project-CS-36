@@ -163,19 +163,20 @@ require_once("../../config.php");?>
 					echo'<td style="color:purple;"><b>On the way</b></td>';
 				}
 				else if($status==NULL){
-					echo'<td style="color:red;"><b>Not assigned</b></td>';
+					echo'<td style="color:#BC243C;"><b>Not assigned</b></td>';
 				}
 				else if($status==3){
-					echo'<td style="color:orange;"><b>Courier service</b></td>';
+					echo'<td style="color:#ff6f61;"><b>Courier service</b></td>';
 				}
 				else if($status==4){
-					echo'<td style="color:blue;"><b>Picked</b></td>';
+					echo'<td style="color:#34568B;"><b>Picked</b></td>';
+				}
+				else if($status==5){
+					echo'<td style="color:#55B4B0;"><b>Emergency Delivery</b></td>';
 				}
 				else{
-					echo'<td><b>No delivery</b></td>';
+					echo'<td  style="color:#eb7c7a;"><b>No delivery</b></td>';
 				}
-                //  <td>'.$status.'</td>
-				 
            echo'
                  <td>
 				 <a href="../../controller/admin/order_controller.php?vid='.$order_id.'"><button class="button1" style="width:50%;">View</button></a>

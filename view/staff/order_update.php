@@ -130,96 +130,74 @@ require_once("../../config.php");?>
 		</nav>
 		<!-- NAVBAR -->
 
-		<!-- MAIN -->
-		<main>
-			
+        <main>
 
-		<a href="../../controller/staff/order_controller.php?id=vieworder"><button style="background-color: #05be17;color:white;">Gas Orders</button></a>
-            <a href="../../controller/staff/order_controller.php?fid=viewfagoorder"><button style="background-color:transparent;color:black;">Fago Shop Orders</button></a>
-            <br>
-    <div class="list">
+        <?php 
+                   if(isset($_SESSION['editorder'])){
+                      $result=$_SESSION['editorder']; 
+					  
+                   
+                   }
+        ?>
 
-    <h3>Orders</h3>
-
-	<form action="../../controller/staff/order_controller.php" method="POST">
-				<div class="form-input" style="width:30%;">
-					<input type="search" name="order_id" placeholder="Search by order ID or Customer name....">
-					<button type="submit" name="search_order" class="search-btn"><i class='bx bx-search' ></i></button>
+          <div class="head-title">
+				<div class="left">
+					<!-- <h1>Users</h1> -->
+					<ul class="breadcrumb">
+					     <a href="../../controller/staff/dashboard_controller.php?id=profitdetails">
+						<li style="color:grey;">Dashboard</li>
+						</a>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<a href="../../controller/staff/order_controller.php?id=vieworder">
+						<li style="color:blue;">Orders</li>
+						</a>
+					</ul>
 				</div>
-	</form>
-
-	<br><br>
-
-    <table>
-    <tr>
-        <th>Order ID</th>
-        <th>Date</th>
-        <th>Customer Name</th>
-        <th>Amount</th>
-        <th>Delivery Status</th>
-        <th>Operations</th>
-    </tr>
-
-    <?php
-    $result=$_SESSION['orderdetails'];
-    if($result){
-        foreach($result as $row){
-            $order_id=$row['Order_id'];
-            $fname=$row['First_Name'];
-            $lname=$row['Last_Name'];
-            $amount=$row['Amount'];
-            $status=$row['Delivery_Status'];
-            $date=$row['Order_date'];
-
-            echo'<tr>
-                 <th>'.$order_id.'</th>
-                 <td>'.$date.'</td>
-                 <td>'.$fname." ". $lname.'</td>
-                 <td>'.$amount.'</td>' ;
 				
-				if($status==1){
-					echo'<td style="color:green;"><b>Delivered</b></td>';
-				}
-				else if($status==0){
-					echo'<td style="color:purple;"><b>On the way</b></td>';
-				}
-				else if($status==NULL){
-					echo'<td style="color:#BC243C;"><b>Not assigned</b></td>';
-				}
-				else if($status==3){
-					echo'<td style="color:#ff6f61;"><b>Courier service</b></td>';
-				}
-				else if($status==4){
-					echo'<td style="color:#34568B;"><b>Picked</b></td>';
-				}
-				else if($status==5){
-					echo'<td style="color:#55B4B0;"><b>Emergency Delivery</b></td>';
-				}
-				else{
-					echo'<td  style="color:#eb7c7a;"><b>No delivery</b></td>';
-				}
-                //  <td>'.$status.'</td>
-				 
-           echo'
-                 <td>
-				 <a href="../../controller/staff/order_controller.php?vid='.$order_id.'"><button class="button1" style="width:30%;">View</button></a>
-				 <a href="../../controller/staff/order_controller.php?uid='.$order_id.'"><button class="button2" style="width:30%;">Update</button></a>
-                 </td>
-            </tr>' ;
-            
-        }
-    }
+			</div><br>
+		
+ 
+               <center> <div class="data" style="width:50%; margin-top:10%; margin-left:1%; background-color:#CFE8FF">
+                        <br><br>
+						<h2>Gas Order Delivery Status update</h2>
+                        <br><br>
 
-    ?>
-    
-    </table>
-    </div>
+                        <form action="../../controller/staff/order_controller.php" method="POST" id="staff_form">
 
-        
-    
-    </main>
-		<!-- MAIN -->
-	</section>
+                        <label>Order Id      :</label>
+                                    <input type="text" name="Order_id" value=<?php echo $result?> style="width:40%; padding:1%;" readonly> 
+                        
+                        <br><br>
+
+                        <div class="dropdown">
+		                <label for="delivery_status" id="Delivery_Status">Delivery Status  :</label>
+						   <select name="Delivery_Status" id="Delivery_Status" style="width:40%; padding:1%; ">
+                           <option value=NULL selected>Not assigned</option>
+							<option value="0">On the way</option>
+                            <option value="1">Delivered</option>
+                            <option value="2">No Delivery</option>
+                            <option value="3">Courier service</option>
+                            <option value="4">Picked</option>
+                            <option value="5">Emergency Delivery</option>
+                            </select>
+                        </div><br><br>
+                    
+                        <!-- <div class="down1"> -->
+                        
+                        <button type="submit" name="updateorder" class="cp" style="color:white;">Update</button>
+                        <br><br>
+                        <!-- </div> -->
+                    </form>
+                    
+                </div></center>
+						
+
+						
+				</div>
+			
+			
+		</main>
+        </section>
 	<!-- CONTENT -->
 	
 

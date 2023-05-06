@@ -124,6 +124,16 @@ class order_model
         }
     }
 
+    public function update_order($connection,$array){
+        $sql="UPDATE `order` SET `Delivery_Status`='$array[1]',`DeliveryPerson_Id`=NULL  WHERE `Order_id`='$array[0]' ";
+        $result=$connection->query($sql);
+        if($result){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }
 ?>
 

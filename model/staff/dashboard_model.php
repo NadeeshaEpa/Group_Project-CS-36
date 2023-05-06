@@ -3,7 +3,11 @@ class dashboard_model
 {
     public function viewprofit($connection)
     {      
-        $sql="SELECT o.Order_id,o.Order_date,o.Delivery_fee*0.2 AS profit,u.First_Name,u.Last_Name,i.imgname from `order` o INNER JOIN `placeorder` p ON o.Order_id=p.Order_Id INNER JOIN `user` u ON p.Customer_Id=u.User_id INNER JOIN `profileimg` i ON u.User_id=i.User_id WHERE o.Delivery_Status=0 OR o.Delivery_Status=1 UNION SELECT o.Order_id,o.Order_date,o.Delivery_fee*0.2 AS profit,u.First_Name,u.Last_Name,i.imgname from `order` o INNER JOIN `shop_placeorder` p ON o.Order_id=p.Order_Id INNER JOIN `user` u ON p.Customer_Id=u.User_id INNER JOIN `profileimg` i ON u.User_id=i.User_id WHERE o.Delivery_Status=0 OR o.Delivery_Status=1 ";
+        date_default_timezone_set('Asia/Colombo');
+
+        // Get current date in Y-m-d format
+        $current_date = date('Y-m-d'); 
+        $sql="SELECT o.Order_id,o.Order_date,o.Delivery_fee*0.2 AS profit,u.First_Name,u.Last_Name,i.imgname from `order` o INNER JOIN `placeorder` p ON o.Order_id=p.Order_Id INNER JOIN `user` u ON p.Customer_Id=u.User_id INNER JOIN `profileimg` i ON u.User_id=i.User_id WHERE o.Delivery_Status=0 AND o.Order_date='$current_date' OR o.Delivery_Status=1 AND o.Order_date='$current_date' UNION SELECT o.Order_id,o.Order_date,o.Delivery_fee*0.2 AS profit,u.First_Name,u.Last_Name,i.imgname from `order` o INNER JOIN `shop_placeorder` p ON o.Order_id=p.Order_Id INNER JOIN `user` u ON p.Customer_Id=u.User_id INNER JOIN `profileimg` i ON u.User_id=i.User_id WHERE o.Delivery_Status=0 AND o.Order_date='$current_date' OR o.Delivery_Status=1 AND o.Order_date='$current_date'";
         $result = mysqli_query($connection, $sql);
         $profit = [];
         if ($result) {    
