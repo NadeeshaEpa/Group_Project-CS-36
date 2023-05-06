@@ -176,7 +176,7 @@ if(!isset($_SESSION['User_id'])){
 	<!-- CONTENT -->
 	
     <script src="../../public/js/delivaryDashboard.js"></script>
-	<script src="../../public/js/delivaryDashboard.js"></script>
+	<!-- <script src="../../public/js/delivaryDashboard.js"></script> -->
 	<script>
             function pinVertification(id,amount){
                 document.getElementById("backgr").style.display="block";

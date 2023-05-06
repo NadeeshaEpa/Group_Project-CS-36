@@ -7,11 +7,12 @@ button{
   margin-bottom: 20px;
   margin-left: 20px;
   width:9%;
-  background-color:blue;
-  color: black;
+  background-color:#3906d6;
+  color: white;
   /* border-radius: 12px; */
   align-items: center;
   cursor: pointer;
+  
 } 
 
 table {
@@ -28,13 +29,20 @@ th, td {
 .list{
   margin-left:20px;
 }
+.gas{
+  width:90%;
+  background-color: #CFE8FF;
+  margin-left: 5%;
+  border-radius: 3%;
+}
+
 
 h3{
   color: #e6321e;
 }
 
 .button1{
-  background-color: #815bf6; /* Green */
+  background-color: #3906d6; /* Green */
   border: none;
   color: white;
   padding: 10px;
@@ -48,7 +56,7 @@ h3{
 }
 
 .button2{
-  background-color: #79d37c; /* Green */
+  background-color: #18cc19; /* Green */
   border: none;
   color: white;
   padding: 10px;

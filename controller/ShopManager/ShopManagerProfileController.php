@@ -95,20 +95,20 @@ if(isset($_POST['cancelpwd'])){
     }
 }
 
-if(isset($_POST['deleteaccount'])){
-    if(isset($_SESSION['User_id'])){
-        $acc=new shopManager();
-        $result=$acc->deleteAccount($connection,$_SESSION['User_id']);
-        if($result){
-            $_SESSION['deleteacc']="success";
-            header("Location: ../../view/login.php");
-        }else{
-            $_SESSION['deleteacc']="failed";
+// if(isset($_POST['deleteaccount'])){
+//     if(isset($_SESSION['User_id'])){
+//         $acc=new shopManager();
+//         $result=$acc->deleteAccount($connection,$_SESSION['User_id']);
+//         if($result){
+//             $_SESSION['deleteacc']="success";
+//             header("Location: ../../view/login.php");
+//         }else{
+//             $_SESSION['deleteacc']="failed";
 
-            header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
-        }
-    }
-}
+//             header("Location: ../../controller/ShopManager/ShopManagerFirstProfileController.php");
+//         }
+//     }
+// }
 
 
 

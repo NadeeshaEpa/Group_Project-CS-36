@@ -307,6 +307,7 @@ if(!isset($_SESSION['User_id'])){
 										<input  type="password" placeholder="Confirm New Password" name="cnpwd" id="cnpwdid" required><br><br>
 										<div class="btn">
 											<button type="submit" name="updatepwd" class="updatebtn">Update</button>
+											<!-- <button type="submit"  name="cancelpwd" class="cancelbtn">Cancel</button> -->
 										</div>  
 									</div>
 								</form>

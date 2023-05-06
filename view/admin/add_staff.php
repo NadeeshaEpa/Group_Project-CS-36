@@ -54,6 +54,12 @@ require_once("../../config.php");?>
 				</a>
 			</li>
 			<li>
+				<a href="../../controller/admin/limitation_controller.php?id=limitations">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Limitations</span>
+				</a>
+			</li>
+			<li>
 				<a href="../../controller/admin/order_controller.php?id=vieworder">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Orders</span>
@@ -75,7 +81,7 @@ require_once("../../config.php");?>
 				</a>
 			</li> -->
 			<li>
-				<a href="#" class="logout">
+				<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -91,15 +97,7 @@ require_once("../../config.php");?>
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-			<!-- <a href="#" class="nav-link">Categories</a> -->
-			<!-- <form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form> -->
-			<!-- <input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label> -->
+			
 			
 			
 			<a href="#" class="profile">
@@ -178,6 +176,7 @@ require_once("../../config.php");?>
 	<a href="admin-viewStaff.php"><button style="background-color: #da3a3a;">Cancel</button></a> 
     <br><br>
     </div>
+	
 
     </main>
 		<!-- MAIN -->

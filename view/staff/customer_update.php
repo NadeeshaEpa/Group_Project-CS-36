@@ -213,10 +213,10 @@ require_once("../../config.php");?>
 		
 		
     </form>
+	
+    </div>
 	<a href="staff-viewCustomer.php"><button style="background-color: #da3a3a;" class="b4">Cancel</button></a> 
 	<br><br>
-    </div>
-
     </main>
 		<!-- MAIN -->
 	</section>

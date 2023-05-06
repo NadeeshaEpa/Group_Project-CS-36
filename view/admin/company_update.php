@@ -54,6 +54,12 @@ require_once("../../config.php");?>
 				</a>
 			</li>
 			<li>
+				<a href="../../controller/admin/limitation_controller.php?id=limitations">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Limitations</span>
+				</a>
+			</li>
+			<li>
 				<a href="../../controller/admin/order_controller.php?id=vieworder">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Orders</span>
@@ -148,13 +154,13 @@ require_once("../../config.php");?>
 	</div>
 	
         <br><br>
-		<div class="down"> 
-        <a href="../../view/admin/gascompany.php"><button style="background-color: #da3a3a;" class="b4">Cancel</button></a> 
-		<button type="submit" name="edituser" id="submit" class="b6">Update</button>  
-		</div>
+		
+		<button type="submit" name="edituser" id="submit" class="b6" style="float:left; margin-left: 74%;">Update</button>  
+		
     </form>
     </div>
-
+    <a href="../../controller/admin/company_controller.php?id=viewcompany"><button style="background-color: #da3a3a;" class="b4">Cancel</button></a> 
+	<br><br>
     </main>
 		<!-- MAIN -->
 	</section>

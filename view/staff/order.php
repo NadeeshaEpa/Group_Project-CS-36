@@ -141,8 +141,8 @@ require_once("../../config.php");?>
     <h3>Orders</h3>
 
 	<form action="../../controller/staff/order_controller.php" method="POST">
-				<div class="form-input">
-					<input type="search" name="order_id" placeholder="Search by order ID...">
+				<div class="form-input" style="width:30%;">
+					<input type="search" name="order_id" placeholder="Search by order ID or Customer name....">
 					<button type="submit" name="search_order" class="search-btn"><i class='bx bx-search' ></i></button>
 				</div>
 	</form>
@@ -177,22 +177,22 @@ require_once("../../config.php");?>
                  <td>'.$amount.'</td>' ;
 				
 				if($status==1){
-					echo'<td style="color:green;">Delivered</td>';
+					echo'<td style="color:green;"><b>Delivered</b></td>';
 				}
 				else if($status==0){
-					echo'<td style="color:purple;">On the way</td>';
+					echo'<td style="color:purple;"><b>On the way</b></td>';
 				}
 				else if($status==NULL){
-					echo'<td style="color:red;">Not assigned</td>';
+					echo'<td style="color:red;"><b>Not assigned</b></td>';
 				}
 				else if($status==3){
-					echo'<td style="color:orange;">Courier service</td>';
+					echo'<td style="color:orange;"><b>Courier service</b></td>';
 				}
 				else if($status==4){
-					echo'<td style="color:blue;">Picked</td>';
+					echo'<td style="color:blue;"><b>Picked</b></td>';
 				}
 				else{
-					echo'<td>No delivery</td>';
+					echo'<td><b>No delivery</b></td>';
 				}
                 //  <td>'.$status.'</td>
 				 

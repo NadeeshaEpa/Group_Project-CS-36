@@ -117,13 +117,20 @@ if(isset($_POST['edituser'])){
     $staff=new staff_model();
     $inputs1=array($user_id,$First_Name, $Last_Name, $City, $Street, $Postalcode, $Username, $Email);
     $inputs2=array($user_id,$Contact_No);
+    $inputs3=array($user_id,$NIC);
 
     $result1=$staff->updateUser($connection,$inputs1);
     if($result1){
         $result2=$staff->updateContacts($connection,$inputs2);
         if($result2){
+            $result3=$staff->updateStaff($connection,$inputs3);
+            if($result3){
             $_SESSION['updateuser']="success";
             header("Location: ../../controller/admin/staffacc_controller.php?id=viewStaff");
+            }else{
+                $_SESSION['updateuser']="failed";
+                echo "Failed";
+            }
         }else{
             $_SESSION['updateuser']="failed";
             echo "Failed";

@@ -30,7 +30,7 @@ class delivery_model{
         $this ->Vehiclenumber=$vehiclenumber;
         $this->NIC=$nic;
         $this->Accnum=$accnum;
-        $this->Type="Delivery_Person";
+        $this->Type="Delivery Person";
     }
     public function setUserId($connection){  
         $sql = "SELECT User_id FROM user order by User_id desc limit 1";
@@ -87,13 +87,24 @@ class delivery_model{
             return false;
         }
     }
+
+    public function addDeliveryAvailability($connection){
+        $sql="INSERT INTO `deliverypersonavailable`(`DeliveryPerson_Id`, `Available_State`) VALUES ($this->User_id,0)";
+        if($connection->query($sql)){
+            $_SESSION['registerMsg']="User Registered Successfully";
+            return true;
+        }else{
+            $_SESSION['regerror']="User Registration Failed";
+            return false;
+        }
+    }
     public function RegisterDelivery_person($connection){
         $result1=$this->CreateUserEntry($connection);
         $this->setUserId($connection);
         $result2=$this->setContact($connection);
         $result3=$this->setDelivery_person($connection);
-
-        if($result1 && $result2 && $result3){
+        $result4=$this->addDeliveryAvailability($connection);
+        if($result1 && $result2 && $result3  && $result4){
             return true;
         }else{
             return false;

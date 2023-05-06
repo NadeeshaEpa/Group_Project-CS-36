@@ -19,6 +19,9 @@ const contactLabel = document.getElementById("contactnum-label");
 const nic = document.getElementById("nic");
 const nicLabel = document.getElementById("nic-label");
 
+const Vehical_no = document.getElementById("vehiclenumber");
+const Vehical_noLabel = document.getElementById("vehicalnum-label");
+
 const deliveryperson_form = document.getElementById("deliveryperson_form");
 
 var emailflag=0;
@@ -27,8 +30,25 @@ var cpasswordflag=0;
 var nicflag=0;
 var usernameflag=0;
 var contactflag=0;
+var vehicalnumflag=0;
 
-
+Vehical_no?.addEventListener("input", function () {
+    //should include 9 numbers
+    var pattern=/^([a-zA-Z]{1,3}|((?!0*-)[0-9]{1,3}))-[0-9]{4}(?<!0{4})/;
+    if (!pattern.test(Vehical_no.value)) {
+        Vehical_noLabel.innerHTML = "Invalid Vehical Number";  
+        Vehical_noLabel.style.color = "red";
+        // submit.disabled = true;
+        vehicalnumflag=1;
+    } else {
+        Vehical_noLabel.innerHTML = "Vehical Number:";
+        Vehical_noLabel.style.color = "black";
+        Vehical_no.style.borderColor = "green";
+        Vehical_no.style.borderWidth = "2px";
+        // submit.disabled = false;
+        vehicalnumflag=0;
+    }
+});
 email?.addEventListener("input", function () {
     var reg = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
     if (!reg.test(email.value)) {
@@ -194,7 +214,7 @@ function nicValidation() {
 }
 
 deliveryperson_form?.addEventListener("submit", function (e) {
-    if (!(usernameflag==0 && emailflag==0 && passwordflag==0 && cpasswordflag==0 && nicflag==0 && contactflag==0)) {
+    if (!(usernameflag==0 && emailflag==0 && passwordflag==0 && cpasswordflag==0 && nicflag==0 && contactflag==0 && vehicalnumflag==0)) {
         e.preventDefault();
     }
 });
