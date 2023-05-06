@@ -22,7 +22,7 @@
 		</a>
 		<ul class="side-menu top">
 			<li >
-				<a href="../../view/gasagent/gasagent_dashboard.php">
+			<a href="../../controller/gasagent/gasagent_order_controller.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -59,7 +59,7 @@
 			</li>
 
 			<li>
-				<a href="../../view/gasagent/compalin.php">
+			<a href="../../controller/gasagent/complain.php?complain='1'">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Complains</span>
 				</a>
@@ -73,7 +73,7 @@
 				</a>
 			</li> -->
 			<li>
-				<a href="../../view/login.php" class="logout">
+			<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -134,7 +134,7 @@
                             <table class="tb">
                                 <tr>
                       					<th>Customer Name</th>
-                                        <th>Customer Address</th>
+                                        <th>Order_id</th>
                     					<th>Contact No</th>
                     					<th>Quantity</th>
                                        
@@ -153,7 +153,7 @@
                                         foreach ($result as $row) {
                                             echo "<tr>";
                                             echo "<td>" . $row['Name'] . "</td>";
-                                            echo "<td>" . $row['Address'] . "</td>";
+                                            echo "<td>" . $row['Order_id'] . "</td>";
                       						echo "<td>" . $row['Contact_No'] ."</td>";
                       						echo "<td>" . $row['Quantity'] . "</td>";
                                            

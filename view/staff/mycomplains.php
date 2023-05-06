@@ -128,7 +128,7 @@
 		<!-- MAIN -->
 		<main>
 		<a href="../../controller/staff/complain_controller.php?id=complaindetails"><button style="background-color:transparent;color:black; width:47%;">Complains</button></a>
-            <a href="../../controller/staff/complain_controller.php?mid=mycomplaindetails"><button style="background-color:#05be17; color:white; width:47%;">My Complains</button></a>
+            <a href="../../controller/staff/complain_controller.php?mid=mycomplaindetails"><button style="background-color:#05be17; color:white; width:47%;">Complains Incharge</button></a>
             <br><br>
 			
 			<!-- <form action="#" style="float:right;">

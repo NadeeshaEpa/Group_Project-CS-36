@@ -54,6 +54,12 @@ require_once("../../config.php");?>
 					<span class="text">Gas Companies</span>
 				</a>
 			</li>
+			<li>
+				<a href="../../controller/admin/limitation_controller.php?id=limitations">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Limitations</span>
+				</a>
+			</li>
 			<li class="active">
 				<a href="../../controller/admin/order_controller.php?id=vieworder">
 					<i class='bx bxs-shopping-bag-alt' ></i>
@@ -114,8 +120,8 @@ require_once("../../config.php");?>
 
     <h3>Orders</h3>
 	<form action="../../controller/admin/order_controller.php" method="POST">
-				<div class="form-input">
-					<input type="search" name="order_id" placeholder="Search by order ID...">
+				<div class="form-input" style="width:30%;">
+					<input type="search" name="order_id" placeholder="Search by order ID or Customer name..">
 					<button type="submit" name="search_fagoorder" class="search-btn"><i class='bx bx-search' ></i></button>
 				</div>
 	</form>
@@ -147,13 +153,22 @@ require_once("../../config.php");?>
                  <td>'.$fname." ". $lname.'</td>
                  <td>'.$amount.'</td>';
                  if($status==1){
-					echo'<td>Delivered</td>';
+					echo'<td style="color:green;"><b>Delivered</b></td>';
 				}
 				else if($status==0){
-					echo'<td>On the way</td>';
+					echo'<td style="color:purple;"><b>On the way</b></td>';
+				}
+				else if($status==NULL){
+					echo'<td style="color:red;"><b>Not assigned</b></td>';
+				}
+				else if($status==3){
+					echo'<td style="color:orange;"><b>Courier service</b></td>';
+				}
+				else if($status==4){
+					echo'<td style="color:blue;"><b>Picked</b></td>';
 				}
 				else{
-					echo'<td>No delivery</td>';
+					echo'<td><b>No delivery</b></td>';
 				}
             echo'
                  <td>

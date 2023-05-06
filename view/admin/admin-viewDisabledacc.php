@@ -56,6 +56,12 @@ require_once("../../config.php");?>
 				</a>
 			</li>
 			<li>
+				<a href="../../controller/admin/limitation_controller.php?id=limitations">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Limitations</span>
+				</a>
+			</li>
+			<li>
 				<a href="../../controller/admin/order_controller.php?id=vieworder">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Orders</span>
@@ -111,6 +117,27 @@ require_once("../../config.php");?>
 
 		<!-- MAIN -->
 		<main>
+		<div class="head-title">
+				<div class="left">
+					<!-- <h1>Users</h1> -->
+					<ul class="breadcrumb">
+					     <a href="../../controller/admin/dashboard_controller.php?id=profitdetails">
+						<li style="color:grey;">Dashboard</li>
+						</a>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<a href="../../controller/admin/users_controller.php?id=userdetails">
+						<li style="color:grey;">Users</li>
+						</a>
+                        <li><i class='bx bx-chevron-right' ></i></li>
+						<a  href="../../controller/admin/users_controller.php?uid=viewdisabledacc">
+						<li style="color:blue;">
+							Disabled Users
+						</li>
+				        </a>
+					</ul>
+				</div>
+				
+			</div><br>
     <div class="list">
 
     <h3>Disabled Accounts</h3>

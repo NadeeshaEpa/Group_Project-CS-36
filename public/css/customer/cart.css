@@ -64,7 +64,7 @@ h1{
 .remove{
     height: 50px;
     width: 120px;
-    border-radius: 20px;
+    border-radius: 8px;
     background-color: red;
     font-size: 18px;
     border:none;
@@ -79,7 +79,7 @@ h1{
 .checkout{
     height: 50px;
     width: 120px;
-    border-radius: 20px;
+    border-radius: 8px;
     background-color: green;
     font-size: 18px;
     border:none;
@@ -116,7 +116,7 @@ td{
     width: 30%;
 }
 .trash{
-    margin-top: -2%;
+    margin-top: -1%;
     padding-top: 0%;
     width: 80px;
     height: 25px;
@@ -145,7 +145,7 @@ td{
     flex-direction: row;
     justify-content: space-between;
     margin-left: 10%;
-    height: 93%;
+    height: 98%;
 }
 .delivery-left{
     float: left;

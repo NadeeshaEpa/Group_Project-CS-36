@@ -46,8 +46,7 @@ if(isset($_POST['viewcart'])|| isset($_GET['viewcart'])){
     $User_id=$_SESSION['User_id'];
     $cart=new addtocart_model();
 
-    $check=$cart->checkandupdate($connection,$User_id);
-   
+    $check=$cart->checkandupdate($connection,$User_id);  
     $result=$cart->viewcart($connection,$User_id);
     if($result===false){
         $_SESSION['viewcart']="empty";
@@ -116,10 +115,26 @@ if(isset($_POST['dcartitem'])){
         header("Location: ../../view/customer/view_checkout.php");
     }else{
         $_SESSION['dcartitem']="success";
-        $result=$cart->checkout($connection,$User_id,$gasagent);
-        $_SESSION['checkout']=$result;
+        $result1=$cart->checkout($connection,$User_id,$gasagent);
+        $_SESSION['checkout']=$result1;
         $cart->getcartcount($connection,$User_id);
-        header("Location: ../../view/customer/view_checkout.php");
+        if(count($result1)==0){
+            $check=$cart->checkandupdate($connection,$User_id);  
+            $result=$cart->viewcart($connection,$User_id);
+            if($result===false){
+                $_SESSION['viewcart']="empty";
+                header("Location: ../../view/customer/view_cart.php");  
+            }else if(sizeof($result)==0){
+                $_SESSION['viewcart']="empty";
+                header("Location: ../../view/customer/view_cart.php");   
+            }else{
+                $_SESSION['viewcart']=$result;
+                header("Location: ../../view/customer/view_cart.php");
+            }
+        }else{
+            header("Location: ../../view/customer/view_checkout.php");
+        }
+        
     }
 }
 if(isset($_POST['updatecartquantity'])){

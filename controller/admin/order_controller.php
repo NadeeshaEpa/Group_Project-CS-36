@@ -120,5 +120,18 @@ if(isset($_POST['search_fagoorder'])){
     }
 }
 
+if(isset($_GET['oid'])){
+    $order_id=$_GET['oid'];
+    $order_id=$connection->real_escape_string($order_id);
+    $order=new order_model();
+    $result=$order->check_ordertype($connection,$order_id);
+    if($result==true){
+        header("Location:../../controller/admin/order_controller.php?vid=$order_id");
+    
+    }else{
+        header("Location:../../controller/admin/order_controller.php?fvid=$order_id");
+    }
+
+}
 
 ?>

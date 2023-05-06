@@ -98,3 +98,33 @@ if(isset($_GET['enter_pin'])){
         exit();
     }
 }
+
+/* Newxt arrivel date */
+
+if(isset($_POST['btn_date'])){
+
+    $btn_date=$_POST['arrivel_date'];
+    $btn_date=$connection->real_escape_string($btn_date);
+    $user=new Brand_reports;
+    $result=$user->update_arrival_date($connection,$btn_date);
+    if($result){
+        $_SESSION['date_correct']="succsessfully update next arrival date";
+
+        header("Location: ../../controller/gasagent/gasagent_order_controller.php");
+        $connection->close();
+
+
+
+    }
+
+    else{
+        $_SESSION['date_wrong']="date is wrong";
+        header("Location: ../../controller/gasagent/gasagent_order_controller.php");
+        $connection->close();
+
+
+
+    }
+
+
+}

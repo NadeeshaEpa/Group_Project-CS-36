@@ -51,7 +51,7 @@ body{
     height: 40px;
     border: none;
     border-radius: 5px;
-    background-color:#007bff;
+    background-color:#3612d2;
     color: white;
     font-size: 18px;
     font-weight: bold;
@@ -61,7 +61,7 @@ body{
 
 .selected {
   color: #f2f2f2;
-  background-color: navy;
+  background-color: #3612d2;
   border-radius: 5px;
   width: 150px;
   text-align: center;
@@ -88,7 +88,7 @@ body{
     background-color: white;
     margin-top: 2px;
     border: 1px solid #f2f2f2;
-    border-radius: 5px;
+    border-radius: 30px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     text-align: center;
 }
@@ -101,10 +101,10 @@ body{
     width: 60%;
     height: 40px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color:white;
-    color: navy;
-    border: navy 1px solid;
+    /* color: navy; */
+    border: #e0e0e0 1px solid;
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;
@@ -112,7 +112,7 @@ body{
     /* margin-left: 20%; */
 }
 .item button:hover{
-    background-color: navy;
+    background-color: #1ac54c;
     color: white;
 }
 .price p{

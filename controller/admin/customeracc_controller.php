@@ -112,18 +112,26 @@ if(isset($_POST['edituser'])){
         $ElectricityBill_No=$connection->real_escape_string($ElectricityBill_No);
 
     
-
+       
 
     $customer=new customer_model();
     $inputs1=array($user_id,$First_Name, $Last_Name, $City, $Street, $Postalcode, $Username, $Email);
-    $inputs2=array($user_id,$Contact_No);
+    $inputs2=array($user_id,$ElectricityBill_No);
+    $inputs3=array($user_id,$Contact_No);
+
 
     $result1=$customer->updateUser($connection,$inputs1);
     if($result1){
-        $result2=$customer->updateContacts($connection,$inputs2);
+        $result2=$customer->updateCustomer($connection,$inputs2);
         if($result2){
+            $result3=$customer->updateContacts($connection,$inputs3);
+            if($result3){
             $_SESSION['updateuser']="success";
             header("Location: ../../controller/admin/customeracc_controller.php?id=viewCustomer");
+            }else{
+                $_SESSION['updateuser']="failed";
+                echo "Failed";
+            }
         }else{
             $_SESSION['updateuser']="failed";
             echo "Failed";

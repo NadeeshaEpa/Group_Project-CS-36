@@ -54,6 +54,12 @@ require_once("../../config.php");?>
 				</a>
 			</li>
 			<li>
+				<a href="../../controller/admin/limitation_controller.php?id=limitations">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Limitations</span>
+				</a>
+			</li>
+			<li>
 				<a href="../../controller/admin/order_controller.php?id=vieworder">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Orders</span>
@@ -166,16 +172,15 @@ require_once("../../config.php");?>
 	</div>
             <!-- <label for="nic" id="nic-label">NIC :</label><br><br>
             <input type="text" name="nic" id="nic" placeholder="NIC" required><br> -->
-            
+			<br><br>  
+        
+		<button type="submit" name="edituser" id="submit" class="b6" style="float:left; margin-left: 74%;">Update</button>  
 	
-         
-        <br><br>
-		<div class="down"> 
-        <a href="../../view/admin/admin-viewStaff.php"><button style="background-color: #da3a3a;" class="b4">Cancel</button></a> 
-		<button type="submit" name="edituser" id="submit" class="b6">Update</button>  
-		</div>
     </form>
+	
     </div>
+	<a href="admin-viewStaff.php"><button style="background-color: #da3a3a;" class="b4">Cancel</button></a> 
+	<br><br>
 
     </main>
 		<!-- MAIN -->

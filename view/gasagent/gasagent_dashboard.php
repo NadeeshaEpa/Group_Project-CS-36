@@ -23,7 +23,7 @@
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
-				<a href="../../view/gasagent/gasagent_dashboard.php">
+			<a href="../../controller/gasagent/gasagent_order_controller.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -60,7 +60,7 @@
 			</li>
 
 			<li>
-			    <a href="../../controller/gasagent/complain.php?complain='1'">
+			<a href="../../controller/gasagent/complain.php?complain='1'">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Complains</span>
 				</a>
@@ -68,7 +68,7 @@
 		</ul>
 		<ul class="side-menu">
 			<li>
-				<a href="../../view/login.php" class="logout">
+			<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -134,7 +134,29 @@
 				</form>
 			</div>
 			<div>
+			
+		<form action="../../controller/gasagent/gasagentDashboardController.php" method="POST">
+		    <label for="date" id="ad" >Gas Cylindet Arrivel date</label>
+			<input type="date" name="arrivel_date" id="arrivel_date" class="add" placeholder="Date">
+			<button class="date" name="btn_date" id="btn_date">click</button>
+		</form>
+		<div class="stock">
+		<h5><?php if(isset($_SESSION['date_correct'])){
+					echo $_SESSION['date_correct'];
+					unset($_SESSION['date_correct']);
+				}
+				if(isset($_SESSION['date_wrong']))
+				{
+					echo $_SESSION['date_wrong'];
+					unset($_SESSION['date_wrong']);
+				}
+					
 
+				 
+				
+				?></h5>
+		</div>
+			
 		
 
 				<?php
@@ -172,7 +194,7 @@
 				}
 				if(isset($_SESSION['low_stack_details'])){
 					$result=$_SESSION['low_stack_details'];
-					unset($_SESSION['low_stack_details']);
+					// unset($_SESSION['low_stack_details']);
 					foreach($result as $re){
 						?>
 						<div class="stock">
