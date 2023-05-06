@@ -223,7 +223,7 @@ class payment_model{
 
         $stock_manager=$this->stock_manager($connection);
 
-        if($_SESSION['delivery_method']=="Reserve" && $agent!=$stock_manager){
+        if(($_SESSION['delivery_method']=="Reserve"||$_SESSION['delivery_method']=="Delivered by agent") && $agent!=$stock_manager){
             $sql="insert into payment(order_id,user_id,staff_id,amount,date,paid) values('$orderid','$agent',NULL,'$amount',NULL,'0')";
             $result=$connection->query($sql);
             if(!$result){

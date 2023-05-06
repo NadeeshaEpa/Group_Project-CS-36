@@ -93,15 +93,21 @@ if(isset($_POST['checkout'])){
     $_SESSION['cdlatitude']=$_SESSION['latitude'];
     $_SESSION['cdlongitude']=$_SESSION['longitude'];
 
-
-    $_SESSION['quantity_check']="success";
-    $result=$cart->checkout($connection,$User_id,$gasagent);
-    if($result===false){
-        $_SESSION['checkout']="failed";
+    $checkgasgaent=$cart->checkgasagent($connection,$gasagent);
+    if($checkgasgaent===false){
+        $_SESSION['gasagent']="unavailable";
         header("Location: ../../view/customer/view_cart.php");
     }else{
-        $_SESSION['checkout']=$result;
-        header("Location: ../../view/customer/view_checkout.php");
+        $_SESSION['gasagent']="available";
+        $_SESSION['quantity_check']="success";
+        $result=$cart->checkout($connection,$User_id,$gasagent);
+        if($result===false){
+            $_SESSION['checkout']="failed";
+            header("Location: ../../view/customer/view_cart.php");
+        }else{
+            $_SESSION['checkout']=$result;
+            header("Location: ../../view/customer/view_checkout.php");
+        }
     }
 }
 if(isset($_POST['dcartitem'])){

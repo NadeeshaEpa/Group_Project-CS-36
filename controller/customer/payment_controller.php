@@ -35,7 +35,7 @@ if(isset($_POST['stripeToken'])){
     if ($charge->status == 'succeeded') {
 
         $connection->begin_transaction();
-
+        
         $order=$payment->order($connection,$agent,$_SESSION['User_id'],$amount,$charge_id);
         $placeorder=$payment->placeorder($connection,$_SESSION['User_id'],$agent);
         $final_orderdetails=$payment->getorderdetails($connection,$_SESSION['User_id'],$agent);

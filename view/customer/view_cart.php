@@ -50,6 +50,15 @@
                 array_multisort($time,SORT_DESC,$data);
             }
         }
+        if(isset($_SESSION['gasagent'])){
+            if($_SESSION['gasagent']=="unavailable"){?>
+            <div class="err-msg">
+              <p>Sorry, this item is currently unavailable.</p>
+            </div>  
+            <?php 
+            unset($_SESSION['gasagent']);
+            }
+        }
 
     ?>
     <div class="cart">

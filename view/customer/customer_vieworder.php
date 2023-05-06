@@ -101,7 +101,7 @@
                                             <td style="color:blue"><b>Courier Service</b></td>
                                         <?php }else if($detail['Delivery_Status']==2){?>
                                             <td style="color:red"><b>No delivery</b></td>
-                                        <?php }else if($detail['Delivery_Status']==0){?>
+                                        <?php }else if($detail['Delivery_Status']==0 ||$detail['Delivery_Status']==5 ){?>
                                             <td style="color:#FDC801"><b>On the way</b></td>
                                         <?php }else if($detail['Delivery_Status']==1){?>
                                             <td style="color:green"><b>Delivered</b></td>     
