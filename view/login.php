@@ -83,7 +83,7 @@ if(isset($_SESSION['locked'])){
                 </form>
             </div>   
             <div class = "side">
-                <img src="../public/images/customer/login.webp"  alt="">
+                <img src="../public/images/logo.png"  alt="">
             </div>
         </div>    
     </body>

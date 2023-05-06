@@ -90,7 +90,7 @@
 	  		 <i class='bx bx-menu' ></i>
 
 			<li class="profile">
-				<?php if($_SESSION['img-status'] == 0){?>
+				<?php if(isset($_SESSION['img-status']) == 0){?>
 					<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
 				<?php }else{?>
 					<img src='../../public/images/gasargent/profile_image/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
@@ -130,36 +130,23 @@
         <br>     <br><br><br><br>   
         <div class="content">
                 <div class="gas_type">
-                    <h2>Add gas type</h2><br><br>
+                    <h2>Add gas type</h2>
                 
                     <form action="../../controller/gasagent/gastype_controller.php" method="POST">
-                        <!-- <div class="dropdown">
-                            <label for="">Gas Type&nbsp&nbsp&nbsp</label>
-                            
-                            <select name="gasType" id="gasType">
-                                <option value="">---Select Type---</option>
-                                <option value="Litro">Litro</option>
-                                <option value="Laugh">Laugh</option>
-                            </select>
-                        </div><br> -->
                         <div class="dropdown">
-                           <label for=""> Gas Weight</label>
-                            <select name="gasWeight" id="gasWeight">
+                           <label for="" class="weight"> Gas Weight</label>
+                            <select name="gasWeight" id="gasWeight" required>
                                 <option value="">Select Type</option>
                                 <option value="37.5">37.5</option>
                                 <option value="12.5">12.5</option>
                                 <option value="5">5</option>
                                 <option value="2.3">2.3</option>
                             </select>
-                        </div><br>
+                        </div>
                         <label for="quantity" >Gas Quantity</label>
-                        <input type="text" name="gasQuantity" id="gasQuantity" placeholder="Gas Quantity">
-                        <br>
-                        <!-- <label for="price" >Gas Price</label>
-                        <input type="text" name="gasPrice" id="gasPrice" placeholder="   Gas Price" >
-                        <br> -->
-                        <br>
-                        <button type="submit" name="AddgasType" >ADD</button>
+                        <input type="text" name="gasQuantity" id="gasQuantity" placeholder="Gas Quantity" required>
+                        
+                        <button type="submit" name="AddgasType" >add</button>
                     </form>
                   
                 </div>

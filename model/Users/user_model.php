@@ -24,6 +24,24 @@ class user_model{
             $this->Type=$row['Type'];
 
 
+            /*  get name*/
+
+            $sql_type="SELECT * FROM `gasagent` WHERE GasAgent_Id='$this->User_id'";
+        
+            $result_type=$connection->query($sql_type);
+            $row = $result_type->fetch_assoc();
+            
+            if($result_type==0){
+                $_SESSION['Gas_Type']=0;
+            }
+            else{
+                $_SESSION['Gas_Type']=$row['Gas_Type'];
+            }
+
+
+
+
+
             $sql="SELECT * FROM cart WHERE User_id='$this->User_id'";
             $result=$connection->query($sql);
             if($result->num_rows > 0){
