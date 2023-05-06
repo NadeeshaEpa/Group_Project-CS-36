@@ -130,8 +130,20 @@ if(!isset($_SESSION['User_id'])){
                         </div>
                         <div class="ADbtn">
                             <form action="../../controller/deliveryperson/dashboardController.php" method="post">
-                                <button class="cbtn1" id="btn1" name="btn1">Enable active</button><br>
-                                <button class="cbtn2" id="btn2" name="btn2">Disable active</button><br>
+
+								<?php if(!(isset($_SESSION['old_order_deliver_start'])) && !(isset($_SESSION['new_order_deliver_start']))){?>
+									<button class="cbtn1" id="btn1" name="btn1">Enable active</button><br>
+									<button class="cbtn2" id="btn2" name="btn2">Disable active</button><br>
+								<?php }?>
+								<?php if(isset($_SESSION['old_order_deliver_start'])){?>
+									<button type="button" class="cbtn1" id="btn3"  onclick="location.href='DeliveryPersonDeliveryRequest_oldcylinder.php'">Order details</button><br>
+									
+								<?php }?>
+								<?php if(isset($_SESSION['new_order_deliver_start'])){?>
+									<button type="button"  class="cbtn1" id="btn3"  onclick="location.href='DeliveryPersonDeliveryRequest.php'">Order details</button><br>
+									
+								<?php }?>
+
 								<button class="btn3"  id="btn3" name="payment">payment details</button>
                             </form>
                         </div>
@@ -190,12 +202,14 @@ if(!isset($_SESSION['User_id'])){
 								
 								foreach ($result as $row) {?>
 									<tr <?php if ($row['Color']=='GREEN'){echo 'class="highlight"';} ?>>
+									  
 									  <td><?= $row['customer_Name'] ?></td>
 									  <td><?= $row['Argent_Name'] ?></td>
 									  <td><?= $row['Distance_Shop_customer']," ","Km" ?></td>
 									  <td><?= "Rs."," ",$row['Delivery fee'] ?></td>
 									  <form action="../../controller/deliveryperson/deliveryPersonAddDeliveryController.php" method="POST">
 										<input name="DeliveryOrder" type="hidden" value="<?= $row['Order_id'] ?>">
+										<input name="Order_type" type="hidden" value="<?= $row['order_type'] ?>">
 										<td><button name="DeliveryReAcceptName" id="DeliveryReAcceptId">Accept</button><br></td>
 										<td><button name="DeliveryReDeclineName" id="DeliveryReDeclineId">Decline</button></td>
 									  </form>

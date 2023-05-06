@@ -79,7 +79,7 @@
             </select>
         <br>
 
-        Vehicle Number:<br><br>
+        <label for="contactnumber" id="vehicalnum-label">Vehicle Number :</label><br><br>
             <input type="text" name="vehiclenumber" id="vehiclenumber" placeholder="Vehicle Number" required><br>
             
             

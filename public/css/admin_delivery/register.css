@@ -57,3 +57,12 @@
     /* background-color: lightgreen; */
     width: 100%;
 }
+
+.registration-form select{
+    border-radius: 5px;
+    border: 1px solid #e3e3e3;
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 250px;
+    text-align: left;
+}

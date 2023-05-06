@@ -122,6 +122,7 @@ if(!isset($_SESSION['User_id'])){
 					<div class="dropdown_outter">
 						
 							<div class="dropdown">
+							    <label for="">Actors</label>
 								<select name="customerType" id="fuelType" required>
 									<option value="">---Select Type---</option>
 									<option value="Delivery_person">Delivery person</option>
@@ -130,8 +131,8 @@ if(!isset($_SESSION['User_id'])){
 							</div>
 
 							<div class="dropdown">
-								
-								<select name="dateRange" id="fuelType" required>
+							    <label for="">Days</label>
+								<select name="dateRange" id="DAYS" required>
 									<option value="">---Select Type---</option>
 									<option value="1">Today</option>
 									<option value="7">Last 7 days</option>
@@ -139,7 +140,7 @@ if(!isset($_SESSION['User_id'])){
 									<option value="100">All</option>
 								</select>
 								<br>
-								<button id="viewReportId" name="viewReport">Show</button>
+								<button id="viewReportId" name="viewReport">Submit</button>
 							</div>
 							
 						

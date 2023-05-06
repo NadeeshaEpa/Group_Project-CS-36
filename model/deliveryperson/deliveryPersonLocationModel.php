@@ -83,7 +83,7 @@ class location{
             g.longitude AS Gas_long ,g.open_time AS Gas_open_time,g.closed_time AS Gas_closed_time,
             st.open_time AS Shop_open_time,st.closed_time AS Shop_closed_time,st.latitude AS pro_lat,
             st.longitude AS pro_long,po.Quantity AS Gas_Quantity,spo.Quantity AS Shop_Quantity,
-            gc.Weight,o.Delivery_fee,g.Shop_status,st.Shop_status AS s_Shop_status,
+            gc.Weight,o.Delivery_fee,g.Shop_status,st.Shop_status AS s_Shop_status,po.cylinder_type,
             
             concat(ug.First_Name,' ',ug.Last_Name) AS gasargent_Name,
             concat(ug.Postalcode,',',ug.Street,',',ug.City) AS gasargent_Address,
@@ -175,6 +175,7 @@ class location{
                     if (isset($row['s_Shop_status'])  && !empty($row['s_Shop_status'])){
                         $shop_Status=$row['s_Shop_status'];
                     }
+                  
                     
                     $dis_between_shop_customer=location :: distance($customer_lat,$customer_long,$organiZation_lat,$organiZation_long);
                     
@@ -279,8 +280,14 @@ class location{
                         if (isset($row['gasargent_Address'])  && !empty($row['gasargent_Address'])){
                             $argent_Address=$row['gasargent_Address'];
                         }
+                        if ($row['cylinder_type']=='old' ) {
+                            $order_type=1;//old gas cylinder 
+                        }
+                        if ($row['cylinder_type']=='new'  || $row['cylinder_type']==NULL ) {
+                            $order_type=2;//new gas cylinder or product order
+                        }
                         $delivery_fee=($row['Delivery_fee'])*80/100;
-                        array_push($dataArray,['Order_id'=>$row['Order_id'],'customer_Name'=>$customer_name,'Customer_Address'=>$Customer_Address,'Argent_Name'=>$argent_name,'Argent_Address'=>$argent_Address,'Distance'=>$Total_Distance,'Distance_Shop_customer'=>$RoundedDis_between_shop_customer,'Distance_Between_Delivery_shop'=>$dis_between_shop_Delivery,'RemTimeShopToCustomer'=>$remaining_time_move_shopToCus,'RemaintinTimeTodeliveryShop'=>$remaining_time_move_DeliveryToShop,'runningTimeShopToCustomner'=>$running_time_between_shop_cus,'RunningtimeToDeliveryToshop'=>$running_time_between_shop_Delivery,'Delivery fee'=>$delivery_fee,'Color'=>$color]);
+                        array_push($dataArray,['Order_id'=>$row['Order_id'],'customer_Name'=>$customer_name,'Customer_Address'=>$Customer_Address,'Argent_Name'=>$argent_name,'Argent_Address'=>$argent_Address,'Distance'=>$Total_Distance,'Distance_Shop_customer'=>$RoundedDis_between_shop_customer,'Distance_Between_Delivery_shop'=>$dis_between_shop_Delivery,'RemTimeShopToCustomer'=>$remaining_time_move_shopToCus,'RemaintinTimeTodeliveryShop'=>$remaining_time_move_DeliveryToShop,'runningTimeShopToCustomner'=>$running_time_between_shop_cus,'RunningtimeToDeliveryToshop'=>$running_time_between_shop_Delivery,'Delivery fee'=>$delivery_fee,'Color'=>$color,'order_type'=>$order_type]);
 
 
                     }

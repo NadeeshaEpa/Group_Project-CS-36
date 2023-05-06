@@ -36,11 +36,7 @@ if(!isset($_SESSION['User_id'])){
 			<li >
 				<a href="../../controller/deliveryperson/deliveryPersonProfileFirstController.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
-					<span class="text">Profile
-						<!-- <form action="../../controller/deliveryperson/delivaryprofilecontroller.php" method="Post">
-						    <input type="hidden" name="prof_btn">
-						</form> -->
-					</span>
+					<span class="text">Profile</span>
 				</a>
 			</li>
 			<li>
@@ -151,9 +147,12 @@ if(!isset($_SESSION['User_id'])){
 										<input  type="text" value="<?php  echo 'Rs' , ' ' ,$row['Delivery fee'] ?>"><br>
 										<input name="DeliveryRequestDeliveryFee" type="hidden" value="<?php  echo $row['Delivery fee'] ?>"><br>
 										<!-- <button name="DeliveryRePendingName" id="DeliveryRePendingId">Pending</button><br> -->
+                                        <?php if(!(isset($_SESSION['enable_button']))){?>
 										<button id="DeliveryRePendingId" onclick="pinVertification(<?php echo $row['Order_id']?> ,<?php echo $row['Delivery fee']?>)">pending</button>
-										
-									
+										<?php }?>
+                                        <?php if((isset($_SESSION['enable_button']))){?>
+										<button id="DeliveryRePendingId" onclick="GaspinVertification(<?php echo $row['Order_id']?> ,<?php echo $row['Delivery fee']?>)">Finish</button>
+										<?php }?>
 								<?php }
 							} ?>
 						<!-- </form> -->
@@ -161,14 +160,26 @@ if(!isset($_SESSION['User_id'])){
 			</div>
 		</div>
 	</section>
-	<div id="backgr">
+	   <div id="backgr">
             <div id="cancel_popup">
                 <div class="cancel_contect">
-                    <p>Place enter your vertification pin Here..</p>
+                    <p>Place enter customer delivered vertification pin Here..</p>
                     <input type="textarea" name="ver_pin" id="feedback" placeholder="vertification pin">
                     <div class="buttons">
                         <button id="yes">Submit</button>
                         <button id="no">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="backgr1">
+            <div id="cancel_popup1">
+                <div class="cancel_contect1">
+                    <p>Place enter Gas argent delivered vertification pin Here..</p>
+                    <input type="textarea" name="ver_pin" id="feedback1" placeholder="vertification pin">
+                    <div class="buttons">
+                        <button id="yes1">Submit</button>
+                        <button id="no1">Cancel</button>
                     </div>
                 </div>
             </div>
@@ -178,6 +189,7 @@ if(!isset($_SESSION['User_id'])){
     <script src="../../public/js/delivaryDashboard.js"></script>
 	<!-- <script src="../../public/js/delivaryDashboard.js"></script> -->
 	<script>
+            /*customer pin vertification */
             function pinVertification(id,amount){
                 document.getElementById("backgr").style.display="block";
                 document.getElementById("cancel_popup").style.display="block";
@@ -190,7 +202,7 @@ if(!isset($_SESSION['User_id'])){
                     }else{
                         document.getElementById("backgr").style.display="none";
                         document.getElementById("cancel_popup").style.display="none";
-                        window.location.href="../../controller/deliveryperson/deliveryPersonAddDeliveryController.php?enter_pin='1'&pin="+pin + "&id="+id + "&amount="+amount;   
+                        window.location.href="../../controller/deliveryperson/deliveryPersonAddDeliveryController.php?Cus_enter_pin='1'&pin="+pin + "&id="+id + "&amount="+amount;   
                     }
             
                 });
@@ -198,6 +210,29 @@ if(!isset($_SESSION['User_id'])){
                     document.getElementById("backgr").style.display="none";
                 });
             }
+            /* */
+             /*Gas agent pin vertification */
+            function GaspinVertification(id,amount){
+                document.getElementById("backgr1").style.display="block";
+                document.getElementById("cancel_popup1").style.display="block";
+                
+                submitbtn=document.getElementById("yes1");
+                submitbtn.addEventListener("click",function(){
+                    pin=document.getElementById("feedback1").value;
+                    if(pin==""){
+                        return;
+                    }else{
+                        document.getElementById("backgr1").style.display="none";
+                        document.getElementById("cancel_popup1").style.display="none";
+                        window.location.href="../../controller/deliveryperson/deliveryPersonAddDeliveryController.php?Gas_enter_pin='1'&pin="+pin + "&id="+id + "&amount="+amount;   
+                    }
+            
+                });
+                document.getElementById("no1").addEventListener("click",function(){
+                    document.getElementById("backgr1").style.display="none";
+                });
+            }
+            /* */
     </script>
 	
 </body>
