@@ -130,8 +130,20 @@ if(!isset($_SESSION['User_id'])){
                         </div>
                         <div class="ADbtn">
                             <form action="../../controller/deliveryperson/dashboardController.php" method="post">
-                                <button class="cbtn1" id="btn1" name="btn1">Enable active</button><br>
-                                <button class="cbtn2" id="btn2" name="btn2">Disable active</button><br>
+
+								<?php if(!(isset($_SESSION['old_order_deliver_start'])) && !(isset($_SESSION['new_order_deliver_start']))){?>
+									<button class="cbtn1" id="btn1" name="btn1">Enable active</button><br>
+									<button class="cbtn2" id="btn2" name="btn2">Disable active</button><br>
+								<?php }?>
+								<?php if(isset($_SESSION['old_order_deliver_start'])){?>
+									<button type="button" class="cbtn1" id="btn3"  onclick="location.href='DeliveryPersonDeliveryRequest_oldcylinder.php'">Order details</button><br>
+									
+								<?php }?>
+								<?php if(isset($_SESSION['new_order_deliver_start'])){?>
+									<button type="button"  class="cbtn1" id="btn3"  onclick="location.href='DeliveryPersonDeliveryRequest.php'">Order details</button><br>
+									
+								<?php }?>
+
 								<button class="btn3"  id="btn3" name="payment">payment details</button>
                             </form>
                         </div>

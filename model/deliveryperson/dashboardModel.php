@@ -71,7 +71,7 @@ class Dashboard{
                 $result2=$connection->query($sql2);
 
                 if($result2){
-                    $_SESSION['picked']='Gas agent picked vertify';
+                    // $_SESSION['picked']='Gas agent picked vertify';
                     return true;
                 }
                 else{

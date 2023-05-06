@@ -58,6 +58,7 @@ if(isset($_POST['DeliveryReAcceptName']) && ($_POST['Order_type'])==2){
 
     if($result==true && $result1){
         $_SESSION['OrderDetailsOfRequest']=$result;
+        $_SESSION['new_order_deliver_start']='start';
         header("Location: ../../view/deliveryperson/DeliveryPersonDeliveryRequest.php");
         $connection->close();
         exit();
@@ -88,6 +89,7 @@ if(isset($_POST['DeliveryReAcceptName']) && ($_POST['Order_type'])==1){
 
     if($result==true && $result1){
         $_SESSION['OrderDetailsOfRequest']=$result;
+        $_SESSION['old_order_deliver_start']='start';
         header("Location: ../../view/deliveryperson/DeliveryPersonDeliveryRequest_oldcylinder.php");
         $connection->close();
         exit();
@@ -152,7 +154,8 @@ if(isset($_GET['enter_pin'])){
     
    
     if($result2==true && $result==true && $result1){
-       
+        unset( $_SESSION['new_order_deliver_start']);
+        unset($_SESSION['old_order_deliver_start']);
         header("Location: ../../controller/deliveryperson/deliveryDashboardFirstController.php");
         $connection->close();
         exit();
@@ -214,6 +217,8 @@ if(isset($_GET['Gas_enter_pin'])){
    
     if($result2==true && $result==true && $result1){
         unset($_SESSION['enable_button']);
+        unset($_SESSION['old_order_deliver_start']);
+        unset( $_SESSION['new_order_deliver_start']);
         header("Location: ../../controller/deliveryperson/deliveryDashboardFirstController.php");
         $connection->close();
         exit();
