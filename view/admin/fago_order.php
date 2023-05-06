@@ -152,23 +152,26 @@ require_once("../../config.php");?>
                  <td>'.$date.'</td>
                  <td>'.$fname." ". $lname.'</td>
                  <td>'.$amount.'</td>';
-                 if($status==1){
+				 if($status==1){
 					echo'<td style="color:green;"><b>Delivered</b></td>';
 				}
 				else if($status==0){
 					echo'<td style="color:purple;"><b>On the way</b></td>';
 				}
 				else if($status==NULL){
-					echo'<td style="color:red;"><b>Not assigned</b></td>';
+					echo'<td style="color:#BC243C;"><b>Not assigned</b></td>';
 				}
 				else if($status==3){
-					echo'<td style="color:orange;"><b>Courier service</b></td>';
+					echo'<td style="color:#ff6f61;"><b>Courier service</b></td>';
 				}
 				else if($status==4){
-					echo'<td style="color:blue;"><b>Picked</b></td>';
+					echo'<td style="color:#34568B;"><b>Picked</b></td>';
+				}
+				else if($status==5){
+					echo'<td style="color:#55B4B0;"><b>Emergency Delivery</b></td>';
 				}
 				else{
-					echo'<td><b>No delivery</b></td>';
+					echo'<td  style="color:#eb7c7a;"><b>No delivery</b></td>';
 				}
             echo'
                  <td>
