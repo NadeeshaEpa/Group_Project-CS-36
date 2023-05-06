@@ -7,8 +7,7 @@ class Complain{
         $sql="SELECT Complain_id,date,Description,order_id,status,message FROM `complains` WHERE user_id=$this->User_id order BY date DESC";
        
         $result=mysqli_query($connection,$sql);
-        // var_dump($sql);
-        // die();
+        
         if($result->num_rows===0){
             return false;
             $_SESSION['ComplainError']="No Reviews Added";

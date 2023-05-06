@@ -148,6 +148,8 @@ body {
 	color: var(--dark);
 	white-space: nowrap;
 	overflow-x: hidden;
+	transition: 0.5s;
+
 }
 #sidebar .side-menu.top li.active a {
 	color: var(black);
@@ -161,6 +163,7 @@ body {
 }
 #sidebar .side-menu.top li a:hover {
 	color: #205d9a;
+	transform: scale(1.2);
 }
 #sidebar .side-menu li a .bx {
 	min-width: calc(60px  - ((4px + 6px) * 2));
@@ -416,6 +419,7 @@ body {
 	margin-top: 24px;
 	width: 100%;
 	color: var(--dark);
+	
 }
 #content main .table-data > div {
 	border-radius: 20px;
@@ -445,6 +449,7 @@ body {
 #content main .table-data .order table {
 	width: 100%;
 	border-collapse: collapse;
+	transition: 0.6s
 }
 #content main .table-data .order table th {
 	padding-bottom: 65px;
@@ -454,22 +459,39 @@ body {
 }
 #content main .table-data .order table td {
 	padding: 16px 0;
+	/* transition: 0.6s; */
+
 }
+
+/* #content main .table-data .order table td:hover{
+	transform: scale(1.05);
+	background-color: red;
+
+} */
 #content main .table-data .order table tr td:first-child {
 	display: flex;
 	align-items: center;
 	grid-gap: 12px;
 	padding-left: 6px;
 	color: #10338e;
+	/* transition: 0.6s */
 }
+
+/* #content main .table-data .order table tr td:first-child:hover {
+	transform: scale(1.5);
+} */
 #content main .table-data .order table td img {
 	width: 36px;
 	height: 36px;
 	border-radius: 50%;
 	object-fit: cover;
 }
+#content main .table-data .order table tbody tr{
+	transition: 0.7s;
+}
 #content main .table-data .order table tbody tr:hover {
 	background: var(--grey);
+	transform: scale(1.025);
 }
 #content main .table-data .order table tr td .status {
 	font-size: 10px;
@@ -596,7 +618,11 @@ body {
     content: "\edc2";
     font-size: 45px;
 }
-
+input[type="search" i] {
+    appearance: auto;
+    box-sizing: border-box;
+    padding: 1px 2px;
+}
 
 
 
@@ -608,10 +634,12 @@ body {
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
-	font-size: 12px;
+	font-size: 16px;
 	margin: 4px 2px;
 	border-radius: 8px;
-	border: 2px solid #44925e;
+	border: none;
+	transition: 0.6s;
+
   }
   .btnnew{
 	background-color:#44925e;
@@ -625,23 +653,65 @@ body {
 	margin: 4px 2px;
 	border-radius: 8px;
 	border: 2px solid #44925e;
+	transition: 0.6s;
+
   }
 
   .btn2 {
 	background-color: #44925e;
 	color: white;
+	border: none;
     padding: 9px 8px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
-	font-size: 12px;
+	font-size: 16px;
 	margin: 4px 2px;
 	border-radius: 8px;
-	border: 2px solid #44925e;
+	border: none;
+	transition: 0.6s;
+
   }
 
+  .btn3 {
+	background-color: hsl(0deg 100% 50%);
+	color: rgb(255, 255, 255);
+	padding: 9px 8px;
+	border:none;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	border-radius: 8px;
+	transition: 0.6s;
+
+	margin-left: 135px;
+  }
+  .btn4 {
+	background-color: hsl(0deg 100% 50%);
+	color:white;
+	border: none;
+    padding: 9px 8px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	border-radius: 8px;
+	transition: 0.6s;
+
+	
+	
+  }
+.btn_r{
+	margin-left: 700px;
+
+	display: flex;
+}
+
   .btn1:hover {
-	background-color: rgb(3, 14, 29);
+	background-color: rgb(66, 14, 6);
   }
 
 
@@ -649,6 +719,15 @@ body {
 	background-color: rgb(66, 14, 6);
   }
 
+
+  .btn3:hover {
+	background-color: rgb(3, 14, 29);
+  }
+
+
+  .btn4:hover {
+	background-color: rgb(66, 14, 6);
+  }
 
 
   /* popup modal */
@@ -715,7 +794,7 @@ display: flex;
 	color: white;
 } */
  #btnU{
-	background-color: rgb(0, 55, 255);
+	background-color:#03d201;
 	margin-inline: 10px;
     padding: 8px 12px;
     border: none;
@@ -751,7 +830,31 @@ display: flex;
 	text-align: center;
 	font-size: 30px;
 	color: #4adb6d;
-	font-family: fantasy;
+	/* font-family: fantasy; */
+}
+/* Define the animation keyframes */
+@keyframes blink {
+	70% {
+	  opacity: 1;
+	}
+	50% {
+	  opacity: 0;
+	}
+	10% {
+	  opacity: 1;
+	}
+  }
+  
+  /* Apply the animation to the text */
+  .stock {
+	animation: blink 3s ease-in-out infinite;
+  }
+  
+.stock2{
+	text-align: center;
+	font-size: 30px;
+	color: #ff0000;
+    font-family: monospace;
 }
 
 
@@ -829,11 +932,13 @@ display: flex;
   }
   
   #vertify_pin{
-	width: 60px;
-	height: 8%;
-	border-radius: 15px;
-	background-color: navy;
-	color: white;
+	width: 63px;
+    height: 34px;
+    border-radius: 8px;
+    background-color: rgb(0, 55, 255);
+    color: white;
+    border: none;
+    font-family: unset;
   }
   
   .pickedmsg h1{
@@ -849,9 +954,9 @@ display: flex;
   /**/
 .shop_status{
 	text-align: center;
-	font-size: 30px;
-	color: white;
-	font-family: fantasy;
+    font-size: 30px;
+    color: #ff0000;
+    
 }
 
 
@@ -860,6 +965,9 @@ display: flex;
 #ad{
 	/* border: solid red; */
 	color: #bcbcbc;
+	padding: 30px;
+	font-size: 25px;
+	margin-left: -37px;
 }
 
 #btn_date{
@@ -870,4 +978,57 @@ display: flex;
     border: none;
     border-radius: 5px;
     color: white;
+	transition: 0.5s;
+}
+
+
+#btn_data:hover{
+	background-color: rgb(66, 14, 6);
+
+}
+.arr_date input{
+	color: #1c2d4d;
+	font-size: 18px;
+	border-radius: 10px;
+	font-family: inherit;}
+
+
+
+	/*search bar	*/
+
+.id {
+	font-family: unset;
+    background-color: #101c33;
+    color: #010000;
+    width: 228px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+	text-align: center;
+	}
+	
+
+#search.bx bx-search{
+	background-color: red;
+}
+
+.d_order_id {
+	font-family: unset;
+    background-color: #101c33;
+    color: #ffffff;
+    width: 228px;
+    height: 38px;
+    border-radius: 10px;
+    border: none;
+	text-align: center;
+
+}
+.search-btn {
+	font-size:larger;
+}
+
+
+.bx-search:before {
+    content: "\ee5a";
+    font-size: x-large;
 }

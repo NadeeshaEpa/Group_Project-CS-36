@@ -92,7 +92,7 @@
 		<i class='bx bx-menu' ></i>
 
 		<li class="profile">
-			<?php if($_SESSION['img-status'] == 0){?>
+			<?php if(isset($_SESSION['img-status']) == 0){?>
 				<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
 			<?php }else{?>
 				<img src='../../public/images/gasargent/profile_image/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
@@ -140,7 +140,25 @@
             unset($_SESSION['pin_wrong']);} ?></h2>
         </div>
 
+
+		<div class="btn_r">
+				<form action="../../controller/gasagent/gasagentDashboardController.php" method="POST">
+					<button class="btn3" id="btn3" name="deliverbtn">Delivered Orders</button>
+					<button class="btn4" id="btn4" name="pickedbtn">Picked Orders</button>
+				</form>
+			</div>
+
+				   <div class="search">
+						<form action="../../controller/gasagent/gasagentDashboardController.php" method="POST">
+						
+							<input type="search" name="order_id" class="id" placeholder="Search by order ID ">
+							<button type="submit" name="search_order" class="search-btn"><i class='bx bx-search' ></i></button>
+						
+						</form>
+					</div>
+
     <div class="table-data">
+		
 
 			<div class="table-data">
 				<div class="order">
@@ -201,7 +219,7 @@
 											  <?php }else if($row['Delivery_Status']==4){ ?>
 												<!-- change the color of text to green -->
 												<td style="color: purple;"><?php echo "Picked"; ?></td>
-											  <?php } if($row['Delivery_Status']==NULL){?>
+											  <?php } if($row['Delivery_Status']==2){?>
 												 <td><button id="vertify_pin" onclick="pinVertification(<?php echo $row['Order_id'] ?>)">pin</button></td> 
 											  <?php }else{?>
 												<!-- <td style="color: blue;">Disable</td> -->

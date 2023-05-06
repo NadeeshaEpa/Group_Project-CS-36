@@ -10,7 +10,7 @@
 	<!-- My CSS -->
 	<link rel="stylesheet" href="../../public/css/gasagent/gasagentDashboard.css">
     <link rel="stylesheet" href="../../public/css/gasagent/order.css">
-	<link rel="stylesheet" href="../../public/css/gasagent/background2.css">
+	<!-- <link rel="stylesheet" href="../../public/css/gasagent/background2.css"> -->
 
 	<title>FaGo</title>
 </head>
@@ -94,7 +94,7 @@
 		<i class='bx bx-menu' ></i>
 
 <li class="profile">
-	<?php if($_SESSION['img-status'] == 0){?>
+	<?php if(isset($_SESSION['img-status']) == 0){?>
 		<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
 	<?php }else{?>
 		<img src='../../public/images/gasargent/profile_image/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
@@ -115,10 +115,10 @@
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Dashboard</h1>
+					<h1>view order details</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="#">Dashboard</a>
+							<a href="#">delivary person/customer</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<!-- <li>
@@ -162,8 +162,9 @@
 					<div class="dropdown_outter">
 						
 							<div class="dropdown">
+								<label>Actor</label>
 								<select name="customerType" id="fuelType" required>
-									<option value="">---Select Type---</option>
+									<option value="">-Select Type-</option>
 									<option value="Delivery_person">Delivery person</option>
 									<option value="Customer">Customer</option>
 								</select>
@@ -172,16 +173,18 @@
 							<div class="dropdown">
 							<div class="img"></div>
 								
+								<label>Days</label>
 								<select name="dateRange" id="fuelType" required>
-									<option value="">---Select Type---</option>
+									<option value="">-Select Type-</option>
 									<option value="1">Today</option>
 									<option value="7">Last 7 days</option>
 									<option value="30">Last 30 days</option>
 									<option value="100">All</option>
 								</select>
-								<br>
-								<button id="viewReportId" name="viewReport">Show</button>
+								
 							</div>
+							<button id="viewReportId" name="viewReport">submit</button>
+
 							
 						
 					</div>
