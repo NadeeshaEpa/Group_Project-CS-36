@@ -106,6 +106,6 @@
             </div>
         </div> 
     </div>
-    <!-- <script src="../../public/js/Customer_Validation.js"></script> -->
+    <script src="../../public/js/Customer_Validation.js"></script>
 </body>
 </html>

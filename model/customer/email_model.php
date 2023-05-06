@@ -31,7 +31,7 @@ class email_model{
         $message.="<br><b>Delivery Method: </b>".$orders[0]['delivery_method'];
         $message.="<br><b>Delivery Fee:LKR </b>".$orders[0]['delivery_fee'];
         $message.="<table border='1'>";
-        $message.="<tr><th>Product Name</th><th>Quantity</th><th>Price</th></tr>";
+        $message.="<tr><th>Product Name</th><th>Quantity</th><th>Price(LKR)</th></tr>";
         foreach($orders as $order){
             $message.="<tr><td>".$order['itemname']."</td><td>".$order['quantity']."</td><td>".$order['price']."</td></tr>";
         }
@@ -51,12 +51,13 @@ class email_model{
         $subject="Order Details - Agent";
         $message="Your shop has received an order. The order details are as follows: <br>";
         $message.="<br><b>Order ID: </b>".$orders[0]['orderid'];
+        $message.="<br><b>Pincode: </b>".$orders[0]['GasAgent_pin'];
         $message.="<br><b>Order Date: </b>".$orders[0]['orderdate'];
         $message.="<br><b>Order Total:LKR </b>".$orders[0]['total'];
         $message.="<br><b>Delivery Method: </b>".$orders[0]['delivery_method'];
         $message.="<br><b>Delivery Fee:LKR </b>".$orders[0]['delivery_fee'];
         $message.="<table border='1'>";
-        $message.="<tr><th>Product Name</th><th>Quantity</th><th>Price</th></tr>";
+        $message.="<tr><th>Product Name</th><th>Quantity</th><th>Price(LKR)</th></tr>";
         foreach($orders as $order){
             $message.="<tr><td>".$order['itemname']."</td><td>".$order['quantity']."</td><td>".$order['price']."</td></tr>";
         }

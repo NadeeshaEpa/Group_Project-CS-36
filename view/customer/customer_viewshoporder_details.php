@@ -72,6 +72,7 @@
                 $total_amount=$order_data[0]['Amount'];
                 $delivery_person=$order_data[0]['Delivery_person'];
                 $delivery_fee=$order_data[0]['Delivery_fee'];
+                $pin=$order_data[0]['Reserve_pin'];
 
                 //array_push($order_items,['GasAgent_Name'=>$gasagent_name,'Cylinder_Type'=>$cylinder_type,'Order_Type'=>$order_type,'Quantity'=>$quantity,'Price'=>$price,'Cylinder_details'=>$cylinder_details]);
                 $sm_name=$order_items[0]['StockManager_Name'];
@@ -91,6 +92,9 @@
                         <td>Order ID</td>
                         <td><?php echo $order_id;?></td>
                     </tr>
+                    <tr>
+                        <td>Pin Number</td>
+                        <td><?php echo $pin;?></td>
                     <tr>
                         <td>Order Date</td>
                         <td><?php echo $order_date;?></td>

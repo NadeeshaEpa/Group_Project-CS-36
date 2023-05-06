@@ -52,6 +52,9 @@ body{
     border: none;
     border-radius: 20px;
 }
+.feedback h1{
+    margin-left: 4%;
+}
 .feedbacks{
     width: 100%;
     height: 100%;
