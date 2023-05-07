@@ -8,9 +8,7 @@ if(isset($_POST['register'])){        //check whether the register button is cli
     $firstname = $_POST['firstname'];   //assign the user entered details to variables
     $lastname = $_POST['lastname'];
     $username = $_POST['username'];
-    $street = $_POST['street'];
-    $city = $_POST['city'];
-    $postalcode = $_POST['postalcode'];
+    $address = $_POST['address'];
     $password = $_POST['password'];
     $cpassword = $_POST['cpassword'];
     $email = $_POST['email'];
@@ -23,9 +21,7 @@ if(isset($_POST['register'])){        //check whether the register button is cli
     $firstname=$connection->real_escape_string($firstname);
     $lastname=$connection->real_escape_string($lastname);
     $username=$connection->real_escape_string($username);
-    $street=$connection->real_escape_string($street);
-    $city=$connection->real_escape_string($city);
-    $postalcode=$connection->real_escape_string($postalcode);
+    $address=$connection->real_escape_string($address);
     $password=md5($connection->real_escape_string($password));
     $email=$connection->real_escape_string($email);
     $contactnumber=$connection->real_escape_string($contactnumber);
@@ -36,7 +32,7 @@ if(isset($_POST['register'])){        //check whether the register button is cli
     //create a new customer object
     $user=new customer_model();
     //set the details of the customer
-    $user->setDetails($firstname,$lastname,$username,$street,$city,$postalcode,$password,$email,$contactnumber,$billnum,$latitude,$longitude);
+    $user->setDetails($firstname,$lastname,$username,$address,$password,$email,$contactnumber,$billnum,$latitude,$longitude);
 
     //insert data into database
     $result=$user->registerCustomer($connection);

@@ -231,8 +231,20 @@ require_once("../../config.php");?>
 				else if($result[0]['Delivery_Status']==0){
 					echo("On the way");
 				}
-				else{
+				else if($result[0]['Delivery_Status']==2){
 					echo("No delivery");
+				}
+				else if($result[0]['Delivery_Status']==3){
+					echo("Courier service");
+				}
+				else if($result[0]['Delivery_Status']==4){
+					echo("Picked");
+				}
+				else if($result[0]['Delivery_Status']==5){
+					echo("Emergency Delivery");
+				}
+				else{
+					echo("Not assigned");
 				}
 				 ?> readonly><br> 
 		    </div>

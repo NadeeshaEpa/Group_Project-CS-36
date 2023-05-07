@@ -41,7 +41,16 @@
                 <div class="details-left">
                     <b >Contact No:</b><?php echo $contactno?><br><br>
                     <b >Last Updated:</b><?php echo $lastupdateddate?> <?php echo $lastupdatedtime?><br>
-                    <b >Next Arrival Date:</b><?php echo $NextArrival_Date?><br>
+                    <?php
+                    //set time zone to Sri Lanka and get the current date
+                    date_default_timezone_set("Asia/Colombo");
+                    $currentdate=date("Y-m-d");
+                    if($currentdate>$NextArrival_Date){?>
+                        <b >Next Arrival Date:</b><?php echo 'Not published'?><br>
+                    <?php }else{?>
+                        <b >Next Arrival Date:</b><?php echo $NextArrival_Date?><br>
+                    <?php }
+                    ?>
                 </div>
                 <div class="details-right">
                     <!-- pass the button value as a post variable -->

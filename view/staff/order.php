@@ -132,6 +132,7 @@ require_once("../../config.php");?>
 
 		<!-- MAIN -->
 		<main>
+			
 
 		<a href="../../controller/staff/order_controller.php?id=vieworder"><button style="background-color: #05be17;color:white;">Gas Orders</button></a>
             <a href="../../controller/staff/order_controller.php?fid=viewfagoorder"><button style="background-color:transparent;color:black;">Fago Shop Orders</button></a>
@@ -161,6 +162,7 @@ require_once("../../config.php");?>
 
     <?php
     $result=$_SESSION['orderdetails'];
+
     if($result){
         foreach($result as $row){
             $order_id=$row['Order_id'];
@@ -175,30 +177,34 @@ require_once("../../config.php");?>
                  <td>'.$date.'</td>
                  <td>'.$fname." ". $lname.'</td>
                  <td>'.$amount.'</td>' ;
-				
+				 
 				if($status==1){
 					echo'<td style="color:green;"><b>Delivered</b></td>';
 				}
 				else if($status==0){
 					echo'<td style="color:purple;"><b>On the way</b></td>';
 				}
-				else if($status==NULL){
-					echo'<td style="color:red;"><b>Not assigned</b></td>';
+				else if($status==2){
+					echo'<td  style="color:#eb7c7a;"><b>No delivery</b></td>';
 				}
 				else if($status==3){
-					echo'<td style="color:orange;"><b>Courier service</b></td>';
+					echo'<td style="color:#ff6f61;"><b>Courier service</b></td>';
 				}
 				else if($status==4){
-					echo'<td style="color:blue;"><b>Picked</b></td>';
+					echo'<td style="color:#34568B;"><b>Picked</b></td>';
+				}
+				else if($status==5){
+					echo'<td style="color:#55B4B0;"><b>Emergency Delivery</b></td>';
 				}
 				else{
-					echo'<td><b>No delivery</b></td>';
+					echo'<td style="color:#BC243C;"><b>Not assigned</b></td>';
 				}
                 //  <td>'.$status.'</td>
 				 
            echo'
                  <td>
-				 <a href="../../controller/staff/order_controller.php?vid='.$order_id.'"><button class="button1" style="width:50%;">View</button></a>
+				 <a href="../../controller/staff/order_controller.php?vid='.$order_id.'"><button class="button1" style="width:30%;">View</button></a>
+				 <a href="../../controller/staff/order_controller.php?uid='.$order_id.'"><button class="button2" style="width:30%;">Update</button></a>
                  </td>
             </tr>' ;
             

@@ -81,7 +81,7 @@
                     <td><?php echo $complain['order_id']; ?></td>
                     <td><?php echo $complain['complain']; ?></td>
                     <td><?php echo $complain['date']; ?></td>
-                    <?php if($complain['status']==0){ ?>
+                    <?php if($complain['status']==0 ||$complain['status']==1){ ?>
                         <!-- change the color of text to red -->
                         <td style="color: red;"><?php echo "Unchecked"; ?></td>
                     <?php }else if($complain['status']==2){ ?>

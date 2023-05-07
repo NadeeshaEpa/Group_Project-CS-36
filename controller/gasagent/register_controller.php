@@ -8,9 +8,7 @@ if(isset($_POST['register'])){
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
     $username = $_POST['username'];
-    $street = $_POST['street'];
-    $city = $_POST['city'];
-    $postalcode = $_POST['postalcode'];
+    $address=$_POST['address'];
     $password = $_POST['password'];
     $shopnumber = $_POST['shopnumber'];
     $business_reg_num = $_POST['business_reg_num'];
@@ -28,9 +26,7 @@ if(isset($_POST['register'])){
     $firstname=$connection->real_escape_string($firstname);
     $lastname=$connection->real_escape_string($lastname);
     $username=$connection->real_escape_string($username);
-    $street=$connection->real_escape_string($street);
-    $city=$connection->real_escape_string($city);
-    $postalcode=$connection->real_escape_string($postalcode);
+    $address=$connection->real_escape_string($address);
     $password=md5($connection->real_escape_string($password));
     $email=$connection->real_escape_string($email);
     $contactnumber=$connection->real_escape_string($contactnumber);
@@ -42,6 +38,12 @@ if(isset($_POST['register'])){
     $gastype=$connection->real_escape_string($gastype);
     $latitude=$connection->real_escape_string($latitude);
     $longitude=$connection->real_escape_string($longitude);
+
+    //divide address into street,city and postal code
+    $address = explode(",",$address);
+    $street = $address[0];
+    $city = $address[1];
+    $postalcode = $address[2];
 
     $user=new gasagent_model();
     $user->setDetails($firstname,$lastname,$username,$street,$city,$postalcode,$password,$email,$contactnumber,$business_reg_num,$shopnumber,$nic,$accountnum,$shopename,$gastype,$latitude,$longitude,$opentime,$closetime);

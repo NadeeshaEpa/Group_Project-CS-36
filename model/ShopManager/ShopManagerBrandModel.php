@@ -68,7 +68,7 @@ class brand{
 
     //get Avelabel product code
     public function getProductItemCodeDetails($connection){
-        $sql="SELECT Item_code FROM product order BY Date ASC";
+        $sql="SELECT Item_code,Name FROM product order BY Item_code ASC";
         
         $result=mysqli_query($connection,$sql);
         if($result->num_rows===0){
@@ -77,7 +77,7 @@ class brand{
         }else{
             $answer=array();
             while($row=$result->fetch_assoc()){
-                array_push($answer,['Item_code'=>$row['Item_code']]);
+                array_push($answer,['Item_code'=>$row['Item_code'],'Name'=>$row['Name']]);
             }
         }
         return $answer;

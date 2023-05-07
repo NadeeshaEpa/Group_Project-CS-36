@@ -73,11 +73,6 @@
                 </div>  
             <div>  
             
-            <label for=":">Address:</label><br>
-            <input type="text" name="street" id="street" placeholder="Street" required><br>  
-            <input type="text" name="city" id="city" placeholder="City" required>    
-            <input type="text" name="postalcode" id="postalcode" placeholder="Postalcode" required><br>
-
             <label id="email-label" for="email">Email:</label><br>
             <input type="email" name="email" id="email" placeholder="Email" value=<?php echo $_SESSION['v_email'] ?> class="box" readonly><br>         
             
@@ -100,7 +95,7 @@
                     <option value="">---Select Type---</option>
                     <option value="1">Litro</option>
                     <option value="2">Laugh</option>
-                    
+                    <option value="3">New gas</option>
                 </select>
             </div><br><br>
             <label for=":">Business Registration Number:</label><br>

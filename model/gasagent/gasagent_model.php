@@ -21,6 +21,7 @@ class gasagent_model{
     private $longitude;
     private $opentime;
     private $closetime;
+    private $Shop_status;
 
     public function setDetails($firstname='',$lastname='',$username='',$street='',$city='',$postalcode='',$password='',$email='', $contactnumber='',$business_reg_num='',$shopnumber='',$nic='',$accountnum='',$shopname='',$gastype='', $latitude='', $longitude='', $opentime='', $closetime=''){
         $this->Firstname=$firstname;
@@ -43,6 +44,7 @@ class gasagent_model{
         $this->opentime=$opentime;
         $this->closetime=$closetime;
         $this->Type="Gas_Agent";
+        $this->Shop_status=1;
     }
 
     private function CreateUserEntry($connection){
@@ -88,8 +90,8 @@ class gasagent_model{
     }
 
     public function setgasagent($connection){
-        $sql="INSERT INTO gasagent(GasAgent_Id,NIC,Account_No,NextArrival_Date,BusinessReg_No,latitude,longitude,Staff_Id,Registration_date,Status,LastUpdatedTime,LastUpdatedDate,Shop_name,Gas_Type,open_time,closed_time) VALUES 
-        ('$this->User_id','$this->nic','$this->accountno',NULL,'$this->business_reg_num','$this->latitude','$this->longitude',NULL,NULL,'0',NULL,NULL,'$this->Shopname','$this->gastype','$this->opentime','$this->closetime')";
+        $sql="INSERT INTO gasagent(GasAgent_Id,NIC,Account_No,NextArrival_Date,BusinessReg_No,latitude,longitude,Staff_Id,Registration_date,Status,LastUpdatedTime,LastUpdatedDate,Shop_name,Gas_Type,open_time,closed_time,Shop_status) VALUES 
+        ('$this->User_id','$this->nic','$this->accountno',NULL,'$this->business_reg_num','$this->latitude','$this->longitude',NULL,NULL,'0',NULL,NULL,'$this->Shopname','$this->gastype','$this->opentime','$this->closetime','$this->Shop_status')";
         if($connection->query($sql)){
             $_SESSION['registerMsg']="User Registered Successfully";
             return true;

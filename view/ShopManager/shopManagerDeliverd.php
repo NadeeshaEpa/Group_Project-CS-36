@@ -143,7 +143,7 @@ if(!isset($_SESSION['User_id'])){
                                     <tr>
 										<th>Order Id</th>
 									    <th>Customer Name</th>
-                                        <th>Customer Address</th>
+                                        <!-- <th>Customer Address</th> -->
 										<th>Customer Contact No</th>
 										<th>Quantity</th>
                                         <th>Category</th>
@@ -160,7 +160,7 @@ if(!isset($_SESSION['User_id'])){
                                             echo "<tr>";
 											echo "<td>" . $row['Order_id'] . "</td>";
                                             echo "<td>" . $row['cus_Name'] . "</td>";
-                                            echo "<td>" . $row['Address'] . "</td>";
+                                            // echo "<td>" . $row['Address'] . "</td>";
 											echo "<td>" . $row['Contact_No'] ."</td>";
 											echo "<td>" . $row['Quantity'] . "</td>";
                                             echo "<td>" . $row['Category'] . "</td>";

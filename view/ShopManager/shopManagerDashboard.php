@@ -191,9 +191,9 @@ if(!isset($_SESSION['User_id'])){
 									    <th>Customer Name</th>
                                         <!-- <th>Customer Address</th> -->
 
-										<th>Customer Contact No</th>
+										<th>Contact No</th>
 										<th>Quantity</th>
-                                        <th>Category</th>
+                                        <!-- <th>Category</th> -->
 										<th>Name</th>
 										<th>Order date</th>
                                         <th>Delivery Method</th>
@@ -212,7 +212,7 @@ if(!isset($_SESSION['User_id'])){
 
 											echo "<td>" . $row['Contact_No'] ."</td>";
 											echo "<td>" . $row['Quantity'] . "</td>";
-                                            echo "<td>" . $row['Category'] . "</td>";
+                                            // echo "<td>" . $row['Category'] . "</td>";
 											echo "<td>" . $row['Name'] . "</td>";
 											echo "<td>" . $row['Order_date'] . "</td>";
 											echo "<td>" . $row['Delivery_Method'] . "</td>";
