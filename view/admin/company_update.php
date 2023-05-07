@@ -11,6 +11,7 @@ require_once("../../config.php");?>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="../../public/css/admin_delivery/Dashboard.css">
 	<link rel="stylesheet" href="../../public/css/admin_delivery/profile.css">
+	<link rel="stylesheet" href="../../public/css/admin_delivery/register.css">
 
 	<title>FaGo</title>
 </head>
@@ -129,6 +130,15 @@ require_once("../../config.php");?>
                  }
                 ?>
     <form action="../../controller/admin/company_controller.php" method="POST" id="staff_form"  enctype="multipart/form-data">
+
+	<div class="err-msg">
+                <?php
+                    if(isset($_SESSION['addcompany-error'])){
+                        echo $_SESSION['addcompany-error'];
+                        unset($_SESSION['addcompany-error']);
+                    }?>
+        </div>
+
         <h2>Edit Gas Company Information</h2><br><br>
     <div class="details"> 
 
