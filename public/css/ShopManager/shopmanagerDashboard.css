@@ -41,7 +41,7 @@ body.dark {
 }
 
 body {
-	background: var(--grey);
+	background-color:  #1c2d4d;
 	overflow-x: hidden;
 }
 
@@ -328,7 +328,7 @@ body {
 	font-family: var(--poppins);
 	max-height: calc(100vh - 56px);
 	overflow-y: auto;
-	background-color: #11102f;
+	/* background-color: #11102f; */
 }
 #content main .head-title {
 	display: flex;
@@ -1684,6 +1684,31 @@ margin-left: 80px;
 /**/
 
 /*picked and delivered search bars css*/
+
+#search.bx bx-search{
+	background-color: red;
+}
+
+.d_order_id {
+	font-family: unset;
+    background-color: #101c33;
+    color: #ffffff;
+    width: 228px;
+    height: 38px;
+    border-radius: 10px;
+    border: none;
+	text-align: center;
+
+}
+.search-btn {
+	font-size:larger;
+}
+
+
+.bx-search:before {
+    content: "\ee5a";
+    font-size: x-large;
+}
 
 /**/
 
