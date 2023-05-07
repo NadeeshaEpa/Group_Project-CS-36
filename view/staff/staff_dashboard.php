@@ -132,9 +132,9 @@
 		<?php 
                    if(isset($_SESSION['dashboard'])){
                       $result=$_SESSION['dashboard']; 
-					  
-                   
-                   }
+                   }else{
+						$result=[];
+				   }
                 ?>
 			<div class="head-title">
 				<div class="left">

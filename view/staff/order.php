@@ -162,6 +162,7 @@ require_once("../../config.php");?>
 
     <?php
     $result=$_SESSION['orderdetails'];
+
     if($result){
         foreach($result as $row){
             $order_id=$row['Order_id'];
@@ -176,15 +177,15 @@ require_once("../../config.php");?>
                  <td>'.$date.'</td>
                  <td>'.$fname." ". $lname.'</td>
                  <td>'.$amount.'</td>' ;
-				
+				 
 				if($status==1){
 					echo'<td style="color:green;"><b>Delivered</b></td>';
 				}
 				else if($status==0){
 					echo'<td style="color:purple;"><b>On the way</b></td>';
 				}
-				else if($status==NULL){
-					echo'<td style="color:#BC243C;"><b>Not assigned</b></td>';
+				else if($status==2){
+					echo'<td  style="color:#eb7c7a;"><b>No delivery</b></td>';
 				}
 				else if($status==3){
 					echo'<td style="color:#ff6f61;"><b>Courier service</b></td>';
@@ -196,7 +197,7 @@ require_once("../../config.php");?>
 					echo'<td style="color:#55B4B0;"><b>Emergency Delivery</b></td>';
 				}
 				else{
-					echo'<td  style="color:#eb7c7a;"><b>No delivery</b></td>';
+					echo'<td style="color:#BC243C;"><b>Not assigned</b></td>';
 				}
                 //  <td>'.$status.'</td>
 				 

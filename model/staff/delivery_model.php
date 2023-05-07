@@ -3,7 +3,7 @@ class delivery_model
 {
     public function viewdelivery($connection)
     {      
-        $sql="SELECT o.Order_id,o.Order_date,o.Delivery_Status,u.First_Name,u.Last_Name,o.DeliveryPerson_Id,i.imgname from `order` o INNER JOIN `user` u ON o.DeliveryPerson_Id=u.User_id INNER JOIN `profileimg` i ON u.User_id=i.User_id WHERE o.Delivery_Method='Delivered by agent'";
+        $sql="SELECT o.Order_id,o.Order_date,o.Delivery_Status,u.First_Name,u.Last_Name,o.DeliveryPerson_Id,i.imgname from `order` o INNER JOIN `user` u ON o.DeliveryPerson_Id=u.User_id INNER JOIN `profileimg` i ON u.User_id=i.User_id WHERE o.Delivery_Method='Delivered by agent' ORDER BY o.Order_id DESC";
         $result = mysqli_query($connection, $sql);
         $delivery = [];
         if ($result) {    
@@ -19,7 +19,7 @@ class delivery_model
 
     public function viewdeliveryrequest($connection)
     {      
-        $sql="SELECT o.Order_id,o.Order_date,o.Time,u.First_Name,u.Last_Name,p.Customer_Id,i.imgname from `order` o INNER JOIN `placeorder` p ON o.Order_id=p.Order_id INNER JOIN `user` u ON P.Customer_Id=u.User_id INNER JOIN `profileimg` i ON u.User_id=i.User_id WHERE o.Delivery_Method='Delivered by agent' AND o.DeliveryPerson_Id IS NULL  UNION SELECT o.Order_id,o.Order_date,o.Time,u.First_Name,u.Last_Name,p.Customer_Id,i.imgname from `order` o INNER JOIN `shop_placeorder` p ON o.Order_id=p.Order_id INNER JOIN `user` u ON P.Customer_Id=u.User_id INNER JOIN `profileimg` i ON u.User_id=i.User_id WHERE o.Delivery_Method='Delivered by agent' AND o.DeliveryPerson_Id IS NULL";
+        $sql="SELECT o.Order_id,o.Order_date,o.Time,u.First_Name,u.Last_Name,p.Customer_Id,i.imgname from `order` o INNER JOIN `placeorder` p ON o.Order_id=p.Order_id INNER JOIN `user` u ON P.Customer_Id=u.User_id INNER JOIN `profileimg` i ON u.User_id=i.User_id WHERE o.Delivery_Method='Delivered by agent' AND o.DeliveryPerson_Id IS NULL UNION SELECT o.Order_id,o.Order_date,o.Time,u.First_Name,u.Last_Name,p.Customer_Id,i.imgname from `order` o INNER JOIN `shop_placeorder` p ON o.Order_id=p.Order_id INNER JOIN `user` u ON P.Customer_Id=u.User_id INNER JOIN `profileimg` i ON u.User_id=i.User_id WHERE o.Delivery_Method='Delivered by agent' AND o.DeliveryPerson_Id IS NULL";
         $result = mysqli_query($connection, $sql);
         $delivery = [];
         if ($result) {    

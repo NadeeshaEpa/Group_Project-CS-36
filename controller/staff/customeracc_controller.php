@@ -41,6 +41,8 @@ if(isset($_GET['acid'])){
     if($result===false){
         header("Location: ../../view/staff/staff-viewDisabledacc.php");
     }else{
+        $email=new email_model();
+        $result=$email->send_ActivateEmail($user_id,$connection);
         header("Location: ../../controller/staff/users_controller.php?uid=viewdisabledacc");
     }
 }
@@ -56,6 +58,8 @@ if(isset($_GET['did'])){
         header("Location: ../../view/staff/staff-viewCustomer.php");
     }else{
         $_SESSION['deleteuser']="success";
+        $email=new email_model();
+        $result=$email->send_DisableEmail($user_id,$connection);
         $account = new account_model();
         $result=$account->viewcustomer($connection);
         if($result){
