@@ -141,8 +141,8 @@ require_once("../../config.php");?>
     <h3>Orders</h3>
 
 	<form action="../../controller/staff/order_controller.php" method="POST">
-				<div class="form-input">
-					<input type="search" name="order_id" placeholder="Search by order ID...">
+				<div class="form-input" style="width:30%;">
+					<input type="search" name="order_id" placeholder="Search by order ID or Customer name...">
 					<button type="submit" name="search_fagoorder" class="search-btn"><i class='bx bx-search' ></i></button>
 				</div>
 	</form>
@@ -175,18 +175,31 @@ require_once("../../config.php");?>
                  <td>'.$date.'</td>
                  <td>'.$fname." ". $lname.'</td>
                  <td>'.$amount.'</td>';
-                 if($status==1){
-					echo'<td>Delivered</td>';
+				 if($status==1){
+					echo'<td style="color:green;"><b>Delivered</b></td>';
 				}
 				else if($status==0){
-					echo'<td>On the way</td>';
+					echo'<td style="color:purple;"><b>On the way</b></td>';
+				}
+				else if($status==NULL){
+					echo'<td style="color:#BC243C;"><b>Not assigned</b></td>';
+				}
+				else if($status==3){
+					echo'<td style="color:#ff6f61;"><b>Courier service</b></td>';
+				}
+				else if($status==4){
+					echo'<td style="color:#34568B;"><b>Picked</b></td>';
+				}
+				else if($status==5){
+					echo'<td style="color:#55B4B0;"><b>Emergency Delivery</b></td>';
 				}
 				else{
-					echo'<td>No delivery</td>';
+					echo'<td  style="color:#eb7c7a;"><b>No delivery</b></td>';
 				}
             echo'
                  <td>
-				 <a href="../../controller/staff/order_controller.php?fvid='.$order_id.'"><button class="button1" style="width:50%;">View</button></a>
+				 <a href="../../controller/staff/order_controller.php?fvid='.$order_id.'"><button class="button1" style="width:30%;">View</button></a>
+				 <a href="../../controller/staff/order_controller.php?fuid='.$order_id.'"><button class="button2" style="width:30%;">Update</button></a>
                  </td>
             </tr>' ;
             

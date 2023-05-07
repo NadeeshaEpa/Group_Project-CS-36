@@ -45,10 +45,17 @@
 				</a>
 			</li>
 
+
 			<li>
 				<a href="../../controller/admin/company_controller.php?id=viewcompany">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Gas Companies</span>
+				</a>
+			</li>
+			<li>
+				<a href="../../controller/admin/limitation_controller.php?id=limitations">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Limitations</span>
 				</a>
 			</li>
 			<li>
@@ -73,7 +80,7 @@
 				</a>
 			</li> -->
 			<li>
-				<a href="#" class="logout">
+				<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -104,6 +111,7 @@
 
 		<!-- MAIN -->
 		<main>
+		
 
 		        <?php 
                    if(isset($_SESSION['userdetails'])){
@@ -114,13 +122,14 @@
 				<div class="left">
 					<h1>Users</h1>
 					<ul class="breadcrumb">
-						<li>
-							<a href="#">Dashboard</a>
-						</li>
+					     <a href="../../controller/admin/dashboard_controller.php?id=profitdetails">
+						<li style="color:grey;">Dashboard</li>
+						</a>
 						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a class="active" href="#">Users</a>
-						</li>
+						<a href="../../controller/admin/users_controller.php?id=userdetails">
+						<li style="color:blue;">Users</li>
+						</a>
+                        
 					</ul>
 				</div>
 				

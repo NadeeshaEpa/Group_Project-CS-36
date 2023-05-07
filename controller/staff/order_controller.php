@@ -120,4 +120,82 @@ if(isset($_POST['search_fagoorder'])){
     }
 }
 
+   
+if(isset($_GET['uid'])){
+    $Order_id=$_GET['uid'];
+    $Order_id=$connection->real_escape_string($Order_id);
+    $_SESSION['uid']=$Order_id;
+    if($Order_id===false){
+        $_SESSION['editorder']="failed";
+        header("Location: ../../view/staff/order_update.php");
+    }else{
+        $_SESSION['editorder']=$Order_id;
+        header("Location: ../../view/staff/order_update.php");
+    }
+}
+
+    
+if(isset($_GET['fuid'])){
+    $Order_id=$_GET['fuid'];
+    $Order_id=$connection->real_escape_string($Order_id);
+    $_SESSION['fuid']=$Order_id;
+    if($Order_id===false){
+        $_SESSION['editorder']="failed";
+        header("Location: ../../view/staff/fagoorder_update.php");
+    }else{
+        $_SESSION['editorder']=$Order_id;
+        header("Location: ../../view/staff/fagoorder_update.php");
+    }
+}
+
+if (isset($_POST['updateorder'])) {
+    $Order_id=$_POST['Order_id'];
+    $Delivery_Status = $_POST['Delivery_Status'];
+
+    $Order_id=$connection->real_escape_string($Order_id);
+    $Delivery_Status = $connection->real_escape_string($Delivery_Status);
+   
+
+    $order = new order_model();
+    $inputs = array($Order_id, $Delivery_Status);
+
+
+    $result1 = $order->update_order($connection, $inputs);
+    if ($result1) {
+
+        $_SESSION['updateorder'] = "success";
+        header("Location: ../../controller/staff/order_controller.php?id=vieworder");
+
+    } else {
+        $_SESSION['updateorder'] = "failed";
+        echo "Failed";
+    }
+
+}
+
+
+if (isset($_POST['update_fagoorder'])) {
+    $Order_id=$_POST['Order_id'];
+    $Delivery_Status = $_POST['Delivery_Status'];
+   
+
+    $Order_id=$connection->real_escape_string($Order_id);
+    $Delivery_Status = $connection->real_escape_string($Delivery_Status);
+   
+
+    $order = new order_model();
+    $inputs = array($Order_id, $Delivery_Status);
+
+
+    $result1 = $order->update_order($connection, $inputs);
+    if ($result1) {
+
+        $_SESSION['updateorder'] = "success";
+        header("Location: ../../controller/staff/order_controller.php?fid=viewfagoorder");
+
+    } else {
+        $_SESSION['updateorder'] = "failed";
+        echo "Failed";
+    }
+}
 ?>

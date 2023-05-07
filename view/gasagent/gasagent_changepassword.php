@@ -23,7 +23,7 @@
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
-				<a href="../../view/gasagent/gasagent_dashboard.php">
+			<a href="../../controller/gasagent/gasagent_order_controller.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -74,7 +74,7 @@
 				</a>
 			</li> -->
 			<li>
-				<a href="../../view/login.php" class="logout">
+			<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -92,7 +92,7 @@
 		<i class='bx bx-menu' ></i>
 
 		<li class="profile">
-			<?php if($_SESSION['img-status'] == 0){?>
+			<?php if(isset($_SESSION['img-status']) == 0){?>
 				<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
 			<?php }else{?>
 				<img src='../../public/images/gasagent/profile_image/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
@@ -105,6 +105,18 @@
 			<h5><?php if(isset($_SESSION['Type'])){
 					echo $_SESSION['Type'];
 				}?></h5>
+
+<h5><?php if(isset($_SESSION['Gas_Type'])){
+						if($_SESSION['Gas_Type'] ==1){
+							echo "Litro";
+						}
+						else{
+							echo "Laugh";
+						}
+
+					}
+					
+				?></h5>
         </li>
 		</nav>
 		<!-- NAVBAR -->

@@ -1,3 +1,5 @@
+
+
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +27,7 @@
 		</a>
 		<ul class="side-menu top">
 			<li >
-				<a href="../../view/gasagent/gasagent_dashboard.php">
+			<a href="../../controller/gasagent/gasagent_order_controller.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -100,7 +102,7 @@
 		<i class='bx bx-menu' ></i>
 
 	<li class="profile">
-		<?php if($_SESSION['img-status'] == 0){?>
+		<?php if(isset($_SESSION['img-status'] )==0){?>
 			<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
 		<?php }else{?>
 			<img src='../../public/images/gasargent/profile_image/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
@@ -113,6 +115,19 @@
 		<h5><?php if(isset($_SESSION['Type'])){
 				echo $_SESSION['Type'];
 			}?></h5>
+
+<h5><?php if(isset($_SESSION['Gas_Type'])){
+						if($_SESSION['Gas_Type'] ==1){
+							echo "Litro";
+						}
+						else{
+							echo "Laugh";
+						}
+
+					}
+					
+				?></h5>
+
 	</li>
 		</nav>
 		<!-- NAVBAR -->
@@ -138,22 +153,22 @@
               </div>
               <div class="complane_info">
                 <form action="../../controller/gasagent/complain.php" method="Post">
-                  <h5>Add Complains</h5>
-                  <label for="">Order No :</label><br>
+                  <br><h5>Add Complains</h5><br>
+                  <label for="">Order No :</label >
                   <!-- add a drop down -->
-				  <select name="orderid">
+				  <select name="orderid"> 
 				    <option selected disabled>Select Order Id</option>
 				    <?php foreach($order as $ord){?>	
 						<option><?php echo $ord?></option>
 					<?php }?>
 			      </select><br><br>
-                  <label for="">Description :</label><br>
-                  <input type="text-area" name="complaneDes" id="complaneDes_id"><br>
-                  <button type="submit" name="complane_btn">submit</button>
+                  <label for="">Description :</label><br><br>
+                  <input type="text-area" name="complaneDes" id="complaneDes_id" required>
+                  <button type="submit" name="complane_btn" id="complane_btn">submit</button>
 				  
-                </form>
+                </form><br>
 				<form action="../../controller/gasagent/deliveryPersonComplainViewFirstController.php" method="POST">
-                  <button type="submit" name="complane_view">View Complains</button>
+                  <button type="submit" name="complane_view" id="complane_view">View Complains</button>
 				</form>
             </div>
 

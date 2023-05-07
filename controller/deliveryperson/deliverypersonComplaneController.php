@@ -16,21 +16,21 @@ if(isset($_POST['complane_btn'])){
     
     if($result==true){
         $_SESSION['Complain_add']="Complain Added Successfully";
-        header("Location: ../../view/deliveryperson/DelivaryComplains.php");
+        header("Location: ../../controller/deliveryperson/deliveryPersonAddComplaneFirst.php");
         $connection->close();
         exit();
 
     }
     else{
         $_SESSION['Complain_err']="Error Occurred";
-        header("Location: ../../view/deliveryperson/DelivaryComplains.php");
+        header("Location: ../../controller/deliveryperson/deliveryPersonAddComplaneFirst.php");
         $connection->close();
         exit();
     }
 
 }
 else{
-    header("Location: ../../view/deliveryperson/DelivaryComplains.php");
+    header("Location: ../../controller/deliveryperson/deliveryPersonAddComplaneFirst.php");
     $connection->close();
     exit();
 }

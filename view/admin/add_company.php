@@ -53,6 +53,13 @@
 				</a>
 			</li>
 			<li>
+				<a href="../../controller/admin/limitation_controller.php?id=limitations">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Limitations</span>
+				</a>
+			</li>
+
+			<li>
 				<a href="../../controller/admin/order_controller.php?id=vieworder">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Orders</span>
@@ -75,7 +82,7 @@
 				</a>
 			</li> -->
 			<li>
-				<a href="#" class="logout">
+				<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>

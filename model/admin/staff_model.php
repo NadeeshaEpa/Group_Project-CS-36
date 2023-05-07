@@ -12,10 +12,12 @@ class staff_model{
     private $Email;
     private $Type;
     private $Contactnumber;
+
+    private $admin_id;
    
     
 
-    public function setDetails($firstname='',$lastname='',$username='',$nic='',$street='',$city='',$postalcode='',$password='',$email='', $contactnumber=''){
+    public function setDetails($firstname='',$lastname='',$username='',$nic='',$street='',$city='',$postalcode='',$password='',$email='', $contactnumber='',$admin_id=''){
         $this->Firstname=$firstname;
         $this->Lastname=$lastname;
         $this->Username=$username;
@@ -26,6 +28,7 @@ class staff_model{
         $this->Password=$password;
         $this->Email=$email;
         $this ->Contactnumber=$contactnumber;
+        $this->admin_id=$admin_id;
         $this->Type="Staff";
     }
     public function setUserId($connection){  
@@ -63,8 +66,13 @@ class staff_model{
         }
     }
 
+
     public function setStaff($connection){
-        $sql="INSERT INTO staff(Staff_Id,NIC,Admin_Id,Registration_date,Status) VALUES ('$this->User_id','$this->nic',NULL,NULL,'1')";
+        date_default_timezone_set('Asia/Colombo');
+
+        // Get current date in Y-m-d format
+        $current_date = date('Y-m-d');
+        $sql="INSERT INTO staff(Staff_Id,NIC,Admin_Id,Registration_date,Status) VALUES ('$this->User_id','$this->nic','$this->admin_id','$current_date','1')";
         if($connection->query($sql)){
             $_SESSION['registerMsg']="User Registered Successfully";
             return true;
@@ -137,6 +145,16 @@ class staff_model{
 
     public function updateContacts($connection,$array){
         $sql="UPDATE `user_contact` SET `Contact_No`='$array[1]' WHERE User_id='$array[0]'";
+        $result=$connection->query($sql);
+        if($result){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function updateStaff($connection,$array){
+        $sql="UPDATE `staff` SET `NIC`='$array[1]' WHERE Staff_Id='$array[0]'";
         $result=$connection->query($sql);
         if($result){
             return true;

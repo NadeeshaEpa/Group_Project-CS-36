@@ -8,23 +8,37 @@ $agentId = $_SESSION['User_id'];
 $user=new orders(); 
 $result_order=$user->gasDashDetails($connection);
 
-$getGasType = new ViewGasType();
-$gasTypeResults = $getGasType->fetchGasType($connection, $agentId);
+// $getGasType = new ViewGasType();
+// $gasTypeResults = $getGasType->fetchGasType($connection, $agentId);
 
 
-if(!$gasTypeResults){
-    header("Location: ../../view/gasagent/gasagent_dashboard.php");
-    $connection->close();
-    exit();
-}else {
-    $_SESSION['low_stack_details']=$gasTypeResults;
-}
+// if(!$gasTypeResults){
+//     header("Location: ../../view/gasagent/gasagent_dashboard.php");
+//     $connection->close();
+//     exit();
+// }else {
+//     $_SESSION['low_stack_details']=$gasTypeResults;
+// }
 
-if($result==true){
+if($result_order==true){
+   
     $_SESSION['Gas_Dashboard_details']=$result_order;
-    header("Location: ../../view/gasagent/gasagent_dashboard.php");
-    $connection->close();
-    exit();
+
+    $getGasType = new ViewGasType();
+    $gasTypeResults = $getGasType->fetchGasType($connection, $agentId);
+
+
+    if(!$gasTypeResults){
+        header("Location: ../../view/gasagent/gasagent_dashboard.php");
+        $connection->close();
+        exit();
+    }else {
+        $_SESSION['low_stack_details']=$gasTypeResults;
+        header("Location: ../../view/gasagent/gasagent_dashboard.php");
+        $onnection->close();
+        exit();
+    }
+    
 
 }
 else{

@@ -54,6 +54,12 @@ require_once("../../config.php");?>
 				</a>
 			</li>
 			<li>
+				<a href="../../controller/admin/limitation_controller.php?id=limitations">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Limitations</span>
+				</a>
+			</li>
+			<li>
 				<a href="../../controller/admin/order_controller.php?id=vieworder">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Orders</span>
@@ -101,7 +107,7 @@ require_once("../../config.php");?>
 			<?php if($_SESSION['img-status'] == 0){?>
                     <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="user"> 
                 <?php }else{?>
-                    <img src='../../public/images/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
+                    <img src='../../public/images/admin/profile_img/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="user">                       
             <?php } ?>
 			</a>
 			<?php echo $_SESSION['Firstname']." ".$_SESSION['Lastname']."<br>".$_SESSION['Type']?>
@@ -145,7 +151,7 @@ require_once("../../config.php");?>
 		</div>
 		<div class="down1">
             <label for="nic" id="nic-label">Electricity Bill Number :</label>
-            <input type="text" name="ElectricityBill_No" id="ElectricityBill_No" value="<?php echo $result[0]['ElectricityBill_No']?>" placeholder="Electricity Bill Number" required readonly><br>
+            <input type="text" name="ElectricityBill_No" id="ElectricityBill_No" value="<?php echo $result[0]['ElectricityBill_No']?>" placeholder="Electricity Bill Number" required><br>
 		</div> 
 	</div>
 
@@ -180,13 +186,13 @@ require_once("../../config.php");?>
 	
          
         <br><br>
-		<div class="down"> 
-        <a href="../../view/admin/admin-viewCustomer.php"><button style="background-color: #da3a3a;" class="b4">Cancel</button></a> 
-		<button type="submit" name="edituser" id="submit" class="b6">Update</button>  
-		</div>
+		
+         
+		<button type="submit" name="edituser" id="submit" class="b6" style="float:left; margin-left: 74%;">Update</button>  
     </form>
     </div>
-
+    <a href="admin-viewCustomer.php"><button style="background-color: #da3a3a;" class="b4">Cancel</button></a>
+	<br><br>
     </main>
 		<!-- MAIN -->
 	</section>

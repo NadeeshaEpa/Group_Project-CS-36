@@ -41,6 +41,8 @@ if(isset($_GET['acid'])){
     if($result===false){
         header("Location: ../../view/staff/staff-viewDisabledacc.php");
     }else{
+        $email=new email_model();
+        $result=$email->send_ActivateEmail($user_id,$connection);
         header("Location: ../../controller/staff/users_controller.php?uid=viewdisabledacc");
     }
 }
@@ -56,6 +58,8 @@ if(isset($_GET['did'])){
         header("Location: ../../view/staff/staff-viewCustomer.php");
     }else{
         $_SESSION['deleteuser']="success";
+        $email=new email_model();
+        $result=$email->send_DisableEmail($user_id,$connection);
         $account = new account_model();
         $result=$account->viewcustomer($connection);
         if($result){
@@ -188,7 +192,7 @@ if(isset($_POST['edituser'])){
     $Email=$_POST['Email'];
     $Contact_No=$_POST['Contact_No'];
     $ElectricityBill_No=$_POST['ElectricityBill_No'];
-
+    
 
     
     // $ElectricityBill_No=$_POST['ElectricityBill_No'];
@@ -204,27 +208,35 @@ if(isset($_POST['edituser'])){
         $Postalcode=$connection->real_escape_string($Postalcode);
         $ElectricityBill_No=$connection->real_escape_string($ElectricityBill_No);
 
-    
 
 
-    $customer=new customer_model();
     $inputs1=array($user_id,$First_Name, $Last_Name, $City, $Street, $Postalcode, $Username, $Email);
-    $inputs2=array($user_id,$Contact_No);
-
+    $inputs2=array($user_id,$ElectricityBill_No);
+    $inputs3=array($user_id,$Contact_No);
+    
+    
+    $customer=new customer_model();
     $result1=$customer->updateUser($connection,$inputs1);
     if($result1){
-        $result2=$customer->updateContacts($connection,$inputs2);
+        $result2=$customer->updateCustomer($connection,$inputs2);
         if($result2){
+            $result3=$customer->updateContacts($connection,$inputs3);
+            if($result3){
             $_SESSION['updateuser']="success";
             header("Location: ../../controller/staff/customeracc_controller.php?id=viewCustomer");
+            }else{
+                $_SESSION['updateuser']="failed";
+                echo "Failed";
+            }
         }else{
             $_SESSION['updateuser']="failed";
-            // // echo "Failed";
+            echo "Failed";
         }
     }else{
         $_SESSION['updateuser']="failed";
-        // echo "Failed";
+        echo "Failed";
     }
+
 
 }
 

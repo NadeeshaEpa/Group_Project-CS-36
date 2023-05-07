@@ -20,8 +20,7 @@ if(isset($_POST['viewReport'])){
             else{
 
                 $_SESSION['GasReportview']=$result;
-
-                $_SESSION['GasDayReports']="Today Delivered gas argent";
+                $_SESSION['GasDayReports']="Today Delivered gas agents";
                 header("Location: ../../view/deliveryperson/DeliveryReports.php");
                 $connection->close();
                 exit();
@@ -40,7 +39,7 @@ if(isset($_POST['viewReport'])){
 
                 $_SESSION['GasReportview']=$result;
 
-                $_SESSION['GasDay7Reports']="Last seven days Delivered gas argent";
+                $_SESSION['GasDay7Reports']="Last seven days Delivered gas agents";
                 header("Location: ../../view/deliveryperson/DeliveryReports.php");
                 $connection->close();
                 exit();
@@ -58,7 +57,7 @@ if(isset($_POST['viewReport'])){
 
                 $_SESSION['GasReportview']=$result;
 
-                $_SESSION['GasDay30Reports']="Last thirty days Delivered gas argent";
+                $_SESSION['GasDay30Reports']="Last thirty days Delivered gas agents";
                 header("Location: ../../view/deliveryperson/DeliveryReports.php");
                 $connection->close();
                 exit();
@@ -77,7 +76,7 @@ if(isset($_POST['viewReport'])){
 
                 $_SESSION['GasReportview']=$result;
 
-                $_SESSION['GasAllReports']="All Delivered gas argent";
+                $_SESSION['GasAllReports']="All Delivered gas agents";
                 header("Location: ../../view/deliveryperson/DeliveryReports.php");
                 $connection->close();
                 exit();

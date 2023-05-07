@@ -52,6 +52,12 @@
 				</a>
 			</li>
 			<li>
+				<a href="../../controller/admin/limitation_controller.php?id=limitations">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Limitations</span>
+				</a>
+			</li>
+			<li>
 				<a href="../../controller/admin/order_controller.php?id=vieworder">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Orders</span>
@@ -103,7 +109,7 @@
 		<!-- NAVBAR -->
 
 		<!-- MAIN -->
-		<main>
+		<main style="background-color:#1c2d4d">
 		<?php 
                    if(isset($_SESSION['dashboard'])){
                       $result=$_SESSION['dashboard']; 
@@ -113,12 +119,12 @@
                 ?>
 			<div class="head-title">
 				<div class="left">
-					<h1>Dashboard</h1>
+					<h1 style="color:white;">Dashboard</h1>
 					<ul class="breadcrumb">
 						<li>
 							<a href="#">Dashboard</a>
 						</li>
-						<li><i class='bx bx-chevron-right' ></i></li>
+						<li style="color:white;"><i class='bx bx-chevron-right' ></i></li>
 						<li>
 							<a class="active" href="#">Home</a>
 						</li>
@@ -187,8 +193,8 @@
 							echo'
 									<tr class="details" id='.$order_id.'>
 									<td>
-										<img src="../../public/images/'.$imgname.'">
-										<p>'.$fname. $lname.'</p>
+										<img src="../../public/images/customer/profile_img/'.$imgname.'">
+										<p>'.$fname." ". $lname.'</p>
 									</td>
 									<td>'.$order_id.'</td>
 									<td>'.$order_date.'</td>
@@ -214,7 +220,7 @@
 		elementsArray=document.querySelectorAll(".details");
 		elementsArray.forEach(function(elem){
 			elem.addEventListener("click",function(){
-				location.href='../../controller/admin/delivery_controller.php?oid='+elem.id;
+				location.href='../../controller/admin/order_controller.php?oid='+elem.id;
 			});
 		});
 

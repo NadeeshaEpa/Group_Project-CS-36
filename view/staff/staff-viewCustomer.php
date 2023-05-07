@@ -127,26 +127,27 @@ require_once("../../config.php");?>
 
 		<!-- MAIN -->
 		<main>
-        <div class="head-title">
+		<div class="head-title">
 				<div class="left">
 					<!-- <h1>Users</h1> -->
 					<ul class="breadcrumb">
-						<li>
-							<a href="../../view/staff/staff_dashboard.php">Dashboard</a>
-						</li>
+					     <a href="../../controller/staff/dashboard_controller.php?id=profitdetails">
+						<li style="color:grey;">Dashboard</li>
+						</a>
 						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a href="../../view/staff/users.php">Users</a>
-						</li>
+						<a href="../../controller/staff/users_controller.php?id=userdetails">
+						<li style="color:grey;">Users</li>
+						</a>
                         <li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a class="active" href="#">Customers</a>
+						<a  href="../../controller/staff/customeracc_controller.php?id=viewCustomer">
+						<li style="color:blue;">
+							Customers
 						</li>
+				        </a>
 					</ul>
 				</div>
 				
 			</div><br>
-
 
     <div class="list">
 

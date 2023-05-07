@@ -63,6 +63,17 @@ class customer_model{
         }
     }
 
+    public function updateCustomer($connection,$array){
+        $sql="UPDATE `customer` SET `ElectricityBill_No`='$array[1]'  WHERE Customer_Id='$array[0]'";
+        $result=$connection->query($sql);
+        if($result){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
     public function updateContacts($connection,$array){
         $sql="UPDATE `user_contact` SET `Contact_No`='$array[1]' WHERE User_id='$array[0]'";
         $result=$connection->query($sql);

@@ -21,13 +21,13 @@
 			<span class="text">FaGo</span>
 		</a>
 		<ul class="side-menu top">
-			<li >
-				<a href="../../view/gasagent/gasagent_dashboard.php">
+			<li  class="active" >
+			<a href="../../controller/gasagent/gasagent_order_controller.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
-			<li class="active">
+			<li>
 				<a href="../../view/gasagent/orders.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Order details</span>
@@ -59,7 +59,7 @@
 			</li>
 
 			<li>
-				<a href="../../view/gasagent/compalin.php">
+			<a href="../../controller/gasagent/complain.php?complain='1'">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Complains</span>
 				</a>
@@ -73,7 +73,7 @@
 				</a>
 			</li> -->
 			<li>
-				<a href="../../view/login.php" class="logout">
+			<a href="../../controller/Users/logout_controller.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -91,7 +91,7 @@
 		<i class='bx bx-menu' ></i>
 
 		<li class="profile">
-			<?php if($_SESSION['img-status'] == 0){?>
+			<?php if(isset($_SESSION['img-status']) == 0){?>
 				<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
 			<?php }else{?>
 				<img src='../../public/images/gasargent/profile_image/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
@@ -123,8 +123,26 @@
 				</div>
 			</div>
 
-			
+			<div class="btn_r">
+				<form action="../../controller/gasagent/gasagentDashboardController.php" method="POST">
+					<button class="btn3" id="btn3" name="deliverbtn">Delivered Orders</button>
+					<button class="btn4" id="btn4" name="pickedbtn">Picked Orders</button>
+				</form>
+			</div>
+            
+			<div class="search">
+						<form action="../../controller/gasagent/gasagentDashboardController.php" method="POST">
+							<input type="search" name="d_order_id" class="d_order_id" placeholder="Search by order ID ">
+							<button type="submit" name="d_search_order" class="search-btn"><i class='bx bx-search' ></i></button>
+						</form>
+			</div>
+         <div class="shop_status">
+			<?php if(isset($_SESSION['no_orders'])=="no orders found"){
+				 echo $_SESSION['no_orders'];
+				 unset($_SESSION['no_orders']);
+		 	       } ?>
 
+        </div>
 
 
 			<div class="table-data">
@@ -134,13 +152,15 @@
                             <table class="tb">
                                 <tr>
                       					<th>Customer Name</th>
-                                        <th>Customer Address</th>
+                                        <th>Order<br>
+											id</th>
                     					<th>Contact No</th>
                     					<th>Quantity</th>
-                                       
+                                        <th>GasAgent<br>
+											pin</th>
 										<th>weight</th>
                     					<th>Order date</th>
-                                        <th>company Name</th>
+                                        <th>company <br>Name</th>
                                         <th>Price</th>
 										<th>Payment</th>
 										<th>Order State</th>
@@ -153,10 +173,10 @@
                                         foreach ($result as $row) {
                                             echo "<tr>";
                                             echo "<td>" . $row['Name'] . "</td>";
-                                            echo "<td>" . $row['Address'] . "</td>";
+                                            echo "<td>" . $row['Order_id'] . "</td>";
                       						echo "<td>" . $row['Contact_No'] ."</td>";
                       						echo "<td>" . $row['Quantity'] . "</td>";
-                                           
+                                            echo "<td>"  . $row['GasAgent_pin'] ."</td>";
 											echo "<td>" . $row['Weight'] . "</td>";
                       						echo "<td>" . $row['Order_date'] . "</td>";
                       						echo "<td>" . $row['company_name'] . "</td>";

@@ -53,6 +53,12 @@ require_once("../../config.php");?>
 					<span class="text">Gas Companies</span>
 				</a>
 			</li>
+			<li>
+				<a href="../../controller/admin/limitation_controller.php?id=limitations">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Limitations</span>
+				</a>
+			</li>
 			<li class="active">
 				<a href="../../controller/admin/order_controller.php?id=vieworder">
 					<i class='bx bxs-shopping-bag-alt' ></i>
@@ -211,8 +217,20 @@ require_once("../../config.php");?>
 				else if($result[0]['Delivery_Status']==0){
 					echo("On the way");
 				}
-				else{
+				else if($result[0]['Delivery_Status']==2){
 					echo("No delivery");
+				}
+				else if($result[0]['Delivery_Status']==3){
+					echo("Courier service");
+				}
+				else if($result[0]['Delivery_Status']==4){
+					echo("Picked");
+				}
+				else if($result[0]['Delivery_Status']==5){
+					echo("Emergency Delivery");
+				}
+				else{
+					echo("Not assigned");
 				}
 				 ?> readonly><br> 
 		    </div>

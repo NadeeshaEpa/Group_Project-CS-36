@@ -62,9 +62,10 @@ $password=md5($connection->real_escape_string($password));
 $email=$connection->real_escape_string($email);
 $contactnumber=$connection->real_escape_string($contactnumber);
 
+$admin_id=$_SESSION['User_id'];
 
 $user=new staff_model();
-$user->setDetails($firstname,$lastname,$username,$nic,$street,$city,$postalcode,$password,$email,$contactnumber);
+$user->setDetails($firstname,$lastname,$username,$nic,$street,$city,$postalcode,$password,$email,$contactnumber,$admin_id);
 $result=$user->Registerstaff($connection);
 if($result){
     $_SESSION['RegsuccessMsg'] = 'Staff Registered Successfully';
