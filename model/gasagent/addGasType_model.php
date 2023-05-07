@@ -33,4 +33,34 @@ class add_gasType{
    // public function check($cylinderId,$gasagentId){
    //    $sql="Select Quantity from sell gas where Cylinder_Id=$cylinderId and GasAgent"
    // }
+
+
+
+
+
+
+
+   public function get_cylinder_id($connection){
+
+    $user_id=$_SESSION['User_id'];
+    $sql="SELECT Cylinder_Id FROM gascylinder g INNER JOIN gasagent ga ON g.Type=ga.Gas_Type WHERE ga.GasAgent_Id=$user_id";
+    $result=$connection->query($sql);
+    if($result->num_rows===0){
+        return false;
+    }else{
+        $answer=[];
+        while($row=$result->fetch_assoc()){
+            array_push($answer,$row['Cylinder_Id']);
+        }
+        return $answer;
+    }
+
 }
+
+
+
+
+
+
+}
+

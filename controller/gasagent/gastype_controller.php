@@ -69,6 +69,21 @@ if(isset($_POST['quantityUpdateBtn'])){
 
 }
 
+if(isset($_GET['addgas_drop_down'])){
+    $user=new add_gasType();
+    $result=$user->get_cylinder_id($connection);
+    if($result){
+        $_SESSION['cylinder_id']=$result;
+        header("Location: ../../view/gasagent/add_gastype.php");
+        $connection->close();
+    }
+
+    else{
+        header("Location: ../../view/gasagent/add_gastype.php");
+        $connection->close();
+    }
+}
+
 
 
 

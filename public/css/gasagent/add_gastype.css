@@ -165,6 +165,7 @@ body {
 	width: calc(100% - 280px);
 	left: 280px;
 	transition: .3s ease;
+	background-color: #1c2d4d;
 }
 #sidebar.hide ~ #content {
 	width: calc(100% - 60px);
@@ -188,7 +189,7 @@ body {
 	left: 0;
 	z-index: 1000;
 }
-#content nav::before {
+/* #content nav::before {
 	content: '';
 	position: absolute;
 	width: 40px;
@@ -197,7 +198,7 @@ body {
 	left: 0;
 	border-radius: 50%;
 	box-shadow: -20px -20px 0 var(--light);
-}
+} */
 #content nav a {
 	color: var(--dark);
 }
@@ -302,7 +303,7 @@ body {
 .image{
     height: 100%;
     width: 100%;
-    background-image:url(../../images/gas4.jpg);
+    /* background-image:url(../../images/gas4.jpg); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

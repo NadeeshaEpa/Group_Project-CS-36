@@ -132,12 +132,17 @@
             
 			<div class="search">
 						<form action="../../controller/gasagent/gasagentDashboardController.php" method="POST">
-						
 							<input type="search" name="d_order_id" class="d_order_id" placeholder="Search by order ID ">
 							<button type="submit" name="d_search_order" class="search-btn"><i class='bx bx-search' ></i></button>
-						
 						</form>
 			</div>
+         <div class="shop_status">
+			<?php if(isset($_SESSION['no_orders'])=="no orders found"){
+				 echo $_SESSION['no_orders'];
+				 unset($_SESSION['no_orders']);
+		 	       } ?>
+
+        </div>
 
 
 			<div class="table-data">

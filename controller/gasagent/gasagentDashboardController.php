@@ -131,7 +131,9 @@ if(isset($_POST['search_order'])){
         exit();
     }
     else{
-        header("Location: ../../controller/gasagent/gasagent_order_controller.php");
+        $_SESSION['p_no_order']="no orders found";
+        header("Location:  ../../view/gasagent/pick.php");
+        // header("Location: ../../controller/gasagent/gasagent_order_controller.php");
         $connection->close();
         exit();}
 
@@ -150,7 +152,10 @@ if(isset($_POST['d_search_order'])){
         exit();
     }
     else{
-        header("Location: ../../controller/gasagent/gasagent_order_controller.php");
+        $_SESSION['no_orders']="no orders found";
+        header("Location:  ../../view/gasagent/orderd.php");
+
+        // header("Location: ../../controller/gasagent/gasagent_order_controller.php");
         $connection->close();
         exit();
 

@@ -43,7 +43,7 @@
 				</a>
 			</li>
 			<li class="active">
-				<a href="../../view/gasagent/add_gastype.php">
+				<a href="../../controller/gasagent/gastype_controller.php?addgas_drop_down=1">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Add gas </span>
 				</a>
@@ -103,6 +103,19 @@
 				<h5><?php if(isset($_SESSION['Type'])){
 						echo $_SESSION['Type'];
 					}?></h5>
+
+					<h5><?php if(isset($_SESSION['Gas_Type'])){
+											if($_SESSION['Gas_Type'] ==1){
+												echo "Litro";
+											}
+											else{
+												echo "Laugh";
+											}
+
+										}
+										
+									?></h5>
+
 			</li>
 		</nav>
 		<!--NAVBAR -->
@@ -112,7 +125,7 @@
 
 
         
-   
+ <main> 
     <div class="registration-form">  
 
     
@@ -135,13 +148,16 @@
                     <form action="../../controller/gasagent/gastype_controller.php" method="POST">
                         <div class="dropdown">
                            <label for="" class="weight"> Gas Weight</label>
-                            <select name="gasWeight" id="gasWeight" required>
-                                <option value="">Select Type</option>
-                                <option value="37.5">37.5</option>
-                                <option value="12.5">12.5</option>
-                                <option value="5">5</option>
-                                <option value="2.3">2.3</option>
-                            </select>
+						   <select name="gasweight" id="gasweight"> 
+				             	<option selected disabled>Select Order Id</option>
+				             	<?php if(isset($_SESSION['cylinder_id'])){
+									    $order= $_SESSION['cylinder_id'];
+										foreach($order as $ord){?>	
+										<option><?php echo $ord?></option>
+									
+									<?php }
+							       } ?>
+			      </select>
                         </div>
                         <label for="quantity" >Gas Quantity</label>
                         <input type="text" name="gasQuantity" id="gasQuantity" placeholder="Gas Quantity" required>
@@ -163,7 +179,9 @@
   
     
     </div>
-    <div class="image2"></div>
+    <!-- <div class="image2"></div> -->
+
+	
     </section>
     <script src="../../public/js/script.js"></script>
     

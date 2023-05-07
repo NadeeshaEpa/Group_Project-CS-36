@@ -160,13 +160,12 @@
 			<input type="date" name="arrivel_date" id="arrivel_date" class="add" placeholder="Date" required>
 			<button class="date" name="btn_date" id="btn_date">click</button>
 		</form>
-	
+		</div><br>
 		<form action="../../controller/gasagent/gasagentDashboardController.php" method="POST">
 			<label for="time" id="ad">Update shop open time</label>
 			<input type="time" name="open_time" id="open_time" class="add" placeholder="date" required>
 			<button class="date" name="btn_time" id="btn_date">click</button>	
 		</form>
-		</div>
 
 		<br>
 		<div class="stock2">
@@ -181,18 +180,35 @@
 				}				
 
 				 
-				?></h5>
+				?>
+					<?php	if(isset($_SESSION['open_time'])){
+				    if($_SESSION['open_time']=='open time updated succsessfully'){
+						?>
+						<div class="shop_status">
+						<p>open time updated succsessfully</p>
+						</div>	
+						<?php
+					}else{
+						?>
+						<div class="shop_status">
+						<p>not updated open time</p>
+						</div>	
+						<?php
+					}
+					unset($_SESSION['open_time']);	
+				}
+				
+				?>
+				
+			
+			
+			</h5>
 		</div>
-
-
 			
 			<!-- <div> -->
 				
-				<br>
-
-			
+				<br>	
 		
-
 				<?php
 				if(isset($_SESSION['updateOpenSucessfully'])){
 				    if($_SESSION['updateOpenSucessfully']=='sucess'){
@@ -238,26 +254,9 @@
 					}
 					?>
 					<?php
-				}
+				}?>
 
-				if(isset($_SESSION['open_time'])){
-				    if($_SESSION['open_time']=='open time updated succsessfully'){
-						?>
-						<div class="shop_status">
-						<p>open time updated succsessfully</p>
-						</div>	
-						<?php
-					}else{
-						?>
-						<div class="shop_status">
-						<p>not updated open time</p>
-						</div>	
-						<?php
-					}
-					unset($_SESSION['open_time']);	
-				}
-				
-				?>
+		
 			</div>
 
 		
@@ -283,7 +282,7 @@
 					</span>
 				</li>
 				<li>
-					<i class='bx bxs-dollar-circle' ></i>
+					<i class='bx bx-money' ></i>
 					<span class="text">
 						<label for="" id="incomeid1" style=" font-size:20px"> Total income:</label><br>
                         <label for="" id="incomeid2">Rs: 850</label>
