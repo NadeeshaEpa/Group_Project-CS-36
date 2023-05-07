@@ -147,7 +147,7 @@ class location{
                     }
                     if (isset($row['Gas_closed_time'])  && !empty($row['Gas_closed_time'])){
                         $closed_time=$row['Gas_closed_time'];
-                        
+                    }    
                     if (isset($row['Shop_open_time'])  && !empty($row['Shop_open_time'])){
                         $open_time=$row['Shop_open_time'];
                         
@@ -158,7 +158,7 @@ class location{
                         
                        
                     }
-                    }
+                    
                     if (isset($row['Gas_Quantity'])  && !empty($row['Gas_Quantity'])){
                         $quantity=$row['Gas_Quantity'];
                         
