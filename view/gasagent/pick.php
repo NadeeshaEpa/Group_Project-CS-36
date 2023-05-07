@@ -105,6 +105,18 @@
 			<h5><?php if(isset($_SESSION['Type'])){
 					echo $_SESSION['Type'];
 				}?></h5>
+
+<h5><?php if(isset($_SESSION['Gas_Type'])){
+						if($_SESSION['Gas_Type'] ==1){
+							echo "Litro";
+						}
+						else{
+							echo "Laugh";
+						}
+
+					}
+					
+				?></h5>
         </li>
 		</nav>
 		<!-- NAVBAR -->
@@ -156,6 +168,14 @@
 						
 						</form>
 					</div>
+
+					<div class="shop_status">
+			    		<?php if(isset($_SESSION['p_no_order'])=="no orders found"){
+						 echo $_SESSION['p_no_order'];
+				 		 unset($_SESSION['p_no_order']);
+		 	       			} ?>
+
+        </div>
 
     <div class="table-data">
 		

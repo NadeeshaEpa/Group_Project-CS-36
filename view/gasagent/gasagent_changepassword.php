@@ -105,6 +105,18 @@
 			<h5><?php if(isset($_SESSION['Type'])){
 					echo $_SESSION['Type'];
 				}?></h5>
+
+<h5><?php if(isset($_SESSION['Gas_Type'])){
+						if($_SESSION['Gas_Type'] ==1){
+							echo "Litro";
+						}
+						else{
+							echo "Laugh";
+						}
+
+					}
+					
+				?></h5>
         </li>
 		</nav>
 		<!-- NAVBAR -->

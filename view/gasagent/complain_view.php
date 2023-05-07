@@ -100,6 +100,19 @@
 		<h5><?php if(isset($_SESSION['Type'])){
 				echo $_SESSION['Type'];
 			}?></h5>
+
+
+<h5><?php if(isset($_SESSION['Gas_Type'])){
+						if($_SESSION['Gas_Type'] ==1){
+							echo "Litro";
+						}
+						else{
+							echo "Laugh";
+						}
+
+					}
+					
+				?></h5>
 	</li>
 		</nav>
 		<!-- NAVBAR -->
@@ -147,8 +160,11 @@
 										echo "<td>" . $row['Description'] . "</td>";
 										echo "<td>" . $row['status'] . "</td>";
 										// echo "<td>" . $row['message'] . "</td>";
-										if($row['message']){
-											echo "<td>" ."No action" . "</td>";
+										// var_dump($row['message']==NULL);
+										// 	die();
+										if($row['message']=='NULL'){
+											
+											echo "<td>" ."uncheck message" . "</td>";
 										}
 										else{
 											echo "<td>" . $row['message'] . "</td>";
