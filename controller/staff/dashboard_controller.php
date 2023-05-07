@@ -15,10 +15,15 @@ if(isset($_GET['id'])){
         }else{
             $_SESSION['dashboard']=[];
         }
-
         header("Location:../../view/staff/staff_dashboard.php");
     }else{
         $_SESSION['profitdetails']=[];
+        $result2=$profit->dashboard($connection);                 
+        if($result2){
+            $_SESSION['dashboard']=$result2;
+        }else{
+            $_SESSION['dashboard']=[];
+        }
         header("Location:../../view/staff/staff_dashboard.php");
     }
 

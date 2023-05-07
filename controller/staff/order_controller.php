@@ -151,7 +151,6 @@ if(isset($_GET['fuid'])){
 if (isset($_POST['updateorder'])) {
     $Order_id=$_POST['Order_id'];
     $Delivery_Status = $_POST['Delivery_Status'];
-   
 
     $Order_id=$connection->real_escape_string($Order_id);
     $Delivery_Status = $connection->real_escape_string($Delivery_Status);
