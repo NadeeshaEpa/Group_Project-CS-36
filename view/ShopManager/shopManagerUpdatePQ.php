@@ -127,13 +127,14 @@ if(!isset($_SESSION['User_id'])){
 										<select name="item" id="item_id" required>
 											<option value="">---Select Type---</option>
 											<?php foreach($result as $row){
-												?><option value="<?php echo $row['Item_code']; ?>"><?php echo $row['Item_code']; ?></option><?php
+												?><option value="<?php echo $row['Item_code']; ?>"><?php echo $row['Item_code']."-".$row['Name']; ?></option><?php
 											}
 											
 											?>
 										</select>
 
 									<?php } ?>
+									<br>
 									<button name="item_search" id="item_search_id">Search</button>
 								</form>
 
@@ -187,8 +188,7 @@ if(!isset($_SESSION['User_id'])){
 								$row=$_SESSION['product_details'];?>
 								<div class="branddown">
 										<div class="branddown1">
-											
-											<img src="../../public/images/product/<?php echo $row[0]['Profile_img']?>" width="400px" height="300px" alt="">
+											<img src="../../public/images/product/<?php echo $row[0]['Product_img']?>" width="400px" height="300px" alt="">
 										</div>
 										<div class="branddown1">
 												

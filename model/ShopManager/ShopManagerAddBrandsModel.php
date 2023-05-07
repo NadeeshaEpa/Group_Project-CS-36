@@ -18,4 +18,22 @@
             }
 
         }
+
+        public function Get_Max_itemcode($connection){
+            
+            $sql="SELECT MAX(Item_code) FROM product;";
+            
+            $result=mysqli_query($connection,$sql);
+           
+            if($result->num_rows==0){
+                return false;
+                
+            }else{
+              
+               $row=mysqli_fetch_assoc($result);
+               
+               $item_code=$row['MAX(Item_code)']+1;
+            }
+            return $item_code;
+        }
 }

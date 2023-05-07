@@ -68,7 +68,7 @@ class brand{
 
     //get Avelabel product code
     public function getProductItemCodeDetails($connection){
-        $sql="SELECT Item_code FROM product order BY Date ASC";
+        $sql="SELECT Item_code,Name FROM product order BY Item_code ASC";
         
         $result=mysqli_query($connection,$sql);
         if($result->num_rows===0){
@@ -77,7 +77,7 @@ class brand{
         }else{
             $answer=array();
             while($row=$result->fetch_assoc()){
-                array_push($answer,['Item_code'=>$row['Item_code']]);
+                array_push($answer,['Item_code'=>$row['Item_code'],'Name'=>$row['Name']]);
             }
         }
         return $answer;
@@ -86,8 +86,7 @@ class brand{
     //get avelabel product
     public function GetProduct($connection,$item){
         $sql="SELECT `Item_code`, `Name`, `Quantity`, `Price`, `Product_img`, `Category`, `Product_type`, `Description` FROM `product` WHERE Item_code=$item";
-    //    print_r($sql);
-    //    die();
+        
         $result=mysqli_query($connection,$sql);
         if($result->num_rows===0){
             return false;
@@ -95,7 +94,7 @@ class brand{
         }else{
             $answer=array();
             while($row=$result->fetch_assoc()){
-                array_push($answer,['Item_code'=>$row['Item_code'],'Name'=>$row['Name'],'Quantity'=>$row['Quantity'],'Price'=>$row['Price'],'Profile_img'=>$row['Product_img'],'Category'=>$row['Category'],'Product_type'=>$row['Product_type']]);
+                array_push($answer,['Item_code'=>$row['Item_code'],'Name'=>$row['Name'],'Quantity'=>$row['Quantity'],'Price'=>$row['Price'],'Product_img'=>$row['Product_img'],'Category'=>$row['Category'],'Product_type'=>$row['Product_type']]);
             }
         }
         return $answer;

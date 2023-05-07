@@ -32,36 +32,44 @@ if(isset($_POST['BrandAdd'])){
     $fileExt=explode('.',$fileName);
     $fileActualExt=strtolower(end($fileExt));
     
-    
-   
-   
-    
-    $allowed=array('jpg','jpeg','png');
-    if(in_array($fileActualExt,$allowed)){
-        if($fileError === 0){
-            if($fileSize < 10000000){
-                $fileNameNew=$product_type.".".$fileActualExt;
-                $fileDestination='../../public/images/ShopManager/Brands/'.$fileNameNew;
-                move_uploaded_file($fileTmpName,$fileDestination);
-                $user=new Add_Brands;
-                $result=$user->Add_Brands($connection,$name,$Quantity,$price,$description,$Category,$fileNameNew,$product_type);
+    $user1=new Add_Brands;
+    $result1=$user1->Get_Max_itemcode($connection);
+    if($result1){
+        $item_code=$result1;
+        $allowed=array('jpg','jpeg','png');
+        if(in_array($fileActualExt,$allowed)){
+            if($fileError === 0){
+                if($fileSize < 10000000){
+                    $fileNameNew=$item_code.".".$fileActualExt;
+                    $fileDestination='../../public/images/product/'.$fileNameNew;
+                    move_uploaded_file($fileTmpName,$fileDestination);
+                    $user=new Add_Brands;
+                    $result=$user->Add_Brands($connection,$name,$Quantity,$price,$description,$Category,$fileNameNew,$product_type);
+                }else{
+                    echo "Your file is too big";
+                }
+
             }else{
-                echo "Your file is too big";
-            }
-
+                echo "There was an error uploading your file";
+            }        
         }else{
-            echo "There was an error uploading your file";
-        }        
-    }else{
-        echo "You cannot upload files of this type";
-    }
+            echo "You cannot upload files of this type";
+        }
 
-    
-    if($result==true){
-        $_SESSION['Brand_add']="New brand Added Successfully";
-        header("Location: ../../view/ShopManager/shopManagerAddNewBrands.php");
-        $connection->close();
-        exit();
+        
+        if($result==true){
+            $_SESSION['Brand_add']="New brand Added Successfully";
+            header("Location: ../../view/ShopManager/shopManagerAddNewBrands.php");
+            $connection->close();
+            exit();
+
+        }
+        else{
+            $_SESSION['Brand_add_error']="Error Occurred";
+            header("Location: ../../view/ShopManager/shopManagerAddNewBrands.php");
+            $connection->close();
+            exit();
+        }
 
     }
     else{
@@ -70,6 +78,9 @@ if(isset($_POST['BrandAdd'])){
         $connection->close();
         exit();
     }
+   
+    
+    
 
 }
 else{

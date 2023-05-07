@@ -15,6 +15,7 @@ if(isset($_POST['DeliveredOrder'])){
         exit();
     }
     else{
+        $_SESSION['No_orders']='No Delivered orders';
         header("Location: ../../controller/ShopManager/ShopManagerDashboardFirstController.php");
         $connection->close();
         exit();
@@ -34,6 +35,7 @@ if(isset($_POST['PickedOrder'])){
         exit();
     }
     else{
+        $_SESSION['No_orders']='No reserve orders';
         header("Location: ../../controller/ShopManager/ShopManagerDashboardFirstController.php");
         $connection->close();
         exit();
@@ -110,3 +112,47 @@ if(isset($_GET['enter_pin'])){
         exit();
     }
 }
+/*picked order search */
+if(isset($_POST['search_order'])){
+    $Order_id=$_POST['order_id'];
+    $Order_id=$connection->real_escape_string($Order_id);
+    $user=new Brand_reports(); 
+    $result=$user->PickedOrderDetailsSearch($connection,$Order_id);
+    if($result==true){
+        header("Location: ../../view/ShopManager/shopManagerPicked.php");
+        $_SESSION['PickedOrder']=$result;
+        $connection->close();
+        exit();
+    }
+    else{
+        $_SESSION['No_Search']='Order not available';
+        header("Location: ../../view/ShopManager/shopManagerPicked.php");
+        $connection->close();
+        exit();
+
+    }
+
+
+}
+/* */
+if(isset($_POST['D_search_order'])){
+    $Order_id=$_POST['D_order_id'];
+    $Order_id=$connection->real_escape_string($Order_id);
+    $user=new Brand_reports(); 
+    $result=$user->DeliveredOrderDetailsSearch($connection,$Order_id);
+    if($result==true){
+        header("Location:  ../../view/ShopManager/shopManagerDeliverd.php");
+        $_SESSION['DeliveredOrder']=$result;
+        $connection->close();
+        exit();
+    }
+    else{
+        $_SESSION['No_Search']='Order not available';
+        header("Location:  ../../view/ShopManager/shopManagerDeliverd.php");
+        $connection->close();
+        exit();
+
+    }
+}
+/*delivered order search */
+/**/
