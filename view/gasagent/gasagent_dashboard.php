@@ -13,8 +13,6 @@
 	<title>FaGo</title>
 </head>
 <body>
-
-
 	<!-- SIDEBAR -->
 	<section id="sidebar">
 		<a href="../../view/gasagent/View.php" class="brand">
