@@ -45,7 +45,7 @@
     </style>
 </head>
 <body>
-    <?php require_once '../header.php'; ?> 
+<?php include_once '../unreguser_header.php'; ?>
     <div class="container">
         <div class="para">    
             <h2>
