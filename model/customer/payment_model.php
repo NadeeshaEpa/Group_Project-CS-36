@@ -102,7 +102,7 @@ class payment_model{
     public function order($connection,$agent,$userid,$amount,$charge_id){
         //change the time to sri lanka time zone
         date_default_timezone_set("Asia/Colombo");
-        $time=date("h:i:sa");
+        $time=date("H:i:s");
         $date=date("Y-m-d");
         $delivery_method=$_SESSION['delivery_method'];
         $latitude=$_SESSION['cdlatitude'];

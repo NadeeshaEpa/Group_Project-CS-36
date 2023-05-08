@@ -163,6 +163,10 @@ if(!isset($_SESSION['User_id'])){
 						<tbody>
 					   <?php
 						$result=$_SESSION['deliveryrequestdetails'];
+						//sort the array according to the order id
+						usort($result, function($a, $b) {
+							return $a['Order_id'] <=> $b['Order_id'];
+						});
 						if($result){
 							foreach($result as $row){
 								$order_id=$row['Order_id'];
@@ -190,6 +194,8 @@ if(!isset($_SESSION['User_id'])){
 								$current_timestamp = strtotime($current_datetime);
 								$order_timestamp=strtotime($order_datetime);
 								$final=$current_timestamp-$order_timestamp;
+								// print_r($final);
+								
 								$hours=(int)($final/3600);
 								$minutes=(int)(fmod($final,3600)/60);
 
