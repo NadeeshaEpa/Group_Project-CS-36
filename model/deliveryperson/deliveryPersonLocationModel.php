@@ -221,6 +221,11 @@ class location{
                             if($weight==37.5){
                                 $color='GREEN';
                             }
+                            else{
+                                if($quantity>5){
+                                    $color='GREEN';
+                                }
+                            }
                             
                         }
                         if($Delivery_Vehicle_Type=='Three Wheel'){
@@ -229,7 +234,7 @@ class location{
                                 continue;
                             }
                             else{
-                                if($quantity>1){
+                                if($quantity>1 && $quantity<5){
                                     $color='GREEN';
                                 }
                             }
