@@ -1,0 +1,20 @@
+@media screen and (max-width: 700px){
+    #DeliveryRefreshId {
+       margin-left: 50px;
+    }
+
+}
+
+
+@media screen and (max-width: 700px){
+  .tb th:nth-child(2),
+  .tb td:nth-child(2),
+  .tb th:nth-child(3),
+  .tb td:nth-child(3) {
+    display: none;
+  }
+  
+ 
+
+}
+

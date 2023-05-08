@@ -246,8 +246,8 @@ class location{
                     }
                     /* */
                    
-                    /*Time checking if else And max distance 100km check*/
-                    if(($dis_between_shop_customer>=50)||($Total_Distance>=50)||($running_time_between_shop_cus>$remaining_time_move_shopToCus)){
+                    /*Time checking if else And max distance 10km check*/
+                    if(($dis_between_shop_customer>=10)||($Total_Distance>=10)||($running_time_between_shop_cus>$remaining_time_move_shopToCus)){
                         $_SESSION['NoRequest']='No Delivery Request is available. Check new delivery request click the refresh button.';
                         continue;
                     }

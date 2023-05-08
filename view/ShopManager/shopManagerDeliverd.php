@@ -122,7 +122,7 @@ if(!isset($_SESSION['User_id'])){
 
 			<div class="form-input" style="width:30%;">
 					<form action="../../controller/ShopManager/shopManagerOrdresController.php" method="POST">
-						<input type="search" name="D_order_id" placeholder="Search by order ID">
+						<input type="search" name="D_order_id" placeholder="Search by order ID" required>
 						<button type="submit" name="D_search_order" class="search-btn"><i class='bx bx-search' ></i></button>
 					</form>
 			</div>
