@@ -1,5 +1,7 @@
 <?php session_start();
-require_once("../../config.php");?>
+if(!isset($_SESSION['User_id'])){
+	header("Location:../../index.php");
+}?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -193,11 +195,11 @@ require_once("../../config.php");?>
                                 </div> 
                                 <div class="down2">   
                                         <label></label><br> 
-                                        <input type="text" name="city" value=<?php echo $result[0]['City']; ?> readonly> <br>  
+                                        <input type="text" name="city" value='<?php echo $result[0]['City']; ?>' readonly> <br>  
                                 </div>  
                                 <div class="down2"> 
                                         <label></label><br>      
-                                        <input type="text" name="postalcode" value=<?php echo $result[0]['Postalcode']; ?> readonly> <br>  
+                                        <input type="text" name="postalcode" value='<?php echo $result[0]['Postalcode']; ?>' readonly> <br>  
                                 </div>
                             </div>
 

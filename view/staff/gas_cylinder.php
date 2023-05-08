@@ -1,4 +1,7 @@
-<!-- <?php session_start(); ?> -->
+<?php session_start(); 
+if(!isset($_SESSION['User_id'])){
+	header("Location:../../index.php");
+}?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -144,16 +147,18 @@
             $company_name=$row['company_name'];
             $Weight=$row['Weight'];
             $Price=$row['Price'];
+			$new_Price=$row['newcylinder_price'];
             $Cylinder_Id=$row['Cylinder_Id'];
 			$photo=$row['photo'];
 
 
-		echo'<li>
+		echo'<li style="padding: 35px;">
 	       <div class="card">
 		   <img src="../../public/images/gascylinder/'.$photo.'" alt="logon" style="width:100%; height:290px;">
 			<h1>'.$company_name.'</h1>
 			<p class="title">Weight : '.$Weight.' KG</p>
-			<p>RS.'.$Price.'.00</p>
+			<p style="font-size:14px;">Refill : RS.'.$Price.'.00</p>
+			<p style="font-size:14px;">New : RS.'.$new_Price.'.00</p>
 			<p><a href="../../controller/staff/cylinder_controller.php?uid='.$Cylinder_Id.'"><button class="button2">Update</button></a></p>
 			<p><button onclick="deleteuser('.$Cylinder_Id.');" class="button3">Delete</button></p>
 			</div>
