@@ -43,7 +43,7 @@ class gasagent_model{
         $this->longitude=$longitude;
         $this->opentime=$opentime;
         $this->closetime=$closetime;
-        $this->Type="Gas_Agent";
+        $this->Type="Gas Agent";
         $this->Shop_status=1;
     }
 

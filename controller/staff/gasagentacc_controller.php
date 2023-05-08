@@ -29,7 +29,6 @@ if(isset($_GET['rid'])){
         $_SESSION['gasagentdetails']=[];
         header("Location:../../view/staff/Gasagent_requestlist.php");
     }
-
 }
 
 if(isset($_GET['did'])){

@@ -145,6 +145,7 @@ if(!isset($_SESSION['User_id'])){
                                 <tr><br>
                                     <th>SubType</th>
                                     <th>Quantity</th>
+									<th>Refill cylinder Price</th>
 									<th>New cylinder Price</th>
                                 </thead>   
                                 </tr>
@@ -156,7 +157,8 @@ if(!isset($_SESSION['User_id'])){
                                         echo "<tr>";
                                         echo "<td>" . $row['weight'] ." kg". "</td>";
                                         echo "<td>" . $row['quantity'] . "</td>";
-										echo "<td>" . $row['newcylinder_price']    . "</td>";
+										echo "<td>" ."RS.". $row['price'] . "</td>";
+										echo "<td>" ."RS.". $row['newcylinder_price']    . "</td>";
                                        
                                         echo "</tr>";
 									}

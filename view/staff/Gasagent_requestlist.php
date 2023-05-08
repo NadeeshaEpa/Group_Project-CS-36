@@ -161,10 +161,10 @@ if(!isset($_SESSION['User_id'])){
     <h3>All Gas Agent Requests</h3>
 
 	<form action="../../controller/staff/gasagentacc_controller.php" method="POST">
-				<div class="form-input">
-					<input type="search" name="gasagent_name" placeholder="Search by ID or name...">
-					<button type="submit" name="search_request" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
+		<div class="form-input">
+			<input type="search" name="gasagent_name" placeholder="Search by ID or name...">
+			<button type="submit" name="search_request" class="search-btn"><i class='bx bx-search' ></i></button>
+		</div>
 	</form>
 
     <table>
