@@ -154,8 +154,11 @@ if(!isset($_SESSION['User_id'])){
         <label for="weight" id="weight-label">Weight (KG) :</label>
           <input type="text" name="weight" id="name"   required><br><br>
 
-        Price (RS) :
+        Refill Cylinder Price (RS) :
           <input type="text" name="price" id="name"   required><br><br>
+
+		New Cylinder Price (RS) :
+          <input type="text" name="new_price" id="name"   required><br><br>
 
         Main Poster:
                     <div class="b3">
