@@ -1,4 +1,7 @@
-<?php session_start();?>
+<?php session_start();
+if(!isset($_SESSION['User_id'])){
+	header("Location: ../../index.php");
+}?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,11 +16,9 @@
 	<title>FaGo</title>
 </head>
 <body>
-
-
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="../../view/gasagent/View.php" class="brand">
+		<a href="#" class="brand">
 			<i class='bx bxs-select-multiple'></i>
 			<span class="text">FaGo</span>
 		</a>
@@ -41,7 +42,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="../../view/gasagent/add_gastype.php">
+			<a href="../../controller/gasagent/gastype_controller.php?addgas_drop_down=1">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Add gas </span>
 				</a>
@@ -86,7 +87,7 @@
 		<i class='bx bx-menu' ></i>
 
 		<li class="profile">
-			<?php if($_SESSION['img-status'] == 0){?>
+			<?php if(isset($_SESSION['img-status']) == 0){?>
 				<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
 			<?php }else{?>
 				<img src='../../public/images/gasargent/profile_image/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
@@ -96,9 +97,21 @@
 			<h6><?php if(isset($_SESSION['Firstname']) && isset($_SESSION['Lastname'])){
 					echo $_SESSION['Firstname'] ," " ,$_SESSION['Lastname'] ;
 				}?></h6>
-			<h5><?php if(isset($_SESSION['Type'])){
-					echo $_SESSION['Type'];
-				}?></h5>
+			<h5><?php if(isset($_SESSION['Type']) && (isset($_SESSION['Gas_Type']))){
+					echo $_SESSION['Type']; }?>
+
+
+           <h5><?php if(isset($_SESSION['Gas_Type'])){
+						if($_SESSION['Gas_Type'] ==1){
+							echo "Litro";
+						}
+						else{
+							echo "Laugh";
+						}
+
+					}
+					
+				?></h5>
         </li>
 		</nav>
 		<!-- NAVBAR -->
@@ -118,29 +131,45 @@
 				</div>
 				
 			</div>
+			 
+			<div class="btn_r">
+				<form action="../../controller/gasagent/gasagentDashboardController.php" method="POST">
+					<button class="btn3" id="btn3" name="deliverbtn">Delivered Orders</button>
+					<button class="btn4" id="btn4" name="pickedbtn">Picked Orders</button>
+				</form>
+			</div>
+
+
+			
 				<div class="btn">
                     <form action="../../controller/gasagent/gasagentDashboardController.php" method="post">
 						<button class="btn1" id="btn1" name="sbtn1">Shop Open</button>
 						<button class="btn2" id="btn2" name="sbtn2">Shop Closed</button>
                     </form>
                 </div>
-			<div>
 
-
-			<div class="btn">
-				<form action="../../controller/gasagent/gasagentDashboardController.php" method="POST">
-					<button class="btn1" id="btn1" name="deliverbtn">Delivered Orders</button>
-					<button class="btn2" id="btn2" name="pickedbtn">Picked Orders</button>
-				</form>
-			</div>
+				
 			<div>
+				
+
 			
+			<br>	
+
+			<div class="arr_date">		
 		<form action="../../controller/gasagent/gasagentDashboardController.php" method="POST">
 		    <label for="date" id="ad" >Gas Cylindet Arrivel date</label>
-			<input type="date" name="arrivel_date" id="arrivel_date" class="add" placeholder="Date">
+			<input type="date" name="arrivel_date" id="arrivel_date" class="add" placeholder="Date" required>
 			<button class="date" name="btn_date" id="btn_date">click</button>
 		</form>
-		<div class="stock">
+		</div><br>
+		<form action="../../controller/gasagent/gasagentDashboardController.php" method="POST">
+			<label for="time" id="ad">Update shop open time</label>
+			<input type="time" name="open_time" id="open_time" class="add" placeholder="date" required>
+			<button class="date" name="btn_time" id="btn_date">click</button>	
+		</form>
+
+		<br>
+		<div class="stock2">
 		<h5><?php if(isset($_SESSION['date_correct'])){
 					echo $_SESSION['date_correct'];
 					unset($_SESSION['date_correct']);
@@ -149,16 +178,38 @@
 				{
 					echo $_SESSION['date_wrong'];
 					unset($_SESSION['date_wrong']);
-				}
-					
+				}				
 
 				 
+				?>
+					<?php	if(isset($_SESSION['open_time'])){
+				    if($_SESSION['open_time']=='open time updated succsessfully'){
+						?>
+						<div class="shop_status">
+						<p>open time updated succsessfully</p>
+						</div>	
+						<?php
+					}else{
+						?>
+						<div class="shop_status">
+						<p>not updated open time</p>
+						</div>	
+						<?php
+					}
+					unset($_SESSION['open_time']);	
+				}
 				
-				?></h5>
+				?>
+				
+			
+			
+			</h5>
 		</div>
 			
+			<!-- <div> -->
+				
+				<br>	
 		
-
 				<?php
 				if(isset($_SESSION['updateOpenSucessfully'])){
 				    if($_SESSION['updateOpenSucessfully']=='sucess'){
@@ -204,9 +255,9 @@
 					}
 					?>
 					<?php
-				}
-				
-				?>
+				}?>
+
+		
 			</div>
 
 		
@@ -232,7 +283,7 @@
 					</span>
 				</li>
 				<li>
-					<i class='bx bxs-dollar-circle' ></i>
+					<i class='bx bx-money' ></i>
 					<span class="text">
 						<label for="" id="incomeid1" style=" font-size:20px"> Total income:</label><br>
                         <label for="" id="incomeid2">Rs: 850</label>
@@ -261,7 +312,7 @@
                                         <th>Delivery Method</th>
                                         <th>Price</th>
                                     </tr>
-                                    <?php
+                                  <?php
                                     if(isset($_SESSION['Gas_Dashboard_details']) && !empty($_SESSION['Gas_Dashboard_details'])){
                                         $result=$_SESSION['Gas_Dashboard_details']; 
 										// print_r($result);

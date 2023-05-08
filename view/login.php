@@ -23,6 +23,7 @@ if(isset($_SESSION['locked'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../public/css/customer/login.css">
+     <link rel="stylesheet" href="../public/css/login_responsive.css">
     <title>Login</title>
 </head>
     <body>
@@ -83,7 +84,7 @@ if(isset($_SESSION['locked'])){
                 </form>
             </div>   
             <div class = "side">
-                <img src="../public/images/customer/login.webp"  alt="">
+                <img src="../public/images/logo.png"  alt="">
             </div>
         </div>    
     </body>

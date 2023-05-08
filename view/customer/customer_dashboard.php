@@ -19,7 +19,7 @@
     </script>
 	<title>FaGo</title>
 </head>
-<body>
+<body style="background-color:#1c2d4d">
 	<!-- SIDEBAR -->
     <div class="dcontainer">
         <section id="sidebar">

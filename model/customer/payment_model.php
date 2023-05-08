@@ -102,7 +102,7 @@ class payment_model{
     public function order($connection,$agent,$userid,$amount,$charge_id){
         //change the time to sri lanka time zone
         date_default_timezone_set("Asia/Colombo");
-        $time=date("h:i:sa");
+        $time=date("H:i:s");
         $date=date("Y-m-d");
         $delivery_method=$_SESSION['delivery_method'];
         $latitude=$_SESSION['cdlatitude'];
@@ -117,6 +117,13 @@ class payment_model{
             $pin.=rand(0,9);
         }
 
+        //generate another pin for gas agent
+        $pin_length=4;
+        $pin2="";
+        for($i=0;$i<$pin_length;$i++){
+            $pin2.=rand(0,9);
+        }
+
         if($delivery_method=="Delivered by agent"){
             $delivery_status='NULL';
         }else if($delivery_method=="Reserve"){
@@ -125,9 +132,9 @@ class payment_model{
             $delivery_status="3";
         }
         if($delivery_status=='NULL'){
-            $sql="insert into `order` (Time,Order_date,Delivery_Method,reserve_pin,Order_Status,Amount,Charge_id,Delivery_Status,Delivery_fee,latitude,longitude) values ('$time','$date','$delivery_method','$pin','1','$amount','$charge_id',NULL,'$delivery_fee','$latitude','$longitude')";
+            $sql="insert into `order` (Time,Order_date,Delivery_Method,reserve_pin,GasAgent_pin,Order_Status,Amount,Charge_id,Delivery_Status,Delivery_fee,latitude,longitude) values ('$time','$date','$delivery_method','$pin','$pin2','1','$amount','$charge_id',NULL,'$delivery_fee','$latitude','$longitude')";
         }else{
-            $sql="insert into `order` (Time,Order_date,Delivery_Method,reserve_pin,Order_Status,Amount,Charge_id,Delivery_Status,Delivery_fee,latitude,longitude) values ('$time','$date','$delivery_method','$pin','1','$amount','$charge_id','$delivery_status','$delivery_fee','$latitude','$longitude')";
+            $sql="insert into `order` (Time,Order_date,Delivery_Method,reserve_pin,GasAgent_pin,Order_Status,Amount,Charge_id,Delivery_Status,Delivery_fee,latitude,longitude) values ('$time','$date','$delivery_method','$pin','$pin2','1','$amount','$charge_id','$delivery_status','$delivery_fee','$latitude','$longitude')";
         }
         $result=$connection->query($sql);
         if($result){
@@ -216,7 +223,7 @@ class payment_model{
 
         $stock_manager=$this->stock_manager($connection);
 
-        if($_SESSION['delivery_method']=="Reserve" && $agent!=$stock_manager){
+        if(($_SESSION['delivery_method']=="Reserve"||$_SESSION['delivery_method']=="Delivered by agent") && $agent!=$stock_manager){
             $sql="insert into payment(order_id,user_id,staff_id,amount,date,paid) values('$orderid','$agent',NULL,'$amount',NULL,'0')";
             $result=$connection->query($sql);
             if(!$result){
@@ -267,12 +274,13 @@ class payment_model{
                     $price=$row['price'];
                     $name=$row['name'];
 
-                    $sql5="select Order_Id,order_date,reserve_pin from `order` order by Order_Id desc limit 1";
+                    $sql5="select Order_Id,order_date,reserve_pin,GasAgent_pin from `order` order by Order_Id desc limit 1";
                     $result5=$connection->query($sql5);
                     $row=$result5->fetch_assoc();
                     $orderid=$row['Order_Id'];
                     $order_date=$row['order_date'];
                     $reserve_pin=$row['reserve_pin'];
+                    $agent_pin=$row['GasAgent_pin'];
 
                     $shop="Fago Shop";
 
@@ -293,7 +301,7 @@ class payment_model{
                     $total=$amount+$delivery_fee;
                     $delivery_method=$row['delivery_method'];
 
-                    $answer[]=array("name"=>$username,"email"=>$useremail,"orderid"=>$orderid,"orderdate"=>$order_date,"shop"=>$shop,"itemname"=>$name,"quantity"=>$quantity,"price"=>$price,"total"=>$total,"delivery_fee"=>$delivery_fee,"delivery_method"=>$delivery_method,"reserve_pin"=>$reserve_pin);
+                    $answer[]=array("name"=>$username,"email"=>$useremail,"orderid"=>$orderid,"orderdate"=>$order_date,"shop"=>$shop,"itemname"=>$name,"quantity"=>$quantity,"price"=>$price,"total"=>$total,"delivery_fee"=>$delivery_fee,"delivery_method"=>$delivery_method,"reserve_pin"=>$reserve_pin,"GasAgent_pin"=>$agent_pin);
                 }
             }else{
                 $result=$result->fetch_all(MYSQLI_ASSOC);
@@ -317,12 +325,13 @@ class payment_model{
                     $row=$result4->fetch_assoc();
                     $cylinderid=$row['Cylinder_Id'];
 
-                    $sql5="select Order_Id,order_date,reserve_pin from `order` order by Order_Id desc limit 1";
+                    $sql5="select Order_Id,order_date,reserve_pin,GasAgent_pin from `order` order by Order_Id desc limit 1";
                     $result5=$connection->query($sql5);
                     $row=$result5->fetch_assoc();
                     $orderid=$row['Order_Id'];
                     $order_date=$row['order_date'];
                     $reserve_pin=$row['reserve_pin'];
+                    $agent_pin=$row['GasAgent_pin'];
 
                     $sql6="select * from gasagent where GasAgent_Id='$agent'";
                     $result6=$connection->query($sql6);
@@ -347,7 +356,7 @@ class payment_model{
                     $total=$amount+$delivery_fee;
                     $delivery_method=$row['delivery_method'];
 
-                    array_push($answer,['name'=>$username,'email'=>$useremail,'orderid'=>$orderid,'orderdate'=>$order_date,'shop'=>$shop,'itemname'=>$itemname,'quantity'=>$quantity,'price'=>$price,'total'=>$total,'delivery_fee'=>$delivery_fee,'delivery_method'=>$delivery_method,'reserve_pin'=>$reserve_pin]);
+                    array_push($answer,['name'=>$username,'email'=>$useremail,'orderid'=>$orderid,'orderdate'=>$order_date,'shop'=>$shop,'itemname'=>$itemname,'quantity'=>$quantity,'price'=>$price,'total'=>$total,'delivery_fee'=>$delivery_fee,'delivery_method'=>$delivery_method,'reserve_pin'=>$reserve_pin,'GasAgent_pin'=>$agent_pin]);
                 }
             }
             return $answer;

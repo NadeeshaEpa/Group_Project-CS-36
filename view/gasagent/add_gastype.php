@@ -1,5 +1,9 @@
 <html lang="en">
-	<?php session_start(); ?>
+	<?php session_start();
+	if(!isset($_SESSION['User_id'])){
+		header("Location: ../../index.php");
+	}
+	?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,7 +23,7 @@
     
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="../../view/gasagent/View.php" class="brand">
+		<a href="#" class="brand">
 			<i class='bx bxs-select-multiple'></i>
 			<span class="text">FaGo</span>
 		</a>
@@ -43,7 +47,7 @@
 				</a>
 			</li>
 			<li class="active">
-				<a href="../../view/gasagent/add_gastype.php">
+				<a href="../../controller/gasagent/gastype_controller.php?addgas_drop_down=1">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Add gas </span>
 				</a>
@@ -90,7 +94,7 @@
 	  		 <i class='bx bx-menu' ></i>
 
 			<li class="profile">
-				<?php if($_SESSION['img-status'] == 0){?>
+				<?php if(isset($_SESSION['img-status']) == 0){?>
 					<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
 				<?php }else{?>
 					<img src='../../public/images/gasargent/profile_image/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
@@ -103,6 +107,19 @@
 				<h5><?php if(isset($_SESSION['Type'])){
 						echo $_SESSION['Type'];
 					}?></h5>
+
+					<h5><?php if(isset($_SESSION['Gas_Type'])){
+											if($_SESSION['Gas_Type'] ==1){
+												echo "Litro";
+											}
+											else{
+												echo "Laugh";
+											}
+
+										}
+										
+									?></h5>
+
 			</li>
 		</nav>
 		<!--NAVBAR -->
@@ -112,7 +129,7 @@
 
 
         
-   
+ <main> 
     <div class="registration-form">  
 
     
@@ -130,36 +147,26 @@
         <br>     <br><br><br><br>   
         <div class="content">
                 <div class="gas_type">
-                    <h2>Add gas type</h2><br><br>
+                    <h2>Add gas type</h2>
                 
                     <form action="../../controller/gasagent/gastype_controller.php" method="POST">
-                        <!-- <div class="dropdown">
-                            <label for="">Gas Type&nbsp&nbsp&nbsp</label>
-                            
-                            <select name="gasType" id="gasType">
-                                <option value="">---Select Type---</option>
-                                <option value="Litro">Litro</option>
-                                <option value="Laugh">Laugh</option>
-                            </select>
-                        </div><br> -->
                         <div class="dropdown">
-                           <label for=""> Gas Weight</label>
-                            <select name="gasWeight" id="gasWeight">
-                                <option value="">Select Type</option>
-                                <option value="37.5">37.5</option>
-                                <option value="12.5">12.5</option>
-                                <option value="5">5</option>
-                                <option value="2.3">2.3</option>
-                            </select>
-                        </div><br>
+                           <label for="" class="weight"> Gas Weight</label>
+						   <select name="gasweight" id="gasweight"> 
+				             	<option selected disabled>Select Order Id</option>
+				             	<?php if(isset($_SESSION['cylinder_id'])){
+									    $order= $_SESSION['cylinder_id'];
+										foreach($order as $ord){?>	
+										<option><?php echo $ord?></option>
+									
+									<?php }
+							       } ?>
+			      </select>
+                        </div>
                         <label for="quantity" >Gas Quantity</label>
-                        <input type="text" name="gasQuantity" id="gasQuantity" placeholder="Gas Quantity">
-                        <br>
-                        <!-- <label for="price" >Gas Price</label>
-                        <input type="text" name="gasPrice" id="gasPrice" placeholder="   Gas Price" >
-                        <br> -->
-                        <br>
-                        <button type="submit" name="AddgasType" >ADD</button>
+                        <input type="text" name="gasQuantity" id="gasQuantity" placeholder="Gas Quantity" required>
+                        
+                        <button type="submit" name="AddgasType" >add</button>
                     </form>
                   
                 </div>
@@ -176,7 +183,9 @@
   
     
     </div>
-    <div class="image2"></div>
+    <!-- <div class="image2"></div> -->
+
+	
     </section>
     <script src="../../public/js/script.js"></script>
     

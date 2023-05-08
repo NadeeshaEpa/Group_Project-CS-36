@@ -52,7 +52,7 @@
                 <?php
                 }else{?>
                     <div class="disabled">
-                        <button style="color: red; border: 1px solid red;" disabled>Out of Stock</button>
+                        <button style="color: red;" disabled>Out of Stock</button>
                     </div>
                 <?php }
             ?>    

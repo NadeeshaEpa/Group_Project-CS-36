@@ -1,4 +1,8 @@
-<?php session_start();?>
+<?php session_start();
+if(!isset($_SESSION['User_id'])){
+	header("Location: ../../index.php");
+}
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -36,7 +40,7 @@
 
    	<!-- SIDEBAR -->
 	   <section id="sidebar">
-		<a href="../../view/gasagent/View.php" class="brand">
+		<a href="#" class="brand">
 			<i class='bx bxs-select-multiple'></i>
 			<span class="text">FaGo</span>
 		</a>
@@ -60,7 +64,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="../../view/gasagent/add_gastype.php">
+			<a href="../../controller/gasagent/gastype_controller.php?addgas_drop_down=1">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Add gas </span>
 				</a>
@@ -109,7 +113,7 @@
 		<i class='bx bx-menu' ></i>
 
 	<li class="profile">
-		<?php if($_SESSION['img-status'] == 0){?>
+		<?php if(isset($_SESSION['img-status']) == 0){?>
 			<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
 		<?php }else{?>
 			<img src='../../public/images/gasargent/profile_image/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
@@ -122,6 +126,18 @@
 		<h5><?php if(isset($_SESSION['Type'])){
 				echo $_SESSION['Type'];
 			}?></h5>
+		  <h5><?php if(isset($_SESSION['Gas_Type'])){
+						if($_SESSION['Gas_Type'] ==1){
+							echo "Litro";
+						}
+						else{
+							echo "Laugh";
+						}
+
+					}
+					
+				?></h5>
+
 	</li>
 		</nav>
 		<!-- NAVBAR -->

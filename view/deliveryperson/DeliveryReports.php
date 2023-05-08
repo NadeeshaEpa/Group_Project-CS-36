@@ -124,6 +124,7 @@ if(!isset($_SESSION['User_id'])){
 					<div class="dropdown_outter">
 
 							<div class="dropdown">
+								<label for="">Actor</label>
 								<select name="customerType" id="fuelType" required>
 									<option value="">---Select Type---</option>
 									<option value="GasAgent">Gas Agent</option>
@@ -135,7 +136,7 @@ if(!isset($_SESSION['User_id'])){
 							</div>
 
 							<div class="dropdown">
-								
+							    <label for="">Days</label>
 								<select name="dateRange" id="fuelType" required>
 									<option value="">---Select Type---</option>
 									<option value="1">Today</option>
@@ -144,7 +145,7 @@ if(!isset($_SESSION['User_id'])){
 									<option value="100">All</option>
 								</select>
 								<br>
-								<button id="viewReportId" name="viewReport">Show</button>
+								<button id="viewReportId" name="viewReport">Submit</button>
 							</div>
 							
 						

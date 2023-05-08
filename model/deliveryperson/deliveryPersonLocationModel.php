@@ -78,38 +78,39 @@ class location{
             
             
             $sql1="SELECT 
-            o.Order_date,o.Time,o.Order_id,o.latitude AS cus_lat,
-            o.longitude AS cus_long,g.latitude AS Gas_lat,
-            g.longitude AS Gas_long ,g.open_time AS Gas_open_time,g.closed_time AS Gas_closed_time,
-            st.open_time AS Shop_open_time,st.closed_time AS Shop_closed_time,st.latitude AS pro_lat,
-            st.longitude AS pro_long,po.Quantity AS Gas_Quantity,spo.Quantity AS Shop_Quantity,
-            gc.Weight,o.Delivery_fee,g.Shop_status,st.Shop_status AS s_Shop_status,
-            
-            concat(ug.First_Name,' ',ug.Last_Name) AS gasargent_Name,
-            concat(ug.Postalcode,',',ug.Street,',',ug.City) AS gasargent_Address,
-            concat(us.First_Name,' ',us.Last_Name) AS ShopManager_Name,
-            concat(us.Postalcode,',',us.Street,',',us.City) AS ShopManager_Address,
-            concat(ucpo.First_Name,' ',ucpo.Last_Name) AS GasCustomer_Name,
-            concat(ucpo.Postalcode,',',ucpo.Street,',',ucpo.City) AS GasCustomer_Address,
-            concat(ucspo.First_Name,' ',ucspo.Last_Name) AS ShopCustomer_Name,
-            concat(ucspo.Postalcode,',',ucspo.Street,',',ucspo.City) AS ShopCustomer_Address
-            
-            FROM `order` o 
-            
-            LEFT JOIN placeorder po ON po.Order_Id=o.Order_id
-            LEFT JOIN shop_placeorder spo ON spo.Order_id=o.Order_id
-            LEFT JOIN stock_manager st ON spo.StockManager_id=st.id 
-            LEFT JOIN gasagent g on po.GasAgent_Id=g.GasAgent_Id 
-            LEFT JOIN user ug ON g.GasAgent_Id=ug.User_id
-            LEFT JOIN user us ON st.id=us.User_id
-            LEFT JOIN customer cpo ON po.Customer_Id=cpo.Customer_Id
-            LEFT JOIN customer cspo ON spo.Customer_Id=cspo.Customer_Id
-            LEFT JOIN user ucpo ON cpo.Customer_Id=ucpo.User_id
-            LEFT JOIN user ucspo ON cspo.Customer_Id=ucspo.User_id
-            LEFT JOIN gascylinder gc ON po.Cylinder_Id=gc.Cylinder_Id
-            
-            WHERE (o.Delivery_Method='Delivered by agent' && o.Order_Status=1 && o.Delivery_Status IS NULL)
-            ORDER BY o.Order_date ASC, o.Time ASC";
+            COUNT(*) As count,o.Order_date,o.Time,o.Order_id,o.latitude AS cus_lat,
+             o.longitude AS cus_long,g.latitude AS Gas_lat,
+             g.longitude AS Gas_long ,g.open_time AS Gas_open_time,g.closed_time AS Gas_closed_time,
+             st.open_time AS Shop_open_time,st.closed_time AS Shop_closed_time,st.latitude AS pro_lat,
+             st.longitude AS pro_long,SUM(po.Quantity) AS Gas_Quantity,SUM(spo.Quantity) AS Shop_Quantity,
+             MAX(gc.Weight) As weight,o.Delivery_fee,g.Shop_status,st.Shop_status AS s_Shop_status,po.cylinder_type,
+             
+             concat(ug.First_Name,' ',ug.Last_Name) AS gasargent_Name,
+             concat(ug.Postalcode,',',ug.Street,',',ug.City) AS gasargent_Address,
+             concat(us.First_Name,' ',us.Last_Name) AS ShopManager_Name,
+             concat(us.Postalcode,',',us.Street,',',us.City) AS ShopManager_Address,
+             concat(ucpo.First_Name,' ',ucpo.Last_Name) AS GasCustomer_Name,
+             concat(ucpo.Postalcode,',',ucpo.Street,',',ucpo.City) AS GasCustomer_Address,
+             concat(ucspo.First_Name,' ',ucspo.Last_Name) AS ShopCustomer_Name,
+             concat(ucspo.Postalcode,',',ucspo.Street,',',ucspo.City) AS ShopCustomer_Address
+             
+             FROM `order` o 
+             
+             LEFT JOIN placeorder po ON po.Order_Id=o.Order_id
+             LEFT JOIN shop_placeorder spo ON spo.Order_id=o.Order_id
+             LEFT JOIN stock_manager st ON spo.StockManager_id=st.id 
+             LEFT JOIN gasagent g on po.GasAgent_Id=g.GasAgent_Id 
+             LEFT JOIN user ug ON g.GasAgent_Id=ug.User_id
+             LEFT JOIN user us ON st.id=us.User_id
+             LEFT JOIN customer cpo ON po.Customer_Id=cpo.Customer_Id
+             LEFT JOIN customer cspo ON spo.Customer_Id=cspo.Customer_Id
+             LEFT JOIN user ucpo ON cpo.Customer_Id=ucpo.User_id
+             LEFT JOIN user ucspo ON cspo.Customer_Id=ucspo.User_id
+             LEFT JOIN gascylinder gc ON po.Cylinder_Id=gc.Cylinder_Id
+             
+             WHERE (o.Delivery_Method='Delivered by agent' && o.Order_Status=1 && o.Delivery_Status IS NULL) 
+             GROUP BY o.Order_id
+             ORDER BY o.Order_date ASC, o.Time ASc";
             $result1=mysqli_query($connection,$sql1);
             
             if(mysqli_num_rows($result1)>0){
@@ -147,7 +148,7 @@ class location{
                     }
                     if (isset($row['Gas_closed_time'])  && !empty($row['Gas_closed_time'])){
                         $closed_time=$row['Gas_closed_time'];
-                        
+                    }    
                     if (isset($row['Shop_open_time'])  && !empty($row['Shop_open_time'])){
                         $open_time=$row['Shop_open_time'];
                         
@@ -158,7 +159,7 @@ class location{
                         
                        
                     }
-                    }
+                    
                     if (isset($row['Gas_Quantity'])  && !empty($row['Gas_Quantity'])){
                         $quantity=$row['Gas_Quantity'];
                         
@@ -175,6 +176,7 @@ class location{
                     if (isset($row['s_Shop_status'])  && !empty($row['s_Shop_status'])){
                         $shop_Status=$row['s_Shop_status'];
                     }
+                  
                     
                     $dis_between_shop_customer=location :: distance($customer_lat,$customer_long,$organiZation_lat,$organiZation_long);
                     
@@ -244,8 +246,8 @@ class location{
                     }
                     /* */
                    
-                    /*Time checking if else And max distance 100km check*/
-                    if(($dis_between_shop_customer>=50)||($Total_Distance>=50)||($running_time_between_shop_cus>$remaining_time_move_shopToCus)){
+                    /*Time checking if else And max distance 10km check*/
+                    if(($dis_between_shop_customer>=10)||($Total_Distance>=10)||($running_time_between_shop_cus>$remaining_time_move_shopToCus)){
                         $_SESSION['NoRequest']='No Delivery Request is available. Check new delivery request click the refresh button.';
                         continue;
                     }
@@ -279,8 +281,14 @@ class location{
                         if (isset($row['gasargent_Address'])  && !empty($row['gasargent_Address'])){
                             $argent_Address=$row['gasargent_Address'];
                         }
+                        if ($row['cylinder_type']=='old' ) {
+                            $order_type=1;//old gas cylinder 
+                        }
+                        if ($row['cylinder_type']=='new'  || $row['cylinder_type']==NULL ) {
+                            $order_type=2;//new gas cylinder or product order
+                        }
                         $delivery_fee=($row['Delivery_fee'])*80/100;
-                        array_push($dataArray,['Order_id'=>$row['Order_id'],'customer_Name'=>$customer_name,'Customer_Address'=>$Customer_Address,'Argent_Name'=>$argent_name,'Argent_Address'=>$argent_Address,'Distance'=>$Total_Distance,'Distance_Shop_customer'=>$RoundedDis_between_shop_customer,'Distance_Between_Delivery_shop'=>$dis_between_shop_Delivery,'RemTimeShopToCustomer'=>$remaining_time_move_shopToCus,'RemaintinTimeTodeliveryShop'=>$remaining_time_move_DeliveryToShop,'runningTimeShopToCustomner'=>$running_time_between_shop_cus,'RunningtimeToDeliveryToshop'=>$running_time_between_shop_Delivery,'Delivery fee'=>$delivery_fee,'Color'=>$color]);
+                        array_push($dataArray,['Order_id'=>$row['Order_id'],'customer_Name'=>$customer_name,'Customer_Address'=>$Customer_Address,'Argent_Name'=>$argent_name,'Argent_Address'=>$argent_Address,'Distance'=>$Total_Distance,'Distance_Shop_customer'=>$RoundedDis_between_shop_customer,'Distance_Between_Delivery_shop'=>$dis_between_shop_Delivery,'RemTimeShopToCustomer'=>$remaining_time_move_shopToCus,'RemaintinTimeTodeliveryShop'=>$remaining_time_move_DeliveryToShop,'runningTimeShopToCustomner'=>$running_time_between_shop_cus,'RunningtimeToDeliveryToshop'=>$running_time_between_shop_Delivery,'Delivery fee'=>$delivery_fee,'Color'=>$color,'order_type'=>$order_type]);
 
 
                     }
