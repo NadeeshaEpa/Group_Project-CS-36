@@ -3,7 +3,7 @@ class orders{
     private $User_id;
     public function gasDashDetails($connection){
         $this->User_id=$_SESSION['User_id'];
-        $sql="SELECT concat(u.First_Name,' ',u.Last_Name)AS Name,concat(u.Postalcode,' , ',u.Street,' , ' ,u.City)As Address,o.Order_id, c.Contact_No, p.Quantity,ga.Weight,ga.Type,o.Amount,o.Delivery_Method,o.Order_date FROM `order`o INNER JOIN placeorder p on o.Order_id=p.Order_Id INNER JOIN user u ON u.User_id=p.Customer_Id INNER JOIN user_contact c ON u.User_id=c.User_id  INNER JOIN gascylinder ga ON ga.Cylinder_Id=p.Cylinder_Id WHERE (o.Order_Status=1 && p.GasAgent_Id=$this->User_id)  GROUP by o.Order_id order BY o.Time ASC";
+        $sql="SELECT concat(u.First_Name,' ',u.Last_Name)AS Name,concat(u.Postalcode,' , ',u.Street,' , ' ,u.City)As Address,o.Order_id, c.Contact_No, p.Quantity,ga.Weight,ga.Type,o.Amount,o.Delivery_Method,o.Order_date FROM `order`o INNER JOIN placeorder p on o.Order_id=p.Order_Id INNER JOIN user u ON u.User_id=p.Customer_Id INNER JOIN user_contact c ON u.User_id=c.User_id  INNER JOIN gascylinder ga ON ga.Cylinder_Id=p.Cylinder_Id WHERE (o.Order_Status=1 && p.GasAgent_Id=$this->User_id)  GROUP by o.Order_id order BY o.Order_id DESC";
        
         
         $result=$connection->query($sql);
