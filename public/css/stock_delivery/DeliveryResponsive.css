@@ -18,3 +18,55 @@
 
 }
 
+
+@media screen and (max-width: 700px) {
+  .ReContainerInner {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .Re_left {
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+  
+  .Re_left img {
+    width: 100%;
+    height: auto;
+  }
+
+  .ReContainer .Re_right {
+    width: 100%;
+    
+    background: white;
+}
+
+.ReContainer .Re_right label {
+  /* margin-top: 5%;
+  margin-bottom: 5%; */
+  font-size: 12px;
+  width: 100%;
+  margin-top: 0%;
+  margin-left: 0%;
+  margin-bottom: 0%;
+  margin-right:0% ;
+  font-weight: 5px;
+}
+
+.ReContainer .Re_right input {
+  /* width: 60%;
+  margin-top: 5%; */
+
+  width: 100%;
+    
+    font-size: 12px;
+    font-size: 12px;
+    width: 100%;
+    margin-top: 0%;
+    margin-left: 0%;
+    margin-bottom: 5px;
+    margin-right:0% ;
+}
+
+}

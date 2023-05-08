@@ -110,7 +110,7 @@ class location{
              
              WHERE (o.Delivery_Method='Delivered by agent' && o.Order_Status=1 && o.Delivery_Status IS NULL) 
              GROUP BY o.Order_id
-             ORDER BY o.Order_date ASC, o.Time ASc";
+             ORDER BY  o.Order_id ASc";
             $result1=mysqli_query($connection,$sql1);
             
             if(mysqli_num_rows($result1)>0){
@@ -129,6 +129,7 @@ class location{
                     $customer_long=$row['cus_long'];
                     $weight=2.3;// assign default value for the weight
                     $color='RED';//Change Row color
+                    $shop_Status=0;// early define shop status
                     if (isset($row['Gas_lat'])  && !empty($row['Gas_lat'])){
                         $organiZation_lat=$row['Gas_lat'];
                         
