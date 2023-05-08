@@ -43,7 +43,7 @@ if(!isset($_SESSION['User_id'])){
 				</a>
 			</li>
 			<li>
-				<a href="../../view/gasagent/add_gastype.php">
+			<a href="../../controller/gasagent/gastype_controller.php?addgas_drop_down=1">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Add gas </span>
 				</a>
