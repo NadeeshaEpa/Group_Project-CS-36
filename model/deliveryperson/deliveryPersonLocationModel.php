@@ -168,9 +168,10 @@ class location{
                     if (isset($row['Shop_Quantity'])  && !empty($row['Shop_Quantity'])){
                         $quantity=$row['Shop_Quantity'];
                     }
-                    if (isset($row['Weight'])  && !empty($row['Weight'])){
-                        $weight=$row['Weight'];
+                    if (isset($row['weight'])  && !empty($row['weight'])){
+                        $weight=$row['weight'];
                     }
+
                     if (isset($row['Shop_status'])  && !empty($row['Shop_status'])){
                         $shop_Status=$row['Shop_status'];
                     }
@@ -221,6 +222,11 @@ class location{
                             if($weight==37.5){
                                 $color='GREEN';
                             }
+                            else{
+                                if($quantity>5){
+                                    $color='GREEN';
+                                }
+                            }
                             
                         }
                         if($Delivery_Vehicle_Type=='Three Wheel'){
@@ -229,7 +235,7 @@ class location{
                                 continue;
                             }
                             else{
-                                if($quantity>1){
+                                if($quantity>1 && $quantity<5){
                                     $color='GREEN';
                                 }
                             }
