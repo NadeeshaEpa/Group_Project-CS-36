@@ -146,8 +146,17 @@ if(!isset($_SESSION['User_id'])){
 
 			<div class="down1">  
 		        <label>Order Status :</label><br>  
-                <input type="text" name="fname" value=<?php echo $result[0]['Order_Status']; ?> readonly><br>
-		     </div>
+                <?php
+				if($result[0]['Order_Status']==2){
+					echo'
+					<input type="text" name="fname" style="color:red;" value="Order Cancelled" readonly><br>';
+				}
+				else{
+					echo'
+					<input type="text" name="fname" value="Order Placed" readonly><br>';
+				}
+				?> 
+		    </div>
 		</div>
         <div class="down">
              <div class="down1">  

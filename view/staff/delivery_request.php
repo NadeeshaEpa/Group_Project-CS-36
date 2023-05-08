@@ -163,7 +163,7 @@ if(!isset($_SESSION['User_id'])){
 						<tbody>
 					   <?php
 						$result=$_SESSION['deliveryrequestdetails'];
-						//sort the array according to the order id
+
 						usort($result, function($a, $b) {
 							return $a['Order_id'] <=> $b['Order_id'];
 						});
