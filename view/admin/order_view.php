@@ -1,5 +1,7 @@
 <?php session_start();
-require_once("../../config.php");?>
+if(!isset($_SESSION['User_id'])){
+	header("Location:../../index.php");
+}?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -182,22 +184,22 @@ require_once("../../config.php");?>
 		     </div>
 		     <div class="down1">  
 		        <label>Customer Name:</label><br>  
-                <input type="text" name="fname" value=<?php echo $result[0]['First_Name']; ?><?php echo $result[0]['Last_Name']; ?> readonly><br>
+                <input type="text" name="fname" value='<?php echo $result[0]['First_Name']." ".$result[0]['Last_Name']; ?>' readonly><br>
 		    </div>
 		</div>
 
 		<div class="down"> 
                                 <div class="down2">     
                                         <label>Address:</label><br> 
-                                        <input type="text" name="street" value=<?php echo $result[0]['Street']; ?> readonly> <br>  
+                                        <input type="text" name="street" value='<?php echo $result[0]['Street']; ?>' readonly> <br>  
                                 </div> 
                                 <div class="down2">   
                                         <label></label><br> 
-                                        <input type="text" name="city" value=<?php echo $result[0]['City']; ?> readonly> <br>  
+                                        <input type="text" name="city" value='<?php echo $result[0]['City']; ?> 'readonly> <br>  
                                 </div>  
                                 <div class="down2"> 
                                         <label></label><br>      
-                                        <input type="text" name="postalcode" value=<?php echo $result[0]['Postalcode']; ?> readonly> <br>  
+                                        <input type="text" name="postalcode" value='<?php echo $result[0]['Postalcode']; ?> 'readonly> <br>  
                                 </div>
         </div></br></br>
 
@@ -210,7 +212,7 @@ require_once("../../config.php");?>
 		     </div>
 		     <div class="down1">  
 		        <label>Shop name :</label><br>  
-                <input type="text" name="fname" value=<?php echo $result[0]['Shop_name']; ?> readonly><br>
+                <input type="text" name="fname" value='<?php echo $result[0]['Shop_name']; ?> 'readonly><br>
 		    </div>
 		</div>
 
@@ -224,7 +226,7 @@ require_once("../../config.php");?>
 			 <div class="down1">  
 		        <label>Delivery Status :</label><br>  
                 <input type="text" name="fname" value=
-				<?php 
+				'<?php 
 				if($result[0]['Delivery_Status']==1){
 					echo("Delivered");
 				}
@@ -246,18 +248,18 @@ require_once("../../config.php");?>
 				else{
 					echo("Not assigned");
 				}
-				 ?> readonly><br> 
+				 ?>' readonly><br> 
 		    </div>
 		</div>
 
 		<div class="down">
 		<div class="down1">  
 		        <label>Delivery Person ID :</label><br>  
-                <input type="text" name="fname" value=<?php echo $result[0]['DeliveryPerson_Id']; ?> readonly><br>
+                <input type="text" name="fname" value='<?php echo $result[0]['DeliveryPerson_Id']; ?>' readonly><br>
 		     </div>
 		     <div class="down1">  
 		        <label>Delivery Fee :</label><br>  
-                <input type="text" name="fname" value=<?php echo $result[0]['Delivery_fee']; ?> readonly><br> 
+                <input type="text" name="fname" value='<?php echo $result[0]['Delivery_fee']; ?> readonly><br> 
 		    </div>
 		</div>
 
