@@ -32,7 +32,7 @@ class brand{
         $result=$connection->query($sql);
         
         if($result){
-            $sql1="DELETE FROM `product` WHERE Item_code=$code";
+            $sql1="UPDATE product SET active_state=0 WHERE Item_code=$code";
             $result1=$connection->query($sql1);
             $sql2="SET FOREIGN_KEY_CHECKS=1";
             $result2=$connection->query($sql2);
@@ -68,7 +68,7 @@ class brand{
 
     //get Avelabel product code
     public function getProductItemCodeDetails($connection){
-        $sql="SELECT Item_code,Name FROM product order BY Item_code ASC";
+        $sql="SELECT Item_code,Name FROM product  WHERE active_state=1 order BY Item_code ASC ";
         
         $result=mysqli_query($connection,$sql);
         if($result->num_rows===0){

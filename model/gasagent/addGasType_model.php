@@ -2,8 +2,10 @@
 class add_gasType{
    public function getcylinderId($connection,$weight,$gasagentId){
       $sql="Select c.Cylinder_Id from gascylinder c inner join gasagent ga on c.Type=ga.Gas_Type where c.Weight='$weight' and ga.GasAgent_Id='$gasagentId'";
-      
+    //  var_dump($sql);
+    //  die();
       $result=$connection->query($sql);
+      
       $row=$result->fetch_assoc();
       $cylinderId=$row['Cylinder_Id'];
       return $cylinderId;
@@ -43,14 +45,14 @@ class add_gasType{
    public function get_cylinder_id($connection){
 
     $user_id=$_SESSION['User_id'];
-    $sql="SELECT Cylinder_Id FROM gascylinder g INNER JOIN gasagent ga ON g.Type=ga.Gas_Type WHERE ga.GasAgent_Id=$user_id";
+    $sql="SELECT  g.Weight FROM gascylinder g INNER JOIN gasagent ga ON g.Type=ga.Gas_Type WHERE ga.GasAgent_Id=$user_id and active_state=1";
     $result=$connection->query($sql);
     if($result->num_rows===0){
         return false;
     }else{
         $answer=[];
         while($row=$result->fetch_assoc()){
-            array_push($answer,$row['Cylinder_Id']);
+            array_push($answer,$row['Weight']);
         }
         return $answer;
     }

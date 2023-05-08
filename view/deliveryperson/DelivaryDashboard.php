@@ -12,7 +12,7 @@ if(!isset($_SESSION['User_id'])){
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="../../public/css/stock_delivery/DelivaryDashboardNew.css">
-
+    <link rel="stylesheet" href="../../public/css/stock_delivery/DeliveryResponsive.css">
 	<title>FaGo</title>
 </head>
 <body>
@@ -192,6 +192,7 @@ if(!isset($_SESSION['User_id'])){
 						?><div class="tbl">
                             <table class="tb">
                                     <tr>
+									    <th>Order Id</th>
 										<th>Customer Name</th>
 										<th>Argent Nmae</th>
 										<th>Distance</th>
@@ -202,7 +203,7 @@ if(!isset($_SESSION['User_id'])){
 								
 								foreach ($result as $row) {?>
 									<tr <?php if ($row['Color']=='GREEN'){echo 'class="highlight"';} ?>>
-									  
+									  <td><?= $row['Order_id'] ?></td>
 									  <td><?= $row['customer_Name'] ?></td>
 									  <td><?= $row['Argent_Name'] ?></td>
 									  <td><?= $row['Distance_Shop_customer']," ","Km" ?></td>

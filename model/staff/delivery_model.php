@@ -3,7 +3,7 @@ class delivery_model
 {
     public function viewdelivery($connection)
     {      
-        $sql="SELECT o.Order_id,o.Order_date,o.Delivery_Status,u.First_Name,u.Last_Name,o.DeliveryPerson_Id,i.imgname from `order` o INNER JOIN `user` u ON o.DeliveryPerson_Id=u.User_id INNER JOIN `profileimg` i ON u.User_id=i.User_id WHERE o.Delivery_Method='Delivered by agent' ORDER BY o.Order_id DESC";
+        $sql="SELECT o.Order_id,o.Order_date,o.Delivery_Status,u.First_Name,u.Last_Name,o.DeliveryPerson_Id,i.imgname from `order` o INNER JOIN `user` u ON o.DeliveryPerson_Id=u.User_id INNER JOIN `profileimg` i ON u.User_id=i.User_id WHERE o.Delivery_Method='Delivered by agent' AND o.Delivery_Status='1' OR o.Delivery_Status='0' ORDER BY o.Order_id DESC";
         $result = mysqli_query($connection, $sql);
         $delivery = [];
         if ($result) {    

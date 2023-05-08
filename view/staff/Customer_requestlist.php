@@ -1,5 +1,8 @@
 <?php session_start();
-require_once("../../config.php");?>
+require_once("../../config.php");
+if(!isset($_SESSION['User_id'])){
+	header("Location:../../index.php");
+}?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

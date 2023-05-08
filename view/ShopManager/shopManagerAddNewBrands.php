@@ -143,7 +143,7 @@ if(!isset($_SESSION['User_id'])){
 								<div class="Add_brands_info">
 
 									<form action="../../controller/ShopManager/ShopManagerAddBrandsController.php" method="POST" enctype="multipart/form-data">
-										<h5>Add Brands</h5>
+										<h5>Add Product</h5>
 										<label for="">Name :</label><br>
 										<input type="text" name="productName" required><br>
 										<label for="">Quantity :</label><br>

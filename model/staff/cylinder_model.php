@@ -3,15 +3,18 @@ class cylinder_model{
     private $Cylinder_Id;
     private $Type;
     private $Price;
+    private $new_Price;
     private $Weight;
     private $photo;
     
     
+    
 
-    public function setDetails($gascompany='',$weight='',$price='',$photo=''){
+    public function setDetails($gascompany='',$weight='',$price='',$new_price='',$photo=''){
         $this->Type=$gascompany;
         $this->Weight=$weight;
        $this->Price=$price;
+       $this->new_Price=$new_price;
        $this->photo=$photo;  
     }
     
@@ -27,7 +30,7 @@ class cylinder_model{
     }
 
     private function CreatecylinderEntry($connection){
-        $sql="INSERT INTO gascylinder(Type,Weight,Price,photo) VALUES ('$this->Type','$this->Weight','$this->Price','$this->photo')";
+        $sql="INSERT INTO gascylinder(Type,Weight,Price,newcylinder_price,photo,active_state) VALUES ('$this->Type','$this->Weight','$this->Price','$this->new_Price','$this->photo','1')";
         if($connection->query($sql)){
             $_SESSION['registerMsg']="cylinder table updated Successfully";
             return true;
@@ -50,7 +53,7 @@ class cylinder_model{
     }
 
     public function viewcylinder($connection){
-        $sql="SELECT c.Cylinder_Id, c.Weight, c.Price,c.photo, g.company_name FROM `gascylinder` c INNER JOIN `gas_company` g ON c.Type=g.company_id";
+        $sql="SELECT c.Cylinder_Id, c.Weight, c.Price,c.newcylinder_price,c.photo, g.company_name FROM `gascylinder` c INNER JOIN `gas_company` g ON c.Type=g.company_id WHERE c.active_state='1'";
         $result=mysqli_query($connection,$sql);
         if($result){
             $cylinder=[];
@@ -79,7 +82,7 @@ class cylinder_model{
      }
 
      public function deleteuser($connection,$cylinder_id){
-        $sql="DELETE FROM `gascylinder` WHERE Cylinder_Id='$cylinder_id'";
+        $sql="UPDATE `gascylinder` SET `active_state`='0' WHERE Cylinder_Id='$cylinder_id'";
         $result=$connection->query($sql);
         if($result==TRUE){
             return TRUE;
@@ -88,10 +91,8 @@ class cylinder_model{
         }
     }
 
-
-    
     public function updateUser($connection,$array){
-        $sql="UPDATE `gascylinder` SET `Price`='$array[1]' WHERE Cylinder_Id='$array[0]'";
+        $sql="UPDATE `gascylinder` SET `Price`='$array[1]',`newcylinder_price`='$array[2]' WHERE Cylinder_Id='$array[0]'";
         $result=$connection->query($sql);
         if($result){
             return true;
@@ -101,14 +102,14 @@ class cylinder_model{
     }
 
     public function edituser($connection,$cylinder_id){
-        $sql="SELECT c.Cylinder_Id, c.Weight, c.Price,c.photo, g.company_name FROM `gascylinder` c INNER JOIN `gas_company` g ON c.Type=g.company_id WHERE c.Cylinder_Id='$cylinder_id'";
+        $sql="SELECT c.Cylinder_Id, c.Weight, c.Price,c.newcylinder_price,c.photo, g.company_name FROM `gascylinder` c INNER JOIN `gas_company` g ON c.Type=g.company_id WHERE c.Cylinder_Id='$cylinder_id'";
         $result=$connection->query($sql);
         if($result->num_rows===0){
-            return false;
+            print_r("AAa");
         }else{
             $cylinder=[];
             while($row=$result->fetch_object()){
-                array_push($cylinder,['Cylinder_Id'=>$row->Cylinder_Id,'Weight'=>$row->Weight,'photo'=>$row->photo,'company_name'=>$row->company_name, 'Price'=>$row->Price]);
+                array_push($cylinder,['Cylinder_Id'=>$row->Cylinder_Id,'Weight'=>$row->Weight,'photo'=>$row->photo,'company_name'=>$row->company_name, 'Price'=>$row->Price,'newcylinder_price'=>$row->newcylinder_price]);
             }
             return $cylinder;
         }      

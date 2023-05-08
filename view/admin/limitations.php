@@ -1,4 +1,7 @@
-<!-- <?php session_start(); ?> -->
+<?php session_start(); 
+if(!isset($_SESSION['User_id'])){
+	header("Location:../../index.php");
+}?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -121,7 +124,7 @@
         ?>
 		
  
-               <center> <div class="data" style="width:50%; margin-top:10%; margin-left:1%; background-color:#CFE8FF">
+               <center> <div class="data" style="width:50%; margin-top:10%; background-color:#CFE8FF">
 						<h2>Gas Order Limitations</h2>
                         <br><br>
                         <h3>Limitations      :  

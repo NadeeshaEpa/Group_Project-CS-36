@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php session_start();
+if(!isset($_SESSION['User_id'])){
+    header("Location: ../../index.php");
+}
+
+
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,7 +26,7 @@
 <body>
     <!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="../../view/gasagent/View.php" class="brand">
+		<a href="#" class="brand">
 			<i class='bx bxs-select-multiple'></i>
 			<span class="text">FaGo</span>
 		</a>
@@ -44,7 +50,7 @@
 				</a>
 			</li>
 			<li >
-				<a href="../../view/gasagent/add_gastype.php">
+            <a href="../../controller/gasagent/gastype_controller.php?addgas_drop_down=1">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Add gas </span>
 				</a>
@@ -215,9 +221,9 @@
                             </div>
                         </div>
                         <button type="submit" class="b6" name="updateaccount">Update</button>   
-                        <button onclick="document.getElementById('id01').style.display='block'" class="b5">Delete Account</button>
+                        <!-- <button onclick="document.getElementById('id01').style.display='block'" class="b5">Delete Account</button> -->
                     </div>     
-                    <div id="id01" class="modal">
+                    <!-- <div id="id01" class="modal">
                         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
                             <form class="modal-content" action="../../controller/gasagent/account_controller.php" method="POST">
                                     <div class="container">
@@ -230,7 +236,7 @@
                                         </div>
                                     </div>
                             </form>
-                    </div>
+                    </div> -->
                 </form>   
             </div>
         </div>
