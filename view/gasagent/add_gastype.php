@@ -1,5 +1,9 @@
 <html lang="en">
-	<?php session_start(); ?>
+	<?php session_start();
+	if(!isset($_SESSION['User_id'])){
+		header("Location: ../../index.php");
+	}
+	?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,7 +23,7 @@
     
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="../../view/gasagent/View.php" class="brand">
+		<a href="#" class="brand">
 			<i class='bx bxs-select-multiple'></i>
 			<span class="text">FaGo</span>
 		</a>

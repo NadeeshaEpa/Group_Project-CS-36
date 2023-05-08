@@ -8,7 +8,7 @@ include_once('../../model/gasagent/update_gasQuantity_model.php');
 
 if(isset($_POST['AddgasType'])){   
     // $gasType=$_POST['gasType'];
-    $weight=$_POST['gasWeight'];
+    $weight=$_POST['gasweight'];
     $quantity=$_POST['gasQuantity'];
     $gasagentId= $_SESSION['User_id'];
    
