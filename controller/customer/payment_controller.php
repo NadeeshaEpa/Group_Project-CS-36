@@ -35,7 +35,7 @@ if(isset($_POST['stripeToken'])){
     if ($charge->status == 'succeeded') {
 
         $connection->begin_transaction();
-
+        
         $order=$payment->order($connection,$agent,$_SESSION['User_id'],$amount,$charge_id);
         $placeorder=$payment->placeorder($connection,$_SESSION['User_id'],$agent);
         $final_orderdetails=$payment->getorderdetails($connection,$_SESSION['User_id'],$agent);
@@ -43,16 +43,6 @@ if(isset($_POST['stripeToken'])){
         $pay=$payment->pay($connection,$agent,$amount);
         $cart=$payment->emptycart($connection,$_SESSION['User_id'],$agent);
         $gasagentemail=$payment->getgasagentemail($connection,$agent);
-
-        if($order==false){
-            print_r("Order failed");
-        }else if($placeorder==false){
-            print_r("Place order failed");
-        }else if($cart==false){
-            print_r("Cart empty failed");
-        }else if($pay==false){
-            print_r("Pay failed");
-        }
 
         if($order===false || $placeorder===false || $cart===false || $pay===false){
             $_SESSION['payment']="failed";
@@ -76,7 +66,9 @@ if(isset($_POST['stripeToken'])){
             $email=new email_model();
             $email2=new email_model();
             $email->sendEmail($final_orderdetails);
+            
             $email2->sendEmail_Agent($final_orderdetails,$gasagentemail);
+
             header("Location: ../../view/customer/order_successfull.php");
         }
 

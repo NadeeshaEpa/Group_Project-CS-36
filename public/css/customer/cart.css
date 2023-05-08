@@ -300,14 +300,18 @@ h2{
     font-size: 20px;
     padding: 10px;
 }
-.payment-failed{
+.payment-failed, .err-msg p{
     background-color: rgb(243, 184, 184);
     color: red;
     text-align: center;
     font-size: 17px;
     font-weight: 500;
-    padding: 2px;
-    
+    padding: 2px;   
+}
+.err-msg p{
+    padding: 5px;
+    width: 60%;
+    margin-left: 22%;
 }
 hr{
     margin-top: 1%;

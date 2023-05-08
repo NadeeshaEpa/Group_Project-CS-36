@@ -76,7 +76,8 @@
 				</a>
 			</li> -->
 			<li>
-            <a href="../../controller/Users/logout_controller.php" class="logout">					<i class='bx bxs-log-out-circle' ></i>
+            <a href="../../controller/Users/logout_controller.php" class="logout">					
+                <i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
 			</li>
@@ -94,7 +95,7 @@
         <i class='bx bx-menu' ></i>
 
 <li class="profile">
-    <?php if($_SESSION['img-status'] == 0){?>
+    <?php if(isset($_SESSION['img-status']) == 0){?>
         <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
     <?php }else{?>
         <img src='../../public/images/gasargent/profile_image/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
@@ -107,6 +108,18 @@
     <h5><?php if(isset($_SESSION['Type'])){
             echo $_SESSION['Type'];
         }?></h5>
+
+<h5><?php if(isset($_SESSION['Gas_Type'])){
+						if($_SESSION['Gas_Type'] ==1){
+							echo "Litro";
+						}
+						else{
+							echo "Laugh";
+						}
+
+					}
+					
+				?></h5>
 </li>
 		</nav>
 		<!-- NAVBAR -->
@@ -133,7 +146,7 @@
                                 unset($_SESSION['viewacc']);
                             }
                         }
-                    ?>          
+                    ?>   <br>       
                     <?php 
                     if(isset($_SESSION['viewacc_result'])){
                         $result=$_SESSION['viewacc_result']; 
@@ -144,7 +157,7 @@
                         <img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
                     <?php }else{?>
                         <img src='../../public/images/gasargent/profile_image/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                        
-                    <?php } ?>
+                    <?php } ?><br>
                     <div class="b3">
                         <form action="../../controller/gasagent/account_controller.php" method="POST" enctype="multipart/form-data">
                             <input type="file" name="image" id="image" class="image">

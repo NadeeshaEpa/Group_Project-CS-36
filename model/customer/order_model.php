@@ -79,20 +79,20 @@ class order_model{
             $delivery_method=$result->fetch_object()->Delivery_Method;
         }
         if($delivery_method=="Reserve"){
-            $sql="Select Amount,time,order_date from `order` WHERE Order_id='$order_id'";
+            $sql="Select Amount,time,order_date,reserve_pin from `order` WHERE Order_id='$order_id'";
             $result=$connection->query($sql);
             if($result->num_rows===0){
                 return false;
             }else{
                $order_data=[];
                $row=$result->fetch_object();
-               array_push($order_data,['order_id'=>$order_id,'Amount'=>$row->Amount,'Time'=>$row->time,'Order_date'=>$row->order_date,'Delivery_person'=>"Not Assigned",'Delivery_fee'=>"Rs.0"]);
+               array_push($order_data,['order_id'=>$order_id,'Amount'=>$row->Amount,'Time'=>$row->time,'Order_date'=>$row->order_date,'Delivery_person'=>"Not Assigned",'Delivery_fee'=>"Rs.0",'Reserve_pin'=>$row->reserve_pin]);
 
                $order_details=$this->set_order_details($connection,$order_id,$order_data);
                return $order_details;
             }
         }else{
-            $sql="Select Amount,time,order_date,DeliveryPerson_Id,Delivery_fee from `order` WHERE Order_id='$order_id'";  
+            $sql="Select Amount,time,order_date,DeliveryPerson_Id,Delivery_fee,reserve_pin from `order` WHERE Order_id='$order_id'";  
             $result=$connection->query($sql);
             if($result->num_rows===0){
                 return false;
@@ -103,7 +103,7 @@ class order_model{
                 $delivery_id=$row->DeliveryPerson_Id;
                 $delivery_person_name=$this->get_gasagent_name($connection,$delivery_id);
 
-                array_push($order_data,['order_id'=>$order_id,'Amount'=>$row->Amount,'Time'=>$row->time,'Order_date'=>$row->order_date,'Delivery_person'=>$delivery_person_name,'Delivery_fee'=>"Rs.".$row->Delivery_fee]);
+                array_push($order_data,['order_id'=>$order_id,'Amount'=>$row->Amount,'Time'=>$row->time,'Order_date'=>$row->order_date,'Delivery_person'=>$delivery_person_name,'Delivery_fee'=>"Rs.".$row->Delivery_fee,'Reserve_pin'=>$row->reserve_pin]);
                 
                 $order_details=$this->set_order_details($connection,$order_id,$order_data);
                 return $order_details;
@@ -159,7 +159,7 @@ class order_model{
             $delivery_method=$result->fetch_object()->Delivery_Method;
         }
         if($delivery_method=="Reserve" || $delivery_method=="Courier service"){
-            $sql="Select Amount,time,order_date from `order` WHERE Order_id='$order_id'";
+            $sql="Select Amount,time,order_date,reserve_pin from `order` WHERE Order_id='$order_id'";
             $result=$connection->query($sql);
             if($result->num_rows===0){
                 return false;
@@ -167,15 +167,15 @@ class order_model{
                $order_data=[];
                $row=$result->fetch_object();
                if($delivery_method=="Reserve"){
-                    array_push($order_data,['order_id'=>$order_id,'Amount'=>$row->Amount,'Time'=>$row->time,'Order_date'=>$row->order_date,'Delivery_person'=>"Not Assigned",'Delivery_fee'=>"Rs.0"]);
+                    array_push($order_data,['order_id'=>$order_id,'Amount'=>$row->Amount,'Time'=>$row->time,'Order_date'=>$row->order_date,'Delivery_person'=>"Not Assigned",'Delivery_fee'=>"Rs.0",'Reserve_pin'=>$row->reserve_pin]);
                }else{
-                    array_push($order_data,['order_id'=>$order_id,'Amount'=>$row->Amount,'Time'=>$row->time,'Order_date'=>$row->order_date,'Delivery_person'=>"Courier Service",'Delivery_fee'=>"Will be notified by the courier service"]);
+                    array_push($order_data,['order_id'=>$order_id,'Amount'=>$row->Amount,'Time'=>$row->time,'Order_date'=>$row->order_date,'Delivery_person'=>"Courier Service",'Delivery_fee'=>"Will be notified by the courier service",'Reserve_pin'=>$row->reserve_pin]);
                }
                $order_details=$this->set_fagoorder_details($connection,$order_id,$order_data);
                return $order_details;
             }
         }else{
-            $sql="Select Amount,time,order_date,DeliveryPerson_Id,Delivery_fee from `order` WHERE Order_id='$order_id'";  
+            $sql="Select Amount,time,order_date,DeliveryPerson_Id,Delivery_fee,reserve_pin from `order` WHERE Order_id='$order_id'";  
             $result=$connection->query($sql);
             if($result->num_rows===0){
                 return false;
@@ -186,7 +186,7 @@ class order_model{
                 $delivery_id=$row->DeliveryPerson_Id;
                 $delivery_person_name=$this->get_gasagent_name($connection,$delivery_id);
 
-                array_push($order_data,['order_id'=>$order_id,'Amount'=>$row->Amount,'Time'=>$row->time,'Order_date'=>$row->order_date,'Delivery_person'=>$delivery_person_name,'Delivery_fee'=>"Rs.".$row->Delivery_fee]);
+                array_push($order_data,['order_id'=>$order_id,'Amount'=>$row->Amount,'Time'=>$row->time,'Order_date'=>$row->order_date,'Delivery_person'=>$delivery_person_name,'Delivery_fee'=>"Rs.".$row->Delivery_fee,'Reserve_pin'=>$row->reserve_pin]);
 
                 $order_details=$this->set_fagoorder_details($connection,$order_id,$order_data);
 

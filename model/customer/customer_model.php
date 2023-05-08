@@ -4,9 +4,7 @@ class customer_model{
     private $Firstname;
     private $Lastname;
     private $Username;
-    private $Street;
-    private $City;
-    private $Postalcode;
+    private $address;
     private $Password;
     private $Email;
     private $Type;
@@ -14,14 +12,15 @@ class customer_model{
     private $Billnum;
     private $Latitude;
     private $Longitude;
+    private $Street;
+    private $City;
+    private $Postalcode;
 
-    public function setDetails($firstname='',$lastname='',$username='',$street='',$city='',$postalcode='',$password='',$email='', $contactnumber='',$billnum='', $latitude='',$longitude=''){
+    public function setDetails($firstname='',$lastname='',$username='',$address='',$password='',$email='', $contactnumber='',$billnum='', $latitude='',$longitude=''){
         $this->Firstname=$firstname;  //assign values to private variables from the parameters(values user entered in the registration form)
         $this->Lastname=$lastname;
         $this->Username=$username;
-        $this->Street=$street;
-        $this->City=$city;
-        $this->Postalcode=$postalcode;
+        $this->address=$address;
         $this->Password=$password;
         $this->Email=$email;
         $this ->Contactnumber=$contactnumber;
@@ -29,6 +28,13 @@ class customer_model{
         $this->Latitude=$latitude;
         $this->Longitude=$longitude;
         $this->Type="Customer";
+
+        //break address into street,city and postal code
+        $address=explode(",",$address);
+        $this->Street=$address[0];
+        $this->City=$address[1];
+        $this->Postalcode=$address[2];
+
     }
     public function setUserId($connection){  //set the user id of the customer
         $sql = "SELECT User_id FROM user order by User_id desc limit 1";

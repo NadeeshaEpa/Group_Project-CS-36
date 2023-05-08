@@ -20,7 +20,6 @@ li {
 :root {
 	--poppins: 'Poppins', sans-serif;
 	--lato: 'Lato', sans-serif;
-
 	--light: #F9F9F9;
 	--blue: #3C91E6;
 	--light-blue: #CFE8FF;
@@ -47,6 +46,7 @@ body.dark {
 body {
 	background: var(--grey);
 	overflow-x: hidden;
+	/* background: #1c2d4d; */
 }
 
 

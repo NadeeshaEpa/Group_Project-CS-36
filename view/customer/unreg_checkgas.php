@@ -48,7 +48,7 @@ if(isset($_SESSION['unlocations'])){
     <link rel="stylesheet" href="../../public/css/customer/customer_gas.css">
     <link rel="stylesheet" href="../../public/css/customer/unreg_checkgas.css">
     <title>Document</title>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2eSy5egkITKWg1EMsa1i1WcpPi29dgK0"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_E5eoUp72AGiXd8EUgscWhrM-kd2scbY"></script>
     <script>
       function initMap() {
         var colombo = {lat: 6.9271, lng: 79.8612};
@@ -61,9 +61,22 @@ if(isset($_SESSION['unlocations'])){
           map: map,
           draggable: true
         });
+        geocoder = new google.maps.Geocoder();
         google.maps.event.addListener(marker, 'dragend', function(event) {
           document.getElementById("latitude").value = event.latLng.lat();
           document.getElementById("longitude").value = event.latLng.lng();
+
+          geocoder.geocode({'location': event.latLng}, function(results, status) {
+            if (status === 'OK') {
+            if (results[0]) {
+                document.getElementById('address').value = results[0].formatted_address;
+            } else {
+                window.alert('No results found');
+            }
+            } else {
+            window.alert('Geocoder failed due to: ' + status);
+            }
+          });
         });
       }
     </script>
@@ -74,12 +87,16 @@ if(isset($_SESSION['unlocations'])){
         <div class="up">
             <form action="../../controller/customer/gas_controller.php" method="POST">
                 <label>Drag the marker to your location:</label><br>
-                <div id="map" style="height: 350px; width: 90%; border-radius:20px;">
+                <div id="map" style="height: 300px; width: 90%; border-radius:20px;">
                 </div><br>
-                <div>
-                    <input type="hidden" id="latitude" name="latitude" required><br>
-                    <input type="hidden" id="longitude" name="longitude" required><br>
-                </div> 
+                <div class="down3">
+                    <div>
+                        <input type="text" id="address" name="address" placeholder="Address"><br>
+                        <input type="hidden" id="latitude" name="latitude" required><br>
+                        <input type="hidden" id="longitude" name="longitude" required><br>
+                        <!-- break the address value into 3 parts -->
+                    </div> 
+                </div>
                 <label for="gas-type-selector">Gas Type:</label><br>
                 <select id="gas-type-selector" name="ungas_type">
                     <!-- create a disable option  and show it as the first value-->

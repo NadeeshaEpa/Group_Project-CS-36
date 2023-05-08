@@ -480,4 +480,22 @@ class addtocart_model{
         }
     }
 
+    public function checkgasagent($connection,$gasagent){
+        //stock manager id
+        $stock_manager_id=$this->stock_manager($connection);
+        $stock_manager_id=$stock_manager_id[0]['id'];
+        if($gasagent!=$stock_manager_id){
+            $sql="select Status from gasagent where GasAgent_Id='$gasagent'";
+            $result=$connection->query($sql);
+            $status=$result->fetch_assoc();
+            if($status['Status']==1){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return true;
+        }
+    }
+
 }

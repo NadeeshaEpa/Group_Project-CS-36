@@ -115,7 +115,7 @@
 		<i class='bx bx-menu' ></i>
 
 		<li class="profile">
-			<?php if($_SESSION['img-status'] == 0){?>
+			<?php if(isset($_SESSION['img-status']) == 0){?>
 				<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
 			<?php }else{?>
 				<img src='../../public/images/gasargent/profile_image/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
@@ -128,6 +128,18 @@
 			<h5><?php if(isset($_SESSION['Type'])){
 					echo $_SESSION['Type'];
 				}?></h5>
+
+<h5><?php if(isset($_SESSION['Gas_Type'])){
+						if($_SESSION['Gas_Type'] ==1){
+							echo "Litro";
+						}
+						else{
+							echo "Laugh";
+						}
+
+					}
+					
+				?></h5>
         </li>
 		</nav>
 		<!-- NAVBAR -->

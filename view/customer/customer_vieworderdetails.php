@@ -72,6 +72,7 @@
                 $total_amount=$order_data[0]['Amount'];
                 $delivery_person=$order_data[0]['Delivery_person'];
                 $delivery_fee=$order_data[0]['Delivery_fee'];
+                $pin=$order_data[0]['Reserve_pin'];
 
                 $gasagent_name=$order_items[0]['GasAgent_Name'];
                 $order_type=$order_items[0]['Order_Type'];
@@ -90,6 +91,10 @@
                     <tr>
                         <td>Order ID</td>
                         <td><?php echo $order_id;?></td>
+                    </tr>
+                    <tr>
+                        <td>Pin Number</td>
+                        <td><?php echo $pin;?></td>
                     </tr>
                     <tr>
                         <td>Order Date</td>

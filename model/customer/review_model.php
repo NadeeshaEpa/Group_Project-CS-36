@@ -48,9 +48,6 @@ class review_model{
                 array_push($final_delivery,$top_delivery);
                 return $final_delivery;
             }
-            print_r($delivery);
-            print_r($final_delivery);
-            die();
             return $final_delivery;
         }
     }

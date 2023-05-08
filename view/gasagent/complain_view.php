@@ -87,7 +87,7 @@
 		<i class='bx bx-menu' ></i>
 
 	<li class="profile">
-		<?php if($_SESSION['img-status'] == 0){?>
+		<?php if(isset($_SESSION['img-status']) == 0){?>
 			<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
 		<?php }else{?>
 			<img src='../../public/images/gasargent/profile_image/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
@@ -100,6 +100,19 @@
 		<h5><?php if(isset($_SESSION['Type'])){
 				echo $_SESSION['Type'];
 			}?></h5>
+
+
+<h5><?php if(isset($_SESSION['Gas_Type'])){
+						if($_SESSION['Gas_Type'] ==1){
+							echo "Litro";
+						}
+						else{
+							echo "Laugh";
+						}
+
+					}
+					
+				?></h5>
 	</li>
 		</nav>
 		<!-- NAVBAR -->
@@ -128,9 +141,10 @@
                                     <tr>
 									    <th>Order_No</th>
 									    <th>Date</th>
-										<th>massege</th>
+										<th>Description</th>
 										<th>status</th>
-									    <th>Description</th>
+										<th>message</th>
+									    <th></th>
 										
                                     </tr>
                                     <?php
@@ -144,6 +158,18 @@
 										echo "<td>" . $row['order_id'] . "</td>";
 										echo "<td>" . $row['date'] . "</td>";
 										echo "<td>" . $row['Description'] . "</td>";
+										echo "<td>" . $row['status'] . "</td>";
+										// echo "<td>" . $row['message'] . "</td>";
+										// var_dump($row['message']==NULL);
+										// 	die();
+										if($row['message']=='NULL'){
+											
+											echo "<td>" ."uncheck message" . "</td>";
+										}
+										else{
+											echo "<td>" . $row['message'] . "</td>";
+										}
+										
 										?>
 										<td>
 											<form action="../../controller/gasagent/DeliveryPersonComplane&ReviewsViewController.php" method="post">

@@ -52,7 +52,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="limitations.php">
+				<a href="../../controller/admin/limitation_controller.php?id=limitations">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Limitations</span>
 				</a>
@@ -109,7 +109,7 @@
 		<!-- NAVBAR -->
 
 		<!-- MAIN -->
-		<main>
+		<main style="background-color:#1c2d4d">
 		<?php 
                    if(isset($_SESSION['dashboard'])){
                       $result=$_SESSION['dashboard']; 
@@ -119,12 +119,12 @@
                 ?>
 			<div class="head-title">
 				<div class="left">
-					<h1>Dashboard</h1>
+					<h1 style="color:white;">Dashboard</h1>
 					<ul class="breadcrumb">
 						<li>
 							<a href="#">Dashboard</a>
 						</li>
-						<li><i class='bx bx-chevron-right' ></i></li>
+						<li style="color:white;"><i class='bx bx-chevron-right' ></i></li>
 						<li>
 							<a class="active" href="#">Home</a>
 						</li>

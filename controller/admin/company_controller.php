@@ -73,17 +73,22 @@ if (isset($_POST['edituser'])) {
 
     $company = new company_model();
     $inputs1 = array($company_id, $company_name);
+    $result2=$company->check_company($connection,$company_name);
+    if($result2==true){
+        $result1 = $company->updateUser($connection, $inputs1);    
+        if ($result1) {
 
+            $_SESSION['updateuser'] = "success";
+            header("Location:../../controller/admin/company_controller.php?id=viewcompany");
 
-    $result1 = $company->updateUser($connection, $inputs1);
-    if ($result1) {
-
-        $_SESSION['updateuser'] = "success";
-        header("Location:../../controller/admin/company_controller.php?id=viewcompany");
-
-    } else {
-        $_SESSION['updateuser'] = "failed";
-        echo "Failed";
+        } else {
+            $_SESSION['updateuser'] = "failed";
+            echo "Failed";
+        }
+    }
+    else{
+        $_SESSION['addcompany-error']="Company Already Exists";
+        header("Location: ../../view/admin/company_update.php");
     }
 
 }
