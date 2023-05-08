@@ -686,7 +686,7 @@ input[type="search" i] {
 	border-radius: 8px;
 	transition: 0.6s;
 
-	margin-left: 135px;
+	margin-left: 66px;
   }
   .btn4 {
 	background-color: hsl(0deg 100% 50%);
@@ -884,19 +884,21 @@ display: flex;
 	margin-top: 20%;
 	background-color:white;
 	padding: 3%;
+	border-radius: 10px;
   }
   #cancel_popup p, #cancel_popup p{
-	font-size: 20px;
+	font-size: 18px;
+    font-family: sans-serif;
   }
   #cancel_popup button, #cancel_popup button{
-	width: 20%;
-	height: 30px;
-	margin-left: 20%;
-	margin-top: 2%;
-	color: white;
-	background-color: navy;
-	border:none;
-	border-radius: 10px;
+	width: 24%;
+    height: 34px;
+    margin-left: 20%;
+    margin-top: 2%;
+    color: white;
+    background-color: #10338e;
+    border: none;
+    border-radius: 7px;
   }
   #cancelbutton{
 	  border: none;
@@ -923,11 +925,11 @@ display: flex;
   
   #feedback{
 	width: 80%;
-	height: 10%;
+	height: 50px;
 	border-radius: 15px;
 	margin-left: 10%;
 	text-align: center;
-	margin-top: 2%;
+	margin-top: 7%;
 	margin-bottom: 2%;
   }
   

@@ -1,4 +1,7 @@
-<?php session_start();?>
+<?php session_start();
+if(!isset($_SESSION['User_id'])){
+	header("Location: ../../index.php");
+}?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +20,7 @@
 
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="../../view/gasagent/View.php" class="brand">
+		<a href="#" class="brand">
 			<i class='bx bxs-select-multiple'></i>
 			<span class="text">FaGo</span>
 		</a>
@@ -41,7 +44,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="../../view/gasagent/add_gastype.php">
+			<a href="../../controller/gasagent/gastype_controller.php?addgas_drop_down=1">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Add gas </span>
 				</a>
