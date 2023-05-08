@@ -1,66 +1,4 @@
-/* .click{
-  background: #2981bc;
-  color: white; */
-  /* font-size: 22px; */
-  /* font-family: arial;
-  font-weight: bold;
-  padding: 10px 15px;
-  text-align: center;
-  border: 1px solid #0059b3;
-}
-.popup_box{
-  width: 480px;
-  height: 380px;
-  background: #f2f2f2;
-  text-align: center;
-  align-items: center;
-  padding: 40px;
-  border: 1px solid #b3b3b3;
-  box-shadow: 0px 5px 10px rgba(0,0,0,.2);
-  z-index: 9999;
-  display: none;
-}
-.popup_box i{
-  font-size: 60px;
-  color: #eb9447;
-  border: 5px solid #eb9447;
-  padding: 20px 40px;
-  border-radius: 50%;
-  margin: -10px 0 20px 0;
-}
-.popup_box h1{
-  font-size: 30px;
-  color: #1b2631;
-  margin-bottom: 5px;
-}
-.popup_box label{
-  font-size: 23px;
-  color: #404040;
-}
-.popup_box .btns{
-  margin: 40px 0 0 0;
-}
-.btns .btn1, .btns .btn2{
-  background: #999999;
-  color: white;
-  font-size: 18px;
-  border-radius: 5px;
-  border: 1px solid #808080;
-  padding: 10px 13px;
-}
-.btns .btn2{
-  margin-left: 20px;
-  background: #ff3333;
-  border: 1px solid #cc0000;
-}
-.btns .btn1:hover{
-  transition: .5s;
-  background: #8c8c8c;
-}
-.btns .btn2:hover{
-  transition: .5s;
-  background: #e60000;
-} */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
 
 #backgr,#backgr1{
 	background-color: rgba(0,0,0,0.5);
@@ -72,6 +10,7 @@
 	top: 0;
 	left: 0;
 	z-index: 1;
+  font-family: var(--poppins);
 
 }
 #cancel_popup, #cancel_popup1{
@@ -85,10 +24,11 @@
 	margin-left: 45%;
 	margin-top: 20%;
 	background-color:white;
+  font-family: var(--poppins);
 	padding: 3%;
 }
 #cancel_popup p, #cancel_popup1 p{
-	font-size: 20px;
+	font-size: 16px;
 }
 #cancel_popup button, #cancel_popup1 button{
 	width: 20%;
@@ -108,8 +48,10 @@
     padding-left: 20px;
     padding-right: 20px;
     background-color:#d47278;
-    font-size: 17px;
+    font-size: 15px;
     font-weight: bold;
+    font-family: var(--poppins);
+    text-align: center;
 }
 #dcancelbutton{
 	border: none;
@@ -121,4 +63,5 @@
     background-color:rgb(228, 200, 200);
     font-size: 17px;
     font-weight: bold;
+    text-align: center;
 }
