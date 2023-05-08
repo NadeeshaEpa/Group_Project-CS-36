@@ -50,19 +50,21 @@ if(isset($_GET['uid'])){
 if (isset($_POST['edituser'])) {
     $cylinder_id=$_POST['Cylinder_Id'];
     $Price = $_POST['Price'];
+    $newcylinder_price = $_POST['newcylinder_price'];
+
     // $photo = $_POST['photo'];
 
     $cylinder_id=$connection->real_escape_string($cylinder_id);
     $Price = $connection->real_escape_string($Price);
+    $newcylinder_price = $connection->real_escape_string($newcylinder_price);
     // $photo = $connection->real_escape_string($photo);
 
     $cylinder = new cylinder_model();
-    $inputs1 = array($cylinder_id, $Price);
+    $inputs1 = array($cylinder_id, $Price,$newcylinder_price);
 
 
     $result1 = $cylinder->updateUser($connection, $inputs1);
     if ($result1) {
-
         $_SESSION['updateuser'] = "success";
         header("Location: ../../controller/staff/cylinder_controller.php?id=viewcylinder");
 
@@ -89,6 +91,7 @@ if(isset($_POST['register'])){
         $gascompany = $_POST['gascompany'];
         $weight = $_POST['weight'];
         $price = $_POST['price'];
+        $new_price = $_POST['new_price'];
         $file=$_FILES['image'];
 
         $fileName=$_FILES['image']['name'];
@@ -130,12 +133,13 @@ if(isset($_POST['register'])){
     $gascompany=$connection->real_escape_string($gascompany);
     $weight=$connection->real_escape_string($weight);
     $price=$connection->real_escape_string($price);
+    $new_price=$connection->real_escape_string($new_price);
     $photo=$connection->real_escape_string($photo);
     
     
     
     $cylinder=new cylinder_model();
-    $cylinder->setDetails($gascompany,$weight,$price,$photo);
+    $cylinder->setDetails($gascompany,$weight,$price,$new_price,$photo);
 
     $result1=$cylinder->check_cylinder($connection,$gascompany,$weight);
     if($result1==true){

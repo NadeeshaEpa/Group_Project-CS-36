@@ -144,9 +144,11 @@ if(!isset($_SESSION['User_id'])){
         <label for="weight" id="weight-label">Weight (KG) :</label>
           <input type="text" name="weight" id="name"  value="<?php echo $result[0]['Weight']?>" required readonly><br><br>
 
-        Price (RS) :
+        Refill Cylinder Price (RS) :
           <input type="text" name="Price" id="name"  value="<?php echo $result[0]['Price']?>" required><br><br>
 
+		New Cylinder Price (RS) :
+          <input type="text" name="newcylinder_price" id="name"  value="<?php echo $result[0]['newcylinder_price']?>" required><br><br>
         <!-- Main Poster:
                     <div class="b3">
                             <input type="file" name="photo" id="image" value="<?php echo $result[0]['photo']?>" class="image" >   
