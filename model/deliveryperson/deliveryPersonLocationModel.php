@@ -168,8 +168,8 @@ class location{
                     if (isset($row['Shop_Quantity'])  && !empty($row['Shop_Quantity'])){
                         $quantity=$row['Shop_Quantity'];
                     }
-                    if (isset($row['Weight'])  && !empty($row['Weight'])){
-                        $weight=$row['Weight'];
+                    if (isset($row['weight'])  && !empty($row['weight'])){
+                        $weight=$row['weight'];
                     }
                     if (isset($row['Shop_status'])  && !empty($row['Shop_status'])){
                         $shop_Status=$row['Shop_status'];
