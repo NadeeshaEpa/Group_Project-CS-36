@@ -12,6 +12,7 @@ if(!isset($_SESSION['User_id'])){
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="../../public/css/stock_delivery/DelivaryDashboardNew.css">
+	<link rel="stylesheet" href="../../public/css/stock_delivery/DeliveryResponsive.css">
 
 	<title>FaGo</title>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2eSy5egkITKWg1EMsa1i1WcpPi29dgK0"></script>

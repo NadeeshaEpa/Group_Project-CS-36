@@ -194,7 +194,7 @@ if(!isset($_SESSION['User_id'])){
                                     <tr>
 									    <th>Order Id</th>
 										<th>Customer Name</th>
-										<th>Argent Nmae</th>
+										<th>Agent Nmae</th>
 										<th>Distance</th>
 										<th>Delivery Fee</th>
                                     </tr><?php
