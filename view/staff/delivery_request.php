@@ -193,7 +193,7 @@ if(!isset($_SESSION['User_id'])){
 								$hours=(int)($final/3600);
 								$minutes=(int)(fmod($final,3600)/60);
 
-								if($hours==1 | $hours>1){
+								if($hours==24 | $hours>24){
 									echo'
 									<td><span class="status pending">'.$hours." : ".$minutes.'</span></td>
 									</tr>' ;
