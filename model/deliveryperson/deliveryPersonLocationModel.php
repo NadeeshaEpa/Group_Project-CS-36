@@ -171,6 +171,7 @@ class location{
                     if (isset($row['weight'])  && !empty($row['weight'])){
                         $weight=$row['weight'];
                     }
+
                     if (isset($row['Shop_status'])  && !empty($row['Shop_status'])){
                         $shop_Status=$row['Shop_status'];
                     }
