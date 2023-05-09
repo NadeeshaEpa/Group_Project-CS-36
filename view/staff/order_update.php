@@ -174,8 +174,9 @@ if(!isset($_SESSION['User_id'])){
                         <div class="dropdown">
 		                <label for="delivery_status" id="Delivery_Status">Delivery Status  :</label>
 						   <select name="Delivery_Status" id="Delivery_Status" style="width:40%; padding:1%; ">
-							<option value='' selected disabled>Select</option>
-							<option value="NULL">Not assigned</option>
+							<option selected disabled>Select</option>
+							<!-- <option value="NULL">Not assigned</option> -->
+							
 							<option value="0">On the way</option>
                             <option value="1">Delivered</option>
                             <option value="2">No Delivery</option>
