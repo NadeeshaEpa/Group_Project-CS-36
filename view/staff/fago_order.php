@@ -180,11 +180,11 @@ if(!isset($_SESSION['User_id'])){
 				 if($status==1){
 					echo'<td style="color:green;"><b>Delivered</b></td>';
 				}
+				else if($status=='NULL'){
+					echo'<td style="color:#BC243C;"><b>Not assigned</b></td>';
+				}
 				else if($status==0){
 					echo'<td style="color:purple;"><b>On the way</b></td>';
-				}
-				else if($status==NULL){
-					echo'<td style="color:#BC243C;"><b>Not assigned</b></td>';
 				}
 				else if($status==3){
 					echo'<td style="color:#ff6f61;"><b>Courier service</b></td>';

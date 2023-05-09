@@ -129,7 +129,7 @@ if(!isset($_SESSION['User_id'])){
 		<!-- MAIN -->
 		<main>
         <a href="../../controller/staff/delivery_controller.php?id=viewdelivery"><button>Deliveries</button></a>
-            <a href="../../controller/staff/delivery_controller.php?id=viewdelivery"><button style="background-color: #05be17;color:white;">Delivery Requests</button></a>
+            <a href="../../controller/staff/delivery_controller.php?rid=viewdeliveryrequests"><button style="background-color: #05be17;color:white;">Delivery Requests</button></a>
             <br>
 			<!-- <form action="#" style="float:right;">
 				<div class="form-input">
