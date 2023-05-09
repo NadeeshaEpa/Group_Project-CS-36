@@ -178,3 +178,21 @@ if(isset($_POST['btn_time'])){
         $connection->close();
     }
 }
+
+
+
+if(isset($_POST['btn_closed_time'])){
+    $btn_time=$_POST['closed_time'];
+    $user=new Brand_reports();
+    $result=$user->update_closed_time($connection,$btn_time);
+    if($result){
+        $_SESSION['closed_time']="closed time updated succsessfully";        
+        header("Location: ../../controller/gasagent/gasagent_order_controller.php");
+        $connection->close();
+    }
+    else{
+        $_SESSION['closed_time_erro']="not updated closed time";
+        header("Location: ../../controller/gasagent/gasagent_order_controller.php");
+        $connection->close();
+    }
+}

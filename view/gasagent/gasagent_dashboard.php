@@ -168,6 +168,13 @@ if(!isset($_SESSION['User_id'])){
 			<button class="date" name="btn_time" id="btn_date">click</button>	
 		</form>
 
+<br>
+		<form action="../../controller/gasagent/gasagentDashboardController.php" method="POST">
+			<label for="time" id="ad2">Update shop Closed time</label>
+			<input type="time" name="closed_time" id="open_time" class="add" placeholder="date" required>
+			<button class="date" name="btn_closed_time" id="btn_date">click</button>	
+		</form>
+
 		<br>
 		<div class="stock2">
 		<h5><?php if(isset($_SESSION['date_correct'])){
@@ -197,6 +204,25 @@ if(!isset($_SESSION['User_id'])){
 						<?php
 					}
 					unset($_SESSION['open_time']);	
+				}
+				
+				?>
+
+				<?php	if(isset($_SESSION['closed_time'])){
+				    if($_SESSION['closed_time']=='closed time updated succsessfully'){
+						?>
+						<div class="shop_status">
+						<p>closed time updated succsessfully</p>
+						</div>	
+						<?php
+					}else{
+						?>
+						<div class="shop_status">
+						<p>not updated closed time</p>
+						</div>	
+						<?php
+					}
+					unset($_SESSION['closed_time']);	
 				}
 				
 				?>

@@ -313,6 +313,24 @@ class Brand_reports{
         
     }
 
+    public function update_closed_time($connection,$btn_closed_time){
+        $this->User_id=$_SESSION['User_id'];
+        $sql="UPDATE `gasagent` SET `closed_time`='$btn_closed_time' WHERE GasAgent_Id=$this->User_id";
+        // var_dump($sql);
+        // die();
+        
+        $result=$connection->query($sql);
+       
+        if($result){
+            return true;
+
+        }
+
+        else{
+            return false;
+        }
+    }
+
 
 
 

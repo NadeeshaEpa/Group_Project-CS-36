@@ -972,12 +972,12 @@ display: flex;
 	margin-left: -37px;
 }
 
-#ad1{
+#ad2{
 	/* border: solid red; */
 	color: #bcbcbc;
 	padding: 30px;
 	font-size: 20px;
-	margin-left: 633px;
+	margin-left: -56px;
 }
 
 #btn_date{
@@ -989,6 +989,12 @@ display: flex;
     border-radius: 5px;
     color: white;
 	transition: 0.5s;
+}
+#closed_time{
+	color: #bcbcbc;
+    padding: 30px;
+    font-size: 20px;
+    margin-left: -45px;
 }
 
 
