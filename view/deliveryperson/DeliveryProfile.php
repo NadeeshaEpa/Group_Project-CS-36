@@ -288,8 +288,9 @@ if(!isset($_SESSION['User_id'])){
 							        </div> 
 								</div>
 								<div class="otherdeliveryProfilebtndown1">
-								<button onclick="document.getElementById('id01').style.display='block'" class="b5" id="deliveyDeletebtn">Delete Account</button>
-
+								<?php if(!(isset($_SESSION['old_order_deliver_start'])) && !(isset($_SESSION['new_order_deliver_start']))){?>
+								    <button onclick="document.getElementById('id01').style.display='block'" class="b5" id="deliveyDeletebtn">Delete Account</button>
+								<?php } ?>
 								</div>
 							</div>
 				         
@@ -307,6 +308,7 @@ if(!isset($_SESSION['User_id'])){
 										<input  type="password" placeholder="Confirm New Password" name="cnpwd" id="cnpwdid" required><br><br>
 										<div class="btn">
 											<button type="submit" name="updatepwd" class="updatebtn">Update</button>
+											<!-- <button type="submit"  name="cancelpwd" class="cancelbtn">Cancel</button> -->
 										</div>  
 									</div>
 								</form>
@@ -326,7 +328,10 @@ if(!isset($_SESSION['User_id'])){
                                             <div class="clearfix">
 
                                                 <button type="button" onclick="document.getElementById('id01').style.display='none'" id="profilecancelbtnid">Cancel</button>
-                                                <button type="submit" id="profiledeletebtnid" name="deleteaccount">Delete</button>
+												
+                                                    <button type="submit" id="profiledeletebtnid" name="deleteaccount">Delete</button>
+												
+                                                
                                             </div>
                                         </div>
                                     </form>

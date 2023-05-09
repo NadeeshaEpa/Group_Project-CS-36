@@ -91,6 +91,7 @@ body{
     border-radius: 30px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     text-align: center;
+    font-size: 15px;
 }
 .row img{
     width: 100%;
@@ -105,7 +106,7 @@ body{
     background-color:white;
     /* color: navy; */
     border: #e0e0e0 1px solid;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     margin-bottom: 5%;
@@ -116,7 +117,7 @@ body{
     color: white;
 }
 .price p{
-  color: #da3a3a;
+  color: #1ac54c;
   font-weight: bold;
 }
 .disabled button:hover{

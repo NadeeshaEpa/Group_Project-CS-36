@@ -2,7 +2,7 @@
 session_start();
 require_once("../../config.php");
 require_once("../../model/gasagent/account_model.php");
-// require_once("../../model/gasagent/checkcustomer_model.php");
+require_once("../../model/gasagent/checkgasagent_model.php");
 
 if(isset($_GET['viewacc'])){
     if(isset($_SESSION['User_id'])){ 

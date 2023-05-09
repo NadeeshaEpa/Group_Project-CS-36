@@ -99,86 +99,86 @@ if(!isset($_SESSION['User_id'])){
 		<!-- NAVBAR -->
 
 		<!-- MAIN -->
-		<main>
-			<div class="head-title">
-				<div class="left">
-					<h1>Add_Brands</h1>
-					<ul class="breadcrumb">
-						<li>
-							<a href="#">Add_Brands</a>
-						</li>
-						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a class="active" href="../../index.php">Home</a>
-						</li>
-					</ul>
+		
+			<main>
+				<div class="head-title">
+					<div class="left">
+						<h1>Add_Brands</h1>
+						<ul class="breadcrumb">
+							<li>
+								<a href="#">Add_Brands</a>
+							</li>
+							<li><i class='bx bx-chevron-right' ></i></li>
+							<li>
+								<a class="active" href="../../index.php">Home</a>
+							</li>
+						</ul>
+					</div>
+
+					
 				</div>
 
-				
-			</div>
+			</main>
+				<div class="Add_brands_outter" id="Add_brands_outter_id">
 
-
-
-
-			<div class="table-data">
-				<div class="order">
-				    <div class="Add_brands_outter" id="Add_brands_outter_id">
-						<div class="Add_brands_form">
-						    <div class="Add_brands_msg">
-								<h4>
-									<?php if(isset($_SESSION['Brand_add'])){
-									echo "New brand Added Successfully";
-									unset($_SESSION['Brand_add']);
-								} ?>
-								</h4><br>
-								<h5>
-									<?php if(isset($_SESSION['Brand_add_error'])){
-										echo "Error Occurred";
-										unset($_SESSION['Brand_add_error']);
+				<!-- <div class="table-data">
+					<div class="order"> -->
+						
+							<div class="Add_brands_form">
+								<div class="Add_brands_msg">
+									<h4>
+										<?php if(isset($_SESSION['Brand_add'])){
+										echo "New brand Added Successfully";
+										unset($_SESSION['Brand_add']);
 									} ?>
+									</h4><br>
+									<h5>
+										<?php if(isset($_SESSION['Brand_add_error'])){
+											echo "Error Occurred";
+											unset($_SESSION['Brand_add_error']);
+										} ?>
 
-								</h5>
+									</h5>
+								</div>
+								<div class="Add_brands_info">
+
+									<form action="../../controller/ShopManager/ShopManagerAddBrandsController.php" method="POST" enctype="multipart/form-data">
+										<h5>Add Product</h5>
+										<label for="">Name :</label><br>
+										<input type="text" name="productName" required><br>
+										<label for="">Quantity :</label><br>
+										<input type="text" name="productQuantity"required><br>
+										<label for="">Price :</label><br>
+										<input type="text" name="producPrice" required><br>
+
+										<label for="">Category :</label><br>
+										<select name="Category" id="Category_id" required>
+											<option value="">---Select Type---</option>
+											<option value="Gas Cooker">Gas Cooker</option>
+											<option value="Regulator">Regulator</option>
+											<option value="Gas tube">Other</option>
+										</select><br>
+
+										<label for="">Product image :</label><br>
+										<input type="file" name="image" id="Brand_img_id" ><br>
+										<label for="">Product Type :</label><br>
+										<input type="text" name="product_type" id="product_type_id"><br> 
+										<label for="">Description :</label><br>
+										<input type="text" name="productDescription" id="productDescription_id"><br>
+										<button name="BrandAdd">Add</button>
+									</form>
+								</div>
 							</div>
-							<div class="Add_brands_info">
-
-								<form action="../../controller/ShopManager/ShopManagerAddBrandsController.php" method="POST" enctype="multipart/form-data">
-									<h5>Add Brands</h5>
-									<label for="">Name :</label><br>
-									<input type="text" name="productName" required><br>
-									<label for="">Quantity :</label><br>
-									<input type="text" name="productQuantity"required><br>
-									<label for="">Price :</label><br>
-									<input type="text" name="producPrice" required><br>
-
-									<label for="">Category :</label><br>
-                                    <select name="Category" id="Category_id" required>
-                                        <option value="">---Select Type---</option>
-                                        <option value="Gas Cooker">Gas Cooker</option>
-                                        <option value="Regulator">Regulator</option>
-										<option value="Gas tube">Other</option>
-                                    </select><br>
-
-									<label for="">Product image :</label><br>
-									<input type="file" name="image" id="Brand_img_id" ><br>
-									<label for="">Product Type :</label><br>
-									<input type="text" name="product_type" id="product_type_id"><br> 
-									<label for="">Description :</label><br>
-									<input type="text" name="productDescription" id="productDescription_id"><br>
-									<button name="BrandAdd">Add</button>
-							    </form>
-                            </div>
-							
-
 
 						</div>
-
-					</div>
-					
-					
-				</div>
-			
-			</div>
-		</main>
+						
+						
+					<!-- </div>
+				
+				</div> -->
+		    
+		
+	
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->

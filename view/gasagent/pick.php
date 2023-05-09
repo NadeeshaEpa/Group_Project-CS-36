@@ -1,4 +1,7 @@
-<?php session_start();?>
+<?php session_start();
+if(!isset($_SESSION['User_id'])){
+       header("Location: ../../index.php");
+   }?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +20,7 @@
 
 	 	<!-- SIDEBAR -->
 		 <section id="sidebar">
-		<a href="../../view/gasagent/View.php" class="brand">
+		<a href="#" class="brand">
 			<i class='bx bxs-select-multiple'></i>
 			<span class="text">FaGo</span>
 		</a>
@@ -41,7 +44,7 @@
 				</a>
 			</li>
 			<li >
-				<a href="../../view/gasagent/add_gastype.php">
+			<a href="../../controller/gasagent/gastype_controller.php?addgas_drop_down=1">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Add gas </span>
 				</a>
@@ -92,7 +95,7 @@
 		<i class='bx bx-menu' ></i>
 
 		<li class="profile">
-			<?php if($_SESSION['img-status'] == 0){?>
+			<?php if(isset($_SESSION['img-status']) == 0){?>
 				<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
 			<?php }else{?>
 				<img src='../../public/images/gasargent/profile_image/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
@@ -105,6 +108,18 @@
 			<h5><?php if(isset($_SESSION['Type'])){
 					echo $_SESSION['Type'];
 				}?></h5>
+
+<h5><?php if(isset($_SESSION['Gas_Type'])){
+						if($_SESSION['Gas_Type'] ==1){
+							echo "Litro";
+						}
+						else{
+							echo "Laugh";
+						}
+
+					}
+					
+				?></h5>
         </li>
 		</nav>
 		<!-- NAVBAR -->
@@ -140,7 +155,33 @@
             unset($_SESSION['pin_wrong']);} ?></h2>
         </div>
 
+
+		<div class="btn_r">
+				<form action="../../controller/gasagent/gasagentDashboardController.php" method="POST">
+					<button class="btn3" id="btn3" name="deliverbtn">Delivered Orders</button>
+					<button class="btn4" id="btn4" name="pickedbtn">Picked Orders</button>
+				</form>
+			</div>
+
+				   <div class="search">
+						<form action="../../controller/gasagent/gasagentDashboardController.php" method="POST">
+						
+							<input type="search" name="order_id" class="id" placeholder="Search by order ID " required>
+							<button type="submit" name="search_order" class="search-btn"><i class='bx bx-search' ></i></button>
+						
+						</form>
+					</div>
+
+					<div class="shop_status">
+			    		<?php if(isset($_SESSION['p_no_order'])=="no orders found"){
+						 echo $_SESSION['p_no_order'];
+				 		 unset($_SESSION['p_no_order']);
+		 	       			} ?>
+
+        </div>
+
     <div class="table-data">
+		
 
 			<div class="table-data">
 				<div class="order">
@@ -201,7 +242,7 @@
 											  <?php }else if($row['Delivery_Status']==4){ ?>
 												<!-- change the color of text to green -->
 												<td style="color: purple;"><?php echo "Picked"; ?></td>
-											  <?php } if($row['Delivery_Status']==NULL){?>
+											  <?php } if($row['Delivery_Status']==2){?>
 												 <td><button id="vertify_pin" onclick="pinVertification(<?php echo $row['Order_id'] ?>)">pin</button></td> 
 											  <?php }else{?>
 												<!-- <td style="color: blue;">Disable</td> -->

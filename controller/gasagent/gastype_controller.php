@@ -8,32 +8,32 @@ include_once('../../model/gasagent/update_gasQuantity_model.php');
 
 if(isset($_POST['AddgasType'])){   
     // $gasType=$_POST['gasType'];
-    $weight=$_POST['gasWeight'];
+    $weight=$_POST['gasweight'];
     $quantity=$_POST['gasQuantity'];
     $gasagentId= $_SESSION['User_id'];
-    // $price=$_POST['gasPrice'];
    
-// }
-// else{
-//     echo('invalid Request');
-//     exit();
-// }
-
-    // $gasType=$connection->real_escape_string($gasType);
+    
     $weight=$connection->real_escape_string($weight);
     $quantity=$connection->real_escape_string($quantity);
-    // $price=$connection->real_escape_string($price);
 
     $user=new add_gasType();
     $cylinderId=$user->getcylinderId($connection,$weight,$gasagentId);
-
-    $result=$user -> addgas($connection,$cylinderId,$quantity,$gasagentId);
-    if($result==true)
-    {
-        header("Location: ../../view/gasagent/addGasTypeSucsess.php");
+    
+    $check=$user->checkAlreadyExit($connection,$gasagentId, $cylinderId);
+   
+    if($check==true){
+        $result=$user -> addgas($connection,$cylinderId,$quantity,$gasagentId);
+        if($result==true)
+        {
+            header("Location: ../../view/gasagent/addGasTypeSucsess.php");
+        }
+        else
+        {
+            
+            header("Location: ../../view/gasagent/addGaserror.php");
+        }
     }
-    else
-    {
+    else{
         header("Location: ../../view/gasagent/addGaserror.php");
     }
 }
@@ -67,6 +67,21 @@ if(isset($_POST['quantityUpdateBtn'])){
     }
 
 
+}
+
+if(isset($_GET['addgas_drop_down'])){
+    $user=new add_gasType();
+    $result=$user->get_cylinder_id($connection);
+    if($result){
+        $_SESSION['cylinder_id']=$result;
+        header("Location: ../../view/gasagent/add_gastype.php");
+        $connection->close();
+    }
+
+    else{
+        header("Location: ../../view/gasagent/add_gastype.php");
+        $connection->close();
+    }
 }
 
 

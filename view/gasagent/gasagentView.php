@@ -1,4 +1,8 @@
-<?php session_start(); ?>
+<?php session_start(); 
+if(!isset($_SESSION['User_id'])){
+	header("Location: ../../index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +19,7 @@
     <body>
  	<!-- SIDEBAR -->
 	 <section id="sidebar">
-		<a href="../../view/gasagent/View.php" class="brand">
+		<a href="#" class="brand">
 			<i class='bx bxs-select-multiple'></i>
 			<span class="text">FaGo</span>
 		</a>
@@ -87,7 +91,7 @@
 	   <i class='bx bx-menu' ></i>
 
 <li class="profile">
-	<?php if($_SESSION['img-status'] == 0){?>
+	<?php if(isset($_SESSION['img-status']) == 0){?>
 		<img src='../../public/images/noprofile.png' alt='logo' width='100px' height='100px' class="image"> 
 	<?php }else{?>
 		<img src='../../public/images/gasargent/profile_image/<?php echo $_SESSION['User_img']?>' alt='logon' width='100px' height='100px' class="image">                       
@@ -100,6 +104,17 @@
 	<h5><?php if(isset($_SESSION['Type'])){
 			echo $_SESSION['Type'];
 		}?></h5>
+		  <h5><?php if(isset($_SESSION['Gas_Type'])){
+						if($_SESSION['Gas_Type'] ==1){
+							echo "Litro";
+						}
+						else{
+							echo "Laugh";
+						}
+
+					}
+					
+				?></h5>
 </li>
 		</nav>
 		<!-- NAVBAR -->
@@ -154,7 +169,7 @@
                             </div>                 
                 </div>
 				<br>
-				<div class="img"><img src="../../public/images/gas7.jpg"></div>
+				<!-- <div class="img"><img src="../../public/images/gas7.jpg"></div> -->
 				
 				
                 

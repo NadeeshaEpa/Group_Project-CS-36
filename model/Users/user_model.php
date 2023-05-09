@@ -5,9 +5,6 @@ class user_model{
     public function loginUser($connection,$username,$password){   //check whether the user entered correct username and password and the status is 1.
         $sql = "SELECT * FROM user WHERE username='$username' AND password='$password'";
         $result = $connection->query($sql);
-        
-    
-
         if($result->num_rows == 1){
             $row = $result->fetch_assoc();
           
@@ -22,6 +19,24 @@ class user_model{
             $_SESSION['Postalcode']=$row['Postalcode'];
             $_SESSION['Type']=$row['Type'];
             $this->Type=$row['Type'];
+
+
+            /*  get name*/
+
+            $sql_type="SELECT * FROM `gasagent` WHERE GasAgent_Id='$this->User_id'";
+        
+            $result_type=$connection->query($sql_type);
+            
+            if($result_type->num_rows==0){
+                $_SESSION['Gas_Type']=0;
+            }
+            else{
+                $row = $result_type->fetch_assoc();
+                $_SESSION['Gas_Type']=$row['Gas_Type'];
+            }
+
+
+
 
 
             $sql="SELECT * FROM cart WHERE User_id='$this->User_id'";

@@ -119,9 +119,9 @@ if(!isset($_SESSION['User_id'])){
 
 				
 			</div>
-
-			<div class="table-data">
-				<div class="order">
+		</main>
+			<!-- <div class="table-data">
+				<div class="order"> -->
 					<div class="complane_outter" id="complaneoutterid">
 						<div class="complane_form">
 						    <div class="complane_msg">
@@ -142,7 +142,7 @@ if(!isset($_SESSION['User_id'])){
 							<div class="complane_info">
 								<form action="../../controller/deliveryperson/deliverypersonComplaneController.php" method="Post">
 									<h5>Add Complains</h5>
-									<label for="">Reference No :</label><br>
+									<label for="">Order Id :</label><br>
 									<?php if(isset($_SESSION['ComplaneIdDetails'])){
 										$result=$_SESSION['ComplaneIdDetails']?>
 										<select name="complaneRef" id="complaneRef_id" required>
@@ -172,10 +172,10 @@ if(!isset($_SESSION['User_id'])){
 
 					</div>
 					
-				</div>
+				<!-- </div>
 			
 			</div>
-		</main>
+		 -->
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->

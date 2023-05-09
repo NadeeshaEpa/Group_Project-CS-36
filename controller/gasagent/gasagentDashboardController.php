@@ -109,22 +109,72 @@ if(isset($_POST['btn_date'])){
     $result=$user->update_arrival_date($connection,$btn_date);
     if($result){
         $_SESSION['date_correct']="succsessfully update next arrival date";
-
         header("Location: ../../controller/gasagent/gasagent_order_controller.php");
         $connection->close();
-
-
-
     }
-
     else{
         $_SESSION['date_wrong']="date is wrong";
         header("Location: ../../controller/gasagent/gasagent_order_controller.php");
         $connection->close();
+    }
+}
+ /*search button controller */
+if(isset($_POST['search_order'])){
+    $order_id=$_POST['order_id'];
+    $user=new Brand_reports(); 
+    $result=$user->SearchOrders($connection,$order_id);
+    if($result==true){
+        
+        $_SESSION['GPickedOrder']=$result;
+        header("Location:  ../../view/gasagent/pick.php");
+        $connection->close();
+        exit();
+    }
+    else{
+        $_SESSION['p_no_order']="no orders found";
+        header("Location:  ../../view/gasagent/pick.php");
+        // header("Location: ../../controller/gasagent/gasagent_order_controller.php");
+        $connection->close();
+        exit();}
 
 
+}/* */
+
+if(isset($_POST['d_search_order'])){
+    $order_id=$_POST['d_order_id'];
+    $user=new Brand_reports(); 
+    $result=$user->DeliverSearchOrders($connection,$order_id);
+    if($result==true){
+        $_SESSION['GDeliveredOrder']=$result;
+        header("Location:  ../../view/gasagent/orderd.php");
+        
+        $connection->close();
+        exit();
+    }
+    else{
+        $_SESSION['no_orders']="no orders found";
+        header("Location:  ../../view/gasagent/orderd.php");
+
+        // header("Location: ../../controller/gasagent/gasagent_order_controller.php");
+        $connection->close();
+        exit();
 
     }
+}
 
 
+if(isset($_POST['btn_time'])){
+    $btn_time=$_POST['open_time'];
+    $user=new Brand_reports();
+    $result=$user->update_open_time($connection,$btn_time);
+    if($result){
+        $_SESSION['open_time']="open time updated succsessfully";        
+        header("Location: ../../controller/gasagent/gasagent_order_controller.php");
+        $connection->close();
+    }
+    else{
+        $_SESSION['open_time_erro']="not updated open time";
+        header("Location: ../../controller/gasagent/gasagent_order_controller.php");
+        $connection->close();
+    }
 }

@@ -2,7 +2,7 @@
 class gas_model{
 
     public function getshopnames($connection,$type,$userid,$limit,$offset){
-        $sql="SELECT g.Shop_name,g.latitude,g.longitude FROM `gasagent`g inner join `gas_company` c on g.Gas_Type=c.company_id WHERE c.company_name='$type' limit $limit offset $offset";
+        $sql="SELECT g.Shop_name,g.latitude,g.longitude FROM `gasagent`g inner join `gas_company` c on g.Gas_Type=c.company_id WHERE c.company_name='$type' and g.Status=1 limit $limit offset $offset";
 
         $result=$connection->query($sql);
         if($result->num_rows===0){
@@ -47,7 +47,7 @@ class gas_model{
         }
     }
     public function ungetshopnames($connection,$type,$latitude,$longitude){
-        $sql="SELECT g.Shop_name,g.latitude,g.longitude FROM `gasagent`g inner join `gas_company` c on g.Gas_Type=c.company_id WHERE c.company_name='$type'";
+        $sql="SELECT g.Shop_name,g.latitude,g.longitude FROM `gasagent`g inner join `gas_company` c on g.Gas_Type=c.company_id WHERE c.company_name='$type' and g.Status=1";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;
@@ -107,7 +107,7 @@ class gas_model{
         }
     }
     public function viewgas($connection,$weight,$type){
-        $sql="Select DISTINCT g.GasAgent_Id from `gasagent` g INNER JOIN `sell_gas` s on g.GasAgent_Id=s.GasAgent_Id INNER JOIN `gas_company` c on g.Gas_Type=c.company_id WHERE c.company_name='$type';";
+        $sql="Select DISTINCT g.GasAgent_Id from `gasagent` g INNER JOIN `sell_gas` s on g.GasAgent_Id=s.GasAgent_Id INNER JOIN `gas_company` c on g.Gas_Type=c.company_id WHERE c.company_name='$type' and g.Status=1;";
         $result=$connection->query($sql);
         if($result->num_rows===0){
             return false;

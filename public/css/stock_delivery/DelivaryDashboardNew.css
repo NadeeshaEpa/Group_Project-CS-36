@@ -42,7 +42,7 @@ body.dark {
 }
 
 body {
-	background: var(--grey);
+	background-color:  #1c2d4d;
 	overflow-x: hidden;
 }
 
@@ -98,7 +98,7 @@ body {
 	height: 75px;
 	background: transparent;
 	margin-left: 6px;
-	border-radius: 48px 0 0 48px;
+	border-radius: 16px;
 	padding: 4px;
 }
 #sidebar .side-menu li.active {
@@ -133,7 +133,7 @@ body {
 	background: var(--light);
 	display: flex;
 	align-items: center;
-	border-radius: 48px;
+	border-radius: 16px;
 	font-size: 16px;
 	color: var(--dark);
 	white-space: nowrap;
@@ -181,7 +181,7 @@ body {
 /* NAVBAR */
 #content nav {
 	height: 56px;
-	background:#d3d3d3;
+	background:#e9e9e9;
 	padding: 0 24px;
 	display: flex;
 	align-items: center;
@@ -200,7 +200,7 @@ body {
 	bottom: -40px;
 	left: 0;
 	border-radius: 50%;
-	box-shadow: -20px -20px 0 var(--light);
+	/* box-shadow: -20px -20px 0 var(--light); */
 }
 #content nav a {
 	color: var(--dark);
@@ -332,6 +332,7 @@ body {
 	font-family: var(--poppins);
 	max-height: calc(100vh - 56px);
 	overflow-y: auto;
+	/* background-color: #11102f;  */
 }
 #content main .head-title {
 	display: flex;
@@ -344,7 +345,7 @@ body {
 	font-size: 36px;
 	font-weight: 600;
 	margin-bottom: 10px;
-	color: var(--dark);
+	color:white
 }
 #content main .head-title .left .breadcrumb {
 	display: flex;
@@ -352,14 +353,14 @@ body {
 	grid-gap: 16px;
 }
 #content main .head-title .left .breadcrumb li {
-	color: var(--dark);
+	color: #fefcff;
 }
 #content main .head-title .left .breadcrumb li a {
 	color: var(--dark-grey);
 	pointer-events: none;
 }
 #content main .head-title .left .breadcrumb li a.active {
-	color: var(--blue);
+	color: #dde2e8;
 	pointer-events: unset;
 }
 #content main .head-title .btn-download {
@@ -376,38 +377,28 @@ body {
 }
 
 .cbtn1, .cbtn2{
-    border-radius: 15px;
-	text-align: center;
-	font-size: 16px;
-	margin-top: 15px;
-	margin-left: 25px;
-    background-color: #815bf6;
-	border: none;
-	width: 90%;
-	height: 30px;
-	color: white;
-	margin-right:10px ;
-	
+	border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 15px;
+    margin-left: 25px;
+    background-color: #4b10ff;
+    border: none;
+    width: 90%;
+    height: 30px;
+    color: white;
+    margin-right: 10px;
+    font-family: unset;
 }
 
 .cbtn2{
-    background-color: #da3a3a;
-	
-}
-
-.cbtn1:hover{
-    
-	/* font-size: 17px; */
-}
-
-.cbtn2:hover{
-	/* font-size: 17px; */
+    background-color: #ff1d1d;
 	
 }
 
 .ADmsg h6{
     text-align: center;
-	color: var(--dark);
+	color: #f8ebff
 }
 
 
@@ -460,7 +451,10 @@ body {
 
 
 
+#content main .Add_brands_outter{
+	width: 100%;
 
+}
 
 
 
@@ -625,14 +619,15 @@ body {
 }
 
 .prof_details input{
-    width: 300px;
+	width: 300px;
     height: 35px;
-    border-radius: 15px;
+    border-radius: 8px;
     background-color: rgb(253, 253, 253);
     text-align: center;
     font-size: 12px;
     margin-top: 10px;
-	margin-left: 20px;
+    margin-left: 20px;
+    font-family: unset;
 }
 
 #streetid{
@@ -693,14 +688,29 @@ body {
 }
 .d_form .updatebtn {
 
-     background-color: #79d37c;
-	 color: white;
-	 font-size: 18px;
+	background-color: #18cc19;
+    width: 120px;
+    height: 40px;
+    padding: 10px 10px 10px 10px;
+    margin-top: 35px;
+    margin-left: 27%;
+    color: white;
+    border: none;
+    font-family: unset;
+    border-radius: 8px;
 }
 .d_form .cancelbtn {
-	background-color: #da3a3a;
-	color: white;
-	font-size: 18px;
+	background-color: #ff4300;
+    width: 120px;
+    /* height: 55px; */
+    padding: 10px 10px 10px 10px;
+    /* margin-top: 35px; */
+    margin-left: 27%;
+    color: white;
+    border: none;
+    font-family: unset;
+    border-radius: 8px;
+
 
 }
 .d_form h2{
@@ -734,14 +744,15 @@ body {
 }
 
 #d_changepasswordid{  
-    background-color:#815bf6;
-    border-radius: 15px;
+    background-color:#3906d6;
+    border-radius: 8px;
 	font-size: 18px;
 	color: white;
     width: 200px;
 	height: 40px;
 	border:none;
-	margin-left: 15%;
+	/* margin-left: 15%; */
+	font-family: unset;
 }
 
 .down_updata{
@@ -758,14 +769,16 @@ body {
 }
 
 .down1btn button {
-    padding: 10px 65px 10px 55px;    
-    background-color:#79d37c;
-    border-radius: 15px;
-	font-size: 18px;
-	color: white;
-    width: 200px;
-	height: 40px;
-	border:none;
+	background-color: #18cc19;
+    width: 120px;
+    height: 40px;
+    padding: 10px 10px 10px 10px;
+    margin-top: 35px;
+    margin-left: 40px;
+    color: white;
+    border: none;
+    font-family: unset;
+    border-radius: 8px;
 }
 
 .otherdeliveryProfilebtn{
@@ -778,37 +791,44 @@ body {
 	width: 50%;
 }
 .otherdeliveryProfilebtndown1 #deliveyDeletebtn{
-    margin-top: 21px;  
-    background-color:#da3a3a;
-    border-radius: 15px;
-	font-size: 18px;
-	color: white;
-    width: 200px;
-	height: 40px;
-	border:none;
-
+	background-color: #ff4300;
+    width: 120px;
+    height: 55px;
+    padding: 10px 10px 10px 10px;
+    margin-top: 35px;
+    margin-left: 10px;
+    color: white;
+    border: none;
+    font-family: unset;
+    border-radius: 8px;
     margin-left: 41%;
 }
 
 
 #pic_add_btn_id{
-	background-color:#79d37c;
-	width: 120px;
-	height: 40px;
-	padding: 10px 10px 10px 10px;
-	margin-top: 35px;
-	margin-left: 40px;
-	color: white;
+	background-color: #18cc19;
+    width: 120px;
+    height: 40px;
+    padding: 10px 10px 10px 10px;
+    margin-top: 35px;
+    margin-left: 40px;
+    color: white;
+    border: none;
+    font-family: unset;
+    border-radius: 8px;
 }
 
 #pic_remove_btn_id{
-    background-color: #da3a3a;
-	width: 120px;
-	height: 40px;
-	padding: 10px 10px 10px 10px;
-	margin-top: 35px;
-	margin-left: 10px;
-	color: white;
+	background-color: #ff4300;
+    width: 120px;
+    height: 40px;
+    padding: 10px 10px 10px 10px;
+    margin-top: 35px;
+    margin-left: 10px;
+    color: white;
+    border: none;
+    font-family: unset;
+    border-radius: 8px;
 }
 
 #image{
@@ -905,20 +925,29 @@ body {
 /* report css*/
 
 .dropdown_outter{
-	display: flex;
+	/* display: flex; */
 	width: 100%;
 	height: 25%;
 
 }
 
 .dropdown{
-	width: 50%;
-	height: 100%;
+	width: 100%;
+	height: 50%;
+	/* background: rgb(255, 255, 255);;
+    border: 3px solid rgb(84, 73, 116);
+	border-radius: 15px;
+    width: 295px;
+    height: 40px; */
+    font-size: large;
+    /* margin-bottom: 36px;
+	margin-left: 308px; */
+    text-align: center;
 }
 
 .dropdown_outter .dropdown select {
     background: rgb(255, 255, 255);;
-    border: 3px solid rgb(84, 73, 116);
+    /* border: 3px solid rgb(84, 73, 116); */
 	border-radius: 15px;
     width: 295px;
     height: 40px;
@@ -926,10 +955,10 @@ body {
     margin-bottom: 36px;
 	margin-left: 80px;
     text-align: center;
-    
+    border: none;
   }
 
-  .dropdown_outter .dropdown button{
+  /* .dropdown_outter .dropdown button{
 	width: 150px;
 	margin-left: 230px;
 	height:40px ;
@@ -939,7 +968,7 @@ body {
 	color: white;
 	background-color: #815bf6;
 	font-size: 17px;
-  }
+  } */
 
   .report_info_outter{
 	width: 80%;
@@ -991,6 +1020,19 @@ body {
 
   }
 
+  #viewReportId{
+	background-color: #18cc19;
+    width: 450px;
+    height: 40px;
+    padding: 10px 10px 10px 10px;
+    margin-top: 35px;
+    /* margin-left: 400px; */
+    color: white;
+    border: none;
+    font-family: unset;
+    /* border-radius: 8px; */
+}
+
   /**/
 
 
@@ -1003,7 +1045,7 @@ body {
 
 #delivary_reviewsbackid{
 	
-	height: 60vh;
+	height: 69.5vh;
 	background-image: url(../../images/DeliveryPerson/Rate_1.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -1089,7 +1131,7 @@ body {
   }
 
   .reviews_content button{
-	margin-top: 20px;
+	/* margin-top: 20px;
 	width: 150px;
 	margin-left: 40%;
 	height:40px ;
@@ -1098,7 +1140,19 @@ body {
 	color: white;
 	font-size: 18px;
 	background-color:#815bf6;
-	border: none;
+	border: none; */
+    margin-top: 20px;
+	border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+    margin-left: 38%;
+    background-color: #4b10ff;
+    border: none;
+    width: 25%;
+    height: 30px;
+    color: white;
+    border: none;
+    font-family: unset
   }
 
   /* */
@@ -1108,7 +1162,7 @@ body {
   #complaneoutterid{
 	
 
-	height: 75vh;
+	height: 69.5vh;
 
 	background-image: url(../../images/DeliveryPerson/D_add1.jpg);
 	background-size: cover;
@@ -1146,7 +1200,7 @@ body {
 
   .complane_form{
     margin: auto;
-	width: 90%;
+	width: 70%;
 	height: 88%;
 	background-color: white;
 	border-radius: 18px;
@@ -1209,7 +1263,7 @@ body {
 	height: 150px;
   }
   .complane_form .complane_info  button{
-	margin-top: 30px;
+	/* margin-top: 30px;
 	width: 150px;
 	margin-left: 340px;
 	height:40px ;
@@ -1218,7 +1272,19 @@ body {
 	background-color: #815bf6;
 	color: white;
 	border: none;
-	font-size: 17px;
+	font-size: 17px; */
+	border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+	margin-top: 30px;
+    margin-left: 340px;
+    background-color: #4b10ff;
+    border: none;
+    width: 25%;
+    height: 30px;
+    color: white;
+    margin-right: 10px;
+    font-family: unset
   }
 
   .complane_outter .complane_form .complane_info select{
@@ -1236,51 +1302,73 @@ body {
 
  /* complane and rewies view button css*/
   .head-title .right-button a{
-	text-decoration: none;
-	color: white;
-	font-size: 18px;
-	width: 200px;
-	height: 10px;
+	
+	border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 15px;
+    margin-left: 25px;
+    background-color: #4b10ff;
+    border: none;
+    width: 90%;
+    height: 30px;
+    color: white;
+    margin-right: 10px;
+    font-family: unset;
 	padding: 10px 10px 10px 10px;
-	background-color: #79d37c;
-	border-radius: 15px;
   }
  /**/
 
  /*complain and review delete button */
  #ComplainDeleteBtn_Id{
-    background-color: #da3a3a;
+	border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+   
+    background-color: #ff1d1d;
+    border: none;
+    width: 90%;
+    height: 30px;
     color: white;
     
-	height: 15%;
-	width: 100px;
-	border-radius: 15px;
-	padding: 5px 10px 5px 10px;
+    font-family: unset;
  }
 
  #reviewDeleteBtn_id{
-	background-color: #da3a3a;
+	/* background-color: #da3a3a;
     color: white;
     
 	height: 15%;
 	width: 100px;
 	border-radius: 15px;
-	padding: 5px 10px 5px 10px;
+	padding: 5px 10px 5px 10px; */
+	border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+   
+    background-color: #ff1d1d;
+    border: none;
+    width: 90%;
+    height: 30px;
+    color: white;
+    
+    font-family: unset;
 
  }
  /**/
  .btn3{
-	border-radius: 15px;
-	text-align: center;
-	font-size: 16px;
-	margin-top: 15px;
-	margin-left: 25px;
-    background-color: #195835;
-	border: none;
-	width: 90%;
-	height: 30px;
-	color: white;
-	margin-right:10px ;
+	border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 15px;
+    margin-left: 25px;
+    background-color: #18cc19;
+    border: none;
+    width: 90%;
+    height: 30px;
+    color: white;
+    margin-right: 10px;
+    font-family: unset;
  }
 
 
@@ -1386,7 +1474,7 @@ body {
     width: 50%;
     height: 50%;
     overflow: auto;
-    background-color: #D9D9D9;
+    background-color: #fefcff;
     padding-top: 50px;
     border-radius: 20px;
 }
@@ -1415,25 +1503,44 @@ body {
 }
 
 #profilecancelbtnid{
-    background-color: #79d37c;
+    /* background-color: #79d37c;
     color: black;
     float: left;
     margin-left: 20%;
 	height: 10%;
 	width: 20%;
 	border-radius: 15px;
-	padding: 10px 10px 10px 10px;
+	padding: 10px 10px 10px 10px; */
+	background-color: #18cc19;
+    width: 120px;
+    height: 40px;
+    padding: 10px 10px 10px 10px;
+    margin-left: 20%;
+    color: white;
+    border: none;
+    font-family: unset;
+    border-radius: 8px
 }
 
 #profiledeletebtnid{
-    background-color: #da3a3a;
+    /* background-color: #da3a3a;
     color: black;
     float: right;
     margin-right: 20%;
 	height: 15%;
 	width: 20%;
 	border-radius: 15px;
-	padding: 10px 10px 10px 10px;
+	padding: 10px 10px 10px 10px; */
+	background-color: #ff4300;
+    width: 120px;
+    height: 40px;
+    padding: 10px 10px 10px 10px;
+	float: right;
+    margin-right: 20%;
+    color: white;
+    border: none;
+    font-family: unset;
+    border-radius: 8px
 }
 
 .close {
@@ -1470,12 +1577,18 @@ body {
 
 
 #DeliveryRefreshId{
-	width: 150px;
-	background-color: #CFE8FF;
-	margin-left: 87%;
-	margin-top: 20px;
-	padding: 10px 10px 10px 10px;
-	border-radius: 15px;
+	border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 30px;
+    margin-left: 298px;
+    background-color: #18cc19;
+    border: none;
+    width: 50%;
+    height: 45px;
+    color: white;
+    margin-right: 10px;
+    font-family: unset;
 }
 
 
@@ -1494,32 +1607,31 @@ body {
 }
 
 #DeliveryReAcceptId{
-	width: 100px;
-	
-	height:30px ;
-	text-align: center;
-	border-radius: 15px;
-	border: none;
-	color: white;
-	background-color: #79d37c;
-	font-size: 17px;	
-}
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    background-color: #18cc19;
+    font-size: 17px;
+    font-family: unset;}
 
 #DeliveryReDeclineId{
 	width: 100px;
-	
-	height:30px ;
-	text-align: center;
-	border-radius: 15px;
-	border: none;
-	color: white;
-	background-color: #f44336;
-	font-size: 17px;	
+    height: 30px;
+    text-align: center;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    background-color: #ff1d1d;
+    font-size: 17px;
+    font-family: unset;	
 }
 
 /* Row change color */
 .highlight{
-	background-color: #5ad893;
+	background-color:#5ad0ff;
 }
 /**/
 
@@ -1533,7 +1645,10 @@ body {
 	
 	height: 700px;
 	display: flex;
-	
+	background-color: #11102f;
+}
+.pickedmsg{
+	background-color: #11102f;
 }
 
 .ReContainer .ReContainerInner{
@@ -1547,7 +1662,7 @@ body {
 .ReContainer .Re_right{
     width: 50%;
 	height: 100%;
-	
+	background: white;
 }
 
 .ReContainer .Re_left{
@@ -1586,13 +1701,25 @@ body {
 }
 
 #DeliveryRePendingId{
-    width: 300px;
+    /* width: 300px;
 	height: 30px;
 	
 	border-radius: 15px;
 	background-color:#79d37c ;
 	margin-top: 2.5%;
-	margin-left: 30%;
+	margin-left: 30%; */
+	border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 2.5%;
+    margin-left: 30%;;
+    background-color: #4b10ff;
+    border: none;
+    width: 40%;
+    height: 30px;
+    color: white;
+    margin-right: 10px;
+    font-family: unset
 }
 /**/
 /*Reviews and complane popup msg css*/
@@ -1635,11 +1762,11 @@ body {
 	border-radius: 10px;
 }
 #yes{
-	background-color: #f44336;
+	background-color: #ff1d1d;
 	
 }
 #no{
-	background-color: #79d37c;
+	background-color: #18cc19;
 }
 
 /**/
@@ -1669,6 +1796,64 @@ body {
 /**/
 
 
+/* Gas vertification pin poup css*/
+#feedback1{
+	width: 80%;
+	height: 10%;
+	border-radius: 15px;
+	margin-left: 10%;
+	text-align: center;
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+
+#backgr1{
+	background-color: rgba(0,0,0,0.5);
+	width: 100%;
+	height: 100%;
+	display: none;
+	/* take this to front */
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1;
+
+}
+#cancel_popup1{
+	position: fixed;
+	/* background-color: rgba(0,0,0,0.5); */
+	top: 0;
+	left: 0;
+	z-index: 2;
+	display: none;
+	float: left;
+	margin-left: 45%;
+	margin-top: 20%;
+	background-color:white;
+	padding: 3%;
+}
+#cancel_popup1 p{
+	font-size: 20px;
+}
+#cancel_popup1 button{
+	width: 20%;
+	height: 30px;
+	margin-left: 20%;
+	margin-top: 2%;
+	color: white;
+	
+	border:none;
+	border-radius: 10px;
+}
+#yes1{
+	background-color: #ff1d1d;
+	
+}
+#no1{
+	background-color: #18cc19;
+}
+
+/**/
   
   
   

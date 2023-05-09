@@ -121,10 +121,10 @@ if(!isset($_SESSION['User_id'])){
 
 				
 			</div>
-
-			
+		</main>
+<!-- 			
 			<div class="table-data">
-				<div class="order" >
+				<div class="order" > -->
 					<div class="delivary_reviewsback" id="delivary_reviewsbackid">
 						<div class="reviews_content">
 							<div class="re_msg">
@@ -149,10 +149,10 @@ if(!isset($_SESSION['User_id'])){
 					</div>
 
 					
-				</div>
+				<!-- </div>
 			
-			</div>
-		</main>
+			</div> -->
+		
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->

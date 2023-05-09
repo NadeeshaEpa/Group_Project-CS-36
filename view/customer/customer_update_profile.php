@@ -179,7 +179,7 @@
                                 <div>
                                     <input type="hidden" id="latitude" name="latitude">
                                     <input type="hidden" id="longitude" name="longitude">
-                                    <input type="text" id="address" name="address" placeholder="Address"><br>
+                                    <input type="text" id="address" name="address" value="<?php echo $result[0]['Street'].",".$result[0]['City'].",".$result[0]['Postalcode']; ?>"><br>
                                     <!-- break the address value into 3 parts -->
                                 </div> 
                             </div>
